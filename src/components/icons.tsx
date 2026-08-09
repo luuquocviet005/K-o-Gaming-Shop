@@ -264,6 +264,36 @@ export const MonitorIcon = (p: IconProps) => (
   </Svg>
 );
 
+export const SwitchIcon = (p: IconProps) => (
+  <Svg {...p}>
+    {/* Switch bàn phím nhìn nghiêng: thân + trục chữ thập + chân */}
+    <path d="M6.5 10.5h11l1.5 8H5l1.5-8Z" />
+    <rect x="9" y="4.5" width="6" height="6" rx="1.5" />
+    <path d="M12 5.5v4M10.5 7.5h3" />
+  </Svg>
+);
+
+export const BoxIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="M12 3.5 20 7v10l-8 3.5L4 17V7l8-3.5Z" />
+    <path d="m4 7 8 3.5L20 7M12 10.5V20" />
+  </Svg>
+);
+
+export const MapIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <path d="M12 21s6.5-5.6 6.5-10.4A6.5 6.5 0 0 0 5.5 10.6C5.5 15.4 12 21 12 21Z" />
+    <circle cx="12" cy="10.4" r="2.4" />
+  </Svg>
+);
+
+export const InfoIcon = (p: IconProps) => (
+  <Svg {...p}>
+    <circle cx="12" cy="12" r="8.5" />
+    <path d="M12 11v5.5M12 7.8h.01" />
+  </Svg>
+);
+
 // ── Mạng xã hội (dạng đặc, đúng hình thương hiệu) ──────────────────
 
 export const FacebookIcon = (p: IconProps) => (
@@ -308,12 +338,32 @@ export const TiktokIcon = (p: IconProps) => (
   </Svg>
 );
 
-/** Icon danh mục -> component, dùng cho thanh lọc và lưới danh mục */
-export const categoryIcons = {
+/**
+ * Khoá icon (khai báo trong sync.config.json) -> component.
+ * Thêm tab mới trong Sheet thì chọn một khoá ở đây, hoặc dùng "do-khac".
+ */
+const bangIcon: Record<string, (p: IconProps) => React.ReactElement> = {
   chuot: MouseIcon,
   "ban-phim": KeyboardIcon,
   "tai-nghe": HeadphonesIcon,
-  "ghe-gaming": ChairIcon,
+  switch: SwitchIcon,
+  "do-khac": BoxIcon,
+  ghe: ChairIcon,
   "tay-cam": GamepadIcon,
   "man-hinh": MonitorIcon,
-} as const;
+};
+
+/**
+ * Icon của một danh mục.
+ *
+ * Là component ổn định chứ không phải hàm trả về component — trả về component
+ * ngay trong lúc render sẽ tạo kiểu (type) mới mỗi lần, khiến React tháo và
+ * dựng lại phần tử thay vì cập nhật nó.
+ */
+export function CategoryIcon({
+  khoa,
+  ...props
+}: IconProps & { khoa: string }) {
+  const Icon = bangIcon[khoa] ?? BoxIcon;
+  return <Icon {...props} />;
+}

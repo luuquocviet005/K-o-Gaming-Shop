@@ -1,17 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import {
-  categories,
-  countByCategory,
-  getCategory,
-  productsByCategory,
-  toCard,
-  type CategorySlug,
-} from "@/lib/products";
+import { categories, getCategory, productsByCategory, toCard } from "@/lib/products";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { ProductBrowser } from "@/components/product-browser";
-import { categoryIcons } from "@/components/icons";
+import { CategoryIcon } from "@/components/icons";
 
 // Static export cần biết trước mọi đường dẫn động sẽ được sinh ra
 export function generateStaticParams() {
@@ -32,7 +25,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   if (!category) return { title: "Không tìm thấy danh mục" };
   return {
     title: category.name,
-    description: `${category.name} chính hãng tại KẸO GAMING SHOP. ${category.blurb}`,
+    description: `${category.name} tại KẸO GAMING SHOP. ${category.blurb}`,
   };
 }
 
@@ -41,8 +34,7 @@ export default async function CategoryPage(props: Props) {
   const category = getCategory(slug);
   if (!category) notFound();
 
-  const items = productsByCategory(slug as CategorySlug).map(toCard);
-  const Icon = categoryIcons[category.slug];
+  const items = productsByCategory(slug).map(toCard);
 
   return (
     <div className="container-page py-8 lg:py-12">
@@ -55,7 +47,7 @@ export default async function CategoryPage(props: Props) {
 
       <header className="mt-6 flex flex-wrap items-center gap-5">
         <span className="grid size-16 shrink-0 place-items-center rounded-3xl bg-primary-soft text-primary-ink">
-          <Icon width={30} height={30} />
+          <CategoryIcon khoa={category.icon} width={30} height={30} />
         </span>
         <div>
           <h1 className="font-display text-3xl font-extrabold tracking-tight text-fg sm:text-4xl">
@@ -76,7 +68,6 @@ export default async function CategoryPage(props: Props) {
             </Link>
           </li>
           {categories.map((c) => {
-            const CatIcon = categoryIcons[c.slug];
             const active = c.slug === category.slug;
             return (
               <li key={c.slug}>
@@ -89,12 +80,12 @@ export default async function CategoryPage(props: Props) {
                       : "border border-border bg-surface text-fg-muted hover:border-primary hover:text-primary-ink"
                   }`}
                 >
-                  <CatIcon width={17} height={17} />
+                  <CategoryIcon khoa={c.icon} width={17} height={17} />
                   {c.short}
                   <span
                     className={active ? "text-xs opacity-80" : "text-xs text-fg-subtle"}
                   >
-                    {countByCategory(c.slug)}
+                    {c.soLuong}
                   </span>
                 </Link>
               </li>

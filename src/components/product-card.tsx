@@ -1,9 +1,10 @@
 import Link from "next/link";
-import { discountPercent, type CardProduct } from "@/lib/products";
-import { formatVND } from "@/lib/format";
+import type { CardProduct } from "@/lib/products";
+import { formatGia, moTaTonKho } from "@/lib/format";
 import { ProductMedia } from "@/components/product-art";
-import { Rating } from "@/components/rating";
+import { ConditionBadge } from "@/components/condition-badge";
 import { AddToCartButton } from "@/components/add-to-cart-button";
+import { InfoIcon, MapPinIcon } from "@/components/icons";
 
 /**
  * Thẻ sản phẩm.
@@ -19,44 +20,39 @@ export function ProductCard({
   product: CardProduct;
   priority?: boolean;
 }) {
-  const off = discountPercent(product);
-  const soldOut = product.stock === 0;
+  const hetHang = product.soLuong <= 0;
+  const tonKho = moTaTonKho(product);
 
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-[1.5rem] border border-border bg-surface transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-[0_18px_40px_-24px_rgba(60,20,40,0.45)]">
-      {/* Khu vực ảnh — tỉ lệ vuông cố định để không nhảy layout khi tải */}
       <div className="relative aspect-square overflow-hidden bg-surface-2 p-5">
         <div className="h-full w-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]">
           <ProductMedia product={product} priority={priority} />
         </div>
 
-        {/* Nhãn trạng thái */}
         <div className="pointer-events-none absolute left-4 top-4 flex flex-col items-start gap-1.5">
-          {off > 0 && (
-            <span className="rounded-full bg-candy px-2.5 py-1 text-[0.68rem] font-bold text-on-candy">
-              -{off}%
-            </span>
-          )}
-          {product.isNew && (
-            <span className="rounded-full bg-fg px-2.5 py-1 text-[0.68rem] font-bold text-bg">
-              MỚI
-            </span>
-          )}
+          <ConditionBadge tinhTrang={product.tinhTrang} nhom={product.nhomTinhTrang} />
         </div>
 
-        {soldOut && (
+        {product.diaDiem && (
+          <span className="pointer-events-none absolute right-4 top-4 inline-flex items-center gap-1 rounded-full bg-surface/85 px-2.5 py-1 text-[0.68rem] font-semibold text-fg-muted backdrop-blur-sm">
+            <MapPinIcon width={12} height={12} />
+            {product.diaDiem}
+          </span>
+        )}
+
+        {hetHang && (
           <div className="absolute inset-0 grid place-items-center bg-surface/70 backdrop-blur-[2px]">
             <span className="rounded-full bg-fg px-4 py-2 text-xs font-bold text-bg">
-              Tạm hết hàng
+              Đã bán hết
             </span>
           </div>
         )}
       </div>
 
-      {/* Nội dung */}
       <div className="flex flex-1 flex-col gap-2 p-4 pt-3.5">
         <p className="text-[0.7rem] font-semibold uppercase tracking-wider text-fg-subtle">
-          {product.brand}
+          {product.hang}
         </p>
 
         <h3 className="text-[0.95rem] font-semibold leading-snug text-fg">
@@ -64,30 +60,40 @@ export function ProductCard({
             href={`/san-pham/${product.slug}/`}
             className="line-clamp-2x after:absolute after:inset-0 after:content-['']"
           >
-            {product.name}
+            {product.ten}
           </Link>
         </h3>
 
-        <Rating value={product.rating} />
+        {/* Ghi chú tình trạng thật — với hàng cũ đây là thứ quyết định mua hay không */}
+        {product.note && (
+          <p className="flex gap-1.5 rounded-xl bg-surface-2 px-2.5 py-2 text-xs leading-snug text-fg-muted">
+            <InfoIcon width={14} height={14} className="mt-px shrink-0 text-candy-ink" />
+            <span className="line-clamp-2x">{product.note}</span>
+          </p>
+        )}
+
+        <p
+          className={`text-xs font-semibold ${
+            tonKho.mau === "het"
+              ? "text-fg-subtle"
+              : tonKho.mau === "sapHet"
+                ? "text-candy-ink"
+                : "text-fg-muted"
+          }`}
+        >
+          {tonKho.chu}
+        </p>
 
         <div className="mt-auto flex items-end justify-between gap-3 pt-2">
-          <div className="min-w-0">
-            {product.oldPrice && (
-              <p className="text-xs text-fg-subtle line-through">
-                {formatVND(product.oldPrice)}
-              </p>
-            )}
-            <p className="font-display text-lg font-extrabold tracking-tight text-fg">
-              {formatVND(product.price)}
-            </p>
-          </div>
+          <p className="min-w-0 font-display text-lg font-extrabold leading-tight tracking-tight text-fg">
+            {formatGia(product)}
+          </p>
 
-          {!soldOut && (
+          {!hetHang && (
             <div className="relative z-10">
               <AddToCartButton
                 productId={product.id}
-                variantId={product.firstVariantId}
-                productName={product.name}
+                productName={product.ten}
                 variant="icon"
               />
             </div>

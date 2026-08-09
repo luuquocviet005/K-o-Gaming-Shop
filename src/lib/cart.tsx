@@ -19,16 +19,13 @@ import { site } from "@/lib/site";
 const STORAGE_KEY = "keo-cart-v1";
 
 export type CartLine = {
-  /** Khoá duy nhất: productId + variantId (cùng SP khác màu = 2 dòng riêng) */
   key: string;
   productId: string;
-  variantId?: string;
   quantity: number;
 };
 
 export type ResolvedLine = CartLine & {
   product: Product;
-  variantName?: string;
   unitPrice: number;
   lineTotal: number;
 };
@@ -53,7 +50,7 @@ type CartContextValue = {
   promoError: string | null;
   /** Tăng mỗi lần thêm hàng — Header dùng để chạy animation */
   addPulse: number;
-  addItem: (productId: string, variantId?: string, quantity?: number) => void;
+  addItem: (productId: string, quantity?: number) => void;
   setQuantity: (key: string, quantity: number) => void;
   removeItem: (key: string) => void;
   clear: () => void;
@@ -63,9 +60,6 @@ type CartContextValue = {
 
 const CartContext = createContext<CartContextValue | null>(null);
 
-function lineKey(productId: string, variantId?: string) {
-  return variantId ? `${productId}::${variantId}` : productId;
-}
 
 function readStorage(): { lines: CartLine[]; promoCode: string | null } {
   if (typeof window === "undefined") return { lines: [], promoCode: null };
@@ -97,8 +91,14 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   // hàng của từng khách), nên đây là ngoại lệ hợp lệ.
   useEffect(() => {
     const stored = readStorage();
+    // Bỏ những dòng trỏ tới sản phẩm không còn tồn tại: hàng đã bán và xoá
+    // khỏi Sheet, hoặc dữ liệu cũ từ phiên bản web trước. Không lọc thì rác
+    // nằm lại trong máy khách mãi mãi.
+    const conHieuLuc = stored.lines.filter((l) =>
+      products.some((p) => p.id === l.productId),
+    );
     // eslint-disable-next-line react-hooks/set-state-in-effect
-    setRawLines(stored.lines);
+    setRawLines(conHieuLuc);
     setPromoCode(stored.promoCode);
     setReady(true);
   }, []);
@@ -127,24 +127,20 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     return () => window.removeEventListener("storage", onStorage);
   }, []);
 
-  const addItem = useCallback(
-    (productId: string, variantId?: string, quantity = 1) => {
-      const key = lineKey(productId, variantId);
-      setRawLines((prev) => {
-        const existing = prev.find((l) => l.key === key);
-        if (existing) {
-          return prev.map((l) =>
-            l.key === key
-              ? { ...l, quantity: Math.min(l.quantity + quantity, 99) }
-              : l,
-          );
-        }
-        return [...prev, { key, productId, variantId, quantity }];
-      });
-      setAddPulse((n) => n + 1);
-    },
-    [],
-  );
+  const addItem = useCallback((productId: string, quantity = 1) => {
+    setRawLines((prev) => {
+      const existing = prev.find((l) => l.key === productId);
+      if (existing) {
+        return prev.map((l) =>
+          l.key === productId
+            ? { ...l, quantity: Math.min(l.quantity + quantity, 99) }
+            : l,
+        );
+      }
+      return [...prev, { key: productId, productId, quantity }];
+    });
+    setAddPulse((n) => n + 1);
+  }, []);
 
   const setQuantity = useCallback((key: string, quantity: number) => {
     setRawLines((prev) =>
@@ -188,16 +184,14 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const lines = useMemo<ResolvedLine[]>(() => {
     return rawLines.flatMap((line) => {
       const product = products.find((p) => p.id === line.productId);
+      // Sản phẩm đã bán hết và bị xoá khỏi Sheet thì tự rơi khỏi giỏ
       if (!product) return [];
-      const variant = product.variants?.find((v) => v.id === line.variantId);
-      const unitPrice = product.price + (variant?.priceDelta ?? 0);
       return [
         {
           ...line,
           product,
-          variantName: variant?.name,
-          unitPrice,
-          lineTotal: unitPrice * line.quantity,
+          unitPrice: product.gia,
+          lineTotal: product.gia * line.quantity,
         },
       ];
     });

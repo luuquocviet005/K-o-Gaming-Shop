@@ -1,0 +1,68 @@
+name: Đồng bộ Google Sheet
+
+# Tự đọc bảng hàng trong Google Sheet. Có thay đổi thì commit — lần commit đó
+# kích hoạt deploy của Hostinger, nên web tự cập nhật mà bạn không phải làm gì.
+#
+# KHÔNG cần khai báo secret: Sheet đang ở chế độ "ai có link đều xem được".
+
+on:
+  schedule:
+    # Mỗi 20 phút. Giờ trong cron của GitHub là giờ UTC, nhưng vì chạy theo
+    # chu kỳ nên không ảnh hưởng gì.
+    - cron: "*/20 * * * *"
+  workflow_dispatch: # nút bấm chạy ngay trong tab Actions
+
+concurrency:
+  group: dong-bo-sheet
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  dong-bo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Lấy mã nguồn
+        uses: actions/checkout@v4
+
+      - name: Cài Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Đọc Google Sheet
+        run: node scripts/sync-sheet.mjs
+
+      - name: Kiểm tra có thay đổi không
+        id: kiemtra
+        run: |
+          if git diff --quiet -- src/data/products.json; then
+            echo "doi=false" >> "$GITHUB_OUTPUT"
+            echo "Bảng hàng không đổi — không cần deploy lại."
+          else
+            echo "doi=true" >> "$GITHUB_OUTPUT"
+            echo "Bảng hàng có thay đổi:"
+            git --no-pager diff --stat -- src/data/products.json
+          fi
+
+      # Build thử TRƯỚC khi commit. Dữ liệu Sheet có thể chứa thứ làm hỏng
+      # build (ký tự lạ, thiếu cột) — thà dừng ở đây còn hơn đẩy bản hỏng
+      # lên website thật.
+      - name: Cài dependencies
+        if: steps.kiemtra.outputs.doi == 'true'
+        run: npm ci
+
+      - name: Build thử
+        if: steps.kiemtra.outputs.doi == 'true'
+        run: npm run build
+
+      - name: Commit và đẩy lên
+        if: steps.kiemtra.outputs.doi == 'true'
+        run: |
+          git config user.name "KEO Gaming Shop"
+          git config user.email "luuquocviet005@gmail.com"
+          git add src/data/products.json
+          git commit -m "Đồng bộ bảng hàng từ Google Sheet"
+          git push

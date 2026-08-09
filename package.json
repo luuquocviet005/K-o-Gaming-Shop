@@ -12,6 +12,7 @@
     "check": "node scripts/check-links.mjs && node scripts/audit.mjs && node scripts/contrast.mjs",
     "contrast": "node scripts/contrast.mjs",
     "push": "node scripts/push.mjs",
+    "sync": "node scripts/sync-sheet.mjs",
     "inspect-sheet": "node scripts/inspect-sheet.mjs",
     "lint": "eslint",
     "typecheck": "tsc --noEmit"

@@ -19,10 +19,11 @@ const socials = [
 ];
 
 const policies = [
-  { label: "Chính sách bảo hành", href: "/chinh-sach/#bao-hanh" },
-  { label: "Chính sách đổi trả", href: "/chinh-sach/#doi-tra" },
-  { label: "Chính sách vận chuyển", href: "/chinh-sach/#van-chuyen" },
-  { label: "Bảo mật thông tin", href: "/chinh-sach/#bao-mat" },
+  { label: "Cách mô tả tình trạng", href: "/chinh-sach/#tinh-trang" },
+  { label: "Test trước khi mua", href: "/chinh-sach/#test-truoc" },
+  { label: "Đổi trả", href: "/chinh-sach/#doi-tra" },
+  { label: "Bảo hành", href: "/chinh-sach/#bao-hanh" },
+  { label: "Giao hàng", href: "/chinh-sach/#van-chuyen" },
 ];
 
 export function Footer() {
@@ -32,8 +33,9 @@ export function Footer() {
         <div>
           <Logo />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-fg-muted">
-            {site.tagline}. Gear chính hãng, bảo hành đầy đủ, tư vấn thật lòng —
-            không bán cái mình không dùng.
+            Chuột, bàn phím, tai nghe và switch — phần lớn là hàng đã qua sử
+            dụng. Món nào trầy, thiếu gì, còn bảo hành tới bao giờ, tụi mình ghi
+            thẳng lên trang sản phẩm.
           </p>
 
           <ul className="mt-5 flex gap-2">
@@ -158,7 +160,7 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} {site.name}. Đã đăng ký bản quyền.
           </p>
-          <p>Giá đã bao gồm VAT · Bảo hành chính hãng toàn quốc</p>
+          <p>Hàng cũ &amp; mới · Cho test trước khi mua · Đà Nẵng &amp; Sài Gòn</p>
         </div>
       </div>
     </footer>

@@ -102,7 +102,6 @@ const required = [
   "/robots.txt",
   "/gio-hang/index.html",
   "/danh-muc/index.html",
-  "/khuyen-mai/index.html",
   "/lien-he/index.html",
   "/chinh-sach/index.html",
 ];

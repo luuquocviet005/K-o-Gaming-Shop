@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { bestSellers, toCard } from "@/lib/products";
+import { hangNoiBat, toCard } from "@/lib/products";
 import { ProductCard } from "@/components/product-card";
 import { ArrowRightIcon } from "@/components/icons";
 
@@ -36,10 +36,10 @@ export default function NotFound() {
 
       <section className="mt-16">
         <h2 className="font-display text-xl font-extrabold tracking-tight text-fg">
-          Đang bán chạy
+          Món đáng chú ý
         </h2>
         <div className="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
-          {bestSellers(4).map(toCard).map((p) => (
+          {hangNoiBat(4).map(toCard).map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
         </div>

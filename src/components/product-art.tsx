@@ -1,11 +1,9 @@
-import type { CategorySlug } from "@/lib/products";
-
 /** Chỉ những trường cần để vẽ / hiện ảnh — nhận được cả Product lẫn CardProduct */
 type Displayable = {
-  name: string;
-  category: CategorySlug;
-  accent: string;
-  image?: string;
+  ten: string;
+  danhMuc: string;
+  mau: string;
+  anh?: string;
 };
 
 /**
@@ -35,7 +33,7 @@ function shade(hex: string, amount: number): string {
 
 type ArtProps = { accent: string; light: string; dark: string };
 
-const shapes: Record<CategorySlug, (p: ArtProps) => React.ReactElement> = {
+const shapes: Record<string, (p: ArtProps) => React.ReactElement> = {
   chuot: ({ accent, light, dark }) => (
     <>
       <path
@@ -157,22 +155,49 @@ const shapes: Record<CategorySlug, (p: ArtProps) => React.ReactElement> = {
       <rect x="62" y="156" width="76" height="10" rx="5" fill={dark} />
     </>
   ),
+
+  "switch-he": ({ accent, light, dark }) => (
+    <>
+      {/* Đế switch */}
+      <path d="M52 96h96l14 66H38l14-66Z" fill={accent} />
+      <path d="M52 96h96l3 14H49l3-14Z" fill={light} opacity="0.45" />
+      {/* Thân trên */}
+      <rect x="66" y="40" width="68" height="58" rx="8" fill={light} />
+      {/* Trục chữ thập */}
+      <path d="M100 52v34M83 69h34" stroke={dark} strokeWidth="11" strokeLinecap="round" />
+      {/* Chân cắm */}
+      <rect x="76" y="162" width="10" height="14" rx="4" fill={dark} opacity="0.8" />
+      <rect x="114" y="162" width="10" height="14" rx="4" fill={dark} opacity="0.8" />
+    </>
+  ),
+
+  "do-lat-vat": ({ accent, light, dark }) => (
+    <>
+      <path d="M100 34 168 62v76l-68 28-68-28V62l68-28Z" fill={accent} />
+      <path d="M32 62l68 28 68-28-68-28-68 28Z" fill={light} opacity="0.5" />
+      <path d="M100 90v76" stroke={dark} strokeWidth="3" opacity="0.35" />
+      <path d="M32 62v76l68 28" fill="none" stroke={dark} strokeWidth="3" opacity="0.25" />
+      {/* Dải băng dán thùng */}
+      <path d="M78 44v30l22 9 22-9V44l-22-9-22 9Z" fill={dark} opacity="0.25" />
+    </>
+  ),
 };
 
 export function ProductArt({
-  category,
-  accent,
+  danhMuc,
+  mau,
   className,
 }: {
-  category: CategorySlug;
-  accent: string;
+  danhMuc: string;
+  mau: string;
   className?: string;
 }) {
-  const draw = shapes[category];
+  // Danh mục mới thêm trong Sheet mà chưa có hình riêng thì vẽ kiểu thùng đồ
+  const draw = shapes[danhMuc] ?? shapes["do-lat-vat"];
   const props: ArtProps = {
-    accent,
-    light: shade(accent, 70),
-    dark: shade(accent, -45),
+    accent: mau,
+    light: shade(mau, 70),
+    dark: shade(mau, -45),
   };
 
   return (
@@ -204,12 +229,12 @@ export function ProductMedia({
   sizes?: string;
   priority?: boolean;
 }) {
-  if (product.image) {
+  if (product.anh) {
     return (
       // eslint-disable-next-line @next/next/no-img-element -- static export, ảnh đã tối ưu sẵn
       <img
-        src={product.image}
-        alt={product.name}
+        src={product.anh}
+        alt={product.ten}
         width={600}
         height={600}
         sizes={sizes}
@@ -221,8 +246,8 @@ export function ProductMedia({
   }
   return (
     <ProductArt
-      category={product.category}
-      accent={product.accent}
+      danhMuc={product.danhMuc}
+      mau={product.mau}
       className={`h-full w-full ${className}`}
     />
   );

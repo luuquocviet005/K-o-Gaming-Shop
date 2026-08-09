@@ -87,7 +87,7 @@ export function CartView() {
     "",
     ...lines.map(
       (l, i) =>
-        `${i + 1}. ${l.product.name}${l.variantName ? ` (${l.variantName})` : ""} × ${l.quantity} — ${formatVND(l.lineTotal)}`,
+        `${i + 1}. ${l.product.hang} ${l.product.ten}${l.product.tinhTrang ? ` (${l.product.tinhTrang})` : ""} × ${l.quantity} — ${formatVND(l.lineTotal)}`,
     ),
     "",
     `Tạm tính: ${formatVND(subtotal)}`,
@@ -135,7 +135,7 @@ export function CartView() {
               <Link
                 href={`/san-pham/${l.product.slug}/`}
                 className="grid size-24 shrink-0 place-items-center overflow-hidden rounded-2xl bg-surface-2 p-2 transition-transform duration-300 hover:scale-105 sm:size-28"
-                aria-label={`Xem ${l.product.name}`}
+                aria-label={`Xem ${l.product.ten}`}
               >
                 <ProductMedia product={l.product} sizes="112px" />
               </Link>
@@ -144,25 +144,30 @@ export function CartView() {
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
                     <p className="text-[0.7rem] font-semibold uppercase tracking-wider text-fg-subtle">
-                      {l.product.brand}
+                      {l.product.hang}
                     </p>
                     <h2 className="mt-0.5 text-[0.95rem] font-semibold leading-snug text-fg">
                       <Link
                         href={`/san-pham/${l.product.slug}/`}
                         className="line-clamp-2x transition-colors hover:text-primary-ink"
                       >
-                        {l.product.name}
+                        {l.product.ten}
                       </Link>
                     </h2>
-                    {l.variantName && (
-                      <p className="mt-1 text-sm text-fg-muted">{l.variantName}</p>
+                    {l.product.tinhTrang && (
+                      <p className="mt-1 text-sm text-fg-muted">
+                        {l.product.tinhTrang} · {l.product.diaDiem}
+                      </p>
+                    )}
+                    {l.product.note && (
+                      <p className="mt-1 text-xs text-candy-ink">{l.product.note}</p>
                     )}
                   </div>
 
                   <button
                     type="button"
                     onClick={() => removeItem(l.key)}
-                    aria-label={`Xoá ${l.product.name} khỏi giỏ hàng`}
+                    aria-label={`Xoá ${l.product.ten} khỏi giỏ hàng`}
                     className="grid size-11 shrink-0 cursor-pointer place-items-center rounded-full text-fg-subtle transition-colors hover:bg-surface-2 hover:text-danger"
                   >
                     <CloseIcon width={18} height={18} />
@@ -174,7 +179,7 @@ export function CartView() {
                     <button
                       type="button"
                       onClick={() => setQuantity(l.key, l.quantity - 1)}
-                      aria-label={`Giảm số lượng ${l.product.name}`}
+                      aria-label={`Giảm số lượng ${l.product.ten}`}
                       className="grid size-10 cursor-pointer place-items-center rounded-full text-fg transition-colors hover:bg-surface-2"
                     >
                       <MinusIcon width={17} height={17} />
@@ -185,8 +190,8 @@ export function CartView() {
                     <button
                       type="button"
                       onClick={() => setQuantity(l.key, l.quantity + 1)}
-                      disabled={l.quantity >= l.product.stock}
-                      aria-label={`Tăng số lượng ${l.product.name}`}
+                      disabled={l.quantity >= l.product.soLuong}
+                      aria-label={`Tăng số lượng ${l.product.ten}`}
                       className="grid size-10 cursor-pointer place-items-center rounded-full bg-primary text-on-primary transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-40"
                     >
                       <PlusIcon width={17} height={17} />

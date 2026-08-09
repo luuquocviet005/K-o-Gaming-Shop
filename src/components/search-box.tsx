@@ -3,7 +3,7 @@
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { categories, products } from "@/lib/products";
-import { formatVND } from "@/lib/format";
+import { formatGia } from "@/lib/format";
 import { ProductMedia } from "@/components/product-art";
 import { CloseIcon, SearchIcon } from "@/components/icons";
 
@@ -32,11 +32,11 @@ const MAX_RESULTS = 6;
  */
 const haystack = new Map(
   products.map((p) => {
-    const category = categories.find((c) => c.slug === p.category);
+    const category = categories.find((c) => c.slug === p.danhMuc);
     return [
       p.id,
       normalize(
-        `${p.name} ${p.brand} ${p.summary} ${category?.name ?? ""} ${category?.short ?? ""}`,
+        `${p.ten} ${p.hang} ${p.tinhTrang} ${category?.name ?? ""} ${category?.short ?? ""}`,
       ),
     ];
   }),
@@ -191,12 +191,15 @@ export function SearchBox({
                     </span>
                     <span className="min-w-0 flex-1">
                       <span className="block truncate text-sm font-semibold text-fg">
-                        {p.name}
+                        {p.ten}
                       </span>
-                      <span className="block text-xs text-fg-muted">{p.brand}</span>
+                      <span className="block truncate text-xs text-fg-muted">
+                        {p.hang}
+                        {p.tinhTrang ? ` · ${p.tinhTrang}` : ""}
+                      </span>
                     </span>
                     <span className="shrink-0 text-sm font-bold text-primary-ink">
-                      {formatVND(p.price)}
+                      {formatGia(p)}
                     </span>
                   </button>
                 </li>

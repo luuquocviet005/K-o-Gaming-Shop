@@ -1,0 +1,51 @@
+{
+  "_huongDan": "Cấu hình đồng bộ Google Sheet. Sửa file này khi đổi Sheet hoặc thêm tab mới. Mỗi tab trong Sheet = một danh mục trên web.",
+
+  "sheetId": "1j_bXrSi2dl4mXaGeF3YwTrVZL7PfOMDUWn6AsCTdQGA",
+
+  "_luuY": "slug là đường dẫn trên web (/danh-muc/<slug>/) — không dấu, không khoảng trắng. icon chọn trong: chuot, ban-phim, tai-nghe, switch, do-khac.",
+
+  "tabs": [
+    {
+      "tab": "Chuột",
+      "slug": "chuot",
+      "name": "Chuột gaming",
+      "short": "Chuột",
+      "icon": "chuot",
+      "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng."
+    },
+    {
+      "tab": "Bàn phím",
+      "slug": "ban-phim",
+      "name": "Bàn phím",
+      "short": "Bàn phím",
+      "icon": "ban-phim",
+      "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời."
+    },
+    {
+      "tab": "Tai nghe",
+      "slug": "tai-nghe",
+      "name": "Tai nghe",
+      "short": "Tai nghe",
+      "icon": "tai-nghe",
+      "blurb": "Tai nghe chụp tai, in-ear và soundcard."
+    },
+    {
+      "tab": "Switch HE",
+      "slug": "switch-he",
+      "name": "Switch HE",
+      "short": "Switch",
+      "icon": "switch",
+      "blurb": "Switch từ tính bán lẻ theo cái — giá dưới đây là giá 1 switch.",
+      "donViGia": "cái"
+    },
+    {
+      "tab": "Đồ lặt vật",
+      "slug": "do-lat-vat",
+      "name": "Đồ lặt vặt",
+      "short": "Đồ lặt vặt",
+      "icon": "do-khac",
+      "blurb": "Phụ kiện, đồ rời và những món lẻ khác."
+    }
+  ]
+}

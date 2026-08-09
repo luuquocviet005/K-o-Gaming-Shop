@@ -12,10 +12,10 @@ import { SearchBox } from "@/components/search-box";
 import { ThemeToggle } from "@/components/theme-toggle";
 import {
   CartIcon,
-  categoryIcons,
   ChevronDownIcon,
   CloseIcon,
   GridIcon,
+  CategoryIcon,
   MenuIcon,
   PhoneIcon,
   SearchIcon,
@@ -94,10 +94,9 @@ export function Header() {
         <div className="container-page flex h-9 items-center justify-between text-xs">
           <p className="inline-flex items-center gap-2">
             <TruckIcon width={15} height={15} />
-            Miễn phí vận chuyển cho đơn từ{" "}
-            <strong className="font-semibold">
-              {formatVND(site.shipping.freeThreshold)}
-            </strong>
+            Hàng có sẵn ở <strong className="font-semibold">Đà Nẵng</strong> và{" "}
+            <strong className="font-semibold">Sài Gòn</strong> — hẹn gặp test trực
+            tiếp được
           </p>
           <div className="flex items-center gap-5">
             <a
@@ -174,7 +173,6 @@ export function Header() {
                 <hr className="my-1.5 border-border" />
 
                 {categories.map((c) => {
-                  const Icon = categoryIcons[c.slug];
                   const active = pathname.startsWith(`/danh-muc/${c.slug}`);
                   return (
                     <Link
@@ -188,7 +186,7 @@ export function Header() {
                       }`}
                     >
                       <span className="grid size-9 place-items-center rounded-xl bg-primary-soft text-primary-ink">
-                        <Icon width={18} height={18} />
+                        <CategoryIcon khoa={c.icon} width={18} height={18} />
                       </span>
                       {c.name}
                       <span className="ml-auto text-xs font-medium text-fg-subtle">
@@ -289,7 +287,6 @@ export function Header() {
                   </Link>
                 </li>
                 {categories.map((c) => {
-                  const Icon = categoryIcons[c.slug];
                   return (
                     <li key={c.slug}>
                       <Link
@@ -297,7 +294,7 @@ export function Header() {
                         className="flex min-h-12 items-center gap-3 rounded-2xl px-3 text-[0.95rem] font-semibold text-fg transition-colors hover:bg-surface-2"
                       >
                         <span className="grid size-9 place-items-center rounded-xl bg-primary-soft text-primary-ink">
-                          <Icon width={18} height={18} />
+                          <CategoryIcon khoa={c.icon} width={18} height={18} />
                         </span>
                         {c.name}
                       </Link>

@@ -2,107 +2,113 @@
 
 import { useMemo, useState } from "react";
 import type { CardProduct } from "@/lib/products";
-import { discountPercent } from "@/lib/products";
 import { formatVND } from "@/lib/format";
 import { ProductCard } from "@/components/product-card";
 import { CloseIcon, SlidersIcon } from "@/components/icons";
 
-type SortKey = "noi-bat" | "gia-tang" | "gia-giam" | "danh-gia" | "ban-chay";
+type SortKey = "noi-bat" | "gia-tang" | "gia-giam" | "ten";
 
 const sortOptions: { key: SortKey; label: string }[] = [
   { key: "noi-bat", label: "Nổi bật" },
-  { key: "ban-chay", label: "Bán chạy" },
   { key: "gia-tang", label: "Giá thấp → cao" },
   { key: "gia-giam", label: "Giá cao → thấp" },
-  { key: "danh-gia", label: "Đánh giá cao" },
+  { key: "ten", label: "Tên A → Z" },
+];
+
+const priceBands = [
+  { key: "d0", label: "Dưới 500 nghìn", min: 0, max: 500_000 },
+  { key: "d1", label: "500 nghìn – 1 triệu", min: 500_000, max: 1_000_000 },
+  { key: "d2", label: "1 – 2 triệu", min: 1_000_000, max: 2_000_000 },
+  { key: "d3", label: "Trên 2 triệu", min: 2_000_000, max: Infinity },
+];
+
+const nhomTinhTrang = [
+  { key: "moi", label: "Hàng mới" },
+  { key: "cu", label: "Hàng cũ (2nd)" },
 ];
 
 /**
  * Danh sách lựa chọn có vùng cuộn riêng.
- *
- * Danh mục "Tất cả" có tới 18 thương hiệu — để tràn hết ra sẽ kéo cột lọc dài
- * gấp mấy lần khung màn hình, người dùng phải cuộn rất lâu mới tới lưới sản
- * phẩm. Giới hạn chiều cao rồi cho cuộn trong khung giữ cột lọc luôn gọn.
- *
- * `overscroll-contain`: cuộn hết danh sách thì DỪNG, không đẩy tiếp cả trang.
+ * Cột lọc có tới ~29 hãng — để tràn hết sẽ kéo dài gấp mấy lần màn hình.
+ * `overscroll-contain`: cuộn hết danh sách thì dừng, không đẩy tiếp cả trang.
  */
 const optionListClass =
   "mt-3 flex max-h-56 flex-col gap-1.5 overflow-y-auto overscroll-contain pr-1";
 
-const priceBands: { key: string; label: string; min: number; max: number }[] = [
-  { key: "d1", label: "Dưới 1 triệu", min: 0, max: 1_000_000 },
-  { key: "d2", label: "1 – 3 triệu", min: 1_000_000, max: 3_000_000 },
-  { key: "d3", label: "3 – 6 triệu", min: 3_000_000, max: 6_000_000 },
-  { key: "d4", label: "Trên 6 triệu", min: 6_000_000, max: Infinity },
-];
-
-/**
- * Lọc và sắp xếp sản phẩm — chạy hoàn toàn trên trình duyệt.
- * Bộ lọc là các nút bật/tắt (không phải dropdown ẩn) để thấy ngay
- * đang lọc theo gì và bỏ lọc chỉ bằng một cú bấm.
- */
 export function ProductBrowser({ items }: { items: CardProduct[] }) {
   const [sort, setSort] = useState<SortKey>("noi-bat");
-  const [brands, setBrands] = useState<string[]>([]);
+  const [hangs, setHangs] = useState<string[]>([]);
   const [bands, setBands] = useState<string[]>([]);
-  const [onlySale, setOnlySale] = useState(false);
+  const [tinhTrangs, setTinhTrangs] = useState<string[]>([]);
+  const [diaDiems, setDiaDiems] = useState<string[]>([]);
+  const [conHangThoi, setConHangThoi] = useState(false);
   const [filtersOpen, setFiltersOpen] = useState(false);
 
-  const allBrands = useMemo(
-    () => [...new Set(items.map((p) => p.brand))].sort((a, b) => a.localeCompare(b, "vi")),
+  const allHangs = useMemo(
+    () =>
+      [...new Set(items.map((p) => p.hang))].sort((a, b) => a.localeCompare(b, "vi")),
+    [items],
+  );
+
+  const allDiaDiems = useMemo(
+    () =>
+      [...new Set(items.map((p) => p.diaDiem))]
+        .filter(Boolean)
+        .sort((a, b) => a.localeCompare(b, "vi")),
     [items],
   );
 
   const filtered = useMemo(() => {
-    const chosen = priceBands.filter((b) => bands.includes(b.key));
+    const chosenBands = priceBands.filter((b) => bands.includes(b.key));
+
     const result = items.filter((p) => {
-      if (brands.length && !brands.includes(p.brand)) return false;
-      // Nhiều khoảng giá được chọn = hợp (OR), giống cách các sàn TMĐT làm
-      if (chosen.length && !chosen.some((b) => p.price >= b.min && p.price < b.max))
+      if (hangs.length && !hangs.includes(p.hang)) return false;
+      if (diaDiems.length && !diaDiems.includes(p.diaDiem)) return false;
+      if (tinhTrangs.length && !tinhTrangs.includes(p.nhomTinhTrang)) return false;
+      if (conHangThoi && p.soLuong <= 0) return false;
+      // Nhiều khoảng giá được chọn = hợp (OR), giống cách các sàn TMĐT làm.
+      // Món chưa có giá không thuộc khoảng nào nên bị loại khi đang lọc giá.
+      if (chosenBands.length && !chosenBands.some((b) => p.gia >= b.min && p.gia < b.max))
         return false;
-      if (onlySale && !p.oldPrice) return false;
       return true;
     });
 
     switch (sort) {
       case "gia-tang":
-        return [...result].sort((a, b) => a.price - b.price);
+        return [...result].sort((a, b) => a.gia - b.gia);
       case "gia-giam":
-        return [...result].sort((a, b) => b.price - a.price);
-      case "danh-gia":
-        return [...result].sort((a, b) => b.rating - a.rating || b.sold - a.sold);
-      case "ban-chay":
-        return [...result].sort((a, b) => b.sold - a.sold);
+        return [...result].sort((a, b) => b.gia - a.gia);
+      case "ten":
+        return [...result].sort((a, b) => a.ten.localeCompare(b.ten, "vi"));
       default:
-        // Nổi bật: hàng hot trước, rồi tới mức giảm giá sâu nhất
+        // Nổi bật: còn hàng lên trước, rồi tới hàng mới, rồi giá cao
         return [...result].sort(
           (a, b) =>
-            Number(!!b.isHot) - Number(!!a.isHot) ||
-            discountPercent(b) - discountPercent(a) ||
-            b.sold - a.sold,
+            Number(b.soLuong > 0) - Number(a.soLuong > 0) ||
+            Number(b.nhomTinhTrang === "moi") - Number(a.nhomTinhTrang === "moi") ||
+            b.gia - a.gia,
         );
     }
-  }, [items, brands, bands, onlySale, sort]);
+  }, [items, hangs, bands, tinhTrangs, diaDiems, conHangThoi, sort]);
 
-  const activeCount = brands.length + bands.length + (onlySale ? 1 : 0);
+  const activeCount =
+    hangs.length + bands.length + tinhTrangs.length + diaDiems.length + (conHangThoi ? 1 : 0);
 
-  function toggleBrand(brand: string) {
-    setBrands((prev) =>
-      prev.includes(brand) ? prev.filter((b) => b !== brand) : [...prev, brand],
-    );
-  }
-
-  function toggleBand(key: string) {
-    setBands((prev) =>
-      prev.includes(key) ? prev.filter((b) => b !== key) : [...prev, key],
-    );
-  }
+  const toggle =
+    (set: React.Dispatch<React.SetStateAction<string[]>>) => (value: string) =>
+      set((prev) =>
+        prev.includes(value) ? prev.filter((v) => v !== value) : [...prev, value],
+      );
 
   function clearAll() {
-    setBrands([]);
+    setHangs([]);
     setBands([]);
-    setOnlySale(false);
+    setTinhTrangs([]);
+    setDiaDiems([]);
+    setConHangThoi(false);
   }
+
+  const giaThapNhat = filtered.filter((p) => p.gia > 0).map((p) => p.gia);
 
   return (
     <div className="mt-8 grid gap-8 lg:grid-cols-[15rem_1fr] lg:items-start">
@@ -141,6 +147,26 @@ export function ProductBrowser({ items }: { items: CardProduct[] }) {
 
           <fieldset>
             <legend className="font-display text-sm font-bold text-fg">
+              Tình trạng
+            </legend>
+            <div className="mt-3 flex flex-col gap-1.5">
+              {nhomTinhTrang.map((t) => (
+                <Choice
+                  key={t.key}
+                  checked={tinhTrangs.includes(t.key)}
+                  onChange={() => toggle(setTinhTrangs)(t.key)}
+                >
+                  {t.label}
+                </Choice>
+              ))}
+              <Choice checked={conHangThoi} onChange={() => setConHangThoi((v) => !v)}>
+                Chỉ hiện món còn hàng
+              </Choice>
+            </div>
+          </fieldset>
+
+          <fieldset>
+            <legend className="font-display text-sm font-bold text-fg">
               Khoảng giá
             </legend>
             <div className={optionListClass}>
@@ -148,7 +174,7 @@ export function ProductBrowser({ items }: { items: CardProduct[] }) {
                 <Choice
                   key={b.key}
                   checked={bands.includes(b.key)}
-                  onChange={() => toggleBand(b.key)}
+                  onChange={() => toggle(setBands)(b.key)}
                 >
                   {b.label}
                 </Choice>
@@ -156,37 +182,42 @@ export function ProductBrowser({ items }: { items: CardProduct[] }) {
             </div>
           </fieldset>
 
+          {allDiaDiems.length > 1 && (
+            <fieldset>
+              <legend className="font-display text-sm font-bold text-fg">
+                Hàng đang ở
+              </legend>
+              <div className="mt-3 flex flex-col gap-1.5">
+                {allDiaDiems.map((d) => (
+                  <Choice
+                    key={d}
+                    checked={diaDiems.includes(d)}
+                    onChange={() => toggle(setDiaDiems)(d)}
+                  >
+                    {d}
+                  </Choice>
+                ))}
+              </div>
+            </fieldset>
+          )}
+
           <fieldset>
             <legend className="flex items-baseline justify-between gap-2 font-display text-sm font-bold text-fg">
-              Thương hiệu
+              Hãng
               <span className="font-sans text-xs font-medium text-fg-subtle">
-                {allBrands.length} hãng
+                {allHangs.length} hãng
               </span>
             </legend>
             <div className={optionListClass}>
-              {allBrands.map((b) => (
+              {allHangs.map((h) => (
                 <Choice
-                  key={b}
-                  checked={brands.includes(b)}
-                  onChange={() => toggleBrand(b)}
+                  key={h}
+                  checked={hangs.includes(h)}
+                  onChange={() => toggle(setHangs)(h)}
                 >
-                  {b}
+                  {h}
                 </Choice>
               ))}
-            </div>
-          </fieldset>
-
-          <fieldset>
-            <legend className="font-display text-sm font-bold text-fg">
-              Khuyến mãi
-            </legend>
-            <div className="mt-3">
-              <Choice
-                checked={onlySale}
-                onChange={() => setOnlySale((v) => !v)}
-              >
-                Chỉ hiện hàng đang giảm giá
-              </Choice>
             </div>
           </fieldset>
         </div>
@@ -198,11 +229,11 @@ export function ProductBrowser({ items }: { items: CardProduct[] }) {
           <p className="text-sm text-fg-muted" role="status" aria-live="polite">
             <strong className="font-semibold text-fg">{filtered.length}</strong> sản
             phẩm
-            {filtered.length > 0 && (
+            {giaThapNhat.length > 0 && (
               <>
                 {" · từ "}
                 <strong className="font-semibold text-fg">
-                  {formatVND(Math.min(...filtered.map((p) => p.price)))}
+                  {formatVND(Math.min(...giaThapNhat))}
                 </strong>
               </>
             )}
