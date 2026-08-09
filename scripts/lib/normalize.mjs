@@ -125,25 +125,58 @@ export function docTinhTrang(raw) {
  * link thư mục Google Drive — Drive chặn nhúng ảnh nên hiển thị sẽ hỏng.
  * Thà không có ảnh (web tự vẽ hình minh hoạ) còn hơn ảnh vỡ.
  */
-export function docAnh(raw) {
+export function docAnh(raw, danhSachFile = []) {
   const text = String(raw ?? "").trim();
   if (!text) return { anh: undefined };
 
+  // Đường dẫn tuyệt đối sẵn có
   if (text.startsWith("/")) return { anh: text };
 
   if (/^https?:\/\//i.test(text)) {
-    if (/drive\.google\.com|docs\.google\.com/i.test(text)) {
-      return {
-        anh: undefined,
-        canhBao: "link Google Drive không nhúng ảnh được",
-      };
+    // Link THƯ MỤC Drive thì chịu — không trỏ tới ảnh cụ thể nào
+    if (/drive\.google\.com\/drive\/folders/i.test(text)) {
+      return { anh: undefined, canhBao: "link thư mục Drive, không phải ảnh" };
     }
+    // Link FILE Drive đổi được sang dạng nhúng trực tiếp
+    const idDrive = text.match(/drive\.google\.com\/file\/d\/([\w-]+)/)?.[1];
+    if (idDrive) return { anh: `https://lh3.googleusercontent.com/d/${idDrive}` };
+
     if (/\.(jpe?g|png|webp|avif|gif)(\?|$)/i.test(text)) return { anh: text };
     return { anh: undefined, canhBao: "link không trỏ tới file ảnh" };
   }
 
-  // Chỉ là chữ (thường là tên sản phẩm) — không phải ảnh
+  // Là tên file: tìm trong public/products/. Chấp nhận ghi thiếu đuôi file.
+  const timThay = timFileAnh(text, danhSachFile);
+  if (timThay) return { anh: duongDanAnh(timThay) };
+
+  if (/\.(jpe?g|png|webp|avif|gif)$/i.test(text)) {
+    return { anh: undefined, canhBao: `chưa có file "${text}" trong public/products/` };
+  }
+
+  // Chỉ là chữ (thường là chép lại tên sản phẩm) — không phải ảnh
   return { anh: undefined };
+}
+
+/**
+ * Đường dẫn ảnh đã mã hoá URL.
+ *
+ * Tên file thật hay có khoảng trắng và dấu tiếng Việt ("Razer Viper v3 pro.png").
+ * Nhét thẳng vào thuộc tính src thì phần lớn trình duyệt tự đoán được, nhưng
+ * không phải lúc nào cũng đúng — mã hoá trước cho chắc.
+ */
+export function duongDanAnh(tenFile) {
+  return `/products/${encodeURIComponent(tenFile)}`;
+}
+
+/** So khớp tên file bỏ qua dấu, hoa thường, khoảng trắng và ký tự đặc biệt */
+function chuanTenFile(s) {
+  return boDau(s).replace(/\.[a-z0-9]+$/, "").replace(/[^a-z0-9]+/g, "");
+}
+
+export function timFileAnh(ten, danhSachFile) {
+  const can = chuanTenFile(ten);
+  if (!can) return null;
+  return danhSachFile.find((f) => chuanTenFile(f) === can) ?? null;
 }
 
 export function docSoNguyen(raw, macDinh = 0) {

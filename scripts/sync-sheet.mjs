@@ -9,7 +9,7 @@
  * hiện hàng cũ vài chục phút còn hơn hiện một cửa hàng trống trơn.
  */
 
-import { readFile, writeFile, mkdir } from "node:fs/promises";
+import { readFile, writeFile, mkdir, readdir } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseCsv, toRecords } from "./lib/csv.mjs";
@@ -19,8 +19,10 @@ import {
   docGia,
   docSoNguyen,
   docTinhTrang,
+  duongDanAnh,
   mauTheoHang,
   slugify,
+  timFileAnh,
 } from "./lib/normalize.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -44,6 +46,26 @@ async function taiTab(tab) {
   if (text.trimStart().startsWith("<"))
     throw new Error(`Tab "${tab}": Sheet đang riêng tư, không đọc được`);
   return toRecords(parseCsv(text));
+}
+
+/**
+ * Ảnh sản phẩm nằm trong public/products/.
+ *
+ * Cách nối ảnh với sản phẩm, theo thứ tự ưu tiên:
+ *   1. Cột "Ảnh" ghi tên file  -> dùng file đó
+ *   2. Cột "Ảnh" ghi link http -> dùng link đó
+ *   3. Không ghi gì            -> TỰ TÌM file trùng tên sản phẩm
+ *
+ * Nhờ bước 3 mà chủ shop chỉ cần tải ảnh lên và đặt tên theo tên món, không
+ * phải sửa Sheet. So khớp bỏ qua dấu, hoa thường và ký tự đặc biệt nên
+ * "Naga v2 hyperspeed.jpg" khớp với sản phẩm "Naga v2 hyperspeed".
+ */
+let fileAnh = [];
+try {
+  fileAnh = (await readdir(join(root, "public", "products")))
+    .filter((f) => /\.(jpe?g|png|webp|avif|gif)$/i.test(f));
+} catch {
+  /* chưa có thư mục ảnh */
 }
 
 const canhBao = [];
@@ -94,7 +116,17 @@ for (const cauHinh of config.tabs) {
       layO(row, "gia", "gia 1 cai", "gia ban"),
     );
     const { tinhTrang, nhomTinhTrang } = docTinhTrang(layO(row, "tinh trang"));
-    const { anh, canhBao: canhBaoAnh } = docAnh(layO(row, "anh", "hinh anh"));
+    let { anh, canhBao: canhBaoAnh } = docAnh(layO(row, "anh", "hinh anh"), fileAnh);
+
+    // Cột Ảnh không dùng được thì thử tìm file trùng tên sản phẩm
+    if (!anh) {
+      const tuTim =
+        timFileAnh(`${hang} ${ten}`, fileAnh) ?? timFileAnh(ten, fileAnh);
+      if (tuTim) {
+        anh = duongDanAnh(tuTim);
+        canhBaoAnh = undefined;
+      }
+    }
 
     if (canhBaoAnh) {
       canhBao.push(`⚠ Ảnh "${ten}" (${cauHinh.tab}): ${canhBaoAnh}`);
@@ -191,9 +223,23 @@ console.log("  Theo tình trạng:");
 for (const [k, v] of Object.entries(theoTinhTrang).sort((a, b) => b[1] - a[1]))
   console.log(`    ${k.padEnd(24)} ${v}`);
 
+const coAnh = sanPham.filter((p) => p.anh);
+const thieuAnh = sanPham.filter((p) => !p.anh);
+
 console.log("");
-console.log(`  Có ảnh thật   : ${sanPham.filter((p) => p.anh).length}/${sanPham.length}`);
+console.log(`  Có ảnh thật   : ${coAnh.length}/${sanPham.length}`);
 console.log(`  Có ghi chú    : ${sanPham.filter((p) => p.note).length}`);
+
+if (thieuAnh.length) {
+  console.log("");
+  console.log(`  ${thieuAnh.length} món chưa có ảnh. Tải ảnh vào public/products/`);
+  console.log("  và đặt tên đúng như dưới đây (đuôi .jpg/.png/.webp đều được):");
+  console.log("");
+  for (const p of thieuAnh.slice(0, 60)) {
+    console.log(`    ${p.hang} ${p.ten}`);
+  }
+  if (thieuAnh.length > 60) console.log(`    … và ${thieuAnh.length - 60} món nữa`);
+}
 
 if (canhBao.length) {
   console.log("");
