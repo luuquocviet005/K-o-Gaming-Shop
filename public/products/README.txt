@@ -1,0 +1,1 @@
+﻿Bo anh san pham vao thu muc nay (vd: chuot-logitech.webp), roi khai bao duong dan trong src/lib/products.ts o truong image. Vi du: image: /products/chuot-logitech.webp. Nen dung anh vuong 1000x1000, nen trang, dinh dang .webp, duoi 150KB.
