@@ -134,6 +134,21 @@ export function Footer() {
               <ClockIcon width={18} height={18} className="mt-0.5 shrink-0 text-primary" />
               <span>{site.contact.hours}</span>
             </li>
+            <li className="flex gap-3">
+              <FacebookIcon
+                width={18}
+                height={18}
+                className="mt-0.5 shrink-0 text-primary"
+              />
+              <a
+                href={site.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-fg transition-colors hover:text-primary-ink"
+              >
+                Nhắn tin qua Facebook
+              </a>
+            </li>
           </ul>
         </div>
       </div>

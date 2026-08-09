@@ -26,7 +26,6 @@ import {
 } from "@/components/icons";
 
 const hero = products.find((p) => p.slug === "logitech-g-pro-x-superlight-2")!;
-const heroSecondary = products.find((p) => p.slug === "keychron-q1-pro")!;
 
 const trustPoints = [
   {
@@ -188,24 +187,6 @@ export default function HomePage() {
                   <ArrowRightIcon width={17} height={17} />
                 </span>
               </div>
-            </Link>
-
-            {/* Thẻ phụ nổi lên góc — chỉ hiện ở màn lớn để không che nội dung */}
-            <Link
-              href={`/san-pham/${heroSecondary.slug}/`}
-              className="animate-float-slow absolute -bottom-8 -left-10 hidden w-56 items-center gap-3 rounded-3xl border border-border bg-surface p-3 shadow-[0_20px_50px_-25px_rgba(60,20,40,0.6)] transition-transform duration-300 hover:scale-105 xl:flex"
-            >
-              <span className="grid size-16 shrink-0 place-items-center rounded-2xl bg-surface-2 p-1.5">
-                <ProductMedia product={heroSecondary} sizes="64px" />
-              </span>
-              <span className="min-w-0">
-                <span className="block truncate text-sm font-semibold text-fg">
-                  {heroSecondary.name}
-                </span>
-                <span className="block text-sm font-bold text-primary-ink">
-                  {formatVND(heroSecondary.price)}
-                </span>
-              </span>
             </Link>
           </div>
         </div>
