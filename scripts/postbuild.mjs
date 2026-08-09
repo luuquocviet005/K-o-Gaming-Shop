@@ -1,11 +1,17 @@
 /**
  * Chạy sau `next build`.
- * 1. Copy deploy/.htaccess vào out/ (Next không copy file ẩn từ public/ một
- *    cách chắc chắn trên mọi nền tảng, nên làm thủ công cho an toàn).
- * 2. In ra tóm tắt để biết cần upload gì lên Hostinger.
  *
- * Nếu không thấy out/, script in ra chẩn đoán chi tiết thay vì chỉ báo lỗi —
- * vì nguyên nhân gần như luôn là môi trường build, không phải mã nguồn.
+ * Dự án hỗ trợ HAI chế độ deploy, và script này tự nhận ra mình đang ở chế độ nào:
+ *
+ *   A. TĨNH (mặc định — next.config.ts đặt output: "export")
+ *      `next build` sinh ra out/. Dùng cho Hostinger Shared Hosting:
+ *      upload nội dung out/ vào public_html/. Không cần Node trên máy chủ.
+ *
+ *   B. MÁY CHỦ (khi nền tảng deploy tự ghi đè cấu hình)
+ *      Hostinger Deployment, Vercel, Netlify… nhận diện đây là Next.js rồi
+ *      build ở chế độ máy chủ: có .next, KHÔNG có out/. Nền tảng tự chạy ứng
+ *      dụng bằng Node. Trường hợp này build vẫn HỢP LỆ — không được báo lỗi,
+ *      nếu không sẽ làm hỏng cả lượt deploy đang thành công.
  */
 
 import { copyFile, readdir, readFile, stat, writeFile } from "node:fs/promises";
@@ -15,75 +21,67 @@ import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const out = join(root, "out");
+const nextDir = join(root, ".next");
 
-async function diagnose() {
-  console.error("");
-  console.error("  ✗ next build đã chạy xong nhưng KHÔNG sinh ra thư mục out/");
-  console.error("");
-  console.error("  Thông tin môi trường:");
-  console.error(`    Node.js        : ${process.version}`);
-  console.error(`    Hệ điều hành   : ${process.platform}`);
-  console.error(`    Thư mục dự án  : ${root}`);
-  console.error(`    Thư mục hiện tại: ${process.cwd()}`);
+/** Chế độ B: nền tảng đã build ở chế độ máy chủ và sẽ tự phục vụ ứng dụng */
+async function reportServerMode() {
+  console.log("");
+  console.log("  ℹ Không thấy out/, nhưng .next/ đã được tạo.");
+  console.log("");
+  console.log("    Nền tảng deploy đang build ở CHẾ ĐỘ MÁY CHỦ và bỏ qua");
+  console.log('    `output: "export"`. Đây không phải lỗi — nền tảng sẽ tự chạy');
+  console.log("    ứng dụng bằng Node, không cần thư mục out/.");
+  console.log("");
+  console.log(`    Node.js : ${process.version}`);
+  console.log(`    Hệ điều hành : ${process.platform}`);
 
-  const flags = [
-    "VERCEL",
-    "NETLIFY",
-    "CF_PAGES",
-    "RENDER",
-    "AWS_AMPLIFY",
-    "GITHUB_ACTIONS",
-  ].filter((k) => process.env[k]);
-  console.error(
-    `    Nền tảng nhận diện: ${flags.length ? flags.join(", ") : "không rõ (chạy trực tiếp)"}`,
+  const envKeys = Object.keys(process.env)
+    .filter((k) => /^(NEXT_|VERCEL|NETLIFY|CF_PAGES|HOSTINGER|H_|BUILD_|DEPLOY)/i.test(k))
+    .sort();
+  console.log(
+    `    Biến môi trường liên quan: ${envKeys.length ? envKeys.join(", ") : "không có"}`,
   );
 
   try {
-    const entries = await readdir(root, { withFileTypes: true });
-    const dirs = entries.filter((e) => e.isDirectory()).map((e) => e.name);
-    console.error(`    Thư mục con    : ${dirs.join(", ")}`);
+    const entries = await readdir(nextDir, { withFileTypes: true });
+    console.log(
+      `    Nội dung .next/: ${entries.map((e) => e.name).sort().join(", ")}`,
+    );
   } catch {
-    console.error("    Không đọc được nội dung thư mục dự án.");
+    /* không đọc được thì bỏ qua */
   }
 
+  console.log("");
+  console.log("    Muốn bản TĨNH để upload thủ công lên public_html/,");
+  console.log("    chạy trên máy của bạn (Node >= 20.9):  npm run build");
+  console.log("");
+}
+
+/** Không có cả out/ lẫn .next/ nghĩa là build thật sự hỏng */
+function reportBroken() {
   console.error("");
-  console.error("  Nguyên nhân thường gặp:");
-  console.error("    1. Nền tảng deploy (Vercel/Netlify/Cloudflare…) tự chèn build");
-  console.error("       adapter và bỏ qua `output: \"export\"` trong next.config.ts.");
-  console.error("       -> Những nền tảng đó tự deploy, KHÔNG cần out/. Bỏ bước này.");
-  console.error("    2. next.config.ts bị ghi đè hoặc thiếu `output: \"export\"`.");
-  console.error("    3. Build chạy trong thư mục khác với thư mục chứa package.json.");
+  console.error("  ✗ Build hỏng: không có out/ lẫn .next/.");
+  console.error(`    Node.js : ${process.version}`);
+  console.error(`    Thư mục dự án : ${root}`);
+  console.error(`    Thư mục hiện tại : ${process.cwd()}`);
   console.error("");
-  console.error("  Trang này chỉ cần build tĩnh. Cách chắc chắn nhất là chạy trên");
-  console.error("  máy của bạn (Node >= 20.9) rồi upload out/ lên Hostinger:");
-  console.error("      npm run build");
+  console.error("    Kiểm tra: build có chạy đúng thư mục chứa package.json không,");
+  console.error("    và Node có đạt phiên bản >= 20.9 không.");
   console.error("");
-  process.exit(1);
 }
 
 if (!existsSync(out)) {
-  await diagnose();
-}
-
-await copyFile(join(root, "deploy", ".htaccess"), join(out, ".htaccess"));
-
-async function dirSize(dir) {
-  let total = 0;
-  for (const entry of await readdir(dir, { withFileTypes: true })) {
-    const full = join(dir, entry.name);
-    total += entry.isDirectory() ? await dirSize(full) : (await stat(full)).size;
+  if (existsSync(nextDir)) {
+    await reportServerMode();
+    process.exit(0); // Build hợp lệ — để nền tảng deploy chạy tiếp
   }
-  return total;
-}
-
-// Kiểm tra index.html có nằm ở gốc out/ không — đây là lỗi deploy phổ biến
-// nhất: upload cả thư mục out thay vì nội dung bên trong nó.
-if (!existsSync(join(out, "index.html"))) {
-  console.error("");
-  console.error("  ✗ Không thấy out/index.html — trang chủ sẽ bị 404 sau khi deploy.");
-  console.error("");
+  reportBroken();
   process.exit(1);
 }
+
+// ─────────────── Từ đây trở xuống là chế độ TĨNH ───────────────
+
+await copyFile(join(root, "deploy", ".htaccess"), join(out, ".htaccess"));
 
 /**
  * Đặt tiêu đề riêng cho trang 404.
@@ -114,8 +112,24 @@ for (const file of ["404.html", "404/index.html", "_not-found/index.html"]) {
   }
 }
 
-const bytes = await dirSize(out);
-const mb = (bytes / 1024 / 1024).toFixed(2);
+// Lỗi deploy phổ biến nhất: upload cả thư mục out thay vì nội dung bên trong.
+if (!existsSync(join(out, "index.html"))) {
+  console.error("");
+  console.error("  ✗ Không thấy out/index.html — trang chủ sẽ bị 404 sau khi deploy.");
+  console.error("");
+  process.exit(1);
+}
+
+async function dirSize(dir) {
+  let total = 0;
+  for (const entry of await readdir(dir, { withFileTypes: true })) {
+    const full = join(dir, entry.name);
+    total += entry.isDirectory() ? await dirSize(full) : (await stat(full)).size;
+  }
+  return total;
+}
+
+const mb = ((await dirSize(out)) / 1024 / 1024).toFixed(2);
 
 console.log("");
 console.log(`  ✓ Đã đặt tiêu đề riêng cho ${patched} bản HTML của trang 404`);

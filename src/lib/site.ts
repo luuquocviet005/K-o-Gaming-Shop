@@ -9,8 +9,9 @@ export const site = {
   description:
     "KẸO GAMING SHOP — cửa hàng gaming gear chính hãng: chuột, bàn phím cơ, tai nghe, ghế gaming, tay cầm và màn hình. Bảo hành chính hãng, giao hàng toàn quốc, đổi trả 7 ngày.",
 
-  // Đổi thành domain thật sau khi trỏ tên miền trên Hostinger
-  url: "https://keogamingshop.com",
+  // Tên miền thật trên Hostinger. Dùng cho sitemap.xml, thẻ canonical,
+  // thẻ chia sẻ mạng xã hội và dữ liệu có cấu trúc JSON-LD.
+  url: "https://keogaminggear.com",
 
   contact: {
     phone: "0904 505 592",
