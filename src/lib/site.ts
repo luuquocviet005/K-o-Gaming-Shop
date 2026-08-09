@@ -13,19 +13,18 @@ export const site = {
   url: "https://keogamingshop.com",
 
   contact: {
-    phone: "0900 000 000",
-    phoneHref: "tel:0900000000",
-    email: "hello@keogamingshop.com",
-    address: "123 Đường ABC, Phường XYZ, TP. Hồ Chí Minh",
+    phone: "0904 505 592",
+    phoneHref: "tel:0904505592",
+    email: "luuquocviet005@gmail.com",
+    address:
+      "Lô 19 B2 124 Khu đô thị công nghệ FPT, phường Hoà Hải, quận Ngũ Hành Sơn, TP. Đà Nẵng",
     hours: "09:00 – 21:00, tất cả các ngày trong tuần",
   },
 
   social: {
-    facebook: "https://facebook.com/",
-    instagram: "https://instagram.com/",
-    tiktok: "https://tiktok.com/",
-    youtube: "https://youtube.com/",
-    zalo: "https://zalo.me/0900000000",
+    facebook: "https://www.facebook.com/Viet.Vit.Dit.Zjt/",
+    tiktok: "https://www.tiktok.com/@ngotdethuong",
+    zalo: "https://zalo.me/0904505592",
   },
 
   /** Phí vận chuyển & ngưỡng miễn phí (đơn vị: VNĐ) */

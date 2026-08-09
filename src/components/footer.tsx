@@ -5,19 +5,17 @@ import { Logo } from "@/components/logo";
 import {
   ClockIcon,
   FacebookIcon,
-  InstagramIcon,
   MailIcon,
   MapPinIcon,
   PhoneIcon,
   TiktokIcon,
-  YoutubeIcon,
+  ZaloIcon,
 } from "@/components/icons";
 
 const socials = [
   { href: site.social.facebook, label: "Facebook", Icon: FacebookIcon },
-  { href: site.social.instagram, label: "Instagram", Icon: InstagramIcon },
   { href: site.social.tiktok, label: "TikTok", Icon: TiktokIcon },
-  { href: site.social.youtube, label: "YouTube", Icon: YoutubeIcon },
+  { href: site.social.zalo, label: "Zalo", Icon: ZaloIcon },
 ];
 
 const policies = [

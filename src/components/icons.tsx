@@ -287,6 +287,21 @@ export const YoutubeIcon = (p: IconProps) => (
   </Svg>
 );
 
+export const ZaloIcon = (p: IconProps) => (
+  <Svg {...p} fill="currentColor" stroke="none">
+    {/* Bong bóng chat + chữ Z */}
+    <path d="M12 3.2c5 0 9 3.2 9 7.3 0 4-4 7.3-9 7.3-.9 0-1.8-.1-2.6-.3l-4 2.3a.5.5 0 0 1-.7-.6l.9-3A6.8 6.8 0 0 1 3 10.5c0-4.1 4-7.3 9-7.3Z" />
+    <path
+      d="M8.6 8.2h5.1L9 13.5h5"
+      stroke="var(--surface)"
+      strokeWidth="1.7"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      fill="none"
+    />
+  </Svg>
+);
+
 export const TiktokIcon = (p: IconProps) => (
   <Svg {...p} fill="currentColor" stroke="none">
     <path d="M15.8 3h-2.7v12.1a2.3 2.3 0 1 1-1.9-2.3v-2.7a5 5 0 1 0 4.6 5V9.4a6.4 6.4 0 0 0 3.7 1.2V7.9a3.7 3.7 0 0 1-3.7-3.7V3Z" />
