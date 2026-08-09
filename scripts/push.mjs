@@ -16,19 +16,26 @@ import { fileURLToPath } from "node:url";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
+/**
+ * Chạy một lệnh, KHÔNG dùng shell.
+ *
+ * Vì sao không gọi qua `npm run ...`: trên Windows `npm` là file .cmd, mà
+ * Node 24 chặn thực thi .cmd nếu không bật shell (lý do bảo mật). Còn bật
+ * shell thì lời nhắn commit có dấu cách lại bị cắt vụn. Nên gọi thẳng từng
+ * công cụ bằng chính Node đang chạy — cách này giống nhau trên mọi hệ điều hành.
+ */
 function run(cmd, args, { quiet = false } = {}) {
-  // Trên Windows chỉ `npm` mới cần shell (nó là file .cmd). Không được bật
-  // shell cho `git`: shell sẽ cắt lời nhắn commit có dấu cách thành nhiều
-  // tham số, khiến "Sửa giá chuột" biến thành 3 đối số rời rạc.
-  const needsShell = process.platform === "win32" && cmd === "npm";
   const r = spawnSync(cmd, args, {
     cwd: root,
     stdio: quiet ? "pipe" : "inherit",
-    shell: needsShell,
     encoding: "utf8",
   });
+  if (r.error) return { code: 1, out: String(r.error.message) };
   return { code: r.status ?? 1, out: (r.stdout ?? "") + (r.stderr ?? "") };
 }
+
+const node = process.execPath;
+const bin = (...p) => join(root, "node_modules", ...p);
 
 function step(label, cmd, args) {
   process.stdout.write(`  ${label} … `);
@@ -59,10 +66,13 @@ if (!status.trim() && Number(ahead.trim()) === 0) {
   process.exit(0);
 }
 
-step("Kiểm tra kiểu dữ liệu", "npm", ["run", "typecheck"]);
-step("Kiểm tra code (lint)", "npm", ["run", "lint"]);
-step("Build trang tĩnh", "npm", ["run", "build"]);
-step("Quét link chết + SEO + tương phản", "npm", ["run", "check"]);
+step("Kiểm tra kiểu dữ liệu", node, [bin("typescript", "bin", "tsc"), "--noEmit"]);
+step("Kiểm tra code (lint)", node, [bin("eslint", "bin", "eslint.js")]);
+step("Build trang tĩnh", node, [bin("next", "dist", "bin", "next"), "build"]);
+step("Chuẩn bị thư mục out/", node, [join(root, "scripts", "postbuild.mjs")]);
+step("Quét link chết", node, [join(root, "scripts", "check-links.mjs")]);
+step("Kiểm tra SEO", node, [join(root, "scripts", "audit.mjs")]);
+step("Kiểm tra tương phản màu", node, [join(root, "scripts", "contrast.mjs")]);
 
 console.log("");
 console.log("═══ ĐẨY LÊN GITHUB ═══");
