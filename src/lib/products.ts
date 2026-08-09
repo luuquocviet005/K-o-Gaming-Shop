@@ -198,7 +198,8 @@ export const products: Product[] = [
     stock: 12,
     isHot: true,
     accent: "#1f2937",
-    summary: "54g, polling 8000Hz, dáng đối xứng chuẩn esports.",
+    summary:
+      "Chuột không dây 54g, sensor Focus Pro 35K, polling 8000Hz, dáng đối xứng chuẩn thi đấu esports.",
     description:
       "Viper V3 Pro nhẹ 54g, dùng sensor Focus Pro 35K Gen-2 và switch quang thế hệ 3. Polling rate 8000Hz qua HyperPolling Wireless Dongle giúp con trỏ mượt hơn rõ rệt trên màn hình tần số quét cao.",
     highlights: [
@@ -519,7 +520,8 @@ export const products: Product[] = [
     sold: 520,
     stock: 14,
     accent: "#1e293b",
-    summary: "TKL không dây, pin 50 giờ, chuẩn mang đi thi đấu.",
+    summary:
+      "Bàn phím cơ TKL không dây LIGHTSPEED, pin 50 giờ, có núm xoay âm lượng — gọn để mang đi thi đấu.",
     description:
       "Bàn phím TKL không dây được thiết kế cho tuyển thủ: nhỏ gọn, cáp rời, có khoá vận chuyển và pin 50 giờ. Nút media riêng và núm xoay âm lượng ở góc phải.",
     highlights: [
@@ -847,7 +849,8 @@ export const products: Product[] = [
     sold: 460,
     stock: 12,
     accent: "#334155",
-    summary: "Lưng cao thoáng khí, ngả 160°, giá vừa túi tiền.",
+    summary:
+      "Ghế gaming lưng cao thoáng khí, ngả 160°, kê tay 4D, kèm gối cổ và gối lưng — giá vừa túi tiền.",
     description:
       "TC100 Relaxed dùng lưng ghế cao và đệm ngồi dày, phù hợp người dùng phổ thông muốn ghế gaming tốt mà không phải chi quá nhiều. Bản vải mềm thoáng, hợp khí hậu nóng ẩm.",
     highlights: [
@@ -919,7 +922,8 @@ export const products: Product[] = [
     sold: 780,
     stock: 18,
     accent: "#f59e0b",
-    summary: "Ghế phổ thông gọn nhẹ, hợp phòng nhỏ và bàn học.",
+    summary:
+      "Ghế gaming phổ thông gọn nhẹ, ngả 155°, bánh xe êm không xước sàn — hợp phòng nhỏ và bàn học.",
     description:
       "Bản Flash Series có kích thước gọn hơn ghế gaming truyền thống, phù hợp phòng nhỏ hoặc người dùng dưới 1m75. Vẫn đầy đủ ngả lưng, kê tay và bánh xe êm.",
     highlights: [
