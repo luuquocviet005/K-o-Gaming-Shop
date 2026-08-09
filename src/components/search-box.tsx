@@ -2,21 +2,45 @@
 
 import { useEffect, useId, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { products } from "@/lib/products";
+import { categories, products } from "@/lib/products";
 import { formatVND } from "@/lib/format";
 import { ProductMedia } from "@/components/product-art";
 import { CloseIcon, SearchIcon } from "@/components/icons";
 
-/** Bỏ dấu tiếng Việt để gõ "ban phim" vẫn ra "bàn phím" */
+/**
+ * Bỏ dấu tiếng Việt và gộp mọi dấu câu thành khoảng trắng.
+ * Nhờ vậy gõ "ban phim" vẫn ra "bàn phím", và "v3 pro" khớp được với
+ * "Razer BlackShark V2 Pro (2023)".
+ */
 function normalize(text: string): string {
   return text
     .toLowerCase()
     .normalize("NFD")
     .replace(/[̀-ͯ]/g, "")
-    .replace(/đ/g, "d");
+    .replace(/đ/g, "d")
+    .replace(/[^a-z0-9]+/g, " ")
+    .trim();
 }
 
 const MAX_RESULTS = 6;
+
+/**
+ * Chuỗi để đối chiếu khi tìm kiếm, dựng sẵn một lần cho mỗi sản phẩm.
+ *
+ * Có cả TÊN DANH MỤC, nên gõ "ban phim" ra được Keychron Q1 Pro dù tên sản
+ * phẩm không chứa chữ nào như vậy — đây là cách người mua thật sự tìm đồ.
+ */
+const haystack = new Map(
+  products.map((p) => {
+    const category = categories.find((c) => c.slug === p.category);
+    return [
+      p.id,
+      normalize(
+        `${p.name} ${p.brand} ${p.summary} ${category?.name ?? ""} ${category?.short ?? ""}`,
+      ),
+    ];
+  }),
+);
 
 /**
  * Tìm kiếm chạy hoàn toàn trên trình duyệt (không cần server).
@@ -39,16 +63,29 @@ export function SearchBox({
   const wrapRef = useRef<HTMLDivElement>(null);
 
   const results = useMemo(() => {
-    const q = normalize(query.trim());
+    const q = normalize(query);
     if (q.length < 2) return [];
+
+    // Tách từ khoá và yêu cầu MỌI từ đều khớp từ ĐẦU một chữ nào đó.
+    // Khớp đầu từ (thay vì khớp chuỗi con bất kỳ) tránh trường hợp gõ "ghe"
+    // lại ra tai nghe — vì "ghe" nằm giữa chữ "nghe".
+    const tokens = q.split(" ").filter(Boolean);
     return products
-      .filter((p) =>
-        normalize(`${p.name} ${p.brand} ${p.summary}`).includes(q),
-      )
+      .filter((p) => {
+        const hay = ` ${haystack.get(p.id) ?? ""}`;
+        return tokens.every((t) => hay.includes(` ${t}`));
+      })
       .slice(0, MAX_RESULTS);
   }, [query]);
 
-  useEffect(() => setActive(0), [query]);
+  // Gõ từ khoá mới thì con trỏ chọn quay về gợi ý đầu tiên.
+  // Chỉnh trong lúc render thay vì useEffect để không có nhịp render nào mà
+  // con trỏ còn trỏ vào kết quả của từ khoá cũ.
+  const [prevQuery, setPrevQuery] = useState(query);
+  if (prevQuery !== query) {
+    setPrevQuery(query);
+    setActive(0);
+  }
 
   // Bấm ra ngoài thì đóng gợi ý
   useEffect(() => {

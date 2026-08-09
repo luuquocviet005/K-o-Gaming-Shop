@@ -92,9 +92,12 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const [ready, setReady] = useState(false);
   const [addPulse, setAddPulse] = useState(0);
 
-  // localStorage chỉ tồn tại trên trình duyệt -> đọc sau khi mount
+  // localStorage chỉ tồn tại trên trình duyệt -> đọc sau khi mount.
+  // Không thể đọc lúc render vì HTML được sinh sẵn lúc build (không có giỏ
+  // hàng của từng khách), nên đây là ngoại lệ hợp lệ.
   useEffect(() => {
     const stored = readStorage();
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setRawLines(stored.lines);
     setPromoCode(stored.promoCode);
     setReady(true);

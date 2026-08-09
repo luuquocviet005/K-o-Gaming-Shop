@@ -26,13 +26,18 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [bump, setBump] = useState(false);
+  const [prevPath, setPrevPath] = useState(pathname);
   const firstRender = useRef(true);
 
-  // Đóng mọi lớp phủ khi chuyển trang
-  useEffect(() => {
+  // Đóng mọi lớp phủ khi chuyển trang.
+  // Chỉnh state ngay trong lúc render (không dùng useEffect) là cách React
+  // khuyến nghị để đồng bộ state theo prop đổi — tránh render thừa một nhịp
+  // trong đó menu vẫn còn mở ở trang mới.
+  if (prevPath !== pathname) {
+    setPrevPath(pathname);
     setMenuOpen(false);
     setSearchOpen(false);
-  }, [pathname]);
+  }
 
   // Khoá cuộn nền khi menu di động đang mở
   useEffect(() => {

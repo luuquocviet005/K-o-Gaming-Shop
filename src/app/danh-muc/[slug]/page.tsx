@@ -18,9 +18,15 @@ export function generateStaticParams() {
   return categories.map((c) => ({ slug: c.slug }));
 }
 
-export async function generateMetadata(
-  props: PageProps<"/danh-muc/[slug]">,
-): Promise<Metadata> {
+/**
+ * Khai báo tường minh thay vì dùng `PageProps<...>` toàn cục.
+ * `PageProps` do `next typegen` sinh ra trong `.next/types/` — thư mục này
+ * không được commit, nên trên CI (checkout sạch, chạy tsc trước next build)
+ * kiểu đó chưa tồn tại và build sẽ hỏng.
+ */
+type Props = { params: Promise<{ slug: string }> };
+
+export async function generateMetadata(props: Props): Promise<Metadata> {
   const { slug } = await props.params;
   const category = getCategory(slug);
   if (!category) return { title: "Không tìm thấy danh mục" };
@@ -30,7 +36,7 @@ export async function generateMetadata(
   };
 }
 
-export default async function CategoryPage(props: PageProps<"/danh-muc/[slug]">) {
+export default async function CategoryPage(props: Props) {
   const { slug } = await props.params;
   const category = getCategory(slug);
   if (!category) notFound();

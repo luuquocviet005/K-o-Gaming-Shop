@@ -26,8 +26,12 @@ export function ThemeToggle({ className = "" }: { className?: string }) {
   const [theme, setTheme] = useState<"light" | "dark">("light");
   const [mounted, setMounted] = useState(false);
 
+  // Theme thật do script trong <head> đặt vào <html data-theme> trước khi vẽ.
+  // Server không biết giá trị đó, nên phải đọc sau khi mount rồi đồng bộ vào
+  // state — đây là ngoại lệ hợp lệ của quy tắc "không setState trong effect".
   useEffect(() => {
     const current = document.documentElement.dataset.theme;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setTheme(current === "dark" ? "dark" : "light");
     setMounted(true);
   }, []);

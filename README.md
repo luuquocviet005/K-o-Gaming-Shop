@@ -19,7 +19,25 @@ Shared Hosting rẻ nhất), không cần Node.js trên máy chủ.
 
 ## 1. Chạy trên máy
 
-Cần **Node.js 20.9 trở lên** ([tải tại đây](https://nodejs.org)).
+> ### ⚠️ Bắt buộc Node.js 20.9 trở lên
+>
+> Next.js 16 **không chạy** trên Node 18. Nếu thấy lỗi:
+>
+> ```
+> You are using Node.js 18.20.8. For Next.js, Node.js version ">=20.9.0" is required.
+> npm warn EBADENGINE Unsupported engine ...
+> ```
+>
+> thì môi trường đang dùng Node quá cũ. Kiểm tra bằng `node -v`.
+> Tải bản mới tại [nodejs.org](https://nodejs.org) (chọn LTS), hoặc trên Windows:
+>
+> ```bash
+> winget install -e --id OpenJS.NodeJS.LTS
+> ```
+>
+> **Đừng build trên Hostinger.** Hostinger Shared Hosting dùng Node cũ và không
+> cần build ở đó — website này là trang tĩnh, chỉ cần upload thư mục `out/` đã
+> build sẵn từ máy bạn hoặc từ GitHub Actions.
 
 ```bash
 npm install

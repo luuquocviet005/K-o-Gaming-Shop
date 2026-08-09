@@ -21,9 +21,10 @@ export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
 }
 
-export async function generateMetadata(
-  props: PageProps<"/san-pham/[slug]">,
-): Promise<Metadata> {
+/** Xem ghi chú ở src/app/danh-muc/[slug]/page.tsx về lý do không dùng PageProps */
+type Props = { params: Promise<{ slug: string }> };
+
+export async function generateMetadata(props: Props): Promise<Metadata> {
   const { slug } = await props.params;
   const product = getProduct(slug);
   if (!product) return { title: "Không tìm thấy sản phẩm" };
@@ -43,7 +44,7 @@ const services = [
   { Icon: RefreshIcon, text: "Đổi mới trong 7 ngày nếu lỗi hãng" },
 ];
 
-export default async function ProductPage(props: PageProps<"/san-pham/[slug]">) {
+export default async function ProductPage(props: Props) {
   const { slug } = await props.params;
   const product = getProduct(slug);
   if (!product) notFound();
