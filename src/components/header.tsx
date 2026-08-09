@@ -156,7 +156,7 @@ export function Header() {
                   className={bump ? "animate-pop" : undefined}
                 />
                 {ready && itemCount > 0 && (
-                  <span className="absolute -right-2.5 -top-2.5 grid min-w-5 place-items-center rounded-full bg-candy px-1.5 text-[0.65rem] font-bold leading-5 text-white">
+                  <span className="absolute -right-2.5 -top-2.5 grid min-w-5 place-items-center rounded-full bg-candy px-1.5 text-[0.65rem] font-bold leading-5 text-on-candy">
                     {itemCount > 99 ? "99+" : itemCount}
                   </span>
                 )}

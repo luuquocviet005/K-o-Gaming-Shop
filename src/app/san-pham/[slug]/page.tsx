@@ -98,7 +98,7 @@ export default async function ProductPage(props: Props) {
           <div className="relative overflow-hidden rounded-[2rem] border border-border bg-surface p-8">
             <div className="absolute left-6 top-6 flex flex-col gap-2">
               {off > 0 && (
-                <span className="rounded-full bg-candy px-3 py-1.5 text-sm font-bold text-white">
+                <span className="rounded-full bg-candy px-3 py-1.5 text-sm font-bold text-on-candy">
                   -{off}%
                 </span>
               )}

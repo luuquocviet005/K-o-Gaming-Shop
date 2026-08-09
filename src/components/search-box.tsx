@@ -166,7 +166,7 @@ export function SearchBox({
           id={listId}
           role="listbox"
           aria-label="Kết quả tìm kiếm"
-          className="absolute left-0 right-0 top-[calc(100%+0.5rem)] z-50 overflow-hidden rounded-3xl border border-border bg-surface p-2 shadow-[0_24px_60px_-24px_rgba(11,21,18,0.5)]"
+          className="absolute left-0 right-0 top-[calc(100%+0.5rem)] z-50 overflow-hidden rounded-3xl border border-border bg-surface p-2 shadow-[0_24px_60px_-24px_rgba(60,20,40,0.5)]"
         >
           {results.length === 0 ? (
             <p className="px-4 py-6 text-center text-sm text-fg-muted">

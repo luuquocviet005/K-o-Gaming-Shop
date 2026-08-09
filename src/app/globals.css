@@ -3,46 +3,54 @@
 /* ==========================================================================
    KẸO GAMING SHOP — Design tokens
    Nguồn chân lý duy nhất cho màu sắc. Không hardcode hex trong component.
-   Light: nền mint-xám nhạt + xanh lá (bám theo ảnh tham chiếu)
-   Dark : nền xanh-đen sâu + xanh lá neon (chất gaming)
+
+   Chủ đạo: HỒNG PHẤN + TRẮNG.
+   Cách phối để vừa đúng "hồng phấn" vừa đọc được:
+     - Phần lớn diện tích là trắng và hồng phấn rất nhạt (bg, surface).
+     - Hồng đậm (--primary) chỉ dùng cho nút và chữ nhấn, vì hồng phấn nhạt
+       không bao giờ đạt đủ tương phản khi đè chữ trắng lên.
+     - Mảng lớn như banner khuyến mãi dùng nền hồng phấn + CHỮ ĐEN, không
+       dùng nền hồng đậm + chữ trắng — nhìn dịu mắt hơn hẳn.
    ========================================================================== */
 
 :root {
   color-scheme: light;
 
-  --bg: #eaefec;
+  --bg: #fdf7f9;
   --surface: #ffffff;
-  --surface-2: #f4f7f5;
-  --surface-3: #e8ede9;
+  --surface-2: #fcf1f5;
+  --surface-3: #f7e3ec;
 
-  --fg: #0b1512;
-  --fg-muted: #5a6b63;
-  --fg-subtle: #5d6f67;
+  --fg: #1c1016;
+  --fg-muted: #6b5560;
+  --fg-subtle: #6b5560;
 
-  --border: #dfe6e1;
-  --border-strong: #c8d3cc;
+  --border: #f2e2e9;
+  --border-strong: #cfa8bb;
 
-  /* Xanh lá thương hiệu.
-     `primary`     — nền nút, LUÔN có chữ trắng đè lên nên phải đủ tối để đạt
-                     4.5:1 với màu trắng (#15803d ≈ 4.8:1).
-     `primary-ink` — dùng khi xanh lá làm CHỮ trên nền sáng. */
-  --primary: #15803d;
-  --primary-hover: #116a32;
-  --primary-ink: #147a3a;
-  --primary-soft: #dcfce7;
+  /* Hồng thương hiệu.
+     `primary`     — nền nút, LUÔN có chữ trắng đè lên nên phải đủ đậm để đạt
+                     4.5:1 với màu trắng.
+     `primary-soft`— hồng phấn thật sự, dùng cho mảng nền lớn (chữ đen đè lên).
+     `primary-ink` — dùng khi hồng làm CHỮ trên nền sáng. */
+  --primary: #c2185b;
+  --primary-hover: #a31249;
+  --primary-ink: #b01654;
+  --primary-soft: #ffe4ee;
   --on-primary: #ffffff;
 
-  /* Hồng kẹo — chỉ dùng cho badge sale / nhấn nhá, không dùng làm CTA chính */
-  --candy: #e11d5c;
-  --candy-soft: #ffe4ec;
-  --candy-ink: #be0f4a;
+  /* Đỏ hồng đậm hơn — chỉ dùng cho badge giảm giá, tạo điểm nhấn khẩn trương */
+  --candy: #be123c;
+  --candy-soft: #ffe1e7;
+  --candy-ink: #a30f33;
+  --on-candy: #ffffff;
 
   --warning: #b45309;
-  --star: #f59e0b;
+  --star: #d97706;
   --danger: #dc2626;
 
-  --ring: #16a34a;
-  --shadow-color: 150 20% 20%;
+  --ring: #c2185b;
+  --shadow-color: 330 25% 20%;
 
   --radius-card: 1.5rem;
   --radius-pill: 999px;
@@ -51,34 +59,37 @@
 [data-theme="dark"] {
   color-scheme: dark;
 
-  --bg: #080d0a;
-  --surface: #111a15;
-  --surface-2: #16211b;
-  --surface-3: #1e2b24;
+  --bg: #140a10;
+  --surface: #1e1119;
+  --surface-2: #261620;
+  --surface-3: #33202c;
 
-  --fg: #e9f1ec;
-  --fg-muted: #9aaea3;
-  --fg-subtle: #83988e;
+  --fg: #f7ecf1;
+  --fg-muted: #bda6b2;
+  --fg-subtle: #ab919e;
 
-  --border: #223029;
-  --border-strong: #2f4137;
+  --border: #35222d;
+  --border-strong: #6a4759;
 
-  --primary: #2fd36f;
-  --primary-hover: #4ade80;
-  --primary-ink: #4ade80;
-  --primary-soft: #10281a;
-  --on-primary: #04140a;
+  /* Nền tối thì ngược lại: hồng phải SÁNG, và chữ đè lên nút là màu tối */
+  --primary: #ff7fb0;
+  --primary-hover: #ff9bc3;
+  --primary-ink: #ff9bc3;
+  --primary-soft: #3a1526;
+  --on-primary: #2b0713;
 
-  --candy: #ff5c8a;
-  --candy-soft: #2c1119;
-  --candy-ink: #ff85a7;
+  /* Nền tối: badge hồng sáng nên chữ đè lên phải TỐI, không phải trắng */
+  --candy: #ff6b8a;
+  --candy-soft: #3a151d;
+  --candy-ink: #ff9aaf;
+  --on-candy: #2b070f;
 
   --warning: #fbbf24;
   --star: #fbbf24;
   --danger: #f87171;
 
-  --ring: #4ade80;
-  --shadow-color: 150 60% 3%;
+  --ring: #ff9bc3;
+  --shadow-color: 330 60% 3%;
 }
 
 @theme inline {
@@ -103,6 +114,7 @@
   --color-candy: var(--candy);
   --color-candy-soft: var(--candy-soft);
   --color-candy-ink: var(--candy-ink);
+  --color-on-candy: var(--on-candy);
 
   --color-warning: var(--warning);
   --color-star: var(--star);
@@ -110,7 +122,7 @@
   --color-ring: var(--ring);
 
   --font-sans: var(--font-inter);
-  --font-display: var(--font-sora);
+  --font-display: var(--font-heading);
 
   --radius-card: 1.5rem;
 }

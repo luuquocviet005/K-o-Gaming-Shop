@@ -147,7 +147,7 @@ export default function HomePage() {
           <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
             <Link
               href={`/san-pham/${hero.slug}/`}
-              className="group block overflow-hidden rounded-[2.25rem] border border-border bg-surface p-7 shadow-[0_30px_80px_-40px_rgba(11,21,18,0.55)] transition-transform duration-300 hover:-translate-y-1"
+              className="group block overflow-hidden rounded-[2.25rem] border border-border bg-surface p-7 shadow-[0_30px_80px_-40px_rgba(60,20,40,0.55)] transition-transform duration-300 hover:-translate-y-1"
             >
               <div className="flex items-start justify-between gap-4">
                 <div>
@@ -159,7 +159,7 @@ export default function HomePage() {
                   </h2>
                 </div>
                 {heroOff > 0 && (
-                  <span className="shrink-0 rounded-full bg-candy px-3 py-1.5 text-sm font-bold text-white">
+                  <span className="shrink-0 rounded-full bg-candy px-3 py-1.5 text-sm font-bold text-on-candy">
                     -{heroOff}%
                   </span>
                 )}
@@ -193,7 +193,7 @@ export default function HomePage() {
             {/* Thẻ phụ nổi lên góc — chỉ hiện ở màn lớn để không che nội dung */}
             <Link
               href={`/san-pham/${heroSecondary.slug}/`}
-              className="animate-float-slow absolute -bottom-8 -left-10 hidden w-56 items-center gap-3 rounded-3xl border border-border bg-surface p-3 shadow-[0_20px_50px_-25px_rgba(11,21,18,0.6)] transition-transform duration-300 hover:scale-105 xl:flex"
+              className="animate-float-slow absolute -bottom-8 -left-10 hidden w-56 items-center gap-3 rounded-3xl border border-border bg-surface p-3 shadow-[0_20px_50px_-25px_rgba(60,20,40,0.6)] transition-transform duration-300 hover:scale-105 xl:flex"
             >
               <span className="grid size-16 shrink-0 place-items-center rounded-2xl bg-surface-2 p-1.5">
                 <ProductMedia product={heroSecondary} sizes="64px" />
@@ -245,7 +245,7 @@ export default function HomePage() {
               <li key={c.slug}>
                 <Link
                   href={`/danh-muc/${c.slug}/`}
-                  className="group flex h-full flex-col items-center gap-3 rounded-[1.5rem] border border-border bg-surface p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-[0_18px_40px_-24px_rgba(11,21,18,0.45)]"
+                  className="group flex h-full flex-col items-center gap-3 rounded-[1.5rem] border border-border bg-surface p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-[0_18px_40px_-24px_rgba(60,20,40,0.45)]"
                 >
                   <span className="grid size-14 place-items-center rounded-2xl bg-primary-soft text-primary-ink transition-colors duration-300 group-hover:bg-primary group-hover:text-on-primary">
                     <Icon width={26} height={26} />
@@ -265,37 +265,39 @@ export default function HomePage() {
 
       {/* ─────────────────── BANNER XẢ KHO (theo ảnh mẫu) ─────────────────── */}
       <section className="container-page mt-20">
-        <div className="relative overflow-hidden rounded-[2rem] bg-primary px-7 py-10 sm:px-12 sm:py-14">
+        {/* Nền hồng phấn + chữ đen. Dịu mắt hơn nhiều so với nền hồng đậm
+            chữ trắng, và giữ đúng tinh thần "hồng phấn" của thương hiệu. */}
+        <div className="relative overflow-hidden rounded-[2rem] border border-border bg-primary-soft px-7 py-10 sm:px-12 sm:py-14">
           <div
             aria-hidden="true"
-            className="absolute -right-16 -top-16 size-72 rounded-full bg-white/10"
+            className="absolute -right-16 -top-16 size-72 rounded-full bg-surface/60"
           />
           <div
             aria-hidden="true"
-            className="absolute -bottom-24 right-24 size-64 rounded-full bg-white/10"
+            className="absolute -bottom-24 right-24 size-64 rounded-full bg-surface/50"
           />
 
           <div className="relative grid items-center gap-8 lg:grid-cols-[1.2fr_1fr]">
             <div>
-              <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary-ink">
+              <span className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-on-primary">
                 <TagIcon width={15} height={15} />
                 Xả kho cuối mùa
               </span>
-              <h2 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-5xl">
+              <h2 className="mt-4 font-display text-4xl font-extrabold leading-[1.05] tracking-tight text-fg sm:text-5xl">
                 Giảm tới 30%
                 <br />
                 cho gear tuyển chọn
               </h2>
-              <p className="mt-4 max-w-md text-sm leading-relaxed text-white sm:text-base">
+              <p className="mt-4 max-w-md text-sm leading-relaxed text-fg-muted sm:text-base">
                 Số lượng có hạn — hết là hết. Nhập mã{" "}
-                <strong className="rounded-lg bg-white px-2 py-0.5 font-mono font-bold text-primary-ink">
+                <strong className="rounded-lg bg-surface px-2 py-0.5 font-mono font-bold text-primary-ink">
                   KEO10
                 </strong>{" "}
                 để giảm thêm 10% ở bước thanh toán.
               </p>
               <Link
                 href="/khuyen-mai/"
-                className="mt-7 inline-flex h-14 items-center gap-2.5 rounded-full bg-white px-8 text-base font-bold text-primary-ink transition-transform duration-200 hover:scale-[1.03] active:scale-[0.97]"
+                className="mt-7 inline-flex h-14 items-center gap-2.5 rounded-full bg-primary px-8 text-base font-bold text-on-primary transition-all duration-200 hover:bg-primary-hover active:scale-[0.97]"
               >
                 Xem hàng giảm giá
                 <ArrowRightIcon width={20} height={20} />
@@ -307,20 +309,20 @@ export default function HomePage() {
                 <li key={p.id}>
                   <Link
                     href={`/san-pham/${p.slug}/`}
-                    className="group flex flex-col gap-2 rounded-3xl bg-white/95 p-3 transition-transform duration-300 hover:-translate-y-1"
+                    className="group flex flex-col gap-2 rounded-3xl bg-surface p-3 transition-transform duration-300 hover:-translate-y-1"
                   >
-                    <span className="relative block aspect-square overflow-hidden rounded-2xl bg-[#f4f7f5] p-2">
-                      <span className="absolute left-2 top-2 z-10 rounded-full bg-candy px-2 py-0.5 text-[0.65rem] font-bold text-white">
+                    <span className="relative block aspect-square overflow-hidden rounded-2xl bg-surface-2 p-2">
+                      <span className="absolute left-2 top-2 z-10 rounded-full bg-candy px-2 py-0.5 text-[0.65rem] font-bold text-on-candy">
                         -{discountPercent(p)}%
                       </span>
                       <span className="block h-full w-full transition-transform duration-500 group-hover:scale-110">
                         <ProductMedia product={p} sizes="180px" />
                       </span>
                     </span>
-                    <span className="line-clamp-2x px-1 text-xs font-semibold leading-snug text-[#0b1512]">
+                    <span className="line-clamp-2x px-1 text-xs font-semibold leading-snug text-fg">
                       {p.name}
                     </span>
-                    <span className="px-1 pb-1 text-sm font-extrabold text-[#147a3a]">
+                    <span className="px-1 pb-1 text-sm font-extrabold text-primary-ink">
                       {formatVND(p.price)}
                     </span>
                   </Link>

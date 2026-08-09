@@ -13,7 +13,7 @@ export function Logo({ className = "" }: { className?: string }) {
       aria-label={`${site.name} — về trang chủ`}
       className={`group inline-flex shrink-0 items-center gap-2.5 ${className}`}
     >
-      <span className="relative grid size-10 place-items-center rounded-2xl bg-primary text-on-primary shadow-[0_6px_16px_-6px_rgba(22,163,74,0.8)] transition-transform duration-200 group-hover:-rotate-6">
+      <span className="relative grid size-10 place-items-center rounded-2xl bg-primary text-on-primary shadow-[0_6px_16px_-6px_var(--primary)] transition-transform duration-200 group-hover:-rotate-6">
         <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
           {/* Viên kẹo: thân bo tròn + hai cánh xoắn hai bên */}
           <path
@@ -42,7 +42,7 @@ export function Logo({ className = "" }: { className?: string }) {
         </svg>
       </span>
       <span className="flex flex-col leading-none">
-        <span className="font-display text-[1.05rem] font-extrabold tracking-tight text-fg">
+        <span className="font-display text-[1.05rem] font-extrabold leading-tight tracking-tight text-fg">
           KẸO
           <span className="ml-1 text-primary-ink">GAMING</span>
         </span>

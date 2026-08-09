@@ -183,7 +183,7 @@ export function ProductArt({
       focusable="false"
     >
       {/* Bóng đổ mềm giúp sản phẩm không bị "dán phẳng" lên nền */}
-      <ellipse cx="100" cy="176" rx="58" ry="9" fill="#0b1512" opacity="0.09" />
+      <ellipse cx="100" cy="176" rx="58" ry="9" fill="var(--fg)" opacity="0.09" />
       {draw(props)}
     </svg>
   );
