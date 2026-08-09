@@ -1,0 +1,58 @@
+# =============================================================================
+#  KẸO GAMING SHOP — cấu hình Apache cho Hostinger
+#  File này được script postbuild copy vào out/.htaccess sau mỗi lần build.
+# =============================================================================
+
+# Trang 404 do Next.js sinh ra
+ErrorDocument 404 /404.html
+
+# --- Nén nội dung (giảm ~70% dung lượng tải) --------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE application/xml image/svg+xml
+  AddOutputFilterByType DEFLATE font/woff font/woff2 application/font-woff2
+</IfModule>
+
+# --- Bộ nhớ đệm trình duyệt -------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # File trong /_next/static/ có mã băm trong tên -> cache vĩnh viễn an toàn
+  <FilesMatch "\.(js|css|woff2|woff)$">
+    ExpiresDefault "access plus 1 year"
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+
+  ExpiresByType image/svg+xml "access plus 6 months"
+  ExpiresByType image/webp "access plus 6 months"
+  ExpiresByType image/avif "access plus 6 months"
+  ExpiresByType image/jpeg "access plus 6 months"
+  ExpiresByType image/png "access plus 6 months"
+
+  # HTML KHÔNG cache lâu, để khách luôn thấy bản mới sau khi deploy
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.html$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+
+  # --- Header bảo mật cơ bản ---
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
+</IfModule>
+
+# --- Ép HTTPS ---------------------------------------------------------------
+# Bật sau khi đã cài SSL trong hPanel (Websites > SSL). Bỏ dấu # ở 3 dòng dưới.
+# RewriteEngine On
+# RewriteCond %{HTTPS} !=on
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# --- Chặn truy cập file nhạy cảm -------------------------------------------
+<FilesMatch "^\.(env|git)">
+  Require all denied
+</FilesMatch>
