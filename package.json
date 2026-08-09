@@ -11,6 +11,7 @@
     "preview": "npx --yes serve out -l 4000",
     "check": "node scripts/check-links.mjs && node scripts/audit.mjs && node scripts/contrast.mjs",
     "contrast": "node scripts/contrast.mjs",
+    "push": "node scripts/push.mjs",
     "lint": "eslint",
     "typecheck": "tsc --noEmit"
   },

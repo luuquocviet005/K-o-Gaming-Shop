@@ -66,7 +66,8 @@ npm run preview
 | `npm run dev` | Máy chủ phát triển, sửa file là trang tự cập nhật |
 | `npm run build` | Xuất trang tĩnh ra `out/` + copy `.htaccess` |
 | `npm run preview` | Chạy thử thư mục `out/` tại http://localhost:4000 |
-| `npm run check` | Quét link chết + kiểm tra SEO trên bản đã build |
+| `npm run check` | Quét link chết + kiểm tra SEO + tương phản màu |
+| `npm run push` | Kiểm tra hết → commit → đẩy lên GitHub → Hostinger tự deploy |
 | `npm run typecheck` | Kiểm tra lỗi TypeScript |
 | `npm run lint` | Kiểm tra lỗi code |
 
