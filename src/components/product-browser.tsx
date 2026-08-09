@@ -17,6 +17,18 @@ const sortOptions: { key: SortKey; label: string }[] = [
   { key: "danh-gia", label: "Đánh giá cao" },
 ];
 
+/**
+ * Danh sách lựa chọn có vùng cuộn riêng.
+ *
+ * Danh mục "Tất cả" có tới 18 thương hiệu — để tràn hết ra sẽ kéo cột lọc dài
+ * gấp mấy lần khung màn hình, người dùng phải cuộn rất lâu mới tới lưới sản
+ * phẩm. Giới hạn chiều cao rồi cho cuộn trong khung giữ cột lọc luôn gọn.
+ *
+ * `overscroll-contain`: cuộn hết danh sách thì DỪNG, không đẩy tiếp cả trang.
+ */
+const optionListClass =
+  "mt-3 flex max-h-56 flex-col gap-1.5 overflow-y-auto overscroll-contain pr-1";
+
 const priceBands: { key: string; label: string; min: number; max: number }[] = [
   { key: "d1", label: "Dưới 1 triệu", min: 0, max: 1_000_000 },
   { key: "d2", label: "1 – 3 triệu", min: 1_000_000, max: 3_000_000 },
@@ -131,7 +143,7 @@ export function ProductBrowser({ items }: { items: CardProduct[] }) {
             <legend className="font-display text-sm font-bold text-fg">
               Khoảng giá
             </legend>
-            <div className="mt-3 flex flex-col gap-1.5">
+            <div className={optionListClass}>
               {priceBands.map((b) => (
                 <Choice
                   key={b.key}
@@ -145,10 +157,13 @@ export function ProductBrowser({ items }: { items: CardProduct[] }) {
           </fieldset>
 
           <fieldset>
-            <legend className="font-display text-sm font-bold text-fg">
+            <legend className="flex items-baseline justify-between gap-2 font-display text-sm font-bold text-fg">
               Thương hiệu
+              <span className="font-sans text-xs font-medium text-fg-subtle">
+                {allBrands.length} hãng
+              </span>
             </legend>
-            <div className="mt-3 flex flex-col gap-1.5">
+            <div className={optionListClass}>
               {allBrands.map((b) => (
                 <Choice
                   key={b}

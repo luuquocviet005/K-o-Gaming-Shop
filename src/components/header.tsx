@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { categories } from "@/lib/products";
+import { categories, countByCategory, products } from "@/lib/products";
 import { site } from "@/lib/site";
 import { formatVND } from "@/lib/format";
 import { useCart } from "@/lib/cart";
@@ -13,7 +13,9 @@ import { ThemeToggle } from "@/components/theme-toggle";
 import {
   CartIcon,
   categoryIcons,
+  ChevronDownIcon,
   CloseIcon,
+  GridIcon,
   MenuIcon,
   PhoneIcon,
   SearchIcon,
@@ -25,9 +27,13 @@ export function Header() {
   const { itemCount, subtotal, ready, addPulse } = useCart();
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [catOpen, setCatOpen] = useState(false);
   const [bump, setBump] = useState(false);
   const [prevPath, setPrevPath] = useState(pathname);
   const firstRender = useRef(true);
+  const catRef = useRef<HTMLDivElement>(null);
+
+  const onCategoryPage = pathname.startsWith("/danh-muc");
 
   // Đóng mọi lớp phủ khi chuyển trang.
   // Chỉnh state ngay trong lúc render (không dùng useEffect) là cách React
@@ -37,7 +43,17 @@ export function Header() {
     setPrevPath(pathname);
     setMenuOpen(false);
     setSearchOpen(false);
+    setCatOpen(false);
   }
+
+  // Bấm ra ngoài thì đóng menu Danh mục
+  useEffect(() => {
+    function onPointerDown(e: PointerEvent) {
+      if (!catRef.current?.contains(e.target as Node)) setCatOpen(false);
+    }
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => document.removeEventListener("pointerdown", onPointerDown);
+  }, []);
 
   // Khoá cuộn nền khi menu di động đang mở
   useEffect(() => {
@@ -53,6 +69,7 @@ export function Header() {
       if (e.key === "Escape") {
         setMenuOpen(false);
         setSearchOpen(false);
+        setCatOpen(false);
       }
     }
     window.addEventListener("keydown", onKey);
@@ -109,36 +126,91 @@ export function Header() {
 
           <Logo />
 
-          {/* Điều hướng desktop */}
-          <nav aria-label="Danh mục sản phẩm" className="ml-2 hidden lg:block">
-            <ul className="flex items-center gap-0.5">
-              <li>
-                <NavLink href="/danh-muc/" active={pathname === "/danh-muc/"}>
-                  Tất cả
-                </NavLink>
-              </li>
-              {categories.map((c) => (
-                <li key={c.slug}>
-                  <NavLink
-                    href={`/danh-muc/${c.slug}/`}
-                    active={pathname.startsWith(`/danh-muc/${c.slug}`)}
-                  >
-                    {c.short}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          {/* Menu Danh mục — gom 7 mục lại một chỗ, nhường không gian cho ô tìm kiếm */}
+          <div ref={catRef} className="relative hidden shrink-0 lg:block">
+            <button
+              type="button"
+              onClick={() => setCatOpen((v) => !v)}
+              aria-expanded={catOpen}
+              aria-haspopup="true"
+              aria-controls="menu-danh-muc"
+              className={`inline-flex h-11 cursor-pointer items-center gap-2 rounded-full px-4 text-sm font-semibold transition-colors duration-200 ${
+                onCategoryPage || catOpen
+                  ? "bg-primary-soft text-primary-ink"
+                  : "text-fg-muted hover:bg-surface-2 hover:text-fg"
+              }`}
+            >
+              <GridIcon width={18} height={18} />
+              Danh mục
+              <ChevronDownIcon
+                width={16}
+                height={16}
+                className={`transition-transform duration-200 ${catOpen ? "rotate-180" : ""}`}
+              />
+            </button>
+
+            {catOpen && (
+              <div
+                id="menu-danh-muc"
+                className="animate-rise absolute left-0 top-[calc(100%+0.5rem)] z-50 w-72 overflow-hidden rounded-3xl border border-border bg-surface p-2 shadow-[0_24px_60px_-24px_rgba(60,20,40,0.5)]"
+              >
+                <Link
+                  href="/danh-muc/"
+                  className={`flex min-h-12 items-center gap-3 rounded-2xl px-3 text-sm font-semibold transition-colors ${
+                    pathname === "/danh-muc/"
+                      ? "bg-primary-soft text-primary-ink"
+                      : "text-fg hover:bg-surface-2"
+                  }`}
+                >
+                  <span className="grid size-9 place-items-center rounded-xl bg-surface-2 text-fg-muted">
+                    <GridIcon width={18} height={18} />
+                  </span>
+                  Tất cả sản phẩm
+                  <span className="ml-auto text-xs font-medium text-fg-subtle">
+                    {products.length}
+                  </span>
+                </Link>
+
+                <hr className="my-1.5 border-border" />
+
+                {categories.map((c) => {
+                  const Icon = categoryIcons[c.slug];
+                  const active = pathname.startsWith(`/danh-muc/${c.slug}`);
+                  return (
+                    <Link
+                      key={c.slug}
+                      href={`/danh-muc/${c.slug}/`}
+                      aria-current={active ? "page" : undefined}
+                      className={`flex min-h-12 items-center gap-3 rounded-2xl px-3 text-sm font-semibold transition-colors ${
+                        active
+                          ? "bg-primary-soft text-primary-ink"
+                          : "text-fg hover:bg-surface-2"
+                      }`}
+                    >
+                      <span className="grid size-9 place-items-center rounded-xl bg-primary-soft text-primary-ink">
+                        <Icon width={18} height={18} />
+                      </span>
+                      {c.name}
+                      <span className="ml-auto text-xs font-medium text-fg-subtle">
+                        {countByCategory(c.slug)}
+                      </span>
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+          {/* Ô tìm kiếm chiếm hết khoảng trống còn lại */}
+          <SearchBox className="hidden min-w-0 flex-1 lg:block" />
 
           <div className="ml-auto flex items-center gap-1.5 md:gap-2">
-            <SearchBox className="hidden w-72 xl:block" />
-
             <button
               type="button"
               onClick={() => setSearchOpen((v) => !v)}
               aria-label="Tìm kiếm"
               aria-expanded={searchOpen}
-              className="grid size-11 cursor-pointer place-items-center rounded-full border border-border bg-surface text-fg-muted transition-colors hover:border-primary hover:text-primary-ink xl:hidden"
+              className="grid size-11 cursor-pointer place-items-center rounded-full border border-border bg-surface text-fg-muted transition-colors hover:border-primary hover:text-primary-ink lg:hidden"
             >
               <SearchIcon />
             </button>
@@ -173,7 +245,7 @@ export function Header() {
 
         {/* Ô tìm kiếm bung ra trên màn hình nhỏ */}
         {searchOpen && (
-          <div className="border-t border-border bg-bg px-4 py-3 xl:hidden">
+          <div className="border-t border-border bg-bg px-4 py-3 lg:hidden">
             <SearchBox autoFocus onNavigate={() => setSearchOpen(false)} />
           </div>
         )}
@@ -252,26 +324,3 @@ export function Header() {
   );
 }
 
-function NavLink({
-  href,
-  active,
-  children,
-}: {
-  href: string;
-  active: boolean;
-  children: React.ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      aria-current={active ? "page" : undefined}
-      className={`inline-flex h-10 items-center rounded-full px-3.5 text-sm font-semibold transition-colors duration-200 ${
-        active
-          ? "bg-primary-soft text-primary-ink"
-          : "text-fg-muted hover:bg-surface-2 hover:text-fg"
-      }`}
-    >
-      {children}
-    </Link>
-  );
-}
