@@ -194,6 +194,31 @@ body {
   }
 }
 
+/* --------------------------------------------------------------------------
+   Trang trí theo tên shop "KẸO"
+   Ba chi tiết nhẹ, thuần trang trí — không mang thông tin nào, nên đều
+   aria-hidden hoặc là background, trình đọc màn hình bỏ qua hoàn toàn.
+   -------------------------------------------------------------------------- */
+
+/* Sọc kẹo: dải mảnh vắt ngang đỉnh trang, như giấy bọc kẹo que */
+@utility soc-keo {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--primary) 0 12px,
+    var(--candy) 12px 24px
+  );
+}
+
+/* Chấm kẹo rắc nhẹ trên nền, mờ tới mức không cạnh tranh với chữ */
+@utility cham-keo {
+  background-image: radial-gradient(
+    circle at center,
+    color-mix(in oklab, var(--primary) 16%, transparent) 1.6px,
+    transparent 1.7px
+  );
+  background-size: 26px 26px;
+}
+
 /* Ẩn thanh cuộn cho carousel ngang (vẫn cuộn được bằng chuột/vuốt) */
 @utility no-scrollbar {
   scrollbar-width: none;

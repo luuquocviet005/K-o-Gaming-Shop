@@ -61,6 +61,11 @@ export default function HomePage() {
     <>
       {/* ───────────────────────────── HERO ───────────────────────────── */}
       <section className="relative overflow-hidden">
+        {/* Chấm kẹo rắc nền, mờ dần xuống dưới để không đụng phần chữ */}
+        <div
+          aria-hidden="true"
+          className="cham-keo pointer-events-none absolute inset-0 [mask-image:linear-gradient(to_bottom,black,transparent_75%)]"
+        />
         <div
           aria-hidden="true"
           className="pointer-events-none absolute -left-40 -top-40 size-[32rem] rounded-full bg-primary/15 blur-3xl"
@@ -222,8 +227,8 @@ export default function HomePage() {
 
       {/* ───────────────── LỜI NHẮC VỀ HÀNG CŨ ───────────────── */}
       <section className="container-page mt-20">
-        <div className="overflow-hidden rounded-[2rem] border border-border bg-primary-soft px-7 py-9 sm:px-12 sm:py-12">
-          <div className="grid items-center gap-8 lg:grid-cols-[1.3fr_1fr]">
+        <div className="cham-keo relative overflow-hidden rounded-[2rem] border border-border bg-primary-soft px-7 py-9 sm:px-12 sm:py-12">
+          <div className="relative grid items-center gap-8 lg:grid-cols-[1.3fr_1fr]">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-on-primary">
                 <InfoIcon width={15} height={15} />

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Be_Vietnam_Pro, Inter } from "next/font/google";
+import { Baloo_2, Inter } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
 import { CartProvider } from "@/lib/cart";
@@ -18,7 +18,10 @@ const inter = Inter({
 // Font tiêu đề PHẢI có bộ ký tự "vietnamese". Font chỉ có "latin" sẽ khiến
 // mọi chữ có dấu (KẸO, ngọt, như, kẹo) rơi sang font dự phòng của hệ điều
 // hành — chữ có dấu và không dấu trông khác hẳn nhau.
-const beVietnam = Be_Vietnam_Pro({
+//
+// Baloo 2 mập và bo tròn, gợi chữ in trên vỏ kẹo — hợp cái tên KẸO hơn font
+// vuông vức trước đây, mà vẫn đủ đậm để làm tiêu đề bán hàng.
+const baloo = Baloo_2({
   subsets: ["latin", "vietnamese"],
   weight: ["600", "700", "800"],
   variable: "--font-heading",
@@ -71,13 +74,16 @@ export default function RootLayout({
         {/* Đặt theme trước khi trang vẽ, tránh nháy sáng khi đang ở chế độ tối */}
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
       </head>
-      <body className={`${inter.variable} ${beVietnam.variable} antialiased`}>
+      <body className={`${inter.variable} ${baloo.variable} antialiased`}>
         <a
           href="#noi-dung"
           className="sr-only-focusable left-4 top-4 z-[100] rounded-full bg-primary px-5 py-3 text-sm font-semibold text-on-primary"
         >
           Bỏ qua, tới nội dung chính
         </a>
+
+        {/* Sọc kẹo trên đỉnh trang — thuần trang trí */}
+        <div aria-hidden="true" className="soc-keo h-1.5 w-full" />
 
         <CartProvider>
           <Header />
