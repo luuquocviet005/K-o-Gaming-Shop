@@ -105,10 +105,19 @@ export function hangDocNhat(limit = 8): Product[] {
     .slice(0, limit);
 }
 
+/** Nhãn dùng khi Sheet bỏ trống ô thương hiệu */
+export const HANG_TRONG = "Không rõ hãng";
+
+/**
+ * Danh sách hãng THẬT — bỏ nhãn "Không rõ hãng".
+ *
+ * Nhãn đó có ý nghĩa trên trang sản phẩm (nói thật là chưa biết hãng), nhưng
+ * đưa vào băng chuyền hay bộ lọc thì vô nghĩa: nó không phải một thương hiệu.
+ */
 export function tatCaHang(): string[] {
-  return [...new Set(products.map((p) => p.hang))].sort((a, b) =>
-    a.localeCompare(b, "vi"),
-  );
+  return [...new Set(products.map((p) => p.hang))]
+    .filter((h) => h && h !== HANG_TRONG)
+    .sort((a, b) => a.localeCompare(b, "vi"));
 }
 
 export function tatCaDiaDiem(): string[] {

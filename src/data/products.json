@@ -313,17 +313,17 @@
       "mau": "#7c3aed"
     },
     {
-      "id": "hang-80he",
-      "slug": "hang-80he",
+      "id": "80he",
+      "slug": "80he",
       "ten": "80he",
-      "hang": "Hãng",
+      "hang": "Không rõ hãng",
       "danhMuc": "ban-phim",
       "gia": 4700000,
       "tinhTrang": "Phím và dây",
       "nhomTinhTrang": "khac",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
-      "mau": "#0d9488"
+      "mau": "#15803d"
     },
     {
       "id": "wooting-80he-ghost",

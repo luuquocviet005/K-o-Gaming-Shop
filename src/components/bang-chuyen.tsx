@@ -3,17 +3,26 @@ import { SparkIcon } from "@/components/icons";
 /**
  * Băng chuyền chạy ngang — dải chữ trôi liên tục như bảng đèn trước cửa tiệm.
  *
- * Nội dung lặp HAI lần và dịch đúng 50%, nhờ vậy khi hết vòng thì bản sao thứ
- * hai đã nằm sẵn đúng vị trí bản đầu — mắt không thấy điểm nối.
+ * CẤU TRÚC PHẢI ĐÚNG THẾ NÀY:
+ *   khung (overflow hidden)
+ *     └── đường ray (w-max, animate translateX -50%)
+ *           ├── bản 1
+ *           └── bản 2 (giống hệt)
  *
- * Thuần trang trí: bản gốc mang chữ thật cho trình đọc màn hình, bản sao
- * aria-hidden để không bị đọc hai lần.
+ * Một đường ray DUY NHẤT chứa hai bản, dịch 50% chiều rộng đường ray = đúng
+ * bằng một bản. Khi hết vòng, bản 2 đã nằm chính xác chỗ bản 1 xuất phát nên
+ * mắt không thấy điểm nối.
+ *
+ * Cho hai bản tự chạy riêng thì mỗi bản dịch 50% CỦA CHÍNH NÓ — hở khoảng và
+ * giật. Đó là lỗi ở bản trước.
  */
 export function BangChuyen({ muc }: { muc: string[] }) {
-  const mot = (an: boolean) => (
+  if (muc.length === 0) return null;
+
+  const banSao = (an: boolean) => (
     <ul
       aria-hidden={an || undefined}
-      className="bang-chuyen flex shrink-0 items-center gap-8 pr-8"
+      className="flex shrink-0 items-center gap-8 pr-8"
     >
       {muc.map((m, i) => (
         <li key={i} className="flex shrink-0 items-center gap-8">
@@ -27,9 +36,11 @@ export function BangChuyen({ muc }: { muc: string[] }) {
   );
 
   return (
-    <div className="flex overflow-hidden border-y border-border bg-dai-dam-nen py-3 text-dai-dam-chu">
-      {mot(false)}
-      {mot(true)}
+    <div className="overflow-hidden border-y border-border bg-dai-dam-nen py-3 text-dai-dam-chu">
+      <div className="bang-chuyen flex w-max">
+        {banSao(false)}
+        {banSao(true)}
+      </div>
     </div>
   );
 }

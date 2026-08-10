@@ -400,6 +400,14 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+
+  /* Băng chuyền là ngoại lệ: quy tắc trên khiến nó chạy hết trong 0.01ms rồi
+     đứng im ở vị trí cuối — chữ bị cắt ngang mép trái, trông như lỗi. Tắt hẳn
+     hiệu ứng và đưa về vị trí đầu để nó là một dải chữ tĩnh đàng hoàng. */
+  .bang-chuyen {
+    animation: none !important;
+    transform: none !important;
+  }
 }
 
 @media print {

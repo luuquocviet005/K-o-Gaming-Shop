@@ -25,6 +25,9 @@ import {
   timFileAnh,
 } from "./lib/normalize.mjs";
 
+/** Giữ khớp với HANG_TRONG trong src/lib/products.ts */
+const HANG_TRONG = "Không rõ hãng";
+
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(await readFile(join(root, "sync.config.json"), "utf8"));
 const dichVu = join(root, "src", "data", "products.json");
@@ -100,7 +103,16 @@ for (const cauHinh of config.tabs) {
     const ten = layO(row, "ten san pham", "ten");
     if (!ten) continue; // dòng trống
 
-    const hang = coTieuDeHang ? layO(row, "hang") : layO(row, cotHangDauTien);
+    let hang = coTieuDeHang ? layO(row, "hang") : layO(row, cotHangDauTien);
+
+    // Ô thương hiệu điền trùng tên cột ("Hãng") là dấu vết dòng tiêu đề bị
+    // chép nhầm xuống ô dữ liệu — coi như chưa điền, và báo để chủ shop sửa.
+    if (boDau(hang) === "hang" || boDau(hang) === "ten san pham") {
+      canhBao.push(
+        `⚠ "${ten}" (${cauHinh.tab}): ô Hãng đang ghi "${hang}" — nhập đúng tên hãng vào Sheet.`,
+      );
+      hang = "";
+    }
 
     // Khử trùng lặp: cùng hãng + tên thì chỉ giữ lần xuất hiện đầu
     const khoa = `${boDau(hang)}|${boDau(ten)}`;
@@ -150,7 +162,7 @@ for (const cauHinh of config.tabs) {
       id: slug,
       slug,
       ten,
-      hang: hang || "Không rõ hãng",
+      hang: hang || HANG_TRONG,
       danhMuc: cauHinh.slug,
       gia,
       ...(giaToiDa ? { giaToiDa } : {}),
