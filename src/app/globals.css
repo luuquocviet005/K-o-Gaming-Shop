@@ -59,6 +59,11 @@
   --vi-nho-nen: #efe6fb;
   --vi-nho-chu: #5b2d9b;
 
+  /* Dải tối: khối tương phản chen giữa trang cho đỡ một màu từ đầu đến cuối */
+  --dai-dam-nen: #2b0a18;
+  --dai-dam-chu: #ffe9f1;
+  --dai-dam-mo: #e7aec5;
+
   --warning: #b45309;
   --star: #d97706;
   --danger: #dc2626;
@@ -108,6 +113,11 @@
   --vi-nho-nen: #251b39;
   --vi-nho-chu: #cbabf7;
 
+  /* Nền vốn đã tối, nên dải này phải SÁNG hơn nền mới tạo được tương phản */
+  --dai-dam-nen: #34172a;
+  --dai-dam-chu: #ffe9f1;
+  --dai-dam-mo: #d9a0bd;
+
   --warning: #fbbf24;
   --star: #fbbf24;
   --danger: #f87171;
@@ -148,6 +158,10 @@
   --color-vi-dau-chu: var(--vi-dau-chu);
   --color-vi-nho-nen: var(--vi-nho-nen);
   --color-vi-nho-chu: var(--vi-nho-chu);
+
+  --color-dai-dam-nen: var(--dai-dam-nen);
+  --color-dai-dam-chu: var(--dai-dam-chu);
+  --color-dai-dam-mo: var(--dai-dam-mo);
 
   --color-warning: var(--warning);
   --color-star: var(--star);
@@ -280,6 +294,26 @@ body {
     color-mix(in oklab, var(--primary) 22%, transparent) 0 4px,
     transparent 4px 8px
   );
+}
+
+/* Băng chuyền: dải chữ chạy ngang không dứt, như bảng đèn trước cửa tiệm.
+   Nội dung được lặp hai lần rồi dịch đúng 50% nên vòng lặp liền mạch. */
+@keyframes chay-ngang {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@utility bang-chuyen {
+  animation: chay-ngang 42s linear infinite;
+}
+
+/* Nhãn giá dán lệch như tem viết tay dán lên hộp kẹo */
+@utility tem-gia {
+  transform: rotate(-2.5deg);
 }
 
 /* Ẩn thanh cuộn cho carousel ngang (vẫn cuộn được bằng chuột/vuốt) */

@@ -74,6 +74,10 @@ const pairs = [
   ["vi-caramel-chu", "vi-caramel-nen", 4.5, "Nhãn tình trạng vị caramel (cũ đủ hộp)"],
   ["vi-dau-chu", "vi-dau-nen", 4.5, "Nhãn tình trạng vị dâu (cũ thiếu hộp)"],
   ["vi-nho-chu", "vi-nho-nen", 4.5, "Nhãn tình trạng vị nho (dạng khác)"],
+
+  // Dải tối chen giữa trang — nền tối, chữ sáng
+  ["dai-dam-chu", "dai-dam-nen", 4.5, "Chữ chính trên dải tối"],
+  ["dai-dam-mo", "dai-dam-nen", 4.5, "Chữ phụ trên dải tối"],
   ["danger", "surface", 4.5, "Thông báo lỗi"],
   ["warning", "surface", 4.5, "Cảnh báo sắp hết hàng"],
   ["star", "surface", 3.0, "Ngôi sao đánh giá (biểu tượng)"],
