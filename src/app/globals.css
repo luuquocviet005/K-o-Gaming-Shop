@@ -401,12 +401,18 @@ body {
     scroll-behavior: auto !important;
   }
 
-  /* Băng chuyền là ngoại lệ: quy tắc trên khiến nó chạy hết trong 0.01ms rồi
-     đứng im ở vị trí cuối — chữ bị cắt ngang mép trái, trông như lỗi. Tắt hẳn
-     hiệu ứng và đưa về vị trí đầu để nó là một dải chữ tĩnh đàng hoàng. */
-  .bang-chuyen {
+  /* Băng chuyền: quy tắc trên khiến nó chạy hết trong 0.01ms rồi đứng im ở
+     vị trí cuối — chữ bị cắt ngang mép trái, trông như lỗi. Nên mặc định tắt
+     hẳn và đưa về vị trí đầu, thành một dải chữ tĩnh đàng hoàng. */
+  .bang-chuyen[data-chay="false"] {
     animation: none !important;
     transform: none !important;
+  }
+
+  /* Nhưng nếu người dùng TỰ BẤM nút chạy thì đó là lựa chọn có ý thức của họ,
+     ưu tiên hơn cài đặt mặc định của hệ điều hành. */
+  .bang-chuyen[data-chay="true"] {
+    animation: chay-ngang 42s linear infinite !important;
   }
 }
 
