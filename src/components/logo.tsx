@@ -11,7 +11,7 @@ export function Logo({ className = "" }: { className?: string }) {
     <Link
       href="/"
       aria-label={`${site.name} — về trang chủ`}
-      className={`group inline-flex shrink-0 items-center gap-2.5 ${className}`}
+      className={`group inline-flex shrink-0 items-center gap-2 sm:gap-2.5 ${className}`}
     >
       <span className="relative grid size-10 place-items-center rounded-2xl bg-primary text-on-primary shadow-[0_6px_16px_-6px_var(--primary)] transition-transform duration-200 group-hover:-rotate-6">
         <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
@@ -41,8 +41,11 @@ export function Logo({ className = "" }: { className?: string }) {
           />
         </svg>
       </span>
-      <span className="flex flex-col leading-none">
-        <span className="font-display text-[1.05rem] font-extrabold leading-tight tracking-tight text-fg">
+      {/* Màn dưới 360px chỉ còn viên kẹo — nhét thêm chữ vào là header tràn
+          ngang, mà biểu tượng đã đủ nhận diện. Chữ quay lại từ 360px, nên các
+          máy phổ biến (375px trở lên) vẫn thấy đủ tên shop. */}
+      <span className="hidden flex-col leading-none min-[360px]:flex">
+        <span className="font-display text-[0.95rem] font-extrabold leading-tight tracking-tight text-fg sm:text-[1.05rem]">
           KẸO
           <span className="ml-1 text-primary-ink">GAMING</span>
         </span>

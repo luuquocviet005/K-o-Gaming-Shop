@@ -30,7 +30,13 @@ export function ProductCard({
           <ProductMedia product={product} priority={priority} />
         </div>
 
-        <div className="pointer-events-none absolute left-4 top-4 flex flex-col items-start gap-1.5">
+        {/* Mép giấy gói: răng cưa ngăn giữa khu ảnh và phần chữ */}
+        <div
+          aria-hidden="true"
+          className="rang-cua pointer-events-none absolute inset-x-0 bottom-0 h-3.5"
+        />
+
+        <div className="pointer-events-none absolute left-5 top-4 flex flex-col items-start gap-1.5">
           <ConditionBadge tinhTrang={product.tinhTrang} nhom={product.nhomTinhTrang} />
         </div>
 

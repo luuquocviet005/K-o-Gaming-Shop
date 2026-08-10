@@ -14,6 +14,7 @@ import { site } from "@/lib/site";
 import { ProductCard } from "@/components/product-card";
 import { ProductMedia } from "@/components/product-art";
 import { ConditionBadge } from "@/components/condition-badge";
+import { RacKeo } from "@/components/rac-keo";
 import {
   ArrowRightIcon,
   CheckIcon,
@@ -74,6 +75,7 @@ export default function HomePage() {
           aria-hidden="true"
           className="pointer-events-none absolute -right-32 top-32 size-[26rem] rounded-full bg-candy/10 blur-3xl"
         />
+        <RacKeo className="hidden lg:block" />
 
         <div className="container-page relative grid items-center gap-12 py-12 lg:grid-cols-[1.05fr_1fr] lg:py-20">
           <div className="animate-rise">
@@ -205,11 +207,16 @@ export default function HomePage() {
           {categories.map((c) => {
             return (
               <li key={c.slug}>
+                {/* Thẻ danh mục tạo hình hũ kẹo: nắp vằn ở trên, thân bo tròn */}
                 <Link
                   href={`/danh-muc/${c.slug}/`}
-                  className="group flex h-full flex-col items-center gap-3 rounded-[1.5rem] border border-border bg-surface p-5 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-[0_18px_40px_-24px_rgba(60,20,40,0.45)]"
+                  className="group relative flex h-full flex-col items-center gap-3 overflow-hidden rounded-[1.5rem] border border-border bg-surface p-5 pt-7 text-center transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-[0_18px_40px_-24px_rgba(60,20,40,0.45)]"
                 >
-                  <span className="grid size-14 place-items-center rounded-2xl bg-primary-soft text-primary-ink transition-colors duration-300 group-hover:bg-primary group-hover:text-on-primary">
+                  <span
+                    aria-hidden="true"
+                    className="nap-hu absolute inset-x-0 top-0 h-2.5 bg-primary-soft"
+                  />
+                  <span className="grid size-14 place-items-center rounded-full bg-primary-soft text-primary-ink transition-colors duration-300 group-hover:bg-primary group-hover:text-on-primary">
                     <CategoryIcon khoa={c.icon} width={26} height={26} />
                   </span>
                   <span className="text-sm font-bold leading-tight text-fg">
@@ -385,8 +392,13 @@ function SectionHead({
         <h2 className="font-display text-2xl font-extrabold tracking-tight text-fg sm:text-3xl">
           {title}
         </h2>
+        {/* Gạch sọc kẹo thay cho gạch ngang trơn */}
+        <span
+          aria-hidden="true"
+          className="gach-keo mt-2 block h-1.5 w-16 rounded-full"
+        />
         {subtitle && (
-          <p className="mt-1.5 text-sm text-fg-muted sm:text-base">{subtitle}</p>
+          <p className="mt-2 text-sm text-fg-muted sm:text-base">{subtitle}</p>
         )}
       </div>
       {href && (

@@ -45,6 +45,20 @@
   --candy-ink: #a30f33;
   --on-candy: #ffffff;
 
+  /* ── Màu giấy bọc theo tình trạng hàng ──
+     Bốn vị kẹo, xếp theo mức độ "còn nguyên vẹn" của món hàng:
+       bạc hà → hàng mới     caramel → cũ đủ hộp
+       dâu    → cũ thiếu hộp  nho     → dạng khác (kit, đồ rời)
+     Nhờ vậy khách liếc màu là đoán được tình trạng, chữ vẫn ghi rõ bên cạnh. */
+  --vi-bacha-nen: #dcf5ea;
+  --vi-bacha-chu: #0a5b43;
+  --vi-caramel-nen: #fdf0d5;
+  --vi-caramel-chu: #7a4e07;
+  --vi-dau-nen: #ffe1ec;
+  --vi-dau-chu: #a3124f;
+  --vi-nho-nen: #efe6fb;
+  --vi-nho-chu: #5b2d9b;
+
   --warning: #b45309;
   --star: #d97706;
   --danger: #dc2626;
@@ -84,6 +98,16 @@
   --candy-ink: #ff9aaf;
   --on-candy: #2b070f;
 
+  /* Nền tối: giấy bọc đậm lại, chữ sáng lên — vẫn giữ đúng bốn vị */
+  --vi-bacha-nen: #0d2b23;
+  --vi-bacha-chu: #74e2c0;
+  --vi-caramel-nen: #2f2411;
+  --vi-caramel-chu: #f3c76f;
+  --vi-dau-nen: #3a151d;
+  --vi-dau-chu: #ff9aaf;
+  --vi-nho-nen: #251b39;
+  --vi-nho-chu: #cbabf7;
+
   --warning: #fbbf24;
   --star: #fbbf24;
   --danger: #f87171;
@@ -115,6 +139,15 @@
   --color-candy-soft: var(--candy-soft);
   --color-candy-ink: var(--candy-ink);
   --color-on-candy: var(--on-candy);
+
+  --color-vi-bacha-nen: var(--vi-bacha-nen);
+  --color-vi-bacha-chu: var(--vi-bacha-chu);
+  --color-vi-caramel-nen: var(--vi-caramel-nen);
+  --color-vi-caramel-chu: var(--vi-caramel-chu);
+  --color-vi-dau-nen: var(--vi-dau-nen);
+  --color-vi-dau-chu: var(--vi-dau-chu);
+  --color-vi-nho-nen: var(--vi-nho-nen);
+  --color-vi-nho-chu: var(--vi-nho-chu);
 
   --color-warning: var(--warning);
   --color-star: var(--star);
@@ -217,6 +250,36 @@ body {
     transparent 1.7px
   );
   background-size: 26px 26px;
+}
+
+/* Răng cưa: dải nửa hình tròn khoét vào mép, như mép giấy gói kẹo bị cắt.
+   Dùng radial-gradient thay vì mask để hình học đoán trước được chính xác. */
+@utility rang-cua {
+  background-image: radial-gradient(
+    circle at 7px 0,
+    var(--surface) 6.5px,
+    transparent 7px
+  );
+  background-size: 14px 14px;
+  background-repeat: repeat-x;
+}
+
+/* Gạch kẹo: đoạn sọc chéo ngắn đặt dưới tiêu đề mục, thay cho gạch ngang trơn */
+@utility gach-keo {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--primary) 0 7px,
+    var(--candy) 7px 14px
+  );
+}
+
+/* Nắp hũ kẹo: dùng cho thẻ danh mục, gợi hình hũ kẹo trên quầy */
+@utility nap-hu {
+  background-image: repeating-linear-gradient(
+    90deg,
+    color-mix(in oklab, var(--primary) 22%, transparent) 0 4px,
+    transparent 4px 8px
+  );
 }
 
 /* Ẩn thanh cuộn cho carousel ngang (vẫn cuộn được bằng chuột/vuốt) */

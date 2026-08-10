@@ -112,7 +112,9 @@ export function Header() {
       </div>
 
       <header className="sticky top-0 z-40 border-b border-border bg-bg/85 backdrop-blur-xl">
-        <div className="container-page flex h-[4.5rem] items-center gap-4">
+        {/* Khoảng cách hẹp lại trên màn nhỏ — font tiêu đề bo tròn chiếm bề
+            ngang hơn font vuông, đủ để tràn ngang ở màn 375px nếu để gap 16px */}
+        <div className="container-page flex h-[4.5rem] items-center gap-2 sm:gap-4">
           <button
             type="button"
             onClick={() => setMenuOpen(true)}
@@ -202,7 +204,7 @@ export function Header() {
           {/* Ô tìm kiếm chiếm hết khoảng trống còn lại */}
           <SearchBox className="hidden min-w-0 flex-1 lg:block" />
 
-          <div className="ml-auto flex items-center gap-1.5 md:gap-2">
+          <div className="ml-auto flex items-center gap-1 sm:gap-2">
             <button
               type="button"
               onClick={() => setSearchOpen((v) => !v)}

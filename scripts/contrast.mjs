@@ -68,6 +68,12 @@ const pairs = [
   ["fg", "primary-soft", 4.5, "Chữ chính trên nền hồng phấn (banner)"],
   ["fg-muted", "primary-soft", 4.5, "Chữ phụ trên nền hồng phấn (banner)"],
   ["candy-ink", "candy-soft", 4.5, "Chữ badge tiết kiệm"],
+
+  // Bốn "vị kẹo" của nhãn tình trạng — chữ nhỏ nên bắt buộc đủ 4.5:1
+  ["vi-bacha-chu", "vi-bacha-nen", 4.5, "Nhãn tình trạng vị bạc hà (hàng mới)"],
+  ["vi-caramel-chu", "vi-caramel-nen", 4.5, "Nhãn tình trạng vị caramel (cũ đủ hộp)"],
+  ["vi-dau-chu", "vi-dau-nen", 4.5, "Nhãn tình trạng vị dâu (cũ thiếu hộp)"],
+  ["vi-nho-chu", "vi-nho-nen", 4.5, "Nhãn tình trạng vị nho (dạng khác)"],
   ["danger", "surface", 4.5, "Thông báo lỗi"],
   ["warning", "surface", 4.5, "Cảnh báo sắp hết hàng"],
   ["star", "surface", 3.0, "Ngôi sao đánh giá (biểu tượng)"],
