@@ -18,21 +18,38 @@ import { SparkIcon } from "@/components/icons";
  * CHÍNH NÓ — hở khoảng và giật.
  *
  * NÚT DỪNG là bắt buộc, không phải tuỳ chọn: WCAG 2.2.2 yêu cầu mọi nội dung
- * tự chạy quá 5 giây phải có cách dừng lại. Nút này cũng là lối thoát cho
- * người đang bật "giảm chuyển động" trong hệ điều hành mà vẫn muốn xem nó chạy.
+ * tự chạy quá 5 giây phải có cách dừng lại.
  */
-export function BangChuyen({ muc }: { muc: string[] }) {
-  // Khởi đầu là dừng để bản dựng trên máy chủ và trên trình duyệt giống nhau;
-  // sau khi mount mới đọc cài đặt hệ thống rồi quyết định có chạy hay không.
-  const [chay, setChay] = useState(false);
+const KHOA = "keo:bang-chuyen";
 
+export function BangChuyen({ muc }: { muc: string[] }) {
+  // Mặc định CHẠY, và chạy ngay từ bản HTML máy chủ dựng ra — không chờ
+  // JavaScript. Khách vào trang là thấy dải chữ trôi luôn.
+  const [chay, setChay] = useState(true);
+
+  // Ai đã bấm dừng thì tôn trọng lựa chọn đó ở mọi trang, mọi lần vào sau.
+  // Chỉ nhớ khi họ CHỦ ĐỘNG tắt; không lưu gì khi họ để nguyên mặc định.
   useEffect(() => {
-    const giamChuyenDong = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    setChay(!giamChuyenDong);
+    try {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      if (localStorage.getItem(KHOA) === "dung") setChay(false);
+    } catch {
+      /* trình duyệt chặn localStorage (chế độ ẩn danh) — cứ để nó chạy */
+    }
   }, []);
+
+  function bat() {
+    setChay((dangChay) => {
+      const moi = !dangChay;
+      try {
+        if (moi) localStorage.removeItem(KHOA);
+        else localStorage.setItem(KHOA, "dung");
+      } catch {
+        /* không lưu được thì thôi, nút vẫn bấm được trong phiên này */
+      }
+      return moi;
+    });
+  }
 
   if (muc.length === 0) return null;
 
@@ -64,7 +81,7 @@ export function BangChuyen({ muc }: { muc: string[] }) {
 
       <button
         type="button"
-        onClick={() => setChay((v) => !v)}
+        onClick={bat}
         aria-label={chay ? "Dừng dòng chữ đang chạy" : "Cho dòng chữ chạy"}
         title={chay ? "Dừng dòng chữ đang chạy" : "Cho dòng chữ chạy"}
         className="mr-3 grid size-9 shrink-0 cursor-pointer place-items-center rounded-full bg-dai-dam-chu/15 text-dai-dam-chu transition-colors hover:bg-dai-dam-chu/30 sm:mr-4"

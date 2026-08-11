@@ -402,15 +402,17 @@ body {
   }
 
   /* Băng chuyền: quy tắc trên khiến nó chạy hết trong 0.01ms rồi đứng im ở
-     vị trí cuối — chữ bị cắt ngang mép trái, trông như lỗi. Nên mặc định tắt
-     hẳn và đưa về vị trí đầu, thành một dải chữ tĩnh đàng hoàng. */
+     vị trí cuối — chữ bị cắt ngang mép trái, trông như lỗi. Khi đã dừng thì
+     phải đưa hẳn về vị trí đầu, thành một dải chữ tĩnh đàng hoàng. */
   .bang-chuyen[data-chay="false"] {
     animation: none !important;
     transform: none !important;
   }
 
-  /* Nhưng nếu người dùng TỰ BẤM nút chạy thì đó là lựa chọn có ý thức của họ,
-     ưu tiên hơn cài đặt mặc định của hệ điều hành. */
+  /* Băng chuyền vẫn chạy kể cả khi hệ điều hành bật "giảm chuyển động": đây là
+     chuyển động chậm, đều, không nhấp nháy, và luôn có nút dừng ngay bên cạnh
+     (WCAG 2.2.2). Ai không muốn xem thì bấm dừng — website nhớ lựa chọn đó cho
+     những lần vào sau. */
   .bang-chuyen[data-chay="true"] {
     animation: chay-ngang 42s linear infinite !important;
   }
