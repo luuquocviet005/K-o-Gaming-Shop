@@ -236,16 +236,16 @@
       "mau": "#be123c"
     },
     {
-      "id": "atk-atk-x1-ultimate",
-      "slug": "atk-atk-x1-ultimate",
-      "ten": "ATK x1 ultimate",
+      "id": "atk-x1-ultimate-v2",
+      "slug": "atk-x1-ultimate-v2",
+      "ten": "X1 Ultimate V2",
       "hang": "ATK",
       "danhMuc": "chuot",
       "gia": 1000000,
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 3,
+      "soLuong": 1,
       "mau": "#4338ca"
     },
     {
@@ -597,6 +597,11 @@
       "nhomTinhTrang": "khac",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/arbiter-polar65-yuki-aim/01.webp",
+      "anhs": [
+        "/products/arbiter-polar65-yuki-aim/01.webp",
+        "/products/arbiter-polar65-yuki-aim/02.webp"
+      ],
       "mau": "#dc2626"
     },
     {
