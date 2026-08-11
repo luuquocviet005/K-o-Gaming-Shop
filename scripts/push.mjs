@@ -89,6 +89,23 @@ if (status.trim()) {
   console.log("  · Không có thay đổi mới, chỉ đẩy commit đang chờ");
 }
 
+/**
+ * Kéo bản trên mạng về trước khi đẩy.
+ *
+ * GitHub Actions tự chạy 20 phút một lần và commit lại bảng hàng, nên rất hay
+ * xảy ra chuyện trên mạng đã đi trước trong lúc mình đang làm. Không gộp
+ * trước thì push bị từ chối và người dùng phải tự xử lý Git — thứ họ không
+ * nên phải biết.
+ */
+console.log("  · Đồng bộ với bản trên GitHub…");
+if (run("git", ["pull", "--rebase", "origin", "main"], { quiet: true }).code !== 0) {
+  console.error("");
+  console.error("✗ Không gộp được với bản trên GitHub (có thể đang xung đột).");
+  console.error("  Chạy `git status` để xem chi tiết.");
+  console.error("");
+  process.exit(1);
+}
+
 if (run("git", ["push", "origin", "main"]).code !== 0) {
   console.error("");
   console.error("✗ Push thất bại. Thường do chưa đăng nhập GitHub.");
