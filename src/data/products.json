@@ -14,7 +14,7 @@
       "short": "Bàn phím",
       "icon": "ban-phim",
       "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời.",
-      "soLuong": 18
+      "soLuong": 15
     },
     {
       "slug": "tai-nghe",
@@ -146,6 +146,7 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 9,
+      "anh": "/products/xingmeng-zero-1-se/01.webp",
       "mau": "#b45309"
     },
     {
@@ -159,6 +160,7 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 3,
+      "anh": "/products/aula-sc311/01.webp",
       "mau": "#dc2626"
     },
     {
@@ -172,6 +174,7 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 3,
+      "anh": "/products/smailwolf-m3/01.webp",
       "mau": "#c2185b"
     },
     {
@@ -377,19 +380,6 @@
       "mau": "#4338ca"
     },
     {
-      "id": "leobog-hi8-se",
-      "slug": "leobog-hi8-se",
-      "ten": "Hi8 Se",
-      "hang": "Leobog",
-      "danhMuc": "ban-phim",
-      "gia": 900000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "mau": "#4338ca"
-    },
-    {
       "id": "keychron-kit-v1",
       "slug": "keychron-kit-v1",
       "ten": "Kit v1",
@@ -580,6 +570,13 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/atk-rs6-aspas/01.webp",
+      "anhs": [
+        "/products/atk-rs6-aspas/01.webp",
+        "/products/atk-rs6-aspas/02.webp",
+        "/products/atk-rs6-aspas/03.webp",
+        "/products/atk-rs6-aspas/04.webp"
+      ],
       "mau": "#4338ca"
     },
     {
@@ -682,6 +679,14 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/hyperx-earbuds-2/01.webp",
+      "anhs": [
+        "/products/hyperx-earbuds-2/01.webp",
+        "/products/hyperx-earbuds-2/02.webp",
+        "/products/hyperx-earbuds-2/03.webp",
+        "/products/hyperx-earbuds-2/04.webp",
+        "/products/hyperx-earbuds-2/05.webp"
+      ],
       "mau": "#c2185b"
     },
     {
