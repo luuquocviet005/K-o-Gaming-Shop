@@ -379,19 +379,6 @@
       "mau": "#4338ca"
     },
     {
-      "id": "keychron-kit-v1",
-      "slug": "keychron-kit-v1",
-      "ten": "Kit v1",
-      "hang": "Keychron",
-      "danhMuc": "ban-phim",
-      "gia": 350000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "mau": "#1f2937"
-    },
-    {
       "id": "case-holy60-nhua-do",
       "slug": "case-holy60-nhua-do",
       "ten": "Case holy60 nhựa ( đỏ )",
@@ -582,6 +569,19 @@
         "/products/atk-rs6-aspas/03.webp",
         "/products/atk-rs6-aspas/04.webp"
       ],
+      "mau": "#4338ca"
+    },
+    {
+      "id": "razer-huntsman-v3-he-magnetic-mini-65-8khz",
+      "slug": "razer-huntsman-v3-he-magnetic-mini-65-8khz",
+      "ten": "Huntsman V3 HE Magnetic Mini 65% 8KHz",
+      "hang": "Razer",
+      "danhMuc": "ban-phim",
+      "gia": 2800000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
       "mau": "#4338ca"
     },
     {
