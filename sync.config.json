@@ -3,6 +3,9 @@
 
   "sheetId": "1j_bXrSi2dl4mXaGeF3YwTrVZL7PfOMDUWn6AsCTdQGA",
 
+  "_thuMucAnh": "Thư mục ảnh mà tác vụ chạy ngầm theo dõi. Đổi đường dẫn ở đây nếu bạn chuyển thư mục ảnh đi chỗ khác.",
+  "thuMucAnh": "D:\\Tạo trang web bán hàng\\Ảnh gear",
+
   "_luuY": "slug là đường dẫn trên web (/danh-muc/<slug>/) — không dấu, không khoảng trắng. icon chọn trong: chuot, ban-phim, tai-nghe, switch, do-khac.",
 
   "tabs": [

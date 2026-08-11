@@ -22,7 +22,7 @@
       "short": "Tai nghe",
       "icon": "tai-nghe",
       "blurb": "Tai nghe chụp tai, in-ear và soundcard.",
-      "soLuong": 8
+      "soLuong": 7
     },
     {
       "slug": "switch-he",
@@ -374,9 +374,8 @@
       "gia": 1300000,
       "tinhTrang": "Cũ",
       "nhomTinhTrang": "cu",
-      "diaDiem": "Sài Gòn",
+      "diaDiem": "Đà Nẵng",
       "soLuong": 1,
-      "note": "case của HCM có lỗi nhẹ",
       "mau": "#4338ca"
     },
     {
@@ -544,6 +543,11 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/atk-hex80/01.webp",
+      "anhs": [
+        "/products/atk-hex80/01.webp",
+        "/products/atk-hex80/02.webp"
+      ],
       "mau": "#4338ca"
     },
     {
@@ -557,6 +561,7 @@
       "nhomTinhTrang": "khac",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/everglide-ae61-pro/01.webp",
       "mau": "#b45309"
     },
     {
@@ -578,19 +583,6 @@
         "/products/atk-rs6-aspas/04.webp"
       ],
       "mau": "#4338ca"
-    },
-    {
-      "id": "hyperx-cloud-2-trang-hong-kem-soundcard",
-      "slug": "hyperx-cloud-2-trang-hong-kem-soundcard",
-      "ten": "Cloud 2 ( trắng hồng ) kèm soundcard",
-      "hang": "Hyperx",
-      "danhMuc": "tai-nghe",
-      "gia": 1400000,
-      "tinhTrang": "Mới, nguyên seal",
-      "nhomTinhTrang": "moi",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "mau": "#c2185b"
     },
     {
       "id": "razer-hammerhead-v3",
@@ -653,6 +645,7 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/atk-horizon-dsp/01.webp",
       "mau": "#4338ca"
     },
     {
@@ -666,6 +659,12 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/razer-barracuda-x-2022/01.webp",
+      "anhs": [
+        "/products/razer-barracuda-x-2022/01.webp",
+        "/products/razer-barracuda-x-2022/02.webp",
+        "/products/razer-barracuda-x-2022/03.webp"
+      ],
       "mau": "#4338ca"
     },
     {

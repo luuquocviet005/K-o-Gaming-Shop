@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# bộ nhớ đệm của bộ nạp ảnh — riêng từng máy, không chia sẻ được
+.cache-anh.json

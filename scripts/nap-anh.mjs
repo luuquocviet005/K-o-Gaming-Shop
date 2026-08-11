@@ -134,13 +134,10 @@ function nhanDangDanhMuc(ten) {
 async function timSanPhamTrongCay(duongDan, danhMuc = null, sau = 0) {
   if (sau > 5) return []; // chặn thư mục lồng quá sâu hoặc lối tắt vòng lặp
 
+  // File nén: CHƯA giải nén vội, chỉ ghi nhận. Giải nén là việc nặng, để dành
+  // tới lúc biết chắc bộ ảnh có thay đổi (xem phần lấy vân tay bên dưới).
   if (/\.zip$/i.test(duongDan)) {
-    const d = await giaiNen(duongDan);
-    if (!d) return [];
-    const files = (await readdir(d))
-      .filter((f) => DUOI_ANH.test(f))
-      .map((f) => join(d, f));
-    return [{ ten: basename(duongDan).replace(/\.zip$/i, ""), danhMuc, files }];
+    return [{ ten: basename(duongDan).replace(/\.zip$/i, ""), danhMuc, zip: duongDan }];
   }
 
   const muc = await readdir(duongDan, { withFileTypes: true });
@@ -171,7 +168,11 @@ async function timSanPhamTrongCay(duongDan, danhMuc = null, sau = 0) {
   }
 
   for (const z of zipCon) {
-    ketQua.push(...(await timSanPhamTrongCay(join(duongDan, z.name), danhMuc, sau + 1)));
+    ketQua.push({
+      ten: z.name.replace(/\.zip$/i, ""),
+      danhMuc,
+      zip: join(duongDan, z.name),
+    });
   }
 
   for (const t of thuMucCon) {
@@ -200,7 +201,34 @@ function sapAnh(duongDanAnh, tenSanPham) {
   });
 }
 
+/**
+ * Bộ nhớ đệm: sản phẩm nào đã nén từ bộ ảnh nào.
+ *
+ * Không có nó thì mỗi lần chạy lại nén toàn bộ ~280MB ảnh — chấp nhận được
+ * khi bấm tay, nhưng tác vụ chạy ngầm 15 phút/lần sẽ đốt CPU cả ngày.
+ * Dấu vân tay gồm tên file + dung lượng + thời điểm sửa, đủ để biết bộ ảnh
+ * nguồn có thay đổi hay không.
+ */
+const duongDanCache = join(root, ".cache-anh.json");
+let cache = {};
+try {
+  cache = JSON.parse(await readFile(duongDanCache, "utf8"));
+} catch {
+  /* lần đầu chạy */
+}
+const cacheMoi = {};
+
+async function vanTay(duongDanNguon) {
+  const phan = [];
+  for (const p of [...duongDanNguon].sort()) {
+    const s = await stat(p);
+    phan.push(`${basename(p)}:${s.size}:${Math.round(s.mtimeMs)}`);
+  }
+  return phan.join("|");
+}
+
 const khop = [];
+const boQua = [];
 const khongKhop = [];
 /** slug sản phẩm -> tên thư mục đã dùng, để bắt hai thư mục cùng trỏ một món */
 const daNhan = new Map();
@@ -223,7 +251,7 @@ for (const vao of duongDanVao) {
     continue;
   }
 
-  for (const { ten, danhMuc, files: duongDanAnh } of dsSanPham) {
+  for (const { ten, danhMuc, files: duongDanAnh, zip } of dsSanPham) {
     // Ảnh nằm trong thư mục danh mục thì chỉ đối chiếu trong danh mục đó —
     // không thể gán nhầm ảnh chuột sang một cái bàn phím trùng tên
     const ungVienSanPham = danhMuc
@@ -263,7 +291,32 @@ for (const vao of duongDanVao) {
     }
     daNhan.set(p.slug, ten);
 
-    const files = sapAnh(duongDanAnh, ten);
+    /**
+     * Lấy vân tay TRƯỚC khi giải nén.
+     *
+     * Với file nén thì vân tay lấy từ chính file .zip. Nếu lấy từ ảnh đã giải
+     * nén thì vô dụng: mỗi lần chạy giải ra thư mục tạm mới, thời điểm sửa
+     * file luôn khác nên vân tay luôn đổi, bộ nhớ đệm không bao giờ ăn.
+     */
+    const vt = await vanTay(zip ? [zip] : duongDanAnh);
+    cacheMoi[p.slug] = vt;
+    const dichCu = join(thuMucDich, p.slug);
+    if (cache[p.slug] === vt && existsSync(dichCu)) {
+      boQua.push({ ten, sanPham: p });
+      continue;
+    }
+
+    // Tới đây mới chắc là cần xử lý — giờ mới bung file nén ra
+    let duongDanThat = duongDanAnh;
+    if (zip) {
+      const d = await giaiNen(zip);
+      if (!d) continue;
+      duongDanThat = (await readdir(d))
+        .filter((f) => DUOI_ANH.test(f))
+        .map((f) => join(d, f));
+    }
+
+    const files = sapAnh(duongDanThat, ten);
 
     // Xoá ảnh cũ của món này rồi ghi lại từ đầu — tránh còn sót ảnh đã bỏ
     const dich = join(thuMucDich, p.slug);
@@ -305,66 +358,94 @@ for (const vao of duongDanVao) {
 }
 
 // ───────────────────────────── Báo cáo ─────────────────────────────
-console.log("");
-console.log("═══ NẠP ẢNH SẢN PHẨM ═══");
+// Gom vào một chỗ để vừa in ra màn hình, vừa ghi thành file nhật ký đặt ngay
+// trong thư mục ảnh — tác vụ chạy ngầm không có màn hình để đọc.
+const dong = [];
+const ghi = (s = "") => dong.push(s);
+
+const luc = new Date().toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" });
+ghi("═══ NẠP ẢNH SẢN PHẨM ═══");
+ghi(`Chạy lúc: ${luc}`);
 
 if (khop.length) {
-  console.log("");
-  console.log(`  ✓ Đã nạp ảnh cho ${khop.length} sản phẩm (${tongAnh} tấm):`);
+  ghi("");
+  ghi(`✓ Đã nạp ảnh cho ${khop.length} sản phẩm (${tongAnh} tấm):`);
   for (const k of khop) {
     const chac = k.diem === 1 ? "" : `  (khớp ${Math.round(k.diem * 100)}%)`;
     const dm = k.danhMuc ? `[${k.danhMuc.short}] ` : "";
-    console.log(
-      `      ${dm}${k.ten}  →  ${k.sanPham.hang} ${k.sanPham.ten} · ${k.so} tấm${chac}`,
-    );
+    ghi(`    ${dm}${k.ten}  →  ${k.sanPham.hang} ${k.sanPham.ten} · ${k.so} tấm${chac}`);
   }
   const mbGoc = (tongGoc / 1024 / 1024).toFixed(1);
   const mbNen = (tongNen / 1024 / 1024).toFixed(1);
-  console.log("");
-  console.log(`  Dung lượng: ${mbGoc} MB  →  ${mbNen} MB  (nhẹ hơn ${Math.round(tongGoc / tongNen)} lần)`);
+  ghi("");
+  ghi(`Dung lượng: ${mbGoc} MB → ${mbNen} MB (nhẹ hơn ${Math.round(tongGoc / tongNen)} lần)`);
+}
+
+if (boQua.length) {
+  ghi("");
+  ghi(`· ${boQua.length} sản phẩm đã có ảnh từ trước, không đổi — bỏ qua.`);
 }
 
 if (khongKhop.length) {
-  console.log("");
-  console.log(`  ⚠ ${khongKhop.length} thư mục KHÔNG khớp được với sản phẩm nào:`);
+  ghi("");
+  ghi(`⚠ ${khongKhop.length} thư mục KHÔNG khớp được với sản phẩm nào — CẦN BẠN SỬA:`);
   for (const k of khongKhop) {
+    ghi("");
     if (k.trung) {
-      console.log(`      "${k.ten}"`);
-      console.log(
-        `        Trùng đích với "${k.trung.voi}" — cả hai đều khớp món`,
-      );
-      console.log(`        ${k.trung.sanPham.hang} ${k.trung.sanPham.ten}`);
-      console.log("        → Bảng hàng chỉ có MỘT dòng cho model này. Nếu bạn có");
-      console.log("          hai chiếc khác nhau, thêm một dòng nữa vào Sheet với");
-      console.log("          tên phân biệt rõ, rồi chạy lại.");
+      ghi(`    "${k.ten}"`);
+      ghi(`      Trùng đích với "${k.trung.voi}" — cả hai đều khớp món`);
+      ghi(`      ${k.trung.sanPham.hang} ${k.trung.sanPham.ten}`);
+      ghi("      → Bảng hàng chỉ có MỘT dòng cho model này. Nếu bạn có hai");
+      ghi("        chiếc khác nhau, thêm một dòng nữa vào Sheet với tên phân");
+      ghi("        biệt rõ (ví dụ 'RS6' và 'RS6 Aspas').");
       continue;
     }
     const dm = k.danhMuc ? ` (đang tìm trong danh mục ${k.danhMuc.name})` : "";
-    console.log(`      "${k.ten}"${dm}`);
+    ghi(`    "${k.ten}"${dm}`);
     if (k.ungVien.length) {
-      console.log("        Gần giống nhất:");
+      ghi("      Gần giống nhất:");
       for (const u of k.ungVien) {
-        console.log(
-          `          ${u.sanPham.hang} ${u.sanPham.ten}  (${Math.round(u.diem * 100)}%)`,
-        );
-        console.log(`             mã:  ${u.sanPham.slug}`);
+        ghi(`        ${u.sanPham.hang} ${u.sanPham.ten}  (${Math.round(u.diem * 100)}%)`);
+        ghi(`           mã:  ${u.sanPham.slug}`);
       }
-      console.log("        → Đổi tên thư mục thành đúng dòng 'mã:' ở trên là chắc chắn");
-      console.log("          khớp, kể cả khi hai món trùng tên nhau.");
+      ghi("      → Đổi tên thư mục/file nén thành đúng dòng 'mã:' ở trên là");
+      ghi("        chắc chắn khớp, kể cả khi hai món trùng tên nhau.");
     } else {
-      console.log("        → Không có món nào gần giống. Kiểm tra lại tên thư mục.");
+      ghi("      → Không có món nào gần giống. Kiểm tra lại tên thư mục,");
+      ghi("        hoặc món này chưa có trong Google Sheet.");
     }
   }
 }
+
+if (khop.length === 0 && khongKhop.length === 0) {
+  ghi("");
+  ghi("Không có ảnh nào mới. Mọi thứ đã cập nhật.");
+}
+
+console.log("");
+for (const d of dong) console.log(d ? `  ${d}` : "");
+console.log("");
 
 // Dọn ảnh giải nén tạm — không để rác lại trong ổ đĩa
 if (daDungTam) await rm(thuMucTam, { recursive: true, force: true });
 
-if (khop.length === 0) {
-  console.log("");
-  console.log("  Không nạp được ảnh nào.");
-  console.log("");
-  process.exit(1);
+await writeFile(duongDanCache, JSON.stringify(cacheMoi, null, 2) + "\n", "utf8");
+
+/**
+ * Nhật ký đặt ngay cạnh ảnh của người dùng.
+ *
+ * Tác vụ chạy ngầm không hiện cửa sổ nào, nên đây là cách duy nhất để biết
+ * lần chạy vừa rồi có món nào lỗi. Đặt trong thư mục ảnh chứ không phải
+ * trong dự án, vì đó là nơi người dùng thật sự mở ra xem.
+ */
+const goc = duongDanVao.find((p) => existsSync(p) && !/\.zip$/i.test(p));
+if (goc) {
+  try {
+    await writeFile(join(goc, "BAO CAO.txt"), dong.join("\r\n") + "\r\n", "utf8");
+  } catch {
+    /* thư mục chỉ đọc — bỏ qua, đã in ra màn hình rồi */
+  }
 }
 
-console.log("");
+// Không khớp được món nào VÀ cũng chẳng có gì mới -> coi là hỏng
+if (khop.length === 0 && boQua.length === 0) process.exit(1);
