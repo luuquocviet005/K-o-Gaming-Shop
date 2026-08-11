@@ -4,15 +4,22 @@
  *   Kéo thư mục thả lên "Tai anh len web.bat"
  *   hoặc:  node scripts/nap-anh.mjs "D:\đường\dẫn\Ảnh gear"
  *
- * Cấu trúc thư mục mong đợi — mỗi sản phẩm một thư mục con:
+ * Cấu trúc thư mục: MỖI SẢN PHẨM MỘT THƯ MỤC, muốn lồng bao nhiêu tầng cũng
+ * được. Thư mục nào chứa ảnh trực tiếp thì được coi là một sản phẩm.
  *
- *   Ảnh gear/
- *     ├── Finalmouse Tarik/
- *     │     ├── Finalmouse Tarik.jpg   ← trùng tên thư mục = ảnh bìa
- *     │     ├── IMG_2026...jpg
- *     │     └── IMG_2026...jpg
- *     └── Razer Viper v3 pro/
- *           └── ...
+ *   Ảnh gear/                        Ảnh gear/
+ *     ├── Finalmouse Tarik/            ├── Chuột/
+ *     │     ├── ...jpg                 │     ├── Finalmouse Tarik/
+ *     └── Razer Viper v3 pro/          │     │     └── ...jpg
+ *           └── ...jpg                 │     └── Razer Viper v3 pro.zip
+ *                                      └── Bàn phím/
+ *   (phẳng — vẫn chạy)                       └── ATK Hex80/
+ *                                                  └── ...jpg
+ *                                      (chia theo danh mục — nên dùng)
+ *
+ * Chia theo danh mục còn được lợi: tên thư mục cha khớp với một danh mục trên
+ * web thì script CHỈ đối chiếu trong danh mục đó, nên không thể gán nhầm ảnh
+ * chuột sang bàn phím.
  *
  * Ảnh gốc từ điện thoại nặng ~3MB, 4096px. Script nén xuống ~1400px định dạng
  * webp (còn khoảng 60–120KB, nhẹ hơn 30–50 lần) rồi mới đưa vào web. Ảnh gốc
@@ -95,32 +102,58 @@ async function giaiNen(duongDanZip) {
   return dich;
 }
 
-/** Liệt kê thư mục con có chứa ảnh; nếu chính nó chứa ảnh thì trả về chính nó */
-async function timThuMucSanPham(duongDan) {
-  // Bản thân đường dẫn là một file .zip
+/** Tên thư mục có phải một danh mục trên web không (bỏ dấu, không phân biệt hoa thường) */
+function nhanDangDanhMuc(ten) {
+  const can = boDau(ten).replace(/[^a-z0-9]/g, "");
+  return (
+    duLieu.danhMuc.find(
+      (d) =>
+        boDau(d.name).replace(/[^a-z0-9]/g, "") === can ||
+        boDau(d.short).replace(/[^a-z0-9]/g, "") === can ||
+        d.slug.replace(/[^a-z0-9]/g, "") === can,
+    ) ?? null
+  );
+}
+
+/**
+ * Duyệt cây thư mục, trả về danh sách { duongDan, danhMuc }.
+ *
+ * Quy tắc: thư mục nào chứa ảnh TRỰC TIẾP thì đó là một sản phẩm, dừng lại
+ * không đi sâu thêm. Thư mục chỉ chứa thư mục con thì đi tiếp — nhờ vậy chia
+ * theo danh mục bao nhiêu tầng cũng được.
+ *
+ * `danhMuc` mang theo từ thư mục cha gần nhất có tên trùng một danh mục.
+ */
+async function timThuMucSanPham(duongDan, danhMuc = null, sau = 0) {
+  if (sau > 5) return []; // chặn thư mục lồng quá sâu hoặc lối tắt vòng lặp
+
   if (/\.zip$/i.test(duongDan)) {
     const d = await giaiNen(duongDan);
-    return d ? [d] : [];
+    return d ? [{ duongDan: d, danhMuc }] : [];
   }
 
   const muc = await readdir(duongDan, { withFileTypes: true });
-  const coAnhTrucTiep = muc.some((m) => m.isFile() && DUOI_ANH.test(m.name));
-  if (coAnhTrucTiep) return [duongDan];
+  if (muc.some((m) => m.isFile() && DUOI_ANH.test(m.name))) {
+    return [{ duongDan, danhMuc }];
+  }
 
-  const con = [];
+  const ketQua = [];
   for (const m of muc) {
+    const duongDanCon = join(duongDan, m.name);
+
     // File .zip nằm cạnh các thư mục — Google Photos trả về dạng này
     if (m.isFile() && /\.zip$/i.test(m.name)) {
-      const d = await giaiNen(join(duongDan, m.name));
-      if (d) con.push(d);
+      const d = await giaiNen(duongDanCon);
+      if (d) ketQua.push({ duongDan: d, danhMuc });
       continue;
     }
     if (!m.isDirectory()) continue;
-    const duongDanCon = join(duongDan, m.name);
-    const trong = await readdir(duongDanCon, { withFileTypes: true });
-    if (trong.some((t) => t.isFile() && DUOI_ANH.test(t.name))) con.push(duongDanCon);
+
+    // Thư mục này có phải tên một danh mục không? Nếu có thì truyền xuống dưới
+    const dmCon = nhanDangDanhMuc(m.name) ?? danhMuc;
+    ketQua.push(...(await timThuMucSanPham(duongDanCon, dmCon, sau + 1)));
   }
-  return con;
+  return ketQua;
 }
 
 /**
@@ -155,12 +188,24 @@ for (const vao of duongDanVao) {
     continue;
   }
 
-  for (const tm of thuMucs) {
+  for (const { duongDan: tm, danhMuc } of thuMucs) {
     const ten = basename(tm);
-    const ketQua = timSanPham(ten, sanPham);
+
+    // Ảnh nằm trong thư mục danh mục thì chỉ đối chiếu trong danh mục đó —
+    // không thể gán nhầm ảnh chuột sang một cái bàn phím trùng tên
+    const ungVienSanPham = danhMuc
+      ? sanPham.filter((p) => p.danhMuc === danhMuc.slug)
+      : sanPham;
+
+    const ketQua = timSanPham(ten, ungVienSanPham);
 
     if (!ketQua.sanPham) {
-      khongKhop.push({ ten, ungVien: ketQua.ungVien, diem: ketQua.diem });
+      khongKhop.push({
+        ten,
+        danhMuc,
+        ungVien: ketQua.ungVien,
+        diem: ketQua.diem,
+      });
       continue;
     }
 
@@ -204,7 +249,7 @@ for (const vao of duongDanVao) {
     }
 
     if (daGhi.length > 0) {
-      khop.push({ ten, sanPham: p, so: daGhi.length, diem: ketQua.diem });
+      khop.push({ ten, sanPham: p, so: daGhi.length, diem: ketQua.diem, danhMuc });
     }
   }
 }
@@ -218,7 +263,10 @@ if (khop.length) {
   console.log(`  ✓ Đã nạp ảnh cho ${khop.length} sản phẩm (${tongAnh} tấm):`);
   for (const k of khop) {
     const chac = k.diem === 1 ? "" : `  (khớp ${Math.round(k.diem * 100)}%)`;
-    console.log(`      ${k.ten}  →  ${k.sanPham.hang} ${k.sanPham.ten} · ${k.so} tấm${chac}`);
+    const dm = k.danhMuc ? `[${k.danhMuc.short}] ` : "";
+    console.log(
+      `      ${dm}${k.ten}  →  ${k.sanPham.hang} ${k.sanPham.ten} · ${k.so} tấm${chac}`,
+    );
   }
   const mbGoc = (tongGoc / 1024 / 1024).toFixed(1);
   const mbNen = (tongNen / 1024 / 1024).toFixed(1);
@@ -230,15 +278,18 @@ if (khongKhop.length) {
   console.log("");
   console.log(`  ⚠ ${khongKhop.length} thư mục KHÔNG khớp được với sản phẩm nào:`);
   for (const k of khongKhop) {
-    console.log(`      "${k.ten}"`);
+    const dm = k.danhMuc ? ` (đang tìm trong danh mục ${k.danhMuc.name})` : "";
+    console.log(`      "${k.ten}"${dm}`);
     if (k.ungVien.length) {
       console.log("        Gần giống nhất:");
       for (const u of k.ungVien) {
         console.log(
           `          ${u.sanPham.hang} ${u.sanPham.ten}  (${Math.round(u.diem * 100)}%)`,
         );
+        console.log(`             mã:  ${u.sanPham.slug}`);
       }
-      console.log("        → Đổi tên thư mục cho giống tên trên, rồi chạy lại.");
+      console.log("        → Đổi tên thư mục thành đúng dòng 'mã:' ở trên là chắc chắn");
+      console.log("          khớp, kể cả khi hai món trùng tên nhau.");
     } else {
       console.log("        → Không có món nào gần giống. Kiểm tra lại tên thư mục.");
     }

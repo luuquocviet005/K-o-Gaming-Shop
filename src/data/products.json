@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 21
+      "soLuong": 18
     },
     {
       "slug": "ban-phim",
@@ -14,7 +14,7 @@
       "short": "Bàn phím",
       "icon": "ban-phim",
       "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời.",
-      "soLuong": 19
+      "soLuong": 16
     },
     {
       "slug": "tai-nghe",
@@ -116,47 +116,6 @@
       "mau": "#334155"
     },
     {
-      "id": "razer-viper-v3-hyperspeed",
-      "slug": "razer-viper-v3-hyperspeed",
-      "ten": "Viper v3 hyperspeed",
-      "hang": "Razer",
-      "danhMuc": "chuot",
-      "gia": 400000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Sài Gòn",
-      "soLuong": 1,
-      "note": "Xấu mất đáy, bông sơn nhè dùng ổn",
-      "mau": "#4338ca"
-    },
-    {
-      "id": "razer-da-v3-hyperspeed",
-      "slug": "razer-da-v3-hyperspeed",
-      "ten": "Da v3 hyperspeed",
-      "hang": "Razer",
-      "danhMuc": "chuot",
-      "gia": 1350000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Sài Gòn",
-      "soLuong": 1,
-      "note": "BH hãng 3/2027",
-      "mau": "#4338ca"
-    },
-    {
-      "id": "vgn-f2-master",
-      "slug": "vgn-f2-master",
-      "ten": "f2 master",
-      "hang": "Vgn",
-      "danhMuc": "chuot",
-      "gia": 800000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Sài Gòn",
-      "soLuong": 1,
-      "mau": "#1f2937"
-    },
-    {
       "id": "logitech-g903-lightspeed",
       "slug": "logitech-g903-lightspeed",
       "ten": "G903 lightspeed",
@@ -232,6 +191,12 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 2,
+      "anh": "/products/logitech-g-pro-wireless/01.webp",
+      "anhs": [
+        "/products/logitech-g-pro-wireless/01.webp",
+        "/products/logitech-g-pro-wireless/02.webp",
+        "/products/logitech-g-pro-wireless/03.webp"
+      ],
       "mau": "#7c3aed"
     },
     {
@@ -245,6 +210,12 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/pulsar-tenz-den/01.webp",
+      "anhs": [
+        "/products/pulsar-tenz-den/01.webp",
+        "/products/pulsar-tenz-den/02.webp",
+        "/products/pulsar-tenz-den/03.webp"
+      ],
       "mau": "#be123c"
     },
     {
@@ -282,9 +253,9 @@
       "mau": "#7c3aed"
     },
     {
-      "id": "razer-da-v3-pro",
-      "slug": "razer-da-v3-pro",
-      "ten": "Da v3 pro",
+      "id": "razer-deathadder-v3-pro",
+      "slug": "razer-deathadder-v3-pro",
+      "ten": "Deathadder v3 pro",
       "hang": "Razer",
       "danhMuc": "chuot",
       "gia": 1100000,
@@ -316,9 +287,9 @@
       "mau": "#334155"
     },
     {
-      "id": "finalmouse-tarik-l",
-      "slug": "finalmouse-tarik-l",
-      "ten": "Tarik ( L )",
+      "id": "finalmouse-tarik",
+      "slug": "finalmouse-tarik",
+      "ten": "Tarik (",
       "hang": "FinalMouse",
       "danhMuc": "chuot",
       "gia": 2500000,
@@ -326,14 +297,6 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
-      "anh": "/products/finalmouse-tarik-l/01.webp",
-      "anhs": [
-        "/products/finalmouse-tarik-l/01.webp",
-        "/products/finalmouse-tarik-l/02.webp",
-        "/products/finalmouse-tarik-l/03.webp",
-        "/products/finalmouse-tarik-l/04.webp",
-        "/products/finalmouse-tarik-l/05.webp"
-      ],
       "mau": "#7c3aed"
     },
     {
@@ -355,9 +318,7 @@
       "ten": "80he ghost",
       "hang": "WOOTING",
       "danhMuc": "ban-phim",
-      "gia": 5800000,
-      "giaToiDa": 6000000,
-      "ghiChuGia": "5tr8 / 6tr",
+      "gia": 5000000,
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
@@ -371,26 +332,12 @@
       "ten": "80he",
       "hang": "WOOTING",
       "danhMuc": "ban-phim",
-      "gia": 5700000,
+      "gia": 5000000,
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Sài Gòn",
       "soLuong": 1,
       "mau": "#be123c"
-    },
-    {
-      "id": "atk-hex-80",
-      "slug": "atk-hex-80",
-      "ten": "Hex 80",
-      "hang": "ATK",
-      "danhMuc": "ban-phim",
-      "gia": 3700000,
-      "tinhTrang": "Cũ · thiếu box giấy",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Sài Gòn",
-      "soLuong": 1,
-      "note": "Bị trầy 1 xíu xíu",
-      "mau": "#4338ca"
     },
     {
       "id": "hm-lab-hm64z-custom-case-holy",
@@ -413,8 +360,6 @@
       "hang": "ATK",
       "danhMuc": "ban-phim",
       "gia": 1300000,
-      "giaToiDa": 1500000,
-      "ghiChuGia": "1m3-1m5",
       "tinhTrang": "Cũ",
       "nhomTinhTrang": "cu",
       "diaDiem": "Sài Gòn",
@@ -447,19 +392,6 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "mau": "#1f2937"
-    },
-    {
-      "id": "dna65-full-phim",
-      "slug": "dna65-full-phim",
-      "ten": "DNA65 full phím",
-      "hang": "Không rõ hãng",
-      "danhMuc": "ban-phim",
-      "gia": 400000,
-      "tinhTrang": "Phím và dây",
-      "nhomTinhTrang": "khac",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "mau": "#15803d"
     },
     {
       "id": "case-holy60-nhua-do",
@@ -561,19 +493,6 @@
       "mau": "#0f172a"
     },
     {
-      "id": "atk-rs7-pro",
-      "slug": "atk-rs7-pro",
-      "ten": "Rs7 pro",
-      "hang": "ATK",
-      "danhMuc": "ban-phim",
-      "gia": 1200000,
-      "tinhTrang": "Cũ · không hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "mau": "#4338ca"
-    },
-    {
       "id": "attackshark-r82",
       "slug": "attackshark-r82",
       "ten": "R82",
@@ -636,6 +555,11 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 5,
+      "anh": "/products/razer-moray/01.webp",
+      "anhs": [
+        "/products/razer-moray/01.webp",
+        "/products/razer-moray/02.webp"
+      ],
       "mau": "#4338ca"
     },
     {

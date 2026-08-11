@@ -221,6 +221,22 @@ for (const cauHinh of config.tabs) {
   }
 }
 
+/**
+ * Thư mục ảnh không còn sản phẩm nào tương ứng.
+ *
+ * Xảy ra khi món hàng bị đổi tên hoặc gỡ khỏi Sheet sau khi đã có ảnh. Ảnh
+ * mồ côi vẫn nằm trong kho mã và bị đẩy lên máy chủ, nên phải báo để dọn —
+ * script KHÔNG tự xoá, vì có thể chỉ là đổi tên tạm và ảnh sẽ dùng lại.
+ */
+const boSlug = new Set(sanPham.map((p) => p.slug));
+for (const slug of anhTheoThuMuc.keys()) {
+  if (!boSlug.has(slug)) {
+    canhBao.push(
+      `⚠ Ảnh mồ côi: public/products/${slug}/ không còn sản phẩm nào dùng — xoá thư mục này nếu không cần nữa.`,
+    );
+  }
+}
+
 // ── Chốt chặn an toàn ───────────────────────────────────────────────────
 if (sanPham.length === 0) {
   console.error("");

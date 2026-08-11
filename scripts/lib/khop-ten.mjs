@@ -54,6 +54,12 @@ function chamDiem(tuThuMuc, sanPham) {
  * hơn là không có ảnh.
  */
 export function timSanPham(tenThuMuc, danhSach) {
+  // Lối thoát chính xác tuyệt đối: đặt tên thư mục đúng bằng mã sản phẩm.
+  // Dùng khi bảng hàng có hai món trùng tên nhau, đoán kiểu gì cũng có thể sai.
+  const maCanTim = boDau(tenThuMuc).replace(/[^a-z0-9]/g, "");
+  const theoMa = danhSach.find((p) => p.slug.replace(/[^a-z0-9]/g, "") === maCanTim);
+  if (theoMa) return { sanPham: theoMa, diem: 1, roRang: true, ungVien: [] };
+
   const tu = tuKhoa(tenThuMuc);
   if (tu.length === 0) return { sanPham: null, diem: 0, roRang: false, ungVien: [] };
 
