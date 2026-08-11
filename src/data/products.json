@@ -22,7 +22,7 @@
       "short": "Tai nghe",
       "icon": "tai-nghe",
       "blurb": "Tai nghe chụp tai, in-ear và soundcard.",
-      "soLuong": 9
+      "soLuong": 8
     },
     {
       "slug": "switch-he",
@@ -46,6 +46,18 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/razer-naga-v2-hyperspeed/01.webp",
+      "anhs": [
+        "/products/razer-naga-v2-hyperspeed/01.webp",
+        "/products/razer-naga-v2-hyperspeed/02.webp",
+        "/products/razer-naga-v2-hyperspeed/03.webp",
+        "/products/razer-naga-v2-hyperspeed/04.webp",
+        "/products/razer-naga-v2-hyperspeed/05.webp",
+        "/products/razer-naga-v2-hyperspeed/06.webp",
+        "/products/razer-naga-v2-hyperspeed/07.webp",
+        "/products/razer-naga-v2-hyperspeed/08.webp",
+        "/products/razer-naga-v2-hyperspeed/09.webp"
+      ],
       "mau": "#4338ca"
     },
     {
@@ -59,6 +71,14 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/atk-f1-extreme-leviatan/01.webp",
+      "anhs": [
+        "/products/atk-f1-extreme-leviatan/01.webp",
+        "/products/atk-f1-extreme-leviatan/02.webp",
+        "/products/atk-f1-extreme-leviatan/03.webp",
+        "/products/atk-f1-extreme-leviatan/04.webp",
+        "/products/atk-f1-extreme-leviatan/05.webp"
+      ],
       "mau": "#4338ca"
     },
     {
@@ -72,6 +92,12 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/atk-a9-mini-hong/01.webp",
+      "anhs": [
+        "/products/atk-a9-mini-hong/01.webp",
+        "/products/atk-a9-mini-hong/02.webp",
+        "/products/atk-a9-mini-hong/03.webp"
+      ],
       "mau": "#4338ca"
     },
     {
@@ -99,12 +125,20 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/logitech-g903-lightspeed/01.webp",
+      "anhs": [
+        "/products/logitech-g903-lightspeed/01.webp",
+        "/products/logitech-g903-lightspeed/02.webp",
+        "/products/logitech-g903-lightspeed/03.webp",
+        "/products/logitech-g903-lightspeed/04.webp",
+        "/products/logitech-g903-lightspeed/05.webp"
+      ],
       "mau": "#7c3aed"
     },
     {
-      "id": "xingmeng-zero-1-se-3-mode",
-      "slug": "xingmeng-zero-1-se-3-mode",
-      "ten": "Zero 1 se ( 3 mode )",
+      "id": "xingmeng-zero-1-se",
+      "slug": "xingmeng-zero-1-se",
+      "ten": "Zero 1 se",
       "hang": "Xingmeng",
       "danhMuc": "chuot",
       "gia": 250000,
@@ -115,9 +149,9 @@
       "mau": "#b45309"
     },
     {
-      "id": "aula-sc311-3-mode",
-      "slug": "aula-sc311-3-mode",
-      "ten": "SC311 ( 3 mode )",
+      "id": "aula-sc311",
+      "slug": "aula-sc311",
+      "ten": "SC311",
       "hang": "Aula",
       "danhMuc": "chuot",
       "gia": 250000,
@@ -128,9 +162,9 @@
       "mau": "#dc2626"
     },
     {
-      "id": "smailwolf-m3-3-mode",
-      "slug": "smailwolf-m3-3-mode",
-      "ten": "M3 ( 3 mode )",
+      "id": "smailwolf-m3",
+      "slug": "smailwolf-m3",
+      "ten": "M3",
       "hang": "SmailWolf",
       "danhMuc": "chuot",
       "gia": 250000,
@@ -151,6 +185,13 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/lamzu-maya-kem-dongle-8k/01.webp",
+      "anhs": [
+        "/products/lamzu-maya-kem-dongle-8k/01.webp",
+        "/products/lamzu-maya-kem-dongle-8k/02.webp",
+        "/products/lamzu-maya-kem-dongle-8k/03.webp",
+        "/products/lamzu-maya-kem-dongle-8k/04.webp"
+      ],
       "mau": "#b45309"
     },
     {
@@ -236,6 +277,14 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/razer-deathadder-v3-pro/01.webp",
+      "anhs": [
+        "/products/razer-deathadder-v3-pro/01.webp",
+        "/products/razer-deathadder-v3-pro/02.webp",
+        "/products/razer-deathadder-v3-pro/03.webp",
+        "/products/razer-deathadder-v3-pro/04.webp",
+        "/products/razer-deathadder-v3-pro/05.webp"
+      ],
       "mau": "#4338ca"
     },
     {
@@ -270,25 +319,20 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/finalmouse-tarik/01.webp",
+      "anhs": [
+        "/products/finalmouse-tarik/01.webp",
+        "/products/finalmouse-tarik/02.webp",
+        "/products/finalmouse-tarik/03.webp",
+        "/products/finalmouse-tarik/04.webp",
+        "/products/finalmouse-tarik/05.webp"
+      ],
       "mau": "#7c3aed"
-    },
-    {
-      "id": "80he",
-      "slug": "80he",
-      "ten": "80he",
-      "hang": "Không rõ hãng",
-      "danhMuc": "ban-phim",
-      "gia": 4700000,
-      "tinhTrang": "Phím và dây",
-      "nhomTinhTrang": "khac",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "mau": "#15803d"
     },
     {
       "id": "wooting-80he-ghost",
       "slug": "wooting-80he-ghost",
-      "ten": "80he ghost",
+      "ten": "80HE Ghost",
       "hang": "WOOTING",
       "danhMuc": "ban-phim",
       "gia": 5000000,
@@ -296,20 +340,12 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 3,
-      "note": "2 con full đồ, 1 con thiếu",
-      "mau": "#be123c"
-    },
-    {
-      "id": "wooting-80he",
-      "slug": "wooting-80he",
-      "ten": "80he",
-      "hang": "WOOTING",
-      "danhMuc": "ban-phim",
-      "gia": 5000000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Sài Gòn",
-      "soLuong": 1,
+      "anh": "/products/wooting-80he-ghost/01.webp",
+      "anhs": [
+        "/products/wooting-80he-ghost/01.webp",
+        "/products/wooting-80he-ghost/02.webp",
+        "/products/wooting-80he-ghost/03.webp"
+      ],
       "mau": "#be123c"
     },
     {
@@ -390,6 +426,13 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/atk-rs6/01.webp",
+      "anhs": [
+        "/products/atk-rs6/01.webp",
+        "/products/atk-rs6/02.webp",
+        "/products/atk-rs6/03.webp",
+        "/products/atk-rs6/04.webp"
+      ],
       "mau": "#4338ca"
     },
     {
@@ -404,6 +447,11 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "note": "mạch và plate cardbon ( có plate nhôm)",
+      "anh": "/products/atk-kit-edge60-ban-test-0-01/01.webp",
+      "anhs": [
+        "/products/atk-kit-edge60-ban-test-0-01/01.webp",
+        "/products/atk-kit-edge60-ban-test-0-01/02.webp"
+      ],
       "mau": "#4338ca"
     },
     {
@@ -436,6 +484,12 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/titan-nation-titan68-pro/01.webp",
+      "anhs": [
+        "/products/titan-nation-titan68-pro/01.webp",
+        "/products/titan-nation-titan68-pro/02.webp",
+        "/products/titan-nation-titan68-pro/03.webp"
+      ],
       "mau": "#7c3aed"
     },
     {
@@ -450,6 +504,16 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "note": "receiver hư, switch silent",
+      "anh": "/products/monsgeek-m1w/01.webp",
+      "anhs": [
+        "/products/monsgeek-m1w/01.webp",
+        "/products/monsgeek-m1w/02.webp",
+        "/products/monsgeek-m1w/03.webp",
+        "/products/monsgeek-m1w/04.webp",
+        "/products/monsgeek-m1w/05.webp",
+        "/products/monsgeek-m1w/06.webp",
+        "/products/monsgeek-m1w/07.webp"
+      ],
       "mau": "#b45309"
     },
     {
@@ -476,6 +540,7 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/attackshark-r82/01.webp",
       "mau": "#be123c"
     },
     {
@@ -540,7 +605,12 @@
       "tinhTrang": "Mới, nguyên seal",
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 4,
+      "soLuong": 1,
+      "anh": "/products/razer-hammerhead-v3/01.webp",
+      "anhs": [
+        "/products/razer-hammerhead-v3/01.webp",
+        "/products/razer-hammerhead-v3/02.webp"
+      ],
       "mau": "#4338ca"
     },
     {
@@ -553,7 +623,7 @@
       "tinhTrang": "Mới, nguyên seal",
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 5,
+      "soLuong": 3,
       "anh": "/products/razer-moray/01.webp",
       "anhs": [
         "/products/razer-moray/01.webp",
@@ -602,25 +672,12 @@
       "mau": "#4338ca"
     },
     {
-      "id": "razer-blackshark-v2-pro-2021",
-      "slug": "razer-blackshark-v2-pro-2021",
-      "ten": "Blackshark v2 pro 2021",
-      "hang": "Razer",
-      "danhMuc": "tai-nghe",
-      "gia": 1400000,
-      "tinhTrang": "Cũ · không hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Sài Gòn",
-      "soLuong": 1,
-      "mau": "#4338ca"
-    },
-    {
-      "id": "hyperx-earbuds-3",
-      "slug": "hyperx-earbuds-3",
-      "ten": "Earbuds 3",
+      "id": "hyperx-earbuds-2",
+      "slug": "hyperx-earbuds-2",
+      "ten": "Earbuds 2",
       "hang": "HyperX",
       "danhMuc": "tai-nghe",
-      "gia": 750000,
+      "gia": 550000,
       "tinhTrang": "Mới, nguyên seal",
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
