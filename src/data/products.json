@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 16
+      "soLuong": 17
     },
     {
       "slug": "ban-phim",
@@ -341,6 +341,19 @@
         "/products/finalmouse-tarik/05.webp"
       ],
       "mau": "#7c3aed"
+    },
+    {
+      "id": "lamzu-maya-x",
+      "slug": "lamzu-maya-x",
+      "ten": "Maya X",
+      "hang": "Lamzu",
+      "danhMuc": "chuot",
+      "gia": 1700000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "mau": "#b45309"
     },
     {
       "id": "wooting-80he-ghost",
