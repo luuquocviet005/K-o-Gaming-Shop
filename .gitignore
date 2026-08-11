@@ -42,3 +42,6 @@ next-env.d.ts
 
 # bộ nhớ đệm của bộ nạp ảnh — riêng từng máy, không chia sẻ được
 .cache-anh.json
+
+# khoá chống hai lượt nạp ảnh chạy chồng lên nhau — chỉ tồn tại lúc đang chạy
+.dang-chay.lock

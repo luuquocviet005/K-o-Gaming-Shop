@@ -14,6 +14,7 @@ import { readFile, appendFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { giuKhoa } from "./lib/khoa.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(await readFile(join(root, "sync.config.json"), "utf8"));
@@ -48,6 +49,12 @@ if (!thuMucAnh) {
 if (!existsSync(thuMucAnh)) {
   console.error(`Không thấy thư mục ảnh: ${thuMucAnh}`);
   process.exit(1);
+}
+
+// Chủ tiệm đang tự tay chạy thì nhường — lượt sau (15 phút nữa) làm cũng được
+if (!giuKhoa()) {
+  console.log("Đang có một lượt chạy khác — bỏ qua lượt này.");
+  process.exit(0);
 }
 
 // 1. Nạp ảnh. Bộ nhớ đệm lo phần "không có gì mới thì thoát nhanh".
