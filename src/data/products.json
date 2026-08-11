@@ -112,6 +112,16 @@
       "diaDiem": "Sài Gòn",
       "soLuong": 1,
       "note": "Bị trầy 1 đường nhẹ",
+      "anh": "/products/ninjutso-sora-v2/01.webp",
+      "anhs": [
+        "/products/ninjutso-sora-v2/01.webp",
+        "/products/ninjutso-sora-v2/02.webp",
+        "/products/ninjutso-sora-v2/03.webp",
+        "/products/ninjutso-sora-v2/04.webp",
+        "/products/ninjutso-sora-v2/05.webp",
+        "/products/ninjutso-sora-v2/06.webp",
+        "/products/ninjutso-sora-v2/07.webp"
+      ],
       "mau": "#334155"
     },
     {
@@ -362,6 +372,11 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Sài Gòn",
       "soLuong": 1,
+      "anh": "/products/hm-lab-hm64z-custom-case-holy/01.webp",
+      "anhs": [
+        "/products/hm-lab-hm64z-custom-case-holy/01.webp",
+        "/products/hm-lab-hm64z-custom-case-holy/02.webp"
+      ],
       "mau": "#0f172a"
     },
     {
@@ -503,6 +518,11 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/fgg-titan68-turbo/01.webp",
+      "anhs": [
+        "/products/fgg-titan68-turbo/01.webp",
+        "/products/fgg-titan68-turbo/02.webp"
+      ],
       "mau": "#0f172a"
     },
     {
