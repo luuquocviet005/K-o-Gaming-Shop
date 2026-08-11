@@ -109,34 +109,50 @@ rồi bỏ file logo vào `public/logo.svg`. Đổi cả `src/app/icon.svg` đ�
 
 ### Sản phẩm
 
-Sửa [`src/lib/products.ts`](src/lib/products.ts). Mỗi sản phẩm là một object:
+Danh sách hàng **không** nằm trong code — nó lấy từ Google Sheet. Sửa Sheet là
+sửa web. Mỗi tab trong Sheet là một danh mục; ánh xạ tab → danh mục khai báo ở
+[`sync.config.json`](sync.config.json).
 
-```ts
-{
-  id: "m-07",                        // duy nhất, không trùng
-  slug: "ten-san-pham-khong-dau",    // đường dẫn: /san-pham/<slug>/
-  name: "Tên hiển thị",
-  brand: "Hãng",
-  category: "chuot",                 // chuot | ban-phim | tai-nghe |
-                                     // ghe-gaming | tay-cam | man-hinh
-  price: 1_290_000,
-  oldPrice: 1_690_000,               // bỏ dòng này nếu không giảm giá
-  rating: 4.8, reviews: 120, positive: 95, sold: 300, stock: 12,
-  accent: "#16a34a",                 // màu hình minh hoạ khi chưa có ảnh
-  image: "/products/chuot-abc.jpg",  // ← bỏ dòng này nếu chưa có ảnh
-  summary: "Một câu mô tả ngắn",
-  description: "Đoạn mô tả dài...",
-  highlights: ["Ý 1", "Ý 2"],
-  specs: [{ label: "Kết nối", value: "USB-C" }],
-  variantLabel: "Màu sắc",           // bỏ nếu không có phiên bản
-  variants: [{ id: "den", name: "Đen", priceDelta: 0 }],
-}
+Kéo dữ liệu về ngay lập tức:
+
+```bash
+npm run sync
 ```
 
-**Ảnh sản phẩm:** bỏ file vào `public/products/`, khai báo ở `image`. Nên dùng
-ảnh vuông (1000×1000), định dạng `.webp`, nền trắng, dung lượng < 150KB. Nếu bỏ
-trống `image`, website tự vẽ hình minh hoạ vector theo danh mục — không bao giờ
-bị vỡ layout.
+Ngoài ra GitHub Actions tự chạy lệnh này 20 phút một lần, nên kể cả không đụng
+gì thì Sheet vẫn tự lên web.
+
+Tên cột, cách viết giá (`650k`, `1tr2`, `5m7`, `1tr2 - 1tr5`) và cách viết tình
+trạng đều được đọc rất thoáng — xem [`scripts/lib/normalize.mjs`](scripts/lib/normalize.mjs)
+nếu cần biết chính xác quy tắc.
+
+### Ảnh sản phẩm
+
+Bỏ ảnh vào thư mục ảnh (khai báo ở `sync.config.json` > `thuMucAnh`), chia theo
+danh mục rồi mỗi sản phẩm một thư mục con (hoặc một file `.zip` — script tự bung):
+
+```
+Ảnh gear/
+  Chuột/
+    Razer Naga v2 Hyperspeed/   ← tên trùng tên trong Sheet là khớp được
+    ATK F1 Extreme.zip
+  Bàn phím/
+    ...
+```
+
+Script tự nén ảnh (thường nhẹ đi ~20 lần), tự khớp với sản phẩm trong Sheet, và
+ghi kết quả vào file **`BAO CAO.txt`** ngay trong thư mục ảnh — mở file đó ra là
+biết ảnh nào đã lên, ảnh nào chưa khớp được tên.
+
+**Cách chạy — chọn một:**
+
+| Cách | Làm gì |
+| --- | --- |
+| **Tự động** (khuyến nghị) | Chạy `Bat tu dong 15 phut.bat` **một lần duy nhất**. Từ đó chỉ cần bỏ ảnh vào thư mục, tối đa 15 phút sau là web tự cập nhật. Muốn dừng: `Tat tu dong.bat`. |
+| **Thủ công** | Kéo thả thư mục ảnh vào `Tai anh len web.bat`. |
+
+Sản phẩm chưa có ảnh thật thì website tự vẽ hình minh hoạ vector theo danh mục —
+không bao giờ bị vỡ layout.
 
 ### Màu sắc / giao diện
 
