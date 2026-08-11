@@ -33,7 +33,10 @@ export type Product = {
   soLuong: number;
   /** Ghi chú tình trạng thật của món hàng — thông tin quan trọng nhất với đồ cũ */
   note?: string;
+  /** Ảnh bìa — cũng là ảnh đầu trong `anhs` khi sản phẩm có nhiều ảnh */
   anh?: string;
+  /** Nhiều ảnh cho một món, do scripts/nap-anh.mjs sinh ra. Chỉ có khi ≥ 2 tấm */
+  anhs?: string[];
   mau: string;
 };
 

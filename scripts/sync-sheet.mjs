@@ -64,9 +64,29 @@ async function taiTab(tab) {
  * "Naga v2 hyperspeed.jpg" khớp với sản phẩm "Naga v2 hyperspeed".
  */
 let fileAnh = [];
+/** slug sản phẩm -> danh sách ảnh trong public/products/<slug>/ */
+const anhTheoThuMuc = new Map();
+
 try {
-  fileAnh = (await readdir(join(root, "public", "products")))
-    .filter((f) => /\.(jpe?g|png|webp|avif|gif)$/i.test(f));
+  const muc = await readdir(join(root, "public", "products"), { withFileTypes: true });
+
+  fileAnh = muc
+    .filter((m) => m.isFile() && /\.(jpe?g|png|webp|avif|gif)$/i.test(m.name))
+    .map((m) => m.name);
+
+  // Thư mục con = một sản phẩm nhiều ảnh, do scripts/nap-anh.mjs tạo ra
+  for (const m of muc) {
+    if (!m.isDirectory()) continue;
+    const trong = (await readdir(join(root, "public", "products", m.name)))
+      .filter((f) => /\.(jpe?g|png|webp|avif|gif)$/i.test(f))
+      .sort((a, b) => a.localeCompare(b, "vi", { numeric: true }));
+    if (trong.length) {
+      anhTheoThuMuc.set(
+        m.name,
+        trong.map((f) => `/products/${m.name}/${encodeURIComponent(f)}`),
+      );
+    }
+  }
 } catch {
   /* chưa có thư mục ảnh */
 }
@@ -158,6 +178,10 @@ for (const cauHinh of config.tabs) {
     let slug = slugify(`${hang} ${ten}`) || slugify(ten);
     if (sanPham.some((p) => p.slug === slug)) slug = `${slug}-${sanPham.length + 1}`;
 
+    // Thư mục ảnh riêng của sản phẩm được ưu tiên hơn mọi cách tìm ảnh khác
+    const boAnh = anhTheoThuMuc.get(slug);
+    if (boAnh) anh = boAnh[0];
+
     sanPham.push({
       id: slug,
       slug,
@@ -174,6 +198,7 @@ for (const cauHinh of config.tabs) {
       soLuong: docSoNguyen(layO(row, "so luong"), 0),
       ...(note ? { note } : {}),
       ...(anh ? { anh } : {}),
+      ...(boAnh && boAnh.length > 1 ? { anhs: boAnh } : {}),
       mau: mauTheoHang(hang),
     });
 

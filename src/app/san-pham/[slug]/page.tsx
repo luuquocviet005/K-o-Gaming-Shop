@@ -4,7 +4,7 @@ import { getCategory, getProduct, products, relatedProducts, toCard } from "@/li
 import { formatGia } from "@/lib/format";
 import { site } from "@/lib/site";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import { ProductMedia } from "@/components/product-art";
+import { ThuVienAnh } from "@/components/thu-vien-anh";
 import { ProductCard } from "@/components/product-card";
 import { ProductPurchase } from "@/components/product-purchase";
 import { ConditionBadge } from "@/components/condition-badge";
@@ -106,8 +106,8 @@ export default async function ProductPage(props: Props) {
       <div className="mt-6 grid gap-10 lg:grid-cols-2 lg:gap-14">
         {/* ── Ảnh ── */}
         <div className="lg:sticky lg:top-28 lg:self-start">
-          <div className="relative overflow-hidden rounded-[2rem] border border-border bg-surface p-8">
-            <div className="absolute left-6 top-6">
+          <div className="relative">
+            <div className="absolute left-6 top-6 z-10">
               <ConditionBadge
                 tinhTrang={product.tinhTrang}
                 nhom={product.nhomTinhTrang}
@@ -115,19 +115,7 @@ export default async function ProductPage(props: Props) {
               />
             </div>
 
-            <div className="mx-auto aspect-square w-full max-w-md">
-              <ProductMedia
-                product={product}
-                priority
-                sizes="(min-width: 1024px) 30rem, 90vw"
-              />
-            </div>
-
-            {!product.anh && (
-              <p className="mt-2 text-center text-xs text-fg-subtle">
-                Chưa có ảnh thật — nhắn tụi mình để xem ảnh chụp món này
-              </p>
-            )}
+            <ThuVienAnh product={product} />
           </div>
 
           <ul className="mt-4 grid gap-2 sm:grid-cols-2">

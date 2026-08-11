@@ -271,6 +271,14 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/logitech-g502-x-plus/01.webp",
+      "anhs": [
+        "/products/logitech-g502-x-plus/01.webp",
+        "/products/logitech-g502-x-plus/02.webp",
+        "/products/logitech-g502-x-plus/03.webp",
+        "/products/logitech-g502-x-plus/04.webp",
+        "/products/logitech-g502-x-plus/05.webp"
+      ],
       "mau": "#7c3aed"
     },
     {
@@ -297,6 +305,14 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/wl-mouse-beast-x-max/01.webp",
+      "anhs": [
+        "/products/wl-mouse-beast-x-max/01.webp",
+        "/products/wl-mouse-beast-x-max/02.webp",
+        "/products/wl-mouse-beast-x-max/03.webp",
+        "/products/wl-mouse-beast-x-max/04.webp",
+        "/products/wl-mouse-beast-x-max/05.webp"
+      ],
       "mau": "#334155"
     },
     {
@@ -310,6 +326,14 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/finalmouse-tarik-l/01.webp",
+      "anhs": [
+        "/products/finalmouse-tarik-l/01.webp",
+        "/products/finalmouse-tarik-l/02.webp",
+        "/products/finalmouse-tarik-l/03.webp",
+        "/products/finalmouse-tarik-l/04.webp",
+        "/products/finalmouse-tarik-l/05.webp"
+      ],
       "mau": "#7c3aed"
     },
     {
@@ -488,6 +512,12 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/atk-68rx/01.webp",
+      "anhs": [
+        "/products/atk-68rx/01.webp",
+        "/products/atk-68rx/02.webp",
+        "/products/atk-68rx/03.webp"
+      ],
       "mau": "#4338ca"
     },
     {
