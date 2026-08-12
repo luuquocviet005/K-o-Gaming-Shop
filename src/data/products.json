@@ -25,6 +25,14 @@
       "soLuong": 7
     },
     {
+      "slug": "pad-chuot",
+      "name": "Pad chuột",
+      "short": "Pad chuột",
+      "icon": "pad-chuot",
+      "blurb": "Pad vải, pad cỡ lớn và pad chơi game — hàng mới và hàng cũ.",
+      "soLuong": 3
+    },
+    {
       "slug": "switch-he",
       "name": "Switch HE",
       "short": "Switch",
@@ -39,7 +47,7 @@
       "short": "Phụ kiện",
       "icon": "do-khac",
       "blurb": "Keycap, bungee, đế sạc, tai nghe không dây và đồ chơi lẻ đi kèm.",
-      "soLuong": 4
+      "soLuong": 7
     }
   ],
   "sanPham": [
@@ -763,6 +771,45 @@
       "mau": "#c2185b"
     },
     {
+      "id": "atk-lie-xsoft-m",
+      "slug": "atk-lie-xsoft-m",
+      "ten": "LIe xsoft ( M )",
+      "hang": "ATK",
+      "danhMuc": "pad-chuot",
+      "gia": 70000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 8,
+      "mau": "#4338ca"
+    },
+    {
+      "id": "atk-crimson",
+      "slug": "atk-crimson",
+      "ten": "Crimson",
+      "hang": "ATK",
+      "danhMuc": "pad-chuot",
+      "gia": 1000000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 2,
+      "mau": "#4338ca"
+    },
+    {
+      "id": "steelseries-qck-heavy",
+      "slug": "steelseries-qck-heavy",
+      "ten": "QCK Heavy",
+      "hang": "Steelseries",
+      "danhMuc": "pad-chuot",
+      "gia": 400000,
+      "tinhTrang": "Cũ",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "mau": "#0f172a"
+    },
+    {
       "id": "ttc-ttc-kom",
       "slug": "ttc-ttc-kom",
       "ten": "TTC Kom",
@@ -910,6 +957,45 @@
         "/products/razer-anzu-l/03.webp",
         "/products/razer-anzu-l/04.webp"
       ],
+      "mau": "#4338ca"
+    },
+    {
+      "id": "razer-feet-viper-v3-pro",
+      "slug": "razer-feet-viper-v3-pro",
+      "ten": "Feet Viper V3 Pro",
+      "hang": "Razer",
+      "danhMuc": "phu-kien",
+      "gia": 60000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 10,
+      "mau": "#4338ca"
+    },
+    {
+      "id": "razer-feet-viper-v4-pro",
+      "slug": "razer-feet-viper-v4-pro",
+      "ten": "Feet Viper V4 Pro",
+      "hang": "Razer",
+      "danhMuc": "phu-kien",
+      "gia": 100000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 10,
+      "mau": "#4338ca"
+    },
+    {
+      "id": "atk-love-keycap",
+      "slug": "atk-love-keycap",
+      "ten": "Love Keycap",
+      "hang": "ATK",
+      "danhMuc": "phu-kien",
+      "gia": 70000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 7,
       "mau": "#4338ca"
     }
   ]

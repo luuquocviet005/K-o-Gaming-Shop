@@ -273,6 +273,15 @@ export const SwitchIcon = (p: IconProps) => (
   </Svg>
 );
 
+export const MousepadIcon = (p: IconProps) => (
+  <Svg {...p}>
+    {/* Tấm pad nhìn chếch, có con chuột nhỏ đặt lên để phân biệt với ô vuông */}
+    <rect x="2.5" y="6" width="19" height="12" rx="2" />
+    <rect x="13" y="9" width="5" height="7.5" rx="2.5" />
+    <path d="M15.5 11v1.8" />
+  </Svg>
+);
+
 export const BoxIcon = (p: IconProps) => (
   <Svg {...p}>
     <path d="M12 3.5 20 7v10l-8 3.5L4 17V7l8-3.5Z" />
@@ -346,6 +355,7 @@ const bangIcon: Record<string, (p: IconProps) => React.ReactElement> = {
   chuot: MouseIcon,
   "ban-phim": KeyboardIcon,
   "tai-nghe": HeadphonesIcon,
+  "pad-chuot": MousepadIcon,
   switch: SwitchIcon,
   "do-khac": BoxIcon,
   ghe: ChairIcon,

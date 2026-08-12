@@ -34,6 +34,14 @@
       "blurb": "Tai nghe chụp tai, in-ear và soundcard."
     },
     {
+      "tab": "Pad chuột",
+      "slug": "pad-chuot",
+      "name": "Pad chuột",
+      "short": "Pad chuột",
+      "icon": "pad-chuot",
+      "blurb": "Pad vải, pad cỡ lớn và pad chơi game — hàng mới và hàng cũ."
+    },
+    {
       "tab": "Switch HE",
       "slug": "switch-he",
       "name": "Switch HE",
