@@ -38,7 +38,7 @@
       "short": "Phụ kiện",
       "icon": "do-khac",
       "blurb": "Keycap, bungee, đế sạc, tai nghe không dây và đồ chơi lẻ đi kèm.",
-      "soLuong": 8
+      "soLuong": 9
     },
     {
       "slug": "switch-he",
@@ -794,7 +794,10 @@
         "/products/hyperx-soundcard-cloud-2/03.webp",
         "/products/hyperx-soundcard-cloud-2/04.webp"
       ],
-      "mau": "#c2185b"
+      "mau": "#c2185b",
+      "danhMucKhac": [
+        "phu-kien"
+      ]
     },
     {
       "id": "atk-lie-xsoft-m",

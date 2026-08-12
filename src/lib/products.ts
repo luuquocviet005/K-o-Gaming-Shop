@@ -19,6 +19,16 @@ export type Product = {
   ten: string;
   hang: string;
   danhMuc: string;
+  /**
+   * Danh mục phụ — món này còn được xếp thêm vào những nhóm nào nữa.
+   *
+   * Có khi một món thuộc về hai chỗ thật: soundcard vừa là đồ đi kèm tai nghe
+   * vừa là phụ kiện. Chủ shop khai nó ở nhiều tab trong Sheet thì nó hiện ở
+   * đúng ngần ấy danh mục — nhưng vẫn chỉ có MỘT trang sản phẩm, một đường
+   * dẫn, một chỗ để sửa. `danhMuc` ở trên là nhóm chính, dùng cho breadcrumb
+   * và dòng "Nhóm" trên trang sản phẩm.
+   */
+  danhMucKhac?: string[];
   /** VNĐ. 0 nghĩa là chưa có giá — hiển thị "Liên hệ" */
   gia: number;
   /** Có khi Sheet ghi khoảng giá ("1m3-1m5") hoặc hai mức ("5tr8 / 6tr") */
@@ -64,7 +74,9 @@ export function getCategory(slug: string): Category | undefined {
 }
 
 export function productsByCategory(slug: string): Product[] {
-  return products.filter((p) => p.danhMuc === slug);
+  return products.filter(
+    (p) => p.danhMuc === slug || p.danhMucKhac?.includes(slug),
+  );
 }
 
 export function countByCategory(slug: string): number {

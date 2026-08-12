@@ -164,15 +164,24 @@ for (const cauHinh of config.tabs) {
       hang = "";
     }
 
-    // Khử trùng lặp: cùng hãng + tên thì chỉ giữ lần xuất hiện đầu
+    /*
+     * Cùng hãng + cùng tên xuất hiện ở nhiều tab = chủ shop CỐ Ý xếp món đó
+     * vào nhiều danh mục (soundcard vừa thuộc Tai nghe vừa thuộc Phụ kiện).
+     *
+     * Trước đây bản sau bị bỏ đi kèm một dòng cảnh báo, nghĩa là món đó chỉ
+     * hiện ở tab đầu tiên — khách vào danh mục kia thì không thấy, và chủ shop
+     * không hề biết. Giờ ghi thêm danh mục vào chính món đã tạo: vẫn một trang
+     * sản phẩm, một đường dẫn, nhưng hiện ở đủ mọi danh mục được khai.
+     */
     const khoa = `${boDau(hang)}|${boDau(ten)}`;
-    if (daThay.has(khoa)) {
-      canhBao.push(
-        `⚠ Trùng: "${hang} ${ten}" có ở cả tab "${daThay.get(khoa)}" và "${cauHinh.tab}" — bỏ qua bản sau.`,
-      );
+    const daCo = daThay.get(khoa);
+    if (daCo) {
+      if (daCo.danhMuc !== cauHinh.slug && !daCo.danhMucKhac?.includes(cauHinh.slug)) {
+        (daCo.danhMucKhac ??= []).push(cauHinh.slug);
+        demTrongTab++;
+      }
       continue;
     }
-    daThay.set(khoa, cauHinh.tab);
 
     const { gia, giaToiDa, ghiChuGia } = docGia(
       layO(row, "gia", "gia 1 cai", "gia ban"),
@@ -212,7 +221,7 @@ for (const cauHinh of config.tabs) {
     const boAnh = anhTheoThuMuc.get(slug);
     if (boAnh) anh = boAnh[0];
 
-    sanPham.push({
+    const mon = {
       id: slug,
       slug,
       ten,
@@ -230,7 +239,11 @@ for (const cauHinh of config.tabs) {
       ...(anh ? { anh } : {}),
       ...(boAnh && boAnh.length > 1 ? { anhs: boAnh } : {}),
       mau: mauTheoHang(hang),
-    });
+    };
+
+    sanPham.push(mon);
+    // Giữ tham chiếu tới chính món này để tab sau còn ghi thêm danh mục vào
+    daThay.set(khoa, mon);
 
     demTrongTab++;
   }
