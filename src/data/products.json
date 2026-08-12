@@ -1068,6 +1068,12 @@
       "nhomTinhTrang": "khac",
       "diaDiem": "Sài Gòn",
       "soLuong": 52,
+      "anh": "/products/titan-nation-miami/01.webp",
+      "anhs": [
+        "/products/titan-nation-miami/01.webp",
+        "/products/titan-nation-miami/02.webp",
+        "/products/titan-nation-miami/03.webp"
+      ],
       "mau": "#7c3aed"
     }
   ]
