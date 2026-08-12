@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Baloo_2, Inter } from "next/font/google";
 import "./globals.css";
-import { site } from "@/lib/site";
+import { site, ANH_CHIA_SE } from "@/lib/site";
 import { CartProvider } from "@/lib/cart";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -45,12 +45,36 @@ export const metadata: Metadata = {
     "màn hình gaming",
     "kẹo gaming shop",
   ],
+  /*
+   * Thẻ xem trước khi dán link vào Zalo / Messenger / Facebook.
+   *
+   * Ảnh mặc định dùng cho trang chủ và các trang không gắn với một món cụ thể.
+   * Trang sản phẩm và trang danh mục tự đè lên bằng ảnh thật của hàng — xem
+   * generateMetadata ở san-pham/[slug] và danh-muc/[slug].
+   *
+   * Thiếu ảnh thì Zalo/Facebook hiện một ô xám trống, khách lướt qua luôn.
+   */
   openGraph: {
     type: "website",
     locale: "vi_VN",
     siteName: site.name,
     title: `${site.name} — ${site.tagline}`,
     description: site.description,
+    url: site.url,
+    images: [
+      {
+        url: ANH_CHIA_SE,
+        width: 1200,
+        height: 630,
+        alt: `${site.name} — ${site.tagline}`,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${site.name} — ${site.tagline}`,
+    description: site.description,
+    images: [ANH_CHIA_SE],
   },
   robots: { index: true, follow: true },
 };

@@ -99,11 +99,16 @@ try {
     .filter((m) => m.isFile() && /\.(jpe?g|png|webp|avif|gif)$/i.test(m.name))
     .map((m) => m.name);
 
-  // Thư mục con = một sản phẩm nhiều ảnh, do scripts/nap-anh.mjs tạo ra
+  // Thư mục con = một sản phẩm nhiều ảnh, do scripts/nap-anh.mjs tạo ra.
+  //
+  // Bỏ qua "chia-se.jpg": đó là ảnh 1200×630 dành riêng cho thẻ xem trước trên
+  // Zalo/Facebook (scripts/anh-chia-se-san-pham.mjs vẽ ra), nằm chung thư mục
+  // nhưng KHÔNG phải một tấm ảnh của món. Tính nhầm thì khách mở thư viện ảnh
+  // sẽ thấy thừa một tấm bị viền hồng hai bên.
   for (const m of muc) {
     if (!m.isDirectory()) continue;
     const trong = (await readdir(join(root, "public", "products", m.name)))
-      .filter((f) => /\.(jpe?g|png|webp|avif|gif)$/i.test(f))
+      .filter((f) => /\.(jpe?g|png|webp|avif|gif)$/i.test(f) && f !== "chia-se.jpg")
       .sort((a, b) => a.localeCompare(b, "vi", { numeric: true }));
     if (trong.length) {
       anhTheoThuMuc.set(

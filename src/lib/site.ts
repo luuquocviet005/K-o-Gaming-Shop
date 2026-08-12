@@ -41,3 +41,33 @@ export const site = {
     ghiChuCod: "Ship COD: khách trả phí nhà xe, tụi mình báo trước khi gửi.",
   },
 } as const;
+
+/**
+ * Ảnh mặc định của thẻ xem trước khi dán link vào Zalo / Messenger / Facebook.
+ * Vẽ lại bằng: node scripts/tao-anh-chia-se.mjs
+ */
+export const ANH_CHIA_SE = "/anh-chia-se.png";
+
+/**
+ * Đổi đường dẫn ảnh trong web thành địa chỉ đầy đủ có tên miền.
+ *
+ * Zalo và Facebook đọc trang từ máy chủ của họ, KHÔNG phải từ trình duyệt của
+ * khách, nên đường dẫn kiểu "/products/abc/01.webp" với họ là vô nghĩa —
+ * phải là "https://keogaminggear.com/products/abc/01.webp". Đây là lỗi kinh
+ * điển khiến thẻ xem trước mất ảnh.
+ */
+export function anhDayDu(duongDan: string): string {
+  if (/^https?:\/\//i.test(duongDan)) return duongDan;
+  return `${site.url}${duongDan.startsWith("/") ? "" : "/"}${duongDan}`;
+}
+
+/**
+ * Ảnh riêng cho thẻ xem trước của một sản phẩm: /products/<slug>/chia-se.jpg
+ *
+ * Không dùng thẳng ảnh .webp trên web vì Zalo/Facebook đọc webp không đồng đều
+ * và chúng cắt xén ảnh vuông. File này do scripts/anh-chia-se-san-pham.mjs vẽ
+ * ra ở bước build nên luôn tồn tại cho mọi món đã có ảnh.
+ */
+export function anhChiaSeSanPham(slug: string): string {
+  return anhDayDu(`/products/${slug}/chia-se.jpg`);
+}

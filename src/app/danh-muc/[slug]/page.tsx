@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { categories, getCategory, productsByCategory, toCard } from "@/lib/products";
+import { site, ANH_CHIA_SE, anhDayDu, anhChiaSeSanPham } from "@/lib/site";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { ProductBrowser } from "@/components/product-browser";
 import { CategoryIcon } from "@/components/icons";
@@ -23,9 +24,31 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   const { slug } = await props.params;
   const category = getCategory(slug);
   if (!category) return { title: "Không tìm thấy danh mục" };
+
+  const moTa = `${category.name} tại KẸO GAMING SHOP. ${category.blurb}`;
+
+  // Thẻ xem trước lấy ảnh món đầu tiên trong danh mục — dán link "Chuột" vào
+  // Zalo thì khách thấy ngay một con chuột, sát nội dung hơn logo shop.
+  const monCoAnh = productsByCategory(slug).find((p) => p.anh);
+  const anh = monCoAnh
+    ? anhChiaSeSanPham(monCoAnh.slug)
+    : anhDayDu(ANH_CHIA_SE);
+
   return {
     title: category.name,
-    description: `${category.name} tại KẸO GAMING SHOP. ${category.blurb}`,
+    description: moTa,
+    openGraph: {
+      title: `${category.name} — ${site.name}`,
+      description: moTa,
+      url: `${site.url}/danh-muc/${category.slug}/`,
+      images: [{ url: anh, width: 1200, height: 630, alt: category.name }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${category.name} — ${site.name}`,
+      description: moTa,
+      images: [anh],
+    },
   };
 }
 

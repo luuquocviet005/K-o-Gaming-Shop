@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getCategory, getProduct, products, relatedProducts, toCard } from "@/lib/products";
 import { formatGia } from "@/lib/format";
-import { site } from "@/lib/site";
+import { site, ANH_CHIA_SE, anhDayDu, anhChiaSeSanPham } from "@/lib/site";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { ThuVienAnh } from "@/components/thu-vien-anh";
 import { ProductCard } from "@/components/product-card";
@@ -33,10 +33,37 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     .filter(Boolean)
     .join(" · ");
 
+  // Ảnh cho thẻ xem trước trên Zalo / Messenger / Facebook. Món chưa có ảnh
+  // thật thì rơi về tấm mặc định của shop, chứ không để trống.
+  const coAnh = Boolean(product.anh);
+  const anhChiaSe = coAnh
+    ? anhChiaSeSanPham(product.slug)
+    : anhDayDu(ANH_CHIA_SE);
+  const tieuDe = `${product.ten} — ${formatGia(product)}`;
+
   return {
     title: `${product.ten} — ${product.hang}`,
     description: moTa,
-    openGraph: { title: `${product.ten} — ${formatGia(product)}`, description: moTa },
+    openGraph: {
+      type: "website",
+      title: tieuDe,
+      description: moTa,
+      url: `${site.url}/san-pham/${product.slug}/`,
+      images: [
+        {
+          url: anhChiaSe,
+          width: 1200,
+          height: 630,
+          alt: `${product.hang} ${product.ten}`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: tieuDe,
+      description: moTa,
+      images: [anhChiaSe],
+    },
   };
 }
 
@@ -51,11 +78,16 @@ export default async function ProductPage(props: Props) {
   // Dữ liệu có cấu trúc giúp Google hiện giá ngay trên kết quả tìm kiếm.
   // `itemCondition` khai báo đúng hàng mới hay hàng cũ — khai sai là vi phạm
   // chính sách mua sắm của Google.
+  // Google chỉ hiện ảnh kèm kết quả tìm kiếm khi có trường `image`, và địa chỉ
+  // phải đầy đủ tên miền chứ không phải đường dẫn tương đối.
+  const anhChoGoogle = (product.anhs ?? (product.anh ? [product.anh] : [])).map(anhDayDu);
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: `${product.hang} ${product.ten}`,
     description: product.note || `${product.ten} — ${product.tinhTrang}`,
+    ...(anhChoGoogle.length > 0 && { image: anhChoGoogle }),
     brand: { "@type": "Brand", name: product.hang },
     ...(product.gia > 0 && {
       offers: {

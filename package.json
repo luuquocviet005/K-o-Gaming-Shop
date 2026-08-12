@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build && node scripts/postbuild.mjs",
+    "build": "node scripts/anh-chia-se-san-pham.mjs && next build && node scripts/postbuild.mjs",
     "preview": "npx --yes serve out -l 4000",
     "check": "node scripts/check-links.mjs && node scripts/audit.mjs && node scripts/contrast.mjs",
     "contrast": "node scripts/contrast.mjs",
