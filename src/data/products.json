@@ -47,7 +47,7 @@
       "short": "Phụ kiện",
       "icon": "do-khac",
       "blurb": "Keycap, bungee, đế sạc, tai nghe không dây và đồ chơi lẻ đi kèm.",
-      "soLuong": 8
+      "soLuong": 9
     }
   ],
   "sanPham": [
@@ -273,6 +273,10 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "anh": "/products/atk-x1-ultimate-v2/01.webp",
+      "anhs": [
+        "/products/atk-x1-ultimate-v2/01.webp",
+        "/products/atk-x1-ultimate-v2/02.webp"
+      ],
       "mau": "#4338ca"
     },
     {
@@ -799,7 +803,10 @@
         "/products/atk-crimson/01.webp",
         "/products/atk-crimson/02.webp",
         "/products/atk-crimson/03.webp",
-        "/products/atk-crimson/04.webp"
+        "/products/atk-crimson/04.webp",
+        "/products/atk-crimson/05.webp",
+        "/products/atk-crimson/06.webp",
+        "/products/atk-crimson/07.webp"
       ],
       "mau": "#4338ca"
     },
@@ -991,6 +998,11 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 10,
+      "anh": "/products/razer-feet-viper-v4-pro/01.webp",
+      "anhs": [
+        "/products/razer-feet-viper-v4-pro/01.webp",
+        "/products/razer-feet-viper-v4-pro/02.webp"
+      ],
       "mau": "#4338ca"
     },
     {
@@ -1004,6 +1016,11 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/razer-stream-controller-x/01.webp",
+      "anhs": [
+        "/products/razer-stream-controller-x/01.webp",
+        "/products/razer-stream-controller-x/02.webp"
+      ],
       "mau": "#4338ca"
     },
     {
@@ -1024,6 +1041,19 @@
         "/products/atk-love-keycap/03.webp"
       ],
       "mau": "#4338ca"
+    },
+    {
+      "id": "day-led-8k",
+      "slug": "day-led-8k",
+      "ten": "Dây led 8k",
+      "hang": "Không rõ hãng",
+      "danhMuc": "phu-kien",
+      "gia": 60000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 10,
+      "mau": "#15803d"
     }
   ]
 }
