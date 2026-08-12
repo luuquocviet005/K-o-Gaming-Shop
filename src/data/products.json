@@ -39,7 +39,7 @@
       "icon": "switch",
       "blurb": "Switch từ tính bán lẻ theo cái — giá dưới đây là giá 1 switch.",
       "donViGia": "cái",
-      "soLuong": 6
+      "soLuong": 4
     },
     {
       "slug": "phu-kien",
@@ -791,7 +791,8 @@
       "anhs": [
         "/products/hyperx-soundcard-cloud-2/01.webp",
         "/products/hyperx-soundcard-cloud-2/02.webp",
-        "/products/hyperx-soundcard-cloud-2/03.webp"
+        "/products/hyperx-soundcard-cloud-2/03.webp",
+        "/products/hyperx-soundcard-cloud-2/04.webp"
       ],
       "mau": "#c2185b"
     },
@@ -858,21 +859,12 @@
       "nhomTinhTrang": "khac",
       "diaDiem": "Sài Gòn",
       "soLuong": 58,
+      "anh": "/products/ttc-ttc-kom/01.webp",
+      "anhs": [
+        "/products/ttc-ttc-kom/01.webp",
+        "/products/ttc-ttc-kom/02.webp"
+      ],
       "mau": "#b45309"
-    },
-    {
-      "id": "wooting-l45-lekker",
-      "slug": "wooting-l45-lekker",
-      "ten": "L45 Lekker",
-      "hang": "Wooting",
-      "danhMuc": "switch-he",
-      "gia": 3000,
-      "donViGia": "cái",
-      "tinhTrang": "",
-      "nhomTinhTrang": "khac",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 31,
-      "mau": "#be123c"
     },
     {
       "id": "gateron-jade-pro",
@@ -886,6 +878,12 @@
       "nhomTinhTrang": "khac",
       "diaDiem": "Đà Nẵng",
       "soLuong": 75,
+      "anh": "/products/gateron-jade-pro/01.webp",
+      "anhs": [
+        "/products/gateron-jade-pro/01.webp",
+        "/products/gateron-jade-pro/02.webp",
+        "/products/gateron-jade-pro/03.webp"
+      ],
       "mau": "#0f172a"
     },
     {
@@ -900,6 +898,11 @@
       "nhomTinhTrang": "khac",
       "diaDiem": "Sài Gòn",
       "soLuong": 50,
+      "anh": "/products/ttc-ttc-rgb/01.webp",
+      "anhs": [
+        "/products/ttc-ttc-rgb/01.webp",
+        "/products/ttc-ttc-rgb/02.webp"
+      ],
       "mau": "#b45309"
     },
     {
@@ -915,20 +918,6 @@
       "diaDiem": "Sài Gòn",
       "soLuong": 52,
       "mau": "#7c3aed"
-    },
-    {
-      "id": "ugaming-mount-tai-gt",
-      "slug": "ugaming-mount-tai-gt",
-      "ten": "Mount Tai GT",
-      "hang": "UGaming",
-      "danhMuc": "switch-he",
-      "gia": 15000,
-      "donViGia": "cái",
-      "tinhTrang": "",
-      "nhomTinhTrang": "khac",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 53,
-      "mau": "#c2185b"
     },
     {
       "id": "razer-phantom-keycap",
