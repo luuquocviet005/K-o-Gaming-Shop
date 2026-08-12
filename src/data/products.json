@@ -32,6 +32,14 @@
       "blurb": "Switch từ tính bán lẻ theo cái — giá dưới đây là giá 1 switch.",
       "donViGia": "cái",
       "soLuong": 6
+    },
+    {
+      "slug": "phu-kien",
+      "name": "Phụ kiện",
+      "short": "Phụ kiện",
+      "icon": "do-khac",
+      "blurb": "Keycap, bungee, đế sạc, tai nghe không dây và đồ chơi lẻ đi kèm.",
+      "soLuong": 4
     }
   ],
   "sanPham": [
@@ -837,6 +845,72 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 53,
       "mau": "#c2185b"
+    },
+    {
+      "id": "razer-phantom-keycap",
+      "slug": "razer-phantom-keycap",
+      "ten": "Phantom keycap",
+      "hang": "Razer",
+      "danhMuc": "phu-kien",
+      "gia": 450000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "mau": "#4338ca"
+    },
+    {
+      "id": "razer-mouse-bungee-v3",
+      "slug": "razer-mouse-bungee-v3",
+      "ten": "Mouse Bungee v3",
+      "hang": "Razer",
+      "danhMuc": "phu-kien",
+      "gia": 300000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "mau": "#4338ca"
+    },
+    {
+      "id": "razer-base-station-chroma-chroma-quartz",
+      "slug": "razer-base-station-chroma-chroma-quartz",
+      "ten": "Base Station Chroma Chroma - Quartz",
+      "hang": "Razer",
+      "danhMuc": "phu-kien",
+      "gia": 600000,
+      "tinhTrang": "Mới, nguyên seal",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 4,
+      "anh": "/products/razer-base-station-chroma-chroma-quartz/01.webp",
+      "anhs": [
+        "/products/razer-base-station-chroma-chroma-quartz/01.webp",
+        "/products/razer-base-station-chroma-chroma-quartz/02.webp",
+        "/products/razer-base-station-chroma-chroma-quartz/03.webp",
+        "/products/razer-base-station-chroma-chroma-quartz/04.webp"
+      ],
+      "mau": "#4338ca"
+    },
+    {
+      "id": "razer-anzu-l",
+      "slug": "razer-anzu-l",
+      "ten": "Anzu (L)",
+      "hang": "Razer",
+      "danhMuc": "phu-kien",
+      "gia": 850000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/razer-anzu-l/01.webp",
+      "anhs": [
+        "/products/razer-anzu-l/01.webp",
+        "/products/razer-anzu-l/02.webp",
+        "/products/razer-anzu-l/03.webp",
+        "/products/razer-anzu-l/04.webp"
+      ],
+      "mau": "#4338ca"
     }
   ]
 }

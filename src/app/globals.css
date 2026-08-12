@@ -64,6 +64,11 @@
   --dai-dam-chu: #ffe9f1;
   --dai-dam-mo: #e7aec5;
 
+  /* Nền mờ sau ảnh phóng to. CỐ Ý để tối ở CẢ hai giao diện: nền phóng to phải
+     làm ảnh nổi lên, nên nó luôn tối bất kể trang đang sáng hay tối. Dùng
+     var(--fg) thì ở giao diện tối nó hoá gần trắng, chói mắt. */
+  --nen-phong-to: rgb(20 8 14 / 0.92);
+
   --warning: #b45309;
   --star: #d97706;
   --danger: #dc2626;

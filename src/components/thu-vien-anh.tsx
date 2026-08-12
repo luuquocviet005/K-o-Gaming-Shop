@@ -1,9 +1,14 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import type { Product } from "@/lib/products";
 import { ProductMedia } from "@/components/product-art";
-import { ChevronLeftIcon, ChevronRightIcon, CloseIcon } from "@/components/icons";
+import {
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  CloseIcon,
+} from "@/components/icons";
 
 /**
  * Thư viện ảnh sản phẩm — trượt ngang, bấm vào để phóng to.
@@ -15,12 +20,25 @@ import { ChevronLeftIcon, ChevronRightIcon, CloseIcon } from "@/components/icons
  *
  * Khung phóng to quan trọng với hàng cũ: khách cần soi kỹ vết trầy trước khi
  * quyết định, ảnh nhỏ trong khung thẻ không đủ.
+ *
+ * Khung phóng to được ĐƯA THẲNG RA <body> bằng portal, không nằm lại chỗ này
+ * trong cây trang. Lý do: một lớp phủ toàn màn hình nằm sâu trong trang chỉ
+ * cần một tổ tiên bất kỳ có transform/filter/contain là bị nhốt lại, và nội
+ * dung phía sau sẽ đè lên trên. Ra thẳng <body> thì không tổ tiên nào nhốt
+ * được nữa — không phải canh z-index với từng thành phần khác trong trang.
  */
 export function ThuVienAnh({ product }: { product: Product }) {
   const anhs = product.anhs ?? (product.anh ? [product.anh] : []);
   const rangRef = useRef<HTMLDivElement>(null);
   const [chiSo, setChiSo] = useState(0);
   const [phongTo, setPhongTo] = useState<number | null>(null);
+
+  // Máy chủ không có <body> để bắn portal vào, nên chờ mount xong mới dựng
+  const [daMount, setDaMount] = useState(false);
+  useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setDaMount(true);
+  }, []);
 
   const dong = useCallback(() => setPhongTo(null), []);
 
@@ -55,7 +73,11 @@ export function ThuVienAnh({ product }: { product: Product }) {
     return (
       <div className="relative overflow-hidden rounded-[2rem] border border-border bg-surface p-8">
         <div className="mx-auto aspect-square w-full max-w-md">
-          <ProductMedia product={product} priority sizes="(min-width: 1024px) 30rem, 90vw" />
+          <ProductMedia
+            product={product}
+            priority
+            sizes="(min-width: 1024px) 30rem, 90vw"
+          />
         </div>
         <p className="mt-2 text-center text-xs text-fg-subtle">
           Chưa có ảnh thật — nhắn tụi mình để xem ảnh chụp món này
@@ -89,7 +111,10 @@ export function ThuVienAnh({ product }: { product: Product }) {
           className="no-scrollbar flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain"
         >
           {anhs.map((src, i) => (
-            <div key={src} className="w-full shrink-0 snap-center bg-surface-2 p-6">
+            <div
+              key={src}
+              className="w-full shrink-0 snap-center bg-surface-2 p-6"
+            >
               <button
                 type="button"
                 onClick={() => setPhongTo(i)}
@@ -154,66 +179,69 @@ export function ThuVienAnh({ product }: { product: Product }) {
       </p>
 
       {/* ─────────────── Khung phóng to ─────────────── */}
-      {phongTo !== null && (
-        <div
-          role="dialog"
-          aria-modal="true"
-          aria-label={`Ảnh phóng to: ${product.hang} ${product.ten}`}
-          className="fixed inset-0 z-[60] flex items-center justify-center bg-fg/90 p-4 backdrop-blur-sm"
-        >
-          {/* Bấm ra nền để đóng — nút phủ kín phía sau ảnh */}
-          <button
-            type="button"
-            aria-label="Đóng ảnh phóng to"
-            onClick={dong}
-            className="absolute inset-0 cursor-zoom-out"
-          />
-
-          {/* eslint-disable-next-line @next/next/no-img-element -- trang tĩnh, ảnh đã nén sẵn */}
-          <img
-            src={anhs[phongTo]}
-            alt={`${product.hang} ${product.ten} — ảnh ${phongTo + 1} trên ${anhs.length}`}
-            width={1400}
-            height={1400}
-            className="relative max-h-[85vh] w-auto max-w-full object-contain"
-          />
-
-          <button
-            type="button"
-            onClick={dong}
-            aria-label="Đóng ảnh phóng to"
-            autoFocus
-            className="absolute right-4 top-4 grid size-12 cursor-pointer place-items-center rounded-full bg-bg text-fg transition-transform hover:scale-105"
+      {phongTo !== null &&
+        daMount &&
+        createPortal(
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label={`Ảnh phóng to: ${product.hang} ${product.ten}`}
+            className="fixed inset-0 z-[200] flex items-center justify-center bg-[var(--nen-phong-to)] p-4 backdrop-blur-sm"
           >
-            <CloseIcon width={22} height={22} />
-          </button>
+            {/* Bấm ra nền để đóng — nút phủ kín phía sau ảnh */}
+            <button
+              type="button"
+              aria-label="Đóng ảnh phóng to"
+              onClick={dong}
+              className="absolute inset-0 cursor-zoom-out"
+            />
 
-          {nhieuAnh && (
-            <>
-              <button
-                type="button"
-                onClick={() => chuyen(-1)}
-                aria-label="Ảnh trước"
-                className="absolute left-4 top-1/2 grid size-12 -translate-y-1/2 cursor-pointer place-items-center rounded-full bg-bg text-fg transition-transform hover:scale-105"
-              >
-                <ChevronLeftIcon width={24} height={24} />
-              </button>
-              <button
-                type="button"
-                onClick={() => chuyen(1)}
-                aria-label="Ảnh tiếp theo"
-                className="absolute right-4 top-1/2 grid size-12 -translate-y-1/2 cursor-pointer place-items-center rounded-full bg-bg text-fg transition-transform hover:scale-105"
-              >
-                <ChevronRightIcon width={24} height={24} />
-              </button>
+            {/* eslint-disable-next-line @next/next/no-img-element -- trang tĩnh, ảnh đã nén sẵn */}
+            <img
+              src={anhs[phongTo]}
+              alt={`${product.hang} ${product.ten} — ảnh ${phongTo + 1} trên ${anhs.length}`}
+              width={1400}
+              height={1400}
+              className="relative max-h-[85vh] w-auto max-w-full object-contain"
+            />
 
-              <p className="absolute bottom-5 left-1/2 -translate-x-1/2 rounded-full bg-bg px-4 py-1.5 text-sm font-semibold text-fg">
-                {phongTo + 1} / {anhs.length}
-              </p>
-            </>
-          )}
-        </div>
-      )}
+            <button
+              type="button"
+              onClick={dong}
+              aria-label="Đóng ảnh phóng to"
+              autoFocus
+              className="absolute right-4 top-4 grid size-12 cursor-pointer place-items-center rounded-full bg-bg text-fg transition-transform hover:scale-105"
+            >
+              <CloseIcon width={22} height={22} />
+            </button>
+
+            {nhieuAnh && (
+              <>
+                <button
+                  type="button"
+                  onClick={() => chuyen(-1)}
+                  aria-label="Ảnh trước"
+                  className="absolute left-4 top-1/2 grid size-12 -translate-y-1/2 cursor-pointer place-items-center rounded-full bg-bg text-fg transition-transform hover:scale-105"
+                >
+                  <ChevronLeftIcon width={24} height={24} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => chuyen(1)}
+                  aria-label="Ảnh tiếp theo"
+                  className="absolute right-4 top-1/2 grid size-12 -translate-y-1/2 cursor-pointer place-items-center rounded-full bg-bg text-fg transition-transform hover:scale-105"
+                >
+                  <ChevronRightIcon width={24} height={24} />
+                </button>
+
+                <p className="absolute bottom-5 left-1/2 -translate-x-1/2 rounded-full bg-bg px-4 py-1.5 text-sm font-semibold text-fg">
+                  {phongTo + 1} / {anhs.length}
+                </p>
+              </>
+            )}
+          </div>,
+          document.body,
+        )}
     </>
   );
 }

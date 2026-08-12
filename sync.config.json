@@ -43,6 +43,14 @@
       "donViGia": "cái"
     },
     {
+      "tab": "Phụ kiện",
+      "slug": "phu-kien",
+      "name": "Phụ kiện",
+      "short": "Phụ kiện",
+      "icon": "do-khac",
+      "blurb": "Keycap, bungee, đế sạc, tai nghe không dây và đồ chơi lẻ đi kèm."
+    },
+    {
       "tab": "Đồ lặt vật",
       "slug": "do-lat-vat",
       "name": "Đồ lặt vặt",
