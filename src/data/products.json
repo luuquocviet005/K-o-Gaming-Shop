@@ -794,6 +794,13 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 2,
+      "anh": "/products/atk-crimson/01.webp",
+      "anhs": [
+        "/products/atk-crimson/01.webp",
+        "/products/atk-crimson/02.webp",
+        "/products/atk-crimson/03.webp",
+        "/products/atk-crimson/04.webp"
+      ],
       "mau": "#4338ca"
     },
     {
@@ -996,6 +1003,12 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 7,
+      "anh": "/products/atk-love-keycap/01.webp",
+      "anhs": [
+        "/products/atk-love-keycap/01.webp",
+        "/products/atk-love-keycap/02.webp",
+        "/products/atk-love-keycap/03.webp"
+      ],
       "mau": "#4338ca"
     }
   ]
