@@ -47,7 +47,7 @@
       "short": "Phụ kiện",
       "icon": "do-khac",
       "blurb": "Keycap, bungee, đế sạc, tai nghe không dây và đồ chơi lẻ đi kèm.",
-      "soLuong": 9
+      "soLuong": 8
     }
   ],
   "sanPham": [
@@ -374,6 +374,7 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/lamzu-maya-x/01.webp",
       "mau": "#b45309"
     },
     {
@@ -387,6 +388,7 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/razer-basilisk/01.webp",
       "mau": "#4338ca"
     },
     {
@@ -798,6 +800,8 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 8,
+      "note": "Size M : 300-360-3",
+      "anh": "/products/atk-lie-xsoft-m/01.webp",
       "mau": "#4338ca"
     },
     {
@@ -942,19 +946,6 @@
         "/products/razer-phantom-keycap/07.webp",
         "/products/razer-phantom-keycap/08.webp"
       ],
-      "mau": "#4338ca"
-    },
-    {
-      "id": "razer-mouse-bungee-v3",
-      "slug": "razer-mouse-bungee-v3",
-      "ten": "Mouse Bungee v3",
-      "hang": "Razer",
-      "danhMuc": "phu-kien",
-      "gia": 300000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
       "mau": "#4338ca"
     },
     {
