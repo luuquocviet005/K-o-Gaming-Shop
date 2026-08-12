@@ -47,7 +47,7 @@
       "short": "Phụ kiện",
       "icon": "do-khac",
       "blurb": "Keycap, bungee, đế sạc, tai nghe không dây và đồ chơi lẻ đi kèm.",
-      "soLuong": 7
+      "soLuong": 8
     }
   ],
   "sanPham": [
@@ -991,6 +991,19 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 10,
+      "mau": "#4338ca"
+    },
+    {
+      "id": "razer-stream-controller-x",
+      "slug": "razer-stream-controller-x",
+      "ten": "Stream Controller X",
+      "hang": "Razer",
+      "danhMuc": "phu-kien",
+      "gia": 1000000,
+      "tinhTrang": "Cũ · không hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
       "mau": "#4338ca"
     },
     {
