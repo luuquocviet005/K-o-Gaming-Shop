@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
-import { formatVND } from "@/lib/format";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const metadata: Metadata = {
@@ -58,7 +57,9 @@ const sections = [
     id: "van-chuyen",
     title: "Giao hàng",
     body: [
-      `Nội thành Đà Nẵng: giao tận nơi hoặc hẹn gặp. Đi tỉnh: gửi qua nhà xe hoặc đơn vị vận chuyển, phí ${formatVND(site.shipping.fee)} hoặc theo bảng giá thực tế của bên vận chuyển.`,
+      "**Chuyển khoản đủ tiền trước thì shop chịu phí ship** — không giới hạn giá trị đơn.",
+      "Ship COD thì khách trả phí cho nhà xe. Phí này thay đổi theo tỉnh và theo từng nhà xe nên tụi mình không ghi cố định ở đây — báo con số chính xác cho bạn trước khi gửi hàng.",
+      "Nội thành Đà Nẵng: giao tận nơi hoặc hẹn gặp trực tiếp. Đi tỉnh: gửi qua nhà xe hoặc đơn vị vận chuyển.",
       "Hàng ở Sài Gòn thì thời gian giao sẽ lâu hơn một chút vì phải chuyển ra — tụi mình báo rõ khi bạn đặt.",
       "Chuột và tai nghe được bọc chống sốc. Bàn phím đóng thùng riêng, chèn xốp kín.",
     ],

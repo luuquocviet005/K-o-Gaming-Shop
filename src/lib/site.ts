@@ -28,18 +28,16 @@ export const site = {
     zalo: "https://zalo.me/0904505592",
   },
 
-  /** Phí vận chuyển & ngưỡng miễn phí (đơn vị: VNĐ) */
+  /**
+   * Vận chuyển.
+   *
+   * Chuyển khoản đủ tiền trước ("bank full") thì shop chịu phí ship. Còn lại
+   * (ship COD) thì khách trả phí theo bảng giá nhà xe — số này thay đổi theo
+   * tỉnh và theo nhà xe nên KHÔNG ghi một con số cố định trên web; báo cho
+   * khách lúc chốt đơn. Thà nói "báo sau" còn hơn ghi một con số rồi thu khác.
+   */
   shipping: {
-    fee: 30_000,
-    freeThreshold: 2_000_000,
+    dieuKienMienPhi: "chuyển khoản đủ tiền trước",
+    ghiChuCod: "Ship COD: khách trả phí nhà xe, tụi mình báo trước khi gửi.",
   },
-
-  /** Mã giảm giá demo — chạy hoàn toàn phía trình duyệt */
-  promoCodes: [
-    { code: "KEO10", type: "percent" as const, value: 10, label: "Giảm 10%" },
-    { code: "KEO50K", type: "amount" as const, value: 50_000, label: "Giảm 50.000₫" },
-    { code: "FREESHIP", type: "shipping" as const, value: 0, label: "Miễn phí vận chuyển" },
-  ],
 } as const;
-
-export type PromoCode = (typeof site.promoCodes)[number];

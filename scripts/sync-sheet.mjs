@@ -41,6 +41,9 @@ function layO(row, ...tenCot) {
   return "";
 }
 
+/** CSV thô của từng tab, để bắt lỗi tab ma ở dưới */
+const csvTheoTab = new Map();
+
 async function taiTab(tab) {
   const url = `https://docs.google.com/spreadsheets/d/${config.sheetId}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(tab)}`;
   const res = await fetch(url, { redirect: "follow" });
@@ -48,7 +51,29 @@ async function taiTab(tab) {
   const text = await res.text();
   if (text.trimStart().startsWith("<"))
     throw new Error(`Tab "${tab}": Sheet đang riêng tư, không đọc được`);
+  csvTheoTab.set(tab, text);
   return toRecords(parseCsv(text));
+}
+
+/**
+ * BẮT "TAB MA".
+ *
+ * Khi tên tab không tồn tại, Google KHÔNG báo lỗi — nó trả về HTTP 200 kèm dữ
+ * liệu của tab ĐẦU TIÊN trong Sheet. Hậu quả: đổi tên một tab mà quên sửa
+ * sync.config.json thì toàn bộ hàng của tab đầu tiên bị nhân đôi sang danh mục
+ * sai, bộ khử trùng lặp gạt hết đi, và danh mục đó lặng lẽ biến mất khỏi web.
+ * Đã xảy ra thật với tab "Đồ lặt vật" sau khi nó được đổi tên thành "Phụ kiện".
+ *
+ * Cách bắt: hai tab khác tên mà trả về CSV giống hệt nhau thì chắc chắn có ít
+ * nhất một cái không còn tồn tại.
+ */
+function timTabMa() {
+  const theoNoiDung = new Map();
+  for (const [tab, csv] of csvTheoTab) {
+    if (!theoNoiDung.has(csv)) theoNoiDung.set(csv, []);
+    theoNoiDung.get(csv).push(tab);
+  }
+  return [...theoNoiDung.values()].filter((nhom) => nhom.length > 1);
 }
 
 /**
@@ -238,6 +263,23 @@ for (const slug of anhTheoThuMuc.keys()) {
 }
 
 // ── Chốt chặn an toàn ───────────────────────────────────────────────────
+const tabMa = timTabMa();
+if (tabMa.length > 0) {
+  console.error("");
+  console.error("✗ TÊN TAB TRONG sync.config.json KHÔNG KHỚP VỚI SHEET.");
+  console.error("  GIỮ NGUYÊN dữ liệu cũ, không ghi đè.");
+  console.error("");
+  for (const nhom of tabMa) {
+    console.error(`  Các tab sau trả về dữ liệu GIỐNG HỆT nhau: ${nhom.map((t) => `"${t}"`).join(", ")}`);
+  }
+  console.error("");
+  console.error("  Google trả về tab đầu tiên khi không tìm thấy tên tab, nên đây gần");
+  console.error("  như chắc chắn là có tab đã bị đổi tên hoặc xoá trong Sheet.");
+  console.error("  Mở sync.config.json, sửa ô \"tab\" cho khớp đúng tên trong Sheet.");
+  console.error("");
+  process.exit(1);
+}
+
 if (sanPham.length === 0) {
   console.error("");
   console.error("✗ Không đọc được sản phẩm nào. GIỮ NGUYÊN dữ liệu cũ, không ghi đè.");

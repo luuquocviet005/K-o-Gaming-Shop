@@ -14,30 +14,14 @@ import {
   MinusIcon,
   PhoneIcon,
   PlusIcon,
-  TagIcon,
   TrashIcon,
   TruckIcon,
 } from "@/components/icons";
 
 export function CartView() {
-  const {
-    ready,
-    lines,
-    itemCount,
-    subtotal,
-    discount,
-    shippingFee,
-    total,
-    promo,
-    promoError,
-    setQuantity,
-    removeItem,
-    clear,
-    applyPromo,
-    removePromo,
-  } = useCart();
+  const { ready, lines, itemCount, subtotal, total, setQuantity, removeItem, clear } =
+    useCart();
 
-  const [code, setCode] = useState("");
   const [copied, setCopied] = useState(false);
 
   // Trước khi đọc xong localStorage, giữ chỗ bằng khung xám để tránh nháy layout
@@ -90,10 +74,8 @@ export function CartView() {
         `${i + 1}. ${l.product.hang} ${l.product.ten}${l.product.tinhTrang ? ` (${l.product.tinhTrang})` : ""} × ${l.quantity} — ${formatVND(l.lineTotal)}`,
     ),
     "",
-    `Tạm tính: ${formatVND(subtotal)}`,
-    ...(discount > 0 ? [`Giảm giá (${promo?.code}): -${formatVND(discount)}`] : []),
-    `Phí vận chuyển: ${shippingFee === 0 ? "Miễn phí" : formatVND(shippingFee)}`,
-    `TỔNG CỘNG: ${formatVND(total)}`,
+    `TỔNG TIỀN HÀNG: ${formatVND(total)}`,
+    `(Chuyển khoản đủ thì shop chịu ship. ${site.shipping.ghiChuCod})`,
   ].join("\n");
 
   async function copyOrder() {
@@ -105,8 +87,6 @@ export function CartView() {
       setCopied(false);
     }
   }
-
-  const missingForFreeShip = site.shipping.freeThreshold - subtotal;
 
   return (
     <div className="mt-8 grid items-start gap-6 lg:grid-cols-[1.6fr_1fr]">
@@ -229,100 +209,15 @@ export function CartView() {
           Tóm tắt đơn hàng
         </h2>
 
-        {/* Mã giảm giá */}
-        <div className="mt-5">
-          {promo ? (
-            <div className="flex items-center justify-between gap-3 rounded-2xl bg-primary-soft px-4 py-3">
-              <span className="inline-flex min-w-0 items-center gap-2 text-sm font-semibold text-primary-ink">
-                <CheckIcon width={17} height={17} className="shrink-0" />
-                <span className="truncate">
-                  {promo.code} · {promo.label}
-                </span>
-              </span>
-              <button
-                type="button"
-                onClick={removePromo}
-                aria-label="Bỏ mã giảm giá"
-                className="grid size-8 shrink-0 cursor-pointer place-items-center rounded-full text-primary-ink transition-colors hover:bg-primary hover:text-on-primary"
-              >
-                <CloseIcon width={15} height={15} />
-              </button>
-            </div>
-          ) : (
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                if (applyPromo(code)) setCode("");
-              }}
-            >
-              <label
-                htmlFor="ma-giam-gia"
-                className="text-sm font-semibold text-fg"
-              >
-                Mã giảm giá
-              </label>
-              <div className="mt-2 flex gap-2">
-                <div className="relative flex-1">
-                  <TagIcon
-                    width={17}
-                    height={17}
-                    className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-fg-subtle"
-                  />
-                  <input
-                    id="ma-giam-gia"
-                    value={code}
-                    onChange={(e) => setCode(e.target.value)}
-                    placeholder="Nhập mã"
-                    aria-invalid={!!promoError}
-                    aria-describedby={promoError ? "loi-ma" : "goi-y-ma"}
-                    className="h-12 w-full rounded-2xl border border-border bg-surface-2 pl-10 pr-3 text-sm uppercase text-fg placeholder:normal-case placeholder:text-fg-subtle focus:border-primary focus:bg-surface focus:outline-none"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="h-12 shrink-0 cursor-pointer rounded-2xl bg-fg px-5 text-sm font-semibold text-bg transition-opacity hover:opacity-85"
-                >
-                  Áp dụng
-                </button>
-              </div>
-              {promoError ? (
-                <p id="loi-ma" role="alert" className="mt-2 text-sm text-danger">
-                  {promoError}
-                </p>
-              ) : (
-                <p id="goi-y-ma" className="mt-2 text-xs text-fg-subtle">
-                  Thử: {site.promoCodes.map((p) => p.code).join(" · ")}
-                </p>
-              )}
-            </form>
-          )}
-        </div>
-
-        {/* Các dòng tiền */}
-        <dl className="mt-6 space-y-3 border-t border-border pt-5 text-sm">
+        {/* Các dòng tiền.
+            Không có dòng "phí vận chuyển" vì phí tuỳ nhà xe và tuỳ tỉnh —
+            ghi một con số ở đây rồi thu khác là tự đẩy mình vào thế khó. */}
+        <dl className="mt-5 space-y-3 border-t border-border pt-5 text-sm">
           <div className="flex justify-between gap-4">
-            <dt className="text-fg-muted">Tạm tính</dt>
+            <dt className="text-fg-muted">
+              Tiền hàng ({itemCount} món)
+            </dt>
             <dd className="font-semibold text-fg">{formatVND(subtotal)}</dd>
-          </div>
-
-          {discount > 0 && (
-            <div className="flex justify-between gap-4">
-              <dt className="text-fg-muted">Giảm giá</dt>
-              <dd className="font-semibold text-primary-ink">
-                −{formatVND(discount)}
-              </dd>
-            </div>
-          )}
-
-          <div className="flex justify-between gap-4">
-            <dt className="text-fg-muted">Phí vận chuyển</dt>
-            <dd className="font-semibold text-fg">
-              {shippingFee === 0 ? (
-                <span className="text-primary-ink">Miễn phí</span>
-              ) : (
-                formatVND(shippingFee)
-              )}
-            </dd>
           </div>
 
           <div className="flex items-baseline justify-between gap-4 border-t border-border pt-4">
@@ -333,18 +228,13 @@ export function CartView() {
           </div>
         </dl>
 
-        {shippingFee > 0 && missingForFreeShip > 0 && (
-          <p className="mt-4 flex items-start gap-2.5 rounded-2xl bg-surface-2 p-3.5 text-xs leading-relaxed text-fg-muted">
-            <TruckIcon width={17} height={17} className="mt-px shrink-0 text-primary" />
-            <span>
-              Mua thêm{" "}
-              <strong className="font-semibold text-fg">
-                {formatVND(missingForFreeShip)}
-              </strong>{" "}
-              để được miễn phí vận chuyển.
-            </span>
-          </p>
-        )}
+        <p className="mt-4 flex items-start gap-2.5 rounded-2xl bg-primary-soft p-3.5 text-xs leading-relaxed text-primary-ink">
+          <TruckIcon width={17} height={17} className="mt-px shrink-0" />
+          <span>
+            <strong className="font-semibold">Chuyển khoản đủ thì shop chịu ship.</strong>{" "}
+            {site.shipping.ghiChuCod}
+          </span>
+        </p>
 
         {/* Đặt hàng — gửi qua Zalo hoặc gọi điện, không cần cổng thanh toán */}
         <div className="mt-6 space-y-2.5">

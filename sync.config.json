@@ -6,7 +6,9 @@
   "_thuMucAnh": "Thư mục ảnh mà tác vụ chạy ngầm theo dõi. Đổi đường dẫn ở đây nếu bạn chuyển thư mục ảnh đi chỗ khác.",
   "thuMucAnh": "D:\\Tạo trang web bán hàng\\Ảnh gear",
 
-  "_luuY": "slug là đường dẫn trên web (/danh-muc/<slug>/) — không dấu, không khoảng trắng. icon chọn trong: chuot, ban-phim, tai-nghe, switch, do-khac.",
+  "_luuY": "slug là đường dẫn trên web (/danh-muc/<slug>/) — không dấu, không khoảng trắng. icon chọn trong: chuot, ban-phim, tai-nghe, pad-chuot, switch, do-khac, ghe, tay-cam, man-hinh.",
+
+  "_canhBao": "Tên ở ô \"tab\" phải TRÙNG TUYỆT ĐỐI với tên tab trong Sheet. Đổi tên tab trong Sheet mà quên sửa ở đây thì Google lặng lẽ trả về tab ĐẦU TIÊN thay vì báo lỗi — sync-sheet.mjs có bộ bắt lỗi cho việc này.",
 
   "tabs": [
     {
@@ -42,15 +44,6 @@
       "blurb": "Pad vải, pad cỡ lớn và pad chơi game — hàng mới và hàng cũ."
     },
     {
-      "tab": "Switch HE",
-      "slug": "switch-he",
-      "name": "Switch HE",
-      "short": "Switch",
-      "icon": "switch",
-      "blurb": "Switch từ tính bán lẻ theo cái — giá dưới đây là giá 1 switch.",
-      "donViGia": "cái"
-    },
-    {
       "tab": "Phụ kiện",
       "slug": "phu-kien",
       "name": "Phụ kiện",
@@ -59,12 +52,13 @@
       "blurb": "Keycap, bungee, đế sạc, tai nghe không dây và đồ chơi lẻ đi kèm."
     },
     {
-      "tab": "Đồ lặt vật",
-      "slug": "do-lat-vat",
-      "name": "Đồ lặt vặt",
-      "short": "Đồ lặt vặt",
-      "icon": "do-khac",
-      "blurb": "Phụ kiện, đồ rời và những món lẻ khác."
+      "tab": "Switch HE",
+      "slug": "switch-he",
+      "name": "Switch HE",
+      "short": "Switch",
+      "icon": "switch",
+      "blurb": "Switch từ tính bán lẻ theo cái — giá dưới đây là giá 1 switch.",
+      "donViGia": "cái"
     }
   ]
 }

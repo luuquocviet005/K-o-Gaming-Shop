@@ -14,7 +14,6 @@ import {
   useState,
 } from "react";
 import { products, type Product } from "@/lib/products";
-import { site } from "@/lib/site";
 
 const STORAGE_KEY = "keo-cart-v1";
 
@@ -30,59 +29,49 @@ export type ResolvedLine = CartLine & {
   lineTotal: number;
 };
 
-export type AppliedPromo = {
-  code: string;
-  label: string;
-  type: "percent" | "amount" | "shipping";
-  value: number;
-};
-
+/**
+ * KHÔNG có mã giảm giá và KHÔNG cộng phí ship vào tổng.
+ *
+ * Shop chốt đơn qua Zalo, phí ship tuỳ nhà xe và tuỳ tỉnh, còn chuyển khoản đủ
+ * tiền trước thì shop chịu ship. Cộng sẵn một con số vào tổng chỉ khiến con số
+ * trên web khác con số khách thật sự trả. Tổng ở đây = tiền hàng, đúng nghĩa.
+ */
 type CartContextValue = {
   /** false cho tới khi đọc xong localStorage — dùng để tránh nhấp nháy khi hydrate */
   ready: boolean;
   lines: ResolvedLine[];
   itemCount: number;
   subtotal: number;
-  discount: number;
-  shippingFee: number;
   total: number;
-  promo: AppliedPromo | null;
-  promoError: string | null;
   /** Tăng mỗi lần thêm hàng — Header dùng để chạy animation */
   addPulse: number;
   addItem: (productId: string, quantity?: number) => void;
   setQuantity: (key: string, quantity: number) => void;
   removeItem: (key: string) => void;
   clear: () => void;
-  applyPromo: (code: string) => boolean;
-  removePromo: () => void;
 };
 
 const CartContext = createContext<CartContextValue | null>(null);
 
 
-function readStorage(): { lines: CartLine[]; promoCode: string | null } {
-  if (typeof window === "undefined") return { lines: [], promoCode: null };
+/**
+ * Giỏ cũ (trước khi bỏ mã giảm giá) có thêm khoá `promoCode`. Đọc bỏ qua nó là
+ * đủ — không cần dọn, lần ghi kế tiếp sẽ đè lên bằng cấu trúc mới.
+ */
+function readStorage(): CartLine[] {
+  if (typeof window === "undefined") return [];
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
-    if (!raw) return { lines: [], promoCode: null };
-    const parsed = JSON.parse(raw) as {
-      lines?: CartLine[];
-      promoCode?: string | null;
-    };
-    return {
-      lines: Array.isArray(parsed.lines) ? parsed.lines : [],
-      promoCode: parsed.promoCode ?? null,
-    };
+    if (!raw) return [];
+    const parsed = JSON.parse(raw) as { lines?: CartLine[] };
+    return Array.isArray(parsed.lines) ? parsed.lines : [];
   } catch {
-    return { lines: [], promoCode: null };
+    return [];
   }
 }
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [rawLines, setRawLines] = useState<CartLine[]>([]);
-  const [promoCode, setPromoCode] = useState<string | null>(null);
-  const [promoError, setPromoError] = useState<string | null>(null);
   const [ready, setReady] = useState(false);
   const [addPulse, setAddPulse] = useState(0);
 
@@ -90,38 +79,31 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   // Không thể đọc lúc render vì HTML được sinh sẵn lúc build (không có giỏ
   // hàng của từng khách), nên đây là ngoại lệ hợp lệ.
   useEffect(() => {
-    const stored = readStorage();
     // Bỏ những dòng trỏ tới sản phẩm không còn tồn tại: hàng đã bán và xoá
     // khỏi Sheet, hoặc dữ liệu cũ từ phiên bản web trước. Không lọc thì rác
     // nằm lại trong máy khách mãi mãi.
-    const conHieuLuc = stored.lines.filter((l) =>
+    const conHieuLuc = readStorage().filter((l) =>
       products.some((p) => p.id === l.productId),
     );
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setRawLines(conHieuLuc);
-    setPromoCode(stored.promoCode);
     setReady(true);
   }, []);
 
   useEffect(() => {
     if (!ready) return;
     try {
-      window.localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify({ lines: rawLines, promoCode }),
-      );
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify({ lines: rawLines }));
     } catch {
       // Chế độ riêng tư của Safari có thể chặn ghi — bỏ qua, giỏ vẫn chạy trong phiên
     }
-  }, [rawLines, promoCode, ready]);
+  }, [rawLines, ready]);
 
   // Đồng bộ giữa nhiều tab đang mở
   useEffect(() => {
     function onStorage(e: StorageEvent) {
       if (e.key !== STORAGE_KEY) return;
-      const stored = readStorage();
-      setRawLines(stored.lines);
-      setPromoCode(stored.promoCode);
+      setRawLines(readStorage());
     }
     window.addEventListener("storage", onStorage);
     return () => window.removeEventListener("storage", onStorage);
@@ -158,25 +140,6 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
 
   const clear = useCallback(() => {
     setRawLines([]);
-    setPromoCode(null);
-    setPromoError(null);
-  }, []);
-
-  const applyPromo = useCallback((code: string) => {
-    const normalized = code.trim().toUpperCase();
-    const found = site.promoCodes.find((p) => p.code === normalized);
-    if (!found) {
-      setPromoError("Mã giảm giá không hợp lệ hoặc đã hết hạn.");
-      return false;
-    }
-    setPromoCode(found.code);
-    setPromoError(null);
-    return true;
-  }, []);
-
-  const removePromo = useCallback(() => {
-    setPromoCode(null);
-    setPromoError(null);
   }, []);
 
   // Giá luôn được tính lại từ `products` — nếu bạn đổi giá trong data,
@@ -207,47 +170,20 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     [lines],
   );
 
-  const promo = useMemo<AppliedPromo | null>(() => {
-    if (!promoCode) return null;
-    const found = site.promoCodes.find((p) => p.code === promoCode);
-    return found
-      ? { code: found.code, label: found.label, type: found.type, value: found.value }
-      : null;
-  }, [promoCode]);
-
-  const discount = useMemo(() => {
-    if (!promo) return 0;
-    if (promo.type === "percent") return Math.round((subtotal * promo.value) / 100);
-    if (promo.type === "amount") return Math.min(promo.value, subtotal);
-    return 0;
-  }, [promo, subtotal]);
-
-  const shippingFee = useMemo(() => {
-    if (subtotal === 0) return 0;
-    if (promo?.type === "shipping") return 0;
-    if (subtotal >= site.shipping.freeThreshold) return 0;
-    return site.shipping.fee;
-  }, [subtotal, promo]);
-
-  const total = Math.max(0, subtotal - discount) + shippingFee;
+  // Tổng = tiền hàng. Phí ship không cộng ở đây (xem chú thích đầu file).
+  const total = subtotal;
 
   const value: CartContextValue = {
     ready,
     lines,
     itemCount,
     subtotal,
-    discount,
-    shippingFee,
     total,
-    promo,
-    promoError,
     addPulse,
     addItem,
     setQuantity,
     removeItem,
     clear,
-    applyPromo,
-    removePromo,
   };
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
