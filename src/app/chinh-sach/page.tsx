@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: "Chính sách mua bán",
   description:
     "Cách KẸO GAMING SHOP bán hàng cũ: mô tả tình trạng, cho test trước, đổi trả và bảo hành. Nói rõ làm được gì và không làm được gì.",
+  alternates: { canonical: "/chinh-sach/" },
 };
 
 /**

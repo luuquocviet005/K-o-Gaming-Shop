@@ -37,6 +37,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   return {
     title: category.name,
     description: moTa,
+    alternates: { canonical: `/danh-muc/${category.slug}/` },
     openGraph: {
       title: `${category.name} — ${site.name}`,
       description: moTa,

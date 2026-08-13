@@ -46,11 +46,23 @@ ErrorDocument 404 /404.html
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=()"
 </IfModule>
 
-# --- Ép HTTPS ---------------------------------------------------------------
-# Bật sau khi đã cài SSL trong hPanel (Websites > SSL). Bỏ dấu # ở 3 dòng dưới.
-# RewriteEngine On
-# RewriteCond %{HTTPS} !=on
-# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# --- Gộp www về một địa chỉ duy nhất ----------------------------------------
+#
+# Trước khi có đoạn này, keogaminggear.com và www.keogaminggear.com cùng trả về
+# 200 với NỘI DUNG GIỐNG HỆT NHAU. Google coi đó là hai trang web riêng biệt:
+# uy tín bị chia đôi, và cả hai bản cùng chen nhau trong kết quả tìm kiếm —
+# đã thấy đúng hiện tượng này khi tra site:keogaminggear.com.
+#
+# 301 = "chuyển vĩnh viễn", Google sẽ dồn toàn bộ điểm về bản không www.
+#
+# KHÔNG ép HTTPS ở đây: Hostinger đã tự chuyển http -> https ở tầng ngoài
+# (kiểm chứng: http://keogaminggear.com/ trả về 301). Thêm luật HTTPS nữa dễ
+# gây vòng lặp chuyển hướng vô tận nếu máy chủ nhận request dạng http nội bộ.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ https://%1%{REQUEST_URI} [L,R=301]
+</IfModule>
 
 # --- Chặn truy cập file nhạy cảm -------------------------------------------
 <FilesMatch "^\.(env|git)">

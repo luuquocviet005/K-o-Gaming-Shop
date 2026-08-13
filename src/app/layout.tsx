@@ -30,6 +30,19 @@ const baloo = Baloo_2({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
+
+  /*
+   * Thẻ canonical: nói cho Google biết đâu là địa chỉ CHÍNH THỨC của trang.
+   *
+   * Cần vì máy chủ trả về cùng một nội dung ở cả keogaminggear.com lẫn
+   * www.keogaminggear.com. Không có thẻ này thì Google coi đó là hai trang web
+   * khác nhau, chia đôi uy tín giữa hai bản và tự chọn bản nào hiện ra —
+   * đã thấy cả hai bản cùng xuất hiện trong kết quả tìm kiếm.
+   *
+   * Mỗi trang tự khai canonical riêng trong generateMetadata. KHÔNG khai ở đây
+   * một lần cho tất cả, vì trang con sẽ thừa hưởng và cùng trỏ về trang chủ.
+   */
+  alternates: { canonical: "/" },
   title: {
     default: `${site.name} — ${site.tagline}`,
     template: `%s | ${site.name}`,
@@ -89,6 +102,57 @@ export const viewport: Viewport = {
   ],
 };
 
+/**
+ * Khai báo cửa hàng cho Google.
+ *
+ * Đây là một tiệm có địa chỉ thật, không phải shop online thuần. Khai kiểu
+ * `Store` giúp Google hiểu đúng và có cơ sở hiện khung thông tin cửa hàng
+ * (tên, địa chỉ, giờ mở cửa, số điện thoại) khi khách tìm theo tên shop —
+ * thay vì chỉ một dòng link trơ trọi.
+ *
+ * `sameAs` nối tới Facebook/TikTok để Google biết mấy trang đó là cùng một
+ * cửa hàng, gom uy tín về một mối.
+ *
+ * Mọi số liệu ở đây lấy từ src/lib/site.ts — không bịa, không ghi thứ shop
+ * không làm được.
+ */
+const jsonLdCuaHang = {
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "@id": `${site.url}/#cua-hang`,
+  name: site.name,
+  description: site.description,
+  url: site.url,
+  image: `${site.url}${ANH_CHIA_SE}`,
+  telephone: site.contact.phone.replace(/\s/g, ""),
+  email: site.contact.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Lô 19 B2 124 Khu đô thị công nghệ FPT, phường Hoà Hải",
+    addressLocality: "Quận Ngũ Hành Sơn",
+    addressRegion: "Đà Nẵng",
+    addressCountry: "VN",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ],
+      opens: "09:00",
+      closes: "21:00",
+    },
+  ],
+  currenciesAccepted: "VND",
+  sameAs: [site.social.facebook, site.social.tiktok],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -97,6 +161,10 @@ export default function RootLayout({
       <head>
         {/* Đặt theme trước khi trang vẽ, tránh nháy sáng khi đang ở chế độ tối */}
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdCuaHang) }}
+        />
       </head>
       <body className={`${inter.variable} ${baloo.variable} antialiased`}>
         <a

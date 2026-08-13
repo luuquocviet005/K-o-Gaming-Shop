@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "Tất cả sản phẩm",
   description:
     "Toàn bộ gear đang có tại KẸO GAMING SHOP: chuột, bàn phím, tai nghe và switch — hàng cũ lẫn hàng mới, ghi rõ tình trạng từng món.",
+  alternates: { canonical: "/danh-muc/" },
 };
 
 export default function AllProductsPage() {

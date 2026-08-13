@@ -22,7 +22,17 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   const product = getProduct(slug);
   if (!product) return { title: "Không tìm thấy sản phẩm" };
 
-  const moTa = [
+  /*
+   * Mô tả hiện dưới tiêu đề trong kết quả Google.
+   *
+   * Món nào Sheet bỏ trống ô Tình trạng và ô Ghi chú thì phần đầu chỉ còn
+   * chừng 50 ký tự — Google cắt bỏ và tự bịa mô tả khác từ nội dung trang,
+   * thường ra một câu chẳng ăn nhập gì. Nên luôn nối thêm tên danh mục và một
+   * câu về cách shop bán, cho đủ dài và đúng sự thật.
+   */
+  const danhMuc = getCategory(product.danhMuc);
+
+  const phanChinh = [
     product.hang,
     product.ten,
     product.tinhTrang,
@@ -32,6 +42,22 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   ]
     .filter(Boolean)
     .join(" · ");
+
+  const phanThem = [
+    danhMuc ? `${danhMuc.name} tại ${site.name}.` : `${site.name}.`,
+    "Cho test trước khi trả tiền.",
+  ].join(" ");
+
+  /*
+   * Google cắt mô tả quanh mốc 160 ký tự. Tự cắt trước thì chủ động hơn, nhưng
+   * phải cắt ở RANH GIỚI CÂU — cắt giữa chừng ra "cho test trước khi trả" thì
+   * trông như trang bị lỗi. Không câu nào vừa thì bỏ hẳn phần thêm.
+   */
+  const day = `${phanChinh}. ${phanThem}`;
+  const moTa =
+    day.length <= 158
+      ? day
+      : `${phanChinh}. ${danhMuc?.name ?? site.name}`.slice(0, 158);
 
   // Ảnh cho thẻ xem trước trên Zalo / Messenger / Facebook. Món chưa có ảnh
   // thật thì rơi về tấm mặc định của shop, chứ không để trống.
@@ -44,6 +70,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   return {
     title: `${product.ten} — ${product.hang}`,
     description: moTa,
+    alternates: { canonical: `/san-pham/${product.slug}/` },
     openGraph: {
       type: "website",
       title: tieuDe,
@@ -107,6 +134,37 @@ export default async function ProductPage(props: Props) {
     }),
   };
 
+  /*
+   * Đường dẫn phân cấp cho Google.
+   *
+   * Nhờ nó, kết quả tìm kiếm hiện "keogaminggear.com › Chuột gaming › Naga v2"
+   * thay vì một chuỗi URL dài loằng ngoằng — khách nhìn là biết mình sắp vào
+   * đâu, và tỉ lệ bấm vào cao hơn hẳn.
+   */
+  const jsonLdDuongDan = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Trang chủ", item: `${site.url}/` },
+      ...(category
+        ? [
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: category.name,
+              item: `${site.url}/danh-muc/${category.slug}/`,
+            },
+          ]
+        : []),
+      {
+        "@type": "ListItem",
+        position: category ? 3 : 2,
+        name: `${product.hang} ${product.ten}`,
+        item: `${site.url}/san-pham/${product.slug}/`,
+      },
+    ],
+  };
+
   const thongTin = [
     { nhan: "Hãng", giaTri: product.hang },
     { nhan: "Tình trạng", giaTri: product.tinhTrang || "Chưa ghi" },
@@ -123,6 +181,10 @@ export default async function ProductPage(props: Props) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdDuongDan) }}
       />
 
       <Breadcrumbs

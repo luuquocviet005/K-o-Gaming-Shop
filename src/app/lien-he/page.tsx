@@ -12,6 +12,7 @@ import {
 export const metadata: Metadata = {
   title: "Liên hệ",
   description: `Liên hệ ${site.name}: ${site.contact.phone} · ${site.contact.email} · ${site.contact.address}`,
+  alternates: { canonical: "/lien-he/" },
 };
 
 const channels = [
