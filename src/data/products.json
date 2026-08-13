@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 18
+      "soLuong": 16
     },
     {
       "slug": "ban-phim",
@@ -262,24 +262,6 @@
       "mau": "#be123c"
     },
     {
-      "id": "atk-x1-ultimate-v2",
-      "slug": "atk-x1-ultimate-v2",
-      "ten": "X1 Ultimate V2",
-      "hang": "ATK",
-      "danhMuc": "chuot",
-      "gia": 1000000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/atk-x1-ultimate-v2/01.webp",
-      "anhs": [
-        "/products/atk-x1-ultimate-v2/01.webp",
-        "/products/atk-x1-ultimate-v2/02.webp"
-      ],
-      "mau": "#4338ca"
-    },
-    {
       "id": "logitech-g502-x-plus",
       "slug": "logitech-g502-x-plus",
       "ten": "G502 x Plus",
@@ -320,27 +302,6 @@
         "/products/razer-deathadder-v3-pro/05.webp"
       ],
       "mau": "#4338ca"
-    },
-    {
-      "id": "wl-mouse-beast-x-max",
-      "slug": "wl-mouse-beast-x-max",
-      "ten": "Beast x Max",
-      "hang": "WL Mouse",
-      "danhMuc": "chuot",
-      "gia": 2000000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/wl-mouse-beast-x-max/01.webp",
-      "anhs": [
-        "/products/wl-mouse-beast-x-max/01.webp",
-        "/products/wl-mouse-beast-x-max/02.webp",
-        "/products/wl-mouse-beast-x-max/03.webp",
-        "/products/wl-mouse-beast-x-max/04.webp",
-        "/products/wl-mouse-beast-x-max/05.webp"
-      ],
-      "mau": "#334155"
     },
     {
       "id": "finalmouse-tarik",
