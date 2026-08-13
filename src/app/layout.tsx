@@ -113,6 +113,12 @@ export const viewport: Viewport = {
  * `sameAs` nối tới Facebook/TikTok để Google biết mấy trang đó là cùng một
  * cửa hàng, gom uy tín về một mối.
  *
+ * `alternateName` khai luôn tên "Kẹo Gaming Gear" — tên miền là
+ * keogaminggear.com và hồ sơ Google Business cũng đăng ký tên đó, trong khi
+ * trên web mọi chỗ đều ghi "KẸO GAMING SHOP". Không khai thì Google phải tự
+ * đoán hai cái tên có phải cùng một tiệm không, và nó hay đoán là KHÔNG —
+ * làm chậm bước xác minh hồ sơ doanh nghiệp và chia nhỏ uy tín thương hiệu.
+ *
  * Mọi số liệu ở đây lấy từ src/lib/site.ts — không bịa, không ghi thứ shop
  * không làm được.
  */
@@ -121,6 +127,7 @@ const jsonLdCuaHang = {
   "@type": "Store",
   "@id": `${site.url}/#cua-hang`,
   name: site.name,
+  alternateName: "Kẹo Gaming Gear",
   description: site.description,
   url: site.url,
   image: `${site.url}${ANH_CHIA_SE}`,
