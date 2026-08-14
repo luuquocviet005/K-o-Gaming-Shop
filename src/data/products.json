@@ -612,6 +612,13 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/akko-air-01/01.webp",
+      "anhs": [
+        "/products/akko-air-01/01.webp",
+        "/products/akko-air-01/02.webp",
+        "/products/akko-air-01/03.webp",
+        "/products/akko-air-01/04.webp"
+      ],
       "mau": "#0f172a"
     },
     {
@@ -625,6 +632,14 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/akko-m1-v5-he/01.webp",
+      "anhs": [
+        "/products/akko-m1-v5-he/01.webp",
+        "/products/akko-m1-v5-he/02.webp",
+        "/products/akko-m1-v5-he/03.webp",
+        "/products/akko-m1-v5-he/04.webp",
+        "/products/akko-m1-v5-he/05.webp"
+      ],
       "mau": "#0f172a"
     },
     {
