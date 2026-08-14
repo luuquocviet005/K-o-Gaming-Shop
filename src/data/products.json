@@ -22,7 +22,7 @@
       "short": "Tai nghe",
       "icon": "tai-nghe",
       "blurb": "Tai nghe chụp tai, in-ear và soundcard.",
-      "soLuong": 7
+      "soLuong": 6
     },
     {
       "slug": "pad-chuot",
@@ -711,25 +711,6 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "anh": "/products/atk-horizon-dsp/01.webp",
-      "mau": "#4338ca"
-    },
-    {
-      "id": "razer-barracuda-x-2022",
-      "slug": "razer-barracuda-x-2022",
-      "ten": "Barracuda x 2022",
-      "hang": "Razer",
-      "danhMuc": "tai-nghe",
-      "gia": 850000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/razer-barracuda-x-2022/01.webp",
-      "anhs": [
-        "/products/razer-barracuda-x-2022/01.webp",
-        "/products/razer-barracuda-x-2022/02.webp",
-        "/products/razer-barracuda-x-2022/03.webp"
-      ],
       "mau": "#4338ca"
     },
     {
