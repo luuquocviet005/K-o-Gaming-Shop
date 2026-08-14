@@ -14,7 +14,7 @@
       "short": "Bàn phím",
       "icon": "ban-phim",
       "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời.",
-      "soLuong": 17
+      "soLuong": 16
     },
     {
       "slug": "tai-nghe",
@@ -600,24 +600,6 @@
         "/products/atk-rs6-aspas/04.webp"
       ],
       "mau": "#4338ca"
-    },
-    {
-      "id": "arbiter-polar65-yuki-aim",
-      "slug": "arbiter-polar65-yuki-aim",
-      "ten": "Polar65 Yuki Aim",
-      "hang": "Arbiter",
-      "danhMuc": "ban-phim",
-      "gia": 2000000,
-      "tinhTrang": "Mỗi phím",
-      "nhomTinhTrang": "khac",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/arbiter-polar65-yuki-aim/01.webp",
-      "anhs": [
-        "/products/arbiter-polar65-yuki-aim/01.webp",
-        "/products/arbiter-polar65-yuki-aim/02.webp"
-      ],
-      "mau": "#dc2626"
     },
     {
       "id": "akko-air-01",
