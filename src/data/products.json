@@ -666,7 +666,7 @@
       "ten": "Moray",
       "hang": "Razer",
       "danhMuc": "tai-nghe",
-      "gia": 1600000,
+      "gia": 1700000,
       "tinhTrang": "Mới, nguyên seal",
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
@@ -679,9 +679,9 @@
       "mau": "#4338ca"
     },
     {
-      "id": "mchose-v9-turbo-plus",
-      "slug": "mchose-v9-turbo-plus",
-      "ten": "V9 turbo plus",
+      "id": "mchose-v9-turbo",
+      "slug": "mchose-v9-turbo",
+      "ten": "V9 Turbo+",
       "hang": "Mchose",
       "danhMuc": "tai-nghe",
       "gia": 1500000,
