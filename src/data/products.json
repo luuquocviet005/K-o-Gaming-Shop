@@ -14,7 +14,7 @@
       "short": "Bàn phím",
       "icon": "ban-phim",
       "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời.",
-      "soLuong": 16
+      "soLuong": 17
     },
     {
       "slug": "tai-nghe",
@@ -623,6 +623,19 @@
       "id": "akko-air-01",
       "slug": "akko-air-01",
       "ten": "Air 01",
+      "hang": "Akko",
+      "danhMuc": "ban-phim",
+      "gia": 1500000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "mau": "#0f172a"
+    },
+    {
+      "id": "akko-m1-v5-he",
+      "slug": "akko-m1-v5-he",
+      "ten": "M1 V5 HE",
       "hang": "Akko",
       "danhMuc": "ban-phim",
       "gia": 1500000,
