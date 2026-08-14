@@ -1,6 +1,14 @@
 {
   "danhMuc": [
     {
+      "slug": "chuot",
+      "name": "Chuột gaming",
+      "short": "Chuột",
+      "icon": "chuot",
+      "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
+      "soLuong": 16
+    },
+    {
       "slug": "ban-phim",
       "name": "Bàn phím",
       "short": "Bàn phím",
@@ -43,6 +51,307 @@
     }
   ],
   "sanPham": [
+    {
+      "id": "razer-naga-v2-hyperspeed",
+      "slug": "razer-naga-v2-hyperspeed",
+      "ten": "Naga v2 hyperspeed",
+      "hang": "Razer",
+      "danhMuc": "chuot",
+      "gia": 1200000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/razer-naga-v2-hyperspeed/01.webp",
+      "anhs": [
+        "/products/razer-naga-v2-hyperspeed/01.webp",
+        "/products/razer-naga-v2-hyperspeed/02.webp",
+        "/products/razer-naga-v2-hyperspeed/03.webp",
+        "/products/razer-naga-v2-hyperspeed/04.webp",
+        "/products/razer-naga-v2-hyperspeed/05.webp",
+        "/products/razer-naga-v2-hyperspeed/06.webp",
+        "/products/razer-naga-v2-hyperspeed/07.webp",
+        "/products/razer-naga-v2-hyperspeed/08.webp",
+        "/products/razer-naga-v2-hyperspeed/09.webp"
+      ],
+      "mau": "#4338ca"
+    },
+    {
+      "id": "atk-f1-extreme-leviatan",
+      "slug": "atk-f1-extreme-leviatan",
+      "ten": "F1 Extreme Leviatan",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 650000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/atk-f1-extreme-leviatan/01.webp",
+      "anhs": [
+        "/products/atk-f1-extreme-leviatan/01.webp",
+        "/products/atk-f1-extreme-leviatan/02.webp",
+        "/products/atk-f1-extreme-leviatan/03.webp",
+        "/products/atk-f1-extreme-leviatan/04.webp",
+        "/products/atk-f1-extreme-leviatan/05.webp"
+      ],
+      "mau": "#4338ca"
+    },
+    {
+      "id": "atk-a9-mini-hong",
+      "slug": "atk-a9-mini-hong",
+      "ten": "A9 mini + ( hồng )",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 1200000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/atk-a9-mini-hong/01.webp",
+      "anhs": [
+        "/products/atk-a9-mini-hong/01.webp",
+        "/products/atk-a9-mini-hong/02.webp",
+        "/products/atk-a9-mini-hong/03.webp"
+      ],
+      "mau": "#4338ca"
+    },
+    {
+      "id": "ninjutso-sora-v2",
+      "slug": "ninjutso-sora-v2",
+      "ten": "Sora v2",
+      "hang": "Ninjutso",
+      "danhMuc": "chuot",
+      "gia": 900000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Sài Gòn",
+      "soLuong": 1,
+      "note": "Bị trầy 1 đường nhẹ",
+      "anh": "/products/ninjutso-sora-v2/01.webp",
+      "anhs": [
+        "/products/ninjutso-sora-v2/01.webp",
+        "/products/ninjutso-sora-v2/02.webp",
+        "/products/ninjutso-sora-v2/03.webp",
+        "/products/ninjutso-sora-v2/04.webp",
+        "/products/ninjutso-sora-v2/05.webp",
+        "/products/ninjutso-sora-v2/06.webp",
+        "/products/ninjutso-sora-v2/07.webp"
+      ],
+      "mau": "#334155"
+    },
+    {
+      "id": "logitech-g903-lightspeed",
+      "slug": "logitech-g903-lightspeed",
+      "ten": "G903 lightspeed",
+      "hang": "Logitech",
+      "danhMuc": "chuot",
+      "gia": 750000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/logitech-g903-lightspeed/01.webp",
+      "anhs": [
+        "/products/logitech-g903-lightspeed/01.webp",
+        "/products/logitech-g903-lightspeed/02.webp",
+        "/products/logitech-g903-lightspeed/03.webp",
+        "/products/logitech-g903-lightspeed/04.webp",
+        "/products/logitech-g903-lightspeed/05.webp"
+      ],
+      "mau": "#7c3aed"
+    },
+    {
+      "id": "xingmeng-zero-1-se",
+      "slug": "xingmeng-zero-1-se",
+      "ten": "Zero 1 se",
+      "hang": "Xingmeng",
+      "danhMuc": "chuot",
+      "gia": 250000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 9,
+      "anh": "/products/xingmeng-zero-1-se/01.webp",
+      "mau": "#b45309"
+    },
+    {
+      "id": "aula-sc311",
+      "slug": "aula-sc311",
+      "ten": "SC311",
+      "hang": "Aula",
+      "danhMuc": "chuot",
+      "gia": 250000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 3,
+      "anh": "/products/aula-sc311/01.webp",
+      "mau": "#dc2626"
+    },
+    {
+      "id": "smailwolf-m3",
+      "slug": "smailwolf-m3",
+      "ten": "M3",
+      "hang": "SmailWolf",
+      "danhMuc": "chuot",
+      "gia": 250000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 3,
+      "anh": "/products/smailwolf-m3/01.webp",
+      "mau": "#c2185b"
+    },
+    {
+      "id": "lamzu-maya-kem-dongle-8k",
+      "slug": "lamzu-maya-kem-dongle-8k",
+      "ten": "Maya kèm dongle 8k",
+      "hang": "Lamzu",
+      "danhMuc": "chuot",
+      "gia": 1000000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/lamzu-maya-kem-dongle-8k/01.webp",
+      "anhs": [
+        "/products/lamzu-maya-kem-dongle-8k/01.webp",
+        "/products/lamzu-maya-kem-dongle-8k/02.webp",
+        "/products/lamzu-maya-kem-dongle-8k/03.webp",
+        "/products/lamzu-maya-kem-dongle-8k/04.webp"
+      ],
+      "mau": "#b45309"
+    },
+    {
+      "id": "logitech-g-pro-wireless",
+      "slug": "logitech-g-pro-wireless",
+      "ten": "G pro wireless",
+      "hang": "Logitech",
+      "danhMuc": "chuot",
+      "gia": 800000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 2,
+      "anh": "/products/logitech-g-pro-wireless/01.webp",
+      "anhs": [
+        "/products/logitech-g-pro-wireless/01.webp",
+        "/products/logitech-g-pro-wireless/02.webp",
+        "/products/logitech-g-pro-wireless/03.webp"
+      ],
+      "mau": "#7c3aed"
+    },
+    {
+      "id": "pulsar-tenz-den",
+      "slug": "pulsar-tenz-den",
+      "ten": "Tenz ( đen )",
+      "hang": "Pulsar",
+      "danhMuc": "chuot",
+      "gia": 2000000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/pulsar-tenz-den/01.webp",
+      "anhs": [
+        "/products/pulsar-tenz-den/01.webp",
+        "/products/pulsar-tenz-den/02.webp",
+        "/products/pulsar-tenz-den/03.webp"
+      ],
+      "mau": "#be123c"
+    },
+    {
+      "id": "logitech-g502-x-plus",
+      "slug": "logitech-g502-x-plus",
+      "ten": "G502 x Plus",
+      "hang": "Logitech",
+      "danhMuc": "chuot",
+      "gia": 1600000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/logitech-g502-x-plus/01.webp",
+      "anhs": [
+        "/products/logitech-g502-x-plus/01.webp",
+        "/products/logitech-g502-x-plus/02.webp",
+        "/products/logitech-g502-x-plus/03.webp",
+        "/products/logitech-g502-x-plus/04.webp",
+        "/products/logitech-g502-x-plus/05.webp"
+      ],
+      "mau": "#7c3aed"
+    },
+    {
+      "id": "razer-deathadder-v3-pro",
+      "slug": "razer-deathadder-v3-pro",
+      "ten": "Deathadder v3 pro",
+      "hang": "Razer",
+      "danhMuc": "chuot",
+      "gia": 1100000,
+      "tinhTrang": "Cũ · không hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/razer-deathadder-v3-pro/01.webp",
+      "anhs": [
+        "/products/razer-deathadder-v3-pro/01.webp",
+        "/products/razer-deathadder-v3-pro/02.webp",
+        "/products/razer-deathadder-v3-pro/03.webp",
+        "/products/razer-deathadder-v3-pro/04.webp",
+        "/products/razer-deathadder-v3-pro/05.webp"
+      ],
+      "mau": "#4338ca"
+    },
+    {
+      "id": "finalmouse-tarik",
+      "slug": "finalmouse-tarik",
+      "ten": "Tarik",
+      "hang": "FinalMouse",
+      "danhMuc": "chuot",
+      "gia": 2500000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/finalmouse-tarik/01.webp",
+      "anhs": [
+        "/products/finalmouse-tarik/01.webp",
+        "/products/finalmouse-tarik/02.webp",
+        "/products/finalmouse-tarik/03.webp",
+        "/products/finalmouse-tarik/04.webp",
+        "/products/finalmouse-tarik/05.webp"
+      ],
+      "mau": "#7c3aed"
+    },
+    {
+      "id": "lamzu-maya-x",
+      "slug": "lamzu-maya-x",
+      "ten": "Maya X",
+      "hang": "Lamzu",
+      "danhMuc": "chuot",
+      "gia": 1700000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/lamzu-maya-x/01.webp",
+      "mau": "#b45309"
+    },
+    {
+      "id": "razer-basilisk",
+      "slug": "razer-basilisk",
+      "ten": "Basilisk",
+      "hang": "Razer",
+      "danhMuc": "chuot",
+      "gia": 350000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/razer-basilisk/01.webp",
+      "mau": "#4338ca"
+    },
     {
       "id": "wooting-80he-ghost",
       "slug": "wooting-80he-ghost",
@@ -564,6 +873,13 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 10,
       "anh": "/products/razer-feet-viper-v3-pro/01.webp",
+      "anhs": [
+        "/products/razer-feet-viper-v3-pro/01.webp",
+        "/products/razer-feet-viper-v3-pro/02.webp",
+        "/products/razer-feet-viper-v3-pro/03.webp",
+        "/products/razer-feet-viper-v3-pro/04.webp",
+        "/products/razer-feet-viper-v3-pro/05.webp"
+      ],
       "mau": "#4338ca"
     },
     {
