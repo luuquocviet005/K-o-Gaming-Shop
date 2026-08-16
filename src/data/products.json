@@ -38,7 +38,7 @@
       "short": "Phụ kiện",
       "icon": "do-khac",
       "blurb": "Keycap, bungee, đế sạc, tai nghe không dây và đồ chơi lẻ đi kèm.",
-      "soLuong": 9
+      "soLuong": 8
     },
     {
       "slug": "switch-he",
@@ -362,7 +362,7 @@
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 3,
+      "soLuong": 1,
       "anh": "/products/wooting-80he-ghost/01.webp",
       "anhs": [
         "/products/wooting-80he-ghost/01.webp",
@@ -807,30 +807,6 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "mau": "#0f172a"
-    },
-    {
-      "id": "razer-phantom-keycap",
-      "slug": "razer-phantom-keycap",
-      "ten": "Phantom keycap",
-      "hang": "Razer",
-      "danhMuc": "phu-kien",
-      "gia": 450000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/razer-phantom-keycap/01.webp",
-      "anhs": [
-        "/products/razer-phantom-keycap/01.webp",
-        "/products/razer-phantom-keycap/02.webp",
-        "/products/razer-phantom-keycap/03.webp",
-        "/products/razer-phantom-keycap/04.webp",
-        "/products/razer-phantom-keycap/05.webp",
-        "/products/razer-phantom-keycap/06.webp",
-        "/products/razer-phantom-keycap/07.webp",
-        "/products/razer-phantom-keycap/08.webp"
-      ],
-      "mau": "#4338ca"
     },
     {
       "id": "razer-base-station-chroma-chroma-quartz",
