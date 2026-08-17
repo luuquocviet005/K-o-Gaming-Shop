@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 17
+      "soLuong": 18
     },
     {
       "slug": "ban-phim",
@@ -232,6 +232,19 @@
         "/products/logitech-g502-x-plus/04.webp",
         "/products/logitech-g502-x-plus/05.webp"
       ],
+      "mau": "#7c3aed"
+    },
+    {
+      "id": "logitech-g703-hero",
+      "slug": "logitech-g703-hero",
+      "ten": "G703 Hero",
+      "hang": "Logitech",
+      "danhMuc": "chuot",
+      "gia": 650000,
+      "tinhTrang": "Cũ · không hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
       "mau": "#7c3aed"
     },
     {
