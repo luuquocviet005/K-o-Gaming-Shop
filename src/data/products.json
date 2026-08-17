@@ -14,7 +14,7 @@
       "short": "Bàn phím",
       "icon": "ban-phim",
       "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời.",
-      "soLuong": 16
+      "soLuong": 17
     },
     {
       "slug": "tai-nghe",
@@ -358,11 +358,11 @@
       "ten": "Tan 8 ultra",
       "hang": "Akko",
       "danhMuc": "chuot",
-      "gia": 0,
-      "tinhTrang": "",
-      "nhomTinhTrang": "khac",
+      "gia": 850000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 0,
+      "soLuong": 1,
       "mau": "#0f172a"
     },
     {
@@ -654,6 +654,19 @@
         "/products/akko-m1-v5-he/05.webp"
       ],
       "mau": "#0f172a"
+    },
+    {
+      "id": "geonworks-venom60-rgb-6-25",
+      "slug": "geonworks-venom60-rgb-6-25",
+      "ten": "Venom60 RGB 6.25",
+      "hang": "GEONWORKS",
+      "danhMuc": "ban-phim",
+      "gia": 3300000,
+      "tinhTrang": "",
+      "nhomTinhTrang": "khac",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "mau": "#be123c"
     },
     {
       "id": "razer-hammerhead-v3",
