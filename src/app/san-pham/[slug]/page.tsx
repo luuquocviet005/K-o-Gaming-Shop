@@ -38,9 +38,11 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     product.tinhTrang,
     `giá ${formatGia(product)}`,
     `hàng ở ${product.diaDiem}`,
+    product.moTa,
     product.note,
   ]
     .filter(Boolean)
+    .map((s) => String(s).replace(/\s+/g, " ").trim())
     .join(" · ");
 
   const phanThem = [
@@ -113,7 +115,9 @@ export default async function ProductPage(props: Props) {
     "@context": "https://schema.org",
     "@type": "Product",
     name: `${product.hang} ${product.ten}`,
-    description: product.note || `${product.ten} — ${product.tinhTrang}`,
+    description:
+      [product.moTa, product.note].filter(Boolean).join(" — ") ||
+      `${product.ten} — ${product.tinhTrang}`,
     ...(anhChoGoogle.length > 0 && { image: anhChoGoogle }),
     brand: { "@type": "Brand", name: product.hang },
     ...(product.gia > 0 && {
@@ -234,6 +238,21 @@ export default async function ProductPage(props: Props) {
           </h1>
 
           <ProductPurchase product={product} />
+
+          {/*
+            Mô tả: cấu hình, phụ kiện kèm theo. Đặt TRƯỚC bảng thông số vì đây
+            là thứ khách hàng cũ đọc kỹ nhất — cái case gì, switch gì, có kèm
+            hộp không. `whitespace-pre-line` để chủ shop xuống dòng trong ô
+            Google Sheet (Alt+Enter) thì trên web cũng xuống dòng đúng chỗ.
+          */}
+          {product.moTa && (
+            <section className="mt-10">
+              <h2 className="font-display text-lg font-bold text-fg">Mô tả</h2>
+              <p className="mt-3 whitespace-pre-line rounded-2xl border border-border bg-surface px-5 py-4 text-[0.95rem] leading-relaxed text-fg">
+                {product.moTa}
+              </p>
+            </section>
+          )}
 
           <section className="mt-10">
             <h2 className="font-display text-lg font-bold text-fg">Thông tin món hàng</h2>

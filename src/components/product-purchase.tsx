@@ -62,7 +62,9 @@ export function ProductPurchase({ product }: { product: Product }) {
           <p className="text-xs font-bold uppercase tracking-wider text-candy-ink">
             Tình trạng thực tế
           </p>
-          <p className="mt-1.5 text-[0.95rem] leading-relaxed text-fg">{product.note}</p>
+          <p className="mt-1.5 whitespace-pre-line text-[0.95rem] leading-relaxed text-fg">
+            {product.note}
+          </p>
         </div>
       )}
 

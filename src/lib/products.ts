@@ -41,6 +41,13 @@ export type Product = {
   nhomTinhTrang: NhomTinhTrang;
   diaDiem: string;
   soLuong: number;
+  /**
+   * Mô tả món hàng: cấu hình, phụ kiện kèm theo, thông số.
+   *
+   * Khác `note` ở chỗ đây là thứ làm khách MUỐN mua, còn `note` là khuyết điểm
+   * khách CẦN biết. Hai loại hiện ở hai khối riêng trên trang sản phẩm.
+   */
+  moTa?: string;
   /** Ghi chú tình trạng thật của món hàng — thông tin quan trọng nhất với đồ cũ */
   note?: string;
   /** Ảnh bìa — cũng là ảnh đầu trong `anhs` khi sản phẩm có nhiều ảnh */

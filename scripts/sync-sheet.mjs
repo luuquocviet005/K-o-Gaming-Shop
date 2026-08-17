@@ -9,7 +9,7 @@
  * hiện hàng cũ vài chục phút còn hơn hiện một cửa hàng trống trơn.
  */
 
-import { readFile, writeFile, mkdir, readdir } from "node:fs/promises";
+import { readFile, writeFile, mkdir, readdir, rm } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseCsv, toRecords } from "./lib/csv.mjs";
@@ -203,12 +203,30 @@ for (const cauHinh of config.tabs) {
       canhBao.push(`⚠ Ảnh "${ten}" (${cauHinh.tab}): ${canhBaoAnh}`);
     }
 
-    let note = layO(row, "note", "ghi chu");
-    if (note.startsWith("#")) {
-      // Ô công thức lỗi kiểu #ERROR! / #REF!
-      canhBao.push(`⚠ Ghi chú "${ten}" (${cauHinh.tab}): ô lỗi "${note}" — bỏ qua.`);
-      note = "";
-    }
+    /*
+     * HAI cột nội dung, cố ý tách riêng vì chúng nói hai chuyện khác nhau:
+     *
+     *   Mô tả  — cấu hình, phụ kiện kèm theo, thông số. Thứ làm khách MUỐN mua.
+     *            "Case: Mad60, Switch: Owlab, Stab: Owlab, Foam và Plate: Hyber"
+     *
+     *   Note   — khuyết điểm, lỗi, thứ khách cần biết trước khi xuống tiền.
+     *            "receiver hư, switch silent"
+     *
+     * Gộp chung một cột thì cấu hình bàn phím bị trưng dưới nhãn "Tình trạng
+     * thực tế", đọc như thể cái case Mad60 là một lỗi.
+     */
+    const docO = (nhan, ...ten) => {
+      const v = layO(row, ...ten);
+      if (v.startsWith("#")) {
+        // Ô công thức lỗi kiểu #ERROR! / #REF!
+        canhBao.push(`⚠ ${nhan} "${ten}" (${cauHinh.tab}): ô lỗi "${v}" — bỏ qua.`);
+        return "";
+      }
+      return v;
+    };
+
+    const note = docO("Ghi chú", "note", "ghi chu");
+    const moTa = docO("Mô tả", "mo ta", "mota", "chi tiet", "cau hinh", "thong tin");
 
     if (gia === 0) {
       canhBao.push(`⚠ "${ten}" (${cauHinh.tab}): chưa có giá — web sẽ hiện "Liên hệ".`);
@@ -235,6 +253,7 @@ for (const cauHinh of config.tabs) {
       nhomTinhTrang,
       diaDiem: layO(row, "dia diem", "khu vuc") || "Đà Nẵng",
       soLuong: docSoNguyen(layO(row, "so luong"), 0),
+      ...(moTa ? { moTa } : {}),
       ...(note ? { note } : {}),
       ...(anh ? { anh } : {}),
       ...(boAnh && boAnh.length > 1 ? { anhs: boAnh } : {}),
@@ -265,17 +284,40 @@ for (const cauHinh of config.tabs) {
 }
 
 /**
- * Thư mục ảnh không còn sản phẩm nào tương ứng.
+ * Dọn thư mục ảnh không còn sản phẩm nào tương ứng.
  *
- * Xảy ra khi món hàng bị đổi tên hoặc gỡ khỏi Sheet sau khi đã có ảnh. Ảnh
- * mồ côi vẫn nằm trong kho mã và bị đẩy lên máy chủ, nên phải báo để dọn —
- * script KHÔNG tự xoá, vì có thể chỉ là đổi tên tạm và ảnh sẽ dùng lại.
+ * Sinh ra mỗi khi chủ shop đổi tên hoặc gỡ một món khỏi Sheet: ảnh cũ nằm lại
+ * dưới tên slug cũ, không trang nào dùng, nhưng vẫn bị đẩy lên máy chủ.
+ *
+ * TRƯỚC ĐÂY script chỉ cảnh báo và bắt xoá tay, phòng khi chỉ là đổi tên tạm.
+ * Giữ lại thì lợi bất cập hại: chủ shop sửa Sheet liên tục nên danh sách cảnh
+ * báo dài ra mãi, và ảnh chết cứ chất đống trên máy chủ. Xoá được an toàn vì
+ * ẢNH GỐC KHÔNG NẰM Ở ĐÂY — nó nằm trong thư mục ảnh của chủ shop, và
+ * scripts/nap-anh.mjs sẽ tự dựng lại dưới tên slug mới ở lượt chạy kế tiếp.
+ * Git cũng còn nguyên lịch sử nếu cần lấy lại.
+ *
+ * CHỈ xoá khi lượt đồng bộ này đọc được TẤT CẢ các tab. Một tab lỗi mạng làm
+ * cả nhóm sản phẩm biến mất khỏi danh sách — xoá lúc đó là xoá nhầm ảnh của
+ * hàng vẫn đang bán.
  */
 const boSlug = new Set(sanPham.map((p) => p.slug));
-for (const slug of anhTheoThuMuc.keys()) {
-  if (!boSlug.has(slug)) {
+const moCoi = [...anhTheoThuMuc.keys()].filter((slug) => !boSlug.has(slug));
+const coTabLoi = canhBao.some((c) => c.startsWith("✗"));
+
+if (moCoi.length > 0) {
+  if (coTabLoi) {
     canhBao.push(
-      `⚠ Ảnh mồ côi: public/products/${slug}/ không còn sản phẩm nào dùng — xoá thư mục này nếu không cần nữa.`,
+      `⚠ ${moCoi.length} thư mục ảnh có vẻ mồ côi nhưng lượt này có tab đọc lỗi — KHÔNG xoá, chờ lượt sau cho chắc.`,
+    );
+  } else {
+    for (const slug of moCoi) {
+      await rm(join(root, "public", "products", slug), {
+        recursive: true,
+        force: true,
+      });
+    }
+    canhBao.push(
+      `· Đã dọn ${moCoi.length} thư mục ảnh của món đã đổi tên hoặc gỡ khỏi Sheet: ${moCoi.join(", ")}`,
     );
   }
 }
