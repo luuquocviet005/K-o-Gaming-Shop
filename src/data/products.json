@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 16
+      "soLuong": 17
     },
     {
       "slug": "ban-phim",
@@ -351,6 +351,19 @@
       "soLuong": 1,
       "anh": "/products/razer-basilisk/01.webp",
       "mau": "#4338ca"
+    },
+    {
+      "id": "akko-tan-8-ultra",
+      "slug": "akko-tan-8-ultra",
+      "ten": "Tan 8 ultra",
+      "hang": "Akko",
+      "danhMuc": "chuot",
+      "gia": 0,
+      "tinhTrang": "",
+      "nhomTinhTrang": "khac",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 0,
+      "mau": "#0f172a"
     },
     {
       "id": "wooting-80he-ghost",
