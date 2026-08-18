@@ -443,27 +443,8 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "moTa": "Case : In 3d trắng\r\nSwitch : Titan miami\r\nKeycap : Pudding hồng\r\nStab : Dodo gear\r\nPlate : Pc",
       "anh": "/products/atk-edge60-custom/01.webp",
-      "mau": "#4338ca"
-    },
-    {
-      "id": "atk-rs6",
-      "slug": "atk-rs6",
-      "ten": "RS6",
-      "hang": "ATK",
-      "danhMuc": "ban-phim",
-      "gia": 1200000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/atk-rs6/01.webp",
-      "anhs": [
-        "/products/atk-rs6/01.webp",
-        "/products/atk-rs6/02.webp",
-        "/products/atk-rs6/03.webp",
-        "/products/atk-rs6/04.webp"
-      ],
       "mau": "#4338ca"
     },
     {
@@ -568,6 +549,7 @@
       "nhomTinhTrang": "khac",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "moTa": "Case : Gh60 nhôm\r\nSwitch : Ttc rgb\r\nKeycap : Akko Asa clear profile hồng\r\nStab : Dodo gear\r\nPlate : Fr4",
       "anh": "/products/everglide-ae61-pro/01.webp",
       "mau": "#b45309"
     },
@@ -615,6 +597,7 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Sài Gòn",
       "soLuong": 1,
+      "moTa": "Case : Holy60 trong suốt\r\nSwitch : Zin win68\r\nStab : Zin win68\r\nPlate : Zin Hm64z - Fr4",
       "anh": "/products/hm-lab-hm64z-custom-case-holy/01.webp",
       "anhs": [
         "/products/hm-lab-hm64z-custom-case-holy/01.webp",
@@ -710,6 +693,20 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "mau": "#15803d"
+    },
+    {
+      "id": "wooting-wooting60he",
+      "slug": "wooting-wooting60he",
+      "ten": "Wooting60he +",
+      "hang": "WOOTING",
+      "danhMuc": "ban-phim",
+      "gia": 3400000,
+      "tinhTrang": "",
+      "nhomTinhTrang": "khac",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "moTa": "Wooting60he +\r\nCase : Holy60 nhựa\r\nSwitch : Zin wooting - Gateron lekker\r\nStab : Zin wooting\r\nPlate : Fr4",
+      "mau": "#be123c"
     },
     {
       "id": "atk-horizon-dsp",
