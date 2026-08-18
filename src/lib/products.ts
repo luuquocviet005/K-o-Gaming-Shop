@@ -9,6 +9,7 @@
  */
 
 import data from "@/data/products.json";
+import khoDaBan from "@/data/da-ban.json";
 
 /** Nhóm để lọc — chi tiết vẫn hiện nguyên chữ người bán ghi trong `tinhTrang` */
 export type NhomTinhTrang = "moi" | "cu" | "khac";
@@ -69,6 +70,49 @@ export type Category = {
 
 export const products = data.sanPham as Product[];
 export const categories = data.danhMuc as Category[];
+
+/**
+ * Hàng đã bán — món đã biến mất khỏi Google Sheet.
+ *
+ * Trang của chúng vẫn còn, chỉ đổi thành "món này đã bán rồi" kèm gợi ý món
+ * tương tự. Lý do: Google đã lập chỉ mục những đường dẫn đó, và mọi link chủ
+ * shop từng gửi khách qua Zalo hay đăng Facebook vẫn còn sống. Để 404 là ném
+ * đi cả khách lẫn điểm SEO mỗi lần bán được hàng.
+ *
+ * Do scripts/sync-sheet.mjs tự ghi ra, chủ shop không phải làm gì thêm.
+ */
+export type SoldProduct = Pick<
+  Product,
+  | "slug"
+  | "ten"
+  | "hang"
+  | "danhMuc"
+  | "gia"
+  | "donViGia"
+  | "tinhTrang"
+  | "nhomTinhTrang"
+  | "anh"
+  | "mau"
+> & {
+  /** Ngày món này rời khỏi Sheet, dạng YYYY-MM-DD */
+  banLuc: string;
+};
+
+export const soldProducts = khoDaBan.daBan as SoldProduct[];
+
+export function getSoldProduct(slug: string): SoldProduct | undefined {
+  return soldProducts.find((p) => p.slug === slug);
+}
+
+/** Món còn bán trong cùng danh mục — để gợi ý thay thế cho hàng đã bán */
+export function replacementsFor(sold: SoldProduct, limit = 4): Product[] {
+  const cungDanhMuc = products.filter((p) => p.danhMuc === sold.danhMuc);
+  const cungHang = cungDanhMuc.filter((p) => p.hang === sold.hang);
+  const conLai = cungDanhMuc.filter((p) => p.hang !== sold.hang);
+  // Hết món cùng nhóm thì lấy tạm hàng nổi bật, còn hơn để trang trống
+  const duPhong = products.filter((p) => p.danhMuc !== sold.danhMuc);
+  return [...cungHang, ...conLai, ...duPhong].slice(0, limit);
+}
 
 // ─────────────────────────── Truy vấn ───────────────────────────
 

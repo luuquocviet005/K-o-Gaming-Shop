@@ -1,6 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getCategory, getProduct, products, relatedProducts, toCard } from "@/lib/products";
+import {
+  getCategory,
+  getProduct,
+  getSoldProduct,
+  products,
+  relatedProducts,
+  soldProducts,
+  toCard,
+} from "@/lib/products";
 import { formatGia } from "@/lib/format";
 import { site, ANH_CHIA_SE, anhDayDu, anhChiaSeSanPham } from "@/lib/site";
 import { Breadcrumbs } from "@/components/breadcrumbs";
@@ -8,10 +16,18 @@ import { ThuVienAnh } from "@/components/thu-vien-anh";
 import { ProductCard } from "@/components/product-card";
 import { ProductPurchase } from "@/components/product-purchase";
 import { ConditionBadge } from "@/components/condition-badge";
+import { TrangDaBan } from "@/components/trang-da-ban";
 import { CheckIcon, InfoIcon, MapPinIcon, PhoneIcon } from "@/components/icons";
 
+/*
+ * Dựng trang cho CẢ hàng đang bán lẫn hàng đã bán.
+ *
+ * Hàng đã bán vẫn cần một trang thật, vì Google đã lập chỉ mục đường dẫn đó và
+ * khách còn giữ link cũ trên Zalo/Facebook. Bỏ đi là mỗi lần bán được hàng lại
+ * đẻ thêm một link chết.
+ */
 export function generateStaticParams() {
-  return products.map((p) => ({ slug: p.slug }));
+  return [...products, ...soldProducts].map((p) => ({ slug: p.slug }));
 }
 
 /** Xem ghi chú ở src/app/danh-muc/[slug]/page.tsx về lý do không dùng PageProps */
@@ -20,7 +36,37 @@ type Props = { params: Promise<{ slug: string }> };
 export async function generateMetadata(props: Props): Promise<Metadata> {
   const { slug } = await props.params;
   const product = getProduct(slug);
-  if (!product) return { title: "Không tìm thấy sản phẩm" };
+
+  // Món đã bán: vẫn cho Google đọc trang, nhưng nói rõ ngay ở tiêu đề là hết
+  // hàng để khách khỏi bấm vào rồi thất vọng.
+  if (!product) {
+    const daBan = getSoldProduct(slug);
+    if (daBan) {
+      const moTaDaBan = `${daBan.hang} ${daBan.ten} đã bán rồi. Xem những món tương tự đang còn tại ${site.name} — hàng cũ và mới, ghi rõ tình trạng thật, cho test trước khi trả tiền.`;
+      return {
+        title: `${daBan.ten} — đã bán`,
+        description: moTaDaBan,
+        alternates: { canonical: `/san-pham/${daBan.slug}/` },
+        openGraph: {
+          title: `${daBan.ten} — đã bán`,
+          description: moTaDaBan,
+          url: `${site.url}/san-pham/${daBan.slug}/`,
+          images: [
+            {
+              url: daBan.anh
+                ? anhChiaSeSanPham(daBan.slug)
+                : anhDayDu(ANH_CHIA_SE),
+              width: 1200,
+              height: 630,
+              alt: `${daBan.hang} ${daBan.ten}`,
+            },
+          ],
+        },
+        twitter: { card: "summary_large_image", title: `${daBan.ten} — đã bán` },
+      };
+    }
+    return { title: "Không tìm thấy sản phẩm" };
+  }
 
   /*
    * Mô tả hiện dưới tiêu đề trong kết quả Google.
@@ -99,7 +145,13 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 export default async function ProductPage(props: Props) {
   const { slug } = await props.params;
   const product = getProduct(slug);
-  if (!product) notFound();
+
+  // Đã bán -> trang "đã bán" kèm gợi ý món thay thế, KHÔNG phải 404
+  if (!product) {
+    const daBan = getSoldProduct(slug);
+    if (daBan) return <TrangDaBan product={daBan} />;
+    notFound();
+  }
 
   const category = getCategory(product.danhMuc);
   const related = relatedProducts(product, 4);

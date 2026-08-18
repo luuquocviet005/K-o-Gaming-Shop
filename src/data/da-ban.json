@@ -1,0 +1,87 @@
+{
+  "daBan": [
+    {
+      "slug": "razer-phantom-keycap",
+      "ten": "Phantom keycap",
+      "hang": "Razer",
+      "danhMuc": "phu-kien",
+      "gia": 450000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/razer-phantom-keycap/01.webp",
+      "mau": "#4338ca",
+      "banLuc": "2026-08-18"
+    },
+    {
+      "slug": "razer-barracuda-x-2022",
+      "ten": "Barracuda x 2022",
+      "hang": "Razer",
+      "danhMuc": "tai-nghe",
+      "gia": 850000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/razer-barracuda-x-2022/01.webp",
+      "mau": "#4338ca",
+      "banLuc": "2026-08-18"
+    },
+    {
+      "slug": "mchose-v9-turbo-plus",
+      "ten": "V9 turbo plus",
+      "hang": "Mchose",
+      "danhMuc": "tai-nghe",
+      "gia": 1500000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "mau": "#7c3aed",
+      "banLuc": "2026-08-18"
+    },
+    {
+      "slug": "arbiter-polar65-yuki-aim",
+      "ten": "Polar65 Yuki Aim",
+      "hang": "Arbiter",
+      "danhMuc": "ban-phim",
+      "gia": 2000000,
+      "tinhTrang": "Mỗi phím",
+      "nhomTinhTrang": "khac",
+      "anh": "/products/arbiter-polar65-yuki-aim/01.webp",
+      "mau": "#dc2626",
+      "banLuc": "2026-08-18"
+    },
+    {
+      "slug": "razer-huntsman-v3-he-magnetic-mini-65-8khz",
+      "ten": "Huntsman V3 HE Magnetic Mini 65% 8KHz",
+      "hang": "Razer",
+      "danhMuc": "ban-phim",
+      "gia": 2800000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "anh": "/products/razer-huntsman-v3-he-magnetic-mini-65-8khz/01.webp",
+      "mau": "#4338ca",
+      "banLuc": "2026-08-18"
+    },
+    {
+      "slug": "atk-x1-ultimate-v2",
+      "ten": "X1 Ultimate V2",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 1000000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/atk-x1-ultimate-v2/01.webp",
+      "mau": "#4338ca",
+      "banLuc": "2026-08-18"
+    },
+    {
+      "slug": "wl-mouse-beast-x-max",
+      "ten": "Beast x Max",
+      "hang": "WL Mouse",
+      "danhMuc": "chuot",
+      "gia": 2000000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/wl-mouse-beast-x-max/01.webp",
+      "mau": "#334155",
+      "banLuc": "2026-08-18"
+    }
+  ]
+}

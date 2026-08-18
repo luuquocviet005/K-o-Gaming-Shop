@@ -13,6 +13,7 @@ import { readFile, writeFile, mkdir, readdir, rm } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseCsv, toRecords } from "./lib/csv.mjs";
+import { docKhoDaBan, capNhatKho, ghiKho } from "./lib/da-ban.mjs";
 import {
   boDau,
   docAnh,
@@ -300,9 +301,54 @@ for (const cauHinh of config.tabs) {
  * cả nhóm sản phẩm biến mất khỏi danh sách — xoá lúc đó là xoá nhầm ảnh của
  * hàng vẫn đang bán.
  */
-const boSlug = new Set(sanPham.map((p) => p.slug));
-const moCoi = [...anhTheoThuMuc.keys()].filter((slug) => !boSlug.has(slug));
 const coTabLoi = canhBao.some((c) => c.startsWith("✗"));
+
+/*
+ * KHO HÀNG ĐÃ BÁN.
+ *
+ * Món biến mất khỏi Sheet = đã bán. Giữ lại đủ thông tin để dựng trang
+ * "món này đã bán rồi" thay vì để đường dẫn chết 404 — xem scripts/lib/da-ban.mjs.
+ *
+ * KHÔNG cập nhật kho khi lượt này có tab đọc lỗi: một tab hỏng mạng làm cả
+ * nhóm hàng biến mất khỏi danh sách, ghi vào kho lúc đó là tuyên bố đã bán cả
+ * chục món vẫn đang bày bán.
+ */
+const duongDanKho = join(root, "src", "data", "da-ban.json");
+let khoDaBan = await docKhoDaBan(duongDanKho);
+
+if (!coTabLoi) {
+  let sanPhamCu = [];
+  try {
+    sanPhamCu = JSON.parse(await readFile(dichVu, "utf8")).sanPham ?? [];
+  } catch {
+    /* lần đầu chạy — chưa có gì để so sánh */
+  }
+
+  const { kho, moiBan, quayLai } = capNhatKho(sanPhamCu, sanPham, khoDaBan);
+  khoDaBan = kho;
+
+  if (moiBan.length) {
+    canhBao.push(
+      `· Đã bán ${moiBan.length} món — giữ lại trang "đã bán": ${moiBan.map((p) => `${p.hang} ${p.ten}`).join(", ")}`,
+    );
+  }
+  if (quayLai.length) {
+    canhBao.push(`· ${quayLai.length} món quay lại Sheet, bỏ khỏi kho đã bán: ${quayLai.join(", ")}`);
+  }
+
+  await ghiKho(duongDanKho, khoDaBan);
+}
+
+/*
+ * Ảnh của hàng ĐÃ BÁN phải giữ lại — trang "đã bán" vẫn cần ảnh bìa để khách
+ * nhận ra đúng món mình từng xem. Chỉ những thư mục không thuộc cả hàng đang
+ * bán lẫn hàng đã bán mới là mồ côi thật.
+ */
+const boSlug = new Set([
+  ...sanPham.map((p) => p.slug),
+  ...khoDaBan.map((p) => p.slug),
+]);
+const moCoi = [...anhTheoThuMuc.keys()].filter((slug) => !boSlug.has(slug));
 
 if (moCoi.length > 0) {
   if (coTabLoi) {
@@ -320,6 +366,34 @@ if (moCoi.length > 0) {
       `· Đã dọn ${moCoi.length} thư mục ảnh của món đã đổi tên hoặc gỡ khỏi Sheet: ${moCoi.join(", ")}`,
     );
   }
+}
+
+/*
+ * Tỉa bớt ảnh của hàng đã bán.
+ *
+ * Trang "đã bán" chỉ hiện MỘT tấm ảnh bìa, không có thư viện ảnh — nên giữ cả
+ * bộ 5–9 tấm là vô ích. Mỗi món bán được lại để lại chừng 1 MB; một năm buôn
+ * bán là vài trăm MB nằm chết trong kho mã và trên máy chủ.
+ *
+ * Giữ lại đúng hai file: ảnh bìa (01.*) và ảnh chia sẻ lên Zalo/Facebook.
+ */
+let daTia = 0;
+for (const p of khoDaBan) {
+  const thuMucSp = join(root, "public", "products", p.slug);
+  let files;
+  try {
+    files = await readdir(thuMucSp);
+  } catch {
+    continue; // món cũ chưa từng có ảnh
+  }
+  for (const f of files) {
+    if (/^01\./i.test(f) || f === "chia-se.jpg") continue;
+    await rm(join(thuMucSp, f), { force: true });
+    daTia++;
+  }
+}
+if (daTia > 0) {
+  canhBao.push(`· Đã tỉa ${daTia} ảnh thừa của hàng đã bán (trang "đã bán" chỉ cần ảnh bìa).`);
 }
 
 // ── Chốt chặn an toàn ───────────────────────────────────────────────────
