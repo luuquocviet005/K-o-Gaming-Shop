@@ -33,6 +33,24 @@ async function ghiNhatKy(dong) {
   }
 }
 
+/**
+ * Đã nhắc chuyện workflow FTP hỏng trong hôm nay chưa?
+ *
+ * Lượt chạy 15 phút một lần, mà lỗi này kéo dài nhiều ngày — không chặn thì
+ * mỗi ngày đẻ ra gần trăm dòng giống hệt nhau, che mất mọi thứ đáng đọc.
+ */
+async function daNhacHomNay() {
+  const dauNgay = new Date().toLocaleDateString("vi-VN", {
+    timeZone: "Asia/Ho_Chi_Minh",
+  });
+  try {
+    const noiDung = await readFile(join(thuMucAnh, "BAO CAO.txt"), "utf8");
+    return noiDung.includes(`Workflow FTP`) && noiDung.includes(dauNgay);
+  } catch {
+    return false; // chưa có file nhật ký
+  }
+}
+
 function chay(args) {
   const r = spawnSync(process.execPath, args, {
     cwd: root,
@@ -94,10 +112,14 @@ await ghiNhatKy(
 );
 
 /*
- * Chặng cuối nằm NGOÀI máy này: GitHub Actions build rồi đẩy qua FTP lên
- * Hostinger. Chặng đó hỏng thì ở đây không hề hay biết — đã có lần web đứng
- * yên hơn một ngày trong khi mọi lượt chạy ngầm đều báo thành công, còn chủ
- * shop thêm hàng vào Sheet mãi không thấy lên. Nên hỏi thẳng GitHub.
+ * Nhắc về workflow FTP trên GitHub nếu nó đang hỏng.
+ *
+ * KHÔNG viết "web chưa cập nhật": Hostinger còn tự kéo code về theo đường
+ * riêng, và đường đó vẫn chạy kể cả khi workflow FTP hỏng (đã kiểm chứng).
+ * Ghi sai thì mỗi 15 phút lại một dòng báo động giả trong nhật ký, đọc riết
+ * thành quen rồi bỏ qua luôn cả lần hỏng thật.
+ *
+ * Chỉ ghi MỘT lần mỗi ngày cho khỏi rác file.
  */
 const remote = spawnSync("git", ["remote", "get-url", "origin"], {
   cwd: root,
@@ -105,10 +127,10 @@ const remote = spawnSync("git", ["remote", "get-url", "origin"], {
 }).stdout;
 const deploy = await kiemTraDeploy((remote ?? "").trim());
 
-if (deploy && !deploy.ok) {
+if (deploy && !deploy.ok && !(await daNhacHomNay())) {
   await ghiNhatKy(
-    `[${luc()}] ✗ NHƯNG WEB CHƯA CẬP NHẬT — bước đưa lên Hostinger thất bại lúc ${deploy.luc}.\r\n` +
-      `   Xem lý do: ${deploy.url}\r\n` +
-      `   Thường do tài khoản FTP trong hPanel đổi mật khẩu hoặc bị xoá.`,
+    `[${luc()}] ⚠ Workflow FTP trên GitHub đang lỗi (lần chạy ${deploy.luc}).\r\n` +
+      `   Hàng vẫn lên web bình thường — Hostinger tự deploy theo đường riêng.\r\n` +
+      `   Sửa hoặc tắt workflow cho đỡ nhiễu: ${deploy.url}`,
   );
 }

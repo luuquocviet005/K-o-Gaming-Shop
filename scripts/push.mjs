@@ -119,22 +119,29 @@ console.log("");
 console.log("  ✓ Đã đẩy lên https://github.com/luuquocviet005/K-o-Gaming-Shop");
 
 /*
- * Đẩy lên GitHub XONG KHÔNG có nghĩa là web đã cập nhật. Còn một chặng nữa:
- * GitHub Actions build rồi đẩy qua FTP lên Hostinger. Chặng đó hỏng thì mọi
- * thứ ở máy này vẫn báo thành công mà web đứng yên — đã để web cũ hơn một
- * ngày mà không ai biết. Nên hỏi luôn lần deploy gần nhất ra sao.
+ * Báo tình trạng workflow "Build & Deploy lên Hostinger" trên GitHub.
+ *
+ * CẨN THẬN VỚI CÁCH DIỄN ĐẠT: workflow này KHÔNG phải đường duy nhất đưa code
+ * lên web. Hostinger còn tự kéo code về theo cơ chế riêng của nó, và đường đó
+ * vẫn chạy tốt kể cả khi workflow FTP hỏng — đã kiểm chứng: workflow hỏng liên
+ * tục nhiều ngày mà hàng mới vẫn lên web bình thường.
+ *
+ * Nên ở đây chỉ nói ĐÚNG thứ quan sát được: workflow đó hỏng. Không được kết
+ * luận "web chưa cập nhật" — nói vậy là báo động giả, và báo động giả lặp lại
+ * thì lần hỏng thật sẽ bị bỏ qua.
  */
 const remote = run("git", ["remote", "get-url", "origin"], { quiet: true }).out;
 const deploy = await kiemTraDeploy(remote);
 
 if (deploy && !deploy.ok) {
   console.log("");
-  console.log("  ⚠ CHÚ Ý: lần đưa lên web gần nhất THẤT BẠI.");
-  console.log(`     Lúc ${deploy.luc} — kết quả: ${deploy.ketLuan}`);
-  console.log("     Code đã lên GitHub an toàn, nhưng WEB CHƯA CẬP NHẬT.");
-  console.log(`     Xem lý do: ${deploy.url}`);
+  console.log("  ⚠ Workflow FTP trên GitHub đang lỗi (không phải lỗi của lần push này).");
+  console.log(`     Lần chạy ${deploy.luc} — kết quả: ${deploy.ketLuan}`);
+  console.log("     Hostinger vẫn tự deploy theo đường riêng, nên web vẫn lên hàng.");
+  console.log("     Sửa hoặc tắt hẳn workflow này để khỏi nhiễu:");
+  console.log(`     ${deploy.url}`);
 } else if (deploy) {
-  console.log(`  → Đang deploy lên Hostinger. Lần trước: ${deploy.ketLuan} (${deploy.luc}).`);
+  console.log(`  → Đang deploy. Workflow lần trước: ${deploy.ketLuan} (${deploy.luc}).`);
 } else {
   console.log("  → Hostinger sẽ tự deploy lại. Theo dõi ở hPanel > Triển khai.");
 }
