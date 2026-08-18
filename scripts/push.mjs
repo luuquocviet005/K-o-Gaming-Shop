@@ -13,6 +13,7 @@
 import { spawnSync } from "node:child_process";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { kiemTraDeploy } from "./lib/kiem-tra-deploy.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -116,5 +117,25 @@ if (run("git", ["push", "origin", "main"]).code !== 0) {
 
 console.log("");
 console.log("  ✓ Đã đẩy lên https://github.com/luuquocviet005/K-o-Gaming-Shop");
-console.log("  → Hostinger sẽ tự deploy lại. Theo dõi ở hPanel > Triển khai.");
+
+/*
+ * Đẩy lên GitHub XONG KHÔNG có nghĩa là web đã cập nhật. Còn một chặng nữa:
+ * GitHub Actions build rồi đẩy qua FTP lên Hostinger. Chặng đó hỏng thì mọi
+ * thứ ở máy này vẫn báo thành công mà web đứng yên — đã để web cũ hơn một
+ * ngày mà không ai biết. Nên hỏi luôn lần deploy gần nhất ra sao.
+ */
+const remote = run("git", ["remote", "get-url", "origin"], { quiet: true }).out;
+const deploy = await kiemTraDeploy(remote);
+
+if (deploy && !deploy.ok) {
+  console.log("");
+  console.log("  ⚠ CHÚ Ý: lần đưa lên web gần nhất THẤT BẠI.");
+  console.log(`     Lúc ${deploy.luc} — kết quả: ${deploy.ketLuan}`);
+  console.log("     Code đã lên GitHub an toàn, nhưng WEB CHƯA CẬP NHẬT.");
+  console.log(`     Xem lý do: ${deploy.url}`);
+} else if (deploy) {
+  console.log(`  → Đang deploy lên Hostinger. Lần trước: ${deploy.ketLuan} (${deploy.luc}).`);
+} else {
+  console.log("  → Hostinger sẽ tự deploy lại. Theo dõi ở hPanel > Triển khai.");
+}
 console.log("");
