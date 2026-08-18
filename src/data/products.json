@@ -62,6 +62,11 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/akko-tan-8-ultra/01.webp",
+      "anhs": [
+        "/products/akko-tan-8-ultra/01.webp",
+        "/products/akko-tan-8-ultra/02.webp"
+      ],
       "mau": "#0f172a"
     },
     {
@@ -596,6 +601,7 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "moTa": "Case : Mad60\n Switch : Owlab ti he \nStab : Stabies \nFoam và Plate :  Hyber boring",
+      "anh": "/products/geonworks-venom60-rgb-6-25/01.webp",
       "mau": "#be123c"
     },
     {
