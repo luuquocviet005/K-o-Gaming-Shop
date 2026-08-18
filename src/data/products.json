@@ -245,6 +245,14 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/logitech-g703-hero/01.webp",
+      "anhs": [
+        "/products/logitech-g703-hero/01.webp",
+        "/products/logitech-g703-hero/02.webp",
+        "/products/logitech-g703-hero/03.webp",
+        "/products/logitech-g703-hero/04.webp",
+        "/products/logitech-g703-hero/05.webp"
+      ],
       "mau": "#7c3aed"
     },
     {
@@ -638,11 +646,12 @@
       "ten": "Nexus61s",
       "hang": "Nexus",
       "danhMuc": "ban-phim",
-      "gia": 0,
+      "gia": 2200000,
       "tinhTrang": "",
       "nhomTinhTrang": "khac",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 0,
+      "soLuong": 1,
+      "moTa": "\"Case : Holy60 nhựa trong \nSwitch :GT taishan \nStab : Dodo\nPlate : Nhôm",
       "mau": "#15803d"
     },
     {
