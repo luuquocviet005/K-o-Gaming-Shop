@@ -14,7 +14,7 @@
       "short": "Bàn phím",
       "icon": "ban-phim",
       "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời.",
-      "soLuong": 19
+      "soLuong": 18
     },
     {
       "slug": "tai-nghe",
@@ -688,19 +688,6 @@
         "/products/wooting-80he-ghost/03.webp"
       ],
       "mau": "#be123c"
-    },
-    {
-      "id": "case-holy60-nhua-do",
-      "slug": "case-holy60-nhua-do",
-      "ten": "Case holy60 nhựa ( đỏ )",
-      "hang": "Không rõ hãng",
-      "danhMuc": "ban-phim",
-      "gia": 150000,
-      "tinhTrang": "",
-      "nhomTinhTrang": "khac",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "mau": "#15803d"
     },
     {
       "id": "wooting-wooting60he",
