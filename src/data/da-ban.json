@@ -1,6 +1,17 @@
 {
   "daBan": [
     {
+      "slug": "case-holy60-nhua-do",
+      "ten": "Case holy60 nhựa ( đỏ )",
+      "hang": "Không rõ hãng",
+      "danhMuc": "ban-phim",
+      "gia": 150000,
+      "tinhTrang": "",
+      "nhomTinhTrang": "khac",
+      "mau": "#15803d",
+      "banLuc": "2026-08-19"
+    },
+    {
       "slug": "razer-phantom-keycap",
       "ten": "Phantom keycap",
       "hang": "Razer",
