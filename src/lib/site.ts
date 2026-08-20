@@ -50,7 +50,7 @@ export const site = {
    * Lấy mã: analytics.google.com > tạo tài sản cho keogaminggear.com >
    * Quản trị > Luồng dữ liệu > chọn luồng web > copy "Mã đo lường".
    */
-  ga4: "",
+  ga4: "G-3LNMP4PFEX",
 } as const;
 
 /**
