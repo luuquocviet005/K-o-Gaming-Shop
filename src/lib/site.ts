@@ -40,6 +40,17 @@ export const site = {
     dieuKienMienPhi: "chuyển khoản đủ tiền trước",
     ghiChuCod: "Ship COD: khách trả phí nhà xe, tụi mình báo trước khi gửi.",
   },
+
+  /**
+   * Mã đo lượt khách của Google Analytics, dạng "G-XXXXXXXXXX".
+   *
+   * ĐỂ TRỐNG = KHÔNG gắn gì cả: không tải script nào, không đặt cookie nào,
+   * trang nhẹ y như cũ. Chỉ khi dán mã thật vào đây thì phần đo mới hoạt động.
+   *
+   * Lấy mã: analytics.google.com > tạo tài sản cho keogaminggear.com >
+   * Quản trị > Luồng dữ liệu > chọn luồng web > copy "Mã đo lường".
+   */
+  ga4: "",
 } as const;
 
 /**

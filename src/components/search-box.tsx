@@ -187,7 +187,7 @@ export function SearchBox({
                     }`}
                   >
                     <span className="grid size-12 shrink-0 place-items-center overflow-hidden rounded-xl bg-surface-3 p-1.5">
-                      <ProductMedia product={p} sizes="48px" />
+                      <ProductMedia product={p} sizes="48px" nho />
                     </span>
                     <span className="min-w-0 flex-1">
                       <span className="block truncate text-sm font-semibold text-fg">

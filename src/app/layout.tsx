@@ -5,6 +5,8 @@ import { site, ANH_CHIA_SE } from "@/lib/site";
 import { CartProvider } from "@/lib/cart";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { DoLuotKhach } from "@/components/do-luot-khach";
+import { DoLienHe } from "@/components/do-lien-he";
 import { themeInitScript } from "@/components/theme-toggle";
 
 // Font được tải về lúc build và self-host -> không gọi ra Google khi người dùng
@@ -189,6 +191,10 @@ export default function RootLayout({
           <main id="noi-dung">{children}</main>
           <Footer />
         </CartProvider>
+
+        {/* Đo lượt khách — im lặng hoàn toàn khi site.ga4 còn trống */}
+        <DoLuotKhach />
+        <DoLienHe />
       </body>
     </html>
   );

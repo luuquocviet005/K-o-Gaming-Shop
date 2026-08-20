@@ -117,7 +117,7 @@ export function CartView() {
                 className="grid size-24 shrink-0 place-items-center overflow-hidden rounded-2xl bg-surface-2 p-2 transition-transform duration-300 hover:scale-105 sm:size-28"
                 aria-label={`Xem ${l.product.ten}`}
               >
-                <ProductMedia product={l.product} sizes="112px" />
+                <ProductMedia product={l.product} sizes="112px" nho />
               </Link>
 
               <div className="flex min-w-0 flex-1 flex-col">

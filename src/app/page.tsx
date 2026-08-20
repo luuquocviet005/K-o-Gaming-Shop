@@ -117,7 +117,7 @@ export default function HomePage() {
                     />
                   </div>
                   <div className="mx-auto mt-3 aspect-square w-full max-w-[17rem] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105">
-                    <ProductMedia product={hero} priority sizes="340px" />
+                    <ProductMedia product={hero} priority sizes="340px" nho />
                   </div>
                   <div
                     aria-hidden="true"

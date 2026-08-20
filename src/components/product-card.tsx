@@ -27,7 +27,7 @@ export function ProductCard({
     <article className="group relative flex flex-col overflow-hidden rounded-[1.5rem] border border-border bg-surface transition-all duration-300 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-[0_22px_46px_-24px_rgba(60,20,40,0.5)]">
       <div className="relative aspect-square overflow-hidden bg-surface-2 p-5">
         <div className="h-full w-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.06]">
-          <ProductMedia product={product} priority={priority} />
+          <ProductMedia product={product} priority={priority} nho />
         </div>
 
         {/* Mép giấy gói: răng cưa ngăn giữa khu ảnh và phần chữ */}

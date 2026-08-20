@@ -215,25 +215,45 @@ export function ProductArt({
 }
 
 /**
+ * Đường dẫn bản thu nhỏ 512px của một ảnh bìa, hoặc null nếu không có.
+ *
+ * Ảnh bìa luôn có dạng /products/<slug>/01.<đuôi> do scripts/nap-anh.mjs đặt
+ * tên, và scripts/anh-chia-se-san-pham.mjs vẽ sẵn _nho.webp cạnh nó ở mỗi lần
+ * build. Ảnh nằm ngoài quy ước đó (file rời, link ngoài) thì trả null và dùng
+ * ảnh gốc — thà nặng còn hơn vỡ ảnh.
+ */
+function banThuNho(anh: string): string | null {
+  const m = anh.match(/^(\/products\/[^/]+\/)01\.[a-z0-9]+$/i);
+  return m ? `${m[1]}_nho.webp` : null;
+}
+
+/**
  * Khung ảnh sản phẩm: dùng ảnh thật nếu có, không thì vẽ minh hoạ.
  * Luôn giữ tỉ lệ vuông để không gây layout shift (CLS).
+ *
+ * `nho` — dùng bản thu nhỏ. Bật cho THẺ sản phẩm: ô ảnh ở đó chỉ 256px mà ảnh
+ * gốc rộng 1400px, đo trên web thật thấy một tấm tốn tới 190 KB. Trang chi
+ * tiết thì để nguyên ảnh gốc vì khách phóng to soi vết trầy.
  */
 export function ProductMedia({
   product,
   className = "",
   sizes = "(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw",
   priority = false,
+  nho = false,
 }: {
   product: Displayable;
   className?: string;
   sizes?: string;
   priority?: boolean;
+  nho?: boolean;
 }) {
   if (product.anh) {
+    const src = (nho && banThuNho(product.anh)) || product.anh;
     return (
       // eslint-disable-next-line @next/next/no-img-element -- static export, ảnh đã tối ưu sẵn
       <img
-        src={product.anh}
+        src={src}
         alt={product.ten}
         width={600}
         height={600}

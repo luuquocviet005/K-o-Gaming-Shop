@@ -102,14 +102,21 @@ try {
 
   // Thư mục con = một sản phẩm nhiều ảnh, do scripts/nap-anh.mjs tạo ra.
   //
-  // Bỏ qua "chia-se.jpg": đó là ảnh 1200×630 dành riêng cho thẻ xem trước trên
-  // Zalo/Facebook (scripts/anh-chia-se-san-pham.mjs vẽ ra), nằm chung thư mục
-  // nhưng KHÔNG phải một tấm ảnh của món. Tính nhầm thì khách mở thư viện ảnh
-  // sẽ thấy thừa một tấm bị viền hồng hai bên.
+  // Bỏ qua ẢNH DO MÁY SINH RA — chúng nằm chung thư mục nhưng KHÔNG phải ảnh
+  // chụp của món:
+  //   chia-se.jpg  ảnh 1200×630 cho thẻ xem trước Zalo/Facebook
+  //   _nho.webp    bản thu nhỏ 512px dùng trong thẻ sản phẩm
+  // Tính nhầm thì khách mở thư viện ảnh sẽ thấy thừa một tấm viền hồng hai bên
+  // và một tấm mờ. Quy ước: mọi file bắt đầu bằng "_" là do máy sinh.
   for (const m of muc) {
     if (!m.isDirectory()) continue;
     const trong = (await readdir(join(root, "public", "products", m.name)))
-      .filter((f) => /\.(jpe?g|png|webp|avif|gif)$/i.test(f) && f !== "chia-se.jpg")
+      .filter(
+        (f) =>
+          /\.(jpe?g|png|webp|avif|gif)$/i.test(f) &&
+          f !== "chia-se.jpg" &&
+          !f.startsWith("_"),
+      )
       .sort((a, b) => a.localeCompare(b, "vi", { numeric: true }));
     if (trong.length) {
       anhTheoThuMuc.set(
@@ -387,7 +394,9 @@ for (const p of khoDaBan) {
     continue; // món cũ chưa từng có ảnh
   }
   for (const f of files) {
-    if (/^01\./i.test(f) || f === "chia-se.jpg") continue;
+    // Giữ ảnh bìa và hai bản phái sinh — xoá thì lượt build sau lại vẽ lại,
+    // sinh ra thay đổi giả trong git mỗi lần chạy.
+    if (/^01\./i.test(f) || f === "chia-se.jpg" || f.startsWith("_")) continue;
     await rm(join(thuMucSp, f), { force: true });
     daTia++;
   }
