@@ -1,19 +1,30 @@
 name: Build & Deploy lên Hostinger
 
-# Mỗi lần push lên nhánh main: tự build và đẩy thư mục out/ lên Hostinger qua FTP.
+# ĐANG TẮT TỰ CHẠY — CỐ Ý. Đọc hết phần này trước khi bật lại.
 #
-# CẦN CÀI 3 SECRET TRONG GITHUB TRƯỚC KHI DÙNG
-#   Settings > Secrets and variables > Actions > New repository secret
-#     FTP_SERVER    ví dụ: ftp.tenmiencuaban.com   (hPanel > Files > FTP Accounts)
-#     FTP_USERNAME  ví dụ: u123456789.tenmien
-#     FTP_PASSWORD  mật khẩu tài khoản FTP đó
+# Hostinger TỰ kéo code từ GitHub về và deploy, không cần workflow này. Đã
+# kiểm chứng: workflow này chưa từng chạy được lần nào (thiếu secret FTP) mà
+# hàng mới vẫn lên web bình thường, kể cả trang "đã bán" mới làm.
 #
-# Chưa cài secret thì workflow sẽ dừng ở bước deploy và báo lỗi — build vẫn chạy.
+# Để nó chạy theo mỗi lần push chỉ được hai thứ: một mail báo lỗi mỗi lần, và
+# nguy cơ hai cơ chế cùng ghi vào public_html một lúc.
+#
+# Vẫn giữ file để dành: hôm nào Hostinger đổi cách deploy hoặc cần đẩy tay thì
+# có sẵn. Chạy tay được ở tab Actions > Run workflow.
+#
+# MUỐN BẬT LẠI TỰ ĐỘNG:
+#   1. Cài 3 secret ở Settings > Secrets and variables > Actions
+#        FTP_SERVER    ví dụ: ftp.tenmiencuaban.com   (hPanel > Files > FTP Accounts)
+#        FTP_USERNAME  ví dụ: u123456789.tenmien
+#        FTP_PASSWORD  mật khẩu tài khoản FTP đó
+#      Thiếu secret thì hỏng đúng ở bước cuối: "Input required and not supplied: server"
+#   2. Bỏ dấu # ở hai dòng `push:` và `branches:` bên dưới
+#   3. TẮT deploy tự động của Hostinger trong hPanel, tránh hai bên giẫm chân nhau
 
 on:
-  push:
-    branches: [main]
-  workflow_dispatch: # cho phép bấm chạy tay trong tab Actions
+  # push:
+  #   branches: [main]
+  workflow_dispatch: # bấm chạy tay trong tab Actions
 
 concurrency:
   group: deploy-hostinger

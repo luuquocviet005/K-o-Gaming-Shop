@@ -127,7 +127,7 @@ const remote = spawnSync("git", ["remote", "get-url", "origin"], {
 }).stdout;
 const deploy = await kiemTraDeploy((remote ?? "").trim());
 
-if (deploy && !deploy.ok && !(await daNhacHomNay())) {
+if (deploy && !deploy.ok && deploy.conMoi && !(await daNhacHomNay())) {
   await ghiNhatKy(
     `[${luc()}] ⚠ Workflow FTP trên GitHub đang lỗi (lần chạy ${deploy.luc}).\r\n` +
       `   Hàng vẫn lên web bình thường — Hostinger tự deploy theo đường riêng.\r\n` +

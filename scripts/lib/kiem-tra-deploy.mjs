@@ -43,12 +43,22 @@ export async function kiemTraDeploy(remoteUrl, { doiToiDaMs = 8000 } = {}) {
     const run = data.workflow_runs?.[0];
     if (!run) return null;
 
+    const soNgay = (Date.now() - new Date(run.created_at).getTime()) / 86400000;
+
     return {
       ok: run.conclusion === "success",
       ketLuan: run.conclusion ?? run.status,
       luc: new Date(run.created_at).toLocaleString("vi-VN", {
         timeZone: "Asia/Ho_Chi_Minh",
       }),
+      /*
+       * Workflow này đang tắt tự chạy (xem .github/workflows/deploy-hostinger.yml),
+       * nên lần chạy cuối cùng sẽ đứng yên mãi ở trạng thái hỏng. Nhắc lại một
+       * lỗi từ tuần trước ở mỗi lần push là báo động giả — mà báo động giả lặp
+       * lại thì lần hỏng thật sẽ bị lướt qua. Chỉ coi là đáng nhắc khi còn mới.
+       */
+      conMoi: soNgay <= 3,
+      soNgay: Math.floor(soNgay),
       url: run.html_url,
     };
   } catch {

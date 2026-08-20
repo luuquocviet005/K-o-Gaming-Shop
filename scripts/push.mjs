@@ -133,16 +133,12 @@ console.log("  ✓ Đã đẩy lên https://github.com/luuquocviet005/K-o-Gaming
 const remote = run("git", ["remote", "get-url", "origin"], { quiet: true }).out;
 const deploy = await kiemTraDeploy(remote);
 
-if (deploy && !deploy.ok) {
+if (deploy && !deploy.ok && deploy.conMoi) {
   console.log("");
-  console.log("  ⚠ Workflow FTP trên GitHub đang lỗi (không phải lỗi của lần push này).");
+  console.log("  ⚠ Workflow FTP trên GitHub vừa lỗi (không phải lỗi của lần push này).");
   console.log(`     Lần chạy ${deploy.luc} — kết quả: ${deploy.ketLuan}`);
   console.log("     Hostinger vẫn tự deploy theo đường riêng, nên web vẫn lên hàng.");
-  console.log("     Sửa hoặc tắt hẳn workflow này để khỏi nhiễu:");
-  console.log(`     ${deploy.url}`);
-} else if (deploy) {
-  console.log(`  → Đang deploy. Workflow lần trước: ${deploy.ketLuan} (${deploy.luc}).`);
-} else {
-  console.log("  → Hostinger sẽ tự deploy lại. Theo dõi ở hPanel > Triển khai.");
+  console.log(`     Chi tiết: ${deploy.url}`);
 }
+console.log("  → Hostinger tự deploy trong ít phút. Theo dõi ở hPanel > Triển khai.");
 console.log("");
