@@ -1,6 +1,18 @@
 {
   "daBan": [
     {
+      "slug": "atk-edge60-custom",
+      "ten": "Edge60 custom",
+      "hang": "ATK",
+      "danhMuc": "ban-phim",
+      "gia": 1300000,
+      "tinhTrang": "Cũ",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/atk-edge60-custom/01.webp",
+      "mau": "#4338ca",
+      "banLuc": "2026-08-21"
+    },
+    {
       "slug": "case-holy60-nhua-do",
       "ten": "Case holy60 nhựa ( đỏ )",
       "hang": "Không rõ hãng",

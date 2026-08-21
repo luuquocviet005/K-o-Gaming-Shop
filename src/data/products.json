@@ -433,9 +433,9 @@
       "mau": "#0f172a"
     },
     {
-      "id": "atk-edge60-custom",
-      "slug": "atk-edge60-custom",
-      "ten": "Edge60 custom",
+      "id": "atk-edge60-ultimate",
+      "slug": "atk-edge60-ultimate",
+      "ten": "Edge60 Ultimate",
       "hang": "ATK",
       "danhMuc": "ban-phim",
       "gia": 1300000,
@@ -444,7 +444,6 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "moTa": "Case : In 3d trắng\r\nSwitch : Titan miami\r\nKeycap : Pudding hồng\r\nStab : Dodo gear\r\nPlate : Pc",
-      "anh": "/products/atk-edge60-custom/01.webp",
       "mau": "#4338ca"
     },
     {
