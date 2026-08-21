@@ -57,20 +57,34 @@ if (!giuKhoa()) {
   process.exit(0);
 }
 
-// 1. Nạp ảnh. Bộ nhớ đệm lo phần "không có gì mới thì thoát nhanh".
+/*
+ * 1. Lấy bảng hàng mới nhất TRƯỚC khi nạp ảnh.
+ *
+ * nap-anh đối chiếu tên thư mục ảnh với bảng hàng để biết ảnh thuộc món nào.
+ * Chạy nó trước khi đồng bộ thì nó cầm bảng hàng CŨ: món vừa thêm vào Sheet
+ * xong đã bỏ ảnh vào thư mục sẽ bị coi là "không khớp món nào", phải đợi trọn
+ * một lượt 15 phút nữa mới lên. Đã thấy đúng cảnh này với "Edge60 Ultimate"
+ * ngày 21/8/2026.
+ *
+ * Hỏng thì KHÔNG dừng: nap-anh vẫn chạy được với bảng hàng cũ, và bước đồng bộ
+ * ở dưới sẽ thử lại lần nữa.
+ */
+chay([join(root, "scripts", "sync-sheet.mjs")]);
+
+// 2. Nạp ảnh. Bộ nhớ đệm lo phần "không có gì mới thì thoát nhanh".
 const napAnh = chay([join(root, "scripts", "nap-anh.mjs"), thuMucAnh]);
 console.log(napAnh.ra);
 
 const khongCoGiMoi = napAnh.ra.includes("Không có ảnh nào mới");
 
-// 2. Đồng bộ bảng hàng (Sheet có thể đã đổi kể cả khi ảnh không đổi)
+// 3. Đồng bộ lại để bảng hàng ghi nhận những tấm ảnh vừa nạp
 const dongBo = chay([join(root, "scripts", "sync-sheet.mjs")]);
 if (dongBo.ma !== 0) {
   await ghiNhatKy(`[${luc()}] ✗ Không đọc được Google Sheet — bỏ qua lượt này.`);
   process.exit(0); // không phải lỗi của người dùng, lượt sau thử lại
 }
 
-// 3. Kiểm tra rồi đẩy lên. push.mjs tự thoát sớm nếu không có gì thay đổi.
+// 4. Kiểm tra rồi đẩy lên. push.mjs tự thoát sớm nếu không có gì thay đổi.
 const day = chay([join(root, "scripts", "push.mjs"), "Tự động cập nhật ảnh sản phẩm"]);
 console.log(day.ra);
 
