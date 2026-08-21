@@ -20,10 +20,24 @@ const duongDan = join(
 );
 
 /**
+ * Dấu hiệu "cha đã giữ khoá rồi" truyền xuống tiến trình con qua biến môi
+ * trường (spawnSync mặc định cho con thừa hưởng process.env).
+ *
+ * Cần thứ này vì tu-dong/thu-cong giữ khoá rồi mới gọi push.mjs — mà push.mjs
+ * nay cũng tự giành khoá. Không có cờ này thì nó thấy khoá của chính cha mình
+ * và tưởng đang có lượt khác chạy, thành ra tự chặn mình.
+ */
+const CO_KHOA = "KEO_DANG_GIU_KHOA";
+
+/**
  * Giành khoá. Trả về true nếu giành được, false nếu lượt khác đang chạy.
  * Khoá tự trả lại khi tiến trình kết thúc, kể cả khi bị Ctrl+C hay bị tắt.
  */
 export function giuKhoa() {
+  // Cha đã giữ — coi như có khoá, và KHÔNG đăng ký dọn dẹp: xoá ở đây là cướp
+  // khoá khỏi tay cha, đúng lúc cha còn đang chạy dở.
+  if (process.env[CO_KHOA] === "1") return true;
+
   try {
     if (Date.now() - statSync(duongDan).mtimeMs > HAN) unlinkSync(duongDan);
   } catch {
@@ -48,5 +62,6 @@ export function giuKhoa() {
   process.on("SIGINT", () => process.exit(130));
   process.on("SIGTERM", () => process.exit(143));
 
+  process.env[CO_KHOA] = "1";
   return true;
 }

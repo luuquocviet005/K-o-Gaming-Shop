@@ -27,6 +27,17 @@ const nextConfig: NextConfig = {
    * cache vĩnh viễn vẫn an toàn, riêng HTML thì phải kiểm tra lại mỗi lần.
    */
   async headers() {
+    /*
+     * KHÔNG áp dụng khi đang `next dev`.
+     *
+     * `immutable, max-age=1 năm` cho /_next/static/ là đúng trên web thật,
+     * nhưng ở máy dev thì trình duyệt giữ luôn bundle JS/CSS cũ: sửa code,
+     * F5, mà trang vẫn y nguyên như chưa sửa gì. Chính Next cũng cảnh báo
+     * "Setting a custom Cache-Control header can break Next.js development
+     * behavior" mỗi lần khởi động. Đã mất công chẩn đoán nhầm vì lỗi này.
+     */
+    if (process.env.NODE_ENV === "development") return [];
+
     return [
       {
         source: "/:path*",

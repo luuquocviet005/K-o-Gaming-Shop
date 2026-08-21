@@ -14,8 +14,30 @@ import { spawnSync } from "node:child_process";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { kiemTraDeploy } from "./lib/kiem-tra-deploy.mjs";
+import { giuKhoa } from "./lib/khoa.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
+
+/*
+ * Giành khoá TRƯỚC KHI làm bất cứ việc gì.
+ *
+ * Lượt tự động 15 phút cũng chạy đúng các bước dưới đây. Hai lượt chồng nhau
+ * thì `next build` báo "Another next build process is already running", còn
+ * `git pull --rebase` thì để repo kẹt giữa một cuộc rebase dở dang với dấu
+ * <<<<<<< nằm trong products.json — từ đó MỌI lượt sau đều chết ở bước kiểm
+ * tra kiểu dữ liệu, ảnh đứng luôn nhiều ngày. Đã xảy ra thật ngày 21/8/2026.
+ *
+ * tu-dong.mjs và thu-cong.mjs giành khoá rồi mới gọi file này; khoá nhận ra
+ * điều đó qua biến môi trường nên không tự chặn mình.
+ */
+if (!giuKhoa()) {
+  console.error("");
+  console.error("  Đang có một lượt nạp ảnh/đưa lên web khác chạy dở (thường");
+  console.error("  là lượt tự động 15 phút). Chờ nó xong rồi chạy lại — chen");
+  console.error("  vào lúc này dễ làm kẹt Git.");
+  console.error("");
+  process.exit(1);
+}
 
 /**
  * Chạy một lệnh, KHÔNG dùng shell.
