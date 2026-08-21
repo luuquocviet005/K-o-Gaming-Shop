@@ -635,7 +635,7 @@
       "ten": "Nexus61s",
       "hang": "Nexus",
       "danhMuc": "ban-phim",
-      "gia": 2200000,
+      "gia": 2000000,
       "tinhTrang": "",
       "nhomTinhTrang": "khac",
       "diaDiem": "Đà Nẵng",
@@ -848,6 +848,12 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 20,
+      "anh": "/products/akko-s9-ultra/01.webp",
+      "anhs": [
+        "/products/akko-s9-ultra/01.webp",
+        "/products/akko-s9-ultra/02.webp",
+        "/products/akko-s9-ultra/03.webp"
+      ],
       "mau": "#0f172a"
     },
     {
@@ -1040,6 +1046,11 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 9,
+      "anh": "/products/atk-feet-atk/01.webp",
+      "anhs": [
+        "/products/atk-feet-atk/01.webp",
+        "/products/atk-feet-atk/02.webp"
+      ],
       "mau": "#4338ca"
     },
     {

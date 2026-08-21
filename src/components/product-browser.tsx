@@ -28,12 +28,21 @@ const nhomTinhTrang = [
 ];
 
 /**
- * Danh sách lựa chọn có vùng cuộn riêng.
- * Cột lọc có tới ~29 hãng — để tràn hết sẽ kéo dài gấp mấy lần màn hình.
+ * Các nhóm lọc ngắn (2–4 lựa chọn) không cần cuộn.
+ * Trên mobile giãn ra cho dễ chạm, lên desktop siết lại để nhường chỗ cho hãng.
+ */
+const optionListClass = "mt-2 flex flex-col gap-2 lg:mt-1.5 lg:gap-0.5";
+
+/**
+ * Danh sách hãng (tới ~29 hãng) là phần duy nhất có vùng cuộn riêng.
+ * Trên desktop nó là flex item co giãn trong cột lọc cao bằng màn hình, nên tự
+ * ăn hết chỗ trống còn lại — màn hình càng cao càng hiện nhiều hãng.
+ * `min-h-40`: sàn ~5 hãng, để màn laptop thấp không bóp danh sách còn 2–3 dòng;
+ * chạm sàn thì cột lọc tự cuộn (`lg:overflow-y-auto`) thay vì cắt cụt.
  * `overscroll-contain`: cuộn hết danh sách thì dừng, không đẩy tiếp cả trang.
  */
-const optionListClass =
-  "mt-3 flex max-h-56 flex-col gap-1.5 overflow-y-auto overscroll-contain pr-1";
+const hangListClass =
+  "mt-2 flex max-h-80 flex-col gap-2 overflow-y-auto overscroll-contain pr-1 lg:mt-1.5 lg:max-h-none lg:min-h-40 lg:flex-1 lg:gap-0.5";
 
 export function ProductBrowser({ items }: { items: CardProduct[] }) {
   const [sort, setSort] = useState<SortKey>("noi-bat");
@@ -132,7 +141,7 @@ export function ProductBrowser({ items }: { items: CardProduct[] }) {
         </button>
 
         <div
-          className={`${filtersOpen ? "block" : "hidden"} mt-3 space-y-6 rounded-[1.5rem] border border-border bg-surface p-5 lg:mt-0 lg:block`}
+          className={`${filtersOpen ? "block" : "hidden"} mt-3 space-y-4 rounded-[1.5rem] border border-border bg-surface p-5 lg:mt-0 lg:flex lg:max-h-[calc(100vh-8rem)] lg:flex-col lg:space-y-3 lg:overflow-y-auto`}
         >
           {activeCount > 0 && (
             <button
@@ -149,7 +158,7 @@ export function ProductBrowser({ items }: { items: CardProduct[] }) {
             <legend className="font-display text-sm font-bold text-fg">
               Tình trạng
             </legend>
-            <div className="mt-3 flex flex-col gap-1.5">
+            <div className={optionListClass}>
               {nhomTinhTrang.map((t) => (
                 <Choice
                   key={t.key}
@@ -187,7 +196,7 @@ export function ProductBrowser({ items }: { items: CardProduct[] }) {
               <legend className="font-display text-sm font-bold text-fg">
                 Hàng đang ở
               </legend>
-              <div className="mt-3 flex flex-col gap-1.5">
+              <div className={optionListClass}>
                 {allDiaDiems.map((d) => (
                   <Choice
                     key={d}
@@ -201,14 +210,27 @@ export function ProductBrowser({ items }: { items: CardProduct[] }) {
             </fieldset>
           )}
 
-          <fieldset>
-            <legend className="flex items-baseline justify-between gap-2 font-display text-sm font-bold text-fg">
+          {/*
+            Nhóm này dùng div + role="group" thay cho fieldset/legend: trình duyệt
+            dựng một hộp ẩn bên trong fieldset nên `flex-1` không truyền được
+            chiều cao xuống danh sách con — danh sách hãng sẽ tràn ra ngoài cột
+            lọc. role="group" + aria-labelledby cho ra đúng ngữ nghĩa như fieldset.
+          */}
+          <div
+            role="group"
+            aria-labelledby="nhan-loc-hang"
+            className="lg:flex lg:min-h-0 lg:flex-1 lg:flex-col"
+          >
+            <p
+              id="nhan-loc-hang"
+              className="flex items-baseline justify-between gap-2 font-display text-sm font-bold text-fg"
+            >
               Hãng
               <span className="font-sans text-xs font-medium text-fg-subtle">
                 {allHangs.length} hãng
               </span>
-            </legend>
-            <div className={optionListClass}>
+            </p>
+            <div className={hangListClass}>
               {allHangs.map((h) => (
                 <Choice
                   key={h}
@@ -219,7 +241,7 @@ export function ProductBrowser({ items }: { items: CardProduct[] }) {
                 </Choice>
               ))}
             </div>
-          </fieldset>
+          </div>
         </div>
       </div>
 
@@ -296,7 +318,8 @@ function Choice({
   children: React.ReactNode;
 }) {
   return (
-    <label className="flex min-h-11 cursor-pointer items-center gap-3 rounded-xl px-2 text-sm text-fg-muted transition-colors hover:bg-surface-2 has-checked:text-fg">
+    // Mobile giữ đủ 44px cho ngón tay; desktop dùng chuột nên siết còn 32px.
+    <label className="flex min-h-11 cursor-pointer items-center gap-3 rounded-lg px-2 py-1 text-sm leading-snug text-fg-muted transition-colors hover:bg-surface-2 has-checked:text-fg lg:min-h-8 lg:gap-2.5">
       <input
         type="checkbox"
         checked={checked}

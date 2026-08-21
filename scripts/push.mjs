@@ -67,6 +67,19 @@ if (!status.trim() && Number(ahead.trim()) === 0) {
   process.exit(0);
 }
 
+/*
+ * Sinh ảnh phái sinh (_nho.webp, chia-se.jpg) TRƯỚC khi build.
+ *
+ * Bước này nằm trong `npm run build`, nhưng ở đây gọi thẳng `next build` nên
+ * nó bị bỏ qua — và đó từng làm hỏng toàn bộ dây chuyền tự động: món mới nạp
+ * ảnh xong không có _nho.webp, "Quét link chết" thấy thẻ sản phẩm trỏ vào file
+ * không tồn tại nên chặn push, ảnh nằm lại trên máy nhiều ngày mà web không đổi.
+ * Thêm nữa nap-anh.mjs xoá sạch thư mục món trước khi ghi ảnh mới, nên món CŨ
+ * vừa đổi ảnh cũng mất hai file này — phải sinh lại ở đây thì mới đủ.
+ */
+step("Sinh ảnh thu nhỏ & ảnh chia sẻ", node, [
+  join(root, "scripts", "anh-chia-se-san-pham.mjs"),
+]);
 step("Kiểm tra kiểu dữ liệu", node, [bin("typescript", "bin", "tsc"), "--noEmit"]);
 step("Kiểm tra code (lint)", node, [bin("eslint", "bin", "eslint.js")]);
 step("Build trang tĩnh", node, [bin("next", "dist", "bin", "next"), "build"]);
