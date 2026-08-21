@@ -11,9 +11,10 @@
  */
 
 import { spawnSync } from "node:child_process";
+import { readFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { kiemTraDeploy } from "./lib/kiem-tra-deploy.mjs";
+import { ghiMocPhienBan, doiWebCapNhat } from "./lib/kiem-tra-deploy.mjs";
 import { giuKhoa } from "./lib/khoa.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -117,12 +118,28 @@ const custom = process.argv.slice(2).join(" ").trim();
 const now = new Date().toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" });
 const message = custom || `Cập nhật nội dung website — ${now}`;
 
+/**
+ * Mốc phiên bản để lát nữa hỏi lại web thật xem đã dựng lại chưa.
+ *
+ * Chỉ ghi mốc mới khi thật sự có thứ để commit. Lượt tự động 15 phút mà lượt
+ * nào cũng đẻ ra một file đổi thì lượt nào cũng deploy — mỗi ngày gần trăm lần
+ * dựng lại web mà chẳng có gì mới.
+ */
+let moc = null;
+
 if (status.trim()) {
+  moc = await ghiMocPhienBan(root);
   if (run("git", ["add", "-A"]).code !== 0) process.exit(1);
   if (run("git", ["commit", "-m", message]).code !== 0) process.exit(1);
   console.log(`  ✓ Đã commit: ${message}`);
 } else {
   console.log("  · Không có thay đổi mới, chỉ đẩy commit đang chờ");
+  // Commit đang chờ đã mang sẵn một mốc — dùng chính nó để đối chiếu.
+  try {
+    moc = (await readFile(join(root, "public", "version.txt"), "utf8")).trim();
+  } catch {
+    /* chưa có file mốc (lần đầu chạy bản này) — bỏ qua bước xác minh */
+  }
 }
 
 /**
@@ -154,26 +171,27 @@ console.log("");
 console.log("  ✓ Đã đẩy lên https://github.com/luuquocviet005/K-o-Gaming-Shop");
 
 /*
- * Báo tình trạng workflow "Build & Deploy lên Hostinger" trên GitHub.
+ * Hỏi lại CHÍNH WEB THẬT xem đã nhận bản này chưa.
  *
- * CẨN THẬN VỚI CÁCH DIỄN ĐẠT: workflow này KHÔNG phải đường duy nhất đưa code
- * lên web. Hostinger còn tự kéo code về theo cơ chế riêng của nó, và đường đó
- * vẫn chạy tốt kể cả khi workflow FTP hỏng — đã kiểm chứng: workflow hỏng liên
- * tục nhiều ngày mà hàng mới vẫn lên web bình thường.
- *
- * Nên ở đây chỉ nói ĐÚNG thứ quan sát được: workflow đó hỏng. Không được kết
- * luận "web chưa cập nhật" — nói vậy là báo động giả, và báo động giả lặp lại
- * thì lần hỏng thật sẽ bị bỏ qua.
+ * Đây mới là câu hỏi đáng quan tâm. Bản trước hỏi workflow FTP trên GitHub —
+ * một con đường đã cố ý tắt, nên nó báo hỏng ở mỗi lần push suốt nhiều ngày
+ * trong khi web vẫn lên hàng bình thường. Hỏi thẳng web thật thì không đoán
+ * mò: thấy đúng mốc là chắc chắn đã cập nhật, không thấy là chắc chắn chưa.
  */
-const remote = run("git", ["remote", "get-url", "origin"], { quiet: true }).out;
-const deploy = await kiemTraDeploy(remote);
+if (moc) {
+  console.log("  · Chờ Hostinger dựng lại web…");
+  const kq = await doiWebCapNhat(root, moc);
 
-if (deploy && !deploy.ok && deploy.conMoi) {
-  console.log("");
-  console.log("  ⚠ Workflow FTP trên GitHub vừa lỗi (không phải lỗi của lần push này).");
-  console.log(`     Lần chạy ${deploy.luc} — kết quả: ${deploy.ketLuan}`);
-  console.log("     Hostinger vẫn tự deploy theo đường riêng, nên web vẫn lên hàng.");
-  console.log(`     Chi tiết: ${deploy.url}`);
+  if (kq.xong) {
+    console.log(`  ✓ Web thật đã cập nhật (sau ${kq.giay} giây).`);
+  } else if (kq.ly_do === "het-gio") {
+    console.log("");
+    console.log(`  ⚠ Đã đẩy lên GitHub xong, nhưng sau ${Math.round(kq.giay / 60)} phút`);
+    console.log("     web thật vẫn chưa đổi. Code đã an toàn trên GitHub, không mất đi");
+    console.log("     đâu — nhưng khách vẫn đang thấy bản cũ.");
+    console.log("     Vào hPanel > Triển khai xem lần deploy gần nhất có lỗi không.");
+  }
+} else {
+  console.log("  → Hostinger tự deploy trong ít phút. Theo dõi ở hPanel > Triển khai.");
 }
-console.log("  → Hostinger tự deploy trong ít phút. Theo dõi ở hPanel > Triển khai.");
 console.log("");

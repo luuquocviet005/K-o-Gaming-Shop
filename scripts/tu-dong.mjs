@@ -15,7 +15,6 @@ import { existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { giuKhoa } from "./lib/khoa.mjs";
-import { kiemTraDeploy } from "./lib/kiem-tra-deploy.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(await readFile(join(root, "sync.config.json"), "utf8"));
@@ -30,24 +29,6 @@ async function ghiNhatKy(dong) {
     await appendFile(join(thuMucAnh, "BAO CAO.txt"), `\r\n${dong}\r\n`, "utf8");
   } catch {
     /* không ghi được thì thôi, không được để việc này làm hỏng cả tiến trình */
-  }
-}
-
-/**
- * Đã nhắc chuyện workflow FTP hỏng trong hôm nay chưa?
- *
- * Lượt chạy 15 phút một lần, mà lỗi này kéo dài nhiều ngày — không chặn thì
- * mỗi ngày đẻ ra gần trăm dòng giống hệt nhau, che mất mọi thứ đáng đọc.
- */
-async function daNhacHomNay() {
-  const dauNgay = new Date().toLocaleDateString("vi-VN", {
-    timeZone: "Asia/Ho_Chi_Minh",
-  });
-  try {
-    const noiDung = await readFile(join(thuMucAnh, "BAO CAO.txt"), "utf8");
-    return noiDung.includes(`Workflow FTP`) && noiDung.includes(dauNgay);
-  } catch {
-    return false; // chưa có file nhật ký
   }
 }
 
@@ -106,31 +87,28 @@ if (day.ma !== 0) {
   process.exit(1);
 }
 
-await ghiNhatKy(
-  `[${luc()}] ✓ Đã đưa lên GitHub thành công.` +
-    (khongCoGiMoi ? " (chỉ cập nhật bảng hàng, ảnh không đổi)" : ""),
-);
-
 /*
- * Nhắc về workflow FTP trên GitHub nếu nó đang hỏng.
+ * push.mjs đã tự hỏi web thật xem đã cập nhật chưa. Chép đúng kết luận đó vào
+ * nhật ký thay vì tự suy đoán lần nữa.
  *
- * KHÔNG viết "web chưa cập nhật": Hostinger còn tự kéo code về theo đường
- * riêng, và đường đó vẫn chạy kể cả khi workflow FTP hỏng (đã kiểm chứng).
- * Ghi sai thì mỗi 15 phút lại một dòng báo động giả trong nhật ký, đọc riết
- * thành quen rồi bỏ qua luôn cả lần hỏng thật.
- *
- * Chỉ ghi MỘT lần mỗi ngày cho khỏi rác file.
+ * Trước đây chỗ này canh workflow FTP trên GitHub — một con đường đã cố ý tắt
+ * — nên mỗi ngày đẻ ra một dòng báo động giả, phải có riêng một bộ chặn để
+ * khỏi rác file. Hỏi thẳng web thật thì không cần chặn gì cả: nó chỉ kêu đúng
+ * lúc có chuyện.
  */
-const remote = spawnSync("git", ["remote", "get-url", "origin"], {
-  cwd: root,
-  encoding: "utf8",
-}).stdout;
-const deploy = await kiemTraDeploy((remote ?? "").trim());
+const webDaLen = day.ra.includes("Web thật đã cập nhật");
+const webChuaLen = day.ra.includes("web thật vẫn chưa đổi");
 
-if (deploy && !deploy.ok && deploy.conMoi && !(await daNhacHomNay())) {
+if (webChuaLen) {
   await ghiNhatKy(
-    `[${luc()}] ⚠ Workflow FTP trên GitHub đang lỗi (lần chạy ${deploy.luc}).\r\n` +
-      `   Hàng vẫn lên web bình thường — Hostinger tự deploy theo đường riêng.\r\n` +
-      `   Sửa hoặc tắt workflow cho đỡ nhiễu: ${deploy.url}`,
+    `[${luc()}] ⚠ Đã đẩy lên GitHub nhưng WEB THẬT CHƯA CẬP NHẬT.\r\n` +
+      `   Code không mất đi đâu, nhưng khách vẫn đang thấy bản cũ.\r\n` +
+      `   Vào hPanel > Triển khai xem lần deploy gần nhất có lỗi không.`,
+  );
+} else {
+  await ghiNhatKy(
+    `[${luc()}] ✓ Đã đưa lên GitHub thành công.` +
+      (webDaLen ? " Web thật đã cập nhật." : "") +
+      (khongCoGiMoi ? " (chỉ cập nhật bảng hàng, ảnh không đổi)" : ""),
   );
 }
