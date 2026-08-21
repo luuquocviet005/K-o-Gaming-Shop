@@ -61,6 +61,24 @@ const duLieu = JSON.parse(
 );
 const sanPham = duLieu.sanPham;
 
+/**
+ * Danh sách món ĐÃ BÁN.
+ *
+ * Bán xong thì món rời khỏi bảng hàng, nhưng thư mục ảnh vẫn nằm nguyên trong
+ * "Ảnh gear" — và trước đây lượt nào cũng báo "KHÔNG khớp — CẦN BẠN SỬA" cho
+ * đúng những thư mục đó, 15 phút một lần, vĩnh viễn. Chủ tiệm không sửa được
+ * vì có gì sai đâu mà sửa. Báo động giả kiểu này lặp mãi thì tới lúc hỏng thật
+ * cũng bị lướt qua, nên phải tách riêng ra và nói đúng bản chất.
+ */
+const daBan = await (async () => {
+  try {
+    const f = await readFile(join(root, "src", "data", "da-ban.json"), "utf8");
+    return JSON.parse(f).daBan ?? [];
+  } catch {
+    return []; // chưa bán món nào, hoặc file chưa có — không phải lỗi
+  }
+})();
+
 /** Thư mục tạm chứa ảnh giải nén — xoá sau khi chạy xong */
 const thuMucTam = join(tmpdir(), `keo-anh-${Date.now()}`);
 let daDungTam = false;
@@ -230,6 +248,8 @@ async function vanTay(duongDanNguon) {
 const khop = [];
 const boQua = [];
 const khongKhop = [];
+/** Thư mục ảnh của món ĐÃ BÁN — không phải lỗi, xem phần in kết quả bên dưới */
+const cuaHangDaBan = [];
 /** slug sản phẩm -> tên thư mục đã dùng, để bắt hai thư mục cùng trỏ một món */
 const daNhan = new Map();
 let tongAnh = 0;
@@ -261,6 +281,18 @@ for (const vao of duongDanVao) {
     const ketQua = timSanPham(ten, ungVienSanPham);
 
     if (!ketQua.sanPham) {
+      // Không có trong bảng hàng — thử xem có phải món đã bán không, trước
+      // khi kết luận là chủ tiệm đặt sai tên.
+      const ungVienDaBan = danhMuc
+        ? daBan.filter((p) => p.danhMuc === danhMuc.slug)
+        : daBan;
+      const kqDaBan = timSanPham(ten, ungVienDaBan);
+
+      if (kqDaBan.sanPham) {
+        cuaHangDaBan.push({ ten, sanPham: kqDaBan.sanPham });
+        continue;
+      }
+
       khongKhop.push({
         ten,
         danhMuc,
@@ -386,6 +418,16 @@ if (boQua.length) {
   ghi(`· ${boQua.length} sản phẩm đã có ảnh từ trước, không đổi — bỏ qua.`);
 }
 
+if (cuaHangDaBan.length) {
+  ghi("");
+  ghi(`· ${cuaHangDaBan.length} thư mục là của món ĐÃ BÁN — bỏ qua, không cần làm gì:`);
+  for (const k of cuaHangDaBan) {
+    ghi(`    "${k.ten}"  →  ${k.sanPham.hang} ${k.sanPham.ten} (bán ${k.sanPham.banLuc ?? "trước đây"})`);
+  }
+  ghi("  Ảnh của những món này vẫn còn trên web cho trang 'đã bán'. Muốn cho");
+  ghi("  gọn thì cứ dọn thư mục đi, web không đổi gì.");
+}
+
 if (khongKhop.length) {
   ghi("");
   ghi(`⚠ ${khongKhop.length} thư mục KHÔNG khớp được với sản phẩm nào — CẦN BẠN SỬA:`);
@@ -417,6 +459,9 @@ if (khongKhop.length) {
   }
 }
 
+// Thư mục của món đã bán KHÔNG tính vào đây: không nạp tấm ảnh nào từ chúng,
+// nên "không có ảnh nào mới" vẫn đúng — và tu-dong.mjs dựa vào đúng câu này
+// để biết lượt chạy có gì mới hay không.
 if (khop.length === 0 && khongKhop.length === 0) {
   ghi("");
   ghi("Không có ảnh nào mới. Mọi thứ đã cập nhật.");
