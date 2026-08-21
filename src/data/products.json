@@ -22,7 +22,7 @@
       "short": "Tai nghe",
       "icon": "tai-nghe",
       "blurb": "Tai nghe chụp tai, in-ear và soundcard.",
-      "soLuong": 6
+      "soLuong": 7
     },
     {
       "slug": "pad-chuot",
@@ -38,7 +38,7 @@
       "short": "Phụ kiện",
       "icon": "do-khac",
       "blurb": "Keycap, bungee, đế sạc, tai nghe không dây và đồ chơi lẻ đi kèm.",
-      "soLuong": 8
+      "soLuong": 9
     },
     {
       "slug": "switch-he",
@@ -838,6 +838,19 @@
       "mau": "#4338ca"
     },
     {
+      "id": "akko-s9-ultra",
+      "slug": "akko-s9-ultra",
+      "ten": "S9 Ultra",
+      "hang": "Akko",
+      "danhMuc": "tai-nghe",
+      "gia": 700000,
+      "tinhTrang": "Mới, nguyên seal",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 20,
+      "mau": "#0f172a"
+    },
+    {
       "id": "atk-lie-xsoft-m",
       "slug": "atk-lie-xsoft-m",
       "ten": "LIe xsoft ( M )",
@@ -1015,6 +1028,19 @@
         "/products/day-led-8k/02.webp"
       ],
       "mau": "#15803d"
+    },
+    {
+      "id": "atk-feet-atk",
+      "slug": "atk-feet-atk",
+      "ten": "Feet ATK",
+      "hang": "ATK",
+      "danhMuc": "phu-kien",
+      "gia": 90000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 9,
+      "mau": "#4338ca"
     },
     {
       "id": "gateron-jade-pro",
