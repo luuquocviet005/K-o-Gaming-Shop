@@ -51,6 +51,30 @@ export async function ghiMocPhienBan(root) {
 }
 
 /**
+ * Đọc mốc mà web thật ĐANG mang, ngay lúc này.
+ *
+ * Dùng để biết một mốc có còn giá trị làm bằng chứng hay không: nếu web đã
+ * mang sẵn đúng mốc đó từ trước, thì thấy nó lần nữa chẳng chứng minh được
+ * điều gì về lần deploy sắp tới.
+ *
+ * @returns {Promise<string|null>} null nếu không hỏi được
+ */
+export async function docMocTrenWeb(root) {
+  const goc = await docDiaChiWeb(root);
+  if (!goc) return null;
+  try {
+    const res = await fetch(`${goc}/${TEN_FILE}?t=${Date.now()}`, {
+      cache: "no-store",
+      headers: { "Cache-Control": "no-cache" },
+      signal: AbortSignal.timeout(10_000),
+    });
+    return res.ok ? (await res.text()).trim() : null;
+  } catch {
+    return null;
+  }
+}
+
+/**
  * Hỏi web thật cho tới khi thấy đúng mốc, hoặc hết giờ chờ.
  *
  * Hỏng thì trả về kết quả bình thường chứ không ném lỗi: việc này chỉ để BÁO

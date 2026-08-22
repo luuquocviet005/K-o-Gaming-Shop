@@ -15,7 +15,11 @@ import { readFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
-import { ghiMocPhienBan, doiWebCapNhat } from "./lib/kiem-tra-deploy.mjs";
+import {
+  ghiMocPhienBan,
+  doiWebCapNhat,
+  docMocTrenWeb,
+} from "./lib/kiem-tra-deploy.mjs";
 import { giuKhoa } from "./lib/khoa.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -239,6 +243,18 @@ if (status.trim()) {
     moc = (await readFile(join(root, "public", "version.txt"), "utf8")).trim();
   } catch {
     /* chưa có file mốc (lần đầu chạy bản này) — bỏ qua bước xác minh */
+  }
+
+  /*
+   * Nhưng chỉ dùng được nếu web CHƯA mang sẵn mốc đó.
+   *
+   * Commit đang chờ có thể là commit tạo bằng tay, không đụng tới version.txt —
+   * khi ấy mốc trong file y hệt mốc đang chạy trên web, và phép đối chiếu sẽ
+   * khớp ngay lập tức rồi báo "đã cập nhật (sau 0 giây)" trong khi Hostinger
+   * còn chưa build. Báo đúng nhầm còn nguy hơn báo sai: nó ru ngủ.
+   */
+  if (moc && (await docMocTrenWeb(root)) === moc) {
+    moc = null;
   }
 }
 
