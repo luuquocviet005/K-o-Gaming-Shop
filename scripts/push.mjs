@@ -12,6 +12,7 @@
 
 import { spawnSync } from "node:child_process";
 import { readFile } from "node:fs/promises";
+import { existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { ghiMocPhienBan, doiWebCapNhat } from "./lib/kiem-tra-deploy.mjs";
@@ -48,11 +49,12 @@ if (!giuKhoa()) {
  * shell thì lời nhắn commit có dấu cách lại bị cắt vụn. Nên gọi thẳng từng
  * công cụ bằng chính Node đang chạy — cách này giống nhau trên mọi hệ điều hành.
  */
-function run(cmd, args, { quiet = false } = {}) {
+function run(cmd, args, { quiet = false, env } = {}) {
   const r = spawnSync(cmd, args, {
     cwd: root,
     stdio: quiet ? "pipe" : "inherit",
     encoding: "utf8",
+    env: env ? { ...process.env, ...env } : process.env,
   });
   if (r.error) return { code: 1, out: String(r.error.message) };
   return { code: r.status ?? 1, out: (r.stdout ?? "") + (r.stderr ?? "") };
@@ -74,8 +76,106 @@ function step(label, cmd, args) {
   console.log("đạt");
 }
 
+/**
+ * Gỡ một cuộc gộp code (rebase) còn dang dở từ lượt trước.
+ *
+ * VÌ SAO CẦN: máy để ở nhà, lượt tự động 15 phút có thể bị cắt ngang bất cứ
+ * lúc nào — tắt máy, ngủ đông, mất điện, tác vụ bị kill. Cắt đúng giữa `git
+ * pull --rebase` thì thư mục .git/rebase-merge nằm lại đó, và MỌI lượt sau đều
+ * chết ngay tại bước gộp với thông báo "already a rebase-merge directory".
+ * Không ai sửa vì không ai đọc được tiếng Git — ảnh cứ thế nằm im nhiều ngày.
+ * Đã xảy ra hai lần: 21/8 và 22/8/2026.
+ *
+ * PHẢI CHẠY ĐẦU TIÊN, trước cả khi xem có gì để push: lúc repo còn kẹt giữa
+ * rebase thì `git commit` bên dưới sẽ đẻ commit vào đúng chỗ dang dở đó.
+ */
+function goRebaseKet() {
+  if (
+    !existsSync(join(root, ".git", "rebase-merge")) &&
+    !existsSync(join(root, ".git", "rebase-apply"))
+  ) {
+    return;
+  }
+
+  console.log("  · Có một cuộc gộp code dang dở từ lượt trước — đang gỡ…");
+
+  // Mã hai chữ đầu dòng `git status --porcelain`: hai bên cùng sửa một file
+  // thì Git đánh dấu UU/AA/DD/AU/UA/DU/UD — đó là xung đột thật.
+  const banDo = () => run("git", ["status", "--porcelain"], { quiet: true }).out;
+
+  if (banDo().split("\n").some((d) => /^(UU|AA|DD|AU|UA|DU|UD)\s/.test(d))) {
+    console.error("");
+    console.error("✗ Lượt trước bị cắt ngang giữa lúc gộp code, và đang có xung đột");
+    console.error("  thật sự cần người quyết định. Không dám tự chọn giùm.");
+    console.error("  Chạy `git status` trong thư mục dự án để xem chi tiết.");
+    console.error("");
+    process.exit(1);
+  }
+
+  // Thử kết thúc cho trọn trước — cách này không đụng gì tới file đang có.
+  // GIT_EDITOR=true vì không có ai ngồi trước màn hình để đóng trình soạn thảo.
+  if (
+    run("git", ["rebase", "--continue"], {
+      quiet: true,
+      env: { GIT_EDITOR: "true" },
+    }).code === 0
+  ) {
+    console.log("    ✓ Đã gộp nốt phần dang dở.");
+    return;
+  }
+
+  /*
+   * Tới đây mới phải huỷ. `git rebase --abort` XOÁ SẠCH mọi thay đổi chưa
+   * commit — mà ở đây thường chính là bộ ảnh vừa nạp xong. Nên phải cất chúng
+   * vào ngăn tạm (stash) trước, huỷ xong lấy ra.
+   *
+   * Đây không phải lo xa: bản sửa đầu tiên của chính hàm này đã bị chính nó
+   * xoá mất khi chạy thử ngày 22/8/2026.
+   */
+  const coViecDangDo = banDo().trim() !== "";
+
+  if (coViecDangDo) {
+    const cat = run(
+      "git",
+      ["stash", "push", "--include-untracked", "-m", "keo-go-rebase-ket"],
+      { quiet: true },
+    );
+    if (cat.code !== 0) {
+      console.error("");
+      console.error("✗ Không cất tạm được các thay đổi đang có, nên không dám huỷ");
+      console.error("  cuộc gộp dở (huỷ là mất ảnh vừa nạp). Chạy `git status`.");
+      console.error("");
+      process.exit(1);
+    }
+  }
+
+  if (run("git", ["rebase", "--abort"], { quiet: true }).code !== 0) {
+    console.error("");
+    console.error("✗ Không gỡ được cuộc gộp code dang dở.");
+    console.error("  Chạy `git rebase --abort` trong thư mục dự án rồi thử lại.");
+    if (coViecDangDo) {
+      console.error("  Thay đổi đang nằm trong ngăn tạm: `git stash pop`.");
+    }
+    console.error("");
+    process.exit(1);
+  }
+
+  if (coViecDangDo && run("git", ["stash", "pop"], { quiet: true }).code !== 0) {
+    console.error("");
+    console.error("✗ Đã huỷ được cuộc gộp dở, nhưng lấy lại các thay đổi thì vướng.");
+    console.error("  KHÔNG mất gì cả — chúng đang nằm trong ngăn tạm của Git.");
+    console.error("  Chạy `git stash list` rồi `git stash pop` để lấy ra.");
+    console.error("");
+    process.exit(1);
+  }
+
+  console.log("    ✓ Đã huỷ cuộc gộp dở; sẽ gộp lại từ đầu ngay sau đây.");
+}
+
 console.log("");
 console.log("═══ KIỂM TRA TRƯỚC KHI PUSH ═══");
+
+goRebaseKet();
 
 // Có gì để push không?
 const { out: status } = run("git", ["status", "--porcelain"], { quiet: true });
