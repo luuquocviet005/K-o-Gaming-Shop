@@ -1,6 +1,30 @@
 {
   "daBan": [
     {
+      "slug": "geonworks-venom60-rgb-6-25",
+      "ten": "Venom60 RGB 6.25",
+      "hang": "GEONWORKS",
+      "danhMuc": "ban-phim",
+      "gia": 3300000,
+      "tinhTrang": "",
+      "nhomTinhTrang": "khac",
+      "anh": "/products/geonworks-venom60-rgb-6-25/01.webp",
+      "mau": "#be123c",
+      "banLuc": "2026-08-24"
+    },
+    {
+      "slug": "hm-lab-hm64z-custom-case-holy",
+      "ten": "Hm64z Custom case holy",
+      "hang": "HM Lab",
+      "danhMuc": "ban-phim",
+      "gia": 1200000,
+      "tinhTrang": "Cũ",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/hm-lab-hm64z-custom-case-holy/01.webp",
+      "mau": "#0f172a",
+      "banLuc": "2026-08-24"
+    },
+    {
       "slug": "atk-edge60-custom",
       "ten": "Edge60 custom",
       "hang": "ATK",

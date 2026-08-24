@@ -14,7 +14,7 @@
       "short": "Bàn phím",
       "icon": "ban-phim",
       "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời.",
-      "soLuong": 18
+      "soLuong": 17
     },
     {
       "slug": "tai-nghe",
@@ -572,24 +572,9 @@
       "mau": "#0f172a"
     },
     {
-      "id": "geonworks-venom60-rgb-6-25",
-      "slug": "geonworks-venom60-rgb-6-25",
-      "ten": "Venom60 RGB 6.25",
-      "hang": "GEONWORKS",
-      "danhMuc": "ban-phim",
-      "gia": 3300000,
-      "tinhTrang": "",
-      "nhomTinhTrang": "khac",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "moTa": "Case : Mad60\n Switch : Owlab ti he \nStab : Stabies \nFoam và Plate :  Hyber boring",
-      "anh": "/products/geonworks-venom60-rgb-6-25/01.webp",
-      "mau": "#be123c"
-    },
-    {
-      "id": "hm-lab-hm64z-custom-case-holy",
-      "slug": "hm-lab-hm64z-custom-case-holy",
-      "ten": "Hm64z Custom case holy",
+      "id": "hm-lab-kit-hm64z",
+      "slug": "hm-lab-kit-hm64z",
+      "ten": "Kit Hm64z",
       "hang": "HM Lab",
       "danhMuc": "ban-phim",
       "gia": 1200000,
@@ -598,10 +583,10 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "moTa": "Case : Holy60 trong suốt\r\nSwitch : Zin win68\r\nStab : Zin win68\r\nPlate : Zin Hm64z - Fr4",
-      "anh": "/products/hm-lab-hm64z-custom-case-holy/01.webp",
+      "anh": "/products/hm-lab-kit-hm64z/01.webp",
       "anhs": [
-        "/products/hm-lab-hm64z-custom-case-holy/01.webp",
-        "/products/hm-lab-hm64z-custom-case-holy/02.webp"
+        "/products/hm-lab-kit-hm64z/01.webp",
+        "/products/hm-lab-kit-hm64z/02.webp"
       ],
       "mau": "#0f172a"
     },
