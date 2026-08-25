@@ -1,6 +1,18 @@
 {
   "daBan": [
     {
+      "slug": "mchose-v9-turbo",
+      "ten": "V9 Turbo +",
+      "hang": "Mchose",
+      "danhMuc": "tai-nghe",
+      "gia": 1200000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/mchose-v9-turbo/01.webp",
+      "mau": "#7c3aed",
+      "banLuc": "2026-08-25"
+    },
+    {
       "slug": "geonworks-venom60-rgb-6-25",
       "ten": "Venom60 RGB 6.25",
       "hang": "GEONWORKS",

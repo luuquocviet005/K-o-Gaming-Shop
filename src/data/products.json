@@ -22,7 +22,7 @@
       "short": "Tai nghe",
       "icon": "tai-nghe",
       "blurb": "Tai nghe chụp tai, in-ear và soundcard.",
-      "soLuong": 7
+      "soLuong": 6
     },
     {
       "slug": "pad-chuot",
@@ -590,7 +590,7 @@
       "ten": "Kit Hm64z",
       "hang": "HM Lab",
       "danhMuc": "ban-phim",
-      "gia": 1200000,
+      "gia": 1000000,
       "tinhTrang": "Cũ",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
@@ -730,7 +730,7 @@
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 0,
+      "soLuong": 1,
       "mau": "#4338ca"
     },
     {
@@ -739,11 +739,11 @@
       "ten": "Rs6 air",
       "hang": "ATK",
       "danhMuc": "ban-phim",
-      "gia": 0,
+      "gia": 1100000,
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 0,
+      "soLuong": 1,
       "mau": "#4338ca"
     },
     {
@@ -803,27 +803,6 @@
       "danhMucKhac": [
         "phu-kien"
       ]
-    },
-    {
-      "id": "mchose-v9-turbo",
-      "slug": "mchose-v9-turbo",
-      "ten": "V9 Turbo +",
-      "hang": "Mchose",
-      "danhMuc": "tai-nghe",
-      "gia": 1200000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Sài Gòn",
-      "soLuong": 1,
-      "note": "Thay dây zin bằng dây pulsar có đầu chống nhiễu",
-      "anh": "/products/mchose-v9-turbo/01.webp",
-      "anhs": [
-        "/products/mchose-v9-turbo/01.webp",
-        "/products/mchose-v9-turbo/02.webp",
-        "/products/mchose-v9-turbo/03.webp",
-        "/products/mchose-v9-turbo/04.webp"
-      ],
-      "mau": "#7c3aed"
     },
     {
       "id": "razer-hammerhead-v3",
