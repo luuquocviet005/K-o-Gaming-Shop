@@ -14,7 +14,7 @@
       "short": "Bàn phím",
       "icon": "ban-phim",
       "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời.",
-      "soLuong": 19
+      "soLuong": 21
     },
     {
       "slug": "tai-nghe",
@@ -22,7 +22,7 @@
       "short": "Tai nghe",
       "icon": "tai-nghe",
       "blurb": "Tai nghe chụp tai, in-ear và soundcard.",
-      "soLuong": 6
+      "soLuong": 8
     },
     {
       "slug": "pad-chuot",
@@ -107,6 +107,20 @@
         "/products/atk-a9-mini-hong/02.webp",
         "/products/atk-a9-mini-hong/03.webp"
       ],
+      "mau": "#4338ca"
+    },
+    {
+      "id": "atk-f1-ultimate-v2",
+      "slug": "atk-f1-ultimate-v2",
+      "ten": "F1 Ultimate v2",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 1000000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/atk-f1-ultimate-v2/01.webp",
       "mau": "#4338ca"
     },
     {
@@ -392,19 +406,6 @@
       "mau": "#b45309"
     },
     {
-      "id": "atk-f1-v2-ultimate",
-      "slug": "atk-f1-v2-ultimate",
-      "ten": "F1 v2 Ultimate",
-      "hang": "ATK",
-      "danhMuc": "chuot",
-      "gia": 1000000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "mau": "#4338ca"
-    },
-    {
       "id": "akko-air-01",
       "slug": "akko-air-01",
       "ten": "Air 01",
@@ -538,6 +539,64 @@
       "mau": "#4338ca"
     },
     {
+      "id": "atk-atk68-v3",
+      "slug": "atk-atk68-v3",
+      "ten": "ATK68 V3",
+      "hang": "ATK",
+      "danhMuc": "ban-phim",
+      "gia": 1600000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/atk-atk68-v3/01.webp",
+      "anhs": [
+        "/products/atk-atk68-v3/01.webp",
+        "/products/atk-atk68-v3/02.webp",
+        "/products/atk-atk68-v3/03.webp"
+      ],
+      "mau": "#4338ca"
+    },
+    {
+      "id": "atk-rs6-air",
+      "slug": "atk-rs6-air",
+      "ten": "Rs6 air",
+      "hang": "ATK",
+      "danhMuc": "ban-phim",
+      "gia": 1100000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "mau": "#4338ca"
+    },
+    {
+      "id": "atk-edge63-ultimate-hong",
+      "slug": "atk-edge63-ultimate-hong",
+      "ten": "Edge63 Ultimate ( Hồng )",
+      "hang": "ATK",
+      "danhMuc": "ban-phim",
+      "gia": 2700000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "mau": "#4338ca"
+    },
+    {
+      "id": "atk-edge63-ultimate-wolves",
+      "slug": "atk-edge63-ultimate-wolves",
+      "ten": "Edge63 Ultimate ( Wolves)",
+      "hang": "ATK",
+      "danhMuc": "ban-phim",
+      "gia": 2400000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "mau": "#4338ca"
+    },
+    {
       "id": "attackshark-r82",
       "slug": "attackshark-r82",
       "ten": "R82",
@@ -650,6 +709,24 @@
       "mau": "#15803d"
     },
     {
+      "id": "razer-blackwidow-v4-75",
+      "slug": "razer-blackwidow-v4-75",
+      "ten": "Blackwidow v4 75%",
+      "hang": "Razer",
+      "danhMuc": "ban-phim",
+      "gia": 1300000,
+      "tinhTrang": "Cũ",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/razer-blackwidow-v4-75/01.webp",
+      "anhs": [
+        "/products/razer-blackwidow-v4-75/01.webp",
+        "/products/razer-blackwidow-v4-75/02.webp"
+      ],
+      "mau": "#4338ca"
+    },
+    {
       "id": "titan-nation-titan68-pro",
       "slug": "titan-nation-titan68-pro",
       "ten": "Titan68 pro",
@@ -701,50 +778,6 @@
       "moTa": "Wooting60he +\r\nCase : Holy60 nhựa\r\nSwitch : Zin wooting - Gateron lekker\r\nStab : Zin wooting\r\nPlate : Fr4",
       "anh": "/products/wooting-wooting60he/01.webp",
       "mau": "#be123c"
-    },
-    {
-      "id": "razer-blackwidow-v4-75",
-      "slug": "razer-blackwidow-v4-75",
-      "ten": "Blackwidow v4 75%",
-      "hang": "Razer",
-      "danhMuc": "ban-phim",
-      "gia": 1300000,
-      "tinhTrang": "Cũ",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/razer-blackwidow-v4-75/01.webp",
-      "anhs": [
-        "/products/razer-blackwidow-v4-75/01.webp",
-        "/products/razer-blackwidow-v4-75/02.webp"
-      ],
-      "mau": "#4338ca"
-    },
-    {
-      "id": "atk-atk68-v3",
-      "slug": "atk-atk68-v3",
-      "ten": "ATK68 V3",
-      "hang": "ATK",
-      "danhMuc": "ban-phim",
-      "gia": 1600000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "mau": "#4338ca"
-    },
-    {
-      "id": "atk-rs6-air",
-      "slug": "atk-rs6-air",
-      "ten": "Rs6 air",
-      "hang": "ATK",
-      "danhMuc": "ban-phim",
-      "gia": 1100000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "mau": "#4338ca"
     },
     {
       "id": "atk-horizon-dsp",
@@ -858,6 +891,32 @@
         "/products/akko-s9-ultra/03.webp"
       ],
       "mau": "#0f172a"
+    },
+    {
+      "id": "hyperx-cloud-3",
+      "slug": "hyperx-cloud-3",
+      "ten": "Cloud 3",
+      "hang": "HyperX",
+      "danhMuc": "tai-nghe",
+      "gia": 1200000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "mau": "#c2185b"
+    },
+    {
+      "id": "hyperx-stinger-2-core",
+      "slug": "hyperx-stinger-2-core",
+      "ten": "Stinger 2 core",
+      "hang": "HyperX",
+      "danhMuc": "tai-nghe",
+      "gia": 350000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 0,
+      "mau": "#c2185b"
     },
     {
       "id": "atk-lie-xsoft-m",

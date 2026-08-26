@@ -1,6 +1,17 @@
 {
   "daBan": [
     {
+      "slug": "atk-f1-v2-ultimate",
+      "ten": "F1 v2 Ultimate",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 1000000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "mau": "#4338ca",
+      "banLuc": "2026-08-26"
+    },
+    {
       "slug": "mchose-v9-turbo",
       "ten": "V9 Turbo +",
       "hang": "Mchose",
