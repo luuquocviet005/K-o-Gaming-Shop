@@ -14,7 +14,7 @@
       "short": "Bàn phím",
       "icon": "ban-phim",
       "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời.",
-      "soLuong": 21
+      "soLuong": 20
     },
     {
       "slug": "tai-nghe",
@@ -597,20 +597,6 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "mau": "#4338ca"
-    },
-    {
-      "id": "attackshark-r82",
-      "slug": "attackshark-r82",
-      "ten": "R82",
-      "hang": "Attackshark",
-      "danhMuc": "ban-phim",
-      "gia": 600000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/attackshark-r82/01.webp",
-      "mau": "#be123c"
     },
     {
       "id": "everglide-ae61-pro",
