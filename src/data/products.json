@@ -891,6 +891,8 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "note": "Bảo hành chính hãng  20/11/2027",
+      "anh": "/products/hyperx-cloud-3/01.webp",
       "mau": "#c2185b"
     },
     {
@@ -903,7 +905,12 @@
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 0,
+      "soLuong": 1,
+      "anh": "/products/hyperx-stinger-2-core/01.webp",
+      "anhs": [
+        "/products/hyperx-stinger-2-core/01.webp",
+        "/products/hyperx-stinger-2-core/02.webp"
+      ],
       "mau": "#c2185b"
     },
     {
