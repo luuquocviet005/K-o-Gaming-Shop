@@ -26,6 +26,7 @@ export const site = {
     facebook: "https://www.facebook.com/Viet.Vit.Dit.Zjt/",
     tiktok: "https://www.tiktok.com/@ngotdethuong",
     zalo: "https://zalo.me/0904505592",
+    messenger: "https://m.me/Viet.Vit.Dit.Zjt",
   },
 
   /**

@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 19
+      "soLuong": 20
     },
     {
       "slug": "ban-phim",
@@ -404,6 +404,19 @@
       "soLuong": 9,
       "anh": "/products/xingmeng-zero-1-se/01.webp",
       "mau": "#b45309"
+    },
+    {
+      "id": "wl-mouse-beast-x-pro",
+      "slug": "wl-mouse-beast-x-pro",
+      "ten": "Beast x Pro",
+      "hang": "WL Mouse",
+      "danhMuc": "chuot",
+      "gia": 2000000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "mau": "#334155"
     },
     {
       "id": "akko-air-01",

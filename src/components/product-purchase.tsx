@@ -136,6 +136,15 @@ export function ProductPurchase({ product }: { product: Product }) {
             >
               Zalo
             </a>{" "}
+            hoặc{" "}
+            <a
+              href={site.social.messenger}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-primary-ink underline"
+            >
+              Messenger
+            </a>{" "}
             để tụi mình báo khi có hàng tương tự.
           </p>
         ) : chuaCoGia ? (
