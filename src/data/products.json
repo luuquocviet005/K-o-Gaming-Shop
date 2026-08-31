@@ -17,14 +17,6 @@
       "soLuong": 20
     },
     {
-      "slug": "tai-nghe",
-      "name": "Tai nghe",
-      "short": "Tai nghe",
-      "icon": "tai-nghe",
-      "blurb": "Tai nghe chụp tai, in-ear và soundcard.",
-      "soLuong": 8
-    },
-    {
       "slug": "pad-chuot",
       "name": "Pad chuột",
       "short": "Pad chuột",
@@ -781,152 +773,6 @@
       "mau": "#be123c"
     },
     {
-      "id": "atk-horizon-dsp",
-      "slug": "atk-horizon-dsp",
-      "ten": "Horizon DSP",
-      "hang": "ATK",
-      "danhMuc": "tai-nghe",
-      "gia": 900000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/atk-horizon-dsp/01.webp",
-      "mau": "#4338ca"
-    },
-    {
-      "id": "hyperx-earbuds-2",
-      "slug": "hyperx-earbuds-2",
-      "ten": "Earbuds 2",
-      "hang": "HyperX",
-      "danhMuc": "tai-nghe",
-      "gia": 550000,
-      "tinhTrang": "Mới, nguyên seal",
-      "nhomTinhTrang": "moi",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/hyperx-earbuds-2/01.webp",
-      "anhs": [
-        "/products/hyperx-earbuds-2/01.webp",
-        "/products/hyperx-earbuds-2/02.webp",
-        "/products/hyperx-earbuds-2/03.webp",
-        "/products/hyperx-earbuds-2/04.webp",
-        "/products/hyperx-earbuds-2/05.webp"
-      ],
-      "mau": "#c2185b"
-    },
-    {
-      "id": "hyperx-soundcard-cloud-2",
-      "slug": "hyperx-soundcard-cloud-2",
-      "ten": "Soundcard cloud 2",
-      "hang": "HyperX",
-      "danhMuc": "tai-nghe",
-      "gia": 500000,
-      "tinhTrang": "Mới",
-      "nhomTinhTrang": "moi",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 10,
-      "anh": "/products/hyperx-soundcard-cloud-2/01.webp",
-      "anhs": [
-        "/products/hyperx-soundcard-cloud-2/01.webp",
-        "/products/hyperx-soundcard-cloud-2/02.webp",
-        "/products/hyperx-soundcard-cloud-2/03.webp",
-        "/products/hyperx-soundcard-cloud-2/04.webp"
-      ],
-      "mau": "#c2185b",
-      "danhMucKhac": [
-        "phu-kien"
-      ]
-    },
-    {
-      "id": "razer-hammerhead-v3",
-      "slug": "razer-hammerhead-v3",
-      "ten": "Hammerhead v3",
-      "hang": "Razer",
-      "danhMuc": "tai-nghe",
-      "gia": 750000,
-      "tinhTrang": "Mới, nguyên seal",
-      "nhomTinhTrang": "moi",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/razer-hammerhead-v3/01.webp",
-      "anhs": [
-        "/products/razer-hammerhead-v3/01.webp",
-        "/products/razer-hammerhead-v3/02.webp"
-      ],
-      "mau": "#4338ca"
-    },
-    {
-      "id": "razer-moray",
-      "slug": "razer-moray",
-      "ten": "Moray",
-      "hang": "Razer",
-      "danhMuc": "tai-nghe",
-      "gia": 1700000,
-      "tinhTrang": "Mới, nguyên seal",
-      "nhomTinhTrang": "moi",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 3,
-      "anh": "/products/razer-moray/01.webp",
-      "anhs": [
-        "/products/razer-moray/01.webp",
-        "/products/razer-moray/02.webp"
-      ],
-      "mau": "#4338ca"
-    },
-    {
-      "id": "akko-s9-ultra",
-      "slug": "akko-s9-ultra",
-      "ten": "S9 Ultra",
-      "hang": "Akko",
-      "danhMuc": "tai-nghe",
-      "gia": 700000,
-      "tinhTrang": "Mới, nguyên seal",
-      "nhomTinhTrang": "moi",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 20,
-      "anh": "/products/akko-s9-ultra/01.webp",
-      "anhs": [
-        "/products/akko-s9-ultra/01.webp",
-        "/products/akko-s9-ultra/02.webp",
-        "/products/akko-s9-ultra/03.webp"
-      ],
-      "mau": "#0f172a"
-    },
-    {
-      "id": "hyperx-cloud-3",
-      "slug": "hyperx-cloud-3",
-      "ten": "Cloud 3",
-      "hang": "HyperX",
-      "danhMuc": "tai-nghe",
-      "gia": 1200000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "note": "Bảo hành chính hãng  20/11/2027",
-      "anh": "/products/hyperx-cloud-3/01.webp",
-      "mau": "#c2185b"
-    },
-    {
-      "id": "hyperx-stinger-2-core",
-      "slug": "hyperx-stinger-2-core",
-      "ten": "Stinger 2 core",
-      "hang": "HyperX",
-      "danhMuc": "tai-nghe",
-      "gia": 350000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 0,
-      "anh": "/products/hyperx-stinger-2-core/01.webp",
-      "anhs": [
-        "/products/hyperx-stinger-2-core/01.webp",
-        "/products/hyperx-stinger-2-core/02.webp"
-      ],
-      "mau": "#c2185b"
-    },
-    {
       "id": "atk-lie-xsoft-m",
       "slug": "atk-lie-xsoft-m",
       "ten": "LIe xsoft ( M )",
@@ -996,6 +842,26 @@
         "/products/atk-love-keycap/03.webp"
       ],
       "mau": "#4338ca"
+    },
+    {
+      "id": "hyperx-soundcard-cloud-2",
+      "slug": "hyperx-soundcard-cloud-2",
+      "ten": "Soundcard cloud 2",
+      "hang": "HyperX",
+      "danhMuc": "phu-kien",
+      "gia": 500000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 10,
+      "anh": "/products/hyperx-soundcard-cloud-2/01.webp",
+      "anhs": [
+        "/products/hyperx-soundcard-cloud-2/01.webp",
+        "/products/hyperx-soundcard-cloud-2/02.webp",
+        "/products/hyperx-soundcard-cloud-2/03.webp",
+        "/products/hyperx-soundcard-cloud-2/04.webp"
+      ],
+      "mau": "#c2185b"
     },
     {
       "id": "razer-base-station-chroma-chroma-quartz",
