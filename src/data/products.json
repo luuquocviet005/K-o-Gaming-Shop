@@ -121,6 +121,11 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "anh": "/products/atk-f1-ultimate-v2/01.webp",
+      "anhs": [
+        "/products/atk-f1-ultimate-v2/01.webp",
+        "/products/atk-f1-ultimate-v2/02.webp",
+        "/products/atk-f1-ultimate-v2/03.webp"
+      ],
       "mau": "#4338ca"
     },
     {
