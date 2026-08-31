@@ -39,15 +39,6 @@
       "icon": "do-khac",
       "blurb": "Keycap, bungee, đế sạc, tai nghe không dây và đồ chơi lẻ đi kèm.",
       "soLuong": 10
-    },
-    {
-      "slug": "switch-he",
-      "name": "Switch HE",
-      "short": "Switch",
-      "icon": "switch",
-      "blurb": "Switch từ tính bán lẻ theo cái — giá dưới đây là giá 1 switch.",
-      "donViGia": "cái",
-      "soLuong": 4
     }
   ],
   "sanPham": [
@@ -1158,84 +1149,6 @@
         "/products/phi-khuong-hoan-phi/03.webp"
       ],
       "mau": "#be123c"
-    },
-    {
-      "id": "gateron-jade-pro",
-      "slug": "gateron-jade-pro",
-      "ten": "Jade Pro",
-      "hang": "Gateron",
-      "danhMuc": "switch-he",
-      "gia": 10000,
-      "donViGia": "cái",
-      "tinhTrang": "",
-      "nhomTinhTrang": "khac",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 75,
-      "anh": "/products/gateron-jade-pro/01.webp",
-      "anhs": [
-        "/products/gateron-jade-pro/01.webp",
-        "/products/gateron-jade-pro/02.webp",
-        "/products/gateron-jade-pro/03.webp"
-      ],
-      "mau": "#0f172a"
-    },
-    {
-      "id": "titan-nation-miami",
-      "slug": "titan-nation-miami",
-      "ten": "Miami",
-      "hang": "Titan nation",
-      "danhMuc": "switch-he",
-      "gia": 8000,
-      "donViGia": "cái",
-      "tinhTrang": "",
-      "nhomTinhTrang": "khac",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 52,
-      "anh": "/products/titan-nation-miami/01.webp",
-      "anhs": [
-        "/products/titan-nation-miami/01.webp",
-        "/products/titan-nation-miami/02.webp",
-        "/products/titan-nation-miami/03.webp"
-      ],
-      "mau": "#7c3aed"
-    },
-    {
-      "id": "ttc-ttc-kom",
-      "slug": "ttc-ttc-kom",
-      "ten": "TTC Kom",
-      "hang": "TTC",
-      "danhMuc": "switch-he",
-      "gia": 8000,
-      "donViGia": "cái",
-      "tinhTrang": "",
-      "nhomTinhTrang": "khac",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 58,
-      "anh": "/products/ttc-ttc-kom/01.webp",
-      "anhs": [
-        "/products/ttc-ttc-kom/01.webp",
-        "/products/ttc-ttc-kom/02.webp"
-      ],
-      "mau": "#b45309"
-    },
-    {
-      "id": "ttc-ttc-rgb",
-      "slug": "ttc-ttc-rgb",
-      "ten": "TTC RGB",
-      "hang": "TTC",
-      "danhMuc": "switch-he",
-      "gia": 10000,
-      "donViGia": "cái",
-      "tinhTrang": "",
-      "nhomTinhTrang": "khac",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 50,
-      "anh": "/products/ttc-ttc-rgb/01.webp",
-      "anhs": [
-        "/products/ttc-ttc-rgb/01.webp",
-        "/products/ttc-ttc-rgb/02.webp"
-      ],
-      "mau": "#b45309"
     }
   ]
 }
