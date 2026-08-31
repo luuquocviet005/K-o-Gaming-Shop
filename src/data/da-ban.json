@@ -1,6 +1,18 @@
 {
   "daBan": [
     {
+      "slug": "wooting-wooting60he",
+      "ten": "Wooting60he +",
+      "hang": "WOOTING",
+      "danhMuc": "ban-phim",
+      "gia": 3400000,
+      "tinhTrang": "",
+      "nhomTinhTrang": "khac",
+      "anh": "/products/wooting-wooting60he/01.webp",
+      "mau": "#be123c",
+      "banLuc": "2026-08-31"
+    },
+    {
       "slug": "atk-f1-v2-ultimate",
       "ten": "F1 v2 Ultimate",
       "hang": "ATK",

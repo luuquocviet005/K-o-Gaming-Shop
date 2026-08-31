@@ -773,18 +773,22 @@
       "mau": "#be123c"
     },
     {
-      "id": "wooting-wooting60he",
-      "slug": "wooting-wooting60he",
-      "ten": "Wooting60he +",
+      "id": "wooting-60he-v2-aluminum",
+      "slug": "wooting-60he-v2-aluminum",
+      "ten": "60HE V2 Aluminum",
       "hang": "WOOTING",
       "danhMuc": "ban-phim",
-      "gia": 3400000,
-      "tinhTrang": "",
-      "nhomTinhTrang": "khac",
+      "gia": 6700000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "moTa": "Wooting60he +\r\nCase : Holy60 nhựa\r\nSwitch : Zin wooting - Gateron lekker\r\nStab : Zin wooting\r\nPlate : Fr4",
-      "anh": "/products/wooting-wooting60he/01.webp",
+      "soLuong": 0,
+      "anh": "/products/wooting-60he-v2-aluminum/01.webp",
+      "anhs": [
+        "/products/wooting-60he-v2-aluminum/01.webp",
+        "/products/wooting-60he-v2-aluminum/02.webp",
+        "/products/wooting-60he-v2-aluminum/03.webp"
+      ],
       "mau": "#be123c"
     },
     {
