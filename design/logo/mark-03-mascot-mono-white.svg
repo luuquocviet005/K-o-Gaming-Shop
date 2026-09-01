@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="KEO Gaming Shop mascot">
+  <defs><clipPath id="kb_mark-03-mascot_wh"><circle cx="128" cy="128" r="118"/></clipPath></defs>
+  <circle cx="128" cy="128" r="118" fill="#3c1428" stroke="#ffffff" stroke-width="10"/>
+  <g clip-path="url(#kb_mark-03-mascot_wh)" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="96" y="176" width="34" height="30" fill="#3c1428" stroke="#ffffff" stroke-width="9"/>
+    <path d="M34,258 C34,208 68,186 112,186 C156,186 190,208 190,258 Z" fill="#ffffff" stroke="#ffffff" stroke-width="9"/>
+    <ellipse cx="112" cy="136" rx="57" ry="60" fill="#3c1428" stroke="#ffffff" stroke-width="9"/>
+    <ellipse cx="74" cy="164" rx="10" ry="6.5" fill="#3c1428"/>
+    <ellipse cx="146" cy="162" rx="9" ry="6" fill="#3c1428" opacity=".85"/>
+    <path d="M56,126 C52,80 78,52 112,52 C148,52 174,80 168,126 L158,100 L143,118 L132,92 L112,114 L98,88 L82,112 L70,96 Z" fill="#ffffff"/>
+    <path d="M82,142 q11,-11 22,0" fill="none" stroke="#ffffff" stroke-width="8"/>
+    <circle cx="139" cy="140" r="9" fill="#ffffff"/>
+    <ellipse cx="131" cy="172" rx="11" ry="8.5" fill="#ffffff"/>
+    <path d="M139,168 L188,113" stroke="#ffffff" stroke-width="9"/>
+    <circle cx="200" cy="96" r="28" fill="#3c1428" stroke="#ffffff" stroke-width="9"/>
+    <g transform="translate(200,96) scale(0.7000) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#ffffff" stroke-width="7.14" stroke-linecap="round"/></g>
+    <g transform="rotate(-7 120 228)">
+      <rect x="48" y="206" width="146" height="46" rx="9" fill="#3c1428" stroke="#ffffff" stroke-width="8"/>
+      <rect x="58" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="73" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="88" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="103" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="118" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="133" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="148" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="163" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="178" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="58" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="73" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="88" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="103" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="118" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="133" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="148" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="163" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="178" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="58" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="73" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="88" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="103" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="118" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="133" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="148" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="163" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="178" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+    </g>
+  </g>
+</svg>

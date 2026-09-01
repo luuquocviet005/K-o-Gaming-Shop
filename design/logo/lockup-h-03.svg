@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img" aria-label="KEO Gaming Shop mascot">
-  <defs><clipPath id="keoBadge_mark-03-mascot"><circle cx="128" cy="128" r="118"/></clipPath></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" width="720" height="200" role="img" aria-label="KẸO Gaming Gear">
+  <g transform="translate(20,20) scale(0.625)"><defs><clipPath id="lk3"><circle cx="128" cy="128" r="118"/></clipPath></defs>
   <circle cx="128" cy="128" r="118" fill="#ffe9f1" stroke="#3c1428" stroke-width="10"/>
-  <g clip-path="url(#keoBadge_mark-03-mascot)" stroke-linejoin="round" stroke-linecap="round">
+  <g clip-path="url(#lk3)" stroke-linejoin="round" stroke-linecap="round">
     <rect x="96" y="176" width="34" height="30" fill="#ffffff" stroke="#3c1428" stroke-width="9"/>
     <path d="M34,258 C34,208 68,186 112,186 C156,186 190,208 190,258 Z" fill="#c2185b" stroke="#3c1428" stroke-width="9"/>
     <ellipse cx="112" cy="136" rx="57" ry="60" fill="#ffffff" stroke="#3c1428" stroke-width="9"/>
@@ -44,5 +44,7 @@
       <rect x="163" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
       <rect x="178" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
     </g>
-  </g>
+  </g></g>
+  <text x="212" y="106" font-family="Fredoka, 'Baloo 2', 'Nunito', 'Segoe UI', sans-serif" font-size="76" font-weight="700" fill="#c2185b" letter-spacing="1">KẸO</text>
+  <text x="212" y="150" font-family="Fredoka, 'Baloo 2', 'Nunito', 'Segoe UI', sans-serif" font-size="30" font-weight="600" fill="#3c1428" letter-spacing="7.5">GAMING GEAR</text>
 </svg>

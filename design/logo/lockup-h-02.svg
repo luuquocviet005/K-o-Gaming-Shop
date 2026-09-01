@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" width="720" height="200" role="img" aria-label="KẸO Gaming Gear">
+  <g transform="translate(20,20) scale(0.625)"><g stroke-linejoin="round" stroke-linecap="round">
+    <rect x="26" y="34" width="204" height="196" rx="42" fill="#c2185b" stroke="#3c1428" stroke-width="10"/>
+    <rect x="48" y="52" width="160" height="140" rx="32" fill="#ff9bc3"/>
+    <g stroke="#3c1428" stroke-linecap="round" fill="none">
+      <path d="M92,94 L92,158" stroke-width="24"/>
+      <path d="M98,130 L148,90" stroke-width="22"/>
+      <path d="M98,130 L150,164" stroke-width="22"/>
+    </g>
+    <circle cx="160" cy="80" r="23" fill="#ffe9f1" stroke="#3c1428" stroke-width="9"/>
+    <g transform="translate(160,80) scale(0.5714) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#c2185b" stroke-width="10.50" stroke-linecap="round"/></g>
+  </g></g>
+  <text x="212" y="106" font-family="Fredoka, 'Baloo 2', 'Nunito', 'Segoe UI', sans-serif" font-size="76" font-weight="700" fill="#c2185b" letter-spacing="1">KẸO</text>
+  <text x="212" y="150" font-family="Fredoka, 'Baloo 2', 'Nunito', 'Segoe UI', sans-serif" font-size="30" font-weight="600" fill="#3c1428" letter-spacing="7.5">GAMING GEAR</text>
+</svg>

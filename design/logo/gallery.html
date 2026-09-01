@@ -1,0 +1,805 @@
+<title>Logo KẸO Gaming Gear</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Be+Vietnam+Pro:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --hot:#c2185b;
+  --paper:#fdf7f9; --surface:#ffffff; --sunk:#f7ecf0;
+  --line:#ecd7e0; --line-strong:#d9b6c5;
+  --text:#33131f; --muted:#7d5a67; --accent:#c2185b;
+  --display:"Fredoka","Baloo 2",system-ui,sans-serif;
+  --body:"Be Vietnam Pro","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#170a0f; --surface:#23111a; --sunk:#2c1622;
+    --line:#3d2130; --line-strong:#553146;
+    --text:#f7e8ee; --muted:#c096a6; --accent:#ff9bc3;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#170a0f; --surface:#23111a; --sunk:#2c1622;
+  --line:#3d2130; --line-strong:#553146;
+  --text:#f7e8ee; --muted:#c096a6; --accent:#ff9bc3;
+}
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--text);font-family:var(--body);
+  font-size:16px;line-height:1.65;margin:0;padding:0 24px 96px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:64px}
+h1,h2,h3,h4{font-family:var(--display);margin:0;text-wrap:balance;line-height:1.15}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.masthead{padding-top:72px;display:flex;flex-direction:column;gap:18px}
+.masthead h1{font-size:clamp(36px,6vw,60px);font-weight:600;letter-spacing:-.01em}
+.masthead h1 em{font-style:normal;color:var(--accent)}
+.masthead p{max-width:62ch;color:var(--muted);font-size:18px}
+.rule{height:3px;background:var(--accent);width:64px;border-radius:3px}
+section{display:flex;flex-direction:column;gap:24px}
+h2{font-size:clamp(24px,3.2vw,32px);font-weight:600}
+.sec-head{display:flex;flex-direction:column;gap:8px;padding-bottom:6px;border-bottom:1px solid var(--line)}
+.sec-head p{color:var(--muted);max-width:66ch}
+.diag{list-style:none;margin:0;padding:0;display:grid;gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:14px;overflow:hidden}
+@media(min-width:720px){.diag{grid-template-columns:1fr 1fr}}
+.diag li{background:var(--surface);padding:18px 20px;display:flex;flex-direction:column;gap:4px}
+.diag strong{font-family:var(--display);font-weight:600;font-size:17px}
+.diag span{color:var(--muted);font-size:14.5px;line-height:1.55}
+.cards{display:flex;flex-direction:column;gap:36px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:20px;
+  padding:28px;display:flex;flex-direction:column;gap:22px}
+.card-head{display:flex;flex-direction:column;gap:6px}
+.card-head h3{font-size:28px;font-weight:600}
+.lede{color:var(--muted);max-width:60ch}
+.hero-mark{display:flex;justify-content:center;padding:4px 0}
+.hero-mark svg{width:192px;height:192px}
+.proof{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+@media(min-width:640px){.proof{grid-template-columns:repeat(4,1fr)}}
+.tile{border-radius:14px;border:1px solid var(--line-strong);display:flex;align-items:center;
+  justify-content:center;padding:16px;aspect-ratio:1/.8}
+.tile-in{width:96px}
+.tile-in svg{width:100%;height:auto;display:block}
+.lockup{background:#ffffff;border:1px solid var(--line-strong);border-radius:14px;padding:18px 24px;display:flex;justify-content:center}
+.lockup svg{width:100%;max-width:400px;height:auto}
+.card-foot{display:grid;gap:22px;padding-top:14px;border-top:1px solid var(--line)}
+@media(min-width:760px){.card-foot{grid-template-columns:1.15fr 1fr .75fr}}
+.card-foot h4{font-size:11px;font-family:var(--mono);font-weight:500;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+.card-foot p{font-size:15px}
+.card-foot ul{margin:0;padding-left:18px;font-size:15px;display:flex;flex-direction:column;gap:3px}
+.favrow{display:flex;align-items:flex-end;gap:14px}
+.fav svg{width:100%;height:auto;display:block}
+.mono-note{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:10px}
+.files{display:flex;flex-wrap:wrap;gap:8px}
+.files span{font-family:var(--mono);font-size:11.5px;color:var(--muted);
+  background:var(--sunk);border-radius:6px;padding:4px 8px}
+.pal{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+@media(min-width:720px){.pal{grid-template-columns:repeat(5,1fr)}}
+.pal li{background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:14px;display:flex;flex-direction:column;gap:6px}
+.chip{height:44px;border-radius:9px;border:1px solid var(--line-strong)}
+.pal b{font-family:var(--display);font-weight:600}
+.pal code{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.pal .sw-note{font-size:12px;color:var(--muted);line-height:1.45}
+.notes{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 24px}
+.notes ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:9px;font-size:15px}
+code{font-family:var(--mono);font-size:13px;background:var(--sunk);padding:1px 5px;border-radius:5px}
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <div class="rule"></div>
+    <h1>Ba hướng logo cho <em>KẸO Gaming Gear</em></h1>
+    <p>Vẽ lại từ bản phác cậu bé cầm bàn phím. Vẫn một ý đó — kẹo gặp bàn phím cơ — nhưng dựng thành hình dùng được thật: chạy từ biển hiệu xuống favicon 18px, có bản một màu để in và thêu, và bám đúng bộ hồng đã nằm sẵn trong code website.</p>
+  </header>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Chẩn đoán</span>
+      <h2>Bản hiện tại vướng ở đâu</h2>
+      <p>Hình vẽ tay rất có duyên, nhưng nó đang là một bức minh hoạ chứ chưa phải một logo. Sáu điểm khiến nó chưa dùng được:</p>
+    </div>
+    <ul class="diag"><li><strong>Vẽ toàn thân</strong><span>Ở 32px cho favicon, cả nhân vật gộp lại thành một vệt mực. Logo phải đọc được ở cỡ móng tay.</span></li><li><strong>Chỉ có nét, không có mảng đặc</strong><span>Đặt lên nền hồng hoặc nền tối là hình biến mất. Logo cần một silhouette đặc.</span></li><li><strong>Nét đều một độ dày</strong><span>Không có phân cấp, mắt không biết nhìn vào đâu trước.</span></li><li><strong>Bàn phím vẽ khoảng 60 phím rời</strong><span>Thu nhỏ một chút là các phím dính lại thành mảng xám.</span></li><li><strong>Không có màu thương hiệu</strong><span>Đen trắng, không liên hệ gì với bộ hồng phấn đang chạy trên website.</span></li><li><strong>Không có khối bao, bố cục lệch trái</strong><span>Không cắt được thành ô vuông hay ô tròn cho avatar, không căn được vào lưới.</span></li></ul>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Đề xuất</span>
+      <h2>Ba hướng</h2>
+      <p>Mỗi hướng đều có bản màu, bản một màu, bản đảo cho nền tối, lockup ngang và lockup dọc. Chọn một hướng rồi tôi hoàn thiện nốt và gắn lên website.</p>
+    </div>
+    <div class="cards">
+    <article class="card">
+      <header class="card-head">
+        <span class="eyebrow">Hướng A</span>
+        <h3>Kẹo Mút</h3>
+        <p class="lede">Viên kẹo mút cắm trên một keycap cơ.</p>
+      </header>
+      <div class="hero-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="KEO mark 1">
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <path d="M62,212 L194,212 L194,232 Q194,242 184,242 L72,242 Q62,242 62,232 Z" fill="#c2185b" stroke="#3c1428" stroke-width="10"/>
+    <path d="M62,212 L84,192 L172,192 L194,212 Z" fill="#ff9bc3" stroke="#3c1428" stroke-width="10"/>
+    <rect x="115" y="152" width="26" height="46" rx="6" fill="#ffffff" stroke="#3c1428" stroke-width="10"/>
+    <circle cx="128" cy="96" r="78" fill="#ffe9f1" stroke="#3c1428" stroke-width="10"/>
+    <g transform="translate(128,96) scale(2.0714) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#c2185b" stroke-width="6.28" stroke-linecap="round"/></g>
+    <circle cx="99" cy="61" r="12" fill="#ffffff" opacity=".9"/>
+  </g>
+</svg></div>
+      <div class="proof"><div class="tile" style="background:#ffffff"><div class="tile-in"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="KEO mark 1">
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <path d="M62,212 L194,212 L194,232 Q194,242 184,242 L72,242 Q62,242 62,232 Z" fill="#c2185b" stroke="#3c1428" stroke-width="10"/>
+    <path d="M62,212 L84,192 L172,192 L194,212 Z" fill="#ff9bc3" stroke="#3c1428" stroke-width="10"/>
+    <rect x="115" y="152" width="26" height="46" rx="6" fill="#ffffff" stroke="#3c1428" stroke-width="10"/>
+    <circle cx="128" cy="96" r="78" fill="#ffe9f1" stroke="#3c1428" stroke-width="10"/>
+    <g transform="translate(128,96) scale(2.0714) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#c2185b" stroke-width="6.28" stroke-linecap="round"/></g>
+    <circle cx="99" cy="61" r="12" fill="#ffffff" opacity=".9"/>
+  </g>
+</svg></div></div><div class="tile" style="background:#ffe9f1"><div class="tile-in"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="KEO mark 1">
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <path d="M62,212 L194,212 L194,232 Q194,242 184,242 L72,242 Q62,242 62,232 Z" fill="#c2185b" stroke="#3c1428" stroke-width="10"/>
+    <path d="M62,212 L84,192 L172,192 L194,212 Z" fill="#ff9bc3" stroke="#3c1428" stroke-width="10"/>
+    <rect x="115" y="152" width="26" height="46" rx="6" fill="#ffffff" stroke="#3c1428" stroke-width="10"/>
+    <circle cx="128" cy="96" r="78" fill="#ffe9f1" stroke="#3c1428" stroke-width="10"/>
+    <g transform="translate(128,96) scale(2.0714) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#c2185b" stroke-width="6.28" stroke-linecap="round"/></g>
+    <circle cx="99" cy="61" r="12" fill="#ffffff" opacity=".9"/>
+  </g>
+</svg></div></div><div class="tile" style="background:#c2185b"><div class="tile-in"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="KEO mark 1">
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <path d="M62,212 L194,212 L194,232 Q194,242 184,242 L72,242 Q62,242 62,232 Z" fill="#ffffff" stroke="#ffffff" stroke-width="10"/>
+    <path d="M62,212 L84,192 L172,192 L194,212 Z" fill="#3c1428" stroke="#ffffff" stroke-width="10"/>
+    <rect x="115" y="152" width="26" height="46" rx="6" fill="#3c1428" stroke="#ffffff" stroke-width="10"/>
+    <circle cx="128" cy="96" r="78" fill="#3c1428" stroke="#ffffff" stroke-width="10"/>
+    <g transform="translate(128,96) scale(2.0714) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#ffffff" stroke-width="6.28" stroke-linecap="round"/></g>
+    <circle cx="99" cy="61" r="12" fill="#3c1428" opacity=".9"/>
+  </g>
+</svg></div></div><div class="tile" style="background:#3c1428"><div class="tile-in"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="KEO mark 1">
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <path d="M62,212 L194,212 L194,232 Q194,242 184,242 L72,242 Q62,242 62,232 Z" fill="#ffffff" stroke="#ffffff" stroke-width="10"/>
+    <path d="M62,212 L84,192 L172,192 L194,212 Z" fill="#3c1428" stroke="#ffffff" stroke-width="10"/>
+    <rect x="115" y="152" width="26" height="46" rx="6" fill="#3c1428" stroke="#ffffff" stroke-width="10"/>
+    <circle cx="128" cy="96" r="78" fill="#3c1428" stroke="#ffffff" stroke-width="10"/>
+    <g transform="translate(128,96) scale(2.0714) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#ffffff" stroke-width="6.28" stroke-linecap="round"/></g>
+    <circle cx="99" cy="61" r="12" fill="#3c1428" opacity=".9"/>
+  </g>
+</svg></div></div></div>
+      <div class="lockup"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" role="img" aria-label="KẸO Gaming Gear">
+  <g transform="translate(20,20) scale(0.625)"><g stroke-linejoin="round" stroke-linecap="round">
+    <path d="M62,212 L194,212 L194,232 Q194,242 184,242 L72,242 Q62,242 62,232 Z" fill="#c2185b" stroke="#3c1428" stroke-width="10"/>
+    <path d="M62,212 L84,192 L172,192 L194,212 Z" fill="#ff9bc3" stroke="#3c1428" stroke-width="10"/>
+    <rect x="115" y="152" width="26" height="46" rx="6" fill="#ffffff" stroke="#3c1428" stroke-width="10"/>
+    <circle cx="128" cy="96" r="78" fill="#ffe9f1" stroke="#3c1428" stroke-width="10"/>
+    <g transform="translate(128,96) scale(2.0714) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#c2185b" stroke-width="6.28" stroke-linecap="round"/></g>
+    <circle cx="99" cy="61" r="12" fill="#ffffff" opacity=".9"/>
+  </g></g>
+  <text x="212" y="106" font-family="Fredoka, 'Baloo 2', 'Nunito', 'Segoe UI', sans-serif" font-size="76" font-weight="700" fill="#c2185b" letter-spacing="1">KẸO</text>
+  <text x="212" y="150" font-family="Fredoka, 'Baloo 2', 'Nunito', 'Segoe UI', sans-serif" font-size="30" font-weight="600" fill="#3c1428" letter-spacing="7.5">GAMING GEAR</text>
+</svg></div>
+      <div class="card-foot">
+        <div><h4>Vì sao đổi</h4><p>Ký hiệu thuần, không mặt người. Đọc được ở 16px, in thêu được, khó lỗi thời nhất trong ba hướng.</p></div>
+        <div><h4>Dùng ở đâu</h4><ul><li>Favicon, app icon, tem dán hộp</li><li>Watermark ảnh sản phẩm</li><li>Con dấu, thêu áo nhân viên</li></ul></div>
+        <div><h4>Thu nhỏ thật</h4><div class="favrow"><div class="fav" style="width:40px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="KEO mark 1">
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <path d="M62,212 L194,212 L194,232 Q194,242 184,242 L72,242 Q62,242 62,232 Z" fill="#c2185b" stroke="#3c1428" stroke-width="10"/>
+    <path d="M62,212 L84,192 L172,192 L194,212 Z" fill="#ff9bc3" stroke="#3c1428" stroke-width="10"/>
+    <rect x="115" y="152" width="26" height="46" rx="6" fill="#ffffff" stroke="#3c1428" stroke-width="10"/>
+    <circle cx="128" cy="96" r="78" fill="#ffe9f1" stroke="#3c1428" stroke-width="10"/>
+    <g transform="translate(128,96) scale(2.0714) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#c2185b" stroke-width="6.28" stroke-linecap="round"/></g>
+    <circle cx="99" cy="61" r="12" fill="#ffffff" opacity=".9"/>
+  </g>
+</svg></div><div class="fav" style="width:28px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="KEO mark 1">
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <path d="M62,212 L194,212 L194,232 Q194,242 184,242 L72,242 Q62,242 62,232 Z" fill="#c2185b" stroke="#3c1428" stroke-width="10"/>
+    <path d="M62,212 L84,192 L172,192 L194,212 Z" fill="#ff9bc3" stroke="#3c1428" stroke-width="10"/>
+    <rect x="115" y="152" width="26" height="46" rx="6" fill="#ffffff" stroke="#3c1428" stroke-width="10"/>
+    <circle cx="128" cy="96" r="78" fill="#ffe9f1" stroke="#3c1428" stroke-width="10"/>
+    <g transform="translate(128,96) scale(2.0714) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#c2185b" stroke-width="6.28" stroke-linecap="round"/></g>
+    <circle cx="99" cy="61" r="12" fill="#ffffff" opacity=".9"/>
+  </g>
+</svg></div><div class="fav" style="width:18px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="KEO mark 1">
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <path d="M62,212 L194,212 L194,232 Q194,242 184,242 L72,242 Q62,242 62,232 Z" fill="#c2185b" stroke="#3c1428" stroke-width="10"/>
+    <path d="M62,212 L84,192 L172,192 L194,212 Z" fill="#ff9bc3" stroke="#3c1428" stroke-width="10"/>
+    <rect x="115" y="152" width="26" height="46" rx="6" fill="#ffffff" stroke="#3c1428" stroke-width="10"/>
+    <circle cx="128" cy="96" r="78" fill="#ffe9f1" stroke="#3c1428" stroke-width="10"/>
+    <g transform="translate(128,96) scale(2.0714) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#c2185b" stroke-width="6.28" stroke-linecap="round"/></g>
+    <circle cx="99" cy="61" r="12" fill="#ffffff" opacity=".9"/>
+  </g>
+</svg></div></div><p class="mono-note">40 / 28 / 18 px</p></div>
+      </div>
+      <div class="files"><span>mark-01-keo-mut.svg</span><span>mark-01-keo-mut-mono.svg</span><span>mark-01-keo-mut-mono-white.svg</span><span>lockup-h-01.svg</span><span>lockup-v-01.svg</span></div>
+    </article>
+    <article class="card">
+      <header class="card-head">
+        <span class="eyebrow">Hướng B</span>
+        <h3>Keycap K</h3>
+        <p class="lede">Chữ K nằm trong keycap; tay trên của chữ K chính là cây kẹo.</p>
+      </header>
+      <div class="hero-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="KEO mark 2">
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <rect x="26" y="34" width="204" height="196" rx="42" fill="#c2185b" stroke="#3c1428" stroke-width="10"/>
+    <rect x="48" y="52" width="160" height="140" rx="32" fill="#ff9bc3"/>
+    <g stroke="#3c1428" stroke-linecap="round" fill="none">
+      <path d="M92,94 L92,158" stroke-width="24"/>
+      <path d="M98,130 L148,90" stroke-width="22"/>
+      <path d="M98,130 L150,164" stroke-width="22"/>
+    </g>
+    <circle cx="160" cy="80" r="23" fill="#ffe9f1" stroke="#3c1428" stroke-width="9"/>
+    <g transform="translate(160,80) scale(0.5714) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#c2185b" stroke-width="10.50" stroke-linecap="round"/></g>
+  </g>
+</svg></div>
+      <div class="proof"><div class="tile" style="background:#ffffff"><div class="tile-in"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="KEO mark 2">
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <rect x="26" y="34" width="204" height="196" rx="42" fill="#c2185b" stroke="#3c1428" stroke-width="10"/>
+    <rect x="48" y="52" width="160" height="140" rx="32" fill="#ff9bc3"/>
+    <g stroke="#3c1428" stroke-linecap="round" fill="none">
+      <path d="M92,94 L92,158" stroke-width="24"/>
+      <path d="M98,130 L148,90" stroke-width="22"/>
+      <path d="M98,130 L150,164" stroke-width="22"/>
+    </g>
+    <circle cx="160" cy="80" r="23" fill="#ffe9f1" stroke="#3c1428" stroke-width="9"/>
+    <g transform="translate(160,80) scale(0.5714) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#c2185b" stroke-width="10.50" stroke-linecap="round"/></g>
+  </g>
+</svg></div></div><div class="tile" style="background:#ffe9f1"><div class="tile-in"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="KEO mark 2">
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <rect x="26" y="34" width="204" height="196" rx="42" fill="#c2185b" stroke="#3c1428" stroke-width="10"/>
+    <rect x="48" y="52" width="160" height="140" rx="32" fill="#ff9bc3"/>
+    <g stroke="#3c1428" stroke-linecap="round" fill="none">
+      <path d="M92,94 L92,158" stroke-width="24"/>
+      <path d="M98,130 L148,90" stroke-width="22"/>
+      <path d="M98,130 L150,164" stroke-width="22"/>
+    </g>
+    <circle cx="160" cy="80" r="23" fill="#ffe9f1" stroke="#3c1428" stroke-width="9"/>
+    <g transform="translate(160,80) scale(0.5714) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#c2185b" stroke-width="10.50" stroke-linecap="round"/></g>
+  </g>
+</svg></div></div><div class="tile" style="background:#c2185b"><div class="tile-in"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="KEO mark 2">
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <rect x="26" y="34" width="204" height="196" rx="42" fill="#ffffff" stroke="#ffffff" stroke-width="10"/>
+    <rect x="48" y="52" width="160" height="140" rx="32" fill="#3c1428"/>
+    <g stroke="#ffffff" stroke-linecap="round" fill="none">
+      <path d="M92,94 L92,158" stroke-width="24"/>
+      <path d="M98,130 L148,90" stroke-width="22"/>
+      <path d="M98,130 L150,164" stroke-width="22"/>
+    </g>
+    <circle cx="160" cy="80" r="23" fill="#3c1428" stroke="#ffffff" stroke-width="9"/>
+    <g transform="translate(160,80) scale(0.5714) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#ffffff" stroke-width="10.50" stroke-linecap="round"/></g>
+  </g>
+</svg></div></div><div class="tile" style="background:#3c1428"><div class="tile-in"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="KEO mark 2">
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <rect x="26" y="34" width="204" height="196" rx="42" fill="#ffffff" stroke="#ffffff" stroke-width="10"/>
+    <rect x="48" y="52" width="160" height="140" rx="32" fill="#3c1428"/>
+    <g stroke="#ffffff" stroke-linecap="round" fill="none">
+      <path d="M92,94 L92,158" stroke-width="24"/>
+      <path d="M98,130 L148,90" stroke-width="22"/>
+      <path d="M98,130 L150,164" stroke-width="22"/>
+    </g>
+    <circle cx="160" cy="80" r="23" fill="#3c1428" stroke="#ffffff" stroke-width="9"/>
+    <g transform="translate(160,80) scale(0.5714) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#ffffff" stroke-width="10.50" stroke-linecap="round"/></g>
+  </g>
+</svg></div></div></div>
+      <div class="lockup"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" role="img" aria-label="KẸO Gaming Gear">
+  <g transform="translate(20,20) scale(0.625)"><g stroke-linejoin="round" stroke-linecap="round">
+    <rect x="26" y="34" width="204" height="196" rx="42" fill="#c2185b" stroke="#3c1428" stroke-width="10"/>
+    <rect x="48" y="52" width="160" height="140" rx="32" fill="#ff9bc3"/>
+    <g stroke="#3c1428" stroke-linecap="round" fill="none">
+      <path d="M92,94 L92,158" stroke-width="24"/>
+      <path d="M98,130 L148,90" stroke-width="22"/>
+      <path d="M98,130 L150,164" stroke-width="22"/>
+    </g>
+    <circle cx="160" cy="80" r="23" fill="#ffe9f1" stroke="#3c1428" stroke-width="9"/>
+    <g transform="translate(160,80) scale(0.5714) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#c2185b" stroke-width="10.50" stroke-linecap="round"/></g>
+  </g></g>
+  <text x="212" y="106" font-family="Fredoka, 'Baloo 2', 'Nunito', 'Segoe UI', sans-serif" font-size="76" font-weight="700" fill="#c2185b" letter-spacing="1">KẸO</text>
+  <text x="212" y="150" font-family="Fredoka, 'Baloo 2', 'Nunito', 'Segoe UI', sans-serif" font-size="30" font-weight="600" fill="#3c1428" letter-spacing="7.5">GAMING GEAR</text>
+</svg></div>
+      <div class="card-foot">
+        <div><h4>Vì sao đổi</h4><p>Chữ cái thương hiệu và sản phẩm gộp vào một hình. Khối vuông bo góc vừa khít mọi ô avatar.</p></div>
+        <div><h4>Dùng ở đâu</h4><ul><li>Avatar Zalo, Facebook, Shopee</li><li>App icon, favicon</li><li>Nút và badge trong giao diện web</li></ul></div>
+        <div><h4>Thu nhỏ thật</h4><div class="favrow"><div class="fav" style="width:40px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="KEO mark 2">
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <rect x="26" y="34" width="204" height="196" rx="42" fill="#c2185b" stroke="#3c1428" stroke-width="10"/>
+    <rect x="48" y="52" width="160" height="140" rx="32" fill="#ff9bc3"/>
+    <g stroke="#3c1428" stroke-linecap="round" fill="none">
+      <path d="M92,94 L92,158" stroke-width="24"/>
+      <path d="M98,130 L148,90" stroke-width="22"/>
+      <path d="M98,130 L150,164" stroke-width="22"/>
+    </g>
+    <circle cx="160" cy="80" r="23" fill="#ffe9f1" stroke="#3c1428" stroke-width="9"/>
+    <g transform="translate(160,80) scale(0.5714) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#c2185b" stroke-width="10.50" stroke-linecap="round"/></g>
+  </g>
+</svg></div><div class="fav" style="width:28px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="KEO mark 2">
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <rect x="26" y="34" width="204" height="196" rx="42" fill="#c2185b" stroke="#3c1428" stroke-width="10"/>
+    <rect x="48" y="52" width="160" height="140" rx="32" fill="#ff9bc3"/>
+    <g stroke="#3c1428" stroke-linecap="round" fill="none">
+      <path d="M92,94 L92,158" stroke-width="24"/>
+      <path d="M98,130 L148,90" stroke-width="22"/>
+      <path d="M98,130 L150,164" stroke-width="22"/>
+    </g>
+    <circle cx="160" cy="80" r="23" fill="#ffe9f1" stroke="#3c1428" stroke-width="9"/>
+    <g transform="translate(160,80) scale(0.5714) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#c2185b" stroke-width="10.50" stroke-linecap="round"/></g>
+  </g>
+</svg></div><div class="fav" style="width:18px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="KEO mark 2">
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <rect x="26" y="34" width="204" height="196" rx="42" fill="#c2185b" stroke="#3c1428" stroke-width="10"/>
+    <rect x="48" y="52" width="160" height="140" rx="32" fill="#ff9bc3"/>
+    <g stroke="#3c1428" stroke-linecap="round" fill="none">
+      <path d="M92,94 L92,158" stroke-width="24"/>
+      <path d="M98,130 L148,90" stroke-width="22"/>
+      <path d="M98,130 L150,164" stroke-width="22"/>
+    </g>
+    <circle cx="160" cy="80" r="23" fill="#ffe9f1" stroke="#3c1428" stroke-width="9"/>
+    <g transform="translate(160,80) scale(0.5714) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#c2185b" stroke-width="10.50" stroke-linecap="round"/></g>
+  </g>
+</svg></div></div><p class="mono-note">40 / 28 / 18 px</p></div>
+      </div>
+      <div class="files"><span>mark-02-keycap-k.svg</span><span>mark-02-keycap-k-mono.svg</span><span>mark-02-keycap-k-mono-white.svg</span><span>lockup-h-02.svg</span><span>lockup-v-02.svg</span></div>
+    </article>
+    <article class="card">
+      <header class="card-head">
+        <span class="eyebrow">Hướng C</span>
+        <h3>Cậu Bé Kẹo</h3>
+        <p class="lede">Bản rút gọn của hình gốc: chỉ giữ đầu và vai, cắt vào khối tròn.</p>
+      </header>
+      <div class="hero-mark"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="KEO Gaming Shop mascot">
+  <defs><clipPath id="keoBadge_mark-03-mascot"><circle cx="128" cy="128" r="118"/></clipPath></defs>
+  <circle cx="128" cy="128" r="118" fill="#ffe9f1" stroke="#3c1428" stroke-width="10"/>
+  <g clip-path="url(#keoBadge_mark-03-mascot)" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="96" y="176" width="34" height="30" fill="#ffffff" stroke="#3c1428" stroke-width="9"/>
+    <path d="M34,258 C34,208 68,186 112,186 C156,186 190,208 190,258 Z" fill="#c2185b" stroke="#3c1428" stroke-width="9"/>
+    <ellipse cx="112" cy="136" rx="57" ry="60" fill="#ffffff" stroke="#3c1428" stroke-width="9"/>
+    <ellipse cx="74" cy="164" rx="10" ry="6.5" fill="#ff9bc3"/>
+    <ellipse cx="146" cy="162" rx="9" ry="6" fill="#ff9bc3" opacity=".85"/>
+    <path d="M56,126 C52,80 78,52 112,52 C148,52 174,80 168,126 L158,100 L143,118 L132,92 L112,114 L98,88 L82,112 L70,96 Z" fill="#3c1428"/>
+    <path d="M82,142 q11,-11 22,0" fill="none" stroke="#3c1428" stroke-width="8"/>
+    <circle cx="139" cy="140" r="9" fill="#3c1428"/>
+    <ellipse cx="131" cy="172" rx="11" ry="8.5" fill="#3c1428"/>
+    <path d="M139,168 L188,113" stroke="#3c1428" stroke-width="9"/>
+    <circle cx="200" cy="96" r="28" fill="#ffe9f1" stroke="#3c1428" stroke-width="9"/>
+    <g transform="translate(200,96) scale(0.7000) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#c2185b" stroke-width="7.14" stroke-linecap="round"/></g>
+    <g transform="rotate(-7 120 228)">
+      <rect x="48" y="206" width="146" height="46" rx="9" fill="#ffffff" stroke="#3c1428" stroke-width="8"/>
+      <rect x="58" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="73" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="88" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="103" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="118" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="133" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="148" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="163" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="178" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="58" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="73" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="88" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="103" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="118" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="133" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="148" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="163" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="178" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="58" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="73" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="88" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="103" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="118" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="133" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="148" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="163" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="178" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+    </g>
+  </g>
+</svg></div>
+      <div class="proof"><div class="tile" style="background:#ffffff"><div class="tile-in"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="KEO Gaming Shop mascot">
+  <defs><clipPath id="keoBadge_mark-03-mascot"><circle cx="128" cy="128" r="118"/></clipPath></defs>
+  <circle cx="128" cy="128" r="118" fill="#ffe9f1" stroke="#3c1428" stroke-width="10"/>
+  <g clip-path="url(#keoBadge_mark-03-mascot)" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="96" y="176" width="34" height="30" fill="#ffffff" stroke="#3c1428" stroke-width="9"/>
+    <path d="M34,258 C34,208 68,186 112,186 C156,186 190,208 190,258 Z" fill="#c2185b" stroke="#3c1428" stroke-width="9"/>
+    <ellipse cx="112" cy="136" rx="57" ry="60" fill="#ffffff" stroke="#3c1428" stroke-width="9"/>
+    <ellipse cx="74" cy="164" rx="10" ry="6.5" fill="#ff9bc3"/>
+    <ellipse cx="146" cy="162" rx="9" ry="6" fill="#ff9bc3" opacity=".85"/>
+    <path d="M56,126 C52,80 78,52 112,52 C148,52 174,80 168,126 L158,100 L143,118 L132,92 L112,114 L98,88 L82,112 L70,96 Z" fill="#3c1428"/>
+    <path d="M82,142 q11,-11 22,0" fill="none" stroke="#3c1428" stroke-width="8"/>
+    <circle cx="139" cy="140" r="9" fill="#3c1428"/>
+    <ellipse cx="131" cy="172" rx="11" ry="8.5" fill="#3c1428"/>
+    <path d="M139,168 L188,113" stroke="#3c1428" stroke-width="9"/>
+    <circle cx="200" cy="96" r="28" fill="#ffe9f1" stroke="#3c1428" stroke-width="9"/>
+    <g transform="translate(200,96) scale(0.7000) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#c2185b" stroke-width="7.14" stroke-linecap="round"/></g>
+    <g transform="rotate(-7 120 228)">
+      <rect x="48" y="206" width="146" height="46" rx="9" fill="#ffffff" stroke="#3c1428" stroke-width="8"/>
+      <rect x="58" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="73" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="88" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="103" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="118" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="133" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="148" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="163" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="178" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="58" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="73" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="88" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="103" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="118" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="133" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="148" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="163" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="178" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="58" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="73" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="88" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="103" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="118" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="133" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="148" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="163" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="178" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+    </g>
+  </g>
+</svg></div></div><div class="tile" style="background:#ffe9f1"><div class="tile-in"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="KEO Gaming Shop mascot">
+  <defs><clipPath id="keoBadge_mark-03-mascot"><circle cx="128" cy="128" r="118"/></clipPath></defs>
+  <circle cx="128" cy="128" r="118" fill="#ffe9f1" stroke="#3c1428" stroke-width="10"/>
+  <g clip-path="url(#keoBadge_mark-03-mascot)" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="96" y="176" width="34" height="30" fill="#ffffff" stroke="#3c1428" stroke-width="9"/>
+    <path d="M34,258 C34,208 68,186 112,186 C156,186 190,208 190,258 Z" fill="#c2185b" stroke="#3c1428" stroke-width="9"/>
+    <ellipse cx="112" cy="136" rx="57" ry="60" fill="#ffffff" stroke="#3c1428" stroke-width="9"/>
+    <ellipse cx="74" cy="164" rx="10" ry="6.5" fill="#ff9bc3"/>
+    <ellipse cx="146" cy="162" rx="9" ry="6" fill="#ff9bc3" opacity=".85"/>
+    <path d="M56,126 C52,80 78,52 112,52 C148,52 174,80 168,126 L158,100 L143,118 L132,92 L112,114 L98,88 L82,112 L70,96 Z" fill="#3c1428"/>
+    <path d="M82,142 q11,-11 22,0" fill="none" stroke="#3c1428" stroke-width="8"/>
+    <circle cx="139" cy="140" r="9" fill="#3c1428"/>
+    <ellipse cx="131" cy="172" rx="11" ry="8.5" fill="#3c1428"/>
+    <path d="M139,168 L188,113" stroke="#3c1428" stroke-width="9"/>
+    <circle cx="200" cy="96" r="28" fill="#ffe9f1" stroke="#3c1428" stroke-width="9"/>
+    <g transform="translate(200,96) scale(0.7000) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#c2185b" stroke-width="7.14" stroke-linecap="round"/></g>
+    <g transform="rotate(-7 120 228)">
+      <rect x="48" y="206" width="146" height="46" rx="9" fill="#ffffff" stroke="#3c1428" stroke-width="8"/>
+      <rect x="58" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="73" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="88" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="103" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="118" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="133" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="148" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="163" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="178" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="58" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="73" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="88" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="103" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="118" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="133" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="148" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="163" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="178" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="58" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="73" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="88" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="103" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="118" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="133" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="148" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="163" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="178" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+    </g>
+  </g>
+</svg></div></div><div class="tile" style="background:#c2185b"><div class="tile-in"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="KEO Gaming Shop mascot">
+  <defs><clipPath id="kb_mark-03-mascot_wh"><circle cx="128" cy="128" r="118"/></clipPath></defs>
+  <circle cx="128" cy="128" r="118" fill="#3c1428" stroke="#ffffff" stroke-width="10"/>
+  <g clip-path="url(#kb_mark-03-mascot_wh)" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="96" y="176" width="34" height="30" fill="#3c1428" stroke="#ffffff" stroke-width="9"/>
+    <path d="M34,258 C34,208 68,186 112,186 C156,186 190,208 190,258 Z" fill="#ffffff" stroke="#ffffff" stroke-width="9"/>
+    <ellipse cx="112" cy="136" rx="57" ry="60" fill="#3c1428" stroke="#ffffff" stroke-width="9"/>
+    <ellipse cx="74" cy="164" rx="10" ry="6.5" fill="#3c1428"/>
+    <ellipse cx="146" cy="162" rx="9" ry="6" fill="#3c1428" opacity=".85"/>
+    <path d="M56,126 C52,80 78,52 112,52 C148,52 174,80 168,126 L158,100 L143,118 L132,92 L112,114 L98,88 L82,112 L70,96 Z" fill="#ffffff"/>
+    <path d="M82,142 q11,-11 22,0" fill="none" stroke="#ffffff" stroke-width="8"/>
+    <circle cx="139" cy="140" r="9" fill="#ffffff"/>
+    <ellipse cx="131" cy="172" rx="11" ry="8.5" fill="#ffffff"/>
+    <path d="M139,168 L188,113" stroke="#ffffff" stroke-width="9"/>
+    <circle cx="200" cy="96" r="28" fill="#3c1428" stroke="#ffffff" stroke-width="9"/>
+    <g transform="translate(200,96) scale(0.7000) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#ffffff" stroke-width="7.14" stroke-linecap="round"/></g>
+    <g transform="rotate(-7 120 228)">
+      <rect x="48" y="206" width="146" height="46" rx="9" fill="#3c1428" stroke="#ffffff" stroke-width="8"/>
+      <rect x="58" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="73" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="88" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="103" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="118" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="133" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="148" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="163" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="178" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="58" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="73" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="88" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="103" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="118" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="133" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="148" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="163" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="178" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="58" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="73" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="88" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="103" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="118" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="133" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="148" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="163" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="178" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+    </g>
+  </g>
+</svg></div></div><div class="tile" style="background:#3c1428"><div class="tile-in"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="KEO Gaming Shop mascot">
+  <defs><clipPath id="kb_mark-03-mascot_wh"><circle cx="128" cy="128" r="118"/></clipPath></defs>
+  <circle cx="128" cy="128" r="118" fill="#3c1428" stroke="#ffffff" stroke-width="10"/>
+  <g clip-path="url(#kb_mark-03-mascot_wh)" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="96" y="176" width="34" height="30" fill="#3c1428" stroke="#ffffff" stroke-width="9"/>
+    <path d="M34,258 C34,208 68,186 112,186 C156,186 190,208 190,258 Z" fill="#ffffff" stroke="#ffffff" stroke-width="9"/>
+    <ellipse cx="112" cy="136" rx="57" ry="60" fill="#3c1428" stroke="#ffffff" stroke-width="9"/>
+    <ellipse cx="74" cy="164" rx="10" ry="6.5" fill="#3c1428"/>
+    <ellipse cx="146" cy="162" rx="9" ry="6" fill="#3c1428" opacity=".85"/>
+    <path d="M56,126 C52,80 78,52 112,52 C148,52 174,80 168,126 L158,100 L143,118 L132,92 L112,114 L98,88 L82,112 L70,96 Z" fill="#ffffff"/>
+    <path d="M82,142 q11,-11 22,0" fill="none" stroke="#ffffff" stroke-width="8"/>
+    <circle cx="139" cy="140" r="9" fill="#ffffff"/>
+    <ellipse cx="131" cy="172" rx="11" ry="8.5" fill="#ffffff"/>
+    <path d="M139,168 L188,113" stroke="#ffffff" stroke-width="9"/>
+    <circle cx="200" cy="96" r="28" fill="#3c1428" stroke="#ffffff" stroke-width="9"/>
+    <g transform="translate(200,96) scale(0.7000) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#ffffff" stroke-width="7.14" stroke-linecap="round"/></g>
+    <g transform="rotate(-7 120 228)">
+      <rect x="48" y="206" width="146" height="46" rx="9" fill="#3c1428" stroke="#ffffff" stroke-width="8"/>
+      <rect x="58" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="73" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="88" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="103" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="118" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="133" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="148" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="163" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="178" y="214" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="58" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="73" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="88" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="103" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="118" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="133" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="148" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="163" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="178" y="227" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="58" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="73" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="88" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="103" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="118" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="133" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="148" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="163" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+      <rect x="178" y="240" width="11" height="9" rx="2.5" fill="#3c1428"/>
+    </g>
+  </g>
+</svg></div></div></div>
+      <div class="lockup"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 200" role="img" aria-label="KẸO Gaming Gear">
+  <g transform="translate(20,20) scale(0.625)"><defs><clipPath id="lk3"><circle cx="128" cy="128" r="118"/></clipPath></defs>
+  <circle cx="128" cy="128" r="118" fill="#ffe9f1" stroke="#3c1428" stroke-width="10"/>
+  <g clip-path="url(#lk3)" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="96" y="176" width="34" height="30" fill="#ffffff" stroke="#3c1428" stroke-width="9"/>
+    <path d="M34,258 C34,208 68,186 112,186 C156,186 190,208 190,258 Z" fill="#c2185b" stroke="#3c1428" stroke-width="9"/>
+    <ellipse cx="112" cy="136" rx="57" ry="60" fill="#ffffff" stroke="#3c1428" stroke-width="9"/>
+    <ellipse cx="74" cy="164" rx="10" ry="6.5" fill="#ff9bc3"/>
+    <ellipse cx="146" cy="162" rx="9" ry="6" fill="#ff9bc3" opacity=".85"/>
+    <path d="M56,126 C52,80 78,52 112,52 C148,52 174,80 168,126 L158,100 L143,118 L132,92 L112,114 L98,88 L82,112 L70,96 Z" fill="#3c1428"/>
+    <path d="M82,142 q11,-11 22,0" fill="none" stroke="#3c1428" stroke-width="8"/>
+    <circle cx="139" cy="140" r="9" fill="#3c1428"/>
+    <ellipse cx="131" cy="172" rx="11" ry="8.5" fill="#3c1428"/>
+    <path d="M139,168 L188,113" stroke="#3c1428" stroke-width="9"/>
+    <circle cx="200" cy="96" r="28" fill="#ffe9f1" stroke="#3c1428" stroke-width="9"/>
+    <g transform="translate(200,96) scale(0.7000) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#c2185b" stroke-width="7.14" stroke-linecap="round"/></g>
+    <g transform="rotate(-7 120 228)">
+      <rect x="48" y="206" width="146" height="46" rx="9" fill="#ffffff" stroke="#3c1428" stroke-width="8"/>
+      <rect x="58" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="73" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="88" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="103" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="118" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="133" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="148" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="163" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="178" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="58" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="73" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="88" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="103" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="118" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="133" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="148" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="163" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="178" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="58" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="73" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="88" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="103" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="118" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="133" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="148" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="163" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="178" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+    </g>
+  </g></g>
+  <text x="212" y="106" font-family="Fredoka, 'Baloo 2', 'Nunito', 'Segoe UI', sans-serif" font-size="76" font-weight="700" fill="#c2185b" letter-spacing="1">KẸO</text>
+  <text x="212" y="150" font-family="Fredoka, 'Baloo 2', 'Nunito', 'Segoe UI', sans-serif" font-size="30" font-weight="600" fill="#3c1428" letter-spacing="7.5">GAMING GEAR</text>
+</svg></div>
+      <div class="card-foot">
+        <div><h4>Vì sao đổi</h4><p>Giữ đúng nhân vật bạn đã vẽ nhưng bỏ khoảng 80% chi tiết. Ấm, có cá tính, dễ nhớ nhất.</p></div>
+        <div><h4>Dùng ở đâu</h4><ul><li>Ảnh đại diện shop, sticker Zalo</li><li>Bao bì, thẻ cảm ơn trong đơn</li><li>Nhân vật minh hoạ trên banner</li></ul></div>
+        <div><h4>Thu nhỏ thật</h4><div class="favrow"><div class="fav" style="width:40px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="KEO Gaming Shop mascot">
+  <defs><clipPath id="keoBadge_mark-03-mascot"><circle cx="128" cy="128" r="118"/></clipPath></defs>
+  <circle cx="128" cy="128" r="118" fill="#ffe9f1" stroke="#3c1428" stroke-width="10"/>
+  <g clip-path="url(#keoBadge_mark-03-mascot)" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="96" y="176" width="34" height="30" fill="#ffffff" stroke="#3c1428" stroke-width="9"/>
+    <path d="M34,258 C34,208 68,186 112,186 C156,186 190,208 190,258 Z" fill="#c2185b" stroke="#3c1428" stroke-width="9"/>
+    <ellipse cx="112" cy="136" rx="57" ry="60" fill="#ffffff" stroke="#3c1428" stroke-width="9"/>
+    <ellipse cx="74" cy="164" rx="10" ry="6.5" fill="#ff9bc3"/>
+    <ellipse cx="146" cy="162" rx="9" ry="6" fill="#ff9bc3" opacity=".85"/>
+    <path d="M56,126 C52,80 78,52 112,52 C148,52 174,80 168,126 L158,100 L143,118 L132,92 L112,114 L98,88 L82,112 L70,96 Z" fill="#3c1428"/>
+    <path d="M82,142 q11,-11 22,0" fill="none" stroke="#3c1428" stroke-width="8"/>
+    <circle cx="139" cy="140" r="9" fill="#3c1428"/>
+    <ellipse cx="131" cy="172" rx="11" ry="8.5" fill="#3c1428"/>
+    <path d="M139,168 L188,113" stroke="#3c1428" stroke-width="9"/>
+    <circle cx="200" cy="96" r="28" fill="#ffe9f1" stroke="#3c1428" stroke-width="9"/>
+    <g transform="translate(200,96) scale(0.7000) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#c2185b" stroke-width="7.14" stroke-linecap="round"/></g>
+    <g transform="rotate(-7 120 228)">
+      <rect x="48" y="206" width="146" height="46" rx="9" fill="#ffffff" stroke="#3c1428" stroke-width="8"/>
+      <rect x="58" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="73" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="88" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="103" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="118" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="133" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="148" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="163" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="178" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="58" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="73" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="88" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="103" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="118" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="133" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="148" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="163" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="178" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="58" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="73" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="88" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="103" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="118" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="133" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="148" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="163" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="178" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+    </g>
+  </g>
+</svg></div><div class="fav" style="width:28px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="KEO Gaming Shop mascot">
+  <defs><clipPath id="keoBadge_mark-03-mascot"><circle cx="128" cy="128" r="118"/></clipPath></defs>
+  <circle cx="128" cy="128" r="118" fill="#ffe9f1" stroke="#3c1428" stroke-width="10"/>
+  <g clip-path="url(#keoBadge_mark-03-mascot)" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="96" y="176" width="34" height="30" fill="#ffffff" stroke="#3c1428" stroke-width="9"/>
+    <path d="M34,258 C34,208 68,186 112,186 C156,186 190,208 190,258 Z" fill="#c2185b" stroke="#3c1428" stroke-width="9"/>
+    <ellipse cx="112" cy="136" rx="57" ry="60" fill="#ffffff" stroke="#3c1428" stroke-width="9"/>
+    <ellipse cx="74" cy="164" rx="10" ry="6.5" fill="#ff9bc3"/>
+    <ellipse cx="146" cy="162" rx="9" ry="6" fill="#ff9bc3" opacity=".85"/>
+    <path d="M56,126 C52,80 78,52 112,52 C148,52 174,80 168,126 L158,100 L143,118 L132,92 L112,114 L98,88 L82,112 L70,96 Z" fill="#3c1428"/>
+    <path d="M82,142 q11,-11 22,0" fill="none" stroke="#3c1428" stroke-width="8"/>
+    <circle cx="139" cy="140" r="9" fill="#3c1428"/>
+    <ellipse cx="131" cy="172" rx="11" ry="8.5" fill="#3c1428"/>
+    <path d="M139,168 L188,113" stroke="#3c1428" stroke-width="9"/>
+    <circle cx="200" cy="96" r="28" fill="#ffe9f1" stroke="#3c1428" stroke-width="9"/>
+    <g transform="translate(200,96) scale(0.7000) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#c2185b" stroke-width="7.14" stroke-linecap="round"/></g>
+    <g transform="rotate(-7 120 228)">
+      <rect x="48" y="206" width="146" height="46" rx="9" fill="#ffffff" stroke="#3c1428" stroke-width="8"/>
+      <rect x="58" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="73" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="88" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="103" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="118" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="133" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="148" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="163" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="178" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="58" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="73" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="88" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="103" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="118" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="133" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="148" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="163" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="178" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="58" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="73" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="88" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="103" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="118" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="133" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="148" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="163" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="178" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+    </g>
+  </g>
+</svg></div><div class="fav" style="width:18px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-label="KEO Gaming Shop mascot">
+  <defs><clipPath id="keoBadge_mark-03-mascot"><circle cx="128" cy="128" r="118"/></clipPath></defs>
+  <circle cx="128" cy="128" r="118" fill="#ffe9f1" stroke="#3c1428" stroke-width="10"/>
+  <g clip-path="url(#keoBadge_mark-03-mascot)" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="96" y="176" width="34" height="30" fill="#ffffff" stroke="#3c1428" stroke-width="9"/>
+    <path d="M34,258 C34,208 68,186 112,186 C156,186 190,208 190,258 Z" fill="#c2185b" stroke="#3c1428" stroke-width="9"/>
+    <ellipse cx="112" cy="136" rx="57" ry="60" fill="#ffffff" stroke="#3c1428" stroke-width="9"/>
+    <ellipse cx="74" cy="164" rx="10" ry="6.5" fill="#ff9bc3"/>
+    <ellipse cx="146" cy="162" rx="9" ry="6" fill="#ff9bc3" opacity=".85"/>
+    <path d="M56,126 C52,80 78,52 112,52 C148,52 174,80 168,126 L158,100 L143,118 L132,92 L112,114 L98,88 L82,112 L70,96 Z" fill="#3c1428"/>
+    <path d="M82,142 q11,-11 22,0" fill="none" stroke="#3c1428" stroke-width="8"/>
+    <circle cx="139" cy="140" r="9" fill="#3c1428"/>
+    <ellipse cx="131" cy="172" rx="11" ry="8.5" fill="#3c1428"/>
+    <path d="M139,168 L188,113" stroke="#3c1428" stroke-width="9"/>
+    <circle cx="200" cy="96" r="28" fill="#ffe9f1" stroke="#3c1428" stroke-width="9"/>
+    <g transform="translate(200,96) scale(0.7000) translate(-48,-50)"><path d="M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50" fill="none" stroke="#c2185b" stroke-width="7.14" stroke-linecap="round"/></g>
+    <g transform="rotate(-7 120 228)">
+      <rect x="48" y="206" width="146" height="46" rx="9" fill="#ffffff" stroke="#3c1428" stroke-width="8"/>
+      <rect x="58" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="73" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="88" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="103" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="118" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="133" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="148" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="163" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="178" y="214" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="58" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="73" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="88" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="103" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="118" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="133" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="148" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="163" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="178" y="227" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="58" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="73" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="88" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="103" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="118" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="133" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="148" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="163" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+      <rect x="178" y="240" width="11" height="9" rx="2.5" fill="#ff9bc3"/>
+    </g>
+  </g>
+</svg></div></div><p class="mono-note">40 / 28 / 18 px</p></div>
+      </div>
+      <div class="files"><span>mark-03-mascot.svg</span><span>mark-03-mascot-mono.svg</span><span>mark-03-mascot-mono-white.svg</span><span>lockup-h-03.svg</span><span>lockup-v-03.svg</span></div>
+    </article></div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Bảng màu</span>
+      <h2>Đúng bộ màu website đang chạy</h2>
+      <p>Không thêm màu mới. Bốn giá trị đầu đã có sẵn trong <code>globals.css</code>.</p>
+    </div>
+    <ul class="pal"><li><span class="chip" style="background:#3c1428"></span><b>Mực</b><code>#3c1428</code><span class="sw-note">Viền và chữ. Nâu mận, không dùng đen thuần.</span></li><li><span class="chip" style="background:#c2185b"></span><b>Hồng đậm</b><code>#c2185b</code><span class="sw-note">Màu chính, đã có sẵn ở biến <code>--primary</code>.</span></li><li><span class="chip" style="background:#ff9bc3"></span><b>Hồng phấn</b><code>#ff9bc3</code><span class="sw-note">Mảng phụ, và là màu chính khi nền tối.</span></li><li><span class="chip" style="background:#ffe9f1"></span><b>Hồng nhạt</b><code>#ffe9f1</code><span class="sw-note">Nền viên kẹo, nền khối tròn.</span></li><li><span class="chip" style="background:#ffffff"></span><b>Trắng</b><code>#ffffff</code><span class="sw-note">Khoảng thở, mặt nhân vật.</span></li></ul>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Bàn giao</span>
+      <h2>Cần biết trước khi dùng</h2>
+    </div>
+    <div class="notes">
+      <ul>
+        <li>File nằm ở <code>design/logo/</code> trong repo, định dạng SVG — phóng to bao nhiêu cũng nét.</li>
+        <li>Chữ trong lockup dùng font <b>Fredoka</b> (có bộ dấu tiếng Việt). Trước khi gửi nhà in phải <b>convert chữ sang path</b>, không thì máy nào thiếu font sẽ hiện sai dấu.</li>
+        <li>Khoảng trống tối thiểu quanh logo bằng bán kính viên kẹo. Đừng đặt logo sát mép hay sát chữ khác.</li>
+        <li>Không kéo méo, không xoay, không đổi màu ngoài bảng trên, không thêm bóng đổ.</li>
+        <li>Nền tối hoặc nền hồng đậm thì dùng bản <code>-mono-white.svg</code>.</li>
+      </ul>
+    </div>
+  </section>
+</div>
