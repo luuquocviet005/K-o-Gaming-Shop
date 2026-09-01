@@ -138,12 +138,12 @@ export function ProductPurchase({ product }: { product: Product }) {
             </a>{" "}
             hoặc{" "}
             <a
-              href={site.social.messenger}
+              href={site.social.facebook}
               target="_blank"
               rel="noopener noreferrer"
               className="font-semibold text-primary-ink underline"
             >
-              Messenger
+              Facebook
             </a>{" "}
             để tụi mình báo khi có hàng tương tự.
           </p>
