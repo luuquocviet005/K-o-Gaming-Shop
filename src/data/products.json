@@ -22,7 +22,7 @@
       "short": "Tai nghe",
       "icon": "tai-nghe",
       "blurb": "Tai nghe chụp tai, in-ear và soundcard.",
-      "soLuong": 8
+      "soLuong": 9
     },
     {
       "slug": "pad-chuot",
@@ -927,6 +927,25 @@
         "/products/hyperx-stinger-2-core/02.webp"
       ],
       "mau": "#c2185b"
+    },
+    {
+      "id": "razer-barracuda-x-2022",
+      "slug": "razer-barracuda-x-2022",
+      "ten": "Barracuda x 2022",
+      "hang": "Razer",
+      "danhMuc": "tai-nghe",
+      "gia": 850000,
+      "tinhTrang": "Cũ · không hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 0,
+      "anh": "/products/razer-barracuda-x-2022/01.webp",
+      "anhs": [
+        "/products/razer-barracuda-x-2022/01.webp",
+        "/products/razer-barracuda-x-2022/02.webp",
+        "/products/razer-barracuda-x-2022/03.webp"
+      ],
+      "mau": "#4338ca"
     },
     {
       "id": "atk-lie-xsoft-m",
