@@ -55,7 +55,7 @@ export const site = {
 
 /**
  * Ảnh mặc định của thẻ xem trước khi dán link vào Zalo / Messenger / Facebook.
- * Vẽ lại bằng: node scripts/tao-anh-chia-se.mjs
+ * Vẽ lại bằng: node scripts/tao-bo-logo.mjs <ảnh gốc> --apply
  */
 export const ANH_CHIA_SE = "/anh-chia-se.png";
 

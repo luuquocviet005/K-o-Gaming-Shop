@@ -3,7 +3,7 @@
  *
  * Mô phỏng đúng cách Apache trên Hostinger phân giải đường dẫn:
  *   /gio-hang/  ->  out/gio-hang/index.html
- *   /icon.svg   ->  out/icon.svg
+ *   /logo.png   ->  out/logo.png
  *
  * Chạy: node scripts/check-links.mjs
  */

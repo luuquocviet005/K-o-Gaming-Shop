@@ -42,9 +42,10 @@ async function xuat(tenNhap, buf, dichThat) {
    0 = mép trái/trên, 1 = mép phải/dưới. Chỉnh bốn số này là dịch được khung. */
 const CAT_BADGE = { trai: 0.0, tren: 0.0, phai: 1.0, duoi: 0.465 };
 
-/* Khung cắt riêng cho favicon: chỉ lấy khuôn mặt, bỏ kẹo mút và vai. Ở 32px
-   thì chi tiết thừa chỉ làm nhoè chứ không thêm nhận diện. */
-const CAT_MAT = { trai: 0.13, tren: 0.0, phai: 0.75, duoi: 0.34 };
+/* Icon tab trình duyệt dùng CHUNG khung với logo header — chủ shop chọn vậy để
+   giữ cây kẹo mút, thứ gắn với cái tên KẸO. Đánh đổi đã biết trước: ở 32px khuôn
+   mặt chỉ còn khoảng 14px nên nhoè. Nếu sau này muốn icon tab rõ mặt hơn thì cắt
+   sát mặt bằng khung { trai: 0.13, tren: 0, phai: 0.75, duoi: 0.34 }. */
 
 const HONG_PHAN = { r: 255, g: 228, b: 238, alpha: 1 }; // --primary-soft
 const HONG_DAM = "#c2185b"; // --primary
@@ -137,6 +138,40 @@ async function catSat(buf) {
   return sharp(buf).trim({ threshold: 1 }).png().toBuffer();
 }
 
+/**
+ * Đóng nhiều ảnh PNG vào một file .ico — sharp không xuất được định dạng này.
+ *
+ * Định dạng ICO cho phép nhét thẳng khối PNG vào thay vì bitmap thô; mọi trình
+ * duyệt còn dùng ngày nay đều đọc được. Cấu trúc: 6 byte tiêu đề, rồi mỗi ảnh
+ * một mục 16 byte, rồi lần lượt dữ liệu các ảnh.
+ */
+async function taoIco(nguon, cacCo) {
+  const anh = [];
+  for (const n of cacCo) anh.push({ n, png: await sharp(nguon).resize(n, n).png({ compressionLevel: 9 }).toBuffer() });
+
+  const dau = Buffer.alloc(6);
+  dau.writeUInt16LE(0, 0); // dành riêng, luôn 0
+  dau.writeUInt16LE(1, 2); // 1 = icon (2 là con trỏ chuột)
+  dau.writeUInt16LE(anh.length, 4);
+
+  let viTri = 6 + anh.length * 16;
+  const muc = [];
+  for (const { n, png } of anh) {
+    const m = Buffer.alloc(16);
+    m.writeUInt8(n >= 256 ? 0 : n, 0); // 0 nghĩa là 256
+    m.writeUInt8(n >= 256 ? 0 : n, 1);
+    m.writeUInt8(0, 2); // số màu bảng màu — 0 vì ảnh nhiều hơn 256 màu
+    m.writeUInt8(0, 3);
+    m.writeUInt16LE(1, 4); // số lớp
+    m.writeUInt16LE(32, 6); // số bit một điểm ảnh
+    m.writeUInt32LE(png.length, 8);
+    m.writeUInt32LE(viTri, 12);
+    viTri += png.length;
+    muc.push(m);
+  }
+  return Buffer.concat([dau, ...muc, ...anh.map((a) => a.png)]);
+}
+
 /** Mặt nạ tròn kích thước n×n, dùng để bo huy hiệu. */
 function matNaTron(n) {
   return Buffer.from(
@@ -152,11 +187,16 @@ async function main() {
   const m = await sharp(sach).metadata();
   console.log(`Nhân vật sau khi cắt sát: ${m.width}×${m.height}`);
 
+  /* Nét vẽ hoạt hình chỉ dùng vài chục màu, nên ép về bảng màu 256 màu giảm
+     dung lượng khoảng bốn lần mà nhìn không ra khác biệt (đã soi thử ở mức
+     phóng to 2 lần). Ảnh nào cũng nằm trên đường truyền của khách nên đáng. */
+  const NEN_CHAT = { compressionLevel: 9, palette: true };
+
   /* --- 1. Mascot toàn thân, nền trong suốt --- */
   const CAO_FULL = 1200;
   const full = await sharp(sach)
     .resize({ height: CAO_FULL, fit: "inside", withoutEnlargement: false })
-    .png({ compressionLevel: 9 })
+    .png(NEN_CHAT)
     .toBuffer();
   await xuat("mascot-toan-than.png", full, path.join(RA_PUBLIC, "mascot.png"));
 
@@ -202,20 +242,27 @@ async function main() {
 
   const vuong = await catVuong(CAT_BADGE);
   const badge = await boTron(vuong, 512, 0.06);
-  await xuat("huy-hieu-tron.png", badge, path.join(RA_PUBLIC, "logo.png"));
+  await xuat("huy-hieu-tron.png", badge);
+  /* Bản lên web chỉ cần 160px: ô logo trong header rộng 40px, màn hình dày đặc
+     nhất hiện nay là 3 lần nên 120px đã đủ. Đẩy nguyên bản 512px lên là bắt mỗi
+     khách tải thừa hơn 260KB ở mọi trang. */
+  await xuat("logo-web-160.png", await sharp(badge).resize(160, 160).png(NEN_CHAT).toBuffer(), path.join(RA_PUBLIC, "logo.png"));
 
-  /* --- 3. Favicon + icon màn hình điện thoại --- */
-  /* Favicon dùng khung cắt RIÊNG, sát mặt hơn khung header. Ở 32px — cỡ thật
-     của icon trên thanh tab — khung header có cả kẹo mút và vai thì mặt chỉ
-     còn khoảng 14px và nhoè thành một vệt nâu. Cắt sát mặt thì vẫn nhận ra. */
-  const mat = await boTron(await catVuong(CAT_MAT), 512, 0.04);
-  await xuat("favicon-goc-512.png", mat);
-  await xuat("favicon-96.png", await sharp(mat).resize(96, 96).png().toBuffer(), path.join(RA_APP, "icon.png"));
+  /* --- 3. Icon tab trình duyệt + icon màn hình điện thoại ---
+     Cả hai file PHẢI nằm trong src/app/, không phải public/. Next.js chỉ sinh
+     thẻ <link rel="icon"> và <link rel="apple-touch-icon"> cho file đặt theo
+     quy ước trong thư mục app; để trong public/ thì file vẫn tải được nhưng
+     không có thẻ nào trỏ tới, iPhone lưu ra màn hình sẽ dùng ảnh chụp trang. */
+  await xuat("favicon-96.png", await sharp(badge).resize(96, 96).png().toBuffer(), path.join(RA_APP, "icon.png"));
   await xuat(
     "apple-icon-180.png",
     await sharp(await boTron(vuong, 180, 0.06)).flatten({ background: HONG_PHAN }).png().toBuffer(),
-    path.join(RA_PUBLIC, "apple-icon.png"),
+    path.join(RA_APP, "apple-icon.png"),
   );
+  /* favicon.ico phải thay luôn, không bỏ lại bản cũ: Next.js sinh thẻ riêng cho
+     nó bên cạnh thẻ của icon.png, mà trình duyệt tự chọn thẻ nào — để lẫn thì
+     có máy hiện mascot, có máy vẫn hiện viên kẹo cũ. */
+  await xuat("favicon.ico", await taoIco(badge, [16, 32, 48]), path.join(RA_APP, "favicon.ico"));
 
   /* --- 4. Avatar fanpage / Zalo: vuông 1000, nền đặc (Zalo không nhận alpha) --- */
   await xuat(
@@ -224,7 +271,7 @@ async function main() {
   );
 
   /* --- 5. Ảnh chia sẻ Zalo / Facebook (1200×630) ---
-     Giữ nguyên nguyên tắc của scripts/tao-anh-chia-se.mjs: KHÔNG có chữ trong
+     KHÔNG có chữ trong
      ảnh, vì librsvg lấy font từ hệ điều hành và máy dựng web không chắc có font
      đọc được dấu tiếng Việt. Zalo với Facebook đã hiện tên shop ngay dưới ảnh. */
   const CAO_MASCOT = 500;
@@ -254,7 +301,7 @@ async function main() {
     "anh-chia-se.png",
     await sharp(Buffer.from(nenOg))
       .composite([{ input: mascotOg, left: Math.round((1200 - mOg.width) / 2), top: Math.round((630 - CAO_MASCOT) / 2) }])
-      .png({ compressionLevel: 9 })
+      .png(NEN_CHAT)
       .toBuffer(),
     path.join(RA_PUBLIC, "anh-chia-se.png"),
   );
