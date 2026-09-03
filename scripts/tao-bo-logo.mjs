@@ -24,20 +24,36 @@ if (!NGUON) {
   process.exit(1);
 }
 
-const GOC = path.resolve(process.cwd(), "..");
+/* Mặc định script chỉ ghi vào thư mục nháp để xem trước. Thêm cờ --apply mới
+   chép đè vào public/ và src/app/ — tức là mới đổi logo của web thật. */
+const APDUNG = process.argv.includes("--apply");
 const RA_PUBLIC = path.join(process.cwd(), "public");
 const RA_APP = path.join(process.cwd(), "src", "app");
-const RA_DESIGN = path.join(process.cwd(), "design", "logo", "mascot-anh");
+const RA_NHAP = path.join(process.cwd(), "design", "logo", "mascot-anh");
+
+/** Ghi file nháp; khi có --apply thì ghi thêm vào vị trí thật trên web. */
+async function xuat(tenNhap, buf, dichThat) {
+  await writeFile(path.join(RA_NHAP, tenNhap), buf);
+  if (APDUNG && dichThat) await writeFile(dichThat, buf);
+  console.log(`  ${tenNhap}${APDUNG && dichThat ? "  -> " + path.relative(process.cwd(), dichThat) : ""}`);
+}
 
 /* Tỉ lệ khung cắt huy hiệu, tính trên khung nhân vật đã cắt sát.
    0 = mép trái/trên, 1 = mép phải/dưới. Chỉnh bốn số này là dịch được khung. */
-const CAT_BADGE = { trai: 0.02, tren: 0.0, phai: 1.0, duoi: 0.46 };
+const CAT_BADGE = { trai: 0.0, tren: 0.0, phai: 1.0, duoi: 0.465 };
 
 const HONG_PHAN = { r: 255, g: 228, b: 238, alpha: 1 }; // --primary-soft
 const HONG_DAM = "#c2185b"; // --primary
 
-/** Ngưỡng coi là "trắng nền". Nét vẽ có viền nâu đậm nên để cao vẫn an toàn. */
-const NGUONG_TRANG = 236;
+/* Ảnh gốc là JPEG nên quanh nét vẽ có một quầng nhiễu sáng, không phải trắng
+   tinh. Vì vậy dùng ngưỡng loang khá lỏng (NGUONG_NEN) để ăn hết quầng đó, rồi
+   làm mềm riêng lớp pixel sát biên bằng MEM_TU/MEM_DEN — nếu không, mascot đặt
+   lên nền hồng sẽ hiện một viền trắng lởm chởm quanh người.
+   Nét viền của nhân vật là nâu đậm (~70-110) nên loang tới 205 vẫn không xuyên
+   thủng vào trong. */
+const NGUONG_NEN = 205;
+const MEM_DEN = 205; // sáng hơn mức này ở lớp biên coi như trong suốt hẳn
+const MEM_TU = 140; // tối hơn mức này ở lớp biên coi như đục hẳn
 
 /**
  * Xoá nền trắng bằng cách loang từ mép ảnh. Dùng loang thay vì "mọi pixel
@@ -54,7 +70,7 @@ async function xoaNenTrang(buf) {
 
   const trang = (i) => {
     const p = i * 4;
-    return data[p] >= NGUONG_TRANG && data[p + 1] >= NGUONG_TRANG && data[p + 2] >= NGUONG_TRANG;
+    return data[p] >= NGUONG_NEN && data[p + 1] >= NGUONG_NEN && data[p + 2] >= NGUONG_NEN;
   };
 
   // Hàng đợi phẳng (Int32Array) thay cho mảng JS — ảnh 1024px là hơn 1 triệu
@@ -86,7 +102,29 @@ async function xoaNenTrang(buf) {
     if (y < H - 1) nap(i + W);
   }
 
+  // Lớp pixel đục nằm sát nền: cho alpha giảm dần theo độ sáng, để biên mượt
+  // thay vì cắt ngang phát một. Tính trước khi ghi alpha nền, vì phép kiểm tra
+  // "kề nền" đọc chính mảng laNen.
+  const alphaBien = new Map();
+  for (let y = 0; y < H; y++) {
+    for (let x = 0; x < W; x++) {
+      const i = y * W + x;
+      if (laNen[i]) continue;
+      const keNen =
+        (x > 0 && laNen[i - 1]) ||
+        (x < W - 1 && laNen[i + 1]) ||
+        (y > 0 && laNen[i - W]) ||
+        (y < H - 1 && laNen[i + W]);
+      if (!keNen) continue;
+      const p = i * 4;
+      const sang = (data[p] * 299 + data[p + 1] * 587 + data[p + 2] * 114) / 1000;
+      const t = (MEM_DEN - sang) / (MEM_DEN - MEM_TU);
+      alphaBien.set(i, Math.max(0, Math.min(255, Math.round(t * 255))));
+    }
+  }
   for (let i = 0; i < W * H; i++) if (laNen[i]) data[i * 4 + 3] = 0;
+  for (const [i, a] of alphaBien) data[i * 4 + 3] = a;
+
   return sharp(data, { raw: { width: W, height: H, channels: 4 } }).png().toBuffer();
 }
 
@@ -103,7 +141,7 @@ function matNaTron(n) {
 }
 
 async function main() {
-  for (const d of [RA_PUBLIC, RA_DESIGN]) await mkdir(d, { recursive: true });
+  await mkdir(RA_NHAP, { recursive: true });
 
   const goc = await sharp(NGUON).png().toBuffer();
   const sach = await catSat(await xoaNenTrang(goc));
@@ -116,8 +154,7 @@ async function main() {
     .resize({ height: CAO_FULL, fit: "inside", withoutEnlargement: false })
     .png({ compressionLevel: 9 })
     .toBuffer();
-  await writeFile(path.join(RA_PUBLIC, "mascot.png"), full);
-  await writeFile(path.join(RA_DESIGN, "mascot-toan-than.png"), full);
+  await xuat("mascot-toan-than.png", full, path.join(RA_PUBLIC, "mascot.png"));
 
   /* --- 2. Huy hiệu tròn: đầu + vai + tay cầm kẹo --- */
   const cl = Math.round(m.width * CAT_BADGE.trai);
@@ -153,23 +190,23 @@ async function main() {
     ])
     .png()
     .toBuffer();
-  await writeFile(path.join(RA_PUBLIC, "logo.png"), badge);
-  await writeFile(path.join(RA_DESIGN, "huy-hieu-tron.png"), badge);
+  await xuat("huy-hieu-tron.png", badge, path.join(RA_PUBLIC, "logo.png"));
 
   /* --- 3. Favicon + icon màn hình điện thoại --- */
-  await writeFile(path.join(RA_APP, "icon.png"), await sharp(badge).resize(96, 96).png().toBuffer());
-  await writeFile(
-    path.join(RA_PUBLIC, "apple-icon.png"),
+  await xuat("favicon-96.png", await sharp(badge).resize(96, 96).png().toBuffer(), path.join(RA_APP, "icon.png"));
+  await xuat(
+    "apple-icon-180.png",
     await sharp({ create: { width: 180, height: 180, channels: 4, background: HONG_PHAN } })
       .composite([{ input: await sharp(badge).resize(180, 180).toBuffer() }])
       .flatten({ background: HONG_PHAN })
       .png()
       .toBuffer(),
+    path.join(RA_PUBLIC, "apple-icon.png"),
   );
 
   /* --- 4. Avatar fanpage / Zalo: vuông 1000, nền đặc (Zalo không nhận alpha) --- */
-  await writeFile(
-    path.join(RA_DESIGN, "avatar-fanpage-1000.png"),
+  await xuat(
+    "avatar-fanpage-1000.png",
     await sharp({ create: { width: 1000, height: 1000, channels: 4, background: HONG_PHAN } })
       .composite([{ input: await sharp(vuong).resize(860, 860, { fit: "contain", background: { r: 0, g: 0, b: 0, alpha: 0 } }).toBuffer(), left: 70, top: 70 }])
       .flatten({ background: HONG_PHAN })
@@ -177,7 +214,11 @@ async function main() {
       .toBuffer(),
   );
 
-  console.log("Xong. Xem trong public/ và design/logo/mascot-anh/");
+  console.log(
+    APDUNG
+      ? "\nXong — ĐÃ áp dụng vào web thật."
+      : "\nXong — mới chỉ xuất bản nháp để xem trước. Thêm --apply mới đổi logo web.",
+  );
 }
 
 main().catch((e) => {
