@@ -31,14 +31,17 @@ export const site = {
   /**
    * Vận chuyển.
    *
-   * Chuyển khoản đủ tiền trước ("bank full") thì shop chịu phí ship. Còn lại
-   * (ship COD) thì khách trả phí theo bảng giá nhà xe — số này thay đổi theo
-   * tỉnh và theo nhà xe nên KHÔNG ghi một con số cố định trên web; báo cho
-   * khách lúc chốt đơn. Thà nói "báo sau" còn hơn ghi một con số rồi thu khác.
+   * Khách trả phí ship theo thực tế, shop không cộng thêm và KHÔNG bao ship.
+   * Bỏ chính sách "chuyển khoản đủ thì shop chịu ship" từ 2026-09-04: đơn nhỏ
+   * thì tiền lãi không đủ bù cước, mà cam kết lại ghi "không giới hạn giá trị
+   * đơn" nên không từ chối được.
+   *
+   * KHÔNG ghi một con số cố định trên web: cước Grab và cước nhà xe thay đổi
+   * theo quãng đường, theo tỉnh, theo từng nhà xe. Báo cho khách lúc chốt đơn.
+   * Thà nói "báo sau" còn hơn ghi một con số rồi thu khác.
    */
   shipping: {
-    dieuKienMienPhi: "chuyển khoản đủ tiền trước",
-    ghiChuCod: "Ship COD: khách trả phí nhà xe, tụi mình báo trước khi gửi.",
+    ghiChu: "Phí ship tính theo thực tế, tụi mình báo trước khi gửi.",
   },
 
   /**

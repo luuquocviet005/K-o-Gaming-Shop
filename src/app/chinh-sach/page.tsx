@@ -49,8 +49,8 @@ const sections = [
     title: "Bảo hành",
     body: [
       "**Hàng còn bảo hành hãng**: một số món vẫn trong thời hạn bảo hành chính hãng — tụi mình ghi rõ hạn ở phần Tình trạng thực tế của món đó. Bạn mang thẳng ra trung tâm bảo hành của hãng.",
-      "**Hàng hết bảo hành hãng**: đa số hàng cũ rơi vào nhóm này. Tụi mình bảo hành lỗi phần cứng trong 7 ngày kể từ khi bạn nhận — đủ để bạn dùng thử và phát hiện lỗi ẩn.",
-      "Switch bán lẻ và các món phụ kiện nhỏ không có bảo hành, nhưng nếu nhận về không dùng được thì báo tụi mình đổi cái khác.",
+      "**Hàng hết bảo hành hãng**: đa số hàng cũ rơi vào nhóm này. Tụi mình bảo hành lỗi phần cứng trong **1 tháng** kể từ ngày bạn nhận — đủ lâu để dùng thật và phát hiện lỗi ẩn, không chỉ là bật lên thấy chạy.",
+      "Mức bảo hành 1 tháng này áp dụng cho **mọi món**, kể cả switch bán lẻ và phụ kiện nhỏ. Món nào hỏng trong thời gian đó thì báo tụi mình đổi hoặc sửa.",
       "Tụi mình không phải đại lý uỷ quyền của hãng nào, nên không cấp được tem bảo hành hãng hay hoá đơn VAT.",
     ],
   },
@@ -58,9 +58,9 @@ const sections = [
     id: "van-chuyen",
     title: "Giao hàng",
     body: [
-      "**Chuyển khoản đủ tiền trước thì shop chịu phí ship** — không giới hạn giá trị đơn.",
-      "Ship COD thì khách trả phí cho nhà xe. Phí này thay đổi theo tỉnh và theo từng nhà xe nên tụi mình không ghi cố định ở đây — báo con số chính xác cho bạn trước khi gửi hàng.",
-      "Nội thành Đà Nẵng: giao tận nơi hoặc hẹn gặp trực tiếp. Đi tỉnh: gửi qua nhà xe hoặc đơn vị vận chuyển.",
+      "**Phí ship tính đúng theo thực tế từng đơn**, tụi mình không cộng thêm đồng nào. Con số cụ thể báo cho bạn trước khi gửi hàng — thà nói trước còn hơn ghi một mức cố định rồi thu khác.",
+      "**Nội thành Đà Nẵng**: sắp xếp được thì tụi mình hẹn lịch mang tới tận nơi. Không tiện thì book Grab, cước bao nhiêu bạn trả bấy nhiêu. Hoặc hẹn gặp trực tiếp nếu bạn ở gần.",
+      "**Đi tỉnh**: gửi qua nhà xe hoặc đơn vị vận chuyển, khách trả phí. Phí thay đổi theo tỉnh và theo từng nhà xe nên tụi mình không ghi cố định ở đây.",
       "Hàng ở Sài Gòn thì thời gian giao sẽ lâu hơn một chút vì phải chuyển ra — tụi mình báo rõ khi bạn đặt.",
       "Chuột và tai nghe được bọc chống sốc. Bàn phím đóng thùng riêng, chèn xốp kín.",
     ],

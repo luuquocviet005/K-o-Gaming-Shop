@@ -32,9 +32,9 @@ export type ResolvedLine = CartLine & {
 /**
  * KHÔNG có mã giảm giá và KHÔNG cộng phí ship vào tổng.
  *
- * Shop chốt đơn qua Zalo, phí ship tuỳ nhà xe và tuỳ tỉnh, còn chuyển khoản đủ
- * tiền trước thì shop chịu ship. Cộng sẵn một con số vào tổng chỉ khiến con số
- * trên web khác con số khách thật sự trả. Tổng ở đây = tiền hàng, đúng nghĩa.
+ * Shop chốt đơn qua Zalo, phí ship tuỳ quãng đường và tuỳ nhà xe nên chỉ chốt
+ * được lúc nói chuyện. Cộng sẵn một con số vào tổng chỉ khiến con số trên web
+ * khác con số khách thật sự trả. Tổng ở đây = tiền hàng, đúng nghĩa.
  */
 type CartContextValue = {
   /** false cho tới khi đọc xong localStorage — dùng để tránh nhấp nháy khi hydrate */

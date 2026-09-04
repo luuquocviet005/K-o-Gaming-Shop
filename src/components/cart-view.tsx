@@ -75,7 +75,7 @@ export function CartView() {
     ),
     "",
     `TỔNG TIỀN HÀNG: ${formatVND(total)}`,
-    `(Chuyển khoản đủ thì shop chịu ship. ${site.shipping.ghiChuCod})`,
+    `(${site.shipping.ghiChu})`,
   ].join("\n");
 
   async function copyOrder() {
@@ -231,8 +231,8 @@ export function CartView() {
         <p className="mt-4 flex items-start gap-2.5 rounded-2xl bg-primary-soft p-3.5 text-xs leading-relaxed text-primary-ink">
           <TruckIcon width={17} height={17} className="mt-px shrink-0" />
           <span>
-            <strong className="font-semibold">Chuyển khoản đủ thì shop chịu ship.</strong>{" "}
-            {site.shipping.ghiChuCod}
+            <strong className="font-semibold">Bảo hành 1 tháng từ ngày nhận hàng.</strong>{" "}
+            {site.shipping.ghiChu}
           </span>
         </p>
 
