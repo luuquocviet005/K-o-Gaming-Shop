@@ -14,7 +14,7 @@
       "short": "Bàn phím",
       "icon": "ban-phim",
       "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời.",
-      "soLuong": 19
+      "soLuong": 20
     },
     {
       "slug": "tai-nghe",
@@ -786,7 +786,7 @@
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
+      "soLuong": 0,
       "anh": "/products/wooting-60he-v2-aluminum/01.webp",
       "anhs": [
         "/products/wooting-60he-v2-aluminum/01.webp",
@@ -794,6 +794,19 @@
         "/products/wooting-60he-v2-aluminum/03.webp"
       ],
       "mau": "#be123c"
+    },
+    {
+      "id": "atk-rs7-pro",
+      "slug": "atk-rs7-pro",
+      "ten": "RS7 Pro",
+      "hang": "ATK",
+      "danhMuc": "ban-phim",
+      "gia": 1000000,
+      "tinhTrang": "Cũ · không hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "mau": "#4338ca"
     },
     {
       "id": "atk-horizon-dsp",
