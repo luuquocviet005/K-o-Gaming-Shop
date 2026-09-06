@@ -58,9 +58,16 @@ export const site = {
 
 /**
  * Ảnh mặc định của thẻ xem trước khi dán link vào Zalo / Messenger / Facebook.
- * Vẽ lại bằng: node scripts/tao-bo-logo.mjs <ảnh gốc> --apply
+ * Vẽ lại bằng: node scripts/tao-anh-bia.mjs <ảnh nền>
+ *
+ * TÊN FILE CÓ SỐ Ở CUỐI, VÀ PHẢI TĂNG SỐ MỖI KHI ĐỔI ẢNH.
+ *
+ * Facebook nhớ ảnh theo ĐƯỜNG DẪN chứ không theo nội dung file. Ghi đè lên
+ * cùng một tên thì dù bấm "Thu thập lại" trong Sharing Debugger, nó vẫn lấy
+ * bản đã tải về từ trước — đã dính đúng lỗi này ngày 2026-09-06: máy chủ trả
+ * 200, thẻ og trỏ đúng file mới, mà thẻ xem trước vẫn hiện ảnh cũ.
  */
-export const ANH_CHIA_SE = "/anh-chia-se.png";
+export const ANH_CHIA_SE = "/anh-chia-se-2.png";
 
 /**
  * Đổi đường dẫn ảnh trong web thành địa chỉ đầy đủ có tên miền.

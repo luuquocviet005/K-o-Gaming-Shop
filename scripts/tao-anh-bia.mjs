@@ -239,7 +239,10 @@ async function main() {
       .resize(OG.rong, OG.cao, { kernel: "lanczos3" })
       .png({ compressionLevel: 9, palette: true })
       .toBuffer();
-    const raOg = path.join("public", "anh-chia-se.png");
+    /* Tên có số phiên bản ở cuối, phải khớp với ANH_CHIA_SE trong src/lib/site.ts.
+       Đổi ảnh thì TĂNG SỐ ở cả hai nơi — Facebook nhớ ảnh theo đường dẫn, ghi đè
+       cùng tên thì thẻ xem trước vẫn hiện ảnh cũ dù đã bấm "Thu thập lại". */
+    const raOg = path.join("public", "anh-chia-se-2.png");
     await writeFile(raOg, og);
     const q = (x) => Math.round(((x - OG.catTrai) / ogRong) * OG.rong);
     console.log(`\n${raOg} — ${OG.rong}×${OG.cao}, ${(og.length / 1024).toFixed(0)} KB`);

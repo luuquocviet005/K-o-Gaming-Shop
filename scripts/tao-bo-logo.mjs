@@ -270,41 +270,10 @@ async function main() {
     await sharp(await boTron(vuong, 1000, 0.07)).flatten({ background: HONG_PHAN }).png().toBuffer(),
   );
 
-  /* --- 5. Ảnh chia sẻ Zalo / Facebook (1200×630) ---
-     KHÔNG có chữ trong
-     ảnh, vì librsvg lấy font từ hệ điều hành và máy dựng web không chắc có font
-     đọc được dấu tiếng Việt. Zalo với Facebook đã hiện tên shop ngay dưới ảnh. */
-  const CAO_MASCOT = 500;
-  const mascotOg = await sharp(sach).resize({ height: CAO_MASCOT }).png().toBuffer();
-  const mOg = await sharp(mascotOg).metadata();
-  const nenOg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630">
-  <rect width="1200" height="630" fill="#fdf7f9"/>
-  <rect width="1200" height="22" fill="${HONG_DAM}"/>
-  <rect y="608" width="1200" height="22" fill="${HONG_DAM}"/>
-  <circle cx="600" cy="330" r="250" fill="#ffe4ee"/>
-  ${[
-    [180, 150, -22, 1.6],
-    [1020, 165, 24, 1.35],
-    [1045, 500, -16, 1.6],
-    [165, 495, 18, 1.4],
-  ]
-    .map(
-      ([x, y, xoay, to]) => `<g transform="translate(${x} ${y}) rotate(${xoay}) scale(${to})">
-      <path d="M-34 0 -47 -14 -43 0 -47 14Z" fill="#ffd9e7"/>
-      <path d="M34 0 47 -14 43 0 47 14Z" fill="#ffd9e7"/>
-      <ellipse rx="34" ry="21" fill="#ffd9e7"/>
-      <ellipse cx="-10" cy="-6" rx="10" ry="5" fill="#ffffff" opacity="0.55"/></g>`,
-    )
-    .join("\n  ")}
-</svg>`;
-  await xuat(
-    "anh-chia-se.png",
-    await sharp(Buffer.from(nenOg))
-      .composite([{ input: mascotOg, left: Math.round((1200 - mOg.width) / 2), top: Math.round((630 - CAO_MASCOT) / 2) }])
-      .png(NEN_CHAT)
-      .toBuffer(),
-    path.join(RA_PUBLIC, "anh-chia-se.png"),
-  );
+  /* Ảnh chia sẻ Zalo/Facebook KHÔNG còn sinh ở đây nữa.
+     Từ 2026-09-06 nó được dựng từ ảnh bìa Facebook bằng scripts/tao-anh-bia.mjs
+     và đặt tên có số phiên bản (anh-chia-se-2.png). Nếu để đoạn cũ ở đây thì
+     chạy lại script này kèm --apply sẽ ghi đè mất ảnh bìa bằng bản mascot trơn. */
 
   console.log(
     APDUNG
