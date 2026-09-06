@@ -17,6 +17,22 @@ import { products, type Product } from "@/lib/products";
 
 const STORAGE_KEY = "keo-cart-v1";
 
+/**
+ * Số lượng còn của một món, dùng làm trần cho mọi thao tác lên giỏ.
+ *
+ * Chặn ở đây chứ KHÔNG chỉ chặn bằng `disabled` trên nút bấm. Nút "+" vốn đã
+ * khoá khi chạm trần, nhưng nút "Thêm vào giỏ" thì bấm bao nhiêu lần cũng
+ * được, mỗi lần lại cộng dồn — đó là cách một món "Chỉ còn 1 chiếc" vào giỏ
+ * thành 3. Trần cũ đặt cứng ở 99, không liên quan gì tới tồn kho thật.
+ *
+ * Món không còn trong bảng hàng trả về 0: giỏ cũ trong localStorage có thể trỏ
+ * tới hàng đã bán và xoá khỏi Sheet.
+ */
+function tonKho(productId: string): number {
+  const p = products.find((x) => x.id === productId);
+  return p ? Math.max(0, p.soLuong) : 0;
+}
+
 export type CartLine = {
   key: string;
   productId: string;
@@ -79,12 +95,17 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   // Không thể đọc lúc render vì HTML được sinh sẵn lúc build (không có giỏ
   // hàng của từng khách), nên đây là ngoại lệ hợp lệ.
   useEffect(() => {
-    // Bỏ những dòng trỏ tới sản phẩm không còn tồn tại: hàng đã bán và xoá
-    // khỏi Sheet, hoặc dữ liệu cũ từ phiên bản web trước. Không lọc thì rác
-    // nằm lại trong máy khách mãi mãi.
-    const conHieuLuc = readStorage().filter((l) =>
-      products.some((p) => p.id === l.productId),
-    );
+    /* Bỏ những dòng trỏ tới sản phẩm không còn tồn tại: hàng đã bán và xoá
+       khỏi Sheet, hoặc dữ liệu cũ từ phiên bản web trước. Không lọc thì rác
+       nằm lại trong máy khách mãi mãi.
+
+       Đồng thời cắt số lượng về đúng tồn kho hiện tại. Giỏ nằm trong
+       localStorage nên nó sống lâu hơn bảng hàng: khách thêm 2 cái hôm nay,
+       mai shop bán mất 1, hôm sau khách quay lại thì giỏ vẫn ghi 2. Cắt ở đây
+       để con số khách thấy luôn là con số shop giao được. */
+    const conHieuLuc = readStorage()
+      .map((l) => ({ ...l, quantity: Math.min(l.quantity, tonKho(l.productId)) }))
+      .filter((l) => l.quantity > 0);
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setRawLines(conHieuLuc);
     setReady(true);
@@ -110,16 +131,18 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const addItem = useCallback((productId: string, quantity = 1) => {
+    const con = tonKho(productId);
+    if (con <= 0) return; // hàng đã hết thì không nhận thêm vào giỏ
     setRawLines((prev) => {
       const existing = prev.find((l) => l.key === productId);
       if (existing) {
         return prev.map((l) =>
           l.key === productId
-            ? { ...l, quantity: Math.min(l.quantity + quantity, 99) }
+            ? { ...l, quantity: Math.min(l.quantity + quantity, con) }
             : l,
         );
       }
-      return [...prev, { key: productId, productId, quantity }];
+      return [...prev, { key: productId, productId, quantity: Math.min(quantity, con) }];
     });
     setAddPulse((n) => n + 1);
   }, []);
@@ -129,7 +152,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       quantity <= 0
         ? prev.filter((l) => l.key !== key)
         : prev.map((l) =>
-            l.key === key ? { ...l, quantity: Math.min(quantity, 99) } : l,
+            l.key === key ? { ...l, quantity: Math.min(quantity, tonKho(l.productId)) } : l,
           ),
     );
   }, []);
