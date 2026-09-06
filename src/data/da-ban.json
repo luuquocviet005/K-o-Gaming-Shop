@@ -1,6 +1,17 @@
 {
   "daBan": [
     {
+      "slug": "atk-edge63-ultimate-wolves",
+      "ten": "Edge63 Ultimate ( Wolves)",
+      "hang": "ATK",
+      "danhMuc": "ban-phim",
+      "gia": 2400000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "mau": "#4338ca",
+      "banLuc": "2026-09-05"
+    },
+    {
       "slug": "atk-edge60-ultimate",
       "ten": "Edge60 Ultimate",
       "hang": "ATK",

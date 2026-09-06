@@ -42,6 +42,21 @@ const MASCOT_KHUNG = 379 / 825;
 /* Bóng đổ: nguồn sáng trong ảnh ở trên bên phải nên bóng ngả xuống bên trái. */
 const BONG = { dx: -30, dy: 22, nhoe: 22, dam: 0.34, mau: { r: 60, g: 32, b: 44 } };
 
+/* --- Ảnh xem trước khi dán link (Facebook, Zalo, Messenger) ---
+   Khung thẻ xem trước là 1200×630, tỉ lệ 1.91 — vuông hơn ảnh bìa (2.63) khá
+   nhiều. Thay vì thu nhỏ cả tấm bìa rồi độn nền cho đủ chiều cao, cắt lệch hẳn
+   sang phải: chữ tiêu đề và ô Hotline nằm sát nhau ở nửa phải nên cả hai vẫn
+   lọt trọn, còn mascot thì đặt lại vào khoảng trống bên trái — nó là lớp riêng
+   nên dời đi đâu cũng được. Cách này giữ nguyên độ lớn của chữ, không phải
+   tách chữ ra khỏi nền. */
+const OG = {
+  rong: 1200,
+  cao: 630,
+  catTrai: 900,        // mép trái khung cắt trên ảnh nền gốc
+  mascotTrai: 950,     // vị trí mascot, cũng tính trên ảnh nền gốc
+  mascotTiLeCao: 0.78, // thấp hơn ảnh bìa để chừa khoảng hở với chữ
+};
+
 /* Vùng dò ô Hotline. Ô có nền sáng đều (độ sáng ~221) nằm hẳn trên nền mặt bàn
    tối hơn (~175), nên dò mép bằng ngưỡng độ sáng là đủ chắc. */
 const DO_O = { x0: 2300, x1: 3360, y0: 760, y1: 1270 };
@@ -157,35 +172,42 @@ async function main() {
     }
   }
 
-  /* --- 2. Ghép mascot --- */
-  const hien = Math.round(H * MASCOT_TI_LE_CAO);
-  const toanCao = Math.round(hien / 0.816); // 0.816 = tỉ lệ từ đỉnh đầu tới ngang đùi
-  const toanRong = Math.round(toanCao * MASCOT_KHUNG);
-  const left = Math.round(W * MASCOT_TRAI);
-  const top = H - hien;
-
-  const full = await sharp(MASCOT).resize(toanRong, toanCao, { kernel: "lanczos3" }).png().toBuffer();
-  const mas = await sharp(full).extract({ left: 0, top: 0, width: toanRong, height: hien }).png().toBuffer();
-
-  const caoBong = Math.min(hien, H - (top + BONG.dy));
-  // .raw() là bắt buộc: thiếu nó sharp trả về PNG đã nén, mà joinChannel bên
-  // dưới lại được bảo là nhận dữ liệu thô nên báo sai kích thước vùng nhớ.
-  const alphaBong = await sharp(mas).extractChannel(3).blur(BONG.nhoe).linear(BONG.dam, 0).raw().toBuffer();
-  const bongDay = await sharp({ create: { width: toanRong, height: hien, channels: 3, background: BONG.mau } })
-    .joinChannel(alphaBong, { raw: { width: toanRong, height: hien, channels: 1 } })
-    .png()
-    .toBuffer();
-  const bong = await sharp(bongDay).extract({ left: 0, top: 0, width: toanRong, height: caoBong }).png().toBuffer();
-
   const nenSach = await sharp(ra, { raw: { width: W, height: H, channels: 4 } }).png().toBuffer();
-  const ghep = await sharp(nenSach)
-    .composite([
-      { input: bong, left: left + BONG.dx, top: top + BONG.dy },
-      { input: mas, left, top },
-    ])
-    .png()
-    .toBuffer();
-  console.log(`Mascot: ${toanRong}×${toanCao}, phần hiện cao ${hien}, đặt tại (${left}, ${top})`);
+
+  /** Dán mascot kèm bóng đổ lên nền, trả về ảnh đã ghép. */
+  async function ghepMascot(nen, tiLeCao, left) {
+    const hien = Math.round(H * tiLeCao);
+    const toanCao = Math.round(hien / 0.816); // 0.816 = tỉ lệ từ đỉnh đầu tới ngang đùi
+    const toanRong = Math.round(toanCao * MASCOT_KHUNG);
+    const top = H - hien;
+
+    const full = await sharp(MASCOT).resize(toanRong, toanCao, { kernel: "lanczos3" }).png().toBuffer();
+    const mas = await sharp(full).extract({ left: 0, top: 0, width: toanRong, height: hien }).png().toBuffer();
+
+    const caoBong = Math.min(hien, H - (top + BONG.dy));
+    // .raw() là bắt buộc: thiếu nó sharp trả về PNG đã nén, mà joinChannel bên
+    // dưới lại được bảo là nhận dữ liệu thô nên báo sai kích thước vùng nhớ.
+    const alphaBong = await sharp(mas).extractChannel(3).blur(BONG.nhoe).linear(BONG.dam, 0).raw().toBuffer();
+    const bongDay = await sharp({ create: { width: toanRong, height: hien, channels: 3, background: BONG.mau } })
+      .joinChannel(alphaBong, { raw: { width: toanRong, height: hien, channels: 1 } })
+      .png()
+      .toBuffer();
+    const bong = await sharp(bongDay).extract({ left: 0, top: 0, width: toanRong, height: caoBong }).png().toBuffer();
+
+    const ra2 = await sharp(nen)
+      .composite([
+        { input: bong, left: left + BONG.dx, top: top + BONG.dy },
+        { input: mas, left, top },
+      ])
+      .png()
+      .toBuffer();
+    return { anh: ra2, rong: toanRong, cao: toanCao, hien, left, top };
+  }
+
+  /* --- 2. Ghép mascot cho ảnh bìa --- */
+  const m1 = await ghepMascot(nenSach, MASCOT_TI_LE_CAO, Math.round(W * MASCOT_TRAI));
+  const ghep = m1.anh;
+  console.log(`Mascot (bìa): ${m1.rong}×${m1.cao}, phần hiện cao ${m1.hien}, đặt tại (${m1.left}, ${m1.top})`);
 
   /* --- 3. Cắt đúng khung rồi xuất --- */
   const caoDung = Math.round(W / (RA_RONG / RA_CAO));
@@ -200,11 +222,31 @@ async function main() {
   /* Cảnh báo vùng an toàn: điện thoại chỉ hiện phần giữa theo tỉ lệ 640×360. */
   const anToanRong = Math.round(RA_CAO * TI_LE_MOBILE);
   const bien = Math.round((RA_RONG - anToanRong) / 2);
-  const masTraiRa = Math.round((left / W) * RA_RONG);
-  const masPhaiRa = Math.round(((left + toanRong) / W) * RA_RONG);
+  const masTraiRa = Math.round((m1.left / W) * RA_RONG);
+  const masPhaiRa = Math.round(((m1.left + m1.rong) / W) * RA_RONG);
   console.log(`\n${RA} — ${RA_RONG}×${RA_CAO}, ${(cuoi.length / 1024).toFixed(0)} KB`);
   console.log(`Vùng điện thoại còn thấy: x ${bien}-${RA_RONG - bien} (cắt ${bien}px mỗi bên)`);
   console.log(`Mascot nằm ở x ${masTraiRa}-${masPhaiRa}` + (masTraiRa < bien ? ` — hụt ${bien - masTraiRa}px bên trái trên điện thoại` : " — trọn trong vùng an toàn"));
+
+  /* --- 4. Ảnh xem trước khi dán link --- */
+  const m2 = await ghepMascot(nenSach, OG.mascotTiLeCao, OG.mascotTrai);
+  const ogRong = Math.round(H * (OG.rong / OG.cao));
+  if (OG.catTrai + ogRong > W) {
+    console.warn(`! Khung ảnh xem trước tràn khỏi nền (cần tới x ${OG.catTrai + ogRong}, nền chỉ rộng ${W}). Bỏ qua.`);
+  } else {
+    const og = await sharp(m2.anh)
+      .extract({ left: OG.catTrai, top: 0, width: ogRong, height: H })
+      .resize(OG.rong, OG.cao, { kernel: "lanczos3" })
+      .png({ compressionLevel: 9, palette: true })
+      .toBuffer();
+    const raOg = path.join("public", "anh-chia-se.png");
+    await writeFile(raOg, og);
+    const q = (x) => Math.round(((x - OG.catTrai) / ogRong) * OG.rong);
+    console.log(`\n${raOg} — ${OG.rong}×${OG.cao}, ${(og.length / 1024).toFixed(0)} KB`);
+    console.log(`  Cắt nền từ x ${OG.catTrai} đến ${OG.catTrai + ogRong}`);
+    console.log(`  Mascot ở x ${q(m2.left)}-${q(m2.left + m2.rong)} trên khung 1200`);
+    if (o) console.log(`  Ô Hotline ở x ${q(o.x0)}-${q(o.x1)} — ${q(o.x1) <= OG.rong ? "lọt trọn khung" : "TRÀN khỏi khung"}`);
+  }
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });
