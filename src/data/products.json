@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 21
+      "soLuong": 18
     },
     {
       "slug": "ban-phim",
@@ -260,27 +260,6 @@
       "mau": "#7c3aed"
     },
     {
-      "id": "logitech-g703-hero",
-      "slug": "logitech-g703-hero",
-      "ten": "G703 Hero",
-      "hang": "Logitech",
-      "danhMuc": "chuot",
-      "gia": 650000,
-      "tinhTrang": "Cũ · không hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/logitech-g703-hero/01.webp",
-      "anhs": [
-        "/products/logitech-g703-hero/01.webp",
-        "/products/logitech-g703-hero/02.webp",
-        "/products/logitech-g703-hero/03.webp",
-        "/products/logitech-g703-hero/04.webp",
-        "/products/logitech-g703-hero/05.webp"
-      ],
-      "mau": "#7c3aed"
-    },
-    {
       "id": "ninjutso-sora-v2",
       "slug": "ninjutso-sora-v2",
       "ten": "Sora v2",
@@ -305,25 +284,6 @@
       "mau": "#334155"
     },
     {
-      "id": "pulsar-tenz-den",
-      "slug": "pulsar-tenz-den",
-      "ten": "Tenz ( đen )",
-      "hang": "Pulsar",
-      "danhMuc": "chuot",
-      "gia": 2000000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 0,
-      "anh": "/products/pulsar-tenz-den/01.webp",
-      "anhs": [
-        "/products/pulsar-tenz-den/01.webp",
-        "/products/pulsar-tenz-den/02.webp",
-        "/products/pulsar-tenz-den/03.webp"
-      ],
-      "mau": "#be123c"
-    },
-    {
       "id": "razer-naga-v2-hyperspeed",
       "slug": "razer-naga-v2-hyperspeed",
       "ten": "Naga v2 hyperspeed",
@@ -345,27 +305,6 @@
         "/products/razer-naga-v2-hyperspeed/07.webp",
         "/products/razer-naga-v2-hyperspeed/08.webp",
         "/products/razer-naga-v2-hyperspeed/09.webp"
-      ],
-      "mau": "#4338ca"
-    },
-    {
-      "id": "razer-deathadder-v3-pro",
-      "slug": "razer-deathadder-v3-pro",
-      "ten": "Deathadder v3 pro",
-      "hang": "Razer",
-      "danhMuc": "chuot",
-      "gia": 1100000,
-      "tinhTrang": "Cũ · không hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/razer-deathadder-v3-pro/01.webp",
-      "anhs": [
-        "/products/razer-deathadder-v3-pro/01.webp",
-        "/products/razer-deathadder-v3-pro/02.webp",
-        "/products/razer-deathadder-v3-pro/03.webp",
-        "/products/razer-deathadder-v3-pro/04.webp",
-        "/products/razer-deathadder-v3-pro/05.webp"
       ],
       "mau": "#4338ca"
     },
