@@ -1,6 +1,42 @@
 {
   "daBan": [
     {
+      "slug": "logitech-g703-hero",
+      "ten": "G703 Hero",
+      "hang": "Logitech",
+      "danhMuc": "chuot",
+      "gia": 650000,
+      "tinhTrang": "Cũ · không hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/logitech-g703-hero/01.webp",
+      "mau": "#7c3aed",
+      "banLuc": "2026-09-06"
+    },
+    {
+      "slug": "pulsar-tenz-den",
+      "ten": "Tenz ( đen )",
+      "hang": "Pulsar",
+      "danhMuc": "chuot",
+      "gia": 2000000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/pulsar-tenz-den/01.webp",
+      "mau": "#be123c",
+      "banLuc": "2026-09-06"
+    },
+    {
+      "slug": "razer-deathadder-v3-pro",
+      "ten": "Deathadder v3 pro",
+      "hang": "Razer",
+      "danhMuc": "chuot",
+      "gia": 1100000,
+      "tinhTrang": "Cũ · không hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/razer-deathadder-v3-pro/01.webp",
+      "mau": "#4338ca",
+      "banLuc": "2026-09-06"
+    },
+    {
       "slug": "atk-edge63-ultimate-wolves",
       "ten": "Edge63 Ultimate ( Wolves)",
       "hang": "ATK",
