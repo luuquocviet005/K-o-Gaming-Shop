@@ -45,12 +45,22 @@ export const metadata: Metadata = {
    * một lần cho tất cả, vì trang con sẽ thừa hưởng và cùng trỏ về trang chủ.
    */
   alternates: { canonical: "/" },
+  /*
+   * Tiêu đề trang chủ mở đầu bằng "Gaming Gear Đà Nẵng" — đúng cụm khách gõ
+   * vào Google. Tiêu đề là tín hiệu mạnh nhất để Google khớp trang với từ khoá;
+   * tên shop để cuối vì ai tìm đúng tên shop thì đằng nào cũng ra.
+   * Giữ ≤ 70 ký tự (scripts/audit.mjs kiểm tra), dài hơn Google cắt mất.
+   */
   title: {
-    default: `${site.name} — ${site.tagline}`,
+    default: `Gaming Gear Đà Nẵng — Chuột, Bàn Phím Cũ & Mới | ${site.name}`,
     template: `%s | ${site.name}`,
   },
   description: site.description,
   keywords: [
+    "gaming gear Đà Nẵng",
+    "gear Đà Nẵng",
+    "chuột gaming Đà Nẵng",
+    "bàn phím cơ Đà Nẵng",
     "gaming gear",
     "chuột gaming",
     "bàn phím cơ",

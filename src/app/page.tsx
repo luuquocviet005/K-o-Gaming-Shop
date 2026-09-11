@@ -76,7 +76,7 @@ export default function HomePage() {
             </h1>
 
             <p className="mt-6 max-w-md text-base leading-relaxed text-fg-muted sm:text-lg">
-              Phần lớn là hàng đã qua sử dụng. Món nào trầy, thiếu gì, còn bảo
+              Tiệm gaming gear ở Đà Nẵng, phần lớn là hàng đã qua sử dụng. Món nào trầy, thiếu gì, còn bảo
               hành tới bao giờ — ghi rõ trên từng sản phẩm.
             </p>
 

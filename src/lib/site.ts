@@ -7,7 +7,7 @@ export const site = {
   shortName: "KẸO",
   tagline: "Gear cũ & mới — nói đúng tình trạng",
   description:
-    "KẸO GAMING SHOP — chuột, bàn phím, tai nghe và switch, phần lớn là hàng đã qua sử dụng. Mỗi món ghi rõ tình trạng thật, cho test trước khi trả tiền. Hàng ở Đà Nẵng và Sài Gòn.",
+    "Tiệm gaming gear ở Đà Nẵng — chuột, bàn phím, tai nghe và switch, cũ lẫn mới. Mỗi món ghi rõ tình trạng thật, cho test trước khi trả tiền. Hàng ở Đà Nẵng và Sài Gòn.",
 
   // Tên miền thật trên Hostinger. Dùng cho sitemap.xml, thẻ canonical,
   // thẻ chia sẻ mạng xã hội và dữ liệu có cấu trúc JSON-LD.
