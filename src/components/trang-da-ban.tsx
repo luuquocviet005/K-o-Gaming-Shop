@@ -10,12 +10,12 @@ import { site } from "@/lib/site";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { ProductCard } from "@/components/product-card";
 import { ProductMedia } from "@/components/product-art";
-import { ArrowRightIcon, FacebookIcon, PhoneIcon, ZaloIcon } from "@/components/icons";
+import { ArrowRightIcon, ZaloIcon, PhoneIcon, FacebookIcon } from "@/components/icons";
 
 /**
  * Trang cho món ĐÃ BÁN.
  *
- * Thay cho trang 404. Khách tới đây qua một link cũ trên Zalo, Facebook hoặc
+ * Thay cho trang 404. Khách tới đây qua một link cũ trên Facebook, Zalo hoặc
  * từ kết quả Google — họ đang quan tâm đúng món này, nên việc cần làm là nói
  * thật rằng nó bán rồi và đưa ngay mấy món tương tự, chứ không phải quẳng ra
  * một trang lỗi.
@@ -85,23 +85,23 @@ export function TrangDaBan({ product }: { product: SoldProduct }) {
 
             <div className="mt-5 flex flex-wrap gap-3">
               <a
-                href={site.social.facebook}
+                href={site.social.zalo}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex h-13 items-center gap-2.5 rounded-full bg-primary px-7 text-base font-semibold text-on-primary transition-all duration-200 hover:bg-primary-hover active:scale-[0.97]"
               >
-                <FacebookIcon width={19} height={19} />
-                Nhắn Facebook tìm món này
+                <ZaloIcon width={19} height={19} />
+                Nhắn Zalo tìm món này
                 <ArrowRightIcon width={19} height={19} />
               </a>
               <a
-                href={site.social.zalo}
+                href={site.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex h-13 items-center gap-2.5 rounded-full border border-border-strong px-7 text-base font-semibold text-fg transition-colors hover:bg-surface-2"
               >
-                <ZaloIcon width={19} height={19} />
-                Zalo
+                <FacebookIcon width={19} height={19} />
+                Facebook
               </a>
               <a
                 href={site.contact.phoneHref}

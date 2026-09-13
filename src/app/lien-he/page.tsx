@@ -19,18 +19,18 @@ export const metadata: Metadata = {
 
 const channels = [
   {
-    Icon: FacebookIcon,
-    label: "Facebook",
-    value: "Nhắn tin qua Facebook",
-    href: site.social.facebook,
-    note: "Kênh chính — nhắn là tụi mình trả lời",
-  },
-  {
     Icon: ZaloIcon,
     label: "Zalo",
     value: site.contact.phone,
     href: site.social.zalo,
-    note: "Không dùng Facebook thì nhắn Zalo",
+    note: "Kênh chính — nhắn là tụi mình trả lời",
+  },
+  {
+    Icon: FacebookIcon,
+    label: "Facebook",
+    value: "Nhắn tin qua Facebook",
+    href: site.social.facebook,
+    note: "Không dùng Zalo thì nhắn Facebook",
   },
   {
     Icon: PhoneIcon,

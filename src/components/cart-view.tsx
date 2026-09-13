@@ -11,13 +11,13 @@ import {
   CartIcon,
   CheckIcon,
   CloseIcon,
-  FacebookIcon,
+  ZaloIcon,
   MinusIcon,
   PhoneIcon,
   PlusIcon,
   TrashIcon,
   TruckIcon,
-  ZaloIcon,
+  FacebookIcon,
 } from "@/components/icons";
 
 export function CartView() {
@@ -67,7 +67,7 @@ export function CartView() {
     );
   }
 
-  /** Soạn nội dung đơn hàng để khách gửi qua Facebook, Zalo / đọc qua điện thoại */
+  /** Soạn nội dung đơn hàng để khách gửi qua Zalo, Facebook / đọc qua điện thoại */
   const orderText = [
     `Đơn hàng từ ${site.name}`,
     "",
@@ -238,26 +238,26 @@ export function CartView() {
           </span>
         </p>
 
-        {/* Đặt hàng — Facebook trước, Zalo là lựa chọn thứ hai, hoặc gọi điện */}
+        {/* Đặt hàng — Zalo trước, Facebook là lựa chọn thứ hai, hoặc gọi điện */}
         <div className="mt-6 space-y-2.5">
-          <a
-            href={site.social.facebook}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex h-14 w-full items-center justify-center gap-2.5 rounded-full bg-primary px-6 text-base font-semibold text-on-primary transition-all duration-200 hover:bg-primary-hover active:scale-[0.98]"
-          >
-            <FacebookIcon width={20} height={20} />
-            Đặt hàng qua Facebook · {formatVND(total)}
-          </a>
-
           <a
             href={site.social.zalo}
             target="_blank"
             rel="noopener noreferrer"
+            className="flex h-14 w-full items-center justify-center gap-2.5 rounded-full bg-primary px-6 text-base font-semibold text-on-primary transition-all duration-200 hover:bg-primary-hover active:scale-[0.98]"
+          >
+            <ZaloIcon width={20} height={20} />
+            Đặt hàng qua Zalo · {formatVND(total)}
+          </a>
+
+          <a
+            href={site.social.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex h-13 w-full items-center justify-center gap-2.5 rounded-full border border-border-strong bg-bg px-6 py-3.5 text-sm font-semibold text-fg transition-all duration-200 hover:border-primary hover:text-primary-ink active:scale-[0.98]"
           >
-            <ZaloIcon width={18} height={18} />
-            Đặt hàng qua Zalo
+            <FacebookIcon width={18} height={18} />
+            Đặt hàng qua Facebook
           </a>
 
           <a

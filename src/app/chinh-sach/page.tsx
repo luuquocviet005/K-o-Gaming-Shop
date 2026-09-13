@@ -72,7 +72,7 @@ const sections = [
       "Tụi mình chỉ hỏi tên, số điện thoại và địa chỉ khi cần giao hàng. Không thu thập gì thêm.",
       "Không bán, không cho thuê, không chia sẻ thông tin của bạn cho bên thứ ba — trừ đơn vị vận chuyển để giao hàng cho chính bạn.",
       "Giỏ hàng trên web lưu ngay trong trình duyệt của bạn, không gửi về máy chủ nào. Xoá dữ liệu duyệt web là mất giỏ hàng.",
-      `Muốn xoá thông tin của mình khỏi tin nhắn của tụi mình? Nhắn qua Facebook, Zalo hoặc email ${site.contact.email}, tụi mình xoá.`,
+      `Muốn xoá thông tin của mình khỏi tin nhắn của tụi mình? Nhắn qua Zalo, Facebook hoặc email ${site.contact.email}, tụi mình xoá.`,
     ],
   },
 ];
@@ -109,21 +109,21 @@ export default function PolicyPage() {
           dụng, nên trang này nói rõ tụi mình làm được gì và không làm được gì.
           Có chỗ nào chưa rõ, nhắn{" "}
           <a
-            href={site.social.facebook}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-semibold text-primary-ink underline underline-offset-2"
-          >
-            Facebook
-          </a>
-          ,{" "}
-          <a
             href={site.social.zalo}
             target="_blank"
             rel="noopener noreferrer"
             className="font-semibold text-primary-ink underline underline-offset-2"
           >
             Zalo
+          </a>
+          ,{" "}
+          <a
+            href={site.social.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-primary-ink underline underline-offset-2"
+          >
+            Facebook
           </a>{" "}
           hoặc gọi{" "}
           <a

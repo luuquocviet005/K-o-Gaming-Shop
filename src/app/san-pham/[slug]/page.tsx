@@ -17,13 +17,13 @@ import { ProductCard } from "@/components/product-card";
 import { ProductPurchase } from "@/components/product-purchase";
 import { ConditionBadge } from "@/components/condition-badge";
 import { TrangDaBan } from "@/components/trang-da-ban";
-import { CheckIcon, FacebookIcon, InfoIcon, MapPinIcon } from "@/components/icons";
+import { CheckIcon, FacebookIcon, InfoIcon, MapPinIcon, ZaloIcon } from "@/components/icons";
 
 /*
  * Dựng trang cho CẢ hàng đang bán lẫn hàng đã bán.
  *
  * Hàng đã bán vẫn cần một trang thật, vì Google đã lập chỉ mục đường dẫn đó và
- * khách còn giữ link cũ trên Zalo/Facebook. Bỏ đi là mỗi lần bán được hàng lại
+ * khách còn giữ link cũ trên Facebook/Zalo. Bỏ đi là mỗi lần bán được hàng lại
  * đẻ thêm một link chết.
  */
 export function generateStaticParams() {
@@ -107,7 +107,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
       ? day
       : `${phanChinh}. ${danhMuc?.name ?? site.name}`.slice(0, 158);
 
-  // Ảnh cho thẻ xem trước trên Zalo / Messenger / Facebook. Món chưa có ảnh
+  // Ảnh cho thẻ xem trước trên Facebook / Messenger / Zalo. Món chưa có ảnh
   // thật thì rơi về tấm mặc định của shop, chứ không để trống.
   const coAnh = Boolean(product.anh);
   const anhChiaSe = coAnh
@@ -326,21 +326,21 @@ export default async function ProductPage(props: Props) {
               Thông tin lấy từ bảng hàng của shop. Cần biết thêm chi tiết nào — số
               lần dùng, phụ kiện kèm theo, ảnh thật — cứ{" "}
               <a
-                href={site.social.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-semibold text-primary-ink underline underline-offset-2"
-              >
-                nhắn Facebook
-              </a>
-              ,{" "}
-              <a
                 href={site.social.zalo}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-semibold text-primary-ink underline underline-offset-2"
               >
-                Zalo
+                nhắn Zalo
+              </a>
+              ,{" "}
+              <a
+                href={site.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-primary-ink underline underline-offset-2"
+              >
+                Facebook
               </a>{" "}
               hoặc gọi{" "}
               <a
@@ -369,16 +369,27 @@ export default async function ProductPage(props: Props) {
         </section>
       )}
 
-      {/* Nút hỏi nổi trên di động — hàng cũ thì khách hay hỏi trước khi chốt */}
-      <a
-        href={site.social.facebook}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-5 right-5 z-30 inline-flex h-14 items-center gap-2.5 rounded-full bg-primary px-6 text-sm font-bold text-on-primary shadow-[0_12px_30px_-10px_rgba(60,20,40,0.6)] lg:hidden"
-      >
-        <FacebookIcon width={20} height={20} />
-        Hỏi về món này
-      </a>
+      {/* Nút hỏi nổi trên di động — Zalo trước, Facebook ngay cạnh để khách chọn */}
+      <div className="fixed bottom-5 right-5 z-30 flex items-center gap-2.5 lg:hidden">
+        <a
+          href={site.social.facebook}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Hỏi về món này qua Facebook"
+          className="grid size-14 place-items-center rounded-full border border-border-strong bg-surface text-fg shadow-[0_12px_30px_-10px_rgba(60,20,40,0.6)]"
+        >
+          <FacebookIcon width={22} height={22} />
+        </a>
+        <a
+          href={site.social.zalo}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex h-14 items-center gap-2.5 rounded-full bg-primary px-6 text-sm font-bold text-on-primary shadow-[0_12px_30px_-10px_rgba(60,20,40,0.6)]"
+        >
+          <ZaloIcon width={20} height={20} />
+          Hỏi về món này
+        </a>
+      </div>
     </div>
   );
 }

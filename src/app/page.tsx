@@ -20,10 +20,10 @@ import {
   ArrowRightIcon,
   CategoryIcon,
   CheckIcon,
-  FacebookIcon,
+  ZaloIcon,
   MapPinIcon,
   SparkIcon,
-  ZaloIcon,
+  FacebookIcon,
 } from "@/components/icons";
 
 const hero = hangNoiBat(1)[0];
@@ -90,22 +90,22 @@ export default function HomePage() {
                 <ArrowRightIcon width={20} height={20} />
               </Link>
               <a
-                href={site.social.facebook}
+                href={site.social.zalo}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex h-14 items-center gap-2.5 rounded-full border border-border-strong bg-surface px-8 text-base font-semibold text-fg transition-all duration-200 hover:border-primary hover:text-primary-ink active:scale-[0.97]"
               >
-                <FacebookIcon width={20} height={20} />
-                Nhắn Facebook
+                <ZaloIcon width={20} height={20} />
+                Nhắn Zalo
               </a>
               <a
-                href={site.social.zalo}
+                href={site.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex h-14 items-center gap-2 rounded-full px-4 text-sm font-semibold text-fg-muted transition-colors duration-200 hover:text-primary-ink"
               >
-                <ZaloIcon width={18} height={18} />
-                hoặc Zalo
+                <FacebookIcon width={18} height={18} />
+                hoặc Facebook
               </a>
             </div>
           </div>
@@ -286,22 +286,22 @@ export default function HomePage() {
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <a
-                href={site.social.facebook}
+                href={site.social.zalo}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex h-14 items-center gap-2.5 rounded-full bg-primary px-8 text-base font-semibold text-on-primary transition-all duration-200 hover:bg-primary-hover active:scale-[0.97]"
               >
-                <FacebookIcon width={20} height={20} />
-                Nhắn Facebook
+                <ZaloIcon width={20} height={20} />
+                Nhắn Zalo
               </a>
               <a
-                href={site.social.zalo}
+                href={site.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex h-14 items-center gap-2.5 rounded-full border border-border-strong bg-bg px-7 text-base font-semibold text-fg transition-all duration-200 hover:border-primary hover:text-primary-ink active:scale-[0.97]"
               >
-                <ZaloIcon width={19} height={19} />
-                Zalo
+                <FacebookIcon width={19} height={19} />
+                Facebook
               </a>
               <Link
                 href="/lien-he/"

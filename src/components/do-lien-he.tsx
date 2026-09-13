@@ -10,9 +10,9 @@ declare global {
 }
 
 /**
- * Đếm lượt khách bấm vào các nút liên hệ: Facebook, Zalo, gọi điện, TikTok.
+ * Đếm lượt khách bấm vào các nút liên hệ: Zalo, Facebook, gọi điện, TikTok.
  *
- * VÌ SAO ĐÁNG ĐO: shop chốt đơn qua Facebook (trước) và Zalo, nên "bấm nút
+ * VÌ SAO ĐÁNG ĐO: shop chốt đơn qua Zalo (trước) và Facebook, nên "bấm nút
  * liên hệ" chính là hành vi
  * gần với đơn hàng nhất mà website đo được. Biết trang nào đẻ ra nhiều lượt
  * bấm là biết nên dồn sức vào đâu.
