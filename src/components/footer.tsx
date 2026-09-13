@@ -14,8 +14,8 @@ import {
 
 const socials = [
   { href: site.social.facebook, label: "Facebook", Icon: FacebookIcon },
-  { href: site.social.tiktok, label: "TikTok", Icon: TiktokIcon },
   { href: site.social.zalo, label: "Zalo", Icon: ZaloIcon },
+  { href: site.social.tiktok, label: "TikTok", Icon: TiktokIcon },
 ];
 
 const policies = [
@@ -149,6 +149,17 @@ export function Footer() {
                 className="font-semibold text-fg transition-colors hover:text-primary-ink"
               >
                 Nhắn tin qua Facebook
+              </a>
+            </li>
+            <li className="flex gap-3">
+              <ZaloIcon width={18} height={18} className="mt-0.5 shrink-0 text-primary" />
+              <a
+                href={site.social.zalo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-primary-ink"
+              >
+                Hoặc nhắn Zalo
               </a>
             </li>
           </ul>

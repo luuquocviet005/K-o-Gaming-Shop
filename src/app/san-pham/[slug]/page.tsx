@@ -17,7 +17,7 @@ import { ProductCard } from "@/components/product-card";
 import { ProductPurchase } from "@/components/product-purchase";
 import { ConditionBadge } from "@/components/condition-badge";
 import { TrangDaBan } from "@/components/trang-da-ban";
-import { CheckIcon, InfoIcon, MapPinIcon, PhoneIcon } from "@/components/icons";
+import { CheckIcon, FacebookIcon, InfoIcon, MapPinIcon } from "@/components/icons";
 
 /*
  * Dựng trang cho CẢ hàng đang bán lẫn hàng đã bán.
@@ -326,12 +326,21 @@ export default async function ProductPage(props: Props) {
               Thông tin lấy từ bảng hàng của shop. Cần biết thêm chi tiết nào — số
               lần dùng, phụ kiện kèm theo, ảnh thật — cứ{" "}
               <a
+                href={site.social.facebook}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-primary-ink underline underline-offset-2"
+              >
+                nhắn Facebook
+              </a>
+              ,{" "}
+              <a
                 href={site.social.zalo}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-semibold text-primary-ink underline underline-offset-2"
               >
-                nhắn Zalo
+                Zalo
               </a>{" "}
               hoặc gọi{" "}
               <a
@@ -360,14 +369,14 @@ export default async function ProductPage(props: Props) {
         </section>
       )}
 
-      {/* Nút gọi nổi trên di động — hàng cũ thì khách hay hỏi trước khi chốt */}
+      {/* Nút hỏi nổi trên di động — hàng cũ thì khách hay hỏi trước khi chốt */}
       <a
-        href={site.social.zalo}
+        href={site.social.facebook}
         target="_blank"
         rel="noopener noreferrer"
         className="fixed bottom-5 right-5 z-30 inline-flex h-14 items-center gap-2.5 rounded-full bg-primary px-6 text-sm font-bold text-on-primary shadow-[0_12px_30px_-10px_rgba(60,20,40,0.6)] lg:hidden"
       >
-        <PhoneIcon width={19} height={19} />
+        <FacebookIcon width={20} height={20} />
         Hỏi về món này
       </a>
     </div>

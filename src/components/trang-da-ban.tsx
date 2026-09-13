@@ -10,7 +10,7 @@ import { site } from "@/lib/site";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { ProductCard } from "@/components/product-card";
 import { ProductMedia } from "@/components/product-art";
-import { ArrowRightIcon, PhoneIcon } from "@/components/icons";
+import { ArrowRightIcon, FacebookIcon, PhoneIcon, ZaloIcon } from "@/components/icons";
 
 /**
  * Trang cho món ĐÃ BÁN.
@@ -85,13 +85,23 @@ export function TrangDaBan({ product }: { product: SoldProduct }) {
 
             <div className="mt-5 flex flex-wrap gap-3">
               <a
-                href={site.social.zalo}
+                href={site.social.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex h-13 items-center gap-2.5 rounded-full bg-primary px-7 text-base font-semibold text-on-primary transition-all duration-200 hover:bg-primary-hover active:scale-[0.97]"
               >
-                Nhắn Zalo tìm món này
+                <FacebookIcon width={19} height={19} />
+                Nhắn Facebook tìm món này
                 <ArrowRightIcon width={19} height={19} />
+              </a>
+              <a
+                href={site.social.zalo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-13 items-center gap-2.5 rounded-full border border-border-strong px-7 text-base font-semibold text-fg transition-colors hover:bg-surface-2"
+              >
+                <ZaloIcon width={19} height={19} />
+                Zalo
               </a>
               <a
                 href={site.contact.phoneHref}

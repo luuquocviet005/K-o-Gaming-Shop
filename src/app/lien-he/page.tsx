@@ -4,9 +4,11 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { ContactForm } from "@/components/contact-form";
 import {
   ClockIcon,
+  FacebookIcon,
   MailIcon,
   MapPinIcon,
   PhoneIcon,
+  ZaloIcon,
 } from "@/components/icons";
 
 export const metadata: Metadata = {
@@ -17,11 +19,25 @@ export const metadata: Metadata = {
 
 const channels = [
   {
+    Icon: FacebookIcon,
+    label: "Facebook",
+    value: "Nhắn tin qua Facebook",
+    href: site.social.facebook,
+    note: "Kênh chính — nhắn là tụi mình trả lời",
+  },
+  {
+    Icon: ZaloIcon,
+    label: "Zalo",
+    value: site.contact.phone,
+    href: site.social.zalo,
+    note: "Không dùng Facebook thì nhắn Zalo",
+  },
+  {
     Icon: PhoneIcon,
     label: "Điện thoại",
     value: site.contact.phone,
     href: site.contact.phoneHref,
-    note: "Nhanh nhất — gọi là có người nghe",
+    note: "Gọi là có người nghe",
   },
   {
     Icon: MailIcon,
@@ -82,6 +98,9 @@ export default function ContactPage() {
                 {href ? (
                   <a
                     href={href}
+                    {...(href.startsWith("http")
+                      ? { target: "_blank", rel: "noopener noreferrer" }
+                      : {})}
                     className="flex h-full items-start gap-4 rounded-[1.5rem] border border-border bg-surface p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary"
                   >
                     {content}
