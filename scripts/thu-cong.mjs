@@ -31,7 +31,7 @@ if (!giuKhoa()) {
 
 /** Chạy một bước; hỏng thì dừng cả tiến trình ngay tại đó */
 function buoc(so, tenBuoc, args) {
-  console.log(`\n  [${so}/3] ${tenBuoc}`);
+  console.log(`\n  [${so}/4] ${tenBuoc}`);
   const r = spawnSync(process.execPath, args, { cwd: root, stdio: "inherit" });
   if (r.status !== 0) {
     console.error("\n  ════════════════════════════════════════════════");
@@ -42,14 +42,20 @@ function buoc(so, tenBuoc, args) {
   }
 }
 
-buoc(1, "Nén ảnh và gắn vào sản phẩm…", [
+// Lấy bảng hàng TRƯỚC khi nạp ảnh. Món vừa thêm vào Sheet cùng lúc với ảnh thì
+// phải có trong bảng hàng, bộ nạp ảnh mới khớp được — không thì ảnh báo "không
+// khớp" và phải kéo thả thêm lần nữa. Lượt chạy ngầm cũng làm đúng thứ tự này.
+buoc(1, "Lấy bảng hàng mới nhất từ Google Sheet…", [
+  join(root, "scripts", "sync-sheet.mjs"),
+]);
+buoc(2, "Nén ảnh và gắn vào sản phẩm…", [
   join(root, "scripts", "nap-anh.mjs"),
   ...thuMuc,
 ]);
-buoc(2, "Cập nhật dữ liệu từ Google Sheet…", [
+buoc(3, "Ghi nhận ảnh vừa nạp vào bảng hàng…", [
   join(root, "scripts", "sync-sheet.mjs"),
 ]);
-buoc(3, "Kiểm tra và đưa lên web…", [
+buoc(4, "Kiểm tra và đưa lên web…", [
   join(root, "scripts", "push.mjs"),
   "Cập nhật ảnh sản phẩm",
 ]);

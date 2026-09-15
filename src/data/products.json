@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 21
+      "soLuong": 22
     },
     {
       "slug": "ban-phim",
@@ -431,6 +431,20 @@
       "soLuong": 9,
       "anh": "/products/xingmeng-zero-1-se/01.webp",
       "mau": "#b45309"
+    },
+    {
+      "id": "atk-a9-mini-ultimate-2",
+      "slug": "atk-a9-mini-ultimate-2",
+      "ten": "A9 Mini Ultimate",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 1200000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/atk-a9-mini-ultimate-2/01.webp",
+      "mau": "#4338ca"
     },
     {
       "id": "akko-air-01",

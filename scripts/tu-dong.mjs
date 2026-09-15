@@ -51,7 +51,7 @@ if (!existsSync(thuMucAnh)) {
   process.exit(1);
 }
 
-// Chủ tiệm đang tự tay chạy thì nhường — lượt sau (15 phút nữa) làm cũng được
+// Chủ tiệm đang tự tay chạy thì nhường — lượt sau (5 phút nữa) làm cũng được
 if (!giuKhoa()) {
   console.log("Đang có một lượt chạy khác — bỏ qua lượt này.");
   process.exit(0);

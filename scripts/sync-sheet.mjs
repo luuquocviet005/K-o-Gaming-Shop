@@ -134,6 +134,32 @@ const sanPham = [];
 const danhMuc = [];
 const daThay = new Map(); // khử trùng lặp giữa các tab
 
+/*
+ * GIỮ NGUYÊN ĐƯỜNG DẪN của món đã có trên web.
+ *
+ * slugify bỏ mọi ký tự không phải chữ/số, nên "ATK A9 Mini Ultimate +" và
+ * "ATK A9 Mini Ultimate" (hai con chuột khác nhau) ra CÙNG một slug. Bản trước
+ * gỡ trùng bằng hậu tố theo vị trí trong cả danh sách (`-${sanPham.length + 1}`):
+ * chủ tiệm thêm một dòng ở phía trên là con số nhảy, đường dẫn đổi, link đã gửi
+ * khách thành 404 — và kho hàng đã bán còn tưởng món đó vừa bán.
+ *
+ * Giờ: món nào lượt trước đã có slug thì giữ đúng slug đó, bất kể thứ tự dòng.
+ * Chỉ món MỚI mới phải tìm slug trống, với hậu tố cố định (-plus, -2, -3…).
+ * Máy chủ GitHub chạy đúng file này với cùng products.json nên ra cùng kết quả.
+ */
+const slugCuTheoKhoa = new Map();
+const khoaTheoSlugCu = new Map();
+try {
+  for (const p of JSON.parse(await readFile(dichVu, "utf8")).sanPham ?? []) {
+    // Khoá phải dựng giống hệt khoá khử trùng bên dưới: Sheet để trống hãng thì
+    // products.json lưu HANG_TRONG, nên đổi ngược về chuỗi rỗng.
+    const k = `${boDau(p.hang === HANG_TRONG ? "" : p.hang)}|${boDau(p.ten)}`;
+    slugCuTheoKhoa.set(k, p.slug);
+    khoaTheoSlugCu.set(p.slug, k);
+  }
+} catch {
+  /* lần đầu chạy — chưa có gì để giữ */
+}
 for (const cauHinh of config.tabs) {
   let duLieu;
   try {
@@ -240,8 +266,21 @@ for (const cauHinh of config.tabs) {
       canhBao.push(`⚠ "${ten}" (${cauHinh.tab}): chưa có giá — web sẽ hiện "Liên hệ".`);
     }
 
-    let slug = slugify(`${hang} ${ten}`) || slugify(ten);
-    if (sanPham.some((p) => p.slug === slug)) slug = `${slug}-${sanPham.length + 1}`;
+    // Slug đang bị món khác chiếm: đã cấp trong lượt này, hoặc là slug lượt trước
+    // của một món khác (giữ chỗ cho nó, kể cả khi nó nằm ở dòng phía dưới).
+    const biChiem = (x) =>
+      sanPham.some((p) => p.slug === x) ||
+      (khoaTheoSlugCu.has(x) && khoaTheoSlugCu.get(x) !== khoa);
+    let slug = slugCuTheoKhoa.get(khoa);
+    if (!slug || sanPham.some((p) => p.slug === slug)) {
+      const goc = slugify(`${hang} ${ten}`) || slugify(ten);
+      const thu = [
+        goc,
+        ...(ten.includes("+") ? [`${goc}-plus`] : []),
+        ...Array.from({ length: 50 }, (_, i) => `${goc}-${i + 2}`),
+      ];
+      slug = thu.find((x) => !biChiem(x)) ?? `${goc}-${Date.now()}`;
+    }
 
     // Thư mục ảnh riêng của sản phẩm được ưu tiên hơn mọi cách tìm ảnh khác
     const boAnh = anhTheoThuMuc.get(slug);
