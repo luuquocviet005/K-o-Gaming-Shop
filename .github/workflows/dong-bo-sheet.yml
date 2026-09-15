@@ -63,6 +63,10 @@ jobs:
         run: |
           git config user.name "KEO Gaming Shop"
           git config user.email "luuquocviet005@gmail.com"
-          git add src/data/products.json
+          # da-ban.json PHẢI đi cùng products.json. Bản trước chỉ add products.json:
+          # món bán được bị xoá khỏi danh sách, còn kho hàng đã bán (ghi ngay trên
+          # máy GitHub này) thì bị vứt đi — link cũ trên Zalo/Facebook thành 404.
+          # Đây lại là đường phát hiện hàng bán nhiều nhất (20 phút một lần).
+          git add src/data/products.json src/data/da-ban.json
           git commit -m "Đồng bộ bảng hàng từ Google Sheet"
           git push

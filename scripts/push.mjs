@@ -39,7 +39,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 if (!giuKhoa()) {
   console.error("");
   console.error("  Đang có một lượt nạp ảnh/đưa lên web khác chạy dở (thường");
-  console.error("  là lượt tự động 15 phút). Chờ nó xong rồi chạy lại — chen");
+  console.error("  là lượt tự động 5 phút). Chờ nó xong rồi chạy lại — chen");
   console.error("  vào lúc này dễ làm kẹt Git.");
   console.error("");
   process.exit(1);
@@ -309,5 +309,50 @@ if (moc) {
   }
 } else {
   console.log("  → Hostinger tự deploy trong ít phút. Theo dõi ở hPanel > Triển khai.");
+}
+
+/*
+ * Tác vụ chạy ngầm còn bật không?
+ *
+ * Từ 7/9 tới 15/9/2026 nó bị TẮT mà không nơi nào báo: chủ tiệm bỏ ảnh vào thư
+ * mục suốt 8 ngày, không món nào lên web, còn mọi lần push tay vẫn xanh. Không
+ * rõ vì sao nó tắt — nhật ký Task Scheduler trên máy không bật.
+ *
+ * Tác vụ đã tắt thì chính nó không thể tự báo, nên mỗi lần có người push tay
+ * thì kiểm tra hộ. Chỉ để báo tin — hỏng gì ở đây cũng không làm hỏng lần push.
+ *
+ * Hỏi PowerShell `Get-ScheduledTask` chứ KHÔNG đọc chữ của `schtasks`: thiếu
+ * tham số /V thì `schtasks /FO LIST` không in dòng trạng thái nào cả, còn chữ
+ * của nó đổi theo ngôn ngữ Windows. `.State` là giá trị cố định (Ready, Running,
+ * Disabled) trên mọi máy. Bản đầu của đoạn này đọc chữ schtasks, và chạy thử
+ * cho thấy nó KHÔNG BAO GIỜ báo — tác vụ có tắt thêm 8 ngày nữa cũng im.
+ */
+if (process.platform === "win32") {
+  try {
+    const q = spawnSync(
+      "powershell",
+      [
+        "-NoProfile",
+        "-NonInteractive",
+        "-Command",
+        "(Get-ScheduledTask -TaskName KeoGamingShop-NapAnh -ErrorAction Stop).State",
+      ],
+      { encoding: "utf8", timeout: 15000 },
+    );
+    const trangThai = (q.stdout ?? "").trim();
+    const khongCo = q.status !== 0;
+    const daTat = trangThai === "Disabled";
+    if (khongCo || daTat) {
+      console.log("");
+      console.log(
+        khongCo
+          ? "  ⚠ CHƯA BẬT tự động nạp ảnh — bỏ ảnh vào thư mục sẽ KHÔNG tự lên web."
+          : "  ⚠ Tự động nạp ảnh đang BỊ TẮT — bỏ ảnh vào thư mục sẽ KHÔNG tự lên web.",
+      );
+      console.log('     Bật lại: chạy file "Bat tu dong 15 phut.bat" trong thư mục dự án.');
+    }
+  } catch {
+    /* không hỏi được Task Scheduler thì thôi */
+  }
 }
 console.log("");

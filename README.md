@@ -148,7 +148,7 @@ biết ảnh nào đã lên, ảnh nào chưa khớp được tên.
 
 | Cách | Làm gì |
 | --- | --- |
-| **Tự động** (khuyến nghị) | Chạy `Bat tu dong 15 phut.bat` **một lần duy nhất**. Từ đó chỉ cần bỏ ảnh vào thư mục, tối đa 15 phút sau là web tự cập nhật. Muốn dừng: `Tat tu dong.bat`. |
+| **Tự động** (khuyến nghị) | Chạy `Bat tu dong 15 phut.bat` **một lần duy nhất**. Từ đó chỉ cần bỏ ảnh vào thư mục, vài phút sau là web tự cập nhật (5 phút kiểm tra một lần, máy tắt thì bật lên chạy bù ngay). Muốn dừng: `Tat tu dong.bat`. |
 | **Thủ công** | Kéo thả thư mục ảnh vào `Tai anh len web.bat`. |
 
 Sản phẩm chưa có ảnh thật thì website tự vẽ hình minh hoạ vector theo danh mục —

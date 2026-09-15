@@ -24,7 +24,7 @@ if (thuMuc.length === 0) {
 if (!giuKhoa()) {
   console.error("");
   console.error("  Đang có một lượt nạp ảnh khác chạy dở (có thể là lượt tự");
-  console.error("  động 15 phút). Chờ nó xong rồi thử lại — thường chỉ vài");
+  console.error("  động 5 phút). Chờ nó xong rồi thử lại — thường chỉ vài");
   console.error("  chục giây.");
   process.exit(1);
 }
