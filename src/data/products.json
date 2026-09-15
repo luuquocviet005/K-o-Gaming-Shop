@@ -102,6 +102,7 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 3,
       "note": "Có 3 màu Đen, Xanh hồ và Hồng",
+      "anh": "/products/atk-a9-mini-ultimate/01.webp",
       "mau": "#4338ca"
     },
     {
@@ -122,7 +123,8 @@
       "anhs": [
         "/products/atk-f1-ultimate-v2/01.webp",
         "/products/atk-f1-ultimate-v2/02.webp",
-        "/products/atk-f1-ultimate-v2/03.webp"
+        "/products/atk-f1-ultimate-v2/03.webp",
+        "/products/atk-f1-ultimate-v2/04.webp"
       ],
       "mau": "#4338ca"
     },
@@ -138,6 +140,7 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "note": "Có màu Trắng",
+      "anh": "/products/atk-a9-air/01.webp",
       "mau": "#4338ca"
     },
     {
@@ -152,6 +155,7 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 4,
       "note": "Đủ 4 màu: Đen, Trắng, Đỏ, Hồng",
+      "anh": "/products/atk-a9-ultimate/01.webp",
       "mau": "#4338ca"
     },
     {
@@ -481,6 +485,11 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "note": "Chỉ còn phím và kê tay",
+      "anh": "/products/asus-azoth-x/01.webp",
+      "anhs": [
+        "/products/asus-azoth-x/01.webp",
+        "/products/asus-azoth-x/02.webp"
+      ],
       "mau": "#c2185b"
     },
     {
@@ -671,6 +680,11 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "moTa": "Case : Holy60 đen\nSwitch : Duhuk Herz\nStab : Dodo gear\nPlate : PC",
+      "anh": "/products/geonworks-venom60-he/01.webp",
+      "anhs": [
+        "/products/geonworks-venom60-he/01.webp",
+        "/products/geonworks-venom60-he/02.webp"
+      ],
       "mau": "#be123c"
     },
     {
@@ -703,6 +717,11 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/leobog-hi8/01.webp",
+      "anhs": [
+        "/products/leobog-hi8/01.webp",
+        "/products/leobog-hi8/02.webp"
+      ],
       "mau": "#4338ca"
     },
     {
@@ -781,6 +800,12 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "moTa": "Bảo hành : 27/5/2027",
+      "anh": "/products/razer-blackwidow-v4-75-pro/01.webp",
+      "anhs": [
+        "/products/razer-blackwidow-v4-75-pro/01.webp",
+        "/products/razer-blackwidow-v4-75-pro/02.webp",
+        "/products/razer-blackwidow-v4-75-pro/03.webp"
+      ],
       "mau": "#4338ca"
     },
     {
@@ -831,7 +856,7 @@
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
+      "soLuong": 0,
       "anh": "/products/wooting-60he-v2-aluminum/01.webp",
       "anhs": [
         "/products/wooting-60he-v2-aluminum/01.webp",
