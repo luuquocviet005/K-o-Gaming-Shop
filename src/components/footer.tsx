@@ -171,7 +171,7 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} {site.name}. Đã đăng ký bản quyền.
           </p>
-          <p>Hàng cũ &amp; mới · Cho test trước khi mua · Đà Nẵng &amp; Sài Gòn</p>
+          <p>Hàng cũ &amp; mới · Cho test trước khi mua · Đà Nẵng</p>
         </div>
       </div>
     </footer>

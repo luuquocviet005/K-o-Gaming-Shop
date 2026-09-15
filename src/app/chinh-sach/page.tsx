@@ -31,7 +31,7 @@ const sections = [
     id: "test-truoc",
     title: "Xem và test trước khi trả tiền",
     body: [
-      `Hàng nằm ở Đà Nẵng và Sài Gòn. Bạn ở gần thì hẹn gặp trực tiếp, cắm thử, bấm thử, ưng mới lấy — đây là cách an toàn nhất cho cả hai bên.`,
+      `Hàng nằm ở Đà Nẵng. Bạn ở gần thì hẹn gặp trực tiếp, cắm thử, bấm thử, ưng mới lấy — đây là cách an toàn nhất cho cả hai bên.`,
       "Ở xa thì tụi mình quay video món hàng gửi trước khi đóng gói. Nhận hàng nhớ quay video lúc mở hộp, có gì lệch so với mô tả thì tụi mình xử lý.",
     ],
   },
@@ -61,7 +61,6 @@ const sections = [
       "**Phí ship tính đúng theo thực tế từng đơn**, tụi mình không cộng thêm đồng nào. Con số cụ thể báo cho bạn trước khi gửi hàng — thà nói trước còn hơn ghi một mức cố định rồi thu khác.",
       "**Nội thành Đà Nẵng**: sắp xếp được thì tụi mình hẹn lịch mang tới tận nơi. Không tiện thì book Grab, cước bao nhiêu bạn trả bấy nhiêu. Hoặc hẹn gặp trực tiếp nếu bạn ở gần.",
       "**Đi tỉnh**: gửi qua nhà xe hoặc đơn vị vận chuyển, khách trả phí. Phí thay đổi theo tỉnh và theo từng nhà xe nên tụi mình không ghi cố định ở đây.",
-      "Hàng ở Sài Gòn thì thời gian giao sẽ lâu hơn một chút vì phải chuyển ra — tụi mình báo rõ khi bạn đặt.",
       "Chuột và tai nghe được bọc chống sốc. Bàn phím đóng thùng riêng, chèn xốp kín.",
     ],
   },

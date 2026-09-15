@@ -259,7 +259,9 @@ for (const cauHinh of config.tabs) {
       ...(cauHinh.donViGia ? { donViGia: cauHinh.donViGia } : {}),
       tinhTrang,
       nhomTinhTrang,
-      diaDiem: layO(row, "dia diem", "khu vuc") || "Đà Nẵng",
+      // Shop chỉ bán hàng ở Đà Nẵng (chốt 2026-09-15). Cột "Địa điểm" trong
+      // Sheet bị bỏ qua, để lỡ ghi "Sài Gòn" cũng không lọt lên web.
+      diaDiem: "Đà Nẵng",
       soLuong: docSoNguyen(layO(row, "so luong"), 0),
       ...(moTa ? { moTa } : {}),
       ...(note ? { note } : {}),

@@ -94,9 +94,8 @@ export function Header() {
         <div className="container-page flex h-9 items-center justify-between text-xs">
           <p className="inline-flex items-center gap-2">
             <TruckIcon width={15} height={15} />
-            Hàng có sẵn ở <strong className="font-semibold">Đà Nẵng</strong> và{" "}
-            <strong className="font-semibold">Sài Gòn</strong> — hẹn gặp test trực
-            tiếp được
+            Hàng có sẵn ở <strong className="font-semibold">Đà Nẵng</strong> — hẹn
+            gặp test trực tiếp được
           </p>
           <div className="flex items-center gap-5">
             <a
