@@ -1,6 +1,18 @@
 {
   "daBan": [
     {
+      "slug": "atk-a9-mini-hong",
+      "ten": "A9 mini + ( hồng )",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 1200000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/atk-a9-mini-hong/01.webp",
+      "mau": "#4338ca",
+      "banLuc": "2026-09-15"
+    },
+    {
       "slug": "logitech-g703-hero",
       "ten": "G703 Hero",
       "hang": "Logitech",
@@ -210,6 +222,18 @@
       "nhomTinhTrang": "cu",
       "anh": "/products/wl-mouse-beast-x-max/01.webp",
       "mau": "#334155",
+      "banLuc": "2026-08-18"
+    },
+    {
+      "slug": "atk-rs6",
+      "ten": "RS6",
+      "hang": "ATK",
+      "danhMuc": "ban-phim",
+      "gia": 1200000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/atk-rs6/01.webp",
+      "mau": "#4338ca",
       "banLuc": "2026-08-18"
     }
   ]
