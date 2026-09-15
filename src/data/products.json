@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 18
+      "soLuong": 21
     },
     {
       "slug": "ban-phim",
@@ -14,7 +14,7 @@
       "short": "Bàn phím",
       "icon": "ban-phim",
       "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời.",
-      "soLuong": 20
+      "soLuong": 23
     },
     {
       "slug": "tai-nghe",
@@ -91,22 +91,17 @@
       "mau": "#4338ca"
     },
     {
-      "id": "atk-a9-mini-hong",
-      "slug": "atk-a9-mini-hong",
-      "ten": "A9 mini + ( hồng )",
+      "id": "atk-a9-mini-ultimate",
+      "slug": "atk-a9-mini-ultimate",
+      "ten": "A9 Mini Ultimate +",
       "hang": "ATK",
       "danhMuc": "chuot",
-      "gia": 1200000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
+      "gia": 1300000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/atk-a9-mini-hong/01.webp",
-      "anhs": [
-        "/products/atk-a9-mini-hong/01.webp",
-        "/products/atk-a9-mini-hong/02.webp",
-        "/products/atk-a9-mini-hong/03.webp"
-      ],
+      "soLuong": 3,
+      "note": "Có 3 màu Đen, Xanh hồ và Hồng",
       "mau": "#4338ca"
     },
     {
@@ -116,17 +111,62 @@
       "hang": "ATK",
       "danhMuc": "chuot",
       "gia": 1000000,
+      "giaToiDa": 1200000,
+      "ghiChuGia": "1tr - 1tr2",
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 2,
-      "note": "Có 2 màu Hồng và Xanh biển",
+      "soLuong": 3,
+      "note": "Có 3 màu Hồng, Xanh Biển và Trắng",
       "anh": "/products/atk-f1-ultimate-v2/01.webp",
       "anhs": [
         "/products/atk-f1-ultimate-v2/01.webp",
         "/products/atk-f1-ultimate-v2/02.webp",
         "/products/atk-f1-ultimate-v2/03.webp"
       ],
+      "mau": "#4338ca"
+    },
+    {
+      "id": "atk-a9-air",
+      "slug": "atk-a9-air",
+      "ten": "A9 Air +",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 1300000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "note": "Có màu Trắng",
+      "mau": "#4338ca"
+    },
+    {
+      "id": "atk-a9-ultimate",
+      "slug": "atk-a9-ultimate",
+      "ten": "A9 Ultimate +",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 1300000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 4,
+      "note": "Đủ 4 màu: Đen, Trắng, Đỏ, Hồng",
+      "mau": "#4338ca"
+    },
+    {
+      "id": "atk-x1-ultimate-v2",
+      "slug": "atk-x1-ultimate-v2",
+      "ten": "X1 ultimate v2",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 1200000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "note": "Có màu Đỏ",
+      "anh": "/products/atk-x1-ultimate-v2/01.webp",
       "mau": "#4338ca"
     },
     {
@@ -260,6 +300,24 @@
       "mau": "#7c3aed"
     },
     {
+      "id": "mchose-g3-v2",
+      "slug": "mchose-g3-v2",
+      "ten": "G3 v2",
+      "hang": "Mchose",
+      "danhMuc": "chuot",
+      "gia": 250000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/mchose-g3-v2/01.webp",
+      "anhs": [
+        "/products/mchose-g3-v2/01.webp",
+        "/products/mchose-g3-v2/02.webp"
+      ],
+      "mau": "#7c3aed"
+    },
+    {
       "id": "ninjutso-sora-v2",
       "slug": "ninjutso-sora-v2",
       "ten": "Sora v2",
@@ -337,20 +395,6 @@
       "mau": "#c2185b"
     },
     {
-      "id": "xingmeng-zero-1-se",
-      "slug": "xingmeng-zero-1-se",
-      "ten": "Zero 1 se",
-      "hang": "Xingmeng",
-      "danhMuc": "chuot",
-      "gia": 250000,
-      "tinhTrang": "Mới",
-      "nhomTinhTrang": "moi",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 9,
-      "anh": "/products/xingmeng-zero-1-se/01.webp",
-      "mau": "#b45309"
-    },
-    {
       "id": "wl-mouse-beast-x-pro",
       "slug": "wl-mouse-beast-x-pro",
       "ten": "Beast x Pro",
@@ -371,22 +415,18 @@
       "mau": "#334155"
     },
     {
-      "id": "mchose-g3-v2",
-      "slug": "mchose-g3-v2",
-      "ten": "G3 v2",
-      "hang": "Mchose",
+      "id": "xingmeng-zero-1-se",
+      "slug": "xingmeng-zero-1-se",
+      "ten": "Zero 1 se",
+      "hang": "Xingmeng",
       "danhMuc": "chuot",
       "gia": 250000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/mchose-g3-v2/01.webp",
-      "anhs": [
-        "/products/mchose-g3-v2/01.webp",
-        "/products/mchose-g3-v2/02.webp"
-      ],
-      "mau": "#7c3aed"
+      "soLuong": 9,
+      "anh": "/products/xingmeng-zero-1-se/01.webp",
+      "mau": "#b45309"
     },
     {
       "id": "akko-air-01",
@@ -428,6 +468,20 @@
         "/products/akko-m1-v5-he/05.webp"
       ],
       "mau": "#0f172a"
+    },
+    {
+      "id": "asus-azoth-x",
+      "slug": "asus-azoth-x",
+      "ten": "Azoth X",
+      "hang": "Asus",
+      "danhMuc": "ban-phim",
+      "gia": 3500000,
+      "tinhTrang": "Cũ · không hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "note": "Chỉ còn phím và kê tay",
+      "mau": "#c2185b"
     },
     {
       "id": "atk-kit-edge60-ban-test-0-01",
@@ -483,6 +537,25 @@
       "anhs": [
         "/products/atk-hex80/01.webp",
         "/products/atk-hex80/02.webp"
+      ],
+      "mau": "#4338ca"
+    },
+    {
+      "id": "atk-rs7-pro",
+      "slug": "atk-rs7-pro",
+      "ten": "RS7 Pro",
+      "hang": "ATK",
+      "danhMuc": "ban-phim",
+      "gia": 1000000,
+      "tinhTrang": "Cũ · không hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "note": "Trầy khá nhiều, dùng bình thường",
+      "anh": "/products/atk-rs7-pro/01.webp",
+      "anhs": [
+        "/products/atk-rs7-pro/01.webp",
+        "/products/atk-rs7-pro/02.webp"
       ],
       "mau": "#4338ca"
     },
@@ -587,6 +660,20 @@
       "mau": "#0f172a"
     },
     {
+      "id": "geonworks-venom60-he",
+      "slug": "geonworks-venom60-he",
+      "ten": "Venom60 HE",
+      "hang": "GEONWORKS",
+      "danhMuc": "ban-phim",
+      "gia": 2500000,
+      "tinhTrang": "Cũ",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "moTa": "Case : Holy60 đen\nSwitch : Duhuk Herz\nStab : Dodo gear\nPlate : PC",
+      "mau": "#be123c"
+    },
+    {
       "id": "hm-lab-kit-hm64z",
       "slug": "hm-lab-kit-hm64z",
       "ten": "Kit Hm64z",
@@ -604,6 +691,19 @@
         "/products/hm-lab-kit-hm64z/02.webp"
       ],
       "mau": "#0f172a"
+    },
+    {
+      "id": "leobog-hi8",
+      "slug": "leobog-hi8",
+      "ten": "Hi8",
+      "hang": "Leobog",
+      "danhMuc": "ban-phim",
+      "gia": 750000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "mau": "#4338ca"
     },
     {
       "id": "monsgeek-m1w",
@@ -670,6 +770,20 @@
       "mau": "#4338ca"
     },
     {
+      "id": "razer-blackwidow-v4-75-pro",
+      "slug": "razer-blackwidow-v4-75-pro",
+      "ten": "Blackwidow v4 75% Pro",
+      "hang": "Razer",
+      "danhMuc": "ban-phim",
+      "gia": 4000000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "moTa": "Bảo hành : 27/5/2027",
+      "mau": "#4338ca"
+    },
+    {
       "id": "titan-nation-titan68-pro",
       "slug": "titan-nation-titan68-pro",
       "ten": "Titan68 pro",
@@ -727,38 +841,6 @@
       "mau": "#be123c"
     },
     {
-      "id": "atk-rs7-pro",
-      "slug": "atk-rs7-pro",
-      "ten": "RS7 Pro",
-      "hang": "ATK",
-      "danhMuc": "ban-phim",
-      "gia": 1000000,
-      "tinhTrang": "Cũ · không hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "note": "Trầy khá nhiều, dùng bình thường",
-      "anh": "/products/atk-rs7-pro/01.webp",
-      "anhs": [
-        "/products/atk-rs7-pro/01.webp",
-        "/products/atk-rs7-pro/02.webp"
-      ],
-      "mau": "#4338ca"
-    },
-    {
-      "id": "razer-blackwidow-v4-75-pro",
-      "slug": "razer-blackwidow-v4-75-pro",
-      "ten": "Blackwidow v4 75% Pro",
-      "hang": "Razer",
-      "danhMuc": "ban-phim",
-      "gia": 0,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 0,
-      "mau": "#4338ca"
-    },
-    {
       "id": "atk-horizon-dsp",
       "slug": "atk-horizon-dsp",
       "ten": "Horizon DSP",
@@ -782,7 +864,7 @@
       "tinhTrang": "Mới, nguyên seal",
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
+      "soLuong": 10,
       "anh": "/products/hyperx-earbuds-2/01.webp",
       "anhs": [
         "/products/hyperx-earbuds-2/01.webp",
