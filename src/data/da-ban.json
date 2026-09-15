@@ -13,6 +13,18 @@
       "banLuc": "2026-09-15"
     },
     {
+      "slug": "monsgeek-m1w",
+      "ten": "M1W",
+      "hang": "Monsgeek",
+      "danhMuc": "ban-phim",
+      "gia": 900000,
+      "tinhTrang": "Cũ",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/monsgeek-m1w/01.webp",
+      "mau": "#b45309",
+      "banLuc": "2026-09-15"
+    },
+    {
       "slug": "logitech-g703-hero",
       "ten": "G703 Hero",
       "hang": "Logitech",
