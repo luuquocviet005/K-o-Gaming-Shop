@@ -38,7 +38,7 @@
       "short": "Phụ kiện",
       "icon": "do-khac",
       "blurb": "Keycap, bungee, đế sạc, tai nghe không dây và đồ chơi lẻ đi kèm.",
-      "soLuong": 11
+      "soLuong": 10
     },
     {
       "slug": "switch-he",
@@ -1292,19 +1292,6 @@
         "/products/phi-khuong-hoan-phi/03.webp"
       ],
       "mau": "#be123c"
-    },
-    {
-      "id": "luu-quoc-viet",
-      "slug": "luu-quoc-viet",
-      "ten": "Lưu Quốc Việt",
-      "hang": "Không rõ hãng",
-      "danhMuc": "phu-kien",
-      "gia": 1000,
-      "tinhTrang": "khéo bá",
-      "nhomTinhTrang": "khac",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "mau": "#15803d"
     },
     {
       "id": "gateron-jade-pro",

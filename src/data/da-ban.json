@@ -1,6 +1,17 @@
 {
   "daBan": [
     {
+      "slug": "luu-quoc-viet",
+      "ten": "Lưu Quốc Việt",
+      "hang": "Không rõ hãng",
+      "danhMuc": "phu-kien",
+      "gia": 1000,
+      "tinhTrang": "khéo bá",
+      "nhomTinhTrang": "khac",
+      "mau": "#15803d",
+      "banLuc": "2026-09-17"
+    },
+    {
       "slug": "atk-a9-mini-hong",
       "ten": "A9 mini + ( hồng )",
       "hang": "ATK",
