@@ -22,7 +22,7 @@
       "short": "Tai nghe",
       "icon": "tai-nghe",
       "blurb": "Tai nghe chụp tai, in-ear và soundcard.",
-      "soLuong": 9
+      "soLuong": 10
     },
     {
       "slug": "pad-chuot",
@@ -932,7 +932,7 @@
       "tinhTrang": "Mới, nguyên seal",
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 10,
+      "soLuong": 45,
       "moTa": "Có 2 màu đỏ và đen",
       "anh": "/products/hyperx-earbuds-2/01.webp",
       "anhs": [
@@ -954,7 +954,7 @@
       "tinhTrang": "Mới",
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 10,
+      "soLuong": 3,
       "anh": "/products/hyperx-soundcard-cloud-2/01.webp",
       "anhs": [
         "/products/hyperx-soundcard-cloud-2/01.webp",
@@ -977,7 +977,7 @@
       "tinhTrang": "Mới, nguyên seal",
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
+      "soLuong": 0,
       "anh": "/products/razer-hammerhead-v3/01.webp",
       "anhs": [
         "/products/razer-hammerhead-v3/01.webp",
@@ -1076,6 +1076,19 @@
         "/products/razer-barracuda-x-2022/06.webp"
       ],
       "mau": "#4338ca"
+    },
+    {
+      "id": "hyperx-earbuds-3",
+      "slug": "hyperx-earbuds-3",
+      "ten": "Earbuds 3",
+      "hang": "HyperX",
+      "danhMuc": "tai-nghe",
+      "gia": 750000,
+      "tinhTrang": "Mới, nguyên seal",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 20,
+      "mau": "#c2185b"
     },
     {
       "id": "atk-lie-xsoft-m",
