@@ -27,13 +27,14 @@ import { readdir, stat } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { rgbSharp } from "./lib/mau.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const thuMuc = join(root, "public", "products");
 
 const RONG = 1200;
 const CAO = 630;
-const NEN = { r: 253, g: 247, b: 249 }; // --bg trong globals.css
+const NEN = rgbSharp("bg"); // nền hồng nhạt của trang
 const TEN = "chia-se.jpg";
 
 /*

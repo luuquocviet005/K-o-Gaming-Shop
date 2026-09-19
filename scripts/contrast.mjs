@@ -7,33 +7,7 @@
  * Chạy: node scripts/contrast.mjs
  */
 
-import { readFile } from "node:fs/promises";
-import { join, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
-
-const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-const css = await readFile(join(root, "src/app/globals.css"), "utf8");
-
-/** Lấy các biến màu trong một khối selector */
-function tokensOf(selector) {
-  const start = css.indexOf(selector);
-  if (start === -1) throw new Error(`Không thấy khối ${selector}`);
-  const open = css.indexOf("{", start);
-  const close = css.indexOf("}", open);
-  const body = css.slice(open + 1, close);
-  const map = {};
-  for (const m of body.matchAll(/--([\w-]+)\s*:\s*(#[0-9a-fA-F]{3,8})\s*;/g)) {
-    map[m[1]] = m[2];
-  }
-  return map;
-}
-
-function toRgb(hex) {
-  let h = hex.replace("#", "");
-  if (h.length === 3) h = h.split("").map((c) => c + c).join("");
-  const n = parseInt(h, 16);
-  return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
-}
+import { tokensOf, toRgb } from "./lib/mau.mjs";
 
 function luminance(hex) {
   const [r, g, b] = toRgb(hex).map((v) => {

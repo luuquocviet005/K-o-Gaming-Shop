@@ -17,6 +17,7 @@
 import sharp from "sharp";
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
+import { bien, rgbSharp } from "./lib/mau.mjs";
 
 const NGUON = process.argv[2];
 if (!NGUON) {
@@ -47,8 +48,8 @@ const CAT_BADGE = { trai: 0.0, tren: 0.0, phai: 1.0, duoi: 0.465 };
    mặt chỉ còn khoảng 14px nên nhoè. Nếu sau này muốn icon tab rõ mặt hơn thì cắt
    sát mặt bằng khung { trai: 0.13, tren: 0, phai: 0.75, duoi: 0.34 }. */
 
-const HONG_PHAN = { r: 255, g: 228, b: 238, alpha: 1 }; // --primary-soft
-const HONG_DAM = "#c2185b"; // --primary
+const HONG_PHAN = { ...rgbSharp("primary-soft"), alpha: 1 };
+const HONG_DAM = bien("primary");
 
 /* Ảnh gốc là JPEG nên quanh nét vẽ có một quầng nhiễu sáng, không phải trắng
    tinh. Vì vậy dùng ngưỡng loang khá lỏng (NGUONG_NEN) để ăn hết quầng đó, rồi
