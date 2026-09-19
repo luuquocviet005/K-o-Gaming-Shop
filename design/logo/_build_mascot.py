@@ -1,7 +1,33 @@
 # -*- coding: utf-8 -*-
 """Mascot KẸO Gaming Gear — bám nguyên bố cục bản phác: cậu bé đứng ôm bàn phím cơ, mút kẹo."""
 
-INK = "#3c1428"; HOT = "#c2185b"; SOFT = "#ff9bc3"; PALE = "#ffe9f1"; W = "#ffffff"
+import re
+from pathlib import Path
+
+_CSS = (Path(__file__).resolve().parents[2] / "src/app/globals.css").read_text(encoding="utf-8")
+
+
+def bien(ten, toi=False):
+    """Đọc một biến màu từ globals.css — nguồn DUY NHẤT của bảng màu thương hiệu.
+
+    toi=True lấy giá trị ở khối [data-theme="dark"]. Mascot dùng vài màu của
+    chế độ tối vì nó đứng trên nền TRẮNG của bao bì, cần hồng sáng hơn hồng
+    dùng làm nền nút trên trang.
+    """
+    m = re.findall(r"--%s\s*:\s*(#[0-9a-fA-F]{3,8})\s*;" % re.escape(ten), _CSS)
+    if len(m) < 2:
+        raise SystemExit("globals.css phải khai báo --%s ở cả hai chế độ" % ten)
+    return m[1] if toi else m[0]
+
+
+# Mực viền và tóc: màu DUY NHẤT của riêng logo, cố ý không có trong globals.css.
+# Nét vẽ cần nâu mận ấm; dùng --fg (#1c1016, gần như đen) thì mặt mascot bị cứng.
+INK = "#3c1428"
+
+HOT = bien("primary")                    # giày, cụm WASD, chữ KẸO
+SOFT = bien("primary-hover", toi=True)   # áo, nền phím
+PALE = bien("dai-dam-chu")               # quần, viên kẹo, nền khối tròn
+W = "#ffffff"
 
 SPIRAL = ("M50,50 A3,3 0 0 1 56,50 A8,8 0 0 1 40,50 A13,13 0 0 1 66,50 "
           "A18,18 0 0 1 30,50 A23,23 0 0 1 76,50 A28,28 0 0 1 20,50")
