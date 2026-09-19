@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 23
+      "soLuong": 24
     },
     {
       "slug": "ban-phim",
@@ -460,6 +460,19 @@
       "soLuong": 9,
       "anh": "/products/xingmeng-zero-1-se/01.webp",
       "mau": "#b45309"
+    },
+    {
+      "id": "endgame-gear-op1w-4k-v2",
+      "slug": "endgame-gear-op1w-4k-v2",
+      "ten": "OP1w 4k V2",
+      "hang": "Endgame Gear",
+      "danhMuc": "chuot",
+      "gia": 0,
+      "tinhTrang": "",
+      "nhomTinhTrang": "khac",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 0,
+      "mau": "#0f172a"
     },
     {
       "id": "akko-air-01",
