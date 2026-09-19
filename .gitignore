@@ -48,3 +48,6 @@ next-env.d.ts
 
 # đồ thị tri thức graphify — sinh lại được, không cần lên web
 graphify-out/
+
+# quyền Claude Code riêng của máy này
+.claude/settings.local.json
