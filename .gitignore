@@ -45,3 +45,6 @@ next-env.d.ts
 
 # khoá chống hai lượt nạp ảnh chạy chồng lên nhau — chỉ tồn tại lúc đang chạy
 .dang-chay.lock
+
+# đồ thị tri thức graphify — sinh lại được, không cần lên web
+graphify-out/
