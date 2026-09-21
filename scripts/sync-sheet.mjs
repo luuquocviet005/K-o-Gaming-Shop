@@ -45,8 +45,11 @@ function layO(row, ...tenCot) {
 /** CSV thô của từng tab, để bắt lỗi tab ma ở dưới */
 const csvTheoTab = new Map();
 
+// headers=1: không có nó, gviz tự đoán số dòng tiêu đề và có lúc gộp luôn dòng
+// hàng đầu tiên vào tiêu đề ("Tên sản phẩm Air 01") — cả tab Bàn phím từng mất
+// sạch khỏi web vì thế (20/09/2026).
 async function taiTab(tab) {
-  const url = `https://docs.google.com/spreadsheets/d/${config.sheetId}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent(tab)}`;
+  const url = `https://docs.google.com/spreadsheets/d/${config.sheetId}/gviz/tq?tqx=out:csv&headers=1&sheet=${encodeURIComponent(tab)}`;
   const res = await fetch(url, { redirect: "follow" });
   if (!res.ok) throw new Error(`Tab "${tab}": HTTP ${res.status}`);
   const text = await res.text();

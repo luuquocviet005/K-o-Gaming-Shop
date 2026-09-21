@@ -29,7 +29,7 @@ export function toCsvUrl(input) {
 
   const gid = url.match(/[#&?]gid=([0-9]+)/)?.[1] ?? "0";
   // Điểm cuối gviz đọc được sheet đã bật "Bất kỳ ai có đường liên kết"
-  return `https://docs.google.com/spreadsheets/d/${id}/gviz/tq?tqx=out:csv&gid=${gid}`;
+  return `https://docs.google.com/spreadsheets/d/${id}/gviz/tq?tqx=out:csv&headers=1&gid=${gid}`;
 }
 
 const input = process.argv[2];
