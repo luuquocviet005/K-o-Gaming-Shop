@@ -45,11 +45,47 @@ function layO(row, ...tenCot) {
 /** CSV thô của từng tab, để bắt lỗi tab ma ở dưới */
 const csvTheoTab = new Map();
 
-// headers=1: không có nó, gviz tự đoán số dòng tiêu đề và có lúc gộp luôn dòng
-// hàng đầu tiên vào tiêu đề ("Tên sản phẩm Air 01") — cả tab Bàn phím từng mất
-// sạch khỏi web vì thế (20/09/2026).
+/**
+ * Số hiệu (gid) của từng tab, đọc một lần cho cả lượt.
+ *
+ * Cần gid vì ta tải bằng /export chứ không phải gviz — xem taiTab bên dưới.
+ * Tên tab không có trong bảng này = tab đã bị đổi tên hoặc xoá, và đó là lỗi
+ * thật sự, báo ngay chứ không đoán mò.
+ */
+const gidTheoTab = await (async () => {
+  const url = `https://docs.google.com/spreadsheets/d/${config.sheetId}/htmlview`;
+  const res = await fetch(url, { redirect: "follow" });
+  if (!res.ok) throw new Error(`Không mở được Sheet: HTTP ${res.status}`);
+  const html = await res.text();
+  const bang = new Map(
+    [...html.matchAll(/items\.push\(\{name: "([^"]+)"[\s\S]{0,400}?gid: "(\d+)"/g)].map(
+      (m) => [m[1], m[2]],
+    ),
+  );
+  if (bang.size === 0)
+    throw new Error("Không đọc được danh sách tab — Sheet có còn chia sẻ công khai không?");
+  return bang;
+})();
+
+/**
+ * Tải một tab bằng /export?format=csv — KHÔNG dùng gviz nữa.
+ *
+ * gviz gán kiểu cho cả cột rồi lặng lẽ trả về rỗng cho ô nào không đúng kiểu
+ * đó. Cột "Số lượng" là cột số, nên ô nào lỡ nhập thành chữ (hay dính khoảng
+ * trắng) thì về tới script là rỗng = 0 = "Đã bán hết", trong khi Sheet vẫn
+ * hiện 1. Đã làm 3 bàn phím còn hàng bị treo biển hết hàng (25/09/2026).
+ * /export trả đúng chữ hiển thị trong ô, không đoán kiểu gì cả.
+ *
+ * Thêm một cái lợi: gid là số hiệu thật của tab, nên không còn trò Google im
+ * lặng trả về tab đầu tiên khi tên tab không tồn tại.
+ */
 async function taiTab(tab) {
-  const url = `https://docs.google.com/spreadsheets/d/${config.sheetId}/gviz/tq?tqx=out:csv&headers=1&sheet=${encodeURIComponent(tab)}`;
+  const gid = gidTheoTab.get(tab);
+  if (!gid)
+    throw new Error(
+      `Tab "${tab}": không có trong Sheet (chỉ thấy ${[...gidTheoTab.keys()].join(", ")})`,
+    );
+  const url = `https://docs.google.com/spreadsheets/d/${config.sheetId}/export?format=csv&gid=${gid}`;
   const res = await fetch(url, { redirect: "follow" });
   if (!res.ok) throw new Error(`Tab "${tab}": HTTP ${res.status}`);
   const text = await res.text();
