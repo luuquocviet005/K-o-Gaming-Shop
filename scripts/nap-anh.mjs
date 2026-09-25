@@ -455,6 +455,12 @@ for (const vao of duongDanVao) {
 
     if (daGhi.length > 0) {
       khop.push({ ten, sanPham: p, so: daGhi.length, diem: ketQua.diem, danhMuc });
+      // Hỏng MỘT PHẦN cũng không được nhớ là xong: Lamzu Maya X mất tấm .heic
+      // vì lượt chạy bằng script cũ nén được 1/2 tấm rồi ghi vân tay (25/09/2026).
+      if (daGhi.length < files.length) {
+        delete cacheMoi[p.slug];
+        loiAnh.push({ ten, sanPham: p, so: files.length - daGhi.length });
+      }
     } else {
       /**
        * Khớp đúng món nhưng KHÔNG nén nổi tấm nào (ảnh hỏng, định dạng lạ…).
@@ -512,7 +518,7 @@ if (cuaHangDaBan.length) {
 
 if (loiAnh.length) {
   ghi("");
-  ghi(`✗ ${loiAnh.length} sản phẩm có ảnh nhưng KHÔNG xử lý được tấm nào:`);
+  ghi(`✗ ${loiAnh.length} sản phẩm có ảnh KHÔNG xử lý được:`);
   for (const k of loiAnh) {
     ghi(`    "${k.ten}"  →  ${k.sanPham.hang} ${k.sanPham.ten} (${k.so} tấm lỗi)`);
   }
