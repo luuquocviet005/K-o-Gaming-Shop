@@ -32,10 +32,15 @@ import { existsSync } from "node:fs";
 import { join, dirname, basename } from "node:path";
 import { fileURLToPath } from "node:url";
 import { tmpdir } from "node:os";
+import { randomUUID } from "node:crypto";
+import { execFile as execFileCb } from "node:child_process";
+import { promisify } from "node:util";
 import sharp from "sharp";
 import { unzipSync } from "fflate";
 import { timSanPham } from "./lib/khop-ten.mjs";
 import { boDau } from "./lib/normalize.mjs";
+
+const execFile = promisify(execFileCb);
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const thuMucDich = join(root, "public", "products");
@@ -120,6 +125,38 @@ async function giaiNen(duongDanZip) {
   return dich;
 }
 
+/**
+ * Ảnh .heic (ảnh gốc iPhone): nhờ chính Windows giải mã.
+ *
+ * sharp đọc được kích thước file HEIC nên trông như chạy được, nhưng tới lúc
+ * giải mã thật thì gục ("bad seek") — libvips kèm theo sharp chỉ GHI được avif
+ * chứ không ĐỌC được heic. Windows 11 thì có sẵn bộ giải mã HEIF, gọi qua
+ * PowerShell là xong, không phải thêm thư viện nào.
+ * Đã làm mất ảnh 2 món thật (Endgame OP1w 4k V2, HyperX Earbuds 3) ngày 23/09/2026.
+ */
+async function heicSangJpeg(nguon) {
+  await mkdir(thuMucTam, { recursive: true });
+  daDungTam = true;
+  const dich = join(thuMucTam, `heic-${randomUUID()}.jpg`);
+  const q = (s) => `'${s.replace(/'/g, "''")}'`;
+  await execFile(
+    "powershell.exe",
+    [
+      "-NoProfile",
+      "-NonInteractive",
+      "-Command",
+      `Add-Type -AssemblyName PresentationCore,WindowsBase;` +
+        `$s=[IO.File]::OpenRead(${q(nguon)});` +
+        `$d=[Windows.Media.Imaging.BitmapDecoder]::Create($s,'None','OnLoad');` +
+        `$e=New-Object Windows.Media.Imaging.JpegBitmapEncoder;$e.QualityLevel=95;` +
+        `$e.Frames.Add([Windows.Media.Imaging.BitmapFrame]::Create($d.Frames[0]));` +
+        `$o=[IO.File]::Open(${q(dich)},'Create');$e.Save($o);$o.Close();$s.Close()`,
+    ],
+    { windowsHide: true },
+  );
+  return dich;
+}
+
 /** Tên thư mục có phải một danh mục trên web không (bỏ dấu, không phân biệt hoa thường) */
 function nhanDangDanhMuc(ten) {
   const can = boDau(ten).replace(/[^a-z0-9]/g, "");
@@ -176,20 +213,43 @@ async function timSanPhamTrongCay(duongDan, danhMuc = null, sau = 0) {
 
   const ketQua = [];
 
-  // Ảnh rời nằm cạnh thư mục con: mỗi tấm là một sản phẩm, tên lấy từ tên file
-  for (const a of anhRoi) {
-    ketQua.push({
-      ten: a.name.replace(/\.[^.]+$/, ""),
-      danhMuc,
-      files: [join(duongDan, a.name)],
-    });
-  }
+  /**
+   * Thư mục này là THƯ MỤC CHỨA hay là MỘT SẢN PHẨM?
+   *
+   * Chỉ thư mục mang tên một danh mục (Chuột, Bàn phím…) và thư mục gốc mới là
+   * thư mục chứa — ở đó mỗi ảnh rời, mỗi file nén là một món khác nhau.
+   * Mọi thư mục khác là tên một món, nên ảnh rời VÀ file nén bên trong đều là
+   * ảnh của chính món đó.
+   *
+   * Trước đây cứ thấy có file nén hoặc thư mục con là coi như thư mục chứa.
+   * Hậu quả thật: "Chuột/ATK F1 Leviatan/" có 5 ảnh rời + "1.zip" nên 5 tấm ảnh
+   * biến thành 5 "sản phẩm" tên IMG_2026… không khớp được với gì, còn "1.zip"
+   * thì suýt gán nhầm sang món "ATK F1 v2 Ultimate" đã bán (22–25/09/2026).
+   */
+  const laThuMucChua = sau === 0 || nhanDangDanhMuc(basename(duongDan)) !== null;
 
-  for (const z of zipCon) {
+  if (laThuMucChua) {
+    // Ảnh rời trong thư mục danh mục: mỗi tấm là một sản phẩm, tên lấy từ tên file
+    for (const a of anhRoi) {
+      ketQua.push({
+        ten: a.name.replace(/\.[^.]+$/, ""),
+        danhMuc,
+        files: [join(duongDan, a.name)],
+      });
+    }
+    for (const z of zipCon) {
+      ketQua.push({
+        ten: z.name.replace(/\.zip$/i, ""),
+        danhMuc,
+        zip: join(duongDan, z.name),
+      });
+    }
+  } else if (anhRoi.length > 0 || zipCon.length > 0) {
     ketQua.push({
-      ten: z.name.replace(/\.zip$/i, ""),
+      ten: basename(duongDan),
       danhMuc,
-      zip: join(duongDan, z.name),
+      files: anhRoi.map((m) => join(duongDan, m.name)),
+      zips: zipCon.map((m) => join(duongDan, m.name)),
     });
   }
 
@@ -248,6 +308,8 @@ async function vanTay(duongDanNguon) {
 const khop = [];
 const boQua = [];
 const khongKhop = [];
+/** Khớp đúng món nhưng ảnh không nén được tấm nào — lỗi thật, phải kêu to */
+const loiAnh = [];
 /** Thư mục ảnh của món ĐÃ BÁN — không phải lỗi, xem phần in kết quả bên dưới */
 const cuaHangDaBan = [];
 /** slug sản phẩm -> tên thư mục đã dùng, để bắt hai thư mục cùng trỏ một món */
@@ -333,20 +395,25 @@ for (const vao of duongDanVao) {
     const vt = await vanTay(zip ? [zip] : duongDanAnh);
     cacheMoi[p.slug] = vt;
     const dichCu = join(thuMucDich, p.slug);
-    if (cache[p.slug] === vt && existsSync(dichCu)) {
+    // Thư mục RỖNG cũng "tồn tại" — đừng coi đó là đã có ảnh, không thì một
+    // lượt hỏng giữa chừng sẽ được nhớ luôn là "xong rồi" và không bao giờ làm lại.
+    const daCoAnh =
+      existsSync(dichCu) && (await readdir(dichCu)).some((f) => /\.webp$/i.test(f));
+    if (cache[p.slug] === vt && daCoAnh) {
       boQua.push({ ten, sanPham: p });
       continue;
     }
 
     // Tới đây mới chắc là cần xử lý — giờ mới bung file nén ra
-    let duongDanThat = duongDanAnh;
-    if (zip) {
-      const d = await giaiNen(zip);
+    const duongDanThat = [...duongDanAnh];
+    for (const z of dsZip) {
+      const d = await giaiNen(z);
       if (!d) continue;
-      duongDanThat = (await readdir(d))
-        .filter((f) => DUOI_ANH.test(f))
-        .map((f) => join(d, f));
+      for (const f of await readdir(d)) {
+        if (DUOI_ANH.test(f)) duongDanThat.push(join(d, f));
+      }
     }
+    if (duongDanThat.length === 0) continue;
 
     const files = sapAnh(duongDanThat, ten);
 
@@ -357,9 +424,10 @@ for (const vao of duongDanVao) {
 
     const daGhi = [];
     for (let i = 0; i < files.length; i++) {
-      const nguon = files[i];
+      let nguon = files[i];
       const tenMoi = `${String(i + 1).padStart(2, "0")}.webp`;
       try {
+        if (/\.hei[cf]$/i.test(nguon)) nguon = await heicSangJpeg(nguon);
         const buf = await sharp(nguon)
           // .rotate() đọc thẻ EXIF — thiếu nó thì ảnh chụp dọc bị nằm ngang
           .rotate()
@@ -374,7 +442,7 @@ for (const vao of duongDanVao) {
 
         await writeFile(join(dich, tenMoi), buf);
 
-        tongGoc += (await stat(nguon)).size;
+        tongGoc += (await stat(files[i])).size;
         tongNen += buf.length;
         tongAnh++;
         daGhi.push(tenMoi);
@@ -385,6 +453,18 @@ for (const vao of duongDanVao) {
 
     if (daGhi.length > 0) {
       khop.push({ ten, sanPham: p, so: daGhi.length, diem: ketQua.diem, danhMuc });
+    } else {
+      /**
+       * Khớp đúng món nhưng KHÔNG nén nổi tấm nào (ảnh hỏng, định dạng lạ…).
+       *
+       * Phải xoá vân tay, nếu không thì hỏng vĩnh viễn và im lặng: thư mục
+       * đích vừa bị xoá sạch ở trên nhưng vẫn tồn tại (rỗng), nên lượt sau
+       * cache khớp + thư mục có thật = "đã có ảnh, bỏ qua" — mãi mãi.
+       * Đúng chuyện đã xảy ra với 2 món ảnh .heic (23–25/09/2026).
+       */
+      delete cacheMoi[p.slug];
+      await rm(dich, { recursive: true, force: true });
+      loiAnh.push({ ten, sanPham: p, so: files.length });
     }
   }
 }
@@ -428,6 +508,16 @@ if (cuaHangDaBan.length) {
   ghi("  gọn thì cứ dọn thư mục đi, web không đổi gì.");
 }
 
+if (loiAnh.length) {
+  ghi("");
+  ghi(`✗ ${loiAnh.length} sản phẩm có ảnh nhưng KHÔNG xử lý được tấm nào:`);
+  for (const k of loiAnh) {
+    ghi(`    "${k.ten}"  →  ${k.sanPham.hang} ${k.sanPham.ten} (${k.so} tấm lỗi)`);
+  }
+  ghi("  Xem dòng '✗ Lỗi khi xử lý' ở trên. Ảnh có thể hỏng hoặc sai định dạng —");
+  ghi("  thử mở bằng Photos rồi lưu lại thành .jpg.");
+}
+
 if (khongKhop.length) {
   ghi("");
   ghi(`⚠ ${khongKhop.length} thư mục KHÔNG khớp được với sản phẩm nào — CẦN BẠN SỬA:`);
@@ -462,7 +552,7 @@ if (khongKhop.length) {
 // Thư mục của món đã bán KHÔNG tính vào đây: không nạp tấm ảnh nào từ chúng,
 // nên "không có ảnh nào mới" vẫn đúng — và tu-dong.mjs dựa vào đúng câu này
 // để biết lượt chạy có gì mới hay không.
-if (khop.length === 0 && khongKhop.length === 0) {
+if (khop.length === 0 && khongKhop.length === 0 && loiAnh.length === 0) {
   ghi("");
   ghi("Không có ảnh nào mới. Mọi thứ đã cập nhật.");
 }
@@ -493,4 +583,4 @@ if (goc) {
 }
 
 // Không khớp được món nào VÀ cũng chẳng có gì mới -> coi là hỏng
-if (khop.length === 0 && boQua.length === 0) process.exit(1);
+if (loiAnh.length > 0 || (khop.length === 0 && boQua.length === 0)) process.exit(1);

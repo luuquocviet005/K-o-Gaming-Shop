@@ -475,6 +475,12 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/endgame-gear-op1w-4k-v2/01.webp",
+      "anhs": [
+        "/products/endgame-gear-op1w-4k-v2/01.webp",
+        "/products/endgame-gear-op1w-4k-v2/02.webp",
+        "/products/endgame-gear-op1w-4k-v2/03.webp"
+      ],
       "mau": "#0f172a"
     },
     {
@@ -1105,6 +1111,7 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 18,
+      "anh": "/products/hyperx-earbuds-3/01.webp",
       "mau": "#c2185b"
     },
     {
