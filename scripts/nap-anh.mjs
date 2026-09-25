@@ -333,7 +333,9 @@ for (const vao of duongDanVao) {
     continue;
   }
 
-  for (const { ten, danhMuc, files: duongDanAnh, zip } of dsSanPham) {
+  for (const { ten, danhMuc, files: duongDanAnh = [], zip, zips } of dsSanPham) {
+    // Một món có thể vừa có ảnh rời vừa có file nén trong cùng thư mục
+    const dsZip = zips ?? (zip ? [zip] : []);
     // Ảnh nằm trong thư mục danh mục thì chỉ đối chiếu trong danh mục đó —
     // không thể gán nhầm ảnh chuột sang một cái bàn phím trùng tên
     const ungVienSanPham = danhMuc
@@ -392,7 +394,7 @@ for (const vao of duongDanVao) {
      * nén thì vô dụng: mỗi lần chạy giải ra thư mục tạm mới, thời điểm sửa
      * file luôn khác nên vân tay luôn đổi, bộ nhớ đệm không bao giờ ăn.
      */
-    const vt = await vanTay(zip ? [zip] : duongDanAnh);
+    const vt = await vanTay([...duongDanAnh, ...dsZip]);
     cacheMoi[p.slug] = vt;
     const dichCu = join(thuMucDich, p.slug);
     // Thư mục RỖNG cũng "tồn tại" — đừng coi đó là đã có ảnh, không thì một
