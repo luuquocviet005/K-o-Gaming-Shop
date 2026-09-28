@@ -90,24 +90,27 @@ export default function HomePage() {
                 <ArrowRightIcon width={20} height={20} />
               </Link>
               <a
-                href={site.social.zalo}
+                href={site.social.messenger}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex h-14 items-center gap-2.5 rounded-full border border-border-strong bg-surface px-8 text-base font-semibold text-fg transition-all duration-200 hover:border-primary hover:text-primary-ink active:scale-[0.97]"
               >
-                <ZaloIcon width={20} height={20} />
-                Nhắn Zalo
+                <FacebookIcon width={19} height={19} />
+                Nhắn Messenger
               </a>
               <a
-                href={site.social.facebook}
+                href={site.social.zalo}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex h-14 items-center gap-2 rounded-full px-4 text-sm font-semibold text-fg-muted transition-colors duration-200 hover:text-primary-ink"
               >
-                <FacebookIcon width={18} height={18} />
-                hoặc Facebook
+                <ZaloIcon width={18} height={18} />
+                hoặc Zalo
               </a>
             </div>
+            <p className="mt-3 text-sm text-fg-muted">
+              Nhắn Messenger là tụi mình rep nhanh nhất nha.
+            </p>
           </div>
 
           {hero && (
@@ -282,26 +285,27 @@ export default function HomePage() {
             </h2>
             <p className="mt-4 max-w-md text-sm leading-relaxed text-fg-muted sm:text-base">
               Bảng hàng đổi liên tục, có món về rồi chưa kịp lên web. Nói tên
-              món và tầm giá, có hàng tụi mình báo ngay.
+              món và tầm giá, có hàng tụi mình báo ngay. Nhắn Messenger là
+              tụi mình trả lời nhanh nhất.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
               <a
-                href={site.social.zalo}
+                href={site.social.messenger}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex h-14 items-center gap-2.5 rounded-full bg-primary px-8 text-base font-semibold text-on-primary transition-all duration-200 hover:bg-primary-hover active:scale-[0.97]"
               >
-                <ZaloIcon width={20} height={20} />
-                Nhắn Zalo
+                <FacebookIcon width={19} height={19} />
+                Nhắn Messenger
               </a>
               <a
-                href={site.social.facebook}
+                href={site.social.zalo}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex h-14 items-center gap-2.5 rounded-full border border-border-strong bg-bg px-7 text-base font-semibold text-fg transition-all duration-200 hover:border-primary hover:text-primary-ink active:scale-[0.97]"
               >
-                <FacebookIcon width={19} height={19} />
-                Facebook
+                <ZaloIcon width={20} height={20} />
+                Zalo
               </a>
               <Link
                 href="/lien-he/"

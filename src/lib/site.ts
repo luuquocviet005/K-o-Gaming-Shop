@@ -24,6 +24,9 @@ export const site = {
 
   social: {
     facebook: "https://www.facebook.com/Viet.Vit.Dit.Zjt/",
+    // Mở thẳng khung chat. Chủ shop trực Messenger thường xuyên hơn Zalo nên
+    // các nút liên hệ ưu tiên Messenger, Zalo làm lựa chọn phụ.
+    messenger: "https://m.me/Viet.Vit.Dit.Zjt",
     tiktok: "https://www.tiktok.com/@ngotdethuong",
     zalo: "https://zalo.me/0904505592",
   },

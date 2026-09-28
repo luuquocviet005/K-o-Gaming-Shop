@@ -238,26 +238,29 @@ export function CartView() {
           </span>
         </p>
 
-        {/* Đặt hàng — Zalo trước, Facebook là lựa chọn thứ hai, hoặc gọi điện */}
+        {/* Đặt hàng — Messenger trước (chủ shop rep nhanh hơn), Zalo thứ hai, hoặc gọi điện */}
         <div className="mt-6 space-y-2.5">
           <a
-            href={site.social.zalo}
+            href={site.social.messenger}
             target="_blank"
             rel="noopener noreferrer"
             className="flex h-14 w-full items-center justify-center gap-2.5 rounded-full bg-primary px-6 text-base font-semibold text-on-primary transition-all duration-200 hover:bg-primary-hover active:scale-[0.98]"
           >
-            <ZaloIcon width={20} height={20} />
-            Đặt hàng qua Zalo · {formatVND(total)}
+            <FacebookIcon width={19} height={19} />
+            Đặt hàng qua Messenger · {formatVND(total)}
           </a>
+          <p className="text-center text-xs text-fg-muted">
+            Nhắn Messenger là tụi mình rep nhanh nhất
+          </p>
 
           <a
-            href={site.social.facebook}
+            href={site.social.zalo}
             target="_blank"
             rel="noopener noreferrer"
             className="flex h-13 w-full items-center justify-center gap-2.5 rounded-full border border-border-strong bg-bg px-6 py-3.5 text-sm font-semibold text-fg transition-all duration-200 hover:border-primary hover:text-primary-ink active:scale-[0.98]"
           >
-            <FacebookIcon width={18} height={18} />
-            Đặt hàng qua Facebook
+            <ZaloIcon width={18} height={18} />
+            Đặt hàng qua Zalo
           </a>
 
           <a

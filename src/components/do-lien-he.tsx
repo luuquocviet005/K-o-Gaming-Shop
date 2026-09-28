@@ -37,7 +37,7 @@ export function DoLienHe() {
 
       if (href.startsWith("tel:")) kenh = "goi_dien";
       else if (href.includes("zalo.me")) kenh = "zalo";
-      else if (href.includes("facebook.com")) kenh = "facebook";
+      else if (href.includes("facebook.com") || href.includes("m.me/")) kenh = "facebook";
       else if (href.includes("tiktok.com")) kenh = "tiktok";
       else if (href.startsWith("mailto:")) kenh = "email";
 

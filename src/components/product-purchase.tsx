@@ -129,6 +129,15 @@ export function ProductPurchase({ product }: { product: Product }) {
           <p className="rounded-2xl bg-surface-2 px-6 py-4 text-sm text-fg-muted">
             Món này đã bán. Nhắn{" "}
             <a
+              href={site.social.messenger}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-semibold text-primary-ink underline"
+            >
+              Messenger
+            </a>{" "}
+            hoặc{" "}
+            <a
               href={site.social.zalo}
               target="_blank"
               rel="noopener noreferrer"
@@ -136,36 +145,27 @@ export function ProductPurchase({ product }: { product: Product }) {
             >
               Zalo
             </a>{" "}
-            hoặc{" "}
-            <a
-              href={site.social.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-semibold text-primary-ink underline"
-            >
-              Facebook
-            </a>{" "}
             để tụi mình báo khi có hàng tương tự.
           </p>
         ) : chuaCoGia ? (
           <>
             <a
-              href={site.social.zalo}
+              href={site.social.messenger}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex h-14 items-center gap-2.5 rounded-full bg-primary px-8 text-base font-semibold text-on-primary transition-all duration-200 hover:bg-primary-hover active:scale-[0.97]"
             >
-              <ZaloIcon width={20} height={20} />
+              <FacebookIcon width={19} height={19} />
               Nhắn hỏi giá
             </a>
             <a
-              href={site.social.facebook}
+              href={site.social.zalo}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex h-14 items-center gap-2.5 rounded-full border border-border-strong bg-surface px-7 text-base font-semibold text-fg transition-all duration-200 hover:border-primary hover:text-primary-ink active:scale-[0.97]"
             >
-              <FacebookIcon width={19} height={19} />
-              Hỏi qua Facebook
+              <ZaloIcon width={20} height={20} />
+              Hỏi qua Zalo
             </a>
           </>
         ) : (

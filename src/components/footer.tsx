@@ -137,6 +137,17 @@ export function Footer() {
               <span>{site.contact.hours}</span>
             </li>
             <li className="flex gap-3">
+              <FacebookIcon width={18} height={18} className="mt-0.5 shrink-0 text-primary" />
+              <a
+                href={site.social.messenger}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-fg transition-colors hover:text-primary-ink"
+              >
+                Nhắn Messenger (rep nhanh nhất)
+              </a>
+            </li>
+            <li className="flex gap-3">
               <ZaloIcon
                 width={18}
                 height={18}
@@ -146,20 +157,9 @@ export function Footer() {
                 href={site.social.zalo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-fg transition-colors hover:text-primary-ink"
-              >
-                Nhắn tin qua Zalo
-              </a>
-            </li>
-            <li className="flex gap-3">
-              <FacebookIcon width={18} height={18} className="mt-0.5 shrink-0 text-primary" />
-              <a
-                href={site.social.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="transition-colors hover:text-primary-ink"
               >
-                Hoặc nhắn Facebook
+                Hoặc nhắn Zalo
               </a>
             </li>
           </ul>
