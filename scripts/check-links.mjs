@@ -37,7 +37,15 @@ const fileSet = new Set(allFiles.map((f) => `/${f}`));
 const htmlFiles = allFiles.filter((f) => f.endsWith(".html"));
 
 /** Apache phân giải một URL thành file nào? null = 404 */
-function resolve(url) {
+function resolve(rawUrl) {
+  // Apache giải mã %XX trước khi tìm file: %5Bslug%5D -> [slug]. Build trên
+  // máy đám mây (Linux) sinh link dạng %5Bslug%5D, thiếu bước này là báo chết giả.
+  let url = rawUrl;
+  try {
+    url = decodeURIComponent(rawUrl);
+  } catch {
+    // % lẻ không giải mã được — giữ nguyên, để nó rơi vào 404 như Apache
+  }
   if (fileSet.has(url)) return url;
   if (url.endsWith("/") && fileSet.has(`${url}index.html`)) return `${url}index.html`;
   if (!url.endsWith("/") && fileSet.has(`${url}/index.html`)) return `${url}/index.html`;
