@@ -137,9 +137,9 @@
       "ten": "A9 Air +",
       "hang": "ATK",
       "danhMuc": "chuot",
-      "gia": 1300000,
-      "tinhTrang": "Mới",
-      "nhomTinhTrang": "moi",
+      "gia": 950000,
+      "tinhTrang": "Cũ · không hộp",
+      "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "note": "Có màu Trắng",
@@ -273,10 +273,6 @@
       "soLuong": 2,
       "note": "Có 2 màu Trắng và Xám",
       "anh": "/products/lamzu-maya-x/01.webp",
-      "anhs": [
-        "/products/lamzu-maya-x/01.webp",
-        "/products/lamzu-maya-x/02.webp"
-      ],
       "mau": "#b45309"
     },
     {
