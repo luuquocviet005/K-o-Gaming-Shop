@@ -380,29 +380,9 @@
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 2,
+      "soLuong": 1,
       "anh": "/products/lamzu-maya-x/01.webp",
-      "mau": "#b45309",
-      "phanLoai": [
-        {
-          "id": "trang",
-          "ten": "Trắng",
-          "gia": 1700000,
-          "tinhTrang": "Cũ · đủ hộp",
-          "nhomTinhTrang": "cu",
-          "soLuong": 2,
-          "anh": "/products/lamzu-maya-x/01.webp"
-        },
-        {
-          "id": "xam",
-          "ten": "Xám",
-          "gia": 1700000,
-          "tinhTrang": "Cũ · đủ hộp",
-          "nhomTinhTrang": "cu",
-          "soLuong": 2,
-          "anh": "/products/lamzu-maya-x/01.webp"
-        }
-      ]
+      "mau": "#b45309"
     },
     {
       "id": "logitech-g903-lightspeed",
@@ -1101,6 +1081,13 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/atk-rs7-air/01.webp",
+      "anhs": [
+        "/products/atk-rs7-air/01.webp",
+        "/products/atk-rs7-air/02.webp",
+        "/products/atk-rs7-air/03.webp",
+        "/products/atk-rs7-air/04.webp"
+      ],
       "mau": "#4338ca"
     },
     {
