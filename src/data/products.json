@@ -104,18 +104,16 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 3,
-      "note": "Có 3 màu Đen, Xanh hồ và Hồng",
       "anh": "/products/atk-a9-mini-ultimate/01.webp",
       "mau": "#4338ca",
       "phanLoai": [
         {
-          "id": "en",
-          "ten": "en",
+          "id": "den",
+          "ten": "Đen",
           "gia": 1300000,
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
           "soLuong": 3,
-          "note": "Có 3 màu Đen, Xanh hồ và Hồng",
           "anh": "/products/atk-a9-mini-ultimate/01.webp"
         },
         {
@@ -125,7 +123,6 @@
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
           "soLuong": 3,
-          "note": "Có 3 màu Đen, Xanh hồ và Hồng",
           "anh": "/products/atk-a9-mini-ultimate/01.webp"
         },
         {
@@ -135,7 +132,6 @@
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
           "soLuong": 3,
-          "note": "Có 3 màu Đen, Xanh hồ và Hồng",
           "anh": "/products/atk-a9-mini-ultimate/01.webp"
         }
       ]
@@ -148,20 +144,65 @@
       "danhMuc": "chuot",
       "gia": 1000000,
       "giaToiDa": 1200000,
-      "ghiChuGia": "1tr - 1tr2",
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 3,
-      "note": "Có 3 màu Hồng, Xanh Biển và Trắng",
       "anh": "/products/atk-f1-ultimate-v2/01.webp",
-      "anhs": [
-        "/products/atk-f1-ultimate-v2/01.webp",
-        "/products/atk-f1-ultimate-v2/02.webp",
-        "/products/atk-f1-ultimate-v2/03.webp",
-        "/products/atk-f1-ultimate-v2/04.webp"
-      ],
-      "mau": "#4338ca"
+      "mau": "#4338ca",
+      "phanLoai": [
+        {
+          "id": "hong",
+          "ten": "Hồng",
+          "gia": 1000000,
+          "giaToiDa": 1200000,
+          "ghiChuGia": "1tr - 1tr2",
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 3,
+          "anh": "/products/atk-f1-ultimate-v2/01.webp",
+          "anhs": [
+            "/products/atk-f1-ultimate-v2/01.webp",
+            "/products/atk-f1-ultimate-v2/02.webp",
+            "/products/atk-f1-ultimate-v2/03.webp",
+            "/products/atk-f1-ultimate-v2/04.webp"
+          ]
+        },
+        {
+          "id": "xanh-bien",
+          "ten": "Xanh biển",
+          "gia": 1000000,
+          "giaToiDa": 1200000,
+          "ghiChuGia": "1tr - 1tr2",
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 3,
+          "anh": "/products/atk-f1-ultimate-v2/01.webp",
+          "anhs": [
+            "/products/atk-f1-ultimate-v2/01.webp",
+            "/products/atk-f1-ultimate-v2/02.webp",
+            "/products/atk-f1-ultimate-v2/03.webp",
+            "/products/atk-f1-ultimate-v2/04.webp"
+          ]
+        },
+        {
+          "id": "trang",
+          "ten": "Trắng",
+          "gia": 1000000,
+          "giaToiDa": 1200000,
+          "ghiChuGia": "1tr - 1tr2",
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 3,
+          "anh": "/products/atk-f1-ultimate-v2/01.webp",
+          "anhs": [
+            "/products/atk-f1-ultimate-v2/01.webp",
+            "/products/atk-f1-ultimate-v2/02.webp",
+            "/products/atk-f1-ultimate-v2/03.webp",
+            "/products/atk-f1-ultimate-v2/04.webp"
+          ]
+        }
+      ]
     },
     {
       "id": "atk-a9-air",
@@ -189,9 +230,46 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 4,
-      "note": "Đủ 4 màu: Đen, Trắng, Đỏ, Hồng",
       "anh": "/products/atk-a9-ultimate/01.webp",
-      "mau": "#4338ca"
+      "mau": "#4338ca",
+      "phanLoai": [
+        {
+          "id": "den",
+          "ten": "Đen",
+          "gia": 1300000,
+          "tinhTrang": "Mới",
+          "nhomTinhTrang": "moi",
+          "soLuong": 4,
+          "anh": "/products/atk-a9-ultimate/01.webp"
+        },
+        {
+          "id": "trang",
+          "ten": "Trắng",
+          "gia": 1300000,
+          "tinhTrang": "Mới",
+          "nhomTinhTrang": "moi",
+          "soLuong": 4,
+          "anh": "/products/atk-a9-ultimate/01.webp"
+        },
+        {
+          "id": "do",
+          "ten": "Đỏ",
+          "gia": 1300000,
+          "tinhTrang": "Mới",
+          "nhomTinhTrang": "moi",
+          "soLuong": 4,
+          "anh": "/products/atk-a9-ultimate/01.webp"
+        },
+        {
+          "id": "hong",
+          "ten": "Hồng",
+          "gia": 1300000,
+          "tinhTrang": "Mới",
+          "nhomTinhTrang": "moi",
+          "soLuong": 4,
+          "anh": "/products/atk-a9-ultimate/01.webp"
+        }
+      ]
     },
     {
       "id": "atk-x1-ultimate-v2",
@@ -303,9 +381,28 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 2,
-      "note": "Có 2 màu Trắng và Xám",
       "anh": "/products/lamzu-maya-x/01.webp",
-      "mau": "#b45309"
+      "mau": "#b45309",
+      "phanLoai": [
+        {
+          "id": "trang",
+          "ten": "Trắng",
+          "gia": 1700000,
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 2,
+          "anh": "/products/lamzu-maya-x/01.webp"
+        },
+        {
+          "id": "xam",
+          "ten": "Xám",
+          "gia": 1700000,
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 2,
+          "anh": "/products/lamzu-maya-x/01.webp"
+        }
+      ]
     },
     {
       "id": "logitech-g903-lightspeed",
@@ -1031,16 +1128,42 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 45,
-      "moTa": "Có 2 màu đỏ và đen",
       "anh": "/products/hyperx-earbuds-2/01.webp",
-      "anhs": [
-        "/products/hyperx-earbuds-2/01.webp",
-        "/products/hyperx-earbuds-2/02.webp",
-        "/products/hyperx-earbuds-2/03.webp",
-        "/products/hyperx-earbuds-2/04.webp",
-        "/products/hyperx-earbuds-2/05.webp"
-      ],
-      "mau": "#c2185b"
+      "mau": "#c2185b",
+      "phanLoai": [
+        {
+          "id": "do",
+          "ten": "Đỏ",
+          "gia": 550000,
+          "tinhTrang": "Mới, nguyên seal",
+          "nhomTinhTrang": "moi",
+          "soLuong": 45,
+          "anh": "/products/hyperx-earbuds-2/01.webp",
+          "anhs": [
+            "/products/hyperx-earbuds-2/01.webp",
+            "/products/hyperx-earbuds-2/02.webp",
+            "/products/hyperx-earbuds-2/03.webp",
+            "/products/hyperx-earbuds-2/04.webp",
+            "/products/hyperx-earbuds-2/05.webp"
+          ]
+        },
+        {
+          "id": "den",
+          "ten": "Đen",
+          "gia": 550000,
+          "tinhTrang": "Mới, nguyên seal",
+          "nhomTinhTrang": "moi",
+          "soLuong": 45,
+          "anh": "/products/hyperx-earbuds-2/01.webp",
+          "anhs": [
+            "/products/hyperx-earbuds-2/01.webp",
+            "/products/hyperx-earbuds-2/02.webp",
+            "/products/hyperx-earbuds-2/03.webp",
+            "/products/hyperx-earbuds-2/04.webp",
+            "/products/hyperx-earbuds-2/05.webp"
+          ]
+        }
+      ]
     },
     {
       "id": "hyperx-soundcard-cloud-2",
