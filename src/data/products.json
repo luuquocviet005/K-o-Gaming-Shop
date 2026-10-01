@@ -703,7 +703,10 @@
       "anh": "/products/atk-hex80/01.webp",
       "anhs": [
         "/products/atk-hex80/01.webp",
-        "/products/atk-hex80/02.webp"
+        "/products/atk-hex80/02.webp",
+        "/products/atk-hex80/03.webp",
+        "/products/atk-hex80/04.webp",
+        "/products/atk-hex80/05.webp"
       ],
       "mau": "#4338ca"
     },
@@ -990,7 +993,7 @@
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
+      "soLuong": 0,
       "anh": "/products/wooting-80he-ghost/01.webp",
       "anhs": [
         "/products/wooting-80he-ghost/01.webp",
