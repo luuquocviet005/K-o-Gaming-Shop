@@ -151,6 +151,12 @@ biết ảnh nào đã lên, ảnh nào chưa khớp được tên.
 | **Tự động** (khuyến nghị) | Chạy `Bat tu dong 15 phut.bat` **một lần duy nhất**. Từ đó chỉ cần bỏ ảnh vào thư mục, vài phút sau là web tự cập nhật (5 phút kiểm tra một lần, máy tắt thì bật lên chạy bù ngay). Muốn dừng: `Tat tu dong.bat`. |
 | **Thủ công** | Kéo thả thư mục ảnh vào `Tai anh len web.bat`. |
 
+Ở chế độ tự động, mọi file `.zip` trong thư mục ảnh (ví dụ tải từ Google Drive về)
+được **giải nén rồi xoá** ngay đầu mỗi lượt: `Bàn phím/Akko M1 V5 HE.zip` thành
+thư mục `Bàn phím/Akko M1 V5 HE/`. Zip nằm trong thư mục của một món thì ảnh đổ
+thẳng vào thư mục đó. Không bao giờ ghi đè ảnh có sẵn; zip hỏng thì giữ nguyên và
+ghi vào `BAO CAO.txt`. Muốn giải nén ngay khỏi chờ 5 phút: `Giai nen zip ngay.bat`.
+
 Sản phẩm chưa có ảnh thật thì website tự vẽ hình minh hoạ vector theo danh mục —
 không bao giờ bị vỡ layout.
 
