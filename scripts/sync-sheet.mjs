@@ -131,6 +131,13 @@ function timTabMa() {
 let fileAnh = [];
 /** slug sản phẩm -> danh sách ảnh trong public/products/<slug>/ */
 const anhTheoThuMuc = new Map();
+/** slug sản phẩm -> (id phân loại -> ảnh trong public/products/<slug>/<id>/) */
+const anhPhanLoai = new Map();
+/** Mọi thư mục sản phẩm, kể cả thư mục chỉ chứa thư mục phân loại */
+const tatCaThuMuc = new Set();
+
+const laAnhChup = (f) =>
+  /\.(jpe?g|png|webp|avif|gif)$/i.test(f) && f !== "chia-se.jpg" && !f.startsWith("_");
 
 try {
   const muc = await readdir(join(root, "public", "products"), { withFileTypes: true });
@@ -149,14 +156,26 @@ try {
   // và một tấm mờ. Quy ước: mọi file bắt đầu bằng "_" là do máy sinh.
   for (const m of muc) {
     if (!m.isDirectory()) continue;
-    const trong = (await readdir(join(root, "public", "products", m.name)))
-      .filter(
-        (f) =>
-          /\.(jpe?g|png|webp|avif|gif)$/i.test(f) &&
-          f !== "chia-se.jpg" &&
-          !f.startsWith("_"),
-      )
+    tatCaThuMuc.add(m.name);
+    const conTrong = await readdir(join(root, "public", "products", m.name), {
+      withFileTypes: true,
+    });
+    const trong = conTrong
+      .filter((f) => f.isFile() && laAnhChup(f.name))
+      .map((f) => f.name)
       .sort((a, b) => a.localeCompare(b, "vi", { numeric: true }));
+
+    // Thư mục con = ảnh riêng của từng phân loại, do nap-anh.mjs tạo ra
+    for (const con of conTrong.filter((f) => f.isDirectory())) {
+      const anh = (await readdir(join(root, "public", "products", m.name, con.name)))
+        .filter(laAnhChup)
+        .sort((a, b) => a.localeCompare(b, "vi", { numeric: true }));
+      if (!anh.length) continue;
+      if (!anhPhanLoai.has(m.name)) anhPhanLoai.set(m.name, new Map());
+      anhPhanLoai
+        .get(m.name)
+        .set(con.name, anh.map((f) => `/products/${m.name}/${con.name}/${encodeURIComponent(f)}`));
+    }
     if (trong.length) {
       anhTheoThuMuc.set(
         m.name,
@@ -248,7 +267,44 @@ for (const cauHinh of config.tabs) {
      */
     const khoa = `${boDau(hang)}|${boDau(ten)}`;
     const daCo = daThay.get(khoa);
-    if (daCo) {
+
+    /*
+     * Cột "Phân loại" — hai cách ghi, dùng lẫn được:
+     *
+     *   1. MỘT dòng, liệt kê trong ô:  "Cam (1), Hồng (2), Xanh ngọc (0)"
+     *      Các phân loại dùng chung giá, tình trạng, ghi chú của dòng. Số trong
+     *      ngoặc là số lượng riêng; bỏ ngoặc thì dùng số ở cột Số lượng.
+     *      Cách gọn nhất — Sheet không dài thêm dòng nào.
+     *
+     *   2. NHIỀU dòng trùng Hãng + Tên, mỗi dòng một phân loại. Chỉ cần khi các
+     *      phân loại khác giá hoặc khác tình trạng (bản đen là hàng cũ…).
+     *
+     * Dòng đầu tạo sản phẩm, các dòng sau ghi thêm phân loại vào nó — xử lý ở
+     * cuối vòng lặp, sau khi đã đọc xong giá, tình trạng, ghi chú của dòng này.
+     */
+    const tenPhanLoai = layO(row, "phan loai");
+    const dsPhanLoai = tenPhanLoai
+      .split(/[,;\n]+/)
+      .map((x) => x.trim())
+      .filter(Boolean)
+      .map((x) => {
+        const m = x.match(/^(.*?)\s*\((\d+)\)$/);
+        const ten = (m ? m[1] : x).trim();
+        return { id: slugify(ten), ten, soLuong: m ? Number(m[2]) : null };
+      })
+      .filter((v) => v.id);
+    const themPhanLoai =
+      daCo &&
+      daCo.phanLoai &&
+      dsPhanLoai.some((v) => !daCo.phanLoai.some((c) => c.id === v.id));
+
+    if (daCo && tenPhanLoai && !daCo.phanLoai) {
+      canhBao.push(
+        `⚠ "${hang} ${ten}" (${cauHinh.tab}): dòng có Phân loại "${tenPhanLoai}" nhưng dòng trùng tên phía trên để trống ô Phân loại — điền Phân loại cho cả hai dòng.`,
+      );
+    }
+
+    if (daCo && !themPhanLoai) {
       if (daCo.danhMuc !== cauHinh.slug && !daCo.danhMucKhac?.includes(cauHinh.slug)) {
         (daCo.danhMucKhac ??= []).push(cauHinh.slug);
         demTrongTab++;
@@ -302,7 +358,37 @@ for (const cauHinh of config.tabs) {
     const moTa = docO("Mô tả", "mo ta", "mota", "chi tiet", "cau hinh", "thong tin");
 
     if (gia === 0) {
-      canhBao.push(`⚠ "${ten}" (${cauHinh.tab}): chưa có giá — web sẽ hiện "Liên hệ".`);
+      canhBao.push(
+        `⚠ "${ten}"${tenPhanLoai ? ` — ${tenPhanLoai}` : ""} (${cauHinh.tab}): chưa có giá — web sẽ hiện "Liên hệ".`,
+      );
+    }
+
+    const soLuongDong = docSoNguyen(layO(row, "so luong"), 0);
+    const loais = dsPhanLoai.map((v) => ({
+      id: v.id,
+      ten: v.ten,
+      gia,
+      ...(giaToiDa ? { giaToiDa } : {}),
+      ...(ghiChuGia ? { ghiChuGia } : {}),
+      tinhTrang,
+      nhomTinhTrang,
+      soLuong: v.soLuong ?? soLuongDong,
+      ...(moTa ? { moTa } : {}),
+      ...(note ? { note } : {}),
+    }));
+    // Liệt kê trong ô mà không ghi số riêng cho màu nào: số ở cột Số lượng là
+    // TỔNG của cả món, không phải của từng màu — đừng cộng dồn lại khi gộp.
+    const chungSoLuong = loais.length > 1 && dsPhanLoai.every((v) => v.soLuong === null);
+
+    if (themPhanLoai) {
+      for (const v of loais) {
+        if (!daCo.phanLoai.some((c) => c.id === v.id)) daCo.phanLoai.push(v);
+      }
+      if (daCo.danhMuc !== cauHinh.slug && !daCo.danhMucKhac?.includes(cauHinh.slug)) {
+        (daCo.danhMucKhac ??= []).push(cauHinh.slug);
+        demTrongTab++;
+      }
+      continue;
     }
 
     // Slug đang bị món khác chiếm: đã cấp trong lượt này, hoặc là slug lượt trước
@@ -346,6 +432,8 @@ for (const cauHinh of config.tabs) {
       ...(anh ? { anh } : {}),
       ...(boAnh && boAnh.length > 1 ? { anhs: boAnh } : {}),
       mau: mauTheoHang(hang),
+      ...(loais.length ? { phanLoai: loais } : {}),
+      ...(chungSoLuong ? { _chungSoLuong: soLuongDong } : {}),
     };
 
     sanPham.push(mon);
@@ -369,6 +457,54 @@ for (const cauHinh of config.tabs) {
   } else {
     canhBao.push(`⚠ Tab "${cauHinh.tab}": không có sản phẩm hợp lệ — ẩn khỏi web.`);
   }
+}
+
+/*
+ * CHỐT SẢN PHẨM NHIỀU PHÂN LOẠI.
+ *
+ * Gắn ảnh cho từng phân loại (thư mục con public/products/<slug>/<id>/, cộng
+ * ảnh chung nằm thẳng trong thư mục sản phẩm như hộp, phụ kiện), rồi tính các
+ * con số GỘP cho cấp sản phẩm để thẻ, bộ lọc, sắp xếp chạy như món thường:
+ * giá thấp nhất – cao nhất, tổng số lượng, tình trạng của phân loại còn hàng.
+ */
+for (const p of sanPham) {
+  if (!p.phanLoai) continue;
+  const chung = anhTheoThuMuc.get(p.slug) ?? [];
+  const theoLoai = anhPhanLoai.get(p.slug) ?? new Map();
+
+  for (const v of p.phanLoai) {
+    const bo = [...(theoLoai.get(v.id) ?? []), ...chung];
+    if (bo.length) v.anh = bo[0];
+    if (bo.length > 1) v.anhs = bo;
+  }
+  for (const id of theoLoai.keys()) {
+    if (!p.phanLoai.some((v) => v.id === id)) {
+      canhBao.push(
+        `⚠ "${p.hang} ${p.ten}": có thư mục ảnh phân loại "${id}" nhưng Sheet không có phân loại đó.`,
+      );
+    }
+  }
+
+  const coGia = p.phanLoai.filter((v) => v.gia > 0);
+  p.gia = coGia.length ? Math.min(...coGia.map((v) => v.gia)) : 0;
+  const cao = Math.max(0, ...coGia.map((v) => v.giaToiDa ?? v.gia));
+  if (cao > p.gia) p.giaToiDa = cao;
+  else delete p.giaToiDa;
+  delete p.ghiChuGia;
+
+  p.soLuong = p._chungSoLuong ?? p.phanLoai.reduce((t, v) => t + v.soLuong, 0);
+  delete p._chungSoLuong;
+  const dau = p.phanLoai.find((v) => v.soLuong > 0) ?? p.phanLoai[0];
+  p.tinhTrang = dau.tinhTrang;
+  p.nhomTinhTrang = dau.nhomTinhTrang;
+  for (const k of ["moTa", "note"]) {
+    if (dau[k]) p[k] = dau[k];
+    else delete p[k];
+  }
+  const anhBia = p.phanLoai.find((v) => v.anh)?.anh ?? chung[0];
+  if (anhBia) p.anh = anhBia;
+  else delete p.anh;
+  delete p.anhs;
 }
 
 /**
@@ -435,7 +571,7 @@ const boSlug = new Set([
   ...sanPham.map((p) => p.slug),
   ...khoDaBan.map((p) => p.slug),
 ]);
-const moCoi = [...anhTheoThuMuc.keys()].filter((slug) => !boSlug.has(slug));
+const moCoi = [...tatCaThuMuc].filter((slug) => !boSlug.has(slug));
 
 if (moCoi.length > 0) {
   if (coTabLoi) {
@@ -469,7 +605,10 @@ for (const p of khoDaBan) {
   const thuMucSp = join(root, "public", "products", p.slug);
   let files;
   try {
-    files = await readdir(thuMucSp);
+    files = (await readdir(thuMucSp, { withFileTypes: true }))
+      // Thư mục phân loại giữ nguyên: ảnh bìa của món nhiều màu nằm trong đó
+      .filter((m) => m.isFile())
+      .map((m) => m.name);
   } catch {
     continue; // món cũ chưa từng có ảnh
   }

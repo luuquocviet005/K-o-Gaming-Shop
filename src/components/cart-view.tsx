@@ -73,7 +73,7 @@ export function CartView() {
     "",
     ...lines.map(
       (l, i) =>
-        `${i + 1}. ${l.product.hang} ${l.product.ten}${l.product.tinhTrang ? ` (${l.product.tinhTrang})` : ""} × ${l.quantity} — ${formatVND(l.lineTotal)}`,
+        `${i + 1}. ${l.product.hang} ${l.product.ten}${l.product.loai ? ` — ${l.product.loai.ten}` : ""}${l.product.tinhTrang ? ` (${l.product.tinhTrang})` : ""} × ${l.quantity} — ${formatVND(l.lineTotal)}`,
     ),
     "",
     `TỔNG TIỀN HÀNG: ${formatVND(total)}`,
@@ -115,7 +115,7 @@ export function CartView() {
               className="flex gap-4 rounded-[1.5rem] border border-border bg-surface p-4"
             >
               <Link
-                href={`/san-pham/${l.product.slug}/`}
+                href={`/san-pham/${l.product.slug}/${l.loai ? `?loai=${l.loai}` : ""}`}
                 className="grid size-24 shrink-0 place-items-center overflow-hidden rounded-2xl bg-surface-2 p-2 transition-transform duration-300 hover:scale-105 sm:size-28"
                 aria-label={`Xem ${l.product.ten}`}
               >
@@ -136,6 +136,11 @@ export function CartView() {
                         {l.product.ten}
                       </Link>
                     </h2>
+                    {l.product.loai && (
+                      <p className="mt-1 text-sm font-semibold text-primary-ink">
+                        Phân loại: {l.product.loai.ten}
+                      </p>
+                    )}
                     {l.product.tinhTrang && (
                       <p className="mt-1 text-sm text-fg-muted">
                         {l.product.tinhTrang} · {l.product.diaDiem}

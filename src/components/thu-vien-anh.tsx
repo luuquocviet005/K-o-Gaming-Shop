@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import type { Product } from "@/lib/products";
 import { ProductMedia } from "@/components/product-art";
+import { useMonDangXem } from "@/components/phan-loai";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -28,6 +29,13 @@ import {
  * được nữa — không phải canh z-index với từng thành phần khác trong trang.
  */
 export function ThuVienAnh({ product }: { product: Product }) {
+  const mon = useMonDangXem(product);
+  // Đổi phân loại = bộ ảnh khác: dựng lại từ đầu để dải ảnh về tấm 1, khỏi
+  // kẹt ở tấm thứ 4 của màu cũ mà màu mới chỉ có 2 tấm.
+  return <ThuVienAnhNoi key={mon.loai?.id ?? ""} product={mon} />;
+}
+
+function ThuVienAnhNoi({ product }: { product: Product }) {
   const anhs = product.anhs ?? (product.anh ? [product.anh] : []);
   const rangRef = useRef<HTMLDivElement>(null);
   const [chiSo, setChiSo] = useState(0);

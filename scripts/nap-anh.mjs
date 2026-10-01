@@ -38,7 +38,7 @@ import { promisify } from "node:util";
 import sharp from "sharp";
 import { unzipSync } from "fflate";
 import { timSanPham } from "./lib/khop-ten.mjs";
-import { boDau } from "./lib/normalize.mjs";
+import { boDau, slugify } from "./lib/normalize.mjs";
 
 const execFile = promisify(execFileCb);
 
@@ -228,6 +228,41 @@ async function timSanPhamTrongCay(duongDan, danhMuc = null, sau = 0) {
    */
   const laThuMucChua = sau === 0 || nhanDangDanhMuc(basename(duongDan)) !== null;
 
+  /*
+   * MÓN NHIỀU PHÂN LOẠI: thư mục con mang tên màu.
+   *
+   *   Chuột/ATK A9 Mini Ultimate +/
+   *     ├── Đen/      *.jpg     <- ảnh riêng bản đen
+   *     ├── Hồng/     *.jpg
+   *     └── hop.jpg             <- ảnh chung, hiện ở mọi màu
+   *
+   * Chỉ hiểu thư mục con là MÀU khi tên thư mục cha khớp một món có cột Phân
+   * loại trong Sheet. Món thường thì vẫn đi tiếp vào trong như trước — để thư
+   * mục gom nhóm kiểu "Đợt 1/Razer Viper/" không bị hiểu nhầm thành màu.
+   */
+  if (!laThuMucChua && thuMucCon.length > 0) {
+    const ungVien = danhMuc ? sanPham.filter((p) => p.danhMuc === danhMuc.slug) : sanPham;
+    const kq = timSanPham(basename(duongDan), ungVien);
+    if (kq.sanPham?.phanLoai) {
+      const loais = [];
+      for (const t of thuMucCon) {
+        const files = (await readdir(join(duongDan, t.name)))
+          .filter((f) => DUOI_ANH.test(f))
+          .map((f) => join(duongDan, t.name, f));
+        if (files.length) loais.push({ ten: t.name, files });
+      }
+      return [
+        {
+          ten: basename(duongDan),
+          danhMuc,
+          files: anhRoi.map((m) => join(duongDan, m.name)),
+          zips: zipCon.map((m) => join(duongDan, m.name)),
+          loais,
+        },
+      ];
+    }
+  }
+
   if (laThuMucChua) {
     // Ảnh rời trong thư mục danh mục: mỗi tấm là một sản phẩm, tên lấy từ tên file
     for (const a of anhRoi) {
@@ -305,6 +340,31 @@ async function vanTay(duongDanNguon) {
   return phan.join("|");
 }
 
+/** Thư mục có ảnh .webp nào không — tính cả thư mục phân loại một tầng bên dưới */
+async function coWebp(thuMuc) {
+  if (!existsSync(thuMuc)) return false;
+  for (const m of await readdir(thuMuc, { withFileTypes: true })) {
+    if (m.isFile() && /\.webp$/i.test(m.name)) return true;
+    if (m.isDirectory() && (await readdir(join(thuMuc, m.name))).some((f) => /\.webp$/i.test(f)))
+      return true;
+  }
+  return false;
+}
+
+/** Thư mục màu "Xanh hồ" khớp phân loại nào của món (so theo slug, chấp nhận lệch chữ) */
+function timPhanLoai(tenThuMuc, sp) {
+  const k = slugify(tenThuMuc);
+  if (!k) return null;
+  return (
+    sp.phanLoai.find((v) => v.id === k) ??
+    sp.phanLoai.find((v) => k.includes(v.id) || v.id.includes(k)) ??
+    null
+  );
+}
+
+/** Thư mục màu không khớp phân loại nào trong Sheet — báo để chủ shop đổi tên */
+const loaiLac = [];
+
 const khop = [];
 const boQua = [];
 const khongKhop = [];
@@ -333,7 +393,7 @@ for (const vao of duongDanVao) {
     continue;
   }
 
-  for (const { ten, danhMuc, files: duongDanAnh = [], zip, zips } of dsSanPham) {
+  for (const { ten, danhMuc, files: duongDanAnh = [], zip, zips, loais } of dsSanPham) {
     // Một món có thể vừa có ảnh rời vừa có file nén trong cùng thư mục
     const dsZip = zips ?? (zip ? [zip] : []);
     // Ảnh nằm trong thư mục danh mục thì chỉ đối chiếu trong danh mục đó —
@@ -394,13 +454,21 @@ for (const vao of duongDanVao) {
      * nén thì vô dụng: mỗi lần chạy giải ra thư mục tạm mới, thời điểm sửa
      * file luôn khác nên vân tay luôn đổi, bộ nhớ đệm không bao giờ ăn.
      */
-    const vt = await vanTay([...duongDanAnh, ...dsZip]);
+    // Thư mục màu -> phân loại trong Sheet. Màu nào không khớp thì báo, bỏ qua.
+    const loaiKhop = [];
+    for (const l of loais ?? []) {
+      const v = p.phanLoai ? timPhanLoai(l.ten, p) : null;
+      if (v) loaiKhop.push({ ...l, id: v.id });
+      else loaiLac.push({ ten, thuMuc: l.ten, sanPham: p });
+    }
+
+    let vt = await vanTay([...duongDanAnh, ...dsZip]);
+    for (const l of loaiKhop) vt += `#${l.id}:${await vanTay(l.files)}`;
     cacheMoi[p.slug] = vt;
     const dichCu = join(thuMucDich, p.slug);
     // Thư mục RỖNG cũng "tồn tại" — đừng coi đó là đã có ảnh, không thì một
     // lượt hỏng giữa chừng sẽ được nhớ luôn là "xong rồi" và không bao giờ làm lại.
-    const daCoAnh =
-      existsSync(dichCu) && (await readdir(dichCu)).some((f) => /\.webp$/i.test(f));
+    const daCoAnh = await coWebp(dichCu);
     if (cache[p.slug] === vt && daCoAnh) {
       boQua.push({ ten, sanPham: p });
       continue;
@@ -415,9 +483,17 @@ for (const vao of duongDanVao) {
         if (DUOI_ANH.test(f)) duongDanThat.push(join(d, f));
       }
     }
-    if (duongDanThat.length === 0) continue;
+    if (duongDanThat.length === 0 && loaiKhop.length === 0) continue;
 
-    const files = sapAnh(duongDanThat, ten);
+    // Ảnh chung của món, rồi tới từng thư mục màu: public/products/<slug>/<id>/
+    const viecNen = [
+      { files: sapAnh(duongDanThat, ten), dich: join(thuMucDich, p.slug) },
+      ...loaiKhop.map((l) => ({
+        files: sapAnh(l.files, l.ten),
+        dich: join(thuMucDich, p.slug, l.id),
+      })),
+    ];
+    const files = viecNen.flatMap((x) => x.files);
 
     // Xoá ảnh cũ của món này rồi ghi lại từ đầu — tránh còn sót ảnh đã bỏ
     const dich = join(thuMucDich, p.slug);
@@ -425,6 +501,8 @@ for (const vao of duongDanVao) {
     await mkdir(dich, { recursive: true });
 
     const daGhi = [];
+    for (const { files, dich } of viecNen) {
+    await mkdir(dich, { recursive: true });
     for (let i = 0; i < files.length; i++) {
       let nguon = files[i];
       const tenMoi = `${String(i + 1).padStart(2, "0")}.webp`;
@@ -451,6 +529,7 @@ for (const vao of duongDanVao) {
       } catch (e) {
         console.error(`  ✗ Lỗi khi xử lý ${basename(files[i])}: ${e.message}`);
       }
+    }
     }
 
     if (daGhi.length > 0) {
@@ -524,6 +603,15 @@ if (loiAnh.length) {
   }
   ghi("  Xem dòng '✗ Lỗi khi xử lý' ở trên. Ảnh có thể hỏng hoặc sai định dạng —");
   ghi("  thử mở bằng Photos rồi lưu lại thành .jpg.");
+}
+
+if (loaiLac.length) {
+  ghi("");
+  ghi(`⚠ ${loaiLac.length} thư mục màu KHÔNG khớp phân loại nào trong Sheet — CẦN BẠN SỬA:`);
+  for (const k of loaiLac) {
+    ghi(`    "${k.ten}/${k.thuMuc}"  →  ${k.sanPham.hang} ${k.sanPham.ten} chỉ có: ${k.sanPham.phanLoai.map((v) => v.ten).join(", ")}`);
+  }
+  ghi("  → Đổi tên thư mục màu cho trùng với ô Phân loại trong Sheet.");
 }
 
 if (khongKhop.length) {

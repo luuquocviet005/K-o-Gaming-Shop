@@ -56,7 +56,68 @@ export type Product = {
   /** Nhiều ảnh cho một món, do scripts/nap-anh.mjs sinh ra. Chỉ có khi ≥ 2 tấm */
   anhs?: string[];
   mau: string;
+  /**
+   * Các phân loại (màu, layout, loại switch…) của cùng một món.
+   *
+   * Sinh ra khi Sheet có nhiều dòng trùng Hãng + Tên nhưng khác cột "Phân loại".
+   * Khi có, các trường gia / soLuong / tinhTrang / anh ở trên là số GỘP để thẻ
+   * sản phẩm, bộ lọc và sắp xếp chạy như cũ: giá thấp nhất (giaToiDa = cao
+   * nhất), tổng số lượng, ảnh của phân loại đầu tiên có ảnh. Trang sản phẩm thì
+   * dùng `apDungPhanLoai` để lấy đúng số liệu của phân loại khách đang chọn.
+   */
+  phanLoai?: PhanLoai[];
 };
+
+/** Một dòng trong Sheet thuộc một sản phẩm có nhiều phân loại */
+export type PhanLoai = {
+  /** slug của tên phân loại — dùng trong ?loai=, giỏ hàng và tên thư mục ảnh */
+  id: string;
+  ten: string;
+  gia: number;
+  giaToiDa?: number;
+  ghiChuGia?: string;
+  tinhTrang: string;
+  nhomTinhTrang: NhomTinhTrang;
+  soLuong: number;
+  moTa?: string;
+  note?: string;
+  anh?: string;
+  anhs?: string[];
+};
+
+/** Sản phẩm sau khi áp số liệu của một phân loại — giữ nguyên kiểu Product */
+export type MonDangXem = Product & { loai?: PhanLoai };
+
+/**
+ * Trộn số liệu của phân loại `loaiId` vào sản phẩm.
+ *
+ * Mọi chỗ đang nhận `Product` (thư viện ảnh, khối mua, giỏ hàng) dùng được kết
+ * quả này mà không phải biết gì về phân loại. Không có phân loại hoặc id lạ
+ * thì trả về chính sản phẩm.
+ */
+export function apDungPhanLoai(p: Product, loaiId?: string | null): MonDangXem {
+  const loai = p.phanLoai?.find((v) => v.id === loaiId);
+  if (!loai) return p;
+  return {
+    ...p,
+    gia: loai.gia,
+    giaToiDa: loai.giaToiDa,
+    ghiChuGia: loai.ghiChuGia,
+    tinhTrang: loai.tinhTrang,
+    nhomTinhTrang: loai.nhomTinhTrang,
+    soLuong: loai.soLuong,
+    moTa: loai.moTa ?? p.moTa,
+    note: loai.note,
+    anh: loai.anh ?? p.anh,
+    anhs: loai.anhs ?? (loai.anh ? [loai.anh] : p.anhs),
+    loai,
+  };
+}
+
+/** Phân loại mở sẵn khi vào trang: cái đầu tiên còn hàng, hết cả thì cái đầu */
+export function phanLoaiMacDinh(p: Product): PhanLoai | undefined {
+  return p.phanLoai?.find((v) => v.soLuong > 0) ?? p.phanLoai?.[0];
+}
 
 export type Category = {
   slug: string;
@@ -221,7 +282,10 @@ export type CardProduct = Pick<
   | "note"
   | "anh"
   | "mau"
->;
+> & {
+  /** Có bao nhiêu phân loại — thẻ hiện nhãn "3 phân loại" thay cho nút thêm giỏ */
+  soPhanLoai?: number;
+};
 
 export function toCard(p: Product): CardProduct {
   return {
@@ -240,5 +304,6 @@ export function toCard(p: Product): CardProduct {
     note: p.note,
     anh: p.anh,
     mau: p.mau,
+    ...(p.phanLoai ? { soPhanLoai: p.phanLoai.length } : {}),
   };
 }

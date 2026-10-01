@@ -15,7 +15,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { ThuVienAnh } from "@/components/thu-vien-anh";
 import { ProductCard } from "@/components/product-card";
 import { ProductPurchase } from "@/components/product-purchase";
-import { ConditionBadge } from "@/components/condition-badge";
+import { ChiTietMon, NhanTinhTrang, PhanLoaiProvider } from "@/components/phan-loai";
 import { TrangDaBan } from "@/components/trang-da-ban";
 import { CheckIcon, FacebookIcon, InfoIcon, MapPinIcon, ZaloIcon } from "@/components/icons";
 
@@ -161,7 +161,12 @@ export default async function ProductPage(props: Props) {
   // chính sách mua sắm của Google.
   // Google chỉ hiện ảnh kèm kết quả tìm kiếm khi có trường `image`, và địa chỉ
   // phải đầy đủ tên miền chứ không phải đường dẫn tương đối.
-  const anhChoGoogle = (product.anhs ?? (product.anh ? [product.anh] : [])).map(anhDayDu);
+  // Món nhiều phân loại: gom ảnh của mọi phân loại (bỏ trùng — ảnh chung như
+  // hộp, phụ kiện nằm trong bộ ảnh của từng phân loại)
+  const anhGoc = product.phanLoai
+    ? [...new Set(product.phanLoai.flatMap((v) => v.anhs ?? (v.anh ? [v.anh] : [])))]
+    : (product.anhs ?? (product.anh ? [product.anh] : []));
+  const anhChoGoogle = anhGoc.map(anhDayDu);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -221,17 +226,6 @@ export default async function ProductPage(props: Props) {
     ],
   };
 
-  const thongTin = [
-    { nhan: "Hãng", giaTri: product.hang },
-    { nhan: "Tình trạng", giaTri: product.tinhTrang || "Chưa ghi" },
-    { nhan: "Hàng đang ở", giaTri: product.diaDiem },
-    {
-      nhan: "Số lượng còn",
-      giaTri: product.soLuong > 0 ? `${product.soLuong}` : "Đã hết",
-    },
-    ...(category ? [{ nhan: "Nhóm", giaTri: category.name }] : []),
-  ];
-
   return (
     <div className="container-page py-8 lg:py-12">
       <script
@@ -253,16 +247,14 @@ export default async function ProductPage(props: Props) {
         ]}
       />
 
+      {/* Bọc cả lưới: ảnh, giá, bảng thông tin cùng đổi theo phân loại đang chọn */}
+      <PhanLoaiProvider product={product}>
       <div className="mt-6 grid gap-10 lg:grid-cols-2 lg:gap-14">
         {/* ── Ảnh ── */}
         <div className="lg:sticky lg:top-28 lg:self-start">
           <div className="relative">
             <div className="absolute left-6 top-6 z-10">
-              <ConditionBadge
-                tinhTrang={product.tinhTrang}
-                nhom={product.nhomTinhTrang}
-                size="md"
-              />
+              <NhanTinhTrang product={product} />
             </div>
 
             <ThuVienAnh product={product} />
@@ -291,34 +283,7 @@ export default async function ProductPage(props: Props) {
 
           <ProductPurchase product={product} />
 
-          {/*
-            Mô tả: cấu hình, phụ kiện kèm theo. Đặt TRƯỚC bảng thông số vì đây
-            là thứ khách hàng cũ đọc kỹ nhất — cái case gì, switch gì, có kèm
-            hộp không. `whitespace-pre-line` để chủ shop xuống dòng trong ô
-            Google Sheet (Alt+Enter) thì trên web cũng xuống dòng đúng chỗ.
-          */}
-          {product.moTa && (
-            <section className="mt-10">
-              <h2 className="font-display text-lg font-bold text-fg">Mô tả</h2>
-              <p className="mt-3 whitespace-pre-line rounded-2xl border border-border bg-surface px-5 py-4 text-[0.95rem] leading-relaxed text-fg">
-                {product.moTa}
-              </p>
-            </section>
-          )}
-
-          <section className="mt-10">
-            <h2 className="font-display text-lg font-bold text-fg">Thông tin món hàng</h2>
-            <dl className="mt-4 divide-y divide-border rounded-2xl border border-border bg-surface px-5">
-              {thongTin.map((t) => (
-                <div key={t.nhan} className="flex justify-between gap-6 py-3.5">
-                  <dt className="text-sm text-fg-muted">{t.nhan}</dt>
-                  <dd className="text-right text-sm font-semibold text-fg">
-                    {t.giaTri}
-                  </dd>
-                </div>
-              ))}
-            </dl>
-          </section>
+          <ChiTietMon product={product} tenNhom={category?.name} />
 
           <p className="mt-6 flex gap-2.5 rounded-2xl bg-surface-2 px-4 py-3.5 text-sm leading-relaxed text-fg-muted">
             <InfoIcon width={18} height={18} className="mt-px shrink-0 text-fg-subtle" />
@@ -354,6 +319,7 @@ export default async function ProductPage(props: Props) {
           </p>
         </div>
       </div>
+      </PhanLoaiProvider>
 
       {/* ── Sản phẩm liên quan ── */}
       {related.length > 0 && (

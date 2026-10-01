@@ -222,8 +222,9 @@ export function ProductArt({
  * build. Ảnh nằm ngoài quy ước đó (file rời, link ngoài) thì trả null và dùng
  * ảnh gốc — thà nặng còn hơn vỡ ảnh.
  */
-function banThuNho(anh: string): string | null {
-  const m = anh.match(/^(\/products\/[^/]+\/)01\.[a-z0-9]+$/i);
+export function banThuNho(anh: string): string | null {
+  // Món có phân loại thì ảnh bìa nằm sâu thêm một tầng: /products/<slug>/<loai>/01.webp
+  const m = anh.match(/^(\/products\/[^/]+\/(?:[^/]+\/)?)01\.[a-z0-9]+$/i);
   return m ? `${m[1]}_nho.webp` : null;
 }
 

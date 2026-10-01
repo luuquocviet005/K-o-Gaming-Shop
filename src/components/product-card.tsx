@@ -96,7 +96,13 @@ export function ProductCard({
             {formatGia(product)}
           </p>
 
-          {!hetHang && (
+          {/* Món nhiều phân loại phải chọn màu trước — không cho thêm thẳng từ thẻ.
+              Nhãn nằm DƯỚI lớp link của thẻ nên bấm vào vẫn mở trang chọn màu. */}
+          {product.soPhanLoai ? (
+            <span className="shrink-0 rounded-full border border-border-strong px-2.5 py-1 text-[0.7rem] font-semibold text-fg-muted">
+              {product.soPhanLoai} phân loại
+            </span>
+          ) : !hetHang && (
             <div className="relative z-10">
               <AddToCartButton
                 productId={product.id}

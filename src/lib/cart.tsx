@@ -13,7 +13,7 @@ import {
   useMemo,
   useState,
 } from "react";
-import { products, type Product } from "@/lib/products";
+import { apDungPhanLoai, products, type MonDangXem } from "@/lib/products";
 
 const STORAGE_KEY = "keo-cart-v1";
 
@@ -28,19 +28,34 @@ const STORAGE_KEY = "keo-cart-v1";
  * Món không còn trong bảng hàng trả về 0: giỏ cũ trong localStorage có thể trỏ
  * tới hàng đã bán và xoá khỏi Sheet.
  */
-function tonKho(productId: string): number {
+function tonKho(productId: string, loai?: string): number {
   const p = products.find((x) => x.id === productId);
-  return p ? Math.max(0, p.soLuong) : 0;
+  if (!p) return 0;
+  // Món có phân loại: tồn kho tính theo đúng phân loại khách chọn. Phân loại
+  // đã bị xoá khỏi Sheet thì coi như hết — dòng giỏ đó sẽ tự rơi ra.
+  if (p.phanLoai) {
+    const v = p.phanLoai.find((x) => x.id === loai);
+    return v ? Math.max(0, v.soLuong) : 0;
+  }
+  return Math.max(0, p.soLuong);
+}
+
+/** Cùng món khác phân loại là hai dòng riêng trong giỏ */
+function khoaDong(productId: string, loai?: string): string {
+  return loai ? `${productId}~${loai}` : productId;
 }
 
 export type CartLine = {
   key: string;
   productId: string;
+  /** id phân loại (màu, layout…) — chỉ có với món có nhiều phân loại */
+  loai?: string;
   quantity: number;
 };
 
 export type ResolvedLine = CartLine & {
-  product: Product;
+  /** Đã áp số liệu của phân loại: giá, tình trạng, ảnh đúng màu khách chọn */
+  product: MonDangXem;
   unitPrice: number;
   lineTotal: number;
 };
@@ -61,7 +76,7 @@ type CartContextValue = {
   total: number;
   /** Tăng mỗi lần thêm hàng — Header dùng để chạy animation */
   addPulse: number;
-  addItem: (productId: string, quantity?: number) => void;
+  addItem: (productId: string, quantity?: number, loai?: string) => void;
   setQuantity: (key: string, quantity: number) => void;
   removeItem: (key: string) => void;
   clear: () => void;
@@ -104,7 +119,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
        mai shop bán mất 1, hôm sau khách quay lại thì giỏ vẫn ghi 2. Cắt ở đây
        để con số khách thấy luôn là con số shop giao được. */
     const conHieuLuc = readStorage()
-      .map((l) => ({ ...l, quantity: Math.min(l.quantity, tonKho(l.productId)) }))
+      .map((l) => ({ ...l, quantity: Math.min(l.quantity, tonKho(l.productId, l.loai)) }))
       .filter((l) => l.quantity > 0);
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setRawLines(conHieuLuc);
@@ -130,19 +145,23 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     return () => window.removeEventListener("storage", onStorage);
   }, []);
 
-  const addItem = useCallback((productId: string, quantity = 1) => {
-    const con = tonKho(productId);
+  const addItem = useCallback((productId: string, quantity = 1, loai?: string) => {
+    const con = tonKho(productId, loai);
     if (con <= 0) return; // hàng đã hết thì không nhận thêm vào giỏ
+    const key = khoaDong(productId, loai);
     setRawLines((prev) => {
-      const existing = prev.find((l) => l.key === productId);
+      const existing = prev.find((l) => l.key === key);
       if (existing) {
         return prev.map((l) =>
-          l.key === productId
+          l.key === key
             ? { ...l, quantity: Math.min(l.quantity + quantity, con) }
             : l,
         );
       }
-      return [...prev, { key: productId, productId, quantity: Math.min(quantity, con) }];
+      return [
+        ...prev,
+        { key, productId, ...(loai ? { loai } : {}), quantity: Math.min(quantity, con) },
+      ];
     });
     setAddPulse((n) => n + 1);
   }, []);
@@ -152,7 +171,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       quantity <= 0
         ? prev.filter((l) => l.key !== key)
         : prev.map((l) =>
-            l.key === key ? { ...l, quantity: Math.min(quantity, tonKho(l.productId)) } : l,
+            l.key === key ? { ...l, quantity: Math.min(quantity, tonKho(l.productId, l.loai)) } : l,
           ),
     );
   }, []);
@@ -169,9 +188,13 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   // giỏ hàng đã lưu của khách cũng cập nhật theo, không bị giá cũ mắc kẹt.
   const lines = useMemo<ResolvedLine[]>(() => {
     return rawLines.flatMap((line) => {
-      const product = products.find((p) => p.id === line.productId);
+      const goc = products.find((p) => p.id === line.productId);
       // Sản phẩm đã bán hết và bị xoá khỏi Sheet thì tự rơi khỏi giỏ
-      if (!product) return [];
+      if (!goc) return [];
+      // Món có phân loại mà dòng giỏ không còn trỏ đúng phân loại nào (giỏ cũ,
+      // hoặc phân loại đã gỡ khỏi Sheet) thì bỏ — không đoán màu thay khách
+      if (goc.phanLoai && !goc.phanLoai.some((v) => v.id === line.loai)) return [];
+      const product = apDungPhanLoai(goc, line.loai);
       return [
         {
           ...line,

@@ -10,12 +10,15 @@ import { CartIcon, CheckIcon, PlusIcon } from "@/components/icons";
  */
 export function AddToCartButton({
   productId,
+  loai,
   quantity = 1,
   variant = "full",
   productName,
   className = "",
 }: {
   productId: string;
+  /** id phân loại đang chọn — món có nhiều màu/loại thì bắt buộc */
+  loai?: string;
   quantity?: number;
   /** full: nút dài có chữ | icon: nút tròn trên thẻ sản phẩm */
   variant?: "full" | "icon";
@@ -33,7 +36,7 @@ export function AddToCartButton({
   }, []);
 
   function handleClick() {
-    addItem(productId, quantity);
+    addItem(productId, quantity, loai);
     setAdded(true);
     if (timer.current) clearTimeout(timer.current);
     timer.current = setTimeout(() => setAdded(false), 1600);

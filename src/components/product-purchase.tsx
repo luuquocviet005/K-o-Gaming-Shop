@@ -2,21 +2,28 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import type { Product } from "@/lib/products";
+import type { MonDangXem, Product } from "@/lib/products";
 import { formatGia, formatVND, moTaTonKho } from "@/lib/format";
 import { site } from "@/lib/site";
 import { useCart } from "@/lib/cart";
 import { AddToCartButton } from "@/components/add-to-cart-button";
+import { ODanhSachPhanLoai, useMonDangXem } from "@/components/phan-loai";
 import { ZaloIcon, InfoIcon, MinusIcon, PlusIcon, FacebookIcon } from "@/components/icons";
 
 /**
  * Khối chọn mua.
  *
- * Không có phần chọn phiên bản như shop hàng mới, vì đây là hàng cũ — mỗi
- * dòng trong Sheet là MỘT món cụ thể với tình trạng riêng, không phải một mẫu
- * có nhiều biến thể.
+ * Phần lớn món là hàng cũ, mỗi dòng Sheet là MỘT món cụ thể. Món nào chủ shop
+ * điền cột "Phân loại" (nhiều màu, nhiều layout) thì có thêm hàng ô chọn, và
+ * giá / ghi chú / tồn kho bên dưới đổi theo phân loại đang chọn.
  */
 export function ProductPurchase({ product }: { product: Product }) {
+  const mon = useMonDangXem(product);
+  // key: đổi phân loại thì số lượng về 1 — 3 cái màu hồng không chuyển thành 3 cái màu đen
+  return <KhoiMua key={mon.loai?.id ?? ""} product={mon} />;
+}
+
+function KhoiMua({ product }: { product: MonDangXem }) {
   const router = useRouter();
   const { addItem } = useCart();
   const [qty, setQty] = useState(1);
@@ -27,7 +34,7 @@ export function ProductPurchase({ product }: { product: Product }) {
   const tongTien = product.gia * qty;
 
   function buyNow() {
-    addItem(product.id, qty);
+    addItem(product.id, qty, product.loai?.id);
     router.push("/gio-hang/");
   }
 
@@ -67,6 +74,8 @@ export function ProductPurchase({ product }: { product: Product }) {
           </p>
         </div>
       )}
+
+      <ODanhSachPhanLoai product={product} />
 
       <div className="mt-7 flex flex-wrap items-center gap-5">
         {!hetHang && !chuaCoGia && (
@@ -127,7 +136,7 @@ export function ProductPurchase({ product }: { product: Product }) {
       <div className="mt-7 flex flex-wrap gap-3">
         {hetHang ? (
           <p className="rounded-2xl bg-surface-2 px-6 py-4 text-sm text-fg-muted">
-            Món này đã bán. Nhắn{" "}
+            {product.loai ? `Bản ${product.loai.ten} đã bán hết.` : "Món này đã bán."} Nhắn{" "}
             <a
               href={site.social.messenger}
               target="_blank"
@@ -172,8 +181,9 @@ export function ProductPurchase({ product }: { product: Product }) {
           <>
             <AddToCartButton
               productId={product.id}
+              loai={product.loai?.id}
               quantity={qty}
-              productName={product.ten}
+              productName={product.loai ? `${product.ten} (${product.loai.ten})` : product.ten}
               className="flex-1 sm:flex-none"
             />
             <button

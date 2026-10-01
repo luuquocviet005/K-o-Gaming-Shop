@@ -64,30 +64,72 @@ let boQua = 0;
 let taoNho = 0;
 let boQuaNho = 0;
 
+/** Ảnh phái sinh còn mới hơn ảnh gốc thì khỏi vẽ lại */
+async function conMoi(nguon, dich) {
+  if (!existsSync(dich)) return false;
+  const [a, b] = await Promise.all([stat(nguon), stat(dich)]);
+  return b.mtimeMs >= a.mtimeMs;
+}
+
+/** Ảnh chụp thật trong một thư mục, theo thứ tự tên — bỏ ảnh do máy sinh */
+async function anhTrong(thuMucAnh) {
+  return (await readdir(thuMucAnh, { withFileTypes: true }))
+    .filter(
+      (f) =>
+        f.isFile() &&
+        /\.(jpe?g|png|webp|avif)$/i.test(f.name) &&
+        f.name !== TEN &&
+        !f.name.startsWith("_"),
+    )
+    .map((f) => f.name)
+    .sort((a, b) => a.localeCompare(b, "vi", { numeric: true }));
+}
+
+async function veNho(nguon, thuMucAnh) {
+  const dichNho = join(thuMucAnh, TEN_NHO);
+  if (await conMoi(nguon, dichNho)) {
+    boQuaNho++;
+    return;
+  }
+  await sharp(nguon)
+    // `inside` = thu nhỏ vừa trong khung, giữ nguyên tỉ lệ, KHÔNG cắt xén.
+    // Cắt thì mất mất chuôi chuột hay góc bàn phím — thẻ sản phẩm phải cho
+    // thấy trọn món hàng.
+    .resize(RONG_NHO, RONG_NHO, { fit: "inside", withoutEnlargement: true })
+    .webp({ quality: 78 })
+    .toFile(dichNho);
+  taoNho++;
+}
+
 for (const m of muc) {
   if (!m.isDirectory()) continue;
 
   const thuMucSp = join(thuMuc, m.name);
-  const anhs = (await readdir(thuMucSp))
-    .filter(
-      (f) =>
-        /\.(jpe?g|png|webp|avif)$/i.test(f) && f !== TEN && !f.startsWith("_"),
-    )
+  const anhs = await anhTrong(thuMucSp);
+
+  /*
+   * Món nhiều phân loại: mỗi thư mục con (den/, hong/…) là ảnh của một màu.
+   * Mỗi màu cần _nho.webp riêng cho ô chọn màu và thẻ sản phẩm. Thư mục món
+   * không có ảnh chung thì ảnh chia sẻ lấy tấm đầu của màu đầu tiên.
+   */
+  let nguonChiaSe = anhs.length ? join(thuMucSp, anhs[0]) : null;
+  const thuMucCon = (await readdir(thuMucSp, { withFileTypes: true }))
+    .filter((f) => f.isDirectory())
+    .map((f) => f.name)
     .sort((a, b) => a.localeCompare(b, "vi", { numeric: true }));
-
-  if (anhs.length === 0) continue;
-
-  const nguon = join(thuMucSp, anhs[0]);
-
-  /** Ảnh phái sinh còn mới hơn ảnh gốc thì khỏi vẽ lại */
-  async function conMoi(dich) {
-    if (!existsSync(dich)) return false;
-    const [a, b] = await Promise.all([stat(nguon), stat(dich)]);
-    return b.mtimeMs >= a.mtimeMs;
+  for (const con of thuMucCon) {
+    const anhCon = await anhTrong(join(thuMucSp, con));
+    if (!anhCon.length) continue;
+    const nguon = join(thuMucSp, con, anhCon[0]);
+    nguonChiaSe ??= nguon;
+    await veNho(nguon, join(thuMucSp, con));
   }
 
+  if (!nguonChiaSe) continue;
+  const nguon = nguonChiaSe;
+
   const dichChiaSe = join(thuMucSp, TEN);
-  if (await conMoi(dichChiaSe)) {
+  if (await conMoi(nguon, dichChiaSe)) {
     boQua++;
   } else {
     await sharp(nguon)
@@ -98,19 +140,7 @@ for (const m of muc) {
     tao++;
   }
 
-  const dichNho = join(thuMucSp, TEN_NHO);
-  if (await conMoi(dichNho)) {
-    boQuaNho++;
-  } else {
-    await sharp(nguon)
-      // `inside` = thu nhỏ vừa trong khung, giữ nguyên tỉ lệ, KHÔNG cắt xén.
-      // Cắt thì mất mất chuôi chuột hay góc bàn phím — thẻ sản phẩm phải cho
-      // thấy trọn món hàng.
-      .resize(RONG_NHO, RONG_NHO, { fit: "inside", withoutEnlargement: true })
-      .webp({ quality: 78 })
-      .toFile(dichNho);
-    taoNho++;
-  }
+  if (anhs.length) await veNho(nguon, thuMucSp);
 }
 
 console.log(
