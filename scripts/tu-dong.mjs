@@ -15,6 +15,7 @@ import { existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { giuKhoa } from "./lib/khoa.mjs";
+import { giaiNenHet, baoCaoGiaiNen } from "./lib/giai-nen.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(await readFile(join(root, "sync.config.json"), "utf8"));
@@ -58,6 +59,18 @@ if (!giuKhoa()) {
 }
 
 /*
+ * 0. Giải nén .zip tải từ Google Drive rồi xoá .zip, để chủ tiệm mở ảnh ra xem
+ *    được ngay. Làm sau khi giữ khoá: không bao giờ đụng file nén đúng lúc
+ *    nap-anh đang đọc nó. Danh mục lấy từ bảng hàng hiện có (đổi rất hiếm).
+ */
+const danhMuc = await readFile(join(root, "src", "data", "products.json"), "utf8")
+  .then((f) => JSON.parse(f).danhMuc ?? [])
+  .catch(() => []);
+const giaiNen = await giaiNenHet(thuMucAnh, danhMuc);
+const dongGiaiNen = baoCaoGiaiNen(giaiNen, thuMucAnh);
+if (dongGiaiNen.length) console.log(dongGiaiNen.join("\n"));
+
+/*
  * 1. Lấy bảng hàng mới nhất TRƯỚC khi nạp ảnh.
  *
  * nap-anh đối chiếu tên thư mục ảnh với bảng hàng để biết ảnh thuộc món nào.
@@ -76,6 +89,11 @@ const napAnh = chay([join(root, "scripts", "nap-anh.mjs"), thuMucAnh]);
 console.log(napAnh.ra);
 
 const khongCoGiMoi = napAnh.ra.includes("Không có ảnh nào mới");
+
+// nap-anh vừa ghi đè "BAO CAO.txt" — giờ mới thêm phần giải nén vào sau
+if (dongGiaiNen.length) {
+  await ghiNhatKy(`[${luc()}] GIẢI NÉN FILE .ZIP\r\n${dongGiaiNen.join("\r\n")}`);
+}
 
 // 3. Đồng bộ lại để bảng hàng ghi nhận những tấm ảnh vừa nạp
 const dongBo = chay([join(root, "scripts", "sync-sheet.mjs")]);
