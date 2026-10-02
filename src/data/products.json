@@ -75,23 +75,50 @@
       "ten": "F1 Extreme Leviatan",
       "hang": "ATK",
       "danhMuc": "chuot",
-      "gia": 650000,
+      "gia": 600000,
       "giaToiDa": 850000,
-      "ghiChuGia": "650k - 850k",
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 2,
-      "anh": "/products/atk-f1-extreme-leviatan/01.webp",
-      "anhs": [
-        "/products/atk-f1-extreme-leviatan/01.webp",
-        "/products/atk-f1-extreme-leviatan/02.webp",
-        "/products/atk-f1-extreme-leviatan/03.webp",
-        "/products/atk-f1-extreme-leviatan/04.webp",
-        "/products/atk-f1-extreme-leviatan/05.webp",
-        "/products/atk-f1-extreme-leviatan/06.webp"
+      "mau": "#4338ca",
+      "phanLoai": [
+        {
+          "id": "me",
+          "ten": "Mẻ",
+          "gia": 600000,
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 2,
+          "anh": "/products/atk-f1-extreme-leviatan/me/01.webp",
+          "anhs": [
+            "/products/atk-f1-extreme-leviatan/me/01.webp",
+            "/products/atk-f1-extreme-leviatan/me/02.webp",
+            "/products/atk-f1-extreme-leviatan/me/03.webp",
+            "/products/atk-f1-extreme-leviatan/me/04.webp",
+            "/products/atk-f1-extreme-leviatan/me/05.webp",
+            "/products/atk-f1-extreme-leviatan/me/06.webp"
+          ]
+        },
+        {
+          "id": "dep",
+          "ten": "Đẹp",
+          "gia": 850000,
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 2,
+          "anh": "/products/atk-f1-extreme-leviatan/dep/01.webp",
+          "anhs": [
+            "/products/atk-f1-extreme-leviatan/dep/01.webp",
+            "/products/atk-f1-extreme-leviatan/dep/02.webp",
+            "/products/atk-f1-extreme-leviatan/dep/03.webp",
+            "/products/atk-f1-extreme-leviatan/dep/04.webp",
+            "/products/atk-f1-extreme-leviatan/dep/05.webp",
+            "/products/atk-f1-extreme-leviatan/dep/06.webp"
+          ]
+        }
       ],
-      "mau": "#4338ca"
+      "anh": "/products/atk-f1-extreme-leviatan/me/01.webp"
     },
     {
       "id": "atk-a9-mini-ultimate",
@@ -162,7 +189,7 @@
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 3,
+      "soLuong": 2,
       "anh": "/products/atk-f1-ultimate-v2/01.webp",
       "mau": "#4338ca",
       "phanLoai": [
@@ -170,11 +197,9 @@
           "id": "hong",
           "ten": "Hồng",
           "gia": 1000000,
-          "giaToiDa": 1200000,
-          "ghiChuGia": "1tr - 1tr2",
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 3,
+          "soLuong": 2,
           "anh": "/products/atk-f1-ultimate-v2/01.webp",
           "anhs": [
             "/products/atk-f1-ultimate-v2/01.webp",
@@ -184,31 +209,12 @@
           ]
         },
         {
-          "id": "xanh-bien",
-          "ten": "Xanh biển",
-          "gia": 1000000,
-          "giaToiDa": 1200000,
-          "ghiChuGia": "1tr - 1tr2",
+          "id": "trang-newseal",
+          "ten": "Trắng Newseal",
+          "gia": 1200000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 3,
-          "anh": "/products/atk-f1-ultimate-v2/01.webp",
-          "anhs": [
-            "/products/atk-f1-ultimate-v2/01.webp",
-            "/products/atk-f1-ultimate-v2/02.webp",
-            "/products/atk-f1-ultimate-v2/03.webp",
-            "/products/atk-f1-ultimate-v2/04.webp"
-          ]
-        },
-        {
-          "id": "trang",
-          "ten": "Trắng",
-          "gia": 1000000,
-          "giaToiDa": 1200000,
-          "ghiChuGia": "1tr - 1tr2",
-          "tinhTrang": "Cũ · đủ hộp",
-          "nhomTinhTrang": "cu",
-          "soLuong": 3,
+          "soLuong": 2,
           "anh": "/products/atk-f1-ultimate-v2/01.webp",
           "anhs": [
             "/products/atk-f1-ultimate-v2/01.webp",
@@ -754,7 +760,8 @@
       "ten": "Hex80",
       "hang": "ATK",
       "danhMuc": "ban-phim",
-      "gia": 4000000,
+      "gia": 3800000,
+      "giaToiDa": 4000000,
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
@@ -777,7 +784,7 @@
         {
           "id": "vang",
           "ten": "Vàng",
-          "gia": 4000000,
+          "gia": 3800000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
           "soLuong": 2,
@@ -872,7 +879,8 @@
       "ten": "Edge63 Ultimate",
       "hang": "ATK",
       "danhMuc": "ban-phim",
-      "gia": 2700000,
+      "gia": 2500000,
+      "giaToiDa": 2700000,
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
@@ -880,18 +888,9 @@
       "mau": "#4338ca",
       "phanLoai": [
         {
-          "id": "hong",
-          "ten": "Hồng",
-          "gia": 2700000,
-          "tinhTrang": "Cũ · đủ hộp",
-          "nhomTinhTrang": "cu",
-          "soLuong": 2,
-          "anh": "/products/atk-edge63-ultimate/hong/01.webp"
-        },
-        {
           "id": "leviatan",
           "ten": "Leviatan",
-          "gia": 2700000,
+          "gia": 2500000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
           "soLuong": 2,
@@ -901,9 +900,18 @@
             "/products/atk-edge63-ultimate/leviatan/02.webp",
             "/products/atk-edge63-ultimate/leviatan/03.webp"
           ]
+        },
+        {
+          "id": "hong",
+          "ten": "Hồng",
+          "gia": 2700000,
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 2,
+          "anh": "/products/atk-edge63-ultimate/hong/01.webp"
         }
       ],
-      "anh": "/products/atk-edge63-ultimate/hong/01.webp"
+      "anh": "/products/atk-edge63-ultimate/leviatan/01.webp"
     },
     {
       "id": "atk-rs6-ultra",
