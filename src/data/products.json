@@ -255,7 +255,13 @@
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
           "soLuong": 4,
-          "anh": "/products/atk-a9-ultimate/01.webp"
+          "anh": "/products/atk-a9-ultimate/01.webp",
+          "anhs": [
+            "/products/atk-a9-ultimate/01.webp",
+            "/products/atk-a9-ultimate/02.webp",
+            "/products/atk-a9-ultimate/03.webp",
+            "/products/atk-a9-ultimate/04.webp"
+          ]
         },
         {
           "id": "trang",
@@ -264,7 +270,13 @@
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
           "soLuong": 4,
-          "anh": "/products/atk-a9-ultimate/01.webp"
+          "anh": "/products/atk-a9-ultimate/01.webp",
+          "anhs": [
+            "/products/atk-a9-ultimate/01.webp",
+            "/products/atk-a9-ultimate/02.webp",
+            "/products/atk-a9-ultimate/03.webp",
+            "/products/atk-a9-ultimate/04.webp"
+          ]
         },
         {
           "id": "do",
@@ -273,7 +285,13 @@
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
           "soLuong": 4,
-          "anh": "/products/atk-a9-ultimate/01.webp"
+          "anh": "/products/atk-a9-ultimate/01.webp",
+          "anhs": [
+            "/products/atk-a9-ultimate/01.webp",
+            "/products/atk-a9-ultimate/02.webp",
+            "/products/atk-a9-ultimate/03.webp",
+            "/products/atk-a9-ultimate/04.webp"
+          ]
         },
         {
           "id": "hong",
@@ -282,7 +300,13 @@
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
           "soLuong": 4,
-          "anh": "/products/atk-a9-ultimate/01.webp"
+          "anh": "/products/atk-a9-ultimate/01.webp",
+          "anhs": [
+            "/products/atk-a9-ultimate/01.webp",
+            "/products/atk-a9-ultimate/02.webp",
+            "/products/atk-a9-ultimate/03.webp",
+            "/products/atk-a9-ultimate/04.webp"
+          ]
         }
       ]
     },
