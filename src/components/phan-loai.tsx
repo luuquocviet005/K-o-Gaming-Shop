@@ -9,6 +9,7 @@ import {
 } from "@/lib/products";
 import { banThuNho } from "@/components/product-art";
 import { ConditionBadge } from "@/components/condition-badge";
+import { formatVND } from "@/lib/format";
 
 /**
  * Chọn phân loại (màu, layout, loại switch…) trên trang sản phẩm.
@@ -78,6 +79,9 @@ export function ODanhSachPhanLoai({ product }: { product: Product }) {
   const ctx = useContext(NgCanh);
   if (!ctx || !product.phanLoai) return null;
   const dangChon = ctx.mon.loai?.id;
+  // Các phân loại khác giá thì ghi giá ngay dưới từng ô — khách so được mà
+  // không phải bấm lần lượt từng cái. Cùng giá thì khỏi lặp, giá to ở trên là đủ.
+  const khacGia = new Set(product.phanLoai.map((v) => v.gia)).size > 1;
 
   return (
     <fieldset className="mt-7">
@@ -97,7 +101,7 @@ export function ODanhSachPhanLoai({ product }: { product: Product }) {
               onClick={() => ctx.chon(v.id)}
               aria-pressed={on}
               aria-label={`${v.ten}${het ? " — đã bán hết" : ""}`}
-              className="group w-[4.75rem] cursor-pointer text-center"
+              className="group w-[5rem] cursor-pointer text-center"
             >
               <span
                 className={`relative grid h-[4.25rem] place-items-center overflow-hidden rounded-xl border bg-surface-2 transition-all duration-200 ${
@@ -134,6 +138,11 @@ export function ODanhSachPhanLoai({ product }: { product: Product }) {
                   }`}
                 >
                   {v.ten}
+                </span>
+              )}
+              {khacGia && (
+                <span className="block text-[0.68rem] font-semibold text-primary-ink">
+                  {v.gia ? formatVND(v.gia) : "Liên hệ"}
                 </span>
               )}
             </button>

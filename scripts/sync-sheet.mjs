@@ -271,9 +271,10 @@ for (const cauHinh of config.tabs) {
     /*
      * Cột "Phân loại" — hai cách ghi, dùng lẫn được:
      *
-     *   1. MỘT dòng, liệt kê trong ô:  "Cam (1), Hồng (2), Xanh ngọc (0)"
-     *      Các phân loại dùng chung giá, tình trạng, ghi chú của dòng. Số trong
-     *      ngoặc là số lượng riêng; bỏ ngoặc thì dùng số ở cột Số lượng.
+     *   1. MỘT dòng, liệt kê trong ô:  "Cam (1), Hồng (2) 2tr1, Xanh ngọc (0)"
+     *      Các phân loại dùng chung tình trạng, ghi chú của dòng. Số trong
+     *      ngoặc là số lượng riêng; bỏ ngoặc thì dùng số ở cột Số lượng. Giá
+     *      ghi sau ngoặc là giá riêng; không ghi thì lấy giá ở cột Giá.
      *      Cách gọn nhất — Sheet không dài thêm dòng nào.
      *
      *   2. NHIỀU dòng trùng Hãng + Tên, mỗi dòng một phân loại. Chỉ cần khi các
@@ -288,9 +289,39 @@ for (const cauHinh of config.tabs) {
       .map((x) => x.trim())
       .filter(Boolean)
       .map((x) => {
-        const m = x.match(/^(.*?)\s*\((\d+)\)$/);
-        const ten = (m ? m[1] : x).trim();
-        return { id: slugify(ten), ten, soLuong: m ? Number(m[2]) : null };
+        /*
+         * Một mục:  Tên [(số lượng)] [giá riêng]
+         *   "Hồng"                 chung giá, chung số lượng của dòng
+         *   "Hồng (1)"             số lượng riêng
+         *   "Leviatan (1) 3tr2"    số lượng + giá riêng
+         *   "Leviatan: 3tr2"       chỉ giá riêng — phải có dấu ":" (hoặc "=")
+         *
+         * Giá chỉ được nhận SAU ngoặc số lượng hoặc sau dấu ":" — không đoán từ
+         * chữ cuối của tên, vì tên phân loại kiểu "Dongle 8k", "4k" là chuyện
+         * thường ở đồ gaming và trông y hệt một mức giá.
+         */
+        let phanTen = x;
+        let giaRieng = "";
+        const dau = x.search(/[:=]/);
+        if (dau >= 0) {
+          phanTen = x.slice(0, dau);
+          giaRieng = x.slice(dau + 1).trim();
+        }
+        const m = phanTen.match(/^(.*?)\s*\((\d+)\)\s*(.*)$/);
+        const ten = (m ? m[1] : phanTen).trim();
+        if (m && m[3] && !giaRieng) giaRieng = m[3].trim();
+
+        let gia = null;
+        if (giaRieng) {
+          gia = docGia(giaRieng);
+          if (!gia.gia) {
+            canhBao.push(
+              `⚠ "${row["ten san pham"] ?? ""}" (${cauHinh.tab}): không đọc được giá "${giaRieng}" của phân loại "${ten}" — dùng giá ở cột Giá.`,
+            );
+            gia = null;
+          }
+        }
+        return { id: slugify(ten), ten, soLuong: m ? Number(m[2]) : null, gia };
       })
       .filter((v) => v.id);
     const themPhanLoai =
@@ -367,9 +398,12 @@ for (const cauHinh of config.tabs) {
     const loais = dsPhanLoai.map((v) => ({
       id: v.id,
       ten: v.ten,
-      gia,
-      ...(giaToiDa ? { giaToiDa } : {}),
-      ...(ghiChuGia ? { ghiChuGia } : {}),
+      // Giá riêng ghi ngay trong ô Phân loại thắng giá ở cột Giá
+      ...(v.gia ?? {
+        gia,
+        ...(giaToiDa ? { giaToiDa } : {}),
+        ...(ghiChuGia ? { ghiChuGia } : {}),
+      }),
       tinhTrang,
       nhomTinhTrang,
       soLuong: v.soLuong ?? soLuongDong,
