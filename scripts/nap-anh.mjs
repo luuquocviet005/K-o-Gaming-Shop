@@ -486,7 +486,31 @@ for (const vao of duongDanVao) {
       else loaiLac.push({ ten, thuMuc: l.ten, sanPham: p });
     }
 
-    let vt = await vanTay([...duongDanAnh, ...dsZip]);
+    /*
+     * FILE ảnh đặt tên theo phân loại: "Đen.jpg", "Hồng 2.jpg", "Trắng (3).png".
+     *
+     * Món mỗi màu chỉ có một hai tấm thì chủ shop đặt tên file theo màu cho
+     * nhanh, không tạo thư mục con. Không nhận ra thì cả bốn tấm thành "ảnh
+     * chung" và màu nào cũng hiện tấm màu đen đầu tiên (02/10/2026).
+     * Chỉ khớp ĐÚNG tên phân loại (bỏ số thứ tự ở đuôi) — "IMG_2031.jpg" hay
+     * "hop.jpg" vẫn là ảnh chung như cũ.
+     */
+    const anhChung = [];
+    for (const f of duongDanAnh) {
+      const tenFile = basename(f)
+        .replace(/\.[^.]+$/, "")
+        .replace(/[\s_\-]*\(?\d+\)?$/, "");
+      const v = p.phanLoai?.find((x) => x.id === slugify(tenFile));
+      if (!v) {
+        anhChung.push(f);
+        continue;
+      }
+      const daCo = loaiKhop.find((l) => l.id === v.id);
+      if (daCo) daCo.files.push(f);
+      else loaiKhop.push({ ten: v.ten, id: v.id, files: [f] });
+    }
+
+    let vt = await vanTay([...anhChung, ...dsZip]);
     for (const l of loaiKhop) vt += `#${l.id}:${await vanTay(l.files)}`;
     cacheMoi[p.slug] = vt;
     const dichCu = join(thuMucDich, p.slug);
@@ -499,7 +523,7 @@ for (const vao of duongDanVao) {
     }
 
     // Tới đây mới chắc là cần xử lý — giờ mới bung file nén ra
-    const duongDanThat = [...duongDanAnh];
+    const duongDanThat = [...anhChung];
     for (const z of dsZip) {
       const d = await giaiNen(z);
       if (!d) continue;
