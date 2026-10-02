@@ -444,17 +444,32 @@ for (const vao of duongDanVao) {
      * (ví dụ "ATK Rs6" và "ATK Rs6 Aspas" đều khớp món "ATK RS6"). Nếu cứ ghi
      * đè thì bộ ảnh nạp trước biến mất lặng lẽ — mất dữ liệu mà không ai biết.
      */
+    // Tên file + dung lượng của bộ ảnh — để nhận ra hai thư mục là BẢN SAO của nhau
+    const boAnh = (
+      await Promise.all(
+        [...duongDanAnh, ...dsZip, ...(loais ?? []).flatMap((l) => l.files)].map(
+          async (f) => `${basename(f)}:${(await stat(f)).size}`,
+        ),
+      )
+    )
+      .sort()
+      .join("|");
+
     if (daNhan.has(p.slug)) {
+      // Món khai ở hai tab (soundcard: Tai nghe + Phụ kiện) thì chủ shop chép
+      // cùng bộ ảnh vào cả hai thư mục danh mục. Giống hệt nhau thì chẳng có gì
+      // để mất — lặng lẽ bỏ qua bản sau, đừng báo động.
+      if (daNhan.get(p.slug).boAnh === boAnh) continue;
       khongKhop.push({
         ten,
         danhMuc,
-        trung: { voi: daNhan.get(p.slug), sanPham: p },
+        trung: { voi: daNhan.get(p.slug).ten, sanPham: p },
         ungVien: [],
         diem: ketQua.diem,
       });
       continue;
     }
-    daNhan.set(p.slug, ten);
+    daNhan.set(p.slug, { ten, boAnh });
 
     /**
      * Lấy vân tay TRƯỚC khi giải nén.
