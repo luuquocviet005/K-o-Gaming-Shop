@@ -205,20 +205,26 @@ export function relatedProducts(product: Product, limit = 4): Product[] {
   return [...cungHang, ...conLai].slice(0, limit);
 }
 
-/** Hàng mới (New / nguyên seal) */
+/** Hàng mới (New / nguyên seal) còn hàng — món mới đã bán xong không đáng khoe */
 export function hangMoi(limit?: number): Product[] {
-  const ds = products.filter((p) => p.nhomTinhTrang === "moi");
+  const ds = products.filter((p) => p.nhomTinhTrang === "moi" && p.soLuong > 0);
   return limit ? ds.slice(0, limit) : ds;
 }
 
-/** Món đắt tiền nhất mỗi danh mục — dùng làm hàng nổi bật trên trang chủ */
+/**
+ * Món đắt tiền nhất mỗi danh mục — dùng làm hàng nổi bật trên trang chủ.
+ *
+ * Chỉ lấy món CÒN HÀNG: món đắt nhất thường là món vừa bán xong, và từng nằm
+ * chễm chệ ở ảnh lớn đầu trang chủ với nhãn "Đã bán hết".
+ */
 export function hangNoiBat(limit = 8): Product[] {
+  const conHang = products.filter((p) => p.soLuong > 0);
   const theoDanhMuc = new Map<string, Product>();
-  for (const p of [...products].sort((a, b) => b.gia - a.gia)) {
+  for (const p of [...conHang].sort((a, b) => b.gia - a.gia)) {
     if (!theoDanhMuc.has(p.danhMuc)) theoDanhMuc.set(p.danhMuc, p);
   }
   const dauBang = [...theoDanhMuc.values()];
-  const conLai = [...products]
+  const conLai = [...conHang]
     .filter((p) => !dauBang.includes(p))
     .sort((a, b) => b.gia - a.gia);
   return [...dauBang, ...conLai].slice(0, limit);
