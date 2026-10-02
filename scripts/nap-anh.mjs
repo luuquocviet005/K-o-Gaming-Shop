@@ -157,6 +157,15 @@ async function heicSangJpeg(nguon) {
   return dich;
 }
 
+/**
+ * Món có thuộc danh mục này không — tính cả danh mục phụ.
+ *
+ * Soundcard khai ở cả tab Tai nghe lẫn Phụ kiện thì danh mục chính là Tai nghe,
+ * Phụ kiện nằm trong `danhMucKhac`. Chỉ so danh mục chính thì thư mục ảnh đặt
+ * trong "Phụ kiện/" bị báo "không khớp món nào" dù món có thật (02/10/2026).
+ */
+const thuocDanhMuc = (p, dm) => p.danhMuc === dm.slug || p.danhMucKhac?.includes(dm.slug);
+
 /** Tên thư mục có phải một danh mục trên web không (bỏ dấu, không phân biệt hoa thường) */
 function nhanDangDanhMuc(ten) {
   const can = boDau(ten).replace(/[^a-z0-9]/g, "");
@@ -241,7 +250,7 @@ async function timSanPhamTrongCay(duongDan, danhMuc = null, sau = 0) {
    * mục gom nhóm kiểu "Đợt 1/Razer Viper/" không bị hiểu nhầm thành màu.
    */
   if (!laThuMucChua && thuMucCon.length > 0) {
-    const ungVien = danhMuc ? sanPham.filter((p) => p.danhMuc === danhMuc.slug) : sanPham;
+    const ungVien = danhMuc ? sanPham.filter((p) => thuocDanhMuc(p, danhMuc)) : sanPham;
     const kq = timSanPham(basename(duongDan), ungVien);
     if (kq.sanPham?.phanLoai) {
       const loais = [];
@@ -399,7 +408,7 @@ for (const vao of duongDanVao) {
     // Ảnh nằm trong thư mục danh mục thì chỉ đối chiếu trong danh mục đó —
     // không thể gán nhầm ảnh chuột sang một cái bàn phím trùng tên
     const ungVienSanPham = danhMuc
-      ? sanPham.filter((p) => p.danhMuc === danhMuc.slug)
+      ? sanPham.filter((p) => thuocDanhMuc(p, danhMuc))
       : sanPham;
 
     const ketQua = timSanPham(ten, ungVienSanPham);
