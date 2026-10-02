@@ -808,9 +808,9 @@
       "mau": "#4338ca"
     },
     {
-      "id": "atk-edge63-ultimate-hong",
-      "slug": "atk-edge63-ultimate-hong",
-      "ten": "Edge63 Ultimate ( Hồng )",
+      "id": "atk-edge63-ultimate",
+      "slug": "atk-edge63-ultimate",
+      "ten": "Edge63 Ultimate",
       "hang": "ATK",
       "danhMuc": "ban-phim",
       "gia": 2700000,
@@ -818,13 +818,39 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
-      "anh": "/products/atk-edge63-ultimate-hong/01.webp",
-      "anhs": [
-        "/products/atk-edge63-ultimate-hong/01.webp",
-        "/products/atk-edge63-ultimate-hong/02.webp",
-        "/products/atk-edge63-ultimate-hong/03.webp"
-      ],
-      "mau": "#4338ca"
+      "anh": "/products/atk-edge63-ultimate/hong/01.webp",
+      "mau": "#4338ca",
+      "phanLoai": [
+        {
+          "id": "hong",
+          "ten": "Hồng",
+          "gia": 2700000,
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 1,
+          "anh": "/products/atk-edge63-ultimate/hong/01.webp",
+          "anhs": [
+            "/products/atk-edge63-ultimate/hong/01.webp",
+            "/products/atk-edge63-ultimate/01.webp",
+            "/products/atk-edge63-ultimate/02.webp",
+            "/products/atk-edge63-ultimate/03.webp"
+          ]
+        },
+        {
+          "id": "leviatan",
+          "ten": "Leviatan",
+          "gia": 2700000,
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 1,
+          "anh": "/products/atk-edge63-ultimate/01.webp",
+          "anhs": [
+            "/products/atk-edge63-ultimate/01.webp",
+            "/products/atk-edge63-ultimate/02.webp",
+            "/products/atk-edge63-ultimate/03.webp"
+          ]
+        }
+      ]
     },
     {
       "id": "atk-rs6-ultra",
@@ -1123,6 +1149,26 @@
       "mau": "#4338ca"
     },
     {
+      "id": "akko-s9-ultra",
+      "slug": "akko-s9-ultra",
+      "ten": "S9 Ultra",
+      "hang": "Akko",
+      "danhMuc": "tai-nghe",
+      "gia": 700000,
+      "tinhTrang": "Mới, nguyên seal",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 20,
+      "note": "Khi mua sẽ nhận được hàng NEWSEAL, shop chỉ mở ra chụp ảnh demo",
+      "anh": "/products/akko-s9-ultra/01.webp",
+      "anhs": [
+        "/products/akko-s9-ultra/01.webp",
+        "/products/akko-s9-ultra/02.webp",
+        "/products/akko-s9-ultra/03.webp"
+      ],
+      "mau": "#0f172a"
+    },
+    {
       "id": "atk-horizon-dsp",
       "slug": "atk-horizon-dsp",
       "ten": "Horizon DSP",
@@ -1208,6 +1254,73 @@
       ]
     },
     {
+      "id": "hyperx-cloud-3",
+      "slug": "hyperx-cloud-3",
+      "ten": "Cloud 3",
+      "hang": "HyperX",
+      "danhMuc": "tai-nghe",
+      "gia": 1200000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 0,
+      "note": "Bảo hành chính hãng  20/11/2027",
+      "anh": "/products/hyperx-cloud-3/01.webp",
+      "mau": "#c2185b"
+    },
+    {
+      "id": "hyperx-stinger-2-core",
+      "slug": "hyperx-stinger-2-core",
+      "ten": "Stinger 2 core",
+      "hang": "HyperX",
+      "danhMuc": "tai-nghe",
+      "gia": 350000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 0,
+      "anh": "/products/hyperx-stinger-2-core/01.webp",
+      "anhs": [
+        "/products/hyperx-stinger-2-core/01.webp",
+        "/products/hyperx-stinger-2-core/02.webp"
+      ],
+      "mau": "#c2185b"
+    },
+    {
+      "id": "hyperx-earbuds-3",
+      "slug": "hyperx-earbuds-3",
+      "ten": "Earbuds 3",
+      "hang": "HyperX",
+      "danhMuc": "tai-nghe",
+      "gia": 750000,
+      "tinhTrang": "Mới, nguyên seal",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 18,
+      "anh": "/products/hyperx-earbuds-3/01.webp",
+      "mau": "#c2185b",
+      "phanLoai": [
+        {
+          "id": "do",
+          "ten": "Đỏ",
+          "gia": 750000,
+          "tinhTrang": "Mới, nguyên seal",
+          "nhomTinhTrang": "moi",
+          "soLuong": 18,
+          "anh": "/products/hyperx-earbuds-3/01.webp"
+        },
+        {
+          "id": "den",
+          "ten": "Đen",
+          "gia": 750000,
+          "tinhTrang": "Mới, nguyên seal",
+          "nhomTinhTrang": "moi",
+          "soLuong": 18,
+          "anh": "/products/hyperx-earbuds-3/01.webp"
+        }
+      ]
+    },
+    {
       "id": "razer-hammerhead-v3",
       "slug": "razer-hammerhead-v3",
       "ten": "Hammerhead v3",
@@ -1244,59 +1357,6 @@
       "mau": "#4338ca"
     },
     {
-      "id": "akko-s9-ultra",
-      "slug": "akko-s9-ultra",
-      "ten": "S9 Ultra",
-      "hang": "Akko",
-      "danhMuc": "tai-nghe",
-      "gia": 700000,
-      "tinhTrang": "Mới, nguyên seal",
-      "nhomTinhTrang": "moi",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 20,
-      "note": "Khi mua sẽ nhận được hàng NEWSEAL, shop chỉ mở ra chụp ảnh demo",
-      "anh": "/products/akko-s9-ultra/01.webp",
-      "anhs": [
-        "/products/akko-s9-ultra/01.webp",
-        "/products/akko-s9-ultra/02.webp",
-        "/products/akko-s9-ultra/03.webp"
-      ],
-      "mau": "#0f172a"
-    },
-    {
-      "id": "hyperx-cloud-3",
-      "slug": "hyperx-cloud-3",
-      "ten": "Cloud 3",
-      "hang": "HyperX",
-      "danhMuc": "tai-nghe",
-      "gia": 1200000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 0,
-      "note": "Bảo hành chính hãng  20/11/2027",
-      "anh": "/products/hyperx-cloud-3/01.webp",
-      "mau": "#c2185b"
-    },
-    {
-      "id": "hyperx-stinger-2-core",
-      "slug": "hyperx-stinger-2-core",
-      "ten": "Stinger 2 core",
-      "hang": "HyperX",
-      "danhMuc": "tai-nghe",
-      "gia": 350000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 0,
-      "anh": "/products/hyperx-stinger-2-core/01.webp",
-      "anhs": [
-        "/products/hyperx-stinger-2-core/01.webp",
-        "/products/hyperx-stinger-2-core/02.webp"
-      ],
-      "mau": "#c2185b"
-    },
-    {
       "id": "razer-barracuda-x-2022",
       "slug": "razer-barracuda-x-2022",
       "ten": "Barracuda x 2022",
@@ -1317,20 +1377,6 @@
         "/products/razer-barracuda-x-2022/06.webp"
       ],
       "mau": "#4338ca"
-    },
-    {
-      "id": "hyperx-earbuds-3",
-      "slug": "hyperx-earbuds-3",
-      "ten": "Earbuds 3",
-      "hang": "HyperX",
-      "danhMuc": "tai-nghe",
-      "gia": 750000,
-      "tinhTrang": "Mới, nguyên seal",
-      "nhomTinhTrang": "moi",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 18,
-      "anh": "/products/hyperx-earbuds-3/01.webp",
-      "mau": "#c2185b"
     },
     {
       "id": "atk-lie-xsoft-m",
