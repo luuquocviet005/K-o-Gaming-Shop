@@ -26,6 +26,11 @@ import { CheckIcon, FacebookIcon, InfoIcon, MapPinIcon, ZaloIcon } from "@/compo
  * khách còn giữ link cũ trên Facebook/Zalo. Bỏ đi là mỗi lần bán được hàng lại
  * đẻ thêm một link chết.
  */
+// Đường dẫn ngoài generateStaticParams -> 404 ngay, giống hệt bản tĩnh. Thiếu
+// dòng này thì ở chế độ máy chủ (Hostinger) slug lạ vẫn được dựng trang rồi
+// mới notFound(), và trang 404 mang tiêu đề trang chủ.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return [...products, ...soldProducts].map((p) => ({ slug: p.slug }));
 }

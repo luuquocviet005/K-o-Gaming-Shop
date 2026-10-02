@@ -14,7 +14,7 @@
  *      nếu không sẽ làm hỏng cả lượt deploy đang thành công.
  */
 
-import { copyFile, readdir, readFile, stat, writeFile } from "node:fs/promises";
+import { copyFile, readdir, stat } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -83,35 +83,6 @@ if (!existsSync(out)) {
 
 await copyFile(join(root, "deploy", ".htaccess"), join(out, ".htaccess"));
 
-/**
- * Đặt tiêu đề riêng cho trang 404.
- *
- * Next.js không cho phép export `metadata` từ `not-found.tsx`, nên cả 3 bản
- * HTML của trang 404 đều thừa hưởng tiêu đề mặc định của trang chủ. Trùng
- * tiêu đề như vậy gây nhầm lẫn cho công cụ tìm kiếm, nên sửa trực tiếp trên
- * file đã build.
- */
-const NOT_FOUND_TITLE = "Không tìm thấy trang | KẸO GAMING SHOP";
-const NOT_FOUND_DESC =
-  "Trang bạn tìm không tồn tại hoặc đã được chuyển đi. Xem các sản phẩm gaming gear đang bán chạy tại KẸO GAMING SHOP.";
-
-let patched = 0;
-for (const file of ["404.html", "404/index.html", "_not-found/index.html"]) {
-  const path = join(out, file);
-  if (!existsSync(path)) continue;
-  const html = await readFile(path, "utf8");
-  const next = html
-    .replace(/<title>[^<]*<\/title>/, `<title>${NOT_FOUND_TITLE}</title>`)
-    .replace(
-      /<meta name="description" content="[^"]*"\/?>/,
-      `<meta name="description" content="${NOT_FOUND_DESC}"/>`,
-    );
-  if (next !== html) {
-    await writeFile(path, next, "utf8");
-    patched++;
-  }
-}
-
 // Lỗi deploy phổ biến nhất: upload cả thư mục out thay vì nội dung bên trong.
 if (!existsSync(join(out, "index.html"))) {
   console.error("");
@@ -132,7 +103,6 @@ async function dirSize(dir) {
 const mb = ((await dirSize(out)) / 1024 / 1024).toFixed(2);
 
 console.log("");
-console.log(`  ✓ Đã đặt tiêu đề riêng cho ${patched} bản HTML của trang 404`);
 console.log("  ✓ Đã copy .htaccess vào out/");
 console.log("  ✓ Có out/index.html ở gốc");
 console.log(`  ✓ Trang tĩnh sẵn sàng: out/  (${mb} MB)`);

@@ -16,6 +16,11 @@ const nextConfig: NextConfig = {
 
   productionBrowserSourceMaps: false,
 
+  // Cho phép src/app/global-not-found.tsx — trang 404 khai được tiêu đề riêng.
+  experimental: {
+    globalNotFound: true,
+  },
+
   /**
    * Chỉ có tác dụng khi nền tảng deploy chạy ở CHẾ ĐỘ MÁY CHỦ (Hostinger
    * Deployment). Ở chế độ tĩnh, Next bỏ qua phần này và `.htaccess` lo việc

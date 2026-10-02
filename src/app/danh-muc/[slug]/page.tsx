@@ -7,6 +7,11 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { ProductBrowser } from "@/components/product-browser";
 import { CategoryIcon } from "@/components/icons";
 
+// Đường dẫn ngoài generateStaticParams -> 404 ngay, giống hệt bản tĩnh. Thiếu
+// dòng này thì ở chế độ máy chủ (Hostinger) slug lạ vẫn được dựng trang rồi
+// mới notFound(), và trang 404 mang tiêu đề trang chủ.
+export const dynamicParams = false;
+
 // Static export cần biết trước mọi đường dẫn động sẽ được sinh ra
 export function generateStaticParams() {
   return categories.map((c) => ({ slug: c.slug }));
