@@ -38,6 +38,8 @@ export function ThuVienAnh({ product }: { product: Product }) {
 function ThuVienAnhNoi({ product }: { product: Product }) {
   const anhs = product.anhs ?? (product.anh ? [product.anh] : []);
   const rangRef = useRef<HTMLDivElement>(null);
+  /** Điểm chạm đầu tiên trong khung phóng to, để nhận ra cú vuốt ngang */
+  const chamX = useRef(0);
   const [chiSo, setChiSo] = useState(0);
   const [phongTo, setPhongTo] = useState<number | null>(null);
 
@@ -144,13 +146,16 @@ function ThuVienAnhNoi({ product }: { product: Product }) {
           ))}
         </div>
 
+        {/* Hai mũi tên chỉ hiện từ màn hình vừa trở lên. Trên điện thoại chúng
+            đè lên chính tấm ảnh (ảnh rộng gần kín khung), mà vuốt ngang đã
+            chuyển ảnh được rồi — dải chấm bên dưới báo đang ở tấm nào. */}
         {nhieuAnh && (
           <>
             <button
               type="button"
               onClick={() => truot(-1)}
               aria-label="Xem ảnh trước"
-              className="absolute left-3 top-1/2 grid size-11 -translate-y-1/2 cursor-pointer place-items-center rounded-full border border-border bg-surface/90 text-fg backdrop-blur transition-colors hover:bg-surface"
+              className="absolute left-3 top-1/2 hidden size-11 -translate-y-1/2 cursor-pointer place-items-center rounded-full border border-border bg-surface/90 text-fg backdrop-blur transition-colors hover:bg-surface sm:grid"
             >
               <ChevronLeftIcon width={20} height={20} />
             </button>
@@ -158,7 +163,7 @@ function ThuVienAnhNoi({ product }: { product: Product }) {
               type="button"
               onClick={() => truot(1)}
               aria-label="Xem ảnh tiếp theo"
-              className="absolute right-3 top-1/2 grid size-11 -translate-y-1/2 cursor-pointer place-items-center rounded-full border border-border bg-surface/90 text-fg backdrop-blur transition-colors hover:bg-surface"
+              className="absolute right-3 top-1/2 hidden size-11 -translate-y-1/2 cursor-pointer place-items-center rounded-full border border-border bg-surface/90 text-fg backdrop-blur transition-colors hover:bg-surface sm:grid"
             >
               <ChevronRightIcon width={20} height={20} />
             </button>
@@ -195,6 +200,14 @@ function ThuVienAnhNoi({ product }: { product: Product }) {
             aria-modal="true"
             aria-label={`Ảnh phóng to: ${product.hang} ${product.ten}`}
             className="fixed inset-0 z-[200] flex items-center justify-center bg-[var(--nen-phong-to)] p-4 backdrop-blur-sm"
+            // Vuốt ngang để chuyển ảnh — trên điện thoại đó là thao tác tự nhiên nhất
+            onTouchStart={(e) => {
+              chamX.current = e.touches[0].clientX;
+            }}
+            onTouchEnd={(e) => {
+              const dx = e.changedTouches[0].clientX - chamX.current;
+              if (nhieuAnh && Math.abs(dx) > 50) chuyen(dx < 0 ? 1 : -1);
+            }}
           >
             {/* Bấm ra nền để đóng — nút phủ kín phía sau ảnh */}
             <button
@@ -210,7 +223,7 @@ function ThuVienAnhNoi({ product }: { product: Product }) {
               alt={`${product.hang} ${product.ten} — ảnh ${phongTo + 1} trên ${anhs.length}`}
               width={1400}
               height={1400}
-              className="relative max-h-[85vh] w-auto max-w-full object-contain"
+              className="relative max-h-[70vh] w-auto max-w-full object-contain sm:max-h-[85vh]"
             />
 
             <button
@@ -223,29 +236,34 @@ function ThuVienAnhNoi({ product }: { product: Product }) {
               <CloseIcon width={22} height={22} />
             </button>
 
+            {/*
+              Nút chuyển ảnh. Điện thoại: gom xuống thanh dưới cùng, hai bên
+              số thứ tự — đặt giữa hai mép thì đè lên ảnh, che mất đúng chỗ
+              khách cần soi. Màn hình rộng: ảnh không chạm tới mép nên để hai
+              bên như thường lệ.
+            */}
             {nhieuAnh && (
-              <>
+              <div className="pointer-events-none absolute inset-x-0 bottom-5 flex items-center justify-center gap-3 sm:inset-x-4 sm:inset-y-0 sm:justify-between">
                 <button
                   type="button"
                   onClick={() => chuyen(-1)}
                   aria-label="Ảnh trước"
-                  className="absolute left-4 top-1/2 grid size-12 -translate-y-1/2 cursor-pointer place-items-center rounded-full bg-bg text-fg transition-transform hover:scale-105"
+                  className="pointer-events-auto grid size-12 cursor-pointer place-items-center rounded-full bg-bg text-fg transition-transform hover:scale-105"
                 >
                   <ChevronLeftIcon width={24} height={24} />
                 </button>
+                <p className="rounded-full bg-bg px-4 py-1.5 text-sm font-semibold text-fg sm:absolute sm:bottom-5 sm:left-1/2 sm:-translate-x-1/2">
+                  {phongTo + 1} / {anhs.length}
+                </p>
                 <button
                   type="button"
                   onClick={() => chuyen(1)}
                   aria-label="Ảnh tiếp theo"
-                  className="absolute right-4 top-1/2 grid size-12 -translate-y-1/2 cursor-pointer place-items-center rounded-full bg-bg text-fg transition-transform hover:scale-105"
+                  className="pointer-events-auto grid size-12 cursor-pointer place-items-center rounded-full bg-bg text-fg transition-transform hover:scale-105"
                 >
                   <ChevronRightIcon width={24} height={24} />
                 </button>
-
-                <p className="absolute bottom-5 left-1/2 -translate-x-1/2 rounded-full bg-bg px-4 py-1.5 text-sm font-semibold text-fg">
-                  {phongTo + 1} / {anhs.length}
-                </p>
-              </>
+              </div>
             )}
           </div>,
           document.body,
