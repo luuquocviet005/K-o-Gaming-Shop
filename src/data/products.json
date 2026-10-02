@@ -38,7 +38,7 @@
       "short": "Phụ kiện",
       "icon": "do-khac",
       "blurb": "Keycap, bungee, đế sạc, tai nghe không dây và đồ chơi lẻ đi kèm.",
-      "soLuong": 10
+      "soLuong": 11
     },
     {
       "slug": "switch-he",
@@ -1611,6 +1611,19 @@
         "/products/phi-khuong-hoan-phi/03.webp"
       ],
       "mau": "#be123c"
+    },
+    {
+      "id": "razer-seiren-v3-chroma",
+      "slug": "razer-seiren-v3-chroma",
+      "ten": "Seiren V3 Chroma",
+      "hang": "Razer",
+      "danhMuc": "phu-kien",
+      "gia": 1600000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "mau": "#4338ca"
     },
     {
       "id": "gateron-jade-pro",
