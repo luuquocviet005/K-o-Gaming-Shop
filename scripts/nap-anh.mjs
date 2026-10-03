@@ -393,10 +393,30 @@ for (const vao of duongDanVao) {
     continue;
   }
 
-  const dsSanPham = await timSanPhamTrongCay(
-    vao,
-    nhanDangDanhMuc(basename(vao)) ?? null,
-  );
+  /*
+   * GỘP các nguồn CÙNG TÊN trong cùng danh mục thành một món.
+   *
+   * Chủ shop ban đầu thả một tấm rời "Hyperx Earbuds 3.heic", sau đó tạo thêm
+   * thư mục "Hyperx Earbuds 3/" để xếp ảnh theo màu. Hai nguồn cùng tên rõ
+   * ràng là cùng một món — nhưng trước đây nguồn sau bị coi là "trùng đích" và
+   * bỏ qua, nên ảnh theo màu không bao giờ lên web (04/10/2026).
+   * Tên khác nhau mà cùng khớp một món ("RS6" và "RS6 Aspas") thì vẫn báo như cũ.
+   */
+  const theoTen = new Map();
+  for (const e of await timSanPhamTrongCay(vao, nhanDangDanhMuc(basename(vao)) ?? null)) {
+    // So NGUYÊN tên (chỉ bỏ dấu, hoa thường, khoảng trắng thừa). Bỏ cả ký hiệu thì
+    // "A9 Mini Ultimate" và "A9 Mini Ultimate +" — hai con chuột khác nhau — bị gộp làm một.
+    const khoa = `${e.danhMuc?.slug ?? ""}|${boDau(e.ten).replace(/\s+/g, " ").trim()}`;
+    const cu = theoTen.get(khoa);
+    if (!cu) {
+      theoTen.set(khoa, { ...e, files: [...(e.files ?? [])], zips: e.zips ?? (e.zip ? [e.zip] : []), zip: undefined });
+      continue;
+    }
+    cu.files.push(...(e.files ?? []));
+    cu.zips.push(...(e.zips ?? (e.zip ? [e.zip] : [])));
+    if (e.loais) cu.loais = [...(cu.loais ?? []), ...e.loais];
+  }
+  const dsSanPham = [...theoTen.values()];
   if (dsSanPham.length === 0) {
     console.error(`  ✗ Không thấy ảnh nào trong: ${vao}`);
     continue;
@@ -500,7 +520,14 @@ for (const vao of duongDanVao) {
       const tenFile = basename(f)
         .replace(/\.[^.]+$/, "")
         .replace(/[\s_\-]*\(?\d+\)?$/, "");
-      const v = p.phanLoai?.find((x) => x.id === slugify(tenFile));
+      // Trùng đúng tên trước; không có thì nhận tên viết tắt ("Xanh" cho "Xanh hồ",
+      // "Trắng" cho "Trắng Newseal") — nhưng chỉ khi nó khớp DUY NHẤT một phân loại.
+      const k = slugify(tenFile);
+      const ganDung = k
+        ? (p.phanLoai ?? []).filter((x) => x.id.startsWith(`${k}-`) || k.startsWith(`${x.id}-`))
+        : [];
+      const v =
+        p.phanLoai?.find((x) => x.id === k) ?? (ganDung.length === 1 ? ganDung[0] : undefined);
       if (!v) {
         anhChung.push(f);
         continue;

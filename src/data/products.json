@@ -131,7 +131,6 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 3,
-      "anh": "/products/atk-a9-mini-ultimate/den/01.webp",
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -141,11 +140,7 @@
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
           "soLuong": 3,
-          "anh": "/products/atk-a9-mini-ultimate/den/01.webp",
-          "anhs": [
-            "/products/atk-a9-mini-ultimate/den/01.webp",
-            "/products/atk-a9-mini-ultimate/01.webp"
-          ]
+          "anh": "/products/atk-a9-mini-ultimate/den/01.webp"
         },
         {
           "id": "xanh-ho",
@@ -154,7 +149,7 @@
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
           "soLuong": 3,
-          "anh": "/products/atk-a9-mini-ultimate/01.webp"
+          "anh": "/products/atk-a9-mini-ultimate/xanh-ho/01.webp"
         },
         {
           "id": "hong",
@@ -163,13 +158,10 @@
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
           "soLuong": 3,
-          "anh": "/products/atk-a9-mini-ultimate/hong/01.webp",
-          "anhs": [
-            "/products/atk-a9-mini-ultimate/hong/01.webp",
-            "/products/atk-a9-mini-ultimate/01.webp"
-          ]
+          "anh": "/products/atk-a9-mini-ultimate/hong/01.webp"
         }
-      ]
+      ],
+      "anh": "/products/atk-a9-mini-ultimate/den/01.webp"
     },
     {
       "id": "atk-f1-ultimate-v2",
@@ -183,7 +175,6 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 2,
-      "anh": "/products/atk-f1-ultimate-v2/hong/01.webp",
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -193,11 +184,7 @@
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
           "soLuong": 2,
-          "anh": "/products/atk-f1-ultimate-v2/hong/01.webp",
-          "anhs": [
-            "/products/atk-f1-ultimate-v2/hong/01.webp",
-            "/products/atk-f1-ultimate-v2/01.webp"
-          ]
+          "anh": "/products/atk-f1-ultimate-v2/hong/01.webp"
         },
         {
           "id": "trang-newseal",
@@ -206,9 +193,10 @@
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
           "soLuong": 2,
-          "anh": "/products/atk-f1-ultimate-v2/01.webp"
+          "anh": "/products/atk-f1-ultimate-v2/trang-newseal/01.webp"
         }
-      ]
+      ],
+      "anh": "/products/atk-f1-ultimate-v2/hong/01.webp"
     },
     {
       "id": "atk-a9-air",
@@ -1305,7 +1293,7 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 18,
-      "anh": "/products/hyperx-earbuds-3/01.webp",
+      "anh": "/products/hyperx-earbuds-3/do/01.webp",
       "mau": "#c2185b",
       "phanLoai": [
         {
@@ -1315,7 +1303,11 @@
           "tinhTrang": "Mới, nguyên seal",
           "nhomTinhTrang": "moi",
           "soLuong": 18,
-          "anh": "/products/hyperx-earbuds-3/01.webp"
+          "anh": "/products/hyperx-earbuds-3/do/01.webp",
+          "anhs": [
+            "/products/hyperx-earbuds-3/do/01.webp",
+            "/products/hyperx-earbuds-3/01.webp"
+          ]
         },
         {
           "id": "den",
@@ -1324,7 +1316,11 @@
           "tinhTrang": "Mới, nguyên seal",
           "nhomTinhTrang": "moi",
           "soLuong": 18,
-          "anh": "/products/hyperx-earbuds-3/01.webp"
+          "anh": "/products/hyperx-earbuds-3/den/01.webp",
+          "anhs": [
+            "/products/hyperx-earbuds-3/den/01.webp",
+            "/products/hyperx-earbuds-3/01.webp"
+          ]
         }
       ]
     },
