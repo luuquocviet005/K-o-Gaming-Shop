@@ -511,7 +511,7 @@
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
+      "soLuong": 0,
       "anh": "/products/razer-naga-v2-hyperspeed/01.webp",
       "anhs": [
         "/products/razer-naga-v2-hyperspeed/01.webp",
@@ -872,7 +872,7 @@
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
+      "soLuong": 0,
       "anh": "/products/atk-rs6-ultra/01.webp",
       "anhs": [
         "/products/atk-rs6-ultra/01.webp",
@@ -1293,7 +1293,6 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 18,
-      "anh": "/products/hyperx-earbuds-3/do/01.webp",
       "mau": "#c2185b",
       "phanLoai": [
         {
@@ -1303,11 +1302,7 @@
           "tinhTrang": "Mới, nguyên seal",
           "nhomTinhTrang": "moi",
           "soLuong": 18,
-          "anh": "/products/hyperx-earbuds-3/do/01.webp",
-          "anhs": [
-            "/products/hyperx-earbuds-3/do/01.webp",
-            "/products/hyperx-earbuds-3/01.webp"
-          ]
+          "anh": "/products/hyperx-earbuds-3/do/01.webp"
         },
         {
           "id": "den",
@@ -1316,13 +1311,10 @@
           "tinhTrang": "Mới, nguyên seal",
           "nhomTinhTrang": "moi",
           "soLuong": 18,
-          "anh": "/products/hyperx-earbuds-3/den/01.webp",
-          "anhs": [
-            "/products/hyperx-earbuds-3/den/01.webp",
-            "/products/hyperx-earbuds-3/01.webp"
-          ]
+          "anh": "/products/hyperx-earbuds-3/den/01.webp"
         }
-      ]
+      ],
+      "anh": "/products/hyperx-earbuds-3/do/01.webp"
     },
     {
       "id": "razer-hammerhead-v3",
@@ -1371,16 +1363,36 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 24,
-      "anh": "/products/razer-barracuda-x-2022/01.webp",
-      "anhs": [
-        "/products/razer-barracuda-x-2022/01.webp",
-        "/products/razer-barracuda-x-2022/02.webp",
-        "/products/razer-barracuda-x-2022/03.webp",
-        "/products/razer-barracuda-x-2022/04.webp",
-        "/products/razer-barracuda-x-2022/05.webp",
-        "/products/razer-barracuda-x-2022/06.webp"
+      "mau": "#4338ca",
+      "phanLoai": [
+        {
+          "id": "den",
+          "ten": "Đen",
+          "gia": 850000,
+          "tinhTrang": "Cũ · không hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 24,
+          "anh": "/products/razer-barracuda-x-2022/den/01.webp",
+          "anhs": [
+            "/products/razer-barracuda-x-2022/den/01.webp",
+            "/products/razer-barracuda-x-2022/den/02.webp"
+          ]
+        },
+        {
+          "id": "trang",
+          "ten": "Trắng",
+          "gia": 850000,
+          "tinhTrang": "Cũ · không hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 24,
+          "anh": "/products/razer-barracuda-x-2022/trang/01.webp",
+          "anhs": [
+            "/products/razer-barracuda-x-2022/trang/01.webp",
+            "/products/razer-barracuda-x-2022/trang/02.webp"
+          ]
+        }
       ],
-      "mau": "#4338ca"
+      "anh": "/products/razer-barracuda-x-2022/den/01.webp"
     },
     {
       "id": "atk-lie-xsoft-m",
