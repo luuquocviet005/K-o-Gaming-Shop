@@ -183,7 +183,7 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 2,
-      "anh": "/products/atk-f1-ultimate-v2/01.webp",
+      "anh": "/products/atk-f1-ultimate-v2/hong/01.webp",
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -193,13 +193,10 @@
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
           "soLuong": 2,
-          "anh": "/products/atk-f1-ultimate-v2/01.webp",
+          "anh": "/products/atk-f1-ultimate-v2/hong/01.webp",
           "anhs": [
-            "/products/atk-f1-ultimate-v2/01.webp",
-            "/products/atk-f1-ultimate-v2/02.webp",
-            "/products/atk-f1-ultimate-v2/03.webp",
-            "/products/atk-f1-ultimate-v2/04.webp",
-            "/products/atk-f1-ultimate-v2/05.webp"
+            "/products/atk-f1-ultimate-v2/hong/01.webp",
+            "/products/atk-f1-ultimate-v2/01.webp"
           ]
         },
         {
@@ -209,14 +206,7 @@
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
           "soLuong": 2,
-          "anh": "/products/atk-f1-ultimate-v2/01.webp",
-          "anhs": [
-            "/products/atk-f1-ultimate-v2/01.webp",
-            "/products/atk-f1-ultimate-v2/02.webp",
-            "/products/atk-f1-ultimate-v2/03.webp",
-            "/products/atk-f1-ultimate-v2/04.webp",
-            "/products/atk-f1-ultimate-v2/05.webp"
-          ]
+          "anh": "/products/atk-f1-ultimate-v2/01.webp"
         }
       ]
     },
@@ -313,7 +303,6 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
-      "anh": "/products/atk-a9-mini-ultimate-2/01.webp",
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -323,7 +312,7 @@
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
           "soLuong": 1,
-          "anh": "/products/atk-a9-mini-ultimate-2/01.webp"
+          "anh": "/products/atk-a9-mini-ultimate-2/den/01.webp"
         },
         {
           "id": "trang",
@@ -332,9 +321,10 @@
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
           "soLuong": 1,
-          "anh": "/products/atk-a9-mini-ultimate-2/01.webp"
+          "anh": "/products/atk-a9-mini-ultimate-2/trang/01.webp"
         }
-      ]
+      ],
+      "anh": "/products/atk-a9-mini-ultimate-2/den/01.webp"
     },
     {
       "id": "atk-x1-v2-air",
@@ -1637,7 +1627,7 @@
       "tinhTrang": "",
       "nhomTinhTrang": "khac",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 75,
+      "soLuong": 0,
       "anh": "/products/gateron-jade-pro/01.webp",
       "anhs": [
         "/products/gateron-jade-pro/01.webp",
