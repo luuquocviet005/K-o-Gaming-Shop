@@ -820,6 +820,13 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 0,
       "anh": "/products/atk-rs6-air/01.webp",
+      "anhs": [
+        "/products/atk-rs6-air/01.webp",
+        "/products/atk-rs6-air/02.webp",
+        "/products/atk-rs6-air/03.webp",
+        "/products/atk-rs6-air/04.webp",
+        "/products/atk-rs6-air/05.webp"
+      ],
       "mau": "#4338ca"
     },
     {
