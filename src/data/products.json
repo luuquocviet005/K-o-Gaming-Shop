@@ -831,7 +831,12 @@
           "gia": 1200000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 2
+          "soLuong": 2,
+          "anh": "/products/atk-rs6-air/den/01.webp",
+          "anhs": [
+            "/products/atk-rs6-air/den/01.webp",
+            "/products/atk-rs6-air/den/02.webp"
+          ]
         },
         {
           "id": "aspas",
@@ -848,7 +853,7 @@
           ]
         }
       ],
-      "anh": "/products/atk-rs6-air/aspas/01.webp"
+      "anh": "/products/atk-rs6-air/den/01.webp"
     },
     {
       "id": "atk-rs6-aspas",
