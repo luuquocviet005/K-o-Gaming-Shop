@@ -1164,12 +1164,38 @@
       "ten": "Phantom",
       "hang": "ATK",
       "danhMuc": "ban-phim",
-      "gia": 0,
-      "tinhTrang": "",
-      "nhomTinhTrang": "khac",
+      "gia": 1900000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 0,
-      "mau": "#4338ca"
+      "soLuong": 1,
+      "mau": "#4338ca",
+      "phanLoai": [
+        {
+          "id": "den",
+          "ten": "Đen",
+          "gia": 1900000,
+          "tinhTrang": "Mới",
+          "nhomTinhTrang": "moi",
+          "soLuong": 1
+        },
+        {
+          "id": "xanh",
+          "ten": "Xanh",
+          "gia": 1900000,
+          "tinhTrang": "Mới",
+          "nhomTinhTrang": "moi",
+          "soLuong": 1
+        },
+        {
+          "id": "trang",
+          "ten": "Trắng",
+          "gia": 1900000,
+          "tinhTrang": "Mới",
+          "nhomTinhTrang": "moi",
+          "soLuong": 1
+        }
+      ]
     },
     {
       "id": "akko-s9-ultra",
