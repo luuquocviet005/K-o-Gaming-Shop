@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 24
+      "soLuong": 22
     },
     {
       "slug": "ban-phim",
@@ -38,7 +38,7 @@
       "short": "Phụ kiện",
       "icon": "do-khac",
       "blurb": "Keycap, bungee, đế sạc, tai nghe không dây và đồ chơi lẻ đi kèm.",
-      "soLuong": 11
+      "soLuong": 10
     },
     {
       "slug": "switch-he",
@@ -51,24 +51,6 @@
     }
   ],
   "sanPham": [
-    {
-      "id": "akko-tan-8-ultra",
-      "slug": "akko-tan-8-ultra",
-      "ten": "Tan 8 ultra",
-      "hang": "Akko",
-      "danhMuc": "chuot",
-      "gia": 850000,
-      "tinhTrang": "Mới",
-      "nhomTinhTrang": "moi",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/akko-tan-8-ultra/01.webp",
-      "anhs": [
-        "/products/akko-tan-8-ultra/01.webp",
-        "/products/akko-tan-8-ultra/02.webp"
-      ],
-      "mau": "#0f172a"
-    },
     {
       "id": "atk-f1-extreme-leviatan",
       "slug": "atk-f1-extreme-leviatan",
@@ -328,7 +310,7 @@
       "tinhTrang": "Mới",
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 3,
+      "soLuong": 2,
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -337,17 +319,8 @@
           "gia": 1900000,
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
-          "soLuong": 3,
+          "soLuong": 2,
           "anh": "/products/atk-phantom/den/01.webp"
-        },
-        {
-          "id": "xanh",
-          "ten": "Xanh",
-          "gia": 1900000,
-          "tinhTrang": "Mới",
-          "nhomTinhTrang": "moi",
-          "soLuong": 3,
-          "anh": "/products/atk-phantom/xanh/01.webp"
         },
         {
           "id": "trang",
@@ -355,24 +328,11 @@
           "gia": 1900000,
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
-          "soLuong": 3,
+          "soLuong": 2,
           "anh": "/products/atk-phantom/trang/01.webp"
         }
       ],
       "anh": "/products/atk-phantom/den/01.webp"
-    },
-    {
-      "id": "atk-x1-air",
-      "slug": "atk-x1-air",
-      "ten": "X1 Air",
-      "hang": "ATK",
-      "danhMuc": "chuot",
-      "gia": 0,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 2,
-      "mau": "#4338ca"
     },
     {
       "id": "aula-sc311",
@@ -1501,20 +1461,6 @@
         "/products/phi-khuong-hoan-phi/03.webp"
       ],
       "mau": "#be123c"
-    },
-    {
-      "id": "razer-seiren-v3-chroma",
-      "slug": "razer-seiren-v3-chroma",
-      "ten": "Seiren V3 Chroma",
-      "hang": "Razer",
-      "danhMuc": "phu-kien",
-      "gia": 1600000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/razer-seiren-v3-chroma/01.webp",
-      "mau": "#4338ca"
     },
     {
       "id": "gateron-jade-pro",

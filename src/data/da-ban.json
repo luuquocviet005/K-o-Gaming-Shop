@@ -156,6 +156,41 @@
       "banLuc": "2026-10-05"
     },
     {
+      "slug": "akko-tan-8-ultra",
+      "ten": "Tan 8 ultra",
+      "hang": "Akko",
+      "danhMuc": "chuot",
+      "gia": 850000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "anh": "/products/akko-tan-8-ultra/01.webp",
+      "mau": "#0f172a",
+      "banLuc": "2026-10-05"
+    },
+    {
+      "slug": "atk-x1-air",
+      "ten": "X1 Air",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 0,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "mau": "#4338ca",
+      "banLuc": "2026-10-05"
+    },
+    {
+      "slug": "razer-seiren-v3-chroma",
+      "ten": "Seiren V3 Chroma",
+      "hang": "Razer",
+      "danhMuc": "phu-kien",
+      "gia": 1600000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/razer-seiren-v3-chroma/01.webp",
+      "mau": "#4338ca",
+      "banLuc": "2026-10-05"
+    },
+    {
       "slug": "atk-edge63-ultimate-hong",
       "ten": "Edge63 Ultimate ( Hồng )",
       "hang": "ATK",
