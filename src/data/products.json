@@ -22,7 +22,7 @@
       "short": "Tai nghe",
       "icon": "tai-nghe",
       "blurb": "Tai nghe chụp tai, in-ear và soundcard.",
-      "soLuong": 10
+      "soLuong": 6
     },
     {
       "slug": "pad-chuot",
@@ -30,7 +30,7 @@
       "short": "Pad chuột",
       "icon": "pad-chuot",
       "blurb": "Pad vải, pad cỡ lớn và pad chơi game — hàng mới và hàng cũ.",
-      "soLuong": 3
+      "soLuong": 2
     },
     {
       "slug": "phu-kien",
@@ -1031,20 +1031,6 @@
       "mau": "#0f172a"
     },
     {
-      "id": "atk-horizon-dsp",
-      "slug": "atk-horizon-dsp",
-      "ten": "Horizon DSP",
-      "hang": "ATK",
-      "danhMuc": "tai-nghe",
-      "gia": 900000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 0,
-      "anh": "/products/atk-horizon-dsp/01.webp",
-      "mau": "#4338ca"
-    },
-    {
       "id": "hyperx-earbuds-2",
       "slug": "hyperx-earbuds-2",
       "ten": "Earbuds 2",
@@ -1102,39 +1088,6 @@
       ]
     },
     {
-      "id": "hyperx-cloud-3",
-      "slug": "hyperx-cloud-3",
-      "ten": "Cloud 3",
-      "hang": "HyperX",
-      "danhMuc": "tai-nghe",
-      "gia": 1200000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 0,
-      "note": "Bảo hành chính hãng  20/11/2027",
-      "anh": "/products/hyperx-cloud-3/01.webp",
-      "mau": "#c2185b"
-    },
-    {
-      "id": "hyperx-stinger-2-core",
-      "slug": "hyperx-stinger-2-core",
-      "ten": "Stinger 2 core",
-      "hang": "HyperX",
-      "danhMuc": "tai-nghe",
-      "gia": 350000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 0,
-      "anh": "/products/hyperx-stinger-2-core/01.webp",
-      "anhs": [
-        "/products/hyperx-stinger-2-core/01.webp",
-        "/products/hyperx-stinger-2-core/02.webp"
-      ],
-      "mau": "#c2185b"
-    },
-    {
       "id": "hyperx-earbuds-3",
       "slug": "hyperx-earbuds-3",
       "ten": "Earbuds 3",
@@ -1167,24 +1120,6 @@
         }
       ],
       "anh": "/products/hyperx-earbuds-3/do/01.webp"
-    },
-    {
-      "id": "razer-hammerhead-v3",
-      "slug": "razer-hammerhead-v3",
-      "ten": "Hammerhead v3",
-      "hang": "Razer",
-      "danhMuc": "tai-nghe",
-      "gia": 750000,
-      "tinhTrang": "Mới, nguyên seal",
-      "nhomTinhTrang": "moi",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 0,
-      "anh": "/products/razer-hammerhead-v3/01.webp",
-      "anhs": [
-        "/products/razer-hammerhead-v3/01.webp",
-        "/products/razer-hammerhead-v3/02.webp"
-      ],
-      "mau": "#4338ca"
     },
     {
       "id": "razer-moray",
@@ -1283,20 +1218,6 @@
         "/products/atk-crimson/07.webp"
       ],
       "mau": "#4338ca"
-    },
-    {
-      "id": "steelseries-qck-heavy",
-      "slug": "steelseries-qck-heavy",
-      "ten": "QCK Heavy",
-      "hang": "Steelseries",
-      "danhMuc": "pad-chuot",
-      "gia": 400000,
-      "tinhTrang": "Cũ",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 0,
-      "anh": "/products/steelseries-qck-heavy/01.webp",
-      "mau": "#0f172a"
     },
     {
       "id": "atk-love-keycap",

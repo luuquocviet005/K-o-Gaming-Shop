@@ -191,6 +191,66 @@
       "banLuc": "2026-10-05"
     },
     {
+      "slug": "atk-horizon-dsp",
+      "ten": "Horizon DSP",
+      "hang": "ATK",
+      "danhMuc": "tai-nghe",
+      "gia": 900000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/atk-horizon-dsp/01.webp",
+      "mau": "#4338ca",
+      "banLuc": "2026-10-05"
+    },
+    {
+      "slug": "hyperx-cloud-3",
+      "ten": "Cloud 3",
+      "hang": "HyperX",
+      "danhMuc": "tai-nghe",
+      "gia": 1200000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/hyperx-cloud-3/01.webp",
+      "mau": "#c2185b",
+      "banLuc": "2026-10-05"
+    },
+    {
+      "slug": "hyperx-stinger-2-core",
+      "ten": "Stinger 2 core",
+      "hang": "HyperX",
+      "danhMuc": "tai-nghe",
+      "gia": 350000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/hyperx-stinger-2-core/01.webp",
+      "mau": "#c2185b",
+      "banLuc": "2026-10-05"
+    },
+    {
+      "slug": "razer-hammerhead-v3",
+      "ten": "Hammerhead v3",
+      "hang": "Razer",
+      "danhMuc": "tai-nghe",
+      "gia": 750000,
+      "tinhTrang": "Mới, nguyên seal",
+      "nhomTinhTrang": "moi",
+      "anh": "/products/razer-hammerhead-v3/01.webp",
+      "mau": "#4338ca",
+      "banLuc": "2026-10-05"
+    },
+    {
+      "slug": "steelseries-qck-heavy",
+      "ten": "QCK Heavy",
+      "hang": "Steelseries",
+      "danhMuc": "pad-chuot",
+      "gia": 400000,
+      "tinhTrang": "Cũ",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/steelseries-qck-heavy/01.webp",
+      "mau": "#0f172a",
+      "banLuc": "2026-10-05"
+    },
+    {
       "slug": "atk-edge63-ultimate-hong",
       "ten": "Edge63 Ultimate ( Hồng )",
       "hang": "ATK",
