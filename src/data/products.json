@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 25
+      "soLuong": 26
     },
     {
       "slug": "ban-phim",
@@ -646,6 +646,38 @@
         }
       ],
       "anh": "/products/atk-phantom/den/01.webp"
+    },
+    {
+      "id": "atk-x1",
+      "slug": "atk-x1",
+      "ten": "X1",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 1100000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 2,
+      "mau": "#4338ca",
+      "phanLoai": [
+        {
+          "id": "ultimate-v2-new",
+          "ten": "Ultimate V2 New",
+          "gia": 1200000,
+          "tinhTrang": "Mới",
+          "nhomTinhTrang": "moi",
+          "soLuong": 2
+        },
+        {
+          "id": "air-cam",
+          "ten": "Air cam",
+          "gia": 1100000,
+          "tinhTrang": "Mới",
+          "nhomTinhTrang": "moi",
+          "soLuong": 2
+        }
+      ],
+      "giaToiDa": 1200000
     },
     {
       "id": "akko-air-01",
