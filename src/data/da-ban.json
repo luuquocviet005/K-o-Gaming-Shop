@@ -1,6 +1,17 @@
 {
   "daBan": [
     {
+      "slug": "atk-x1",
+      "ten": "X1",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 1100000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "mau": "#4338ca",
+      "banLuc": "2026-10-05"
+    },
+    {
       "slug": "atk-edge63-ultimate-hong",
       "ten": "Edge63 Ultimate ( Hồng )",
       "hang": "ATK",
