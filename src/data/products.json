@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 27
+      "soLuong": 24
     },
     {
       "slug": "ban-phim",
@@ -199,21 +199,6 @@
       "anh": "/products/atk-f1-ultimate-v2/hong/01.webp"
     },
     {
-      "id": "atk-a9-air",
-      "slug": "atk-a9-air",
-      "ten": "A9 Air +",
-      "hang": "ATK",
-      "danhMuc": "chuot",
-      "gia": 950000,
-      "tinhTrang": "Cũ · không hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 0,
-      "note": "Có màu Trắng",
-      "anh": "/products/atk-a9-air/01.webp",
-      "mau": "#4338ca"
-    },
-    {
       "id": "atk-a9-ultimate",
       "slug": "atk-a9-ultimate",
       "ten": "A9 Ultimate +",
@@ -315,18 +300,22 @@
       "anh": "/products/atk-a9-mini-ultimate-2/den/01.webp"
     },
     {
-      "id": "atk-x1-v2-air",
-      "slug": "atk-x1-v2-air",
-      "ten": "X1 V2 Air+",
+      "id": "atk-x1-air-plus",
+      "slug": "atk-x1-air-plus",
+      "ten": "X1 Air+",
       "hang": "ATK",
       "danhMuc": "chuot",
-      "gia": 1200000,
+      "gia": 1100000,
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 0,
+      "soLuong": 1,
       "note": "Bảo hành Memoryzone 14/9/2027",
-      "anh": "/products/atk-x1-v2-air/01.webp",
+      "anh": "/products/atk-x1-air-plus/01.webp",
+      "anhs": [
+        "/products/atk-x1-air-plus/01.webp",
+        "/products/atk-x1-air-plus/02.webp"
+      ],
       "mau": "#4338ca"
     },
     {
@@ -556,24 +545,6 @@
       "mau": "#7c3aed"
     },
     {
-      "id": "mchose-g3-v2",
-      "slug": "mchose-g3-v2",
-      "ten": "G3 v2",
-      "hang": "Mchose",
-      "danhMuc": "chuot",
-      "gia": 250000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 0,
-      "anh": "/products/mchose-g3-v2/01.webp",
-      "anhs": [
-        "/products/mchose-g3-v2/01.webp",
-        "/products/mchose-g3-v2/02.webp"
-      ],
-      "mau": "#7c3aed"
-    },
-    {
       "id": "ninjutso-sora-v2",
       "slug": "ninjutso-sora-v2",
       "ten": "Sora v2",
@@ -596,28 +567,6 @@
         "/products/ninjutso-sora-v2/07.webp"
       ],
       "mau": "#334155"
-    },
-    {
-      "id": "razer-naga-v2-hyperspeed",
-      "slug": "razer-naga-v2-hyperspeed",
-      "ten": "Naga v2 hyperspeed",
-      "hang": "Razer",
-      "danhMuc": "chuot",
-      "gia": 1200000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 0,
-      "anh": "/products/razer-naga-v2-hyperspeed/01.webp",
-      "anhs": [
-        "/products/razer-naga-v2-hyperspeed/01.webp",
-        "/products/razer-naga-v2-hyperspeed/02.webp",
-        "/products/razer-naga-v2-hyperspeed/03.webp",
-        "/products/razer-naga-v2-hyperspeed/04.webp",
-        "/products/razer-naga-v2-hyperspeed/05.webp",
-        "/products/razer-naga-v2-hyperspeed/06.webp"
-      ],
-      "mau": "#4338ca"
     },
     {
       "id": "razer-basilisk",

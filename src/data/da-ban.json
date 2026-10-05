@@ -108,6 +108,54 @@
       "banLuc": "2026-10-05"
     },
     {
+      "slug": "atk-a9-air",
+      "ten": "A9 Air +",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 950000,
+      "tinhTrang": "Cũ · không hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/atk-a9-air/01.webp",
+      "mau": "#4338ca",
+      "banLuc": "2026-10-05"
+    },
+    {
+      "slug": "atk-x1-v2-air",
+      "ten": "X1 V2 Air+",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 1200000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/atk-x1-v2-air/01.webp",
+      "mau": "#4338ca",
+      "banLuc": "2026-10-05"
+    },
+    {
+      "slug": "mchose-g3-v2",
+      "ten": "G3 v2",
+      "hang": "Mchose",
+      "danhMuc": "chuot",
+      "gia": 250000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/mchose-g3-v2/01.webp",
+      "mau": "#7c3aed",
+      "banLuc": "2026-10-05"
+    },
+    {
+      "slug": "razer-naga-v2-hyperspeed",
+      "ten": "Naga v2 hyperspeed",
+      "hang": "Razer",
+      "danhMuc": "chuot",
+      "gia": 1200000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/razer-naga-v2-hyperspeed/01.webp",
+      "mau": "#4338ca",
+      "banLuc": "2026-10-05"
+    },
+    {
       "slug": "atk-edge63-ultimate-hong",
       "ten": "Edge63 Ultimate ( Hồng )",
       "hang": "ATK",
