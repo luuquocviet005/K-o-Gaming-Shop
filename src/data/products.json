@@ -282,8 +282,8 @@
       "anh": "/products/atk-a9-mini-ultimate-2/den/01.webp"
     },
     {
-      "id": "atk-x1-air-plus",
-      "slug": "atk-x1-air-plus",
+      "id": "atk-x1-air",
+      "slug": "atk-x1-air",
       "ten": "X1 Air+",
       "hang": "ATK",
       "danhMuc": "chuot",
@@ -293,10 +293,10 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "note": "Bảo hành Memoryzone 14/9/2027",
-      "anh": "/products/atk-x1-air-plus/01.webp",
+      "anh": "/products/atk-x1-air/01.webp",
       "anhs": [
-        "/products/atk-x1-air-plus/01.webp",
-        "/products/atk-x1-air-plus/02.webp"
+        "/products/atk-x1-air/01.webp",
+        "/products/atk-x1-air/02.webp"
       ],
       "mau": "#4338ca"
     },
