@@ -157,6 +157,7 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 3,
+      "anh": "/products/atk-f1-ultimate-v2/hong/01.webp",
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -166,7 +167,12 @@
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
           "soLuong": 3,
-          "anh": "/products/atk-f1-ultimate-v2/hong/01.webp"
+          "anh": "/products/atk-f1-ultimate-v2/hong/01.webp",
+          "anhs": [
+            "/products/atk-f1-ultimate-v2/hong/01.webp",
+            "/products/atk-f1-ultimate-v2/01.webp",
+            "/products/atk-f1-ultimate-v2/02.webp"
+          ]
         },
         {
           "id": "xanh",
@@ -174,7 +180,12 @@
           "gia": 950000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 3
+          "soLuong": 3,
+          "anh": "/products/atk-f1-ultimate-v2/01.webp",
+          "anhs": [
+            "/products/atk-f1-ultimate-v2/01.webp",
+            "/products/atk-f1-ultimate-v2/02.webp"
+          ]
         },
         {
           "id": "trang-newseal",
@@ -183,10 +194,14 @@
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
           "soLuong": 3,
-          "anh": "/products/atk-f1-ultimate-v2/trang-newseal/01.webp"
+          "anh": "/products/atk-f1-ultimate-v2/trang-newseal/01.webp",
+          "anhs": [
+            "/products/atk-f1-ultimate-v2/trang-newseal/01.webp",
+            "/products/atk-f1-ultimate-v2/01.webp",
+            "/products/atk-f1-ultimate-v2/02.webp"
+          ]
         }
-      ],
-      "anh": "/products/atk-f1-ultimate-v2/hong/01.webp"
+      ]
     },
     {
       "id": "atk-a9-ultimate",
@@ -341,6 +356,24 @@
         }
       ],
       "anh": "/products/atk-phantom/den/01.webp"
+    },
+    {
+      "id": "atk-a9-air",
+      "slug": "atk-a9-air",
+      "ten": "A9 Air",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 1100000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/atk-a9-air/01.webp",
+      "anhs": [
+        "/products/atk-a9-air/01.webp",
+        "/products/atk-a9-air/02.webp"
+      ],
+      "mau": "#4338ca"
     },
     {
       "id": "aula-sc311",
@@ -513,6 +546,27 @@
       "mau": "#7c3aed"
     },
     {
+      "id": "logitech-g304-x-superlight",
+      "slug": "logitech-g304-x-superlight",
+      "ten": "G304 x Superlight",
+      "hang": "Logitech",
+      "danhMuc": "chuot",
+      "gia": 1000000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "note": "bảo hành 27/9/2028 CellphoneS",
+      "anh": "/products/logitech-g304-x-superlight/01.webp",
+      "anhs": [
+        "/products/logitech-g304-x-superlight/01.webp",
+        "/products/logitech-g304-x-superlight/02.webp",
+        "/products/logitech-g304-x-superlight/03.webp",
+        "/products/logitech-g304-x-superlight/04.webp"
+      ],
+      "mau": "#7c3aed"
+    },
+    {
       "id": "ninjutso-sora-v2",
       "slug": "ninjutso-sora-v2",
       "ten": "Sora v2",
@@ -548,6 +602,28 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "anh": "/products/razer-basilisk/01.webp",
+      "mau": "#4338ca"
+    },
+    {
+      "id": "razer-viper-v3-pro",
+      "slug": "razer-viper-v3-pro",
+      "ten": "Viper V3 Pro",
+      "hang": "Razer",
+      "danhMuc": "chuot",
+      "gia": 1600000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "note": "Bảo hành chính hãng 5/2028",
+      "anh": "/products/razer-viper-v3-pro/01.webp",
+      "anhs": [
+        "/products/razer-viper-v3-pro/01.webp",
+        "/products/razer-viper-v3-pro/02.webp",
+        "/products/razer-viper-v3-pro/03.webp",
+        "/products/razer-viper-v3-pro/04.webp",
+        "/products/razer-viper-v3-pro/05.webp"
+      ],
       "mau": "#4338ca"
     },
     {
@@ -597,67 +673,6 @@
       "soLuong": 9,
       "anh": "/products/xingmeng-zero-1-se/01.webp",
       "mau": "#b45309"
-    },
-    {
-      "id": "razer-viper-v3-pro",
-      "slug": "razer-viper-v3-pro",
-      "ten": "Viper V3 Pro",
-      "hang": "Razer",
-      "danhMuc": "chuot",
-      "gia": 1600000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "note": "Bảo hành chính hãng 5/2028",
-      "anh": "/products/razer-viper-v3-pro/01.webp",
-      "anhs": [
-        "/products/razer-viper-v3-pro/01.webp",
-        "/products/razer-viper-v3-pro/02.webp",
-        "/products/razer-viper-v3-pro/03.webp",
-        "/products/razer-viper-v3-pro/04.webp",
-        "/products/razer-viper-v3-pro/05.webp"
-      ],
-      "mau": "#4338ca"
-    },
-    {
-      "id": "logitech-g304-x-superlight",
-      "slug": "logitech-g304-x-superlight",
-      "ten": "G304 x Superlight",
-      "hang": "Logitech",
-      "danhMuc": "chuot",
-      "gia": 1000000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "note": "bảo hành 27/9/2028 CellphoneS",
-      "anh": "/products/logitech-g304-x-superlight/01.webp",
-      "anhs": [
-        "/products/logitech-g304-x-superlight/01.webp",
-        "/products/logitech-g304-x-superlight/02.webp",
-        "/products/logitech-g304-x-superlight/03.webp",
-        "/products/logitech-g304-x-superlight/04.webp"
-      ],
-      "mau": "#7c3aed"
-    },
-    {
-      "id": "atk-a9-air",
-      "slug": "atk-a9-air",
-      "ten": "A9 Air",
-      "hang": "ATK",
-      "danhMuc": "chuot",
-      "gia": 1100000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/atk-a9-air/01.webp",
-      "anhs": [
-        "/products/atk-a9-air/01.webp",
-        "/products/atk-a9-air/02.webp"
-      ],
-      "mau": "#4338ca"
     },
     {
       "id": "akko-air-01",
@@ -1327,6 +1342,14 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "note": "Bảo hành CellphoneS : 4/10/2027",
+      "anh": "/products/sony-inzone-e9-ier-g900/01.webp",
+      "anhs": [
+        "/products/sony-inzone-e9-ier-g900/01.webp",
+        "/products/sony-inzone-e9-ier-g900/02.webp",
+        "/products/sony-inzone-e9-ier-g900/03.webp",
+        "/products/sony-inzone-e9-ier-g900/04.webp"
+      ],
       "mau": "#b45309"
     },
     {
