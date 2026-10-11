@@ -22,7 +22,7 @@
       "short": "Tai nghe",
       "icon": "tai-nghe",
       "blurb": "Tai nghe chụp tai, in-ear và soundcard.",
-      "soLuong": 7
+      "soLuong": 8
     },
     {
       "slug": "pad-chuot",
@@ -1253,6 +1253,38 @@
       "soLuong": 0,
       "anh": "/products/hyperx-cloud-3/01.webp",
       "mau": "#c2185b"
+    },
+    {
+      "id": "hyperx-cloud-2",
+      "slug": "hyperx-cloud-2",
+      "ten": "Cloud 2",
+      "hang": "HyperX",
+      "danhMuc": "tai-nghe",
+      "gia": 1400000,
+      "tinhTrang": "",
+      "nhomTinhTrang": "khac",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 0,
+      "mau": "#c2185b",
+      "phanLoai": [
+        {
+          "id": "do",
+          "ten": "Đỏ",
+          "gia": 1400000,
+          "tinhTrang": "",
+          "nhomTinhTrang": "khac",
+          "soLuong": 0
+        },
+        {
+          "id": "trang",
+          "ten": "Trắng",
+          "gia": 1500000,
+          "tinhTrang": "",
+          "nhomTinhTrang": "khac",
+          "soLuong": 0
+        }
+      ],
+      "giaToiDa": 1500000
     },
     {
       "id": "atk-lie-xsoft-m",
