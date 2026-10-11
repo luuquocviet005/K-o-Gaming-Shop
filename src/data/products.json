@@ -22,7 +22,7 @@
       "short": "Tai nghe",
       "icon": "tai-nghe",
       "blurb": "Tai nghe chụp tai, in-ear và soundcard.",
-      "soLuong": 8
+      "soLuong": 9
     },
     {
       "slug": "pad-chuot",
@@ -632,6 +632,13 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "note": "bảo hành 27/9/2028 CellphoneS",
+      "anh": "/products/logitech-g304-x-superlight/01.webp",
+      "anhs": [
+        "/products/logitech-g304-x-superlight/01.webp",
+        "/products/logitech-g304-x-superlight/02.webp",
+        "/products/logitech-g304-x-superlight/03.webp",
+        "/products/logitech-g304-x-superlight/04.webp"
+      ],
       "mau": "#7c3aed"
     },
     {
@@ -646,6 +653,10 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "anh": "/products/atk-a9-air/01.webp",
+      "anhs": [
+        "/products/atk-a9-air/01.webp",
+        "/products/atk-a9-air/02.webp"
+      ],
       "mau": "#4338ca"
     },
     {
@@ -1290,7 +1301,8 @@
           "gia": 1400000,
           "tinhTrang": "Mới, nguyên seal",
           "nhomTinhTrang": "moi",
-          "soLuong": 1
+          "soLuong": 1,
+          "anh": "/products/hyperx-cloud-2/do/01.webp"
         },
         {
           "id": "trang",
@@ -1298,9 +1310,24 @@
           "gia": 1500000,
           "tinhTrang": "Mới, nguyên seal",
           "nhomTinhTrang": "moi",
-          "soLuong": 1
+          "soLuong": 1,
+          "anh": "/products/hyperx-cloud-2/trang/01.webp"
         }
-      ]
+      ],
+      "anh": "/products/hyperx-cloud-2/do/01.webp"
+    },
+    {
+      "id": "sony-inzone-e9-ier-g900",
+      "slug": "sony-inzone-e9-ier-g900",
+      "ten": "INZONE E9 (IER-G900)",
+      "hang": "Sony",
+      "danhMuc": "tai-nghe",
+      "gia": 1800000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "mau": "#b45309"
     },
     {
       "id": "atk-lie-xsoft-m",
