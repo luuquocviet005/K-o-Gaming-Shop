@@ -108,18 +108,6 @@
       "banLuc": "2026-10-05"
     },
     {
-      "slug": "atk-a9-air",
-      "ten": "A9 Air +",
-      "hang": "ATK",
-      "danhMuc": "chuot",
-      "gia": 950000,
-      "tinhTrang": "Cũ · không hộp",
-      "nhomTinhTrang": "cu",
-      "anh": "/products/atk-a9-air/01.webp",
-      "mau": "#4338ca",
-      "banLuc": "2026-10-05"
-    },
-    {
       "slug": "atk-x1-v2-air",
       "ten": "X1 V2 Air+",
       "hang": "ATK",
@@ -189,18 +177,6 @@
       "nhomTinhTrang": "cu",
       "anh": "/products/atk-horizon-dsp/01.webp",
       "mau": "#4338ca",
-      "banLuc": "2026-10-05"
-    },
-    {
-      "slug": "hyperx-cloud-3",
-      "ten": "Cloud 3",
-      "hang": "HyperX",
-      "danhMuc": "tai-nghe",
-      "gia": 1200000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "anh": "/products/hyperx-cloud-3/01.webp",
-      "mau": "#c2185b",
       "banLuc": "2026-10-05"
     },
     {

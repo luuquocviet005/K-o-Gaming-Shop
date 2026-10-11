@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 24
+      "soLuong": 25
     },
     {
       "slug": "ban-phim",
@@ -22,7 +22,7 @@
       "short": "Tai nghe",
       "icon": "tai-nghe",
       "blurb": "Tai nghe chụp tai, in-ear và soundcard.",
-      "soLuong": 6
+      "soLuong": 7
     },
     {
       "slug": "pad-chuot",
@@ -626,12 +626,27 @@
       "ten": "G304 x Superlight",
       "hang": "Logitech",
       "danhMuc": "chuot",
-      "gia": 0,
-      "tinhTrang": "",
-      "nhomTinhTrang": "khac",
+      "gia": 1000000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 0,
+      "soLuong": 1,
+      "note": "bảo hành 27/9/2028 CellphoneS",
       "mau": "#7c3aed"
+    },
+    {
+      "id": "atk-a9-air",
+      "slug": "atk-a9-air",
+      "ten": "A9 Air",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 1100000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/atk-a9-air/01.webp",
+      "mau": "#4338ca"
     },
     {
       "id": "akko-air-01",
@@ -1224,6 +1239,20 @@
         }
       ],
       "anh": "/products/razer-barracuda-x-2022/den/01.webp"
+    },
+    {
+      "id": "hyperx-cloud-3",
+      "slug": "hyperx-cloud-3",
+      "ten": "Cloud 3",
+      "hang": "HyperX",
+      "danhMuc": "tai-nghe",
+      "gia": 0,
+      "tinhTrang": "",
+      "nhomTinhTrang": "khac",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 0,
+      "anh": "/products/hyperx-cloud-3/01.webp",
+      "mau": "#c2185b"
     },
     {
       "id": "atk-lie-xsoft-m",
