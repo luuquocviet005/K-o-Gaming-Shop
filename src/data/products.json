@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 25
+      "soLuong": 24
     },
     {
       "slug": "ban-phim",
@@ -591,28 +591,6 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "anh": "/products/razer-basilisk/01.webp",
-      "mau": "#4338ca"
-    },
-    {
-      "id": "razer-viper-v3-pro",
-      "slug": "razer-viper-v3-pro",
-      "ten": "Viper V3 Pro",
-      "hang": "Razer",
-      "danhMuc": "chuot",
-      "gia": 1600000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "note": "Bảo hành chính hãng 5/2028",
-      "anh": "/products/razer-viper-v3-pro/01.webp",
-      "anhs": [
-        "/products/razer-viper-v3-pro/01.webp",
-        "/products/razer-viper-v3-pro/02.webp",
-        "/products/razer-viper-v3-pro/03.webp",
-        "/products/razer-viper-v3-pro/04.webp",
-        "/products/razer-viper-v3-pro/05.webp"
-      ],
       "mau": "#4338ca"
     },
     {

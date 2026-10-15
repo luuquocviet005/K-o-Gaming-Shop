@@ -1,6 +1,18 @@
 {
   "daBan": [
     {
+      "slug": "razer-viper-v3-pro",
+      "ten": "Viper V3 Pro",
+      "hang": "Razer",
+      "danhMuc": "chuot",
+      "gia": 1600000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/razer-viper-v3-pro/01.webp",
+      "mau": "#4338ca",
+      "banLuc": "2026-10-15"
+    },
+    {
       "slug": "atk-x1",
       "ten": "X1",
       "hang": "ATK",
