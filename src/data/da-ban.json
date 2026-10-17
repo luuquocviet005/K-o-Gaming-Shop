@@ -1,6 +1,18 @@
 {
   "daBan": [
     {
+      "slug": "ninjutso-sora-v2",
+      "ten": "Sora v2",
+      "hang": "Ninjutso",
+      "danhMuc": "chuot",
+      "gia": 900000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/ninjutso-sora-v2/01.webp",
+      "mau": "#334155",
+      "banLuc": "2026-10-17"
+    },
+    {
       "slug": "razer-viper-v3-pro",
       "ten": "Viper V3 Pro",
       "hang": "Razer",
