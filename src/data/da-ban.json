@@ -1,6 +1,18 @@
 {
   "daBan": [
     {
+      "slug": "logitech-g304-x-superlight",
+      "ten": "G304 x Superlight",
+      "hang": "Logitech",
+      "danhMuc": "chuot",
+      "gia": 1000000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/logitech-g304-x-superlight/01.webp",
+      "mau": "#7c3aed",
+      "banLuc": "2026-10-18"
+    },
+    {
       "slug": "ninjutso-sora-v2",
       "ten": "Sora v2",
       "hang": "Ninjutso",
