@@ -334,6 +334,7 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 2,
+      "anh": "/products/atk-phantom/den/01.webp",
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -343,7 +344,13 @@
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
           "soLuong": 2,
-          "anh": "/products/atk-phantom/den/01.webp"
+          "anh": "/products/atk-phantom/den/01.webp",
+          "anhs": [
+            "/products/atk-phantom/den/01.webp",
+            "/products/atk-phantom/01.webp",
+            "/products/atk-phantom/02.webp",
+            "/products/atk-phantom/03.webp"
+          ]
         },
         {
           "id": "trang",
@@ -352,10 +359,15 @@
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
           "soLuong": 2,
-          "anh": "/products/atk-phantom/trang/01.webp"
+          "anh": "/products/atk-phantom/trang/01.webp",
+          "anhs": [
+            "/products/atk-phantom/trang/01.webp",
+            "/products/atk-phantom/01.webp",
+            "/products/atk-phantom/02.webp",
+            "/products/atk-phantom/03.webp"
+          ]
         }
-      ],
-      "anh": "/products/atk-phantom/den/01.webp"
+      ]
     },
     {
       "id": "atk-a9-air",
