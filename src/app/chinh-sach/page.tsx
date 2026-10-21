@@ -51,7 +51,7 @@ const sections = [
     body: [
       "**Hàng còn bảo hành hãng**: một số món vẫn trong thời hạn bảo hành chính hãng — tụi mình ghi rõ hạn ở phần Tình trạng thực tế của món đó. Bạn mang thẳng ra trung tâm bảo hành của hãng.",
       "**Hàng hết bảo hành hãng**: đa số hàng cũ rơi vào nhóm này. Tụi mình bảo hành lỗi phần cứng trong **1 tháng** kể từ ngày bạn nhận — đủ lâu để dùng thật và phát hiện lỗi ẩn, không chỉ là bật lên thấy chạy.",
-      "Mức bảo hành 1 tháng này áp dụng cho **mọi món**, kể cả switch bán lẻ và phụ kiện nhỏ. Món nào hỏng trong thời gian đó thì báo tụi mình đổi hoặc sửa.",
+      "Mức bảo hành 1 tháng này áp dụng cho **mọi món**, kể cả phụ kiện nhỏ. Món nào hỏng trong thời gian đó thì báo tụi mình đổi hoặc sửa.",
       "Tụi mình không phải đại lý uỷ quyền của hãng nào, nên không cấp được tem bảo hành hãng hay hoá đơn VAT.",
     ],
   },

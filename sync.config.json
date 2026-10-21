@@ -50,15 +50,6 @@
       "short": "Phụ kiện",
       "icon": "do-khac",
       "blurb": "Keycap, bungee, đế sạc, tai nghe không dây và đồ chơi lẻ đi kèm."
-    },
-    {
-      "tab": "Switch HE",
-      "slug": "switch-he",
-      "name": "Switch HE",
-      "short": "Switch",
-      "icon": "switch",
-      "blurb": "Switch từ tính bán lẻ theo cái — giá dưới đây là giá 1 switch.",
-      "donViGia": "cái"
     }
   ]
 }

@@ -8,7 +8,7 @@ import { CategoryIcon } from "@/components/icons";
 export const metadata: Metadata = {
   title: "Tất cả sản phẩm",
   description:
-    "Toàn bộ gear đang có tại KẸO GAMING SHOP: chuột, bàn phím, tai nghe và switch — hàng cũ lẫn hàng mới, ghi rõ tình trạng từng món.",
+    "Toàn bộ gear đang có tại KẸO GAMING SHOP: chuột, bàn phím, tai nghe và phụ kiện — hàng cũ lẫn hàng mới, ghi rõ tình trạng từng món.",
   alternates: { canonical: "/danh-muc/" },
 };
 
