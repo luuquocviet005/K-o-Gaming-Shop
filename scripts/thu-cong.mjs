@@ -57,6 +57,7 @@ buoc(3, "Ghi nhận ảnh vừa nạp vào bảng hàng…", [
 ]);
 buoc(4, "Kiểm tra và đưa lên web…", [
   join(root, "scripts", "push.mjs"),
+  "--chi-anh",
   "Cập nhật ảnh sản phẩm",
 ]);
 

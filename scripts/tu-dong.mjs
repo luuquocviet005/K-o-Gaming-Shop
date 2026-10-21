@@ -103,7 +103,7 @@ if (dongBo.ma !== 0) {
 }
 
 // 4. Kiểm tra rồi đẩy lên. push.mjs tự thoát sớm nếu không có gì thay đổi.
-const day = chay([join(root, "scripts", "push.mjs"), "Tự động cập nhật ảnh sản phẩm"]);
+const day = chay([join(root, "scripts", "push.mjs"), "--chi-anh", "Tự động cập nhật ảnh sản phẩm"]);
 console.log(day.ra);
 
 if (day.ra.includes("Không có thay đổi nào")) {

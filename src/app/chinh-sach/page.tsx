@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
+import { formatVND } from "@/lib/format";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const metadata: Metadata = {
@@ -58,9 +59,10 @@ const sections = [
     id: "van-chuyen",
     title: "Giao hàng",
     body: [
-      "**Phí ship tính đúng theo thực tế từng đơn**, tụi mình không cộng thêm đồng nào. Con số cụ thể báo cho bạn trước khi gửi hàng — thà nói trước còn hơn ghi một mức cố định rồi thu khác.",
-      "**Nội thành Đà Nẵng**: sắp xếp được thì tụi mình hẹn lịch mang tới tận nơi. Không tiện thì book Grab, cước bao nhiêu bạn trả bấy nhiêu. Hoặc hẹn gặp trực tiếp nếu bạn ở gần.",
-      "**Đi tỉnh**: gửi qua nhà xe hoặc đơn vị vận chuyển, khách trả phí. Phí thay đổi theo tỉnh và theo từng nhà xe nên tụi mình không ghi cố định ở đây.",
+      `**Chuyển khoản đủ, đơn từ ${formatVND(site.shipping.freeshipChuyenKhoanTu)}: tụi mình freeship.**`,
+      "**Các đơn còn lại, phí ship tính đúng theo thực tế**, tụi mình không cộng thêm đồng nào. Con số cụ thể báo cho bạn trước khi gửi hàng — thà nói trước còn hơn ghi một mức cố định rồi thu khác.",
+      "**Nội thành Đà Nẵng**: sắp xếp được thì tụi mình hẹn lịch mang tới tận nơi. Không tiện thì book Grab, cước bao nhiêu bạn trả bấy nhiêu (trừ đơn được freeship). Hoặc hẹn gặp trực tiếp nếu bạn ở gần.",
+      "**Đi tỉnh**: gửi qua nhà xe hoặc đơn vị vận chuyển, khách trả phí (trừ đơn được freeship). Phí thay đổi theo tỉnh và theo từng nhà xe nên tụi mình không ghi cố định ở đây.",
       "Chuột và tai nghe được bọc chống sốc. Bàn phím đóng thùng riêng, chèn xốp kín.",
     ],
   },

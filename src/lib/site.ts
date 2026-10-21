@@ -1,3 +1,6 @@
+/** Đơn chuyển khoản đủ từ mức này thì shop freeship — xem `site.shipping` */
+const FREESHIP_TU = 1_000_000;
+
 /**
  * Thông tin cửa hàng — SỬA FILE NÀY để thay tên, liên hệ, mạng xã hội.
  * Không hardcode số điện thoại / địa chỉ ở bất kỳ component nào khác.
@@ -38,17 +41,35 @@ export const site = {
   /**
    * Vận chuyển.
    *
-   * Khách trả phí ship theo thực tế, shop không cộng thêm và KHÔNG bao ship.
-   * Bỏ chính sách "chuyển khoản đủ thì shop chịu ship" từ 2026-09-04: đơn nhỏ
-   * thì tiền lãi không đủ bù cước, mà cam kết lại ghi "không giới hạn giá trị
-   * đơn" nên không từ chối được.
+   * Chuyển khoản đủ, đơn từ 1 triệu: shop freeship (chủ shop chốt
+   * 21/10/2026). Dưới mức đó, hoặc ship COD, khách trả phí ship theo thực tế,
+   * shop không cộng thêm.
    *
-   * KHÔNG ghi một con số cố định trên web: cước Grab và cước nhà xe thay đổi
-   * theo quãng đường, theo tỉnh, theo từng nhà xe. Báo cho khách lúc chốt đơn.
-   * Thà nói "báo sau" còn hơn ghi một con số rồi thu khác.
+   * Có NGƯỠNG là cố ý. Chính sách cũ "chuyển khoản đủ thì shop chịu ship"
+   * không giới hạn giá trị đơn, bị bỏ ngày 2026-09-04 vì đơn nhỏ thì tiền lãi
+   * không đủ bù cước.
+   *
+   * Ngoài mức freeship, KHÔNG ghi một con số phí ship cố định trên web: cước
+   * Grab và cước nhà xe thay đổi theo quãng đường, theo tỉnh, theo từng nhà
+   * xe. Thà nói "báo sau" còn hơn ghi một con số rồi thu khác.
+   *
+   * Khung chat AI dùng chung các số này. Backend ai-marketing-town đọc quy
+   * tắc từ Google Sheet — đổi ở đây thì đổi luôn bên Sheet.
    */
   shipping: {
-    ghiChu: "Phí ship tính theo thực tế, tụi mình báo trước khi gửi.",
+    ghiChu: `Chuyển khoản đủ từ ${FREESHIP_TU / 1_000_000} triệu được freeship. Dưới mức đó phí ship tính theo thực tế, tụi mình báo trước khi gửi.`,
+    cocCod: 50_000,
+    freeshipChuyenKhoanTu: FREESHIP_TU,
+  },
+
+  /**
+   * Khung chat AI (src/components/ai-chatbox.tsx) gọi về backend chạy trên
+   * Render — dự án riêng ai-marketing-town, không nằm trong repo này.
+   */
+  chatbot: {
+    api: "https://keo-gaming-agent-town.onrender.com/api/public/chat",
+    // Chỉ dùng khi đang chạy web ở máy mình (localhost)
+    apiMayNha: "http://localhost:5173/api/public/chat",
   },
 
   /**
