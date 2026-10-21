@@ -101,7 +101,7 @@ function traLoiChuyenKhoan(userText: string): { text: string; qrUrl: string } | 
  * Trả lời dự phòng tức thì ngay trên trình duyệt nếu máy chủ Cloud Render đang khởi động lại.
  * Lúc này KHÔNG có gì được gửi về cho chủ shop — đừng hứa "đã ghi nhận" hay
  * "để lại SĐT", mà chỉ khách sang Messenger/Zalo/điện thoại.
- * Phân biệt TUYỆT ĐỐI danh mục (chuot / ban-phim / tai-nghe / pad-chuot / switch) để không bao giờ lẫn bàn phím vào chuột.
+ * Phân biệt TUYỆT ĐỐI danh mục (chuot / ban-phim / tai-nghe / pad-chuot / phu-kien) để không bao giờ lẫn bàn phím vào chuột.
  */
 function buildInstantLocalReply(
   userText: string,

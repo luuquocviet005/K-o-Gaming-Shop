@@ -33,7 +33,7 @@ export function Footer() {
         <div>
           <Logo />
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-fg-muted">
-            Chuột, bàn phím, tai nghe và switch — phần lớn là hàng đã qua sử
+            Chuột, bàn phím, tai nghe và phụ kiện — phần lớn là hàng đã qua sử
             dụng. Món nào trầy, thiếu gì, còn bảo hành tới bao giờ, tụi mình ghi
             thẳng lên trang sản phẩm.
           </p>
