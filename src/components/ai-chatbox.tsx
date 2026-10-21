@@ -60,10 +60,14 @@ function getSessionId(): string {
   }
 }
 
-/** Mã QR chuyển khoản VietQR — có số tiền thì điền sẵn, không thì khách tự nhập */
-function qrChuyenKhoan(soTien: number | null, noiDung: string): string {
+/**
+ * Mã QR chuyển khoản VietQR — có số tiền thì điền sẵn, không thì khách tự nhập.
+ * KHÔNG điền nội dung chuyển khoản: chủ shop không muốn sao kê ghi sẵn chữ
+ * "Keo Gaming" / "Coc COD" (quyết định 21/10/2026).
+ */
+function qrChuyenKhoan(soTien: number | null): string {
   const { ma, soTaiKhoan, chuTaiKhoan } = site.nganHang;
-  const qs = new URLSearchParams({ addInfo: noiDung, accountName: chuTaiKhoan });
+  const qs = new URLSearchParams({ accountName: chuTaiKhoan });
   if (soTien) qs.set("amount", String(soTien));
   return `https://img.vietqr.io/image/${ma}-${soTaiKhoan}-compact2.png?${qs}`;
 }
@@ -89,7 +93,7 @@ function traLoiChuyenKhoan(userText: string): { text: string; qrUrl: string } | 
     : `Dạ STK của shop: ${stk}. Bạn quét mã QR bên dưới rồi nhập số tiền đơn hàng nha (đơn từ ${formatVND(site.shipping.freeshipChuyenKhoanTu)} được freeship). Chuyển xong bạn nhắn Messenger hoặc Zalo (nút ở đầu khung chat) gửi ảnh chuyển khoản + Họ tên, SĐT, địa chỉ để shop lên đơn ạ!`;
   return {
     text,
-    qrUrl: qrChuyenKhoan(laCoc ? site.shipping.cocCod : null, laCoc ? "Coc COD Keo Gaming" : "Keo Gaming"),
+    qrUrl: qrChuyenKhoan(laCoc ? site.shipping.cocCod : null),
   };
 }
 
