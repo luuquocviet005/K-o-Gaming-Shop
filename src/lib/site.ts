@@ -20,6 +20,10 @@ export const site = {
     address:
       "Lô 19 B2 124 Khu đô thị công nghệ FPT, phường Hoà Hải, quận Ngũ Hành Sơn, TP. Đà Nẵng",
     hours: "09:00 – 21:00, tất cả các ngày trong tuần",
+    // Ghim "Kẹo Gaming Gear" trên Google Maps — bấm vào địa chỉ là mở chỉ đường.
+    mapUrl:
+      "https://www.google.com/maps/place/Keo+Gaming+Gear/@15.9664034,108.2623351,17z/data=!4m6!3m5!1s0x314211d29a23ff35:0x1b74f0c6d9efd3ba!8m2!3d15.9664034!4d108.2623351",
+    geo: { latitude: 15.9664034, longitude: 108.2623351 },
   },
 
   social: {
