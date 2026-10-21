@@ -112,7 +112,14 @@ export function Footer() {
           <ul className="mt-4 flex flex-col gap-3.5 text-sm text-fg-muted">
             <li className="flex gap-3">
               <MapPinIcon width={18} height={18} className="mt-0.5 shrink-0 text-primary" />
-              <span>{site.contact.address}</span>
+              <a
+                href={site.contact.mapUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-primary-ink"
+              >
+                {site.contact.address}
+              </a>
             </li>
             <li className="flex gap-3">
               <PhoneIcon width={18} height={18} className="mt-0.5 shrink-0 text-primary" />

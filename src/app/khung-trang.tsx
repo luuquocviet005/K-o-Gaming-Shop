@@ -78,6 +78,11 @@ const jsonLdCuaHang = {
     addressRegion: "Đà Nẵng",
     addressCountry: "VN",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    ...site.contact.geo,
+  },
+  hasMap: site.contact.mapUrl,
   openingHoursSpecification: [
     {
       "@type": "OpeningHoursSpecification",

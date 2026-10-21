@@ -50,6 +50,7 @@ const channels = [
     Icon: MapPinIcon,
     label: "Cửa hàng",
     value: site.contact.address,
+    href: site.contact.mapUrl,
     note: "Mời bạn ghé trải nghiệm gear trực tiếp",
   },
   {
