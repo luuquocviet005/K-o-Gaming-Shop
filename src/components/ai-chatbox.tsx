@@ -176,6 +176,8 @@ export function AiChatbox() {
   const { lines, total } = useCart();
   const [open, setOpen] = useState(false);
   const [expanded, setExpanded] = useState(false);
+  // Ảnh QR đang phóng to (null = đóng). QR nhỏ quá thì app ngân hàng khó quét.
+  const [qrPhongTo, setQrPhongTo] = useState<string | null>(null);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [choLau, setChoLau] = useState(false);
@@ -202,6 +204,16 @@ export function AiChatbox() {
   const hangChoRef = useRef<string[]>([]);
 
   // Ô nhập tự cao lên theo số dòng (tối đa ~5 dòng), gửi xong thì thu về 1 dòng
+  // Bấm Esc để đóng ảnh QR phóng to.
+  useEffect(() => {
+    if (!qrPhongTo) return;
+    const dong = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setQrPhongTo(null);
+    };
+    window.addEventListener("keydown", dong);
+    return () => window.removeEventListener("keydown", dong);
+  }, [qrPhongTo]);
+
   useEffect(() => {
     const el = inputRef.current;
     if (!el) return;
@@ -473,14 +485,22 @@ export function AiChatbox() {
                     {m.text}
                   </div>
                   {m.qrUrl && (
-                    <div className="mt-2 overflow-hidden rounded-2xl border border-border bg-white p-2 shadow-sm">
+                    <button
+                      type="button"
+                      onClick={() => setQrPhongTo(m.qrUrl ?? null)}
+                      aria-label="Phóng to mã QR chuyển khoản"
+                      className="group mt-2 block cursor-zoom-in overflow-hidden rounded-2xl border border-border bg-white p-2 text-left shadow-sm"
+                    >
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={m.qrUrl}
                         alt="Mã QR chuyển khoản Kẹo Gaming Shop"
                         className="h-44 w-auto object-contain"
                       />
-                    </div>
+                      <span className="block pt-1 text-center text-[0.7rem] font-semibold text-fg-muted group-hover:text-primary">
+                        🔍 Bấm để phóng to
+                      </span>
+                    </button>
                   )}
                 </div>
               );
@@ -565,6 +585,29 @@ export function AiChatbox() {
             Chat tư vấn Kẹo AI 🍬
           </span>
         </button>
+      )}
+      {qrPhongTo && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Mã QR chuyển khoản phóng to"
+          onClick={() => setQrPhongTo(null)}
+          className="fixed inset-0 z-[70] flex cursor-zoom-out flex-col items-center justify-center gap-3 bg-black/70 p-4"
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={qrPhongTo}
+            alt="Mã QR chuyển khoản Kẹo Gaming Shop"
+            className="max-h-[80vh] w-auto max-w-full rounded-2xl bg-white p-3 shadow-2xl"
+          />
+          <button
+            type="button"
+            onClick={() => setQrPhongTo(null)}
+            className="rounded-full bg-white px-5 py-2 text-sm font-bold text-fg shadow"
+          >
+            Đóng
+          </button>
+        </div>
       )}
     </div>
   );

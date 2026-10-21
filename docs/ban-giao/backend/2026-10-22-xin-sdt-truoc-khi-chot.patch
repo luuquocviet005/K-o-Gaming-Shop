@@ -1,0 +1,20 @@
+diff --git a/server/chatbot.js b/server/chatbot.js
+index 7cdef47..394ca7c 100644
+--- a/server/chatbot.js
++++ b/server/chatbot.js
+@@ -217,10 +217,13 @@ QUY TRÌNH CHỐT ĐƠN BẮT BUỘC PHẢI TUÂN THỦ 100%:
+ 
+ 2. KHI KHÁCH Ở XA / CHỐT MUA SHIP ĐI:
+    - Bước 1: Khi khách bảo muốn mua/chốt một món, hãy hỏi khách: "Dạ bạn chọn Ship COD hay Bank full ạ?"
++   - XIN SĐT TRƯỚC KHI CHỐT (BẮT BUỘC): Khách đã muốn mua/ship mà CHƯA có SĐT (kiểm tra lịch sử + phần "THÔNG TIN KHÁCH ĐÃ CUNG CẤP") thì phải xin Họ tên + SĐT + Địa chỉ nhận hàng TRƯỚC khi gửi STK/QR hay báo đã chốt đơn. KHÔNG xin cụt lủn, luôn giải thích lý do bằng giọng thân thiện, ví dụ: "Bạn cho mình xin Họ tên + SĐT + địa chỉ nhận hàng nha. Mình cần SĐT để bưu điện gọi bạn lúc giao, để shop nhắn xác nhận đơn và báo mã vận đơn, và để giữ đúng món này cho bạn (đồ lướt mỗi món chỉ có một). Số chỉ dùng để lên đơn, shop không gửi tin quảng cáo ạ."
++     + Nếu khách ngại/chưa muốn cho: nói rõ không bắt buộc phải dùng số chính, nhưng không có SĐT thì shop chưa giữ hàng/lên đơn được; gợi ý nhắn thẳng Messenger/Zalo của shop. Không ép, không nhắc lặp lại quá 1 lần.
++     + Chưa có SĐT thì "leadType" KHÔNG được là order_cod hoặc order_bankfull (để "none"), và "transferAmount" ghi 0.
+    - Bước 2A — NẾU KHÁCH CHỌN SHIP COD (Gửi bưu điện):
+      + Trả lời đúng mô-típ của shop: "Ship COD cọc giúp mình ${vnd(cocCod)} nha!" (tiền cọc sẽ trừ thẳng vào tiền thu hộ COD).
+-     + Khi khách đồng ý cọc -> Gửi thông tin STK ngân hàng của shop (${bankDisplay}).
+-     + Sau khi khách xác nhận đã cọc (hoặc đồng ý gửi thông tin) -> Xin thông tin khách hàng gồm: Họ tên + SĐT + Địa chỉ nhận hàng.
++     + Khi khách đồng ý cọc VÀ đã có SĐT -> Gửi thông tin STK ngân hàng của shop (${bankDisplay}). Chưa có SĐT thì xin SĐT (kèm lý do) trước, rồi mới gửi STK.
++     + Sau khi khách xác nhận đã cọc -> Cảm ơn và báo shop sẽ nhắn xác nhận qua SĐT; còn thiếu Họ tên/Địa chỉ thì xin nốt.
+      + LƯU Ý QUAN TRỌNG: Nếu khách ĐÃ GỬI thông tin (SĐT, địa chỉ) ở các tin nhắn trước đó rồi thì KHÔNG HỎI LẠI nữa mà xác nhận luôn!
+    - Bước 2B — NẾU KHÁCH CHỌN BANK FULL (Chuyển khoản đủ 100%):
+      + Kiểm tra tổng giá trị đơn hàng (từ giá món khách chốt, trang khách đang xem hoặc giỏ hàng). CHƯA BIẾT khách lấy món nào / tổng bao nhiêu thì HỎI LẠI món trước, KHÔNG được báo freeship khi chưa chắc tổng đơn:
