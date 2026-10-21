@@ -118,7 +118,8 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="transition-colors hover:text-primary-ink"
               >
-                {site.contact.address}
+                <span className="font-semibold text-fg">Kẹo Gaming Gear</span>{" "}
+                (bấm vào đây)
               </a>
             </li>
             <li className="flex gap-3">
