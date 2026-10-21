@@ -1,0 +1,431 @@
+"use client";
+
+import { useState, useEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
+import { site } from "@/lib/site";
+import { products, getProduct, getSoldProduct } from "@/lib/products";
+import { formatGia, formatVND } from "@/lib/format";
+import { useCart } from "@/lib/cart";
+import { CloseIcon, FacebookIcon, ZaloIcon, PhoneIcon } from "@/components/icons";
+
+type ChatMessage = {
+  id: string;
+  role: "user" | "assistant";
+  text: string;
+  qrUrl?: string | null;
+};
+
+type QuickChip = {
+  label: string;
+  prompt: string;
+};
+
+const API_ENDPOINTS = [
+  "http://localhost:5173/api/public/chat",
+  "https://keo-gaming-agent-town.onrender.com/api/public/chat",
+];
+
+function getSessionId(): string {
+  if (typeof window === "undefined") return "web_ssr";
+  const key = "keo_chat_session_id";
+  let sid = window.localStorage.getItem(key);
+  if (!sid) {
+    sid = "web_" + Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+    window.localStorage.setItem(key, sid);
+  }
+  return sid;
+}
+
+/**
+ * Trả lời dự phòng tức thì ngay trên trình duyệt nếu máy chủ Cloud Render đang khởi động lại.
+ * Phân biệt TUYỆT ĐỐI danh mục (chuot / ban-phim / tai-nghe / pad-chuot / switch) để không bao giờ lẫn bàn phím vào chuột.
+ */
+function buildInstantLocalReply(
+  userText: string,
+  currentProductSlug: string | null,
+  cartTotal: number,
+  cartSummary: string,
+): string {
+  const q = userText.toLowerCase().trim();
+  const curProd = currentProductSlug ? getProduct(currentProductSlug) : undefined;
+  const curSold = currentProductSlug ? getSoldProduct(currentProductSlug) : undefined;
+
+  // 1. Hỏi về Ship COD / Bank full / Thanh toán / Freeship
+  if (/ship\s*cod|bank\s*full|chuyển khoản|thanh toán|freeship|free\s*ship|phí ship|cọc/i.test(q)) {
+    return `Dạ, Ship COD bên mình cọc 50k giúp shop nha, cọc trừ thẳng vào tiền thu hộ COD. Bank full thì đơn trên 1 triệu mình freeship, dưới 1 triệu phí ship tính theo thực tế bưu điện nhưng sẽ rẻ hơn so với COD ạ.`;
+  }
+
+  // 2. Hỏi địa chỉ / Đà Nẵng / GDTT / Qua shop test
+  if (/địa chỉ|ở đâu|đà nẵng|gdtt|qua test|trực tiếp|giờ mở cửa/i.test(q)) {
+    return `Dạ Kẹo Gaming Shop ở tại: ${site.contact.address} (Mở cửa ${site.contact.hours}). Hàng có sẵn tại shop, mời bạn ghé test trực tiếp thoải mái trước khi trả tiền nha! Bạn định ghé khoảng mấy giờ nhắn mình chuẩn bị sẵn đồ nhé.`;
+  }
+
+  // 3. Nếu khách đang đứng ở trang 1 sản phẩm cụ thể và hỏi về món đó
+  if (curProd && /món này|con này|còn không|còn hàng|giá|chốt|mua/i.test(q)) {
+    const giaText = formatGia(curProd);
+    if (curProd.soLuong <= 0) {
+      return `Dạ mẫu ${curProd.hang} ${curProd.ten} hiện vừa hết hàng rồi ạ. Bạn để lại SĐT hoặc nhắn Messenger cho tụi mình, khi nào có kèo tương tự về shop báo bạn đầu tiên nha!`;
+    }
+    return `Dạ mẫu ${curProd.hang} ${curProd.ten} (${curProd.tinhTrang}) đang sẵn hàng tại Đà Nẵng, giá ${giaText}${curProd.note ? ` — ${curProd.note}` : ""}. Bạn muốn qua shop test trực tiếp hay chốt Ship COD / Bank full ạ?`;
+  }
+
+  if (curSold && /món này|con này|còn không/i.test(q)) {
+    return `Dạ mẫu ${curSold.hang} ${curSold.ten} này shop vừa bán mất rồi ạ. Bạn để lại SĐT khi nào có kèo lướt tương tự về mình nhắn bạn ngay nha!`;
+  }
+
+  // 4. Phân loại đúng Danh mục khách đang hỏi (Chuột vs Bàn phím vs Tai nghe)
+  const askingMouse = /chuột|mouse|spl|gpx|viper|deathadder|da v3|da v4|superlight|zowie|pulsar|lamzu|cầm|tay to|tay nhỏ|claw|palm|fingertip/i.test(q);
+  const askingKeyboard = /bàn phím|phím|he\b|rapid trigger|switch|keycap|layout|60%|68%|75%|80%|tkl|hex80|rs7|edge60|wooting|aula|akko/i.test(q);
+  const askingHeadset = /tai nghe|headset|iem|mic|hyperx|cloud|blackshark|barracuda/i.test(q);
+
+  let pool = products.filter((p) => p.soLuong > 0);
+  if (askingMouse && !askingKeyboard) {
+    pool = pool.filter((p) => p.danhMuc === "chuot");
+  } else if (askingKeyboard && !askingMouse) {
+    pool = pool.filter((p) => p.danhMuc === "ban-phim");
+  } else if (askingHeadset) {
+    pool = pool.filter((p) => p.danhMuc === "tai-nghe");
+  }
+
+  if (askingMouse && /tay.*to|tay.*lớn/i.test(q)) {
+    pool = pool.filter((p) => !/mini/i.test(p.ten));
+  }
+
+  if (askingMouse || askingKeyboard || askingHeadset) {
+    const top = pool.slice(0, 5);
+    if (top.length > 0) {
+      const listStr = top
+        .map((p) => `• ${p.hang} ${p.ten} (${p.tinhTrang}): ${formatGia(p)}`)
+        .join("\n");
+      return `Dạ hiện tại trong danh mục bạn tìm, shop đang sẵn mấy mẫu này phù hợp nè:\n${listStr}\nBạn thích form cầm hay tầm giá khoảng bao nhiêu nhắn mình lọc chuẩn hơn cho bạn nha!`;
+    }
+  }
+
+  if (cartSummary && /giỏ hàng|chốt đơn/i.test(q)) {
+    return `Dạ mình thấy trong giỏ của bạn đang có: ${cartSummary} (Tổng: ${formatVND(cartTotal)}). Bạn muốn chốt đơn này theo hình thức Ship COD hay Bank full ạ?`;
+  }
+
+  return `Dạ mình đã ghi nhận câu hỏi của bạn! Bạn đang muốn tìm chuột, bàn phím hay chốt đơn theo hình thức Ship COD (cọc 50k) / Bank full (trên 1tr Freeship) / GDTT tại Đà Nẵng cứ nhắn mình nha!`;
+}
+
+export function AiChatbox() {
+  const pathname = usePathname();
+  const { lines, total } = useCart();
+  const [open, setOpen] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+  const [input, setInput] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [messages, setMessages] = useState<ChatMessage[]>([
+    {
+      id: "welcome",
+      role: "assistant",
+      text: "Chào bạn! 🍬 Mình là trợ lý Kẹo Gaming Shop (Đà Nẵng). Bạn cần tư vấn chuột, phím cơ/HE, hỏi tình trạng thật hay chốt đơn cứ nhắn mình nha!",
+    },
+  ]);
+
+  const listRef = useRef<HTMLDivElement>(null);
+  const lastMsgRef = useRef<HTMLDivElement>(null);
+  const msgCounterRef = useRef(1);
+
+  // Nhận diện sản phẩm khách đang xem từ URL (/san-pham/<slug>)
+  const productSlugMatch = pathname?.match(/^\/san-pham\/([^/]+)/);
+  const currentProductSlug = productSlugMatch ? productSlugMatch[1] : null;
+  const currentProduct = currentProductSlug ? getProduct(currentProductSlug) : undefined;
+
+  // Cuộn thông minh: Khi có tin nhắn mới từ AI, cuộn tới ĐẦU tin nhắn đó để khách đọc từ dòng đầu tiên dễ dàng, không bị trôi mất đầu đoạn!
+  useEffect(() => {
+    if (!open) return;
+    if (loading && listRef.current) {
+      listRef.current.scrollTo({ top: listRef.current.scrollHeight, behavior: "smooth" });
+      return;
+    }
+    if (lastMsgRef.current) {
+      lastMsgRef.current.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  }, [messages, open, loading]);
+
+  const cartSummary = lines
+    .map((l) => `${l.product.hang} ${l.product.ten}${l.product.loai ? ` (${l.product.loai.ten})` : ""} x${l.quantity}`)
+    .join(", ");
+
+  async function sendMessage(textToSend?: string) {
+    const clean = (textToSend ?? input).trim();
+    if (!clean || loading) return;
+
+    msgCounterRef.current += 1;
+    const userMsg: ChatMessage = {
+      id: "u_" + msgCounterRef.current,
+      role: "user",
+      text: clean,
+    };
+
+    setMessages((prev) => [...prev, userMsg]);
+    if (!textToSend) setInput("");
+    setLoading(true);
+
+    const pageContext = {
+      path: pathname || "/",
+      title: currentProduct ? `${currentProduct.hang} ${currentProduct.ten} (${formatGia(currentProduct)})` : document.title,
+      cartSummary: cartSummary ? `${cartSummary} - Tổng: ${formatVND(total)}` : "Trống",
+    };
+
+    let replied = false;
+    for (const endpoint of API_ENDPOINTS) {
+      if (
+        typeof window !== "undefined" &&
+        window.location.hostname !== "localhost" &&
+        window.location.hostname !== "127.0.0.1" &&
+        endpoint.includes("localhost")
+      ) {
+        continue;
+      }
+      try {
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            sessionId: getSessionId(),
+            message: clean,
+            pageContext,
+          }),
+          signal: AbortSignal.timeout(25000),
+        });
+        if (!res.ok) continue;
+        const data = await res.json();
+        if (data?.reply) {
+          msgCounterRef.current += 1;
+          const replyId = "a_" + msgCounterRef.current;
+          setMessages((prev) => [
+            ...prev,
+            {
+              id: replyId,
+              role: "assistant",
+              text: data.reply,
+              qrUrl: data.bankQrUrl || null,
+            },
+          ]);
+          replied = true;
+          break;
+        }
+      } catch {
+        // Chuyển sang endpoint tiếp theo hoặc dùng bộ trả lời tức thì
+      }
+    }
+
+    if (!replied) {
+      const fallbackText = buildInstantLocalReply(clean, currentProductSlug, total, cartSummary);
+      msgCounterRef.current += 1;
+      const fallbackId = "a_" + msgCounterRef.current;
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: fallbackId,
+          role: "assistant",
+          text: fallbackText,
+        },
+      ]);
+    }
+
+    setLoading(false);
+  }
+
+  // Các nút bấm gợi ý rút gọn thành nhãn ngắn 1 dòng (không chiếm diện tích đọc tin nhắn!)
+  const quickChips: QuickChip[] = currentProduct
+    ? [
+        { label: "✨ Tình trạng món này", prompt: `Món ${currentProduct.ten} này còn hàng và tình trạng sao shop?` },
+        { label: "📦 Ship COD / Bank full", prompt: `Mình muốn chốt món ${currentProduct.ten} này thì Ship COD hay Bank full thế nào?` },
+        { label: "📍 Qua shop Đà Nẵng test", prompt: `Mình ở Đà Nẵng muốn qua shop test trực tiếp món này` },
+      ]
+    : [
+        { label: "📦 Quy định Ship & Cọc", prompt: "Quy định Ship COD và Bank full của shop thế nào?" },
+        { label: "🖱️ Tư vấn Chuột", prompt: "Tư vấn giúp mình chuột chơi game đang sẵn hàng tại shop" },
+        { label: "⌨️ Tư vấn Phím HE/Cơ", prompt: "Tư vấn bàn phím HE / Phím cơ đang sẵn hàng tại shop" },
+        { label: "📍 Địa chỉ Đà Nẵng", prompt: "Địa chỉ shop ở Đà Nẵng và giờ mở cửa để qua test trực tiếp" },
+      ];
+
+  return (
+    <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end sm:bottom-5 sm:right-5">
+      {open ? (
+        <div
+          role="dialog"
+          aria-label="Chat tư vấn Kẹo Gaming Shop"
+          className={`flex flex-col overflow-hidden rounded-[1.5rem] border border-border-strong bg-surface shadow-2xl transition-all duration-200 ${
+            expanded
+              ? "h-[85vh] w-[calc(100vw-2rem)] sm:h-[44rem] sm:w-[34rem]"
+              : "h-[78vh] max-h-[37rem] w-[calc(100vw-2rem)] sm:h-[36rem] sm:w-[26.5rem]"
+          }`}
+        >
+          {/* Header gọn gàng + Tích hợp sẵn link Messenger/Zalo & nút Phóng to */}
+          <div className="flex items-center justify-between gap-2 bg-primary px-4 py-3 text-on-primary">
+            <div className="flex min-w-0 items-center gap-2.5">
+              <span className="grid size-8 shrink-0 place-items-center rounded-full bg-white/20 text-base">
+                🍬
+              </span>
+              <div className="min-w-0">
+                <div className="flex items-center gap-1.5">
+                  <span className="size-2 rounded-full bg-emerald-300" />
+                  <p className="truncate font-display text-[0.95rem] font-extrabold leading-tight">
+                    Trợ lý Kẹo Gaming
+                  </p>
+                </div>
+                <p className="truncate text-[0.7rem] opacity-90">
+                  Kho hàng trực tiếp · Báo đúng tình trạng
+                </p>
+              </div>
+            </div>
+
+            <div className="flex shrink-0 items-center gap-1">
+              <a
+                href={site.social.messenger}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Nhắn Messenger với chủ shop (Xem video test)"
+                className="inline-flex h-8 items-center gap-1 rounded-full bg-white/20 px-2.5 text-xs font-semibold text-on-primary transition-colors hover:bg-white/30"
+              >
+                <FacebookIcon width={13} height={13} />
+                <span className="hidden sm:inline">Messenger</span>
+              </a>
+              <a
+                href={site.social.zalo}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Nhắn Zalo với chủ shop"
+                className="inline-flex size-8 items-center justify-center rounded-full bg-white/20 text-on-primary transition-colors hover:bg-white/30"
+              >
+                <ZaloIcon width={14} height={14} />
+              </a>
+              <button
+                type="button"
+                onClick={() => setExpanded((v) => !v)}
+                title={expanded ? "Thu nhỏ khung chat" : "Mở rộng khung chat để đọc thoải mái hơn"}
+                aria-label={expanded ? "Thu nhỏ khung chat" : "Mở rộng khung chat"}
+                className="hidden size-8 cursor-pointer place-items-center rounded-full bg-white/15 text-xs font-bold text-on-primary transition-colors hover:bg-white/30 sm:grid"
+              >
+                {expanded ? "⤡" : "⤢"}
+              </button>
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                title="Thu gọn"
+                aria-label="Đóng khung chat"
+                className="grid size-8 cursor-pointer place-items-center rounded-full bg-white/15 text-on-primary transition-colors hover:bg-white/30"
+              >
+                <CloseIcon width={17} height={17} />
+              </button>
+            </div>
+          </div>
+
+          {/* Vùng đọc tin nhắn: Chiếm trọn 82% chiều cao khung chat, không bị các nút gợi ý che khuất */}
+          <div
+            ref={listRef}
+            className="flex-1 space-y-3.5 overflow-y-auto bg-bg px-4 py-4 text-[0.92rem]"
+          >
+            {messages.map((m, idx) => {
+              const isLast = idx === messages.length - 1;
+              return (
+                <div
+                  key={m.id}
+                  ref={isLast ? lastMsgRef : null}
+                  className={`flex flex-col ${
+                    m.role === "user" ? "items-end" : "items-start"
+                  }`}
+                >
+                  <div
+                    className={` whitespace-pre-line rounded-2xl px-4 py-3 leading-relaxed shadow-xs ${
+                      m.role === "user"
+                        ? "max-w-[85%] rounded-br-xs bg-primary text-on-primary"
+                        : "max-w-[94%] rounded-bl-xs border border-border bg-surface text-fg"
+                    }`}
+                  >
+                    {m.text}
+                  </div>
+                  {m.qrUrl && (
+                    <div className="mt-2 overflow-hidden rounded-2xl border border-border bg-white p-2 shadow-sm">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={m.qrUrl}
+                        alt="Mã QR chuyển khoản Kẹo Gaming Shop"
+                        className="h-44 w-auto object-contain"
+                      />
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+
+            {loading && (
+              <div className="flex items-start">
+                <div className="rounded-2xl rounded-bl-xs border border-border bg-surface px-4 py-2.5 text-xs font-medium text-fg-muted">
+                  🍬 Kẹo đang tra kho hàng...
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Thanh gợi ý 1 dòng gọn gàng (Cuộn ngang, không bao giờ đẩy trôi tin nhắn!) */}
+          <div className="flex items-center gap-1.5 overflow-x-auto border-t border-border bg-surface-2 px-3 py-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {quickChips.map((chip) => (
+              <button
+                key={chip.label}
+                type="button"
+                disabled={loading}
+                onClick={() => sendMessage(chip.prompt)}
+                className="shrink-0 cursor-pointer rounded-full border border-border-strong bg-surface px-3 py-1 text-xs font-semibold text-fg transition-colors hover:border-primary hover:bg-primary-soft hover:text-primary-ink disabled:opacity-50"
+              >
+                {chip.label}
+              </button>
+            ))}
+            <a
+              href={site.contact.phoneHref}
+              className="shrink-0 inline-flex items-center gap-1 rounded-full border border-border-strong bg-surface px-3 py-1 text-xs font-semibold text-fg transition-colors hover:border-primary hover:text-primary-ink"
+            >
+              <PhoneIcon width={12} height={12} />
+              {site.contact.phone}
+            </a>
+          </div>
+
+          {/* Ô nhập tin nhắn */}
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              sendMessage();
+            }}
+            className="flex items-center gap-2 border-t border-border bg-surface px-3 py-2.5"
+          >
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              placeholder="Hỏi về chuột, phím, tình trạng hoặc SĐT..."
+              className="h-10 flex-1 rounded-full border border-border-strong bg-bg px-4 text-sm text-fg placeholder:text-fg-subtle focus:border-primary focus:outline-none"
+            />
+            <button
+              type="submit"
+              disabled={!input.trim() || loading}
+              className="inline-flex h-10 shrink-0 cursor-pointer items-center justify-center rounded-full bg-primary px-4 text-sm font-semibold text-on-primary transition-all hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-45"
+            >
+              Gửi
+            </button>
+          </form>
+        </div>
+      ) : (
+        /* Nút mở Chatbox nổi (Chỉ hiện khi đang đóng để tiết kiệm chiều cao màn hình khi mở chat) */
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          aria-expanded={open}
+          aria-label="Mở trợ lý AI tư vấn Kẹo Gaming Shop"
+          className="group flex h-14 cursor-pointer items-center gap-2.5 rounded-full bg-primary px-5 text-on-primary shadow-lg transition-all duration-200 hover:bg-primary-hover active:scale-95"
+        >
+          <span className="relative flex size-3">
+            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-300 opacity-75" />
+            <span className="relative inline-flex size-3 rounded-full bg-emerald-400" />
+          </span>
+          <span className="font-display text-base font-extrabold tracking-tight">
+            Chat tư vấn Kẹo AI 🍬
+          </span>
+        </button>
+      )}
+    </div>
+  );
+}

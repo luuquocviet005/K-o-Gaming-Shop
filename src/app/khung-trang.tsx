@@ -7,6 +7,7 @@ import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { DoLuotKhach } from "@/components/do-luot-khach";
 import { DoLienHe } from "@/components/do-lien-he";
+import { AiChatbox } from "@/components/ai-chatbox";
 import { themeInitScript } from "@/components/theme-toggle";
 
 // Font được tải về lúc build và self-host -> không gọi ra Google khi người dùng
@@ -137,6 +138,7 @@ export function KhungTrang({
           <Header />
           <main id="noi-dung">{children}</main>
           <Footer />
+          <AiChatbox />
         </CartProvider>
 
         {/* Đo lượt khách — im lặng hoàn toàn khi site.ga4 còn trống */}
