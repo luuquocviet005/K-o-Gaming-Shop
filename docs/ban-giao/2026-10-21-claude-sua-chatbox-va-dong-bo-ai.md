@@ -18,9 +18,9 @@
 - `AGENTS.md` có luật chung; thêm `docs/ban-giao/` và `.agents/rules/`.
 
 ## Còn dở / cần chủ shop quyết
-- Chính sách ship đang lệch: khung chat nói "chuyển khoản từ 1 triệu thì
-  freeship", còn `site.ts` + trang `/chinh-sach` ghi đã bỏ freeship từ
-  4/9/2026. Chốt một bên rồi sửa bên kia (và Sheet của backend).
+- ĐÃ CHỐT (21/10): chuyển khoản đủ, đơn từ 1 triệu thì freeship. Đã sửa
+  `site.ts`, trang `/chinh-sach` và ghi chú ở giỏ hàng cho khớp với khung
+  chat. Sheet của backend ai-marketing-town cũng phải ghi đúng quy tắc này.
 - Backend Render phải cho phép (CORS) tên miền keogaminggear.com — chưa kiểm
   tra được từ repo này.
 

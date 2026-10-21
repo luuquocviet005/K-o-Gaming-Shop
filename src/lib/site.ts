@@ -1,3 +1,6 @@
+/** Đơn chuyển khoản đủ từ mức này thì shop freeship — xem `site.shipping` */
+const FREESHIP_TU = 1_000_000;
+
 /**
  * Thông tin cửa hàng — SỬA FILE NÀY để thay tên, liên hệ, mạng xã hội.
  * Không hardcode số điện thoại / địa chỉ ở bất kỳ component nào khác.
@@ -38,27 +41,25 @@ export const site = {
   /**
    * Vận chuyển.
    *
-   * Khách trả phí ship theo thực tế, shop không cộng thêm và KHÔNG bao ship.
-   * Bỏ chính sách "chuyển khoản đủ thì shop chịu ship" từ 2026-09-04: đơn nhỏ
-   * thì tiền lãi không đủ bù cước, mà cam kết lại ghi "không giới hạn giá trị
-   * đơn" nên không từ chối được.
+   * Chuyển khoản đủ, đơn từ 1 triệu: shop freeship (chủ shop chốt
+   * 21/10/2026). Dưới mức đó, hoặc ship COD, khách trả phí ship theo thực tế,
+   * shop không cộng thêm.
    *
-   * KHÔNG ghi một con số cố định trên web: cước Grab và cước nhà xe thay đổi
-   * theo quãng đường, theo tỉnh, theo từng nhà xe. Báo cho khách lúc chốt đơn.
-   * Thà nói "báo sau" còn hơn ghi một con số rồi thu khác.
+   * Có NGƯỠNG là cố ý. Chính sách cũ "chuyển khoản đủ thì shop chịu ship"
+   * không giới hạn giá trị đơn, bị bỏ ngày 2026-09-04 vì đơn nhỏ thì tiền lãi
+   * không đủ bù cước.
+   *
+   * Ngoài mức freeship, KHÔNG ghi một con số phí ship cố định trên web: cước
+   * Grab và cước nhà xe thay đổi theo quãng đường, theo tỉnh, theo từng nhà
+   * xe. Thà nói "báo sau" còn hơn ghi một con số rồi thu khác.
+   *
+   * Khung chat AI dùng chung các số này. Backend ai-marketing-town đọc quy
+   * tắc từ Google Sheet — đổi ở đây thì đổi luôn bên Sheet.
    */
   shipping: {
-    ghiChu: "Phí ship tính theo thực tế, tụi mình báo trước khi gửi.",
-    /**
-     * Quy tắc khung chat AI trả lời khách (backend ai-marketing-town dùng
-     * cùng quy tắc, đọc từ Google Sheet). Đổi ở đây thì đổi luôn bên Sheet.
-     *
-     * LƯU Ý: "chuyển khoản đủ từ 1 triệu thì freeship" đang lệch với đoạn
-     * chú thích ở trên và trang /chinh-sach (không bao ship). Chủ shop chốt
-     * một bên rồi sửa bên còn lại cho khớp.
-     */
+    ghiChu: `Chuyển khoản đủ từ ${FREESHIP_TU / 1_000_000} triệu được freeship. Dưới mức đó phí ship tính theo thực tế, tụi mình báo trước khi gửi.`,
     cocCod: 50_000,
-    freeshipChuyenKhoanTu: 1_000_000,
+    freeshipChuyenKhoanTu: FREESHIP_TU,
   },
 
   /**
