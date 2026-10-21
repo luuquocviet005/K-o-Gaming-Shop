@@ -1,6 +1,18 @@
 {
   "daBan": [
     {
+      "slug": "hyperx-cloud-3",
+      "ten": "Cloud 3",
+      "hang": "HyperX",
+      "danhMuc": "tai-nghe",
+      "gia": 1200000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/hyperx-cloud-3/01.webp",
+      "mau": "#c2185b",
+      "banLuc": "2026-10-21"
+    },
+    {
       "slug": "logitech-g304-x-superlight",
       "ten": "G304 x Superlight",
       "hang": "Logitech",
