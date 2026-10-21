@@ -148,6 +148,24 @@ export function AiChatbox() {
   const listRef = useRef<HTMLDivElement>(null);
   const lastMsgRef = useRef<HTMLDivElement>(null);
   const msgCounterRef = useRef(1);
+  const inputRef = useRef<HTMLTextAreaElement>(null);
+
+  /*
+   * Khách hay nhắn rời từng mẩu: tên, rồi SĐT, rồi địa chỉ. Trước đây đang chờ
+   * trả lời thì ô nhập bị khoá — khách gõ xong không gửi được, tưởng web lỗi.
+   * Giờ gửi lúc nào cũng được: tin nhắn hiện ngay, gom vào hàng chờ, trả lời
+   * xong câu trước thì gửi cả cụm còn lại một lượt.
+   */
+  const dangChoRef = useRef(false);
+  const hangChoRef = useRef<string[]>([]);
+
+  // Ô nhập tự cao lên theo số dòng (tối đa ~5 dòng), gửi xong thì thu về 1 dòng
+  useEffect(() => {
+    const el = inputRef.current;
+    if (!el) return;
+    el.style.height = "auto";
+    el.style.height = `${Math.min(el.scrollHeight, 128)}px`;
+  }, [input, open]);
 
   // Nhận diện sản phẩm khách đang xem từ URL (/san-pham/<slug>)
   const productSlugMatch = pathname?.match(/^\/san-pham\/([^/]+)/);
@@ -180,9 +198,9 @@ export function AiChatbox() {
     .map((l) => `${l.product.hang} ${l.product.ten}${l.product.loai ? ` (${l.product.loai.ten})` : ""} x${l.quantity}`)
     .join(", ");
 
-  async function sendMessage(textToSend?: string) {
+  function sendMessage(textToSend?: string) {
     const clean = (textToSend ?? input).trim();
-    if (!clean || loading) return;
+    if (!clean) return;
 
     msgCounterRef.current += 1;
     const userMsg: ChatMessage = {
@@ -193,6 +211,16 @@ export function AiChatbox() {
 
     setMessages((prev) => [...prev, userMsg]);
     if (!textToSend) setInput("");
+
+    if (dangChoRef.current) {
+      hangChoRef.current.push(clean);
+      return;
+    }
+    void hoiMayChu(clean);
+  }
+
+  async function hoiMayChu(clean: string) {
+    dangChoRef.current = true;
     setLoading(true);
 
     const pageContext = {
@@ -258,7 +286,27 @@ export function AiChatbox() {
       ]);
     }
 
+    // Khách nhắn thêm trong lúc chờ → gửi cả cụm thành một tin
+    const nhanThem = hangChoRef.current.splice(0);
+    if (nhanThem.length) {
+      await hoiMayChu(nhanThem.join("\n"));
+      return;
+    }
+
+    dangChoRef.current = false;
     setLoading(false);
+  }
+
+  /*
+   * Enter: máy tính thì gửi, Shift+Enter xuống dòng. Điện thoại không có phím
+   * Shift nên Enter là xuống dòng, gửi bằng nút "Gửi".
+   * isComposing: đang gõ dở chữ có dấu bằng bộ gõ thì Enter thuộc về bộ gõ.
+   */
+  function onKeyDownNhap(e: React.KeyboardEvent<HTMLTextAreaElement>) {
+    if (e.key !== "Enter" || e.shiftKey || e.nativeEvent.isComposing) return;
+    if (window.matchMedia("(pointer: coarse)").matches) return;
+    e.preventDefault();
+    sendMessage();
   }
 
   // Các nút bấm gợi ý rút gọn thành nhãn ngắn 1 dòng (không chiếm diện tích đọc tin nhắn!)
@@ -400,7 +448,6 @@ export function AiChatbox() {
               <button
                 key={chip.label}
                 type="button"
-                disabled={loading}
                 onClick={() => sendMessage(chip.prompt)}
                 className="shrink-0 cursor-pointer rounded-full border border-border-strong bg-surface px-3 py-1 text-xs font-semibold text-fg transition-colors hover:border-primary hover:bg-primary-soft hover:text-primary-ink disabled:opacity-50"
               >
@@ -422,19 +469,21 @@ export function AiChatbox() {
               e.preventDefault();
               sendMessage();
             }}
-            className="flex items-center gap-2 border-t border-border bg-surface px-3 py-2.5"
+            className="flex items-end gap-2 border-t border-border bg-surface px-3 py-2.5"
           >
-            <input
-              type="text"
+            <textarea
+              ref={inputRef}
+              rows={1}
               value={input}
               onChange={(e) => setInput(e.target.value)}
+              onKeyDown={onKeyDownNhap}
               aria-label="Nhập tin nhắn cho trợ lý Kẹo Gaming"
               placeholder="Hỏi về chuột, phím, tình trạng hoặc SĐT..."
-              className="h-10 flex-1 rounded-full border border-border-strong bg-bg px-4 text-sm text-fg placeholder:text-fg-subtle focus:border-primary focus:outline-none"
+              className="max-h-32 min-h-10 flex-1 resize-none rounded-[1.25rem] border border-border-strong bg-bg px-4 py-2.5 text-sm leading-5 text-fg placeholder:text-fg-subtle focus:border-primary focus:outline-none"
             />
             <button
               type="submit"
-              disabled={!input.trim() || loading}
+              disabled={!input.trim()}
               className="inline-flex h-10 shrink-0 cursor-pointer items-center justify-center rounded-full bg-primary px-4 text-sm font-semibold text-on-primary transition-all hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-45"
             >
               Gửi
