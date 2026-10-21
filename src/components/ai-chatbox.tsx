@@ -27,7 +27,11 @@ const API_ENDPOINTS = [site.chatbot.apiMayNha, site.chatbot.api];
  * dậy. Chờ khách gõ xong câu đầu mới gọi thì câu đó gần như chắc chắn rơi vào
  * trả lời dự phòng. Nên vừa mở khung chat là gọi đánh thức luôn.
  */
-const CHO_TRA_LOI_MS = 40000;
+// Render miễn phí dậy mất 50–60 giây. Chờ 40 giây thì câu đầu tiên của khách
+// gần như luôn rơi vào trả lời dự phòng (chủ shop thử ngày 21/10/2026).
+const CHO_TRA_LOI_MS = 65000;
+// Chờ quá lâu thì đổi dòng "đang tra kho" thành lời báo đang khởi động
+const BAO_CHO_LAU_MS = 8000;
 let daDanhThuc = false;
 function danhThucMayChu() {
   if (daDanhThuc) return;
@@ -54,6 +58,39 @@ function getSessionId(): string {
     maPhienTam ??= taoMoi();
     return maPhienTam;
   }
+}
+
+/** Mã QR chuyển khoản VietQR — có số tiền thì điền sẵn, không thì khách tự nhập */
+function qrChuyenKhoan(soTien: number | null, noiDung: string): string {
+  const { ma, soTaiKhoan, chuTaiKhoan } = site.nganHang;
+  const qs = new URLSearchParams({ addInfo: noiDung, accountName: chuTaiKhoan });
+  if (soTien) qs.set("amount", String(soTien));
+  return `https://img.vietqr.io/image/${ma}-${soTaiKhoan}-compact2.png?${qs}`;
+}
+
+/**
+ * Khách xin STK / chọn chuyển khoản lúc máy chủ chưa trả lời được.
+ *
+ * Trước đây câu dự phòng chỉ đọc lại quy tắc ship — khách nhắn "bankfull, cho
+ * mình xin stk" mà không nhận được STK, phải hỏi đi hỏi lại. STK là thông tin
+ * cố định, trình duyệt tự đưa được ngay, kèm mã QR.
+ */
+function traLoiChuyenKhoan(userText: string): { text: string; qrUrl: string } | null {
+  const q = userText.toLowerCase();
+  const xinStk = /stk|số tài khoản|so tai khoan|tài khoản|chuyển khoản|mã qr|\bqr\b/.test(q);
+  const bankFull = /bank\s*full/.test(q);
+  if (!xinStk && !bankFull) return null;
+
+  const laCoc = /cọc|\bcod\b/.test(q) && !bankFull;
+  const { ma, soTaiKhoan, chuTaiKhoan } = site.nganHang;
+  const stk = `${ma} – ${soTaiKhoan} – ${chuTaiKhoan}`;
+  const text = laCoc
+    ? `Dạ STK nhận cọc của shop: ${stk}. Bạn cọc ${formatVND(site.shipping.cocCod)} theo mã QR bên dưới nha, tiền cọc trừ thẳng vào tiền thu hộ COD. Chuyển xong bạn nhắn Messenger hoặc Zalo (nút ở đầu khung chat) gửi ảnh chuyển khoản + Họ tên, SĐT, địa chỉ để shop lên đơn ạ!`
+    : `Dạ STK của shop: ${stk}. Bạn quét mã QR bên dưới rồi nhập số tiền đơn hàng nha (đơn từ ${formatVND(site.shipping.freeshipChuyenKhoanTu)} được freeship). Chuyển xong bạn nhắn Messenger hoặc Zalo (nút ở đầu khung chat) gửi ảnh chuyển khoản + Họ tên, SĐT, địa chỉ để shop lên đơn ạ!`;
+  return {
+    text,
+    qrUrl: qrChuyenKhoan(laCoc ? site.shipping.cocCod : null, laCoc ? "Coc COD Keo Gaming" : "Keo Gaming"),
+  };
 }
 
 /**
@@ -137,6 +174,7 @@ export function AiChatbox() {
   const [expanded, setExpanded] = useState(false);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [choLau, setChoLau] = useState(false);
   const [messages, setMessages] = useState<ChatMessage[]>([
     {
       id: "welcome",
@@ -164,7 +202,11 @@ export function AiChatbox() {
     const el = inputRef.current;
     if (!el) return;
     el.style.height = "auto";
-    el.style.height = `${Math.min(el.scrollHeight, 128)}px`;
+    // scrollHeight không tính viền — thiếu 2px viền là trình duyệt hiện thanh
+    // cuộn ngay cả khi mới gõ một dòng
+    const cao = el.scrollHeight + (el.offsetHeight - el.clientHeight);
+    el.style.height = `${Math.min(cao, 128)}px`;
+    el.style.overflowY = cao > 128 ? "auto" : "hidden";
   }, [input, open]);
 
   // Nhận diện sản phẩm khách đang xem từ URL (/san-pham/<slug>)
@@ -222,6 +264,7 @@ export function AiChatbox() {
   async function hoiMayChu(clean: string) {
     dangChoRef.current = true;
     setLoading(true);
+    const henBaoChoLau = setTimeout(() => setChoLau(true), BAO_CHO_LAU_MS);
 
     const pageContext = {
       path: pathname || "/",
@@ -272,8 +315,13 @@ export function AiChatbox() {
       }
     }
 
+    clearTimeout(henBaoChoLau);
+    setChoLau(false);
+
     if (!replied) {
-      const fallbackText = buildInstantLocalReply(clean, currentProductSlug, total, cartSummary);
+      const chuyenKhoan = traLoiChuyenKhoan(clean);
+      const fallbackText =
+        chuyenKhoan?.text ?? buildInstantLocalReply(clean, currentProductSlug, total, cartSummary);
       msgCounterRef.current += 1;
       const fallbackId = "a_" + msgCounterRef.current;
       setMessages((prev) => [
@@ -282,6 +330,7 @@ export function AiChatbox() {
           id: fallbackId,
           role: "assistant",
           text: fallbackText,
+          qrUrl: chuyenKhoan?.qrUrl ?? null,
         },
       ]);
     }
@@ -436,7 +485,9 @@ export function AiChatbox() {
             {loading && (
               <div className="flex items-start">
                 <div className="rounded-2xl rounded-bl-xs border border-border bg-surface px-4 py-2.5 text-xs font-medium text-fg-muted">
-                  🍬 Kẹo đang tra kho hàng...
+                  {choLau
+                    ? "🍬 Trợ lý đang khởi động, chờ mình xíu nha (lần đầu có thể mất gần 1 phút)…"
+                    : "🍬 Kẹo đang tra kho hàng..."}
                 </div>
               </div>
             )}
