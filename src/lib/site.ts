@@ -63,6 +63,17 @@ export const site = {
   },
 
   /**
+   * Tài khoản nhận cọc COD / chuyển khoản đủ (chủ shop gửi 21/10/2026).
+   * `ma` là mã ngân hàng theo chuẩn VietQR — dùng để vẽ mã QR. Backend chatbot
+   * (ai-marketing-town) cũng khai đúng tài khoản này, đổi thì đổi cả hai.
+   */
+  nganHang: {
+    ma: "VIB",
+    soTaiKhoan: "904505592",
+    chuTaiKhoan: "LUU QUOC VIET",
+  },
+
+  /**
    * Khung chat AI (src/components/ai-chatbox.tsx) gọi về backend chạy trên
    * Render — dự án riêng ai-marketing-town, không nằm trong repo này.
    */
