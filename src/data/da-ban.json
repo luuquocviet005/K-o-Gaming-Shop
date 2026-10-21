@@ -13,6 +13,18 @@
       "banLuc": "2026-10-21"
     },
     {
+      "slug": "phi-khuong-hoan-phi",
+      "ten": "Khương Hoàn Phi",
+      "hang": "Phi",
+      "danhMuc": "phu-kien",
+      "gia": 500000,
+      "tinhTrang": "Béo",
+      "nhomTinhTrang": "khac",
+      "anh": "/products/phi-khuong-hoan-phi/01.webp",
+      "mau": "#be123c",
+      "banLuc": "2026-10-21"
+    },
+    {
       "slug": "logitech-g304-x-superlight",
       "ten": "G304 x Superlight",
       "hang": "Logitech",
