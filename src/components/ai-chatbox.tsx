@@ -20,24 +20,46 @@ type QuickChip = {
   prompt: string;
 };
 
-const API_ENDPOINTS = [
-  "http://localhost:5173/api/public/chat",
-  "https://keo-gaming-agent-town.onrender.com/api/public/chat",
-];
+const API_ENDPOINTS = [site.chatbot.apiMayNha, site.chatbot.api];
 
+/**
+ * Render bản miễn phí ngủ sau ~15 phút không ai gọi và mất gần một phút để
+ * dậy. Chờ khách gõ xong câu đầu mới gọi thì câu đó gần như chắc chắn rơi vào
+ * trả lời dự phòng. Nên vừa mở khung chat là gọi đánh thức luôn.
+ */
+const CHO_TRA_LOI_MS = 40000;
+let daDanhThuc = false;
+function danhThucMayChu() {
+  if (daDanhThuc) return;
+  daDanhThuc = true;
+  fetch(new URL("/", site.chatbot.api), { mode: "no-cors" }).catch(() => {});
+}
+
+/** Mã phiên để backend nhớ mạch hội thoại. Tab ẩn danh có thể chặn
+ * localStorage — khi đó dùng mã tạm trong bộ nhớ, chat vẫn chạy bình thường. */
+let maPhienTam: string | null = null;
 function getSessionId(): string {
   if (typeof window === "undefined") return "web_ssr";
   const key = "keo_chat_session_id";
-  let sid = window.localStorage.getItem(key);
-  if (!sid) {
-    sid = "web_" + Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
-    window.localStorage.setItem(key, sid);
+  const taoMoi = () =>
+    "web_" + Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+  try {
+    let sid = window.localStorage.getItem(key);
+    if (!sid) {
+      sid = taoMoi();
+      window.localStorage.setItem(key, sid);
+    }
+    return sid;
+  } catch {
+    maPhienTam ??= taoMoi();
+    return maPhienTam;
   }
-  return sid;
 }
 
 /**
  * Trả lời dự phòng tức thì ngay trên trình duyệt nếu máy chủ Cloud Render đang khởi động lại.
+ * Lúc này KHÔNG có gì được gửi về cho chủ shop — đừng hứa "đã ghi nhận" hay
+ * "để lại SĐT", mà chỉ khách sang Messenger/Zalo/điện thoại.
  * Phân biệt TUYỆT ĐỐI danh mục (chuot / ban-phim / tai-nghe / pad-chuot / switch) để không bao giờ lẫn bàn phím vào chuột.
  */
 function buildInstantLocalReply(
@@ -52,7 +74,7 @@ function buildInstantLocalReply(
 
   // 1. Hỏi về Ship COD / Bank full / Thanh toán / Freeship
   if (/ship\s*cod|bank\s*full|chuyển khoản|thanh toán|freeship|free\s*ship|phí ship|cọc/i.test(q)) {
-    return `Dạ, Ship COD bên mình cọc 50k giúp shop nha, cọc trừ thẳng vào tiền thu hộ COD. Bank full thì đơn trên 1 triệu mình freeship, dưới 1 triệu phí ship tính theo thực tế bưu điện nhưng sẽ rẻ hơn so với COD ạ.`;
+    return `Dạ, Ship COD bên mình cọc ${formatVND(site.shipping.cocCod)} giúp shop nha, cọc trừ thẳng vào tiền thu hộ COD. Bank full thì đơn từ ${formatVND(site.shipping.freeshipChuyenKhoanTu)} mình freeship, dưới mức đó phí ship tính theo thực tế bưu điện nhưng sẽ rẻ hơn so với COD ạ.`;
   }
 
   // 2. Hỏi địa chỉ / Đà Nẵng / GDTT / Qua shop test
@@ -64,13 +86,13 @@ function buildInstantLocalReply(
   if (curProd && /món này|con này|còn không|còn hàng|giá|chốt|mua/i.test(q)) {
     const giaText = formatGia(curProd);
     if (curProd.soLuong <= 0) {
-      return `Dạ mẫu ${curProd.hang} ${curProd.ten} hiện vừa hết hàng rồi ạ. Bạn để lại SĐT hoặc nhắn Messenger cho tụi mình, khi nào có kèo tương tự về shop báo bạn đầu tiên nha!`;
+      return `Dạ mẫu ${curProd.hang} ${curProd.ten} hiện vừa hết hàng rồi ạ. Bạn nhắn Messenger hoặc Zalo cho tụi mình (nút ở đầu khung chat), khi nào có kèo tương tự về shop báo bạn đầu tiên nha!`;
     }
     return `Dạ mẫu ${curProd.hang} ${curProd.ten} (${curProd.tinhTrang}) đang sẵn hàng tại Đà Nẵng, giá ${giaText}${curProd.note ? ` — ${curProd.note}` : ""}. Bạn muốn qua shop test trực tiếp hay chốt Ship COD / Bank full ạ?`;
   }
 
   if (curSold && /món này|con này|còn không/i.test(q)) {
-    return `Dạ mẫu ${curSold.hang} ${curSold.ten} này shop vừa bán mất rồi ạ. Bạn để lại SĐT khi nào có kèo lướt tương tự về mình nhắn bạn ngay nha!`;
+    return `Dạ mẫu ${curSold.hang} ${curSold.ten} này shop vừa bán mất rồi ạ. Bạn nhắn Messenger hoặc Zalo cho tụi mình (nút ở đầu khung chat), khi nào có kèo lướt tương tự về mình nhắn bạn ngay nha!`;
   }
 
   // 4. Phân loại đúng Danh mục khách đang hỏi (Chuột vs Bàn phím vs Tai nghe)
@@ -105,7 +127,7 @@ function buildInstantLocalReply(
     return `Dạ mình thấy trong giỏ của bạn đang có: ${cartSummary} (Tổng: ${formatVND(cartTotal)}). Bạn muốn chốt đơn này theo hình thức Ship COD hay Bank full ạ?`;
   }
 
-  return `Dạ mình đã ghi nhận câu hỏi của bạn! Bạn đang muốn tìm chuột, bàn phím hay chốt đơn theo hình thức Ship COD (cọc 50k) / Bank full (trên 1tr Freeship) / GDTT tại Đà Nẵng cứ nhắn mình nha!`;
+  return `Dạ trợ lý đang bận chút nên chưa trả lời kỹ được câu này ạ. Bạn nhắn Messenger hoặc Zalo (nút ở đầu khung chat) hay gọi ${site.contact.phone} để chủ shop trả lời ngay nha!`;
 }
 
 export function AiChatbox() {
@@ -131,6 +153,16 @@ export function AiChatbox() {
   const productSlugMatch = pathname?.match(/^\/san-pham\/([^/]+)/);
   const currentProductSlug = productSlugMatch ? productSlugMatch[1] : null;
   const currentProduct = currentProductSlug ? getProduct(currentProductSlug) : undefined;
+
+  /*
+   * Trang sản phẩm đã có sẵn nút nổi Messenger + Zalo ở góc phải dưới trên di
+   * động (san-pham/[slug]/page.tsx, ẩn từ lg). Nút chat nằm cùng góc thì đè
+   * mất nút chốt khách chính — nên lúc đóng, đẩy nút chat lên trên nó.
+   */
+  const viTri =
+    currentProductSlug && !open
+      ? "bottom-[5.5rem] right-5 lg:bottom-5"
+      : "bottom-4 right-4 sm:bottom-5 sm:right-5";
 
   // Cuộn thông minh: Khi có tin nhắn mới từ AI, cuộn tới ĐẦU tin nhắn đó để khách đọc từ dòng đầu tiên dễ dàng, không bị trôi mất đầu đoạn!
   useEffect(() => {
@@ -188,7 +220,7 @@ export function AiChatbox() {
             message: clean,
             pageContext,
           }),
-          signal: AbortSignal.timeout(25000),
+          signal: AbortSignal.timeout(CHO_TRA_LOI_MS),
         });
         if (!res.ok) continue;
         const data = await res.json();
@@ -244,7 +276,7 @@ export function AiChatbox() {
       ];
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end sm:bottom-5 sm:right-5">
+    <div className={`fixed ${viTri} z-50 flex flex-col items-end`}>
       {open ? (
         <div
           role="dialog"
@@ -396,6 +428,7 @@ export function AiChatbox() {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
+              aria-label="Nhập tin nhắn cho trợ lý Kẹo Gaming"
               placeholder="Hỏi về chuột, phím, tình trạng hoặc SĐT..."
               className="h-10 flex-1 rounded-full border border-border-strong bg-bg px-4 text-sm text-fg placeholder:text-fg-subtle focus:border-primary focus:outline-none"
             />
@@ -412,7 +445,10 @@ export function AiChatbox() {
         /* Nút mở Chatbox nổi (Chỉ hiện khi đang đóng để tiết kiệm chiều cao màn hình khi mở chat) */
         <button
           type="button"
-          onClick={() => setOpen(true)}
+          onClick={() => {
+            danhThucMayChu();
+            setOpen(true);
+          }}
           aria-expanded={open}
           aria-label="Mở trợ lý AI tư vấn Kẹo Gaming Shop"
           className="group flex h-14 cursor-pointer items-center gap-2.5 rounded-full bg-primary px-5 text-on-primary shadow-lg transition-all duration-200 hover:bg-primary-hover active:scale-95"

@@ -3,6 +3,7 @@
  *
  *   npm run push                    (tự đặt lời nhắn theo ngày giờ)
  *   npm run push -- "Sửa giá chuột"  (lời nhắn tự đặt)
+ *   node scripts/push.mjs --chi-anh "…"   (chỉ đưa ảnh + bảng hàng, xem dưới)
  *
  * VÌ SAO PHẢI KIỂM TRA TRƯỚC KHI PUSH:
  * Nhánh main nối thẳng với Hostinger — push xong là website thật deploy lại.
@@ -63,6 +64,21 @@ function run(cmd, args, { quiet = false, env } = {}) {
   if (r.error) return { code: 1, out: String(r.error.message) };
   return { code: r.status ?? 1, out: (r.stdout ?? "") + (r.stderr ?? "") };
 }
+
+/*
+ * --chi-anh: chỉ commit đúng phần dây chuyền nạp ảnh tự sinh ra.
+ *
+ * VÌ SAO CẦN: lượt tự động 15 phút chạy ngay trong thư mục dự án. Trước đây
+ * nó `git add -A` — gom luôn code ai đó (người hay AI) đang sửa dở rồi đưa
+ * thẳng lên web, dưới cái tên "Tự động cập nhật ảnh sản phẩm". Đã xảy ra thật
+ * ngày 21/10/2026: cả khung chat AI lên web trong commit 8055255 mà không ai
+ * bấm push. Lượt nạp ảnh chỉ được mang theo đúng những gì nó tạo ra.
+ *
+ * Danh sách này phải khớp với chỗ nap-anh.mjs, sync-sheet.mjs,
+ * anh-chia-se-san-pham.mjs và kiem-tra-deploy.mjs ghi file.
+ */
+const CHI_ANH = process.argv.includes("--chi-anh");
+const PHAN_CUA_ANH = ["public/products", "src/data", "public/version.txt"];
 
 const node = process.execPath;
 const bin = (...p) => join(root, "node_modules", ...p);
@@ -182,7 +198,13 @@ console.log("═══ KIỂM TRA TRƯỚC KHI PUSH ═══");
 goRebaseKet();
 
 // Có gì để push không?
-const { out: status } = run("git", ["status", "--porcelain"], { quiet: true });
+// Ở chế độ --chi-anh, code đang sửa dở không được tính là "có thay đổi" —
+// không thì lượt nào cũng build lại chỉ vì có người đang làm việc.
+const { out: status } = run(
+  "git",
+  ["status", "--porcelain", ...(CHI_ANH ? ["--", ...PHAN_CUA_ANH] : [])],
+  { quiet: true },
+);
 const { out: ahead } = run("git", ["rev-list", "--count", "origin/main..main"], {
   quiet: true,
 });
@@ -218,7 +240,11 @@ step("Kiểm tra tương phản màu", node, [join(root, "scripts", "contrast.mj
 console.log("");
 console.log("═══ ĐẨY LÊN GITHUB ═══");
 
-const custom = process.argv.slice(2).join(" ").trim();
+const custom = process.argv
+  .slice(2)
+  .filter((a) => a !== "--chi-anh")
+  .join(" ")
+  .trim();
 const now = new Date().toLocaleString("vi-VN", { timeZone: "Asia/Ho_Chi_Minh" });
 const message = custom || `Cập nhật nội dung website — ${now}`;
 
@@ -233,7 +259,8 @@ let moc = null;
 
 if (status.trim()) {
   moc = await ghiMocPhienBan(root);
-  if (run("git", ["add", "-A"]).code !== 0) process.exit(1);
+  const phanCanAdd = CHI_ANH ? ["--", ...PHAN_CUA_ANH] : ["-A"];
+  if (run("git", ["add", ...phanCanAdd]).code !== 0) process.exit(1);
   if (run("git", ["commit", "-m", message]).code !== 0) process.exit(1);
   console.log(`  ✓ Đã commit: ${message}`);
 } else {
@@ -267,7 +294,13 @@ if (status.trim()) {
  * nên phải biết.
  */
 console.log("  · Đồng bộ với bản trên GitHub…");
-if (run("git", ["pull", "--rebase", "origin", "main"], { quiet: true }).code !== 0) {
+// --autostash: ở chế độ --chi-anh có thể còn code sửa dở chưa commit, mà
+// `pull --rebase` từ chối chạy khi thư mục còn file đổi. Git tự cất tạm rồi
+// trả lại nguyên vẹn sau khi gộp.
+if (
+  run("git", ["pull", "--rebase", "--autostash", "origin", "main"], { quiet: true })
+    .code !== 0
+) {
   console.error("");
   console.error("✗ Không gộp được với bản trên GitHub (có thể đang xung đột).");
   console.error("  Chạy `git status` để xem chi tiết.");

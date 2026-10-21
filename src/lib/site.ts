@@ -49,6 +49,26 @@ export const site = {
    */
   shipping: {
     ghiChu: "Phí ship tính theo thực tế, tụi mình báo trước khi gửi.",
+    /**
+     * Quy tắc khung chat AI trả lời khách (backend ai-marketing-town dùng
+     * cùng quy tắc, đọc từ Google Sheet). Đổi ở đây thì đổi luôn bên Sheet.
+     *
+     * LƯU Ý: "chuyển khoản đủ từ 1 triệu thì freeship" đang lệch với đoạn
+     * chú thích ở trên và trang /chinh-sach (không bao ship). Chủ shop chốt
+     * một bên rồi sửa bên còn lại cho khớp.
+     */
+    cocCod: 50_000,
+    freeshipChuyenKhoanTu: 1_000_000,
+  },
+
+  /**
+   * Khung chat AI (src/components/ai-chatbox.tsx) gọi về backend chạy trên
+   * Render — dự án riêng ai-marketing-town, không nằm trong repo này.
+   */
+  chatbot: {
+    api: "https://keo-gaming-agent-town.onrender.com/api/public/chat",
+    // Chỉ dùng khi đang chạy web ở máy mình (localhost)
+    apiMayNha: "http://localhost:5173/api/public/chat",
   },
 
   /**
