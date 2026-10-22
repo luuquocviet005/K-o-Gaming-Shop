@@ -1,6 +1,18 @@
 {
   "daBan": [
     {
+      "slug": "atk-rs7-air",
+      "ten": "RS7 Air",
+      "hang": "ATK",
+      "danhMuc": "ban-phim",
+      "gia": 1300000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/atk-rs7-air/01.webp",
+      "mau": "#4338ca",
+      "banLuc": "2026-10-22"
+    },
+    {
       "slug": "hyperx-cloud-3",
       "ten": "Cloud 3",
       "hang": "HyperX",
