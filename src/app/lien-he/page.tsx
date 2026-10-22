@@ -8,6 +8,7 @@ import {
   MailIcon,
   MapPinIcon,
   PhoneIcon,
+  StarIcon,
   ZaloIcon,
 } from "@/components/icons";
 
@@ -52,6 +53,13 @@ const channels = [
     value: site.contact.address,
     href: site.contact.mapUrl,
     note: "Bấm để mở Google Maps chỉ đường",
+  },
+  {
+    Icon: StarIcon,
+    label: "Đánh giá",
+    value: "Đánh giá shop trên Google",
+    href: site.contact.reviewUrl,
+    note: "Mua rồi thì chấm giúp tụi mình vài sao nhé",
   },
   {
     Icon: ClockIcon,
