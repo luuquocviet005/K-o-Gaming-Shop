@@ -61,6 +61,11 @@ khoá `.dang-chay.lock` của máy shop). Thay vào đó:
    tương phản màu). Hỏng bước nào thì sửa, không push.
 2. Viết sổ bàn giao (dưới đây), commit cùng code.
 3. Push nhánh riêng, mở Pull Request vào `main`. Chủ shop xem rồi merge.
+4. **Claude Code: tự merge PR của mình** sau khi bước 1 qua hết, không cần hỏi
+   lại (chủ shop cho phép 22/10/2026). Áp dụng cho cả repo `ai-marketing-town`
+   — repo đó không có bộ kiểm tra như ở đây, tối thiểu phải `node --check` và
+   chạy thử phần vừa sửa. Merge xong thì tự kiểm tra web thật / bot thật đã
+   nhận bản mới chưa, rồi báo chủ shop.
 
 ## Sổ bàn giao — `docs/ban-giao/`
 
