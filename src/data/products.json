@@ -22,7 +22,7 @@
       "short": "Tai nghe",
       "icon": "tai-nghe",
       "blurb": "Tai nghe chụp tai, in-ear và soundcard.",
-      "soLuong": 8
+      "soLuong": 9
     },
     {
       "slug": "pad-chuot",
@@ -1295,6 +1295,25 @@
         }
       ],
       "anh": "/products/razer-barracuda-x-2022/den/01.webp"
+    },
+    {
+      "id": "razer-blackshark-v3-x-hyperspeed",
+      "slug": "razer-blackshark-v3-x-hyperspeed",
+      "ten": "BlackShark V3 x hyperspeed",
+      "hang": "Razer",
+      "danhMuc": "tai-nghe",
+      "gia": 0,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 0,
+      "anh": "/products/razer-blackshark-v3-x-hyperspeed/01.webp",
+      "anhs": [
+        "/products/razer-blackshark-v3-x-hyperspeed/01.webp",
+        "/products/razer-blackshark-v3-x-hyperspeed/02.webp",
+        "/products/razer-blackshark-v3-x-hyperspeed/03.webp"
+      ],
+      "mau": "#4338ca"
     },
     {
       "id": "hyperx-cloud-2",
