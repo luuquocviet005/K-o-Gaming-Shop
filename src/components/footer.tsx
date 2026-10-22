@@ -8,6 +8,7 @@ import {
   MailIcon,
   MapPinIcon,
   PhoneIcon,
+  StarIcon,
   TiktokIcon,
   FacebookIcon,
 } from "@/components/icons";
@@ -120,6 +121,17 @@ export function Footer() {
               >
                 <span className="font-semibold text-fg">Kẹo Gaming Gear</span>{" "}
                 (bấm vào đây)
+              </a>
+            </li>
+            <li className="flex gap-3">
+              <StarIcon width={18} height={18} className="mt-0.5 shrink-0 text-primary" />
+              <a
+                href={site.contact.reviewUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="transition-colors hover:text-primary-ink"
+              >
+                Mua rồi? Đánh giá shop trên Google
               </a>
             </li>
             <li className="flex gap-3">
