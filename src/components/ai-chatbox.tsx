@@ -23,6 +23,30 @@ type QuickChip = {
 const API_ENDPOINTS = [site.chatbot.apiMayNha, site.chatbot.api];
 
 /**
+ * Biến link trong câu trả lời của bot thành link bấm được. Bot gửi link
+ * Zalo / Messenger cho khách hỏi tình trạng (22/10/2026) — để dạng chữ thì
+ * khách trên điện thoại phải tự chép, nhiều người bỏ luôn.
+ * Chỉ nhận http(s) và cắt dấu câu dính ở cuối link.
+ */
+function coLink(text: string) {
+  return text.split(/(https?:\/\/[^\s]+[^\s.,!?;:)])/g).map((doan, i) =>
+    i % 2 === 1 ? (
+      <a
+        key={i}
+        href={doan}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="break-all font-semibold underline underline-offset-2"
+      >
+        {doan}
+      </a>
+    ) : (
+      doan
+    ),
+  );
+}
+
+/**
  * Render bản miễn phí ngủ sau ~15 phút không ai gọi và mất gần một phút để
  * dậy. Chờ khách gõ xong câu đầu mới gọi thì câu đó gần như chắc chắn rơi vào
  * trả lời dự phòng. Nên vừa mở khung chat là gọi đánh thức luôn.
@@ -482,7 +506,7 @@ export function AiChatbox() {
                         : "max-w-[94%] rounded-bl-xs border border-border bg-surface text-fg"
                     }`}
                   >
-                    {m.text}
+                    {m.role === "assistant" ? coLink(m.text) : m.text}
                   </div>
                   {m.qrUrl && (
                     <button
