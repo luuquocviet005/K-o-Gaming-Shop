@@ -3,7 +3,14 @@ name: Đồng bộ Google Sheet
 # Tự đọc bảng hàng trong Google Sheet. Có thay đổi thì commit — lần commit đó
 # kích hoạt deploy của Hostinger, nên web tự cập nhật mà bạn không phải làm gì.
 #
-# KHÔNG cần khai báo secret: Sheet đang ở chế độ "ai có link đều xem được".
+# Đọc Sheet không cần secret: Sheet đang ở chế độ "ai có link đều xem được".
+#
+# Đẩy lên main thì dùng secret DONG_BO_TOKEN (token của chủ shop, chỉ quyền
+# Contents ghi vào repo này). Ruleset của main bắt PR phải qua "Kiểm tra PR",
+# chỉ Repository admin được đi thẳng — mà bot GitHub Actions không đưa vào
+# danh sách đó được. Đẩy bằng token của chủ shop thì được tính là admin.
+# Chưa có / hết hạn token thì dùng token mặc định: chạy được khi ruleset còn
+# tắt, bị chặn khi ruleset bật — bước "Commit và đẩy lên" sẽ đỏ.
 
 on:
   schedule:
@@ -26,6 +33,8 @@ jobs:
     steps:
       - name: Lấy mã nguồn
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.DONG_BO_TOKEN || github.token }}
 
       - name: Cài Node.js
         uses: actions/setup-node@v4
