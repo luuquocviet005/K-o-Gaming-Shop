@@ -422,30 +422,53 @@ for (const vao of duongDanVao) {
     continue;
   }
 
-  for (const { ten, danhMuc, files: duongDanAnh = [], zip, zips, loais } of dsSanPham) {
+  /**
+   * Khớp cả lượt TRƯỚC, rồi xử lý món khớp chắc nhất trước.
+   *
+   * Hai thư mục cùng trỏ một món thì thư mục tới trước giữ món, thư mục sau bị
+   * báo "trùng đích" và bỏ qua. Trước đây "tới trước" là theo thứ tự chữ cái,
+   * nên thư mục "ATK X1 Air +" (chỉ na ná 60%) giành mất món X1 Ultimate v2,
+   * còn chính thư mục "ATK X1 Ultimate V2" khớp 100% lại bị gạt ra — web hiện
+   * ảnh con chuột khác mà chẳng ai hay (23/10/2026). Xếp theo điểm thì thư mục
+   * đúng luôn thắng, thư mục na ná mới là cái bị báo.
+   */
+  const daKhop = dsSanPham
+    .map((e) => {
+      // Ảnh nằm trong thư mục danh mục thì chỉ đối chiếu trong danh mục đó —
+      // không thể gán nhầm ảnh chuột sang một cái bàn phím trùng tên
+      const ungVienSanPham = e.danhMuc
+        ? sanPham.filter((p) => thuocDanhMuc(p, e.danhMuc))
+        : sanPham;
+      const ungVienDaBan = e.danhMuc
+        ? daBan.filter((p) => p.danhMuc === e.danhMuc.slug)
+        : daBan;
+      return {
+        e,
+        ketQua: timSanPham(e.ten, ungVienSanPham),
+        kqDaBan: timSanPham(e.ten, ungVienDaBan),
+      };
+    })
+    .sort((a, b) => (b.ketQua.sanPham ? b.ketQua.diem : 0) - (a.ketQua.sanPham ? a.ketQua.diem : 0));
+
+  for (const { e, ketQua, kqDaBan } of daKhop) {
+    const { ten, danhMuc, files: duongDanAnh = [], zip, zips, loais } = e;
     // Một món có thể vừa có ảnh rời vừa có file nén trong cùng thư mục
     const dsZip = zips ?? (zip ? [zip] : []);
-    // Ảnh nằm trong thư mục danh mục thì chỉ đối chiếu trong danh mục đó —
-    // không thể gán nhầm ảnh chuột sang một cái bàn phím trùng tên
-    const ungVienSanPham = danhMuc
-      ? sanPham.filter((p) => thuocDanhMuc(p, danhMuc))
-      : sanPham;
 
-    const ketQua = timSanPham(ten, ungVienSanPham);
+    /**
+     * Món ĐÃ BÁN khớp chắc hơn thì là món đã bán, dù kho đang bán có món na ná.
+     *
+     * Trước đây chỉ hỏi kho đã bán khi kho đang bán không có gì. Bán xong mà
+     * thư mục ảnh còn đó thì nó đi tìm "người thay thế" trong kho đang bán và
+     * nhận luôn món nào trùng 60% chữ: "Logitech G304 x Superlight" (đã bán,
+     * khớp 100%) thành ảnh của "Logitech G502 x Plus" (23/10/2026).
+     */
+    if (kqDaBan.sanPham && (!ketQua.sanPham || kqDaBan.diem > ketQua.diem)) {
+      cuaHangDaBan.push({ ten, sanPham: kqDaBan.sanPham });
+      continue;
+    }
 
     if (!ketQua.sanPham) {
-      // Không có trong bảng hàng — thử xem có phải món đã bán không, trước
-      // khi kết luận là chủ tiệm đặt sai tên.
-      const ungVienDaBan = danhMuc
-        ? daBan.filter((p) => p.danhMuc === danhMuc.slug)
-        : daBan;
-      const kqDaBan = timSanPham(ten, ungVienDaBan);
-
-      if (kqDaBan.sanPham) {
-        cuaHangDaBan.push({ ten, sanPham: kqDaBan.sanPham });
-        continue;
-      }
-
       khongKhop.push({
         ten,
         danhMuc,
