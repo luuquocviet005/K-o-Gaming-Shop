@@ -30,8 +30,11 @@ và `node scripts/kiem-tra-ghi-chu.mjs`.
   (reading '1')") do proxy cắt cụt CSS Google Fonts — chạy lại là qua.
 - `serve` trên máy báo 404 các file `__next.*.__PAGE__.txt`; web thật trả 200.
 
-## Còn dở
-- Workflow chỉ chạy, chưa khoá nút Merge. Muốn khoá: GitHub → Settings → Rules
-  → Rulesets cho `main`, "Require status checks" chọn `kiem-tra`, thêm
-  Repository admin + GitHub Actions vào Bypass list (không thì bot ảnh và bot
-  bảng hàng bị chặn).
+## Khoá nút Merge (ruleset)
+- Ruleset "Khoa main khi kiem tra do" trên `main`: "Require status checks to
+  pass" với check `kiem-tra`; KHÔNG bật "up to date" (bot commit liên tục) và
+  KHÔNG bật "Require a pull request".
+- Bypass list: Repository admin (chủ shop + lượt ảnh máy shop, đẩy bằng tài
+  khoản chủ shop) và app Hostinger. Bot GitHub Actions KHÔNG thêm vào bypass
+  được — bot bảng hàng đẩy bằng `DONG_BO_TOKEN` (xem bang-hang-sheet.md).
+- Bot nào mới cần đẩy thẳng `main` thì phải tính chuyện bypass trước khi bật.

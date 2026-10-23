@@ -3,7 +3,12 @@
 - Sheet (ai có link đều xem được) → `scripts/sync-sheet.mjs` → `src/data/products.json`
   + `src/data/da-ban.json`. KHÔNG sửa tay hai file JSON.
 - Chạy ở hai nơi: GitHub Actions `dong-bo-sheet.yml` (20 phút, build thử trước
-  khi commit) và lượt ảnh 15 phút trên máy shop.
+  khi commit) và lượt ảnh 15 phút trên máy shop. Actions là đường duy nhất khi
+  máy shop tắt.
+- Actions đẩy lên `main` bằng secret `DONG_BO_TOKEN` (fine-grained token của
+  chủ shop, chỉ repo này, Contents: Read and write) để được tính là admin và
+  đi qua ruleset. Token HẾT HẠN tối đa sau 1 năm: bước "Commit và đẩy lên" đỏ
+  với lỗi ruleset/403 là dấu hiệu — chủ shop tạo token mới, dán đè secret.
 - `sync.config.json`: mỗi tab Sheet = một danh mục. Tên tab phải TRÙNG TUYỆT
   ĐỐI; tab khai mà không có trong Sheet thì sync dừng — kéo theo cả Actions và
   lượt ảnh. Bỏ tab khỏi Sheet thì bỏ luôn ở đây.
