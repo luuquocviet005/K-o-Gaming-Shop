@@ -940,14 +940,39 @@
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
+      "soLuong": 2,
       "anh": "/products/fgg-titan68-turbo/01.webp",
-      "anhs": [
-        "/products/fgg-titan68-turbo/01.webp",
-        "/products/fgg-titan68-turbo/02.webp",
-        "/products/fgg-titan68-turbo/03.webp"
-      ],
-      "mau": "#0f172a"
+      "mau": "#0f172a",
+      "phanLoai": [
+        {
+          "id": "hong-nhat",
+          "ten": "Hồng nhạt",
+          "gia": 700000,
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 2,
+          "anh": "/products/fgg-titan68-turbo/01.webp",
+          "anhs": [
+            "/products/fgg-titan68-turbo/01.webp",
+            "/products/fgg-titan68-turbo/02.webp",
+            "/products/fgg-titan68-turbo/03.webp"
+          ]
+        },
+        {
+          "id": "hong-dam",
+          "ten": "Hồng đậm",
+          "gia": 700000,
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 2,
+          "anh": "/products/fgg-titan68-turbo/01.webp",
+          "anhs": [
+            "/products/fgg-titan68-turbo/01.webp",
+            "/products/fgg-titan68-turbo/02.webp",
+            "/products/fgg-titan68-turbo/03.webp"
+          ]
+        }
+      ]
     },
     {
       "id": "fgg-mad60-v2",
