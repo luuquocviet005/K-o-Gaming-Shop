@@ -1,8 +1,8 @@
 /**
  * Kho lưu trữ hàng đã bán.
  *
- * VÌ SAO CẦN: chủ shop bán xong thì xoá dòng khỏi Google Sheet. Trước đây
- * trang sản phẩm biến mất luôn, đường dẫn trả về 404 — trong khi Google đã
+ * VÌ SAO CẦN: chủ shop bán xong thì xoá dòng khỏi Google Sheet. Không có
+ * kho này thì trang sản phẩm biến mất luôn, đường dẫn trả về 404 — trong khi Google đã
  * lập chỉ mục nó, và mọi link đã gửi cho khách qua Zalo hay đăng lên Facebook
  * vẫn còn đó. Khách bấm vào gặp trang lỗi trắng trơn là mất luôn người đó.
  *

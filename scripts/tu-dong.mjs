@@ -61,10 +61,10 @@ if (!giuKhoa()) {
 /**
  * 0. Kéo code mới nhất từ GitHub về TRƯỚC khi chạy.
  *
- * Từ khi AI sửa code qua Pull Request (22/10/2026), bản sửa đã merge chỉ nằm
- * trên GitHub. push.mjs chỉ `pull` khi có ảnh mới để đẩy — không có ảnh mới
- * thì thư mục này đứng yên ở bản cũ mãi, và mọi bản sửa lỗi nạp ảnh đều không
- * có tác dụng cho tới hôm nào chủ shop thả ảnh vào (23/10/2026, PR #21).
+ * AI sửa code qua Pull Request, nên bản sửa đã merge chỉ nằm trên GitHub.
+ * push.mjs chỉ `pull` khi có ảnh mới để đẩy — không có ảnh mới thì thư mục
+ * này đứng yên ở bản cũ mãi, và mọi bản sửa lỗi nạp ảnh đều không có tác dụng
+ * cho tới hôm nào chủ shop thả ảnh vào.
  *
  * Chỉ tua nhanh (--ff-only): không gộp, không ghi đè. Thư mục có commit riêng
  * chưa đẩy, hay file đang sửa dở đụng file mới, thì git từ chối — lượt này
@@ -101,8 +101,7 @@ if (dongGiaiNen.length) console.log(dongGiaiNen.join("\n"));
  * nap-anh đối chiếu tên thư mục ảnh với bảng hàng để biết ảnh thuộc món nào.
  * Chạy nó trước khi đồng bộ thì nó cầm bảng hàng CŨ: món vừa thêm vào Sheet
  * xong đã bỏ ảnh vào thư mục sẽ bị coi là "không khớp món nào", phải đợi trọn
- * một lượt 15 phút nữa mới lên. Đã thấy đúng cảnh này với "Edge60 Ultimate"
- * ngày 21/8/2026.
+ * một lượt 15 phút nữa mới lên.
  *
  * Hỏng thì KHÔNG dừng: nap-anh vẫn chạy được với bảng hàng cũ, và bước đồng bộ
  * ở dưới sẽ thử lại lần nữa.
@@ -148,11 +147,8 @@ if (day.ma !== 0) {
 /*
  * push.mjs đã tự hỏi web thật xem đã cập nhật chưa. Chép đúng kết luận đó vào
  * nhật ký thay vì tự suy đoán lần nữa.
- *
- * Trước đây chỗ này canh workflow FTP trên GitHub — một con đường đã cố ý tắt
- * — nên mỗi ngày đẻ ra một dòng báo động giả, phải có riêng một bộ chặn để
- * khỏi rác file. Hỏi thẳng web thật thì không cần chặn gì cả: nó chỉ kêu đúng
- * lúc có chuyện.
+ * Hỏi thẳng web thật thì chỉ kêu đúng lúc có chuyện — đừng quay lại canh
+ * workflow FTP trên GitHub (đã cố ý tắt, canh nó chỉ ra báo động giả).
  */
 const webDaLen = day.ra.includes("Web thật đã cập nhật");
 const webChuaLen = day.ra.includes("web thật vẫn chưa đổi");

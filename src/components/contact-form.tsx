@@ -91,6 +91,7 @@ export function ContactForm() {
           error={errors.contact}
           value={fields.contact}
           onChange={(v) => update("contact", v)}
+          // eslint-disable-next-line shop/khong-viet-cung-lien-he -- số mẫu, không phải số shop
           placeholder="0912 345 678"
           autoComplete="tel"
           hint="Tụi mình dùng thông tin này chỉ để trả lời bạn."

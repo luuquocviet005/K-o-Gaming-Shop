@@ -32,7 +32,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
  * thì `next build` báo "Another next build process is already running", còn
  * `git pull --rebase` thì để repo kẹt giữa một cuộc rebase dở dang với dấu
  * <<<<<<< nằm trong products.json — từ đó MỌI lượt sau đều chết ở bước kiểm
- * tra kiểu dữ liệu, ảnh đứng luôn nhiều ngày. Đã xảy ra thật ngày 21/8/2026.
+ * tra kiểu dữ liệu, ảnh đứng luôn nhiều ngày.
  *
  * tu-dong.mjs và thu-cong.mjs giành khoá rồi mới gọi file này; khoá nhận ra
  * điều đó qua biến môi trường nên không tự chặn mình.
@@ -68,11 +68,10 @@ function run(cmd, args, { quiet = false, env } = {}) {
 /*
  * --chi-anh: chỉ commit đúng phần dây chuyền nạp ảnh tự sinh ra.
  *
- * VÌ SAO CẦN: lượt tự động 15 phút chạy ngay trong thư mục dự án. Trước đây
- * nó `git add -A` — gom luôn code ai đó (người hay AI) đang sửa dở rồi đưa
- * thẳng lên web, dưới cái tên "Tự động cập nhật ảnh sản phẩm". Đã xảy ra thật
- * ngày 21/10/2026: cả khung chat AI lên web trong commit 8055255 mà không ai
- * bấm push. Lượt nạp ảnh chỉ được mang theo đúng những gì nó tạo ra.
+ * VÌ SAO CẦN: lượt tự động 15 phút chạy ngay trong thư mục dự án. `git add -A`
+ * ở đây sẽ gom luôn code ai đó (người hay AI) đang sửa dở rồi đưa thẳng lên
+ * web, dưới cái tên "Tự động cập nhật ảnh sản phẩm" — đã có lần cả khung chat
+ * AI lên web như vậy mà không ai bấm push. Lượt nạp ảnh chỉ được mang theo đúng những gì nó tạo ra.
  *
  * Danh sách này phải khớp với chỗ nap-anh.mjs, sync-sheet.mjs,
  * anh-chia-se-san-pham.mjs và kiem-tra-deploy.mjs ghi file.
@@ -104,7 +103,6 @@ function step(label, cmd, args) {
  * pull --rebase` thì thư mục .git/rebase-merge nằm lại đó, và MỌI lượt sau đều
  * chết ngay tại bước gộp với thông báo "already a rebase-merge directory".
  * Không ai sửa vì không ai đọc được tiếng Git — ảnh cứ thế nằm im nhiều ngày.
- * Đã xảy ra hai lần: 21/8 và 22/8/2026.
  *
  * PHẢI CHẠY ĐẦU TIÊN, trước cả khi xem có gì để push: lúc repo còn kẹt giữa
  * rebase thì `git commit` bên dưới sẽ đẻ commit vào đúng chỗ dang dở đó.
@@ -149,8 +147,8 @@ function goRebaseKet() {
    * commit — mà ở đây thường chính là bộ ảnh vừa nạp xong. Nên phải cất chúng
    * vào ngăn tạm (stash) trước, huỷ xong lấy ra.
    *
-   * Đây không phải lo xa: bản sửa đầu tiên của chính hàm này đã bị chính nó
-   * xoá mất khi chạy thử ngày 22/8/2026.
+   * Đây không phải lo xa: thiếu bước cất này thì hàm tự xoá mất chính những
+   * file nó đang cần giữ.
    */
   const coViecDangDo = banDo().trim() !== "";
 
@@ -347,9 +345,8 @@ if (moc) {
 /*
  * Tác vụ chạy ngầm còn bật không?
  *
- * Từ 7/9 tới 15/9/2026 nó bị TẮT mà không nơi nào báo: chủ tiệm bỏ ảnh vào thư
- * mục suốt 8 ngày, không món nào lên web, còn mọi lần push tay vẫn xanh. Không
- * rõ vì sao nó tắt — nhật ký Task Scheduler trên máy không bật.
+ * Nó có thể bị TẮT mà không nơi nào báo: chủ tiệm bỏ ảnh vào thư mục nhiều
+ * ngày, không món nào lên web, còn mọi lần push tay vẫn xanh.
  *
  * Tác vụ đã tắt thì chính nó không thể tự báo, nên mỗi lần có người push tay
  * thì kiểm tra hộ. Chỉ để báo tin — hỏng gì ở đây cũng không làm hỏng lần push.
@@ -357,8 +354,7 @@ if (moc) {
  * Hỏi PowerShell `Get-ScheduledTask` chứ KHÔNG đọc chữ của `schtasks`: thiếu
  * tham số /V thì `schtasks /FO LIST` không in dòng trạng thái nào cả, còn chữ
  * của nó đổi theo ngôn ngữ Windows. `.State` là giá trị cố định (Ready, Running,
- * Disabled) trên mọi máy. Bản đầu của đoạn này đọc chữ schtasks, và chạy thử
- * cho thấy nó KHÔNG BAO GIỜ báo — tác vụ có tắt thêm 8 ngày nữa cũng im.
+ * Disabled) trên mọi máy. Đọc chữ schtasks thì đoạn này KHÔNG BAO GIỜ báo.
  */
 if (process.platform === "win32") {
   try {

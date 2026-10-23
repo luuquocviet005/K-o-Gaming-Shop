@@ -23,7 +23,7 @@ const inter = Inter({
 // hành — chữ có dấu và không dấu trông khác hẳn nhau.
 //
 // Baloo 2 mập và bo tròn, gợi chữ in trên vỏ kẹo — hợp cái tên KẸO hơn font
-// vuông vức trước đây, mà vẫn đủ đậm để làm tiêu đề bán hàng.
+// vuông vức, mà vẫn đủ đậm để làm tiêu đề bán hàng.
 const baloo = Baloo_2({
   subsets: ["latin", "vietnamese"],
   weight: ["600", "700", "800"],
