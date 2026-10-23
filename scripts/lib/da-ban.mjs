@@ -18,6 +18,12 @@
 
 import { readFile, writeFile } from "node:fs/promises";
 
+/**
+ * Thư mục con trong "Ảnh gear" cất ảnh gốc của món đã bán (nap-anh tự chuyển
+ * vào). Mọi bước quét thư mục ảnh phải bỏ qua nó — xem nap-anh.mjs.
+ */
+export const THU_MUC_DA_BAN = "_Đã bán";
+
 /** Chỉ giữ đủ để dựng trang — không ôm cả `anhs`, `note`, `moTa` cho nhẹ file */
 function rutGon(p, banLuc) {
   return {

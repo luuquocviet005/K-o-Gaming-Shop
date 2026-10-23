@@ -33,6 +33,7 @@ import { existsSync } from "node:fs";
 import { join, basename, dirname, extname } from "node:path";
 import { unzipSync } from "fflate";
 import { boDau } from "./normalize.mjs";
+import { THU_MUC_DA_BAN } from "./da-ban.mjs";
 
 /** Sửa chưa tới chừng này thì có thể còn đang tải/chép — chờ lượt sau */
 const CHO_ON_DINH_MS = 30 * 1000;
@@ -88,7 +89,10 @@ async function timZip(thuMuc, danhMuc, sau = 0, ketQua = []) {
   const chua = laThuMucChua(basename(thuMuc), sau, danhMuc);
   for (const m of muc) {
     const p = join(thuMuc, m.name);
-    if (m.isDirectory()) await timZip(p, danhMuc, sau + 1, ketQua);
+    // Ảnh cất trong "_Đã bán" để yên đó, giải nén ra chỉ thêm việc
+    if (m.isDirectory()) {
+      if (m.name !== THU_MUC_DA_BAN) await timZip(p, danhMuc, sau + 1, ketQua);
+    }
     else if (m.isFile() && /\.zip$/i.test(m.name)) ketQua.push({ zip: p, trongThuMucChua: chua });
   }
   return ketQua;
