@@ -73,7 +73,7 @@ const gidTheoTab = await (async () => {
  * gviz gán kiểu cho cả cột rồi lặng lẽ trả về rỗng cho ô nào không đúng kiểu
  * đó. Cột "Số lượng" là cột số, nên ô nào lỡ nhập thành chữ (hay dính khoảng
  * trắng) thì về tới script là rỗng = 0 = "Đã bán hết", trong khi Sheet vẫn
- * hiện 1. Đã làm 3 bàn phím còn hàng bị treo biển hết hàng (25/09/2026).
+ * hiện 1 — hàng còn mà bị treo biển hết hàng.
  * /export trả đúng chữ hiển thị trong ô, không đoán kiểu gì cả.
  *
  * Thêm một cái lợi: gid là số hiệu thật của tab, nên không còn trò Google im
@@ -260,10 +260,10 @@ for (const cauHinh of config.tabs) {
      * Cùng hãng + cùng tên xuất hiện ở nhiều tab = chủ shop CỐ Ý xếp món đó
      * vào nhiều danh mục (soundcard vừa thuộc Tai nghe vừa thuộc Phụ kiện).
      *
-     * Trước đây bản sau bị bỏ đi kèm một dòng cảnh báo, nghĩa là món đó chỉ
-     * hiện ở tab đầu tiên — khách vào danh mục kia thì không thấy, và chủ shop
-     * không hề biết. Giờ ghi thêm danh mục vào chính món đã tạo: vẫn một trang
-     * sản phẩm, một đường dẫn, nhưng hiện ở đủ mọi danh mục được khai.
+     * Nên KHÔNG bỏ bản sau như món trùng (bỏ thì món chỉ hiện ở tab đầu tiên,
+     * khách vào danh mục kia không thấy): ghi thêm danh mục vào chính món đã
+     * tạo — vẫn một trang sản phẩm, một đường dẫn, nhưng hiện ở đủ mọi danh mục
+     * được khai.
      */
     const khoa = `${boDau(hang)}|${boDau(ten)}`;
     const daCo = daThay.get(khoa);
@@ -457,7 +457,7 @@ for (const cauHinh of config.tabs) {
       ...(cauHinh.donViGia ? { donViGia: cauHinh.donViGia } : {}),
       tinhTrang,
       nhomTinhTrang,
-      // Shop chỉ bán hàng ở Đà Nẵng (chốt 2026-09-15). Cột "Địa điểm" trong
+      // Shop chỉ bán hàng ở Đà Nẵng. Cột "Địa điểm" trong
       // Sheet bị bỏ qua, để lỡ ghi "Sài Gòn" cũng không lọt lên web.
       diaDiem: "Đà Nẵng",
       soLuong: docSoNguyen(layO(row, "so luong"), 0),
@@ -547,8 +547,7 @@ for (const p of sanPham) {
  * Sinh ra mỗi khi chủ shop đổi tên hoặc gỡ một món khỏi Sheet: ảnh cũ nằm lại
  * dưới tên slug cũ, không trang nào dùng, nhưng vẫn bị đẩy lên máy chủ.
  *
- * TRƯỚC ĐÂY script chỉ cảnh báo và bắt xoá tay, phòng khi chỉ là đổi tên tạm.
- * Giữ lại thì lợi bất cập hại: chủ shop sửa Sheet liên tục nên danh sách cảnh
+ * Tự xoá chứ không chỉ cảnh báo rồi bắt xoá tay: chủ shop sửa Sheet liên tục nên danh sách cảnh
  * báo dài ra mãi, và ảnh chết cứ chất đống trên máy chủ. Xoá được an toàn vì
  * ẢNH GỐC KHÔNG NẰM Ở ĐÂY — nó nằm trong thư mục ảnh của chủ shop, và
  * scripts/nap-anh.mjs sẽ tự dựng lại dưới tên slug mới ở lượt chạy kế tiếp.

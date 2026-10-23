@@ -51,11 +51,11 @@ const RONG_TOI_DA = 1400;
 const CHAT_LUONG = 82;
 
 /**
- * DỌN THƯ MỤC ẢNH CỦA MÓN ĐÃ BÁN (chủ shop chọn 23/10/2026).
+ * DỌN THƯ MỤC ẢNH CỦA MÓN ĐÃ BÁN.
  *
  * Bán xong mà thư mục ảnh gốc còn nằm lẫn với hàng đang bán thì vừa rối, vừa
- * nguy hiểm: thư mục "ATK X1 Air +" đã bán từng giành mất ảnh của món X1
- * Ultimate v2. Nên chuyển nó sang "_Đã bán" — CHUYỂN chứ không xoá: ảnh gốc
+ * nguy hiểm: thư mục của món đã bán có thể giành mất ảnh của một món đang bán
+ * tên na ná. Nên chuyển nó sang "_Đã bán" — CHUYỂN chứ không xoá: ảnh gốc
  * từ điện thoại chỉ có ở đây, web chỉ giữ bản nén, xoá rồi là mất hẳn.
  *
  * Ba điều kiện, thiếu một là không đụng:
@@ -100,8 +100,8 @@ const sanPham = duLieu.sanPham;
  * Danh sách món ĐÃ BÁN.
  *
  * Bán xong thì món rời khỏi bảng hàng, nhưng thư mục ảnh vẫn nằm nguyên trong
- * "Ảnh gear" — và trước đây lượt nào cũng báo "KHÔNG khớp — CẦN BẠN SỬA" cho
- * đúng những thư mục đó, 15 phút một lần, vĩnh viễn. Chủ tiệm không sửa được
+ * "Ảnh gear". Không tách riêng thì lượt nào cũng báo "KHÔNG khớp — CẦN BẠN
+ * SỬA" cho đúng những thư mục đó, 15 phút một lần, vĩnh viễn. Chủ tiệm không sửa được
  * vì có gì sai đâu mà sửa. Báo động giả kiểu này lặp mãi thì tới lúc hỏng thật
  * cũng bị lướt qua, nên phải tách riêng ra và nói đúng bản chất.
  */
@@ -161,8 +161,8 @@ async function giaiNen(duongDanZip) {
  * sharp đọc được kích thước file HEIC nên trông như chạy được, nhưng tới lúc
  * giải mã thật thì gục ("bad seek") — libvips kèm theo sharp chỉ GHI được avif
  * chứ không ĐỌC được heic. Windows 11 thì có sẵn bộ giải mã HEIF, gọi qua
- * PowerShell là xong, không phải thêm thư viện nào.
- * Đã làm mất ảnh 2 món thật (Endgame OP1w 4k V2, HyperX Earbuds 3) ngày 23/09/2026.
+ * PowerShell là xong, không phải thêm thư viện nào. Chỉ dùng sharp thì ảnh
+ * .heic mất trắng.
  */
 async function heicSangJpeg(nguon) {
   await mkdir(thuMucTam, { recursive: true });
@@ -192,7 +192,7 @@ async function heicSangJpeg(nguon) {
  *
  * Soundcard khai ở cả tab Tai nghe lẫn Phụ kiện thì danh mục chính là Tai nghe,
  * Phụ kiện nằm trong `danhMucKhac`. Chỉ so danh mục chính thì thư mục ảnh đặt
- * trong "Phụ kiện/" bị báo "không khớp món nào" dù món có thật (02/10/2026).
+ * trong "Phụ kiện/" bị báo "không khớp món nào" dù món có thật.
  */
 const thuocDanhMuc = (p, dm) => p.danhMuc === dm.slug || p.danhMucKhac?.includes(dm.slug);
 
@@ -262,10 +262,9 @@ async function timSanPhamTrongCay(duongDan, danhMuc = null, sau = 0) {
    * Mọi thư mục khác là tên một món, nên ảnh rời VÀ file nén bên trong đều là
    * ảnh của chính món đó.
    *
-   * Trước đây cứ thấy có file nén hoặc thư mục con là coi như thư mục chứa.
-   * Hậu quả thật: "Chuột/ATK F1 Leviatan/" có 5 ảnh rời + "1.zip" nên 5 tấm ảnh
-   * biến thành 5 "sản phẩm" tên IMG_2026… không khớp được với gì, còn "1.zip"
-   * thì suýt gán nhầm sang món "ATK F1 v2 Ultimate" đã bán (22–25/09/2026).
+   * Đừng coi "có file nén hoặc thư mục con" là thư mục chứa: "Chuột/ATK F1
+   * Leviatan/" có 5 ảnh rời + "1.zip" sẽ thành 5 "sản phẩm" tên IMG_2026…
+   * không khớp được với gì, còn "1.zip" bị gán nhầm sang một món khác.
    */
   const laThuMucChua = sau === 0 || nhanDangDanhMuc(basename(duongDan)) !== null;
 
@@ -459,8 +458,8 @@ for (const vao of duongDanVao) {
    *
    * Chủ shop ban đầu thả một tấm rời "Hyperx Earbuds 3.heic", sau đó tạo thêm
    * thư mục "Hyperx Earbuds 3/" để xếp ảnh theo màu. Hai nguồn cùng tên rõ
-   * ràng là cùng một món — nhưng trước đây nguồn sau bị coi là "trùng đích" và
-   * bỏ qua, nên ảnh theo màu không bao giờ lên web (04/10/2026).
+   * ràng là cùng một món — coi nguồn sau là "trùng đích" mà bỏ qua thì ảnh theo
+   * màu không bao giờ lên web.
    * Tên khác nhau mà cùng khớp một món ("RS6" và "RS6 Aspas") thì vẫn báo như cũ.
    */
   const theoTen = new Map();
@@ -488,10 +487,10 @@ for (const vao of duongDanVao) {
    * Khớp cả lượt TRƯỚC, rồi xử lý món khớp chắc nhất trước.
    *
    * Hai thư mục cùng trỏ một món thì thư mục tới trước giữ món, thư mục sau bị
-   * báo "trùng đích" và bỏ qua. Trước đây "tới trước" là theo thứ tự chữ cái,
-   * nên thư mục "ATK X1 Air +" (chỉ na ná 60%) giành mất món X1 Ultimate v2,
-   * còn chính thư mục "ATK X1 Ultimate V2" khớp 100% lại bị gạt ra — web hiện
-   * ảnh con chuột khác mà chẳng ai hay (23/10/2026). Xếp theo điểm thì thư mục
+   * báo "trùng đích" và bỏ qua. Xếp "tới trước" theo thứ tự chữ cái thì thư mục
+   * "ATK X1 Air +" (chỉ na ná 60%) giành mất món X1 Ultimate v2, còn chính thư
+   * mục "ATK X1 Ultimate V2" khớp 100% lại bị gạt ra — web hiện ảnh con chuột
+   * khác mà chẳng ai hay. Xếp theo điểm thì thư mục
    * đúng luôn thắng, thư mục na ná mới là cái bị báo.
    */
   const daKhop = dsSanPham
@@ -520,10 +519,10 @@ for (const vao of duongDanVao) {
     /**
      * Món ĐÃ BÁN khớp chắc hơn thì là món đã bán, dù kho đang bán có món na ná.
      *
-     * Trước đây chỉ hỏi kho đã bán khi kho đang bán không có gì. Bán xong mà
-     * thư mục ảnh còn đó thì nó đi tìm "người thay thế" trong kho đang bán và
-     * nhận luôn món nào trùng 60% chữ: "Logitech G304 x Superlight" (đã bán,
-     * khớp 100%) thành ảnh của "Logitech G502 x Plus" (23/10/2026).
+     * Đừng chỉ hỏi kho đã bán khi kho đang bán không có gì: bán xong mà thư mục
+     * ảnh còn đó thì nó đi tìm "người thay thế" trong kho đang bán và nhận luôn
+     * món nào trùng 60% chữ — "Logitech G304 x Superlight" (đã bán, khớp 100%)
+     * thành ảnh của "Logitech G502 x Plus".
      */
     if (kqDaBan.sanPham && (!ketQua.sanPham || kqDaBan.diem > ketQua.diem)) {
       const sp = kqDaBan.sanPham;
@@ -613,7 +612,7 @@ for (const vao of duongDanVao) {
      *
      * Món mỗi màu chỉ có một hai tấm thì chủ shop đặt tên file theo màu cho
      * nhanh, không tạo thư mục con. Không nhận ra thì cả bốn tấm thành "ảnh
-     * chung" và màu nào cũng hiện tấm màu đen đầu tiên (02/10/2026).
+     * chung" và màu nào cũng hiện tấm màu đen đầu tiên.
      * Chỉ khớp ĐÚNG tên phân loại (bỏ số thứ tự ở đuôi) — "IMG_2031.jpg" hay
      * "hop.jpg" vẫn là ảnh chung như cũ.
      */
@@ -711,8 +710,8 @@ for (const vao of duongDanVao) {
 
     if (daGhi.length > 0) {
       khop.push({ ten, sanPham: p, so: daGhi.length, diem: ketQua.diem, danhMuc });
-      // Hỏng MỘT PHẦN cũng không được nhớ là xong: Lamzu Maya X mất tấm .heic
-      // vì lượt chạy bằng script cũ nén được 1/2 tấm rồi ghi vân tay (25/09/2026).
+      // Hỏng MỘT PHẦN cũng không được nhớ là xong: nén được 1/2 tấm rồi ghi vân
+      // tay thì tấm còn lại không bao giờ được thử lại.
       if (daGhi.length < files.length) {
         delete cacheMoi[p.slug];
         loiAnh.push({ ten, sanPham: p, so: files.length - daGhi.length });
@@ -724,7 +723,6 @@ for (const vao of duongDanVao) {
        * Phải xoá vân tay, nếu không thì hỏng vĩnh viễn và im lặng: thư mục
        * đích vừa bị xoá sạch ở trên nhưng vẫn tồn tại (rỗng), nên lượt sau
        * cache khớp + thư mục có thật = "đã có ảnh, bỏ qua" — mãi mãi.
-       * Đúng chuyện đã xảy ra với 2 món ảnh .heic (23–25/09/2026).
        */
       delete cacheMoi[p.slug];
       await rm(dich, { recursive: true, force: true });

@@ -11,11 +11,10 @@
  * lên xong thì hỏi lại chính web thật xem file đó đã mang mốc mới chưa. Đúng
  * mốc nghĩa là web đã dựng lại từ commit này — chắc chắn, không phải suy đoán.
  *
- * VÌ SAO KHÔNG HỎI GITHUB ACTIONS NHƯ TRƯỚC: bản cũ hỏi workflow FTP
- * (deploy-hostinger.yml). Workflow đó đã cố ý tắt từ 20/8/2026 vì Hostinger
- * deploy theo đường riêng — nên nó canh một con đường KHÔNG còn ai đi, và lần
- * chạy hỏng cuối cùng thì đứng yên đó mãi, đẻ ra một dòng báo động giả ở mỗi
- * lần push. Canh sai chỗ còn tệ hơn không canh: báo động giả lặp mãi thì tới
+ * VÌ SAO KHÔNG HỎI GITHUB ACTIONS: workflow FTP (deploy-hostinger.yml) cố ý
+ * tắt vì Hostinger deploy theo đường riêng — canh nó là canh một con đường
+ * KHÔNG ai đi, lần chạy hỏng cuối cùng đứng yên đó mãi thành báo động giả ở
+ * mỗi lần push. Canh sai chỗ còn tệ hơn không canh: báo động giả lặp mãi thì tới
  * lần hỏng thật cũng bị lướt qua.
  */
 

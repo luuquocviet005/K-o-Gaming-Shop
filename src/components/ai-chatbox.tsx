@@ -24,7 +24,7 @@ const API_ENDPOINTS = [site.chatbot.apiMayNha, site.chatbot.api];
 
 /**
  * Biến link trong câu trả lời của bot thành link bấm được. Bot gửi link
- * Zalo / Messenger cho khách hỏi tình trạng (22/10/2026) — để dạng chữ thì
+ * Zalo / Messenger cho khách hỏi tình trạng — để dạng chữ thì
  * khách trên điện thoại phải tự chép, nhiều người bỏ luôn.
  * Chỉ nhận http(s) và cắt dấu câu dính ở cuối link.
  */
@@ -51,8 +51,8 @@ function coLink(text: string) {
  * dậy. Chờ khách gõ xong câu đầu mới gọi thì câu đó gần như chắc chắn rơi vào
  * trả lời dự phòng. Nên vừa mở khung chat là gọi đánh thức luôn.
  */
-// Render miễn phí dậy mất 50–60 giây. Chờ 40 giây thì câu đầu tiên của khách
-// gần như luôn rơi vào trả lời dự phòng (chủ shop thử ngày 21/10/2026).
+// Render miễn phí dậy mất 50–60 giây. Chờ ngắn hơn thế thì câu đầu tiên của
+// khách gần như luôn rơi vào trả lời dự phòng.
 const CHO_TRA_LOI_MS = 65000;
 // Chờ quá lâu thì đổi dòng "đang tra kho" thành lời báo đang khởi động
 const BAO_CHO_LAU_MS = 8000;
@@ -87,7 +87,7 @@ function getSessionId(): string {
 /**
  * Mã QR chuyển khoản VietQR — có số tiền thì điền sẵn, không thì khách tự nhập.
  * KHÔNG điền nội dung chuyển khoản: chủ shop không muốn sao kê ghi sẵn chữ
- * "Keo Gaming" / "Coc COD" (quyết định 21/10/2026).
+ * "Keo Gaming" / "Coc COD".
  */
 function qrChuyenKhoan(soTien: number | null): string {
   const { ma, soTaiKhoan, chuTaiKhoan } = site.nganHang;
@@ -99,9 +99,9 @@ function qrChuyenKhoan(soTien: number | null): string {
 /**
  * Khách xin STK / chọn chuyển khoản lúc máy chủ chưa trả lời được.
  *
- * Trước đây câu dự phòng chỉ đọc lại quy tắc ship — khách nhắn "bankfull, cho
- * mình xin stk" mà không nhận được STK, phải hỏi đi hỏi lại. STK là thông tin
- * cố định, trình duyệt tự đưa được ngay, kèm mã QR.
+ * STK là thông tin cố định nên trình duyệt tự đưa ngay, kèm mã QR — khách
+ * nhắn "bankfull, cho mình xin stk" mà chỉ nhận lại quy tắc ship thì phải hỏi
+ * đi hỏi lại.
  */
 function traLoiChuyenKhoan(userText: string): { text: string; qrUrl: string } | null {
   const q = userText.toLowerCase();
@@ -219,15 +219,14 @@ export function AiChatbox() {
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
   /*
-   * Khách hay nhắn rời từng mẩu: tên, rồi SĐT, rồi địa chỉ. Trước đây đang chờ
-   * trả lời thì ô nhập bị khoá — khách gõ xong không gửi được, tưởng web lỗi.
-   * Giờ gửi lúc nào cũng được: tin nhắn hiện ngay, gom vào hàng chờ, trả lời
-   * xong câu trước thì gửi cả cụm còn lại một lượt.
+   * Khách hay nhắn rời từng mẩu: tên, rồi SĐT, rồi địa chỉ. Nên KHÔNG khoá ô
+   * nhập lúc đang chờ trả lời (khoá thì khách gõ xong không gửi được, tưởng web
+   * lỗi): tin nhắn hiện ngay, gom vào hàng chờ, trả lời xong câu trước thì gửi
+   * cả cụm còn lại một lượt.
    */
   const dangChoRef = useRef(false);
   const hangChoRef = useRef<string[]>([]);
 
-  // Ô nhập tự cao lên theo số dòng (tối đa ~5 dòng), gửi xong thì thu về 1 dòng
   // Bấm Esc để đóng ảnh QR phóng to.
   useEffect(() => {
     if (!qrPhongTo) return;
@@ -238,6 +237,7 @@ export function AiChatbox() {
     return () => window.removeEventListener("keydown", dong);
   }, [qrPhongTo]);
 
+  // Ô nhập tự cao lên theo số dòng (tối đa ~5 dòng), gửi xong thì thu về 1 dòng
   useEffect(() => {
     const el = inputRef.current;
     if (!el) return;
@@ -255,12 +255,9 @@ export function AiChatbox() {
   const currentProduct = currentProductSlug ? getProduct(currentProductSlug) : undefined;
 
   /*
-   * MỘT nút nổi duy nhất trên di động (23/10/2026).
-   *
-   * Trước đây trang sản phẩm có tới ba nút nổi chồng nhau ở góc dưới: nút chat,
-   * nút Zalo và nút "Hỏi về món này" (Messenger). Trên màn iPhone chúng chiếm
-   * gần 1/5 chiều cao, đè tên món và che nửa nút "Thêm vào giỏ hàng". Giờ di
-   * động chỉ còn một nút tròn, bấm vào mới bung ra Chat AI / Zalo / Messenger.
+   * MỘT nút nổi duy nhất trên di động: bấm vào mới bung ra Chat AI / Zalo /
+   * Messenger. Đừng thêm nút nổi riêng — ba nút chồng nhau ở góc dưới chiếm
+   * gần 1/5 chiều cao màn iPhone, đè tên món và che nửa nút "Thêm vào giỏ hàng".
    * Máy tính đủ chỗ nên vẫn giữ nút "Chat tư vấn Kẹo AI" như cũ.
    */
   const [menu, setMenu] = useState(false);

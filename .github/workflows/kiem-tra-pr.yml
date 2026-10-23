@@ -1,0 +1,51 @@
+name: Kiểm tra PR
+
+# Rào chắn CỨNG cho mọi Pull Request vào main: chạy đúng bộ kiểm tra mà
+# scripts/push.mjs chạy trước khi đẩy. AI tự chạy trên máy là rào chắn mềm —
+# quên một lần là bản hỏng lên web thật (Hostinger tự deploy mỗi lần main đổi).
+# Ở đây thì không quên được: đỏ là AI phải tự sửa, xanh mới được merge.
+#
+# Không chạy khi push thẳng main: lượt ảnh 15 phút và bảng hàng 20 phút đã tự
+# kiểm tra trước khi đẩy (push.mjs và dong-bo-sheet.yml).
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: kiem-tra-pr-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  kiem-tra:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Lấy mã nguồn
+        uses: actions/checkout@v4
+
+      - name: Cài Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Cài dependencies
+        run: npm ci
+
+      - name: Kiểm tra kiểu dữ liệu
+        run: npm run typecheck
+
+      # Gồm cả luật riêng của shop (eslint/luat-shop.mjs).
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Link chết, SEO, tương phản màu
+        run: npm run check

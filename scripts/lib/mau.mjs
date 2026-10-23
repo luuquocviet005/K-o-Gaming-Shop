@@ -1,9 +1,9 @@
 /**
  * Đọc bảng màu thẳng từ src/app/globals.css.
  *
- * globals.css là NGUỒN DUY NHẤT cho màu thương hiệu. Trước đây mỗi script sinh
- * ảnh tự chép lại mã màu vào hằng số riêng, nên đổi màu trong CSS thì ảnh chia
- * sẻ và bộ logo vẫn giữ màu cũ — sai lặng lẽ, chỉ lộ ra khi khách nhìn thấy.
+ * globals.css là NGUỒN DUY NHẤT cho màu thương hiệu. Đừng chép mã màu vào
+ * hằng số riêng trong script sinh ảnh: đổi màu trong CSS thì ảnh chia sẻ và bộ
+ * logo vẫn giữ màu cũ — sai lặng lẽ, chỉ lộ ra khi khách nhìn thấy.
  *
  * Tự kiểm tra: node scripts/lib/mau.mjs
  */

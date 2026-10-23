@@ -27,8 +27,8 @@ export const site = {
     mapUrl:
       "https://www.google.com/maps/place/K%E1%BA%B9o+Gaming+Gear/@15.9664034,108.2597601,17z/data=!3m1!4b1!4m6!3m5!1s0x314211d29a23ff35:0x1b74f0c6d9efd3ba!8m2!3d15.9664034!4d108.262335!16s%2Fg%2F11mzzxqtws",
     geo: { latitude: 15.9664034, longitude: 108.2623351 },
-    // Mở thẳng khung chấm sao của ghim trên Google Maps (chủ shop bấm thử,
-    // chạy được 22/10/2026). placeid suy ra từ mã địa điểm trong `mapUrl`
+    // Mở thẳng khung chấm sao của ghim trên Google Maps. placeid suy ra từ mã
+    // địa điểm trong `mapUrl`
     // (0x3142…:0x1b74…) — đổi ghim thì phải lấy lại cả hai link.
     // Đánh giá Google Maps có giá trị hơn đánh giá trên web vì khách ở Đà Nẵng
     // tìm "gaming gear" là thấy ngay trên bản đồ.
@@ -48,13 +48,10 @@ export const site = {
   /**
    * Vận chuyển.
    *
-   * Chuyển khoản đủ, đơn từ 1 triệu: shop freeship (chủ shop chốt
-   * 21/10/2026). Dưới mức đó, hoặc ship COD, khách trả phí ship theo thực tế,
-   * shop không cộng thêm.
+   * Chuyển khoản đủ, đơn từ 1 triệu: shop freeship. Dưới mức đó, hoặc ship
+   * COD, khách trả phí ship theo thực tế, shop không cộng thêm.
    *
-   * Có NGƯỠNG là cố ý. Chính sách cũ "chuyển khoản đủ thì shop chịu ship"
-   * không giới hạn giá trị đơn, bị bỏ ngày 2026-09-04 vì đơn nhỏ thì tiền lãi
-   * không đủ bù cước.
+   * Có NGƯỠNG là cố ý: freeship mọi đơn thì đơn nhỏ tiền lãi không đủ bù cước.
    *
    * Ngoài mức freeship, KHÔNG ghi một con số phí ship cố định trên web: cước
    * Grab và cước nhà xe thay đổi theo quãng đường, theo tỉnh, theo từng nhà
@@ -70,7 +67,7 @@ export const site = {
   },
 
   /**
-   * Tài khoản nhận cọc COD / chuyển khoản đủ (chủ shop gửi 21/10/2026).
+   * Tài khoản nhận cọc COD / chuyển khoản đủ.
    * `ma` là mã ngân hàng theo chuẩn VietQR — dùng để vẽ mã QR. Backend chatbot
    * (ai-marketing-town) cũng khai đúng tài khoản này, đổi thì đổi cả hai.
    */
@@ -110,8 +107,8 @@ export const site = {
  *
  * Facebook nhớ ảnh theo ĐƯỜNG DẪN chứ không theo nội dung file. Ghi đè lên
  * cùng một tên thì dù bấm "Thu thập lại" trong Sharing Debugger, nó vẫn lấy
- * bản đã tải về từ trước — đã dính đúng lỗi này ngày 2026-09-06: máy chủ trả
- * 200, thẻ og trỏ đúng file mới, mà thẻ xem trước vẫn hiện ảnh cũ.
+ * bản đã tải về từ trước: máy chủ trả 200, thẻ og trỏ đúng file mới, mà thẻ
+ * xem trước vẫn hiện ảnh cũ.
  */
 export const ANH_CHIA_SE = "/anh-chia-se-2.png";
 

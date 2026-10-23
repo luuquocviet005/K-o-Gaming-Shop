@@ -270,10 +270,10 @@ async function main() {
     await sharp(await boTron(vuong, 1000, 0.07)).flatten({ background: HONG_PHAN }).png().toBuffer(),
   );
 
-  /* Ảnh chia sẻ Zalo/Facebook KHÔNG còn sinh ở đây nữa.
-     Từ 2026-09-06 nó được dựng từ ảnh bìa Facebook bằng scripts/tao-anh-bia.mjs
-     và đặt tên có số phiên bản (anh-chia-se-2.png). Nếu để đoạn cũ ở đây thì
-     chạy lại script này kèm --apply sẽ ghi đè mất ảnh bìa bằng bản mascot trơn. */
+  /* Ảnh chia sẻ Zalo/Facebook KHÔNG sinh ở đây: nó dựng từ ảnh bìa Facebook
+     bằng scripts/tao-anh-bia.mjs, tên có số phiên bản (xem ANH_CHIA_SE trong
+     src/lib/site.ts). Sinh ở đây thì chạy script này kèm --apply sẽ ghi đè mất
+     ảnh bìa bằng bản mascot trơn. */
 
   console.log(
     APDUNG

@@ -22,9 +22,8 @@ import { boDau } from "./normalize.mjs";
  * Không tách thì thành ["atk68","rx"] và ["atk","68rx"] — không trùng từ nào.
  *
  * Dấu "+" là MỘT TỪ THẬT ("plus"), không phải ký tự rác. Với chuột ATK, "A9
- * Mini Ultimate +" và "A9 Mini Ultimate" là hai sản phẩm khác nhau. Bản trước
- * vứt dấu + nên hai tấm ảnh của hai món bị coi là của cùng một món, một tấm bị
- * bỏ luôn (15/9/2026).
+ * Mini Ultimate +" và "A9 Mini Ultimate" là hai sản phẩm khác nhau. Vứt dấu +
+ * thì ảnh của hai món bị coi là của cùng một món, một tấm bị bỏ luôn.
  */
 function tuKhoa(s) {
   return boDau(s)
