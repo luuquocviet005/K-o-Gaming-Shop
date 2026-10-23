@@ -27,9 +27,9 @@
  * lịch sử, không xoá đi được.
  */
 
-import { mkdir, readdir, readFile, rm, stat, writeFile } from "node:fs/promises";
+import { mkdir, readdir, readFile, rename, rm, stat, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
-import { join, dirname, basename } from "node:path";
+import { join, dirname, basename, extname, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { tmpdir } from "node:os";
 import { randomUUID } from "node:crypto";
@@ -39,6 +39,7 @@ import sharp from "sharp";
 import { unzipSync } from "fflate";
 import { timSanPham } from "./lib/khop-ten.mjs";
 import { boDau, slugify } from "./lib/normalize.mjs";
+import { THU_MUC_DA_BAN } from "./lib/da-ban.mjs";
 
 const execFile = promisify(execFileCb);
 
@@ -48,6 +49,35 @@ const thuMucDich = join(root, "public", "products");
 const DUOI_ANH = /\.(jpe?g|png|webp|avif|heic|heif)$/i;
 const RONG_TOI_DA = 1400;
 const CHAT_LUONG = 82;
+
+/**
+ * DỌN THƯ MỤC ẢNH CỦA MÓN ĐÃ BÁN (chủ shop chọn 23/10/2026).
+ *
+ * Bán xong mà thư mục ảnh gốc còn nằm lẫn với hàng đang bán thì vừa rối, vừa
+ * nguy hiểm: thư mục "ATK X1 Air +" đã bán từng giành mất ảnh của món X1
+ * Ultimate v2. Nên chuyển nó sang "_Đã bán" — CHUYỂN chứ không xoá: ảnh gốc
+ * từ điện thoại chỉ có ở đây, web chỉ giữ bản nén, xoá rồi là mất hẳn.
+ *
+ * Ba điều kiện, thiếu một là không đụng:
+ *  - Tên thư mục KHÍT với món đã bán. Khớp "gần đúng" có thể là thư mục của
+ *    món đang chuẩn bị đưa lên Sheet, chuyển đi thì ảnh không bao giờ lên web.
+ *  - Món đã bán từ DA_BAN_TOI_THIEU_NGAY ngày. Cũng là phanh cho lượt đọc
+ *    Sheet hỏng: món bị đọc nhầm là "vừa bán" mang ngày hôm nay, lượt đọc
+ *    đúng sau đó kéo nó về lại kho đang bán từ lâu trước khi đủ tuổi.
+ *    (Lượt có tab đọc lỗi thì sync-sheet không ghi kho đã bán luôn.)
+ *  - Đang chạy trên đúng thư mục ảnh khai trong sync.config.json, không phải
+ *    một thư mục lẻ chủ shop kéo thả vào "Tai anh len web.bat".
+ */
+const DA_BAN_TOI_THIEU_NGAY = 7;
+const thuMucAnhGoc = await (async () => {
+  try {
+    return JSON.parse(await readFile(join(root, "sync.config.json"), "utf8")).thuMucAnh ?? null;
+  } catch {
+    return null;
+  }
+})();
+/** Tên rút gọn để so KHÍT — giữ "+" vì "A9 Mini Ultimate" và "A9 Mini Ultimate +" là hai món */
+const khit = (s) => boDau(String(s)).replace(/\+/g, "plus").replace(/[^a-z0-9]/g, "");
 
 const duongDanVao = process.argv.slice(2).filter(Boolean);
 
@@ -201,13 +231,14 @@ async function timSanPhamTrongCay(duongDan, danhMuc = null, sau = 0) {
   // File nén: CHƯA giải nén vội, chỉ ghi nhận. Giải nén là việc nặng, để dành
   // tới lúc biết chắc bộ ảnh có thay đổi (xem phần lấy vân tay bên dưới).
   if (/\.zip$/i.test(duongDan)) {
-    return [{ ten: basename(duongDan).replace(/\.zip$/i, ""), danhMuc, zip: duongDan }];
+    return [{ ten: basename(duongDan).replace(/\.zip$/i, ""), danhMuc, zip: duongDan, nguon: [duongDan] }];
   }
 
   const muc = await readdir(duongDan, { withFileTypes: true });
   const anhRoi = muc.filter((m) => m.isFile() && DUOI_ANH.test(m.name));
   const zipCon = muc.filter((m) => m.isFile() && /\.zip$/i.test(m.name));
-  const thuMucCon = muc.filter((m) => m.isDirectory());
+  // "_Đã bán" là nơi cất ảnh món đã bán — không quét lại, không thì vừa chuyển đi đã bị báo lại
+  const thuMucCon = muc.filter((m) => m.isDirectory() && m.name !== THU_MUC_DA_BAN);
 
   // Chỉ toàn ảnh, không có gì khác -> cả thư mục là một sản phẩm
   if (anhRoi.length > 0 && zipCon.length === 0 && thuMucCon.length === 0) {
@@ -216,6 +247,7 @@ async function timSanPhamTrongCay(duongDan, danhMuc = null, sau = 0) {
         ten: basename(duongDan),
         danhMuc,
         files: anhRoi.map((m) => join(duongDan, m.name)),
+        nguon: [duongDan],
       },
     ];
   }
@@ -267,6 +299,7 @@ async function timSanPhamTrongCay(duongDan, danhMuc = null, sau = 0) {
           files: anhRoi.map((m) => join(duongDan, m.name)),
           zips: zipCon.map((m) => join(duongDan, m.name)),
           loais,
+          nguon: [duongDan],
         },
       ];
     }
@@ -279,6 +312,7 @@ async function timSanPhamTrongCay(duongDan, danhMuc = null, sau = 0) {
         ten: a.name.replace(/\.[^.]+$/, ""),
         danhMuc,
         files: [join(duongDan, a.name)],
+        nguon: [join(duongDan, a.name)],
       });
     }
     for (const z of zipCon) {
@@ -286,6 +320,7 @@ async function timSanPhamTrongCay(duongDan, danhMuc = null, sau = 0) {
         ten: z.name.replace(/\.zip$/i, ""),
         danhMuc,
         zip: join(duongDan, z.name),
+        nguon: [join(duongDan, z.name)],
       });
     }
   } else if (anhRoi.length > 0 || zipCon.length > 0) {
@@ -294,6 +329,11 @@ async function timSanPhamTrongCay(duongDan, danhMuc = null, sau = 0) {
       danhMuc,
       files: anhRoi.map((m) => join(duongDan, m.name)),
       zips: zipCon.map((m) => join(duongDan, m.name)),
+      // Còn thư mục con là món khác lồng bên trong thì chỉ được mang ảnh của
+      // chính món này đi, không được bê cả thư mục theo
+      nguon: thuMucCon.length
+        ? [...anhRoi, ...zipCon].map((m) => join(duongDan, m.name))
+        : [duongDan],
     });
   }
 
@@ -387,11 +427,32 @@ let tongAnh = 0;
 let tongGoc = 0;
 let tongNen = 0;
 
+/**
+ * Chuyển nguồn ảnh của một món đã bán sang "<gốc>/_Đã bán/", giữ nguyên đường
+ * dẫn tương đối (Chuột/Mchose G3 V2 -> _Đã bán/Chuột/Mchose G3 V2) để chủ shop
+ * muốn lấy lại thì biết ngay nó từ đâu ra. Trùng tên thì thêm " (2)", " (3)"…
+ * — không bao giờ ghi đè lên thứ đã cất trước đó.
+ */
+async function chuyenVaoDaBan(goc, nguon) {
+  for (const tu of nguon) {
+    const dich = join(goc, THU_MUC_DA_BAN, relative(goc, tu));
+    // Chỉ FILE mới có đuôi — thư mục "Venom60he RGB 6.25" mà tách đuôi thì ra ".25"
+    const duoi = (await stat(tu)).isFile() ? extname(dich) : "";
+    const than = dich.slice(0, dich.length - duoi.length);
+    let den = dich;
+    for (let i = 2; existsSync(den); i++) den = `${than} (${i})${duoi}`;
+    await mkdir(dirname(den), { recursive: true });
+    await rename(tu, den);
+  }
+}
+
 for (const vao of duongDanVao) {
   if (!existsSync(vao)) {
     console.error(`  ✗ Không thấy: ${vao}`);
     continue;
   }
+  const laThuMucAnhGoc =
+    thuMucAnhGoc !== null && resolve(vao).toLowerCase() === resolve(thuMucAnhGoc).toLowerCase();
 
   /*
    * GỘP các nguồn CÙNG TÊN trong cùng danh mục thành một món.
@@ -409,9 +470,10 @@ for (const vao of duongDanVao) {
     const khoa = `${e.danhMuc?.slug ?? ""}|${boDau(e.ten).replace(/\s+/g, " ").trim()}`;
     const cu = theoTen.get(khoa);
     if (!cu) {
-      theoTen.set(khoa, { ...e, files: [...(e.files ?? [])], zips: e.zips ?? (e.zip ? [e.zip] : []), zip: undefined });
+      theoTen.set(khoa, { ...e, files: [...(e.files ?? [])], zips: e.zips ?? (e.zip ? [e.zip] : []), zip: undefined, nguon: [...(e.nguon ?? [])] });
       continue;
     }
+    cu.nguon.push(...(e.nguon ?? []));
     cu.files.push(...(e.files ?? []));
     cu.zips.push(...(e.zips ?? (e.zip ? [e.zip] : [])));
     if (e.loais) cu.loais = [...(cu.loais ?? []), ...e.loais];
@@ -422,30 +484,70 @@ for (const vao of duongDanVao) {
     continue;
   }
 
-  for (const { ten, danhMuc, files: duongDanAnh = [], zip, zips, loais } of dsSanPham) {
+  /**
+   * Khớp cả lượt TRƯỚC, rồi xử lý món khớp chắc nhất trước.
+   *
+   * Hai thư mục cùng trỏ một món thì thư mục tới trước giữ món, thư mục sau bị
+   * báo "trùng đích" và bỏ qua. Trước đây "tới trước" là theo thứ tự chữ cái,
+   * nên thư mục "ATK X1 Air +" (chỉ na ná 60%) giành mất món X1 Ultimate v2,
+   * còn chính thư mục "ATK X1 Ultimate V2" khớp 100% lại bị gạt ra — web hiện
+   * ảnh con chuột khác mà chẳng ai hay (23/10/2026). Xếp theo điểm thì thư mục
+   * đúng luôn thắng, thư mục na ná mới là cái bị báo.
+   */
+  const daKhop = dsSanPham
+    .map((e) => {
+      // Ảnh nằm trong thư mục danh mục thì chỉ đối chiếu trong danh mục đó —
+      // không thể gán nhầm ảnh chuột sang một cái bàn phím trùng tên
+      const ungVienSanPham = e.danhMuc
+        ? sanPham.filter((p) => thuocDanhMuc(p, e.danhMuc))
+        : sanPham;
+      const ungVienDaBan = e.danhMuc
+        ? daBan.filter((p) => p.danhMuc === e.danhMuc.slug)
+        : daBan;
+      return {
+        e,
+        ketQua: timSanPham(e.ten, ungVienSanPham),
+        kqDaBan: timSanPham(e.ten, ungVienDaBan),
+      };
+    })
+    .sort((a, b) => (b.ketQua.sanPham ? b.ketQua.diem : 0) - (a.ketQua.sanPham ? a.ketQua.diem : 0));
+
+  for (const { e, ketQua, kqDaBan } of daKhop) {
+    const { ten, danhMuc, files: duongDanAnh = [], zip, zips, loais } = e;
     // Một món có thể vừa có ảnh rời vừa có file nén trong cùng thư mục
     const dsZip = zips ?? (zip ? [zip] : []);
-    // Ảnh nằm trong thư mục danh mục thì chỉ đối chiếu trong danh mục đó —
-    // không thể gán nhầm ảnh chuột sang một cái bàn phím trùng tên
-    const ungVienSanPham = danhMuc
-      ? sanPham.filter((p) => thuocDanhMuc(p, danhMuc))
-      : sanPham;
 
-    const ketQua = timSanPham(ten, ungVienSanPham);
+    /**
+     * Món ĐÃ BÁN khớp chắc hơn thì là món đã bán, dù kho đang bán có món na ná.
+     *
+     * Trước đây chỉ hỏi kho đã bán khi kho đang bán không có gì. Bán xong mà
+     * thư mục ảnh còn đó thì nó đi tìm "người thay thế" trong kho đang bán và
+     * nhận luôn món nào trùng 60% chữ: "Logitech G304 x Superlight" (đã bán,
+     * khớp 100%) thành ảnh của "Logitech G502 x Plus" (23/10/2026).
+     */
+    if (kqDaBan.sanPham && (!ketQua.sanPham || kqDaBan.diem > ketQua.diem)) {
+      const sp = kqDaBan.sanPham;
+      const soNgay = Math.floor((Date.now() - Date.parse(sp.banLuc)) / 86_400_000);
+      const tenKhit =
+        khit(`${sp.hang} ${sp.ten}`) === khit(ten) ||
+        khit(sp.ten) === khit(ten) ||
+        ten === sp.slug; // đặt tên đúng bằng mã — lối thoát cho tên khó gõ khít
+      let daChuyen = false;
+      let loiChuyen = null;
+      if (laThuMucAnhGoc && tenKhit && soNgay >= DA_BAN_TOI_THIEU_NGAY) {
+        try {
+          await chuyenVaoDaBan(vao, e.nguon ?? []);
+          daChuyen = true;
+        } catch (err) {
+          // Thường do đang mở file/thư mục trong Explorer — lượt sau thử lại
+          loiChuyen = err.code ?? err.message;
+        }
+      }
+      cuaHangDaBan.push({ ten, sanPham: sp, soNgay, tenKhit, daChuyen, loiChuyen });
+      continue;
+    }
 
     if (!ketQua.sanPham) {
-      // Không có trong bảng hàng — thử xem có phải món đã bán không, trước
-      // khi kết luận là chủ tiệm đặt sai tên.
-      const ungVienDaBan = danhMuc
-        ? daBan.filter((p) => p.danhMuc === danhMuc.slug)
-        : daBan;
-      const kqDaBan = timSanPham(ten, ungVienDaBan);
-
-      if (kqDaBan.sanPham) {
-        cuaHangDaBan.push({ ten, sanPham: kqDaBan.sanPham });
-        continue;
-      }
-
       khongKhop.push({
         ten,
         danhMuc,
@@ -660,14 +762,33 @@ if (boQua.length) {
   ghi(`· ${boQua.length} sản phẩm đã có ảnh từ trước, không đổi — bỏ qua.`);
 }
 
-if (cuaHangDaBan.length) {
+const daChuyen = cuaHangDaBan.filter((k) => k.daChuyen);
+const conLai = cuaHangDaBan.filter((k) => !k.daChuyen);
+
+if (daChuyen.length) {
   ghi("");
-  ghi(`· ${cuaHangDaBan.length} thư mục là của món ĐÃ BÁN — bỏ qua, không cần làm gì:`);
-  for (const k of cuaHangDaBan) {
-    ghi(`    "${k.ten}"  →  ${k.sanPham.hang} ${k.sanPham.ten} (bán ${k.sanPham.banLuc ?? "trước đây"})`);
+  ghi(`✓ Đã chuyển ${daChuyen.length} thư mục của món đã bán vào "${THU_MUC_DA_BAN}":`);
+  for (const k of daChuyen) {
+    ghi(`    "${k.ten}"  (bán ${k.sanPham.banLuc})`);
   }
-  ghi("  Ảnh của những món này vẫn còn trên web cho trang 'đã bán'. Muốn cho");
-  ghi("  gọn thì cứ dọn thư mục đi, web không đổi gì.");
+  ghi("  Chuyển chứ không xoá — kéo về chỗ cũ là dùng lại được. Muốn giải phóng");
+  ghi(`  ổ cứng thì tự xoá trong "${THU_MUC_DA_BAN}".`);
+}
+
+if (conLai.length) {
+  ghi("");
+  ghi(`· ${conLai.length} thư mục là của món ĐÃ BÁN, chưa chuyển đi:`);
+  for (const k of conLai) {
+    const sp = k.sanPham;
+    let vi;
+    if (k.loiChuyen) vi = `chuyển lỗi (${k.loiChuyen}) — có thể đang mở trong Explorer, lượt sau thử lại`;
+    else if (!k.tenKhit) vi = `tên chưa khít — đổi tên thư mục thành "${sp.hang} ${sp.ten}" hoặc "${sp.slug}" để được dọn`;
+    else if (!(k.soNgay >= DA_BAN_TOI_THIEU_NGAY)) vi = `mới bán ${k.soNgay} ngày, đủ ${DA_BAN_TOI_THIEU_NGAY} ngày sẽ tự chuyển`;
+    else vi = "chỉ tự chuyển khi chạy trên thư mục ảnh chính";
+    ghi(`    "${k.ten}"  →  ${sp.hang} ${sp.ten} (bán ${sp.banLuc ?? "trước đây"})`);
+    ghi(`        ${vi}`);
+  }
+  ghi("  Ảnh của những món này vẫn còn trên web cho trang 'đã bán'.");
 }
 
 if (loiAnh.length) {
