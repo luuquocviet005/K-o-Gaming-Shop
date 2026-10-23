@@ -341,7 +341,7 @@ export default async function ProductPage(props: Props) {
       )}
 
       {/* Nút Messenger + Zalo nổi trên di động đã gộp vào nút chat chung
-          (ai-chatbox.tsx) — ba nút xếp chồng che mất nút "Thêm vào giỏ hàng". */}
+          (ai-chatbox/nut-noi.tsx) — ba nút xếp chồng che mất nút "Thêm vào giỏ hàng". */}
     </div>
   );
 }

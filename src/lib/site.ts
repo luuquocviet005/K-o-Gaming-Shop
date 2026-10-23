@@ -78,7 +78,7 @@ export const site = {
   },
 
   /**
-   * Khung chat AI (src/components/ai-chatbox.tsx) gọi về backend chạy trên
+   * Khung chat AI (src/components/ai-chatbox/) gọi về backend chạy trên
    * Render — dự án riêng ai-marketing-town, không nằm trong repo này.
    */
   chatbot: {
