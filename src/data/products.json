@@ -53,7 +53,6 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 3,
-      "note": "ád",
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -63,7 +62,6 @@
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
           "soLuong": 3,
-          "note": "ád",
           "anh": "/products/atk-a9-mini-ultimate/den/01.webp"
         },
         {
@@ -73,7 +71,6 @@
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
           "soLuong": 3,
-          "note": "ád",
           "anh": "/products/atk-a9-mini-ultimate/xanh-ho/01.webp"
         },
         {
@@ -83,7 +80,6 @@
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
           "soLuong": 3,
-          "note": "ád",
           "anh": "/products/atk-a9-mini-ultimate/hong/01.webp"
         }
       ],
