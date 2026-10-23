@@ -1,0 +1,27 @@
+# Giao diện web
+
+- Thông tin shop (SĐT, địa chỉ, link, STK, quy tắc ship, backend chatbot): chỉ
+  ở `src/lib/site.ts`. Lint chặn viết cứng ở chỗ khác.
+- Màu thương hiệu: nguồn duy nhất `src/app/globals.css`; script sinh ảnh đọc
+  qua `scripts/lib/mau.mjs`.
+- Ảnh chia sẻ link (Zalo/Facebook): `ANH_CHIA_SE` trong `site.ts`, sinh bằng
+  `scripts/tao-anh-bia.mjs`. Đổi ảnh thì TĂNG SỐ trong tên file — Facebook nhớ
+  ảnh theo đường dẫn.
+- Món đã bán vẫn có trang ("đã bán" + gợi ý món tương tự), link cũ không 404.
+- Trang 404 khai `metadata` ở `src/app/global-not-found.tsx`.
+
+## Nút nổi
+- Di động: MỘT nút tròn 🍬, bấm bung Chat AI / Zalo / Messenger ("Hỏi về món
+  này" trên trang sản phẩm, đặt sát ngón tay vì chủ shop rep Messenger nhanh
+  nhất). Đừng thêm nút nổi riêng — nhiều nút chồng nhau che nút "Thêm vào giỏ".
+- Máy tính: nút "Chat tư vấn Kẹo AI".
+
+## Liên hệ và đánh giá
+- `DoLienHe` đếm lượt bấm nút liên hệ (GA4) bằng một bộ lắng nghe ở cấp trang —
+  nút mới tự được đếm.
+- `site.contact.reviewUrl` mở thẳng khung chấm sao Google Maps; placeid suy ra
+  từ `mapUrl` — đổi ghim thì lấy lại cả hai. Có ở chân trang và `/lien-he`.
+
+## Danh mục
+- Chuột, bàn phím, tai nghe, pad chuột, phụ kiện. Hình vẽ/icon switch, ghế, tay
+  cầm, màn hình vẫn giữ trong kho hình dùng chung dù chưa dùng.

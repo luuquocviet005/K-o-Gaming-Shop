@@ -27,6 +27,14 @@ jobs:
     steps:
       - name: Lấy mã nguồn
         uses: actions/checkout@v4
+        with:
+          # Cần lịch sử đầy đủ để so với main ở bước kiểm tra ghi chú.
+          fetch-depth: 0
+
+      # Chạy đầu tiên vì nhanh nhất: sửa code một phần mà quên ghi chú kiến
+      # thức của phần đó thì báo ngay, khỏi chờ build.
+      - name: Ghi chú kiến thức đi cùng code
+        run: node scripts/kiem-tra-ghi-chu.mjs origin/${{ github.base_ref || 'main' }}
 
       - name: Cài Node.js
         uses: actions/setup-node@v4
