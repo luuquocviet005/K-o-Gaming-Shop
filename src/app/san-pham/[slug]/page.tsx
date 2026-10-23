@@ -17,7 +17,7 @@ import { ProductCard } from "@/components/product-card";
 import { ProductPurchase } from "@/components/product-purchase";
 import { ChiTietMon, NhanTinhTrang, PhanLoaiProvider } from "@/components/phan-loai";
 import { TrangDaBan } from "@/components/trang-da-ban";
-import { CheckIcon, FacebookIcon, InfoIcon, MapPinIcon, ZaloIcon } from "@/components/icons";
+import { CheckIcon, InfoIcon, MapPinIcon } from "@/components/icons";
 
 /*
  * Dựng trang cho CẢ hàng đang bán lẫn hàng đã bán.
@@ -340,27 +340,8 @@ export default async function ProductPage(props: Props) {
         </section>
       )}
 
-      {/* Nút hỏi nổi trên di động — Messenger là nút chính (chủ shop rep nhanh hơn), Zalo ngay cạnh */}
-      <div className="fixed bottom-5 right-5 z-30 flex items-center gap-2.5 lg:hidden">
-        <a
-          href={site.social.zalo}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Hỏi về món này qua Zalo"
-          className="grid size-14 place-items-center rounded-full border border-border-strong bg-surface text-fg shadow-[0_12px_30px_-10px_rgba(60,20,40,0.6)]"
-        >
-          <ZaloIcon width={22} height={22} />
-        </a>
-        <a
-          href={site.social.messenger}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex h-14 items-center gap-2.5 rounded-full bg-primary px-6 text-sm font-bold text-on-primary shadow-[0_12px_30px_-10px_rgba(60,20,40,0.6)]"
-        >
-          <FacebookIcon width={20} height={20} />
-          Hỏi về món này
-        </a>
-      </div>
+      {/* Nút Messenger + Zalo nổi trên di động đã gộp vào nút chat chung
+          (ai-chatbox.tsx) — ba nút xếp chồng che mất nút "Thêm vào giỏ hàng". */}
     </div>
   );
 }
