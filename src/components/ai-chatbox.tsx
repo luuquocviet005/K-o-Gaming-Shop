@@ -209,7 +209,7 @@ export function AiChatbox() {
     {
       id: "welcome",
       role: "assistant",
-      text: "Chào bạn! 🍬 Mình là trợ lý Kẹo Gaming Shop (Đà Nẵng). Bạn cần tư vấn chuột, phím cơ/HE, hỏi tình trạng thật hay chốt đơn cứ nhắn mình nha!",
+      text: "Chào bạn! 🍬 Mình là trợ lý Kẹo Gaming Shop (Đà Nẵng). Bạn cần tư vấn chuột, phím cơ/HE, hỏi tình trạng thật hay chốt đơn cứ nhắn mình nha! Nếu bạn cần thêm bất kỳ thông tin nào thì nhắn trực tiếp cho chủ shop qua Messenger hoặc Zalo (nút ở đầu khung chat) nhé.",
     },
   ]);
 
