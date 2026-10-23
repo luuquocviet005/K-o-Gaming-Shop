@@ -15,9 +15,12 @@ Antigravity chỉ trỏ về đây. Muốn đổi luật thì sửa ở đây, �
 
 ## Đọc trước khi làm
 
-1. Đọc 3 file mới nhất trong `docs/ban-giao/` (xếp theo tên — tên bắt đầu bằng
-   ngày). Đó là việc AI kia vừa làm và những gì còn dở.
-2. `git fetch origin main` rồi làm trên bản mới nhất. Bot ảnh 15 phút và GitHub
+1. Đọc `docs/kien-thuc/README.md` rồi ghi chú của phần sắp sửa (chatbot, nạp
+   ảnh, bảng hàng, deploy, giao diện…). Đó là trí nhớ của dự án: cách nó chạy,
+   bẫy đã gặp, việc còn dở. Chủ shop đã chốt gì: `docs/kien-thuc/chu-shop-da-chot.md`.
+2. Đọc 3 file mới nhất trong `docs/ban-giao/` (xếp theo tên — tên bắt đầu bằng
+   ngày). Đó là việc AI kia vừa làm.
+3. `git fetch origin main` rồi làm trên bản mới nhất. Bot ảnh 15 phút và GitHub
    Actions (bảng hàng, 20 phút) commit lên `main` liên tục.
 
 ## Dự án là gì
@@ -54,6 +57,9 @@ thì thêm vào `eslint/luat-shop.mjs` (hoặc một bước trong
 - `shop/khong-viet-cung-lien-he`: chặn SĐT, link Zalo/Messenger/Facebook/
   TikTok, email viết cứng trong `src/` ngoài `site.ts`.
 - Workflow "Kiểm tra PR": mọi PR vào `main` chạy typecheck, lint, build, check.
+- `scripts/kiem-tra-ghi-chu.mjs`: PR sửa code một phần mà không sửa ghi chú
+  của phần đó trong `docs/kien-thuc/` thì đỏ. Sửa vặt: thêm `[bo-qua-ghi-chu]`
+  vào lời nhắn commit.
 
 ## Sửa code ở đâu — QUAN TRỌNG
 
@@ -78,17 +84,28 @@ khoá `.dang-chay.lock` của máy shop). Thay vào đó:
 1. Tự chạy đủ các bước kiểm tra mà `push.mjs` chạy:
    ```
    npm run typecheck && npm run lint && npm run build && npm run check
+   node scripts/kiem-tra-ghi-chu.mjs
    ```
    (`build` đã gồm sinh ảnh thu nhỏ + postbuild; `check` = link chết, SEO,
    tương phản màu). Hỏng bước nào thì sửa, không push.
-2. Viết sổ bàn giao (dưới đây), commit cùng code.
+2. Cập nhật ghi chú kiến thức của phần vừa sửa (`docs/kien-thuc/`, dưới đây)
+   và viết sổ bàn giao, commit cùng code.
 3. Push nhánh riêng, mở Pull Request vào `main`. Chủ shop xem rồi merge.
 4. **Claude Code: tự merge PR của mình** khi bước 1 qua hết VÀ workflow
    "Kiểm tra PR" trên GitHub đã xanh ở commit mới nhất, không cần hỏi lại
-   (chủ shop cho phép 22/10/2026). Workflow đỏ thì sửa tới xanh, không merge. Áp dụng cho cả repo `ai-marketing-town`
+   (chủ shop cho phép 22/10/2026). Workflow đỏ thì sửa tới xanh, không merge.
+   Áp dụng cho cả repo `ai-marketing-town`
    — repo đó không có bộ kiểm tra như ở đây, tối thiểu phải `node --check` và
    chạy thử phần vừa sửa. Merge xong thì tự kiểm tra web thật / bot thật đã
    nhận bản mới chưa, rồi báo chủ shop.
+
+## Ghi chú kiến thức — `docs/kien-thuc/`
+
+AI không nhớ gì giữa các phiên; thư mục này là trí nhớ của dự án. Mỗi file
+một phần của shop, ghi điều CÒN ĐÚNG. Xong việc thì SỬA ghi chú của phần vừa
+làm cho khớp code mới — thêm bẫy vừa gặp, xoá điều hết đúng, cập nhật "còn
+dở". Viết lại chứ không nối nhật ký; ghi chú quá ~120 dòng thì tách nhỏ. Mục
+lục và luật ở `docs/kien-thuc/README.md`.
 
 ## Sổ bàn giao — `docs/ban-giao/`
 
@@ -97,5 +114,6 @@ viết nối vào file cũ — hai AI cùng nối vào một file là sinh xung 
 xung đột thì lượt ảnh tự động dừng luôn.
 
 Tên file: `YYYY-MM-DD-<ai>-<viec>.md`, ví dụ `2026-10-21-claude-sua-chatbox.md`.
-Mẫu ở `docs/ban-giao/README.md`. Viết ngắn: đã làm gì, file nào, còn dở gì,
-điều AI sau cần biết. Lịch sử chi tiết đã có trong git log, không chép lại.
+Mẫu ở `docs/ban-giao/README.md`. Viết ngắn: đã làm gì, file nào, còn dở gì.
+Điều AI sau CẦN BIẾT lâu dài thì ghi vào `docs/kien-thuc/`, không chỉ ở đây —
+sổ bàn giao cũ không ai đọc lại. Lịch sử chi tiết đã có trong git log, không chép lại.
