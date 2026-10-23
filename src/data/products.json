@@ -1322,7 +1322,7 @@
       "tinhTrang": "Mới, nguyên seal",
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
+      "soLuong": 20,
       "mau": "#c2185b",
       "phanLoai": [
         {
@@ -1331,7 +1331,7 @@
           "gia": 1400000,
           "tinhTrang": "Mới, nguyên seal",
           "nhomTinhTrang": "moi",
-          "soLuong": 1,
+          "soLuong": 20,
           "anh": "/products/hyperx-cloud-2/do/01.webp"
         },
         {
@@ -1340,7 +1340,7 @@
           "gia": 1500000,
           "tinhTrang": "Mới, nguyên seal",
           "nhomTinhTrang": "moi",
-          "soLuong": 1,
+          "soLuong": 20,
           "anh": "/products/hyperx-cloud-2/trang/01.webp"
         }
       ],
