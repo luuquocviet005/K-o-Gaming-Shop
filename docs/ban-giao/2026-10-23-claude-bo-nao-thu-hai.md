@@ -8,7 +8,7 @@
   đã chốt. Gom từ 22 file bàn giao, chỉ giữ điều còn đúng.
 - `scripts/kiem-tra-ghi-chu.mjs` + bước đầu tiên trong `kiem-tra-pr.yml`: PR sửa
   code của một phần mà không sửa ghi chú của phần đó → đỏ. Bỏ qua bằng
-  `[bo-qua-ghi-chu]` trong lời nhắn commit. Giao diện chung không bị ép.
+  dòng riêng `[bo-qua-ghi-chu]` trong lời nhắn commit (nhắc giữa câu không tính). Giao diện chung không bị ép.
 - AGENTS.md: bước đọc đầu tiên là ghi chú kiến thức; xong việc phải sửa ghi chú.
 
 ## AI sau cần biết

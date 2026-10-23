@@ -21,4 +21,4 @@ gặp, việc gì còn dở. Không phải nhật ký — nhật ký nằm ở `
 - Ghi chú ngắn. Quá ~120 dòng thì tách thành ghi chú con và link từ đây.
 - Workflow "Kiểm tra PR" chặn PR sửa code của một phần mà không sửa ghi chú
   của phần đó (`scripts/kiem-tra-ghi-chu.mjs`). Sửa vặt không có gì đáng ghi
-  thì thêm `[bo-qua-ghi-chu]` vào lời nhắn commit.
+  thì thêm dòng `[bo-qua-ghi-chu]` (đứng riêng một dòng) vào lời nhắn commit.

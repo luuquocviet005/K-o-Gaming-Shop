@@ -6,7 +6,9 @@
  * duy nhất. "Xong việc nhớ cập nhật ghi chú" mà chỉ ghi trong AGENTS.md thì AI
  * quên, ghi chú cũ dần, AI sau đọc phải điều sai rồi lặp lại lỗi đã sửa.
  *
- * Sửa vặt không có gì đáng ghi: thêm `[bo-qua-ghi-chu]` vào lời nhắn commit.
+ * Sửa vặt không có gì đáng ghi: thêm dòng `[bo-qua-ghi-chu]` (đứng RIÊNG một
+ * dòng) vào lời nhắn commit. Phải đứng riêng vì lời nhắn nhắc tới thẻ này khi
+ * mô tả nó cũng không được tính là bỏ qua.
  *
  * Dùng: node scripts/kiem-tra-ghi-chu.mjs [nhánh gốc, mặc định origin/main]
  */
@@ -60,6 +62,7 @@ const PHAN = [
 ];
 
 const BO_QUA = "[bo-qua-ghi-chu]";
+const DONG_BO_QUA = /^\s*\[bo-qua-ghi-chu\]\s*$/m;
 
 const goc = process.argv[2] ?? "origin/main";
 const git = (...args) => execFileSync("git", args, { encoding: "utf8" });
@@ -67,7 +70,7 @@ const git = (...args) => execFileSync("git", args, { encoding: "utf8" });
 const fileDoi = git("diff", "--name-only", `${goc}...HEAD`).split("\n").filter(Boolean);
 const loiNhan = git("log", "--format=%B", `${goc}..HEAD`);
 
-if (loiNhan.includes(BO_QUA)) {
+if (DONG_BO_QUA.test(loiNhan)) {
   console.log(`Có ${BO_QUA} trong lời nhắn commit — bỏ qua kiểm tra ghi chú.`);
   process.exit(0);
 }
@@ -93,6 +96,6 @@ for (const [ghiChu, files] of thieu) {
 }
 console.error(
   `\nCập nhật ghi chú cho đúng với code mới (bẫy vừa gặp, điều đã hết đúng, việc còn dở).` +
-    `\nSửa vặt không có gì đáng ghi thì thêm ${BO_QUA} vào lời nhắn commit.`,
+    `\nSửa vặt không có gì đáng ghi thì thêm một dòng riêng ${BO_QUA} vào lời nhắn commit.`,
 );
 process.exit(1);
