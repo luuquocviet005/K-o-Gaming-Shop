@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 21
+      "soLuong": 22
     },
     {
       "slug": "ban-phim",
@@ -595,6 +595,25 @@
       "soLuong": 9,
       "anh": "/products/xingmeng-zero-1-se/01.webp",
       "mau": "#b45309"
+    },
+    {
+      "id": "razer-viper-v4-pro",
+      "slug": "razer-viper-v4-pro",
+      "ten": "Viper V4 Pro",
+      "hang": "Razer",
+      "danhMuc": "chuot",
+      "gia": 2500000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "note": "bh 26/5/2028",
+      "anh": "/products/razer-viper-v4-pro/01.webp",
+      "anhs": [
+        "/products/razer-viper-v4-pro/01.webp",
+        "/products/razer-viper-v4-pro/02.webp"
+      ],
+      "mau": "#4338ca"
     },
     {
       "id": "akko-air-01",
