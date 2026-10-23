@@ -58,6 +58,31 @@ if (!giuKhoa()) {
   process.exit(0);
 }
 
+/**
+ * 0. Kéo code mới nhất từ GitHub về TRƯỚC khi chạy.
+ *
+ * Từ khi AI sửa code qua Pull Request (22/10/2026), bản sửa đã merge chỉ nằm
+ * trên GitHub. push.mjs chỉ `pull` khi có ảnh mới để đẩy — không có ảnh mới
+ * thì thư mục này đứng yên ở bản cũ mãi, và mọi bản sửa lỗi nạp ảnh đều không
+ * có tác dụng cho tới hôm nào chủ shop thả ảnh vào (23/10/2026, PR #21).
+ *
+ * Chỉ tua nhanh (--ff-only): không gộp, không ghi đè. Thư mục có commit riêng
+ * chưa đẩy, hay file đang sửa dở đụng file mới, thì git từ chối — lượt này
+ * chạy tiếp bằng code cũ, push.mjs sẽ lo gộp như trước giờ.
+ * Các bước dưới chạy bằng tiến trình con nên dùng được ngay code vừa kéo về.
+ *
+ * ponytail: không tự `npm ci` khi package-lock đổi — lượt đó build hỏng thì
+ * cổng kiểm tra chặn, không đẩy gì; chạy `npm ci` tay khi gặp.
+ */
+spawnSync("git", ["fetch", "-q", "origin", "main"], { cwd: root, stdio: "ignore" });
+const keo = spawnSync("git", ["merge", "--ff-only", "-q", "origin/main"], {
+  cwd: root,
+  encoding: "utf8",
+});
+// Ghi vào BAO CAO.txt SAU bước nạp ảnh — nap-anh ghi đè cả file
+const canhBaoKeo =
+  keo.status !== 0 ? `[${luc()}] ⚠ Chưa kéo được code mới từ GitHub, lượt này chạy bằng code cũ.` : null;
+
 /*
  * 0. Giải nén .zip tải từ Google Drive rồi xoá .zip, để chủ tiệm mở ảnh ra xem
  *    được ngay. Làm sau khi giữ khoá: không bao giờ đụng file nén đúng lúc
@@ -94,6 +119,7 @@ const khongCoGiMoi = napAnh.ra.includes("Không có ảnh nào mới");
 if (dongGiaiNen.length) {
   await ghiNhatKy(`[${luc()}] GIẢI NÉN FILE .ZIP\r\n${dongGiaiNen.join("\r\n")}`);
 }
+if (canhBaoKeo) await ghiNhatKy(canhBaoKeo);
 
 // 3. Đồng bộ lại để bảng hàng ghi nhận những tấm ảnh vừa nạp
 const dongBo = chay([join(root, "scripts", "sync-sheet.mjs")]);
