@@ -26,7 +26,7 @@ Antigravity chỉ trỏ về đây. Muốn đổi luật thì sửa ở đây, �
   server. Push lên `main` = Hostinger tự kéo về và deploy web thật.
 - Backend chatbot + đội AI marketing nằm ở dự án RIÊNG `ai-marketing-town`
   (Render: keo-gaming-agent-town.onrender.com). Repo này chỉ có phần giao diện
-  `src/components/ai-chatbox.tsx` gọi sang đó.
+  `src/components/ai-chatbox/` gọi sang đó.
 - Thông tin shop (SĐT, địa chỉ, link, quy tắc ship, địa chỉ backend chatbot):
   chỉ ở `src/lib/site.ts`. Không viết cứng ở component (lint chặn).
 - Hàng hoá: `src/data/*.json` sinh ra từ Google Sheet — KHÔNG sửa tay.
