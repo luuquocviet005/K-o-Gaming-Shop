@@ -191,13 +191,22 @@
       "ten": "X1 Ultimate v2",
       "hang": "ATK",
       "danhMuc": "chuot",
-      "gia": 1200000,
+      "gia": 1000000,
+      "giaToiDa": 1200000,
       "tinhTrang": "Mới",
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "mau": "#4338ca",
       "phanLoai": [
+        {
+          "id": "do",
+          "ten": "Đỏ",
+          "gia": 1000000,
+          "tinhTrang": "Mới",
+          "nhomTinhTrang": "moi",
+          "soLuong": 1
+        },
         {
           "id": "trang",
           "ten": "Trắng",
