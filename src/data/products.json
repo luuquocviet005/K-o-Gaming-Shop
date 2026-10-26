@@ -186,7 +186,8 @@
           "gia": 1000000,
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
-          "soLuong": 3
+          "soLuong": 3,
+          "anh": "/products/atk-x1-ultimate-v2/den/01.webp"
         },
         {
           "id": "do",
@@ -211,7 +212,7 @@
           "anh": "/products/atk-x1-ultimate-v2/trang/01.webp"
         }
       ],
-      "anh": "/products/atk-x1-ultimate-v2/do/01.webp"
+      "anh": "/products/atk-x1-ultimate-v2/den/01.webp"
     },
     {
       "id": "atk-a9-mini-ultimate-2",
