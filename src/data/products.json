@@ -513,14 +513,41 @@
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "note": "bh 26/5/2028",
+      "soLuong": 2,
+      "note": "Trằng bh 26/5/2028  \nĐen bh 1/9/2028",
       "anh": "/products/razer-viper-v4-pro/01.webp",
-      "anhs": [
-        "/products/razer-viper-v4-pro/01.webp",
-        "/products/razer-viper-v4-pro/02.webp"
+      "mau": "#4338ca",
+      "phanLoai": [
+        {
+          "id": "trang",
+          "ten": "Trắng",
+          "gia": 2500000,
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 2,
+          "note": "Trằng bh 26/5/2028  \nĐen bh 1/9/2028",
+          "anh": "/products/razer-viper-v4-pro/01.webp",
+          "anhs": [
+            "/products/razer-viper-v4-pro/01.webp",
+            "/products/razer-viper-v4-pro/02.webp"
+          ]
+        },
+        {
+          "id": "den",
+          "ten": "Đen",
+          "gia": 2600000,
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 2,
+          "note": "Trằng bh 26/5/2028  \nĐen bh 1/9/2028",
+          "anh": "/products/razer-viper-v4-pro/01.webp",
+          "anhs": [
+            "/products/razer-viper-v4-pro/01.webp",
+            "/products/razer-viper-v4-pro/02.webp"
+          ]
+        }
       ],
-      "mau": "#4338ca"
+      "giaToiDa": 2600000
     },
     {
       "id": "smailwolf-m3",
