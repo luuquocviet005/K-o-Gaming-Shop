@@ -1,6 +1,18 @@
 {
   "daBan": [
     {
+      "slug": "wl-mouse-beast-x-pro",
+      "ten": "Beast x Pro",
+      "hang": "WL Mouse",
+      "danhMuc": "chuot",
+      "gia": 2200000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/wl-mouse-beast-x-pro/01.webp",
+      "mau": "#334155",
+      "banLuc": "2026-10-29"
+    },
+    {
       "slug": "atk-x1-air",
       "ten": "X1 Air+",
       "hang": "ATK",

@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 21
+      "soLuong": 20
     },
     {
       "slug": "ban-phim",
@@ -537,26 +537,6 @@
       "mau": "#c2185b"
     },
     {
-      "id": "wl-mouse-beast-x-pro",
-      "slug": "wl-mouse-beast-x-pro",
-      "ten": "Beast x Pro",
-      "hang": "WL Mouse",
-      "danhMuc": "chuot",
-      "gia": 2200000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "note": "6/2027 tùng creed",
-      "anh": "/products/wl-mouse-beast-x-pro/01.webp",
-      "anhs": [
-        "/products/wl-mouse-beast-x-pro/01.webp",
-        "/products/wl-mouse-beast-x-pro/02.webp",
-        "/products/wl-mouse-beast-x-pro/03.webp"
-      ],
-      "mau": "#334155"
-    },
-    {
       "id": "xingmeng-zero-1-se",
       "slug": "xingmeng-zero-1-se",
       "ten": "Zero 1 se",
@@ -796,7 +776,7 @@
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
+      "soLuong": 2,
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -805,7 +785,7 @@
           "gia": 1600000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 1,
+          "soLuong": 2,
           "anh": "/products/atk-atk68-v3/den/01.webp",
           "anhs": [
             "/products/atk-atk68-v3/den/01.webp",
@@ -820,7 +800,7 @@
           "gia": 1600000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 1,
+          "soLuong": 2,
           "anh": "/products/atk-atk68-v3/trang/01.webp",
           "anhs": [
             "/products/atk-atk68-v3/trang/01.webp",
