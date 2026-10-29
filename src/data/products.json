@@ -30,7 +30,7 @@
       "short": "Pad chuột",
       "icon": "pad-chuot",
       "blurb": "Pad vải, pad cỡ lớn và pad chơi game — hàng mới và hàng cũ.",
-      "soLuong": 2
+      "soLuong": 4
     },
     {
       "slug": "phu-kien",
@@ -1109,7 +1109,7 @@
       "tinhTrang": "Mới, nguyên seal",
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 20,
+      "soLuong": 18,
       "note": "Khi mua sẽ nhận được hàng NEWSEAL, shop chỉ mở ra chụp ảnh demo",
       "anh": "/products/akko-s9-ultra/01.webp",
       "anhs": [
@@ -1381,6 +1381,32 @@
         "/products/atk-crimson/06.webp",
         "/products/atk-crimson/07.webp"
       ],
+      "mau": "#4338ca"
+    },
+    {
+      "id": "atk-99g",
+      "slug": "atk-99g",
+      "ten": "99G",
+      "hang": "ATK",
+      "danhMuc": "pad-chuot",
+      "gia": 250000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 4,
+      "mau": "#4338ca"
+    },
+    {
+      "id": "atk-x83",
+      "slug": "atk-x83",
+      "ten": "X83",
+      "hang": "ATK",
+      "danhMuc": "pad-chuot",
+      "gia": 350000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 3,
       "mau": "#4338ca"
     },
     {
