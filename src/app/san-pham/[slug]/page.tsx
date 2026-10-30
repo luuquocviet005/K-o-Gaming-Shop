@@ -59,7 +59,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
           images: [
             {
               url: daBan.anh
-                ? anhChiaSeSanPham(daBan.slug)
+                ? anhChiaSeSanPham(daBan)
                 : anhDayDu(ANH_CHIA_SE),
               width: 1200,
               height: 630,
@@ -116,7 +116,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   // thật thì rơi về tấm mặc định của shop, chứ không để trống.
   const coAnh = Boolean(product.anh);
   const anhChiaSe = coAnh
-    ? anhChiaSeSanPham(product.slug)
+    ? anhChiaSeSanPham(product)
     : anhDayDu(ANH_CHIA_SE);
   const tieuDe = `${product.ten} — ${formatGia(product)}`;
 

@@ -7,6 +7,10 @@
 - Ảnh chia sẻ link (Zalo/Facebook): `ANH_CHIA_SE` trong `site.ts`, sinh bằng
   `scripts/tao-anh-bia.mjs`. Đổi ảnh thì TĂNG SỐ trong tên file — Facebook nhớ
   ảnh theo đường dẫn.
+- Ảnh sản phẩm mang `?v=<băm nội dung>` (sync-sheet gắn, xem bang-hang-sheet.md).
+  `_nho.webp` (`banThuNho`) và `chia-se.jpg` (`anhChiaSeSanPham`) mượn ?v của
+  ảnh bìa. Tự ghép đường dẫn ảnh ở chỗ khác thì giữ nguyên phần ?v, không thì
+  khách lại thấy ảnh cũ sau khi thay ảnh.
 - Món đã bán vẫn có trang ("đã bán" + gợi ý món tương tự), link cũ không 404.
 - Trang 404 khai `metadata` ở `src/app/global-not-found.tsx`.
 
