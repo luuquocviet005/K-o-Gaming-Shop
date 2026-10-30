@@ -11,7 +11,8 @@
   với lỗi ruleset/403 là dấu hiệu — chủ shop tạo token mới, dán đè secret.
 - `sync.config.json`: mỗi tab Sheet = một danh mục. Tên tab phải TRÙNG TUYỆT
   ĐỐI; tab khai mà không có trong Sheet thì sync dừng — kéo theo cả Actions và
-  lượt ảnh. Bỏ tab khỏi Sheet thì bỏ luôn ở đây.
+  lượt ảnh. Bỏ tab khỏi Sheet thì bỏ luôn ở đây. Ô `thuMucAnh` cùng file là
+  đường dẫn thư mục ảnh của lượt nạp ảnh (xem `nap-anh.md`).
 
 ## Bẫy đã gặp
 - Tải tab bằng `/export?format=csv` theo gid, KHÔNG dùng gviz: gviz trả rỗng
