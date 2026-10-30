@@ -499,6 +499,25 @@
       "mau": "#7c3aed"
     },
     {
+      "id": "logitech-g-pro-x2-superstrike",
+      "slug": "logitech-g-pro-x2-superstrike",
+      "ten": "G Pro X2 Superstrike",
+      "hang": "Logitech",
+      "danhMuc": "chuot",
+      "gia": 2400000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/logitech-g-pro-x2-superstrike/01.webp?v=8a221134",
+      "anhs": [
+        "/products/logitech-g-pro-x2-superstrike/01.webp?v=8a221134",
+        "/products/logitech-g-pro-x2-superstrike/02.webp?v=d9ebf9a1",
+        "/products/logitech-g-pro-x2-superstrike/03.webp?v=bd78faf3"
+      ],
+      "mau": "#7c3aed"
+    },
+    {
       "id": "razer-basilisk",
       "slug": "razer-basilisk",
       "ten": "Basilisk",
@@ -579,9 +598,9 @@
       "mau": "#4338ca"
     },
     {
-      "id": "razer-da-v4-pro",
-      "slug": "razer-da-v4-pro",
-      "ten": "Da V4 Pro",
+      "id": "razer-deathadder-v4-pro",
+      "slug": "razer-deathadder-v4-pro",
+      "ten": "Deathadder V4 Pro",
       "hang": "Razer",
       "danhMuc": "chuot",
       "gia": 2300000,
@@ -590,6 +609,11 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "note": "bh 19/7/2027",
+      "anh": "/products/razer-deathadder-v4-pro/01.webp?v=61d49a8b",
+      "anhs": [
+        "/products/razer-deathadder-v4-pro/01.webp?v=61d49a8b",
+        "/products/razer-deathadder-v4-pro/02.webp?v=573467e7"
+      ],
       "mau": "#4338ca"
     },
     {
@@ -642,25 +666,6 @@
       "soLuong": 9,
       "anh": "/products/xingmeng-zero-1-se/01.webp?v=7e70e51b",
       "mau": "#b45309"
-    },
-    {
-      "id": "logitech-g-pro-x2-superstrike",
-      "slug": "logitech-g-pro-x2-superstrike",
-      "ten": "G Pro X2 Superstrike",
-      "hang": "Logitech",
-      "danhMuc": "chuot",
-      "gia": 2400000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/logitech-g-pro-x2-superstrike/01.webp?v=8a221134",
-      "anhs": [
-        "/products/logitech-g-pro-x2-superstrike/01.webp?v=8a221134",
-        "/products/logitech-g-pro-x2-superstrike/02.webp?v=d9ebf9a1",
-        "/products/logitech-g-pro-x2-superstrike/03.webp?v=bd78faf3"
-      ],
-      "mau": "#7c3aed"
     },
     {
       "id": "akko-air-01",

@@ -1,6 +1,17 @@
 {
   "daBan": [
     {
+      "slug": "razer-da-v4-pro",
+      "ten": "Da V4 Pro",
+      "hang": "Razer",
+      "danhMuc": "chuot",
+      "gia": 2300000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "mau": "#4338ca",
+      "banLuc": "2026-10-30"
+    },
+    {
       "slug": "wl-mouse-beast-x-pro",
       "ten": "Beast x Pro",
       "hang": "WL Mouse",
