@@ -287,12 +287,24 @@
         {
           "id": "vang",
           "ten": "Vàng",
-          "gia": 1600000,
-          "giaToiDa": 1900000,
-          "ghiChuGia": "1tr6 - 1tr9",
+          "gia": 1900000,
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
           "soLuong": 4
+        },
+        {
+          "id": "xanh-2nd",
+          "ten": "Xanh (2nd)",
+          "gia": 1600000,
+          "tinhTrang": "Mới",
+          "nhomTinhTrang": "moi",
+          "soLuong": 4,
+          "anh": "/products/atk-phantom/xanh-2nd/01.webp",
+          "anhs": [
+            "/products/atk-phantom/xanh-2nd/01.webp",
+            "/products/atk-phantom/xanh-2nd/02.webp",
+            "/products/atk-phantom/xanh-2nd/03.webp"
+          ]
         }
       ],
       "anh": "/products/atk-phantom/den/01.webp"
