@@ -13,6 +13,17 @@ phút, NGAY TRONG thư mục dự án chính:
 
 `thu-cong.mjs` / "Tai anh len web.bat" chạy cùng dây chuyền cho một thư mục lẻ.
 
+## Thư mục ảnh nằm trên Google Drive
+- `thuMucAnh` = `G:\My Drive\Ảnh gear`: Google Drive for desktop (chế độ
+  Stream) trên PC shop và laptop, nên chủ shop thả ảnh từ máy nào cũng được.
+  Lượt nạp vẫn chỉ chạy trên PC — PC tắt thì ảnh nằm trên Drive chờ.
+- Thư mục phải để "Available offline" trên PC: Stream mà không offline thì ảnh
+  là file ảo, đọc phải tải qua mạng — lượt nạp chậm hoặc lỗi khi mạng chập.
+- Ổ G: chỉ có khi app Drive đang chạy. Lượt báo "không thấy thư mục ảnh" thì
+  kiểm tra app Drive trước, đừng sửa đường dẫn.
+- Dung lượng ổ G: mà Windows hiện là của ổ C: (bộ nhớ đệm), không phải hạn
+  mức Drive.
+
 ## Bẫy đã gặp
 - Khoá `.dang-chay.lock` (`scripts/lib/khoa.mjs`): hai lượt chồng nhau làm kẹt
   rebase, mọi lượt sau chết. AI không chạy `push.mjs`.
