@@ -13,11 +13,11 @@
   ĐỐI; tab khai mà không có trong Sheet thì sync dừng — kéo theo cả Actions và
   lượt ảnh. Bỏ tab khỏi Sheet thì bỏ luôn ở đây. Ô `thuMucAnh` cùng file là
   đường dẫn thư mục ảnh của lượt nạp ảnh (xem `nap-anh.md`).
-
 - Link ảnh trong JSON có `?v=` = 8 ký tự md5 NỘI DUNG file: ảnh thay mới vẫn
   tên 01.webp, không đổi link thì trình duyệt/CDN/Zalo hiện ảnh cũ cả ngày.
   Đừng đổi sang ngày sửa file — máy shop và Actions khác ngày, ?v nhảy mỗi
   lượt sinh commit rác.
+
 
 ## Bẫy đã gặp
 - Tải tab bằng `/export?format=csv` theo gid, KHÔNG dùng gviz: gviz trả rỗng
