@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 20
+      "soLuong": 21
     },
     {
       "slug": "ban-phim",
@@ -263,7 +263,7 @@
       "tinhTrang": "Mới",
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 3,
+      "soLuong": 4,
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -272,7 +272,7 @@
           "gia": 1900000,
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
-          "soLuong": 3,
+          "soLuong": 4,
           "anh": "/products/atk-phantom/den/01.webp"
         },
         {
@@ -281,22 +281,18 @@
           "gia": 1900000,
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
-          "soLuong": 3,
+          "soLuong": 4,
           "anh": "/products/atk-phantom/trang/01.webp"
         },
         {
-          "id": "xanh-2nd",
-          "ten": "Xanh (2nd)",
+          "id": "vang",
+          "ten": "Vàng",
           "gia": 1600000,
+          "giaToiDa": 1900000,
+          "ghiChuGia": "1tr6 - 1tr9",
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
-          "soLuong": 3,
-          "anh": "/products/atk-phantom/xanh-2nd/01.webp",
-          "anhs": [
-            "/products/atk-phantom/xanh-2nd/01.webp",
-            "/products/atk-phantom/xanh-2nd/02.webp",
-            "/products/atk-phantom/xanh-2nd/03.webp"
-          ]
+          "soLuong": 4
         }
       ],
       "anh": "/products/atk-phantom/den/01.webp"
@@ -576,6 +572,20 @@
       "soLuong": 9,
       "anh": "/products/xingmeng-zero-1-se/01.webp",
       "mau": "#b45309"
+    },
+    {
+      "id": "razer-viper-v3-pro",
+      "slug": "razer-viper-v3-pro",
+      "ten": "Viper V3 Pro",
+      "hang": "Razer",
+      "danhMuc": "chuot",
+      "gia": 2200000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/razer-viper-v3-pro/01.webp",
+      "mau": "#4338ca"
     },
     {
       "id": "akko-air-01",
