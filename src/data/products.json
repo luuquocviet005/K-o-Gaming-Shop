@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 23
+      "soLuong": 24
     },
     {
       "slug": "ban-phim",
@@ -642,6 +642,19 @@
       "soLuong": 9,
       "anh": "/products/xingmeng-zero-1-se/01.webp?v=7e70e51b",
       "mau": "#b45309"
+    },
+    {
+      "id": "logitech-g-pro-x2-superstrike",
+      "slug": "logitech-g-pro-x2-superstrike",
+      "ten": "G Pro X2 Superstrike",
+      "hang": "Logitech",
+      "danhMuc": "chuot",
+      "gia": 0,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 0,
+      "mau": "#7c3aed"
     },
     {
       "id": "akko-air-01",
