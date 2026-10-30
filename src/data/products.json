@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 21
+      "soLuong": 22
     },
     {
       "slug": "ban-phim",
@@ -584,7 +584,22 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "note": "bh 17/10/2028",
       "anh": "/products/razer-viper-v3-pro/01.webp",
+      "mau": "#4338ca"
+    },
+    {
+      "id": "razer-da-v4-pro",
+      "slug": "razer-da-v4-pro",
+      "ten": "Da V4 Pro",
+      "hang": "Razer",
+      "danhMuc": "chuot",
+      "gia": 2300000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "note": "bh 19/7/2027",
       "mau": "#4338ca"
     },
     {
