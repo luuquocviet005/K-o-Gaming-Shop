@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 22
+      "soLuong": 23
     },
     {
       "slug": "ban-phim",
@@ -560,34 +560,6 @@
       "anh": "/products/razer-viper-v4-pro/trang/01.webp"
     },
     {
-      "id": "smailwolf-m3",
-      "slug": "smailwolf-m3",
-      "ten": "M3",
-      "hang": "SmailWolf",
-      "danhMuc": "chuot",
-      "gia": 250000,
-      "tinhTrang": "Mới",
-      "nhomTinhTrang": "moi",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 3,
-      "anh": "/products/smailwolf-m3/01.webp",
-      "mau": "#c2185b"
-    },
-    {
-      "id": "xingmeng-zero-1-se",
-      "slug": "xingmeng-zero-1-se",
-      "ten": "Zero 1 se",
-      "hang": "Xingmeng",
-      "danhMuc": "chuot",
-      "gia": 250000,
-      "tinhTrang": "Mới",
-      "nhomTinhTrang": "moi",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 9,
-      "anh": "/products/xingmeng-zero-1-se/01.webp",
-      "mau": "#b45309"
-    },
-    {
       "id": "razer-viper-v3-pro",
       "slug": "razer-viper-v3-pro",
       "ten": "Viper V3 Pro",
@@ -619,6 +591,57 @@
       "soLuong": 1,
       "note": "bh 19/7/2027",
       "mau": "#4338ca"
+    },
+    {
+      "id": "smailwolf-m3",
+      "slug": "smailwolf-m3",
+      "ten": "M3",
+      "hang": "SmailWolf",
+      "danhMuc": "chuot",
+      "gia": 250000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 3,
+      "anh": "/products/smailwolf-m3/01.webp",
+      "mau": "#c2185b"
+    },
+    {
+      "id": "wl-mouse-beast-x-max",
+      "slug": "wl-mouse-beast-x-max",
+      "ten": "Beast x Max",
+      "hang": "WL Mouse",
+      "danhMuc": "chuot",
+      "gia": 1900000,
+      "tinhTrang": "Cũ · không hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/wl-mouse-beast-x-max/01.webp",
+      "anhs": [
+        "/products/wl-mouse-beast-x-max/01.webp",
+        "/products/wl-mouse-beast-x-max/02.webp",
+        "/products/wl-mouse-beast-x-max/03.webp",
+        "/products/wl-mouse-beast-x-max/04.webp",
+        "/products/wl-mouse-beast-x-max/05.webp",
+        "/products/wl-mouse-beast-x-max/06.webp",
+        "/products/wl-mouse-beast-x-max/07.webp"
+      ],
+      "mau": "#334155"
+    },
+    {
+      "id": "xingmeng-zero-1-se",
+      "slug": "xingmeng-zero-1-se",
+      "ten": "Zero 1 se",
+      "hang": "Xingmeng",
+      "danhMuc": "chuot",
+      "gia": 250000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 9,
+      "anh": "/products/xingmeng-zero-1-se/01.webp",
+      "mau": "#b45309"
     },
     {
       "id": "akko-air-01",
