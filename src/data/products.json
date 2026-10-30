@@ -263,7 +263,7 @@
       "tinhTrang": "Mới",
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 4,
+      "soLuong": 1,
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -272,7 +272,7 @@
           "gia": 1900000,
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
-          "soLuong": 4,
+          "soLuong": 1,
           "anh": "/products/atk-phantom/den/01.webp"
         },
         {
@@ -281,7 +281,7 @@
           "gia": 1900000,
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
-          "soLuong": 4,
+          "soLuong": 1,
           "anh": "/products/atk-phantom/trang/01.webp"
         },
         {
@@ -290,7 +290,8 @@
           "gia": 1900000,
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
-          "soLuong": 4
+          "soLuong": 1,
+          "anh": "/products/atk-phantom/vang/01.webp"
         },
         {
           "id": "xanh-2nd",
@@ -298,7 +299,7 @@
           "gia": 1600000,
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
-          "soLuong": 4,
+          "soLuong": 1,
           "anh": "/products/atk-phantom/xanh-2nd/01.webp",
           "anhs": [
             "/products/atk-phantom/xanh-2nd/01.webp",
