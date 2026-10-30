@@ -511,7 +511,6 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 2,
       "note": "Trằng bh 26/5/2028  \nĐen bh 1/9/2028",
-      "anh": "/products/razer-viper-v4-pro/01.webp",
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -522,10 +521,10 @@
           "nhomTinhTrang": "cu",
           "soLuong": 2,
           "note": "Trằng bh 26/5/2028  \nĐen bh 1/9/2028",
-          "anh": "/products/razer-viper-v4-pro/01.webp",
+          "anh": "/products/razer-viper-v4-pro/trang/01.webp",
           "anhs": [
-            "/products/razer-viper-v4-pro/01.webp",
-            "/products/razer-viper-v4-pro/02.webp"
+            "/products/razer-viper-v4-pro/trang/01.webp",
+            "/products/razer-viper-v4-pro/trang/02.webp"
           ]
         },
         {
@@ -536,14 +535,16 @@
           "nhomTinhTrang": "cu",
           "soLuong": 2,
           "note": "Trằng bh 26/5/2028  \nĐen bh 1/9/2028",
-          "anh": "/products/razer-viper-v4-pro/01.webp",
+          "anh": "/products/razer-viper-v4-pro/den/01.webp",
           "anhs": [
-            "/products/razer-viper-v4-pro/01.webp",
-            "/products/razer-viper-v4-pro/02.webp"
+            "/products/razer-viper-v4-pro/den/01.webp",
+            "/products/razer-viper-v4-pro/den/02.webp",
+            "/products/razer-viper-v4-pro/den/03.webp"
           ]
         }
       ],
-      "giaToiDa": 2600000
+      "giaToiDa": 2600000,
+      "anh": "/products/razer-viper-v4-pro/trang/01.webp"
     },
     {
       "id": "smailwolf-m3",
@@ -586,6 +587,10 @@
       "soLuong": 1,
       "note": "bh 17/10/2028",
       "anh": "/products/razer-viper-v3-pro/01.webp",
+      "anhs": [
+        "/products/razer-viper-v3-pro/01.webp",
+        "/products/razer-viper-v3-pro/02.webp"
+      ],
       "mau": "#4338ca"
     },
     {
