@@ -224,8 +224,9 @@ export function ProductArt({
  */
 export function banThuNho(anh: string): string | null {
   // Món có phân loại thì ảnh bìa nằm sâu thêm một tầng: /products/<slug>/<loai>/01.webp
-  const m = anh.match(/^(\/products\/[^/]+\/(?:[^/]+\/)?)01\.[a-z0-9]+$/i);
-  return m ? `${m[1]}_nho.webp` : null;
+  // Giữ nguyên ?v của ảnh bìa: _nho.webp vẽ từ ảnh bìa nên đổi cùng nó
+  const m = anh.match(/^(\/products\/[^/]+\/(?:[^/]+\/)?)01\.[a-z0-9]+(\?.*)?$/i);
+  return m ? `${m[1]}_nho.webp${m[2] ?? ""}` : null;
 }
 
 /**

@@ -36,7 +36,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   // Zalo thì khách thấy ngay một con chuột, sát nội dung hơn logo shop.
   const monCoAnh = productsByCategory(slug).find((p) => p.anh);
   const anh = monCoAnh
-    ? anhChiaSeSanPham(monCoAnh.slug)
+    ? anhChiaSeSanPham(monCoAnh)
     : anhDayDu(ANH_CHIA_SE);
 
   return {

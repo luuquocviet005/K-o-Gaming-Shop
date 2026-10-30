@@ -132,6 +132,8 @@ export function anhDayDu(duongDan: string): string {
  * và chúng cắt xén ảnh vuông. File này do scripts/anh-chia-se-san-pham.mjs vẽ
  * ra ở bước build nên luôn tồn tại cho mọi món đã có ảnh.
  */
-export function anhChiaSeSanPham(slug: string): string {
-  return anhDayDu(`/products/${slug}/chia-se.jpg`);
+export function anhChiaSeSanPham(p: { slug: string; anh?: string }): string {
+  // Mượn ?v của ảnh bìa: chia-se.jpg vẽ từ ảnh bìa, Facebook nhớ theo đường dẫn
+  const v = p.anh?.match(/\?v=[^&#]+/)?.[0] ?? "";
+  return anhDayDu(`/products/${p.slug}/chia-se.jpg${v}`);
 }

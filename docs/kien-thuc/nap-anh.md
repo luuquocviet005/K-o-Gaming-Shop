@@ -61,5 +61,9 @@ ba điều kiện: tên KHÍT món đã bán, đã bán từ 7 ngày, đang ch�
 - Đừng commit ảnh nạp thử: để lượt 15 phút trên máy shop tự nạp, tránh hai bên
   cùng sửa `public/products/` gây xung đột rebase.
 
+- Tên thư mục không KHÍT tên món đã bán (vd "Pulsar Tenz" ↔ "Tenz ( đen )",
+  "ATK F1 Leviatan" ↔ "F1 Extreme Leviatan") thì không bao giờ tự chuyển —
+  chủ shop tự kéo vào `_Đã bán`.
+
 ## Còn dở
 - `_Đã bán` không tự xoá; chủ shop tự xoá khi cần chỗ.

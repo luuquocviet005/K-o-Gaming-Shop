@@ -10,6 +10,7 @@
  */
 
 import { readFile, writeFile, mkdir, readdir, rm } from "node:fs/promises";
+import { createHash } from "node:crypto";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parseCsv, toRecords } from "./lib/csv.mjs";
@@ -539,6 +540,39 @@ for (const p of sanPham) {
   if (anhBia) p.anh = anhBia;
   else delete p.anh;
   delete p.anhs;
+}
+
+/*
+ * GẮN PHIÊN BẢN VÀO LINK ẢNH: "/products/x/01.webp?v=<8 ký tự băm nội dung>".
+ *
+ * Ảnh thay mới vẫn mang đúng tên cũ (01.webp, 02.webp…), mà trình duyệt, CDN
+ * và Zalo/Facebook nhớ ảnh theo ĐƯỜNG DẪN — khách thấy ảnh cũ thêm cả ngày.
+ * Đổi nội dung là đổi ?v, đường dẫn mới nên ai cũng phải tải lại.
+ *
+ * Băm theo NỘI DUNG, đừng theo ngày sửa file: máy shop và GitHub Actions cùng
+ * chạy script này, ngày sửa file mỗi nơi một khác, ?v sẽ nhảy qua lại mỗi
+ * lượt và sinh commit rác.
+ */
+const phienBanDaTinh = new Map();
+async function ganPhienBan(duongDan) {
+  const goc = duongDan.split("?")[0];
+  if (!goc.startsWith("/products/")) return duongDan;
+  if (!phienBanDaTinh.has(goc)) {
+    let v = null;
+    try {
+      const file = join(root, "public", ...goc.slice(1).split("/").map(decodeURIComponent));
+      v = createHash("md5").update(await readFile(file)).digest("hex").slice(0, 8);
+    } catch {
+      /* file không còn — để link trần, bộ quét link chết sẽ báo */
+    }
+    phienBanDaTinh.set(goc, v);
+  }
+  const v = phienBanDaTinh.get(goc);
+  return v ? `${goc}?v=${v}` : goc;
+}
+for (const muc of sanPham.flatMap((p) => [p, ...(p.phanLoai ?? [])])) {
+  if (muc.anh) muc.anh = await ganPhienBan(muc.anh);
+  if (muc.anhs) muc.anhs = await Promise.all(muc.anhs.map(ganPhienBan));
 }
 
 /**
