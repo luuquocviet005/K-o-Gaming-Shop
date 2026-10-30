@@ -14,7 +14,7 @@
       "short": "Bàn phím",
       "icon": "ban-phim",
       "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời.",
-      "soLuong": 20
+      "soLuong": 21
     },
     {
       "slug": "tai-nghe",
@@ -649,11 +649,17 @@
       "ten": "G Pro X2 Superstrike",
       "hang": "Logitech",
       "danhMuc": "chuot",
-      "gia": 0,
+      "gia": 2400000,
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 0,
+      "soLuong": 1,
+      "anh": "/products/logitech-g-pro-x2-superstrike/01.webp?v=8a221134",
+      "anhs": [
+        "/products/logitech-g-pro-x2-superstrike/01.webp?v=8a221134",
+        "/products/logitech-g-pro-x2-superstrike/02.webp?v=d9ebf9a1",
+        "/products/logitech-g-pro-x2-superstrike/03.webp?v=bd78faf3"
+      ],
       "mau": "#7c3aed"
     },
     {
@@ -1204,6 +1210,20 @@
         "/products/wooting-80he/03.webp?v=0f5522c5"
       ],
       "mau": "#be123c"
+    },
+    {
+      "id": "atk-rs6-ultra",
+      "slug": "atk-rs6-ultra",
+      "ten": "Rs6 Ultra",
+      "hang": "ATK",
+      "danhMuc": "ban-phim",
+      "gia": 1600000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/atk-rs6-ultra/01.webp?v=352c9bb7",
+      "mau": "#4338ca"
     },
     {
       "id": "akko-s9-ultra",
