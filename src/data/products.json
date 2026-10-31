@@ -14,7 +14,7 @@
       "short": "Bàn phím",
       "icon": "ban-phim",
       "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời.",
-      "soLuong": 21
+      "soLuong": 22
     },
     {
       "slug": "tai-nghe",
@@ -1209,6 +1209,20 @@
       "mau": "#be123c"
     },
     {
+      "id": "wooting-80he-ghost",
+      "slug": "wooting-80he-ghost",
+      "ten": "80HE Ghost",
+      "hang": "WOOTING",
+      "danhMuc": "ban-phim",
+      "gia": 5000000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/wooting-80he-ghost/01.webp?v=f2a58e2c",
+      "mau": "#be123c"
+    },
+    {
       "id": "akko-s9-ultra",
       "slug": "akko-s9-ultra",
       "ten": "S9 Ultra",
@@ -1460,12 +1474,30 @@
       "ten": "N9 Ultra",
       "hang": "ATK",
       "danhMuc": "tai-nghe",
-      "gia": 0,
-      "tinhTrang": "",
-      "nhomTinhTrang": "khac",
+      "gia": 800000,
+      "tinhTrang": "Mới, nguyên seal",
+      "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 0,
-      "mau": "#4338ca"
+      "soLuong": 1,
+      "mau": "#4338ca",
+      "phanLoai": [
+        {
+          "id": "trang",
+          "ten": "Trắng",
+          "gia": 800000,
+          "tinhTrang": "Mới, nguyên seal",
+          "nhomTinhTrang": "moi",
+          "soLuong": 1
+        },
+        {
+          "id": "cam",
+          "ten": "Cam",
+          "gia": 800000,
+          "tinhTrang": "Mới, nguyên seal",
+          "nhomTinhTrang": "moi",
+          "soLuong": 1
+        }
+      ]
     },
     {
       "id": "atk-lie-xsoft-m",
