@@ -27,8 +27,8 @@
   từ `mapUrl` — đổi ghim thì lấy lại cả hai. Có ở chân trang và `/lien-he`.
 
 ## Danh mục
-- Góc ảnh thẻ sản phẩm: trái là loại hàng (`tenDanhMuc` = `short` của danh
-  mục chính, gắn trong `toCard`), phải là tình trạng. Nhiều món tên chỉ là
+- Góc ảnh thẻ sản phẩm: trái là loại hàng (`tenDanhMuc` = cột "Loại" trong
+  Sheet, trống thì `short` của danh mục chính; gắn trong `toCard`), phải là tình trạng. Nhiều món tên chỉ là
   mã/tên riêng ("Crimson", "X83") nên khách không biết đó là pad hay phím —
   đừng bỏ nhãn loại. Shop chỉ bán ở Đà Nẵng nên thẻ không ghi địa điểm và
   trang danh sách không có bộ lọc địa điểm.

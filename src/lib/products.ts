@@ -30,6 +30,8 @@ export type Product = {
    * và dòng "Nhóm" trên trang sản phẩm.
    */
   danhMucKhac?: string[];
+  /** Món là gì ("Feet chuột", "Keycap") — cột "Loại" trong Sheet, có thể trống */
+  loaiHang?: string;
   /** VNĐ. 0 nghĩa là chưa có giá — hiển thị "Liên hệ" */
   gia: number;
   /** Có khi Sheet ghi khoảng giá ("1m3-1m5") hoặc hai mức ("5tr8 / 6tr") */
@@ -290,7 +292,7 @@ export type CardProduct = Pick<
 > & {
   /** Có bao nhiêu phân loại — thẻ hiện nhãn "3 phân loại" thay cho nút thêm giỏ */
   soPhanLoai?: number;
-  /** Tên ngắn của danh mục chính ("Pad chuột") — tên món như "Crimson" không tự nói nó là gì */
+  /** Nhãn loại hàng góc ảnh: cột "Loại" trong Sheet, trống thì tên ngắn của danh mục chính */
   tenDanhMuc?: string;
 };
 
@@ -311,6 +313,6 @@ export function toCard(p: Product): CardProduct {
     anh: p.anh,
     mau: p.mau,
     ...(p.phanLoai ? { soPhanLoai: p.phanLoai.length } : {}),
-    tenDanhMuc: getCategory(p.danhMuc)?.short,
+    tenDanhMuc: p.loaiHang || getCategory(p.danhMuc)?.short,
   };
 }
