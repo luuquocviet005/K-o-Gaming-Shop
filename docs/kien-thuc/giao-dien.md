@@ -30,6 +30,7 @@
 - Góc ảnh thẻ sản phẩm: trái là loại hàng (`tenDanhMuc` = `short` của danh
   mục chính, gắn trong `toCard`), phải là tình trạng. Nhiều món tên chỉ là
   mã/tên riêng ("Crimson", "X83") nên khách không biết đó là pad hay phím —
-  đừng bỏ nhãn loại. Thẻ không ghi địa điểm vì shop chỉ bán ở Đà Nẵng.
+  đừng bỏ nhãn loại. Shop chỉ bán ở Đà Nẵng nên thẻ không ghi địa điểm và
+  trang danh sách không có bộ lọc địa điểm.
 - Chuột, bàn phím, tai nghe, pad chuột, phụ kiện. Hình vẽ/icon switch, ghế, tay
   cầm, màn hình vẫn giữ trong kho hình dùng chung dù chưa dùng.

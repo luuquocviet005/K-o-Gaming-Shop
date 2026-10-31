@@ -21,6 +21,10 @@ và `node scripts/kiem-tra-ghi-chu.mjs`.
   cứng thông tin liên hệ ngoài `site.ts`.
 
 ## Bẫy đã gặp
+- Hostinger có lúc KHÔNG build lại sau khi merge vào `main` (bản xem thử của PR
+  vẫn build được, GitHub không ghi gì). Merge xong phải tự kiểm tra web thật có
+  code mới — `version.txt` chỉ đổi khi push.mjs chạy, không dùng để đo bản
+  merge từ PR. Kẹt thì chủ shop vào hPanel bấm deploy lại.
 - Lỗi React #418 (hydration) chỉ xuất hiện khi HTML và JS đến từ HAI bản dựng
   khác nhau (vài phút đang deploy, hoặc dựng lại `out/` khi tab cũ còn mở).
   Đo lại bằng tab MỚI sau khi deploy xong hẳn trước khi sửa gì.
