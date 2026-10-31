@@ -4,7 +4,7 @@ import { formatGia, moTaTonKho } from "@/lib/format";
 import { ProductMedia } from "@/components/product-art";
 import { ConditionBadge } from "@/components/condition-badge";
 import { AddToCartButton } from "@/components/add-to-cart-button";
-import { InfoIcon, MapPinIcon } from "@/components/icons";
+import { InfoIcon } from "@/components/icons";
 
 /**
  * Thẻ sản phẩm.
@@ -36,16 +36,19 @@ export function ProductCard({
           className="rang-cua pointer-events-none absolute inset-x-0 bottom-0 h-3.5"
         />
 
-        <div className="pointer-events-none absolute left-5 top-4 flex flex-col items-start gap-1.5">
-          <ConditionBadge tinhTrang={product.tinhTrang} nhom={product.nhomTinhTrang} />
-        </div>
-
-        {product.diaDiem && (
-          <span className="pointer-events-none absolute right-4 top-4 inline-flex items-center gap-1 rounded-full bg-surface/85 px-2.5 py-1 text-[0.68rem] font-semibold text-fg-muted backdrop-blur-sm">
-            <MapPinIcon width={12} height={12} />
-            {product.diaDiem}
+        {/* Góc ảnh: trái là loại hàng (tên món như "Crimson" không tự nói nó là
+            gì), phải là tình trạng. Không ghi địa điểm — shop chỉ bán ở Đà Nẵng.
+            Hàng có xuống dòng để thẻ hẹp mà tình trạng dài thì hai nhãn không đè nhau. */}
+        <div className="pointer-events-none absolute inset-x-4 top-4 flex flex-wrap items-start justify-between gap-1.5">
+          {product.tenDanhMuc && (
+            <span className="rounded-full bg-surface/85 px-2.5 py-1 text-[0.68rem] font-bold text-primary-ink backdrop-blur-sm">
+              {product.tenDanhMuc}
+            </span>
+          )}
+          <span className="ml-auto pr-1">
+            <ConditionBadge tinhTrang={product.tinhTrang} nhom={product.nhomTinhTrang} />
           </span>
-        )}
+        </div>
 
         {hetHang && (
           <div className="absolute inset-0 grid place-items-center bg-surface/70 backdrop-blur-[2px]">
@@ -57,13 +60,8 @@ export function ProductCard({
       </div>
 
       <div className="flex flex-1 flex-col gap-2 p-4 pt-3.5">
-        <p className="flex min-w-0 items-center gap-1.5 text-[0.7rem] font-semibold uppercase tracking-wider">
-          {product.tenDanhMuc && (
-            <span className="shrink-0 rounded-full bg-primary-soft px-2 py-0.5 text-primary-ink">
-              {product.tenDanhMuc}
-            </span>
-          )}
-          <span className="truncate text-fg-subtle">{product.hang}</span>
+        <p className="text-[0.7rem] font-semibold uppercase tracking-wider text-fg-subtle">
+          {product.hang}
         </p>
 
         <h3 className="text-[0.95rem] font-semibold leading-snug text-fg">
