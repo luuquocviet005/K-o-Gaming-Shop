@@ -1,6 +1,30 @@
 {
   "daBan": [
     {
+      "slug": "razer-blackwidow-v4-75",
+      "ten": "Blackwidow v4 75%",
+      "hang": "Razer",
+      "danhMuc": "ban-phim",
+      "gia": 1300000,
+      "tinhTrang": "Cũ",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/razer-blackwidow-v4-75/01.webp?v=24b21d3d",
+      "mau": "#4338ca",
+      "banLuc": "2026-10-31"
+    },
+    {
+      "slug": "iqunix-ev63",
+      "ten": "EV63",
+      "hang": "IQUNIX",
+      "danhMuc": "ban-phim",
+      "gia": 3600000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/iqunix-ev63/01.webp?v=121f1dd3",
+      "mau": "#0ea5e9",
+      "banLuc": "2026-10-31"
+    },
+    {
       "slug": "razer-da-v4-pro",
       "ten": "Da V4 Pro",
       "hang": "Razer",

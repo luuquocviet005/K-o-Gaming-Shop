@@ -14,7 +14,7 @@
       "short": "Bàn phím",
       "icon": "ban-phim",
       "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời.",
-      "soLuong": 23
+      "soLuong": 21
     },
     {
       "slug": "tai-nghe",
@@ -541,8 +541,8 @@
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 2,
-      "note": "Trằng bh 26/5/2028  \nĐen bh 1/9/2028",
+      "soLuong": 1,
+      "note": "Trằng bh 26/5/2028",
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -551,31 +551,15 @@
           "gia": 2500000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 2,
-          "note": "Trằng bh 26/5/2028  \nĐen bh 1/9/2028",
+          "soLuong": 1,
+          "note": "Trằng bh 26/5/2028",
           "anh": "/products/razer-viper-v4-pro/trang/01.webp?v=092a2fbf",
           "anhs": [
             "/products/razer-viper-v4-pro/trang/01.webp?v=092a2fbf",
             "/products/razer-viper-v4-pro/trang/02.webp?v=db62bd53"
           ]
-        },
-        {
-          "id": "den",
-          "ten": "Đen",
-          "gia": 2600000,
-          "tinhTrang": "Cũ · đủ hộp",
-          "nhomTinhTrang": "cu",
-          "soLuong": 2,
-          "note": "Trằng bh 26/5/2028  \nĐen bh 1/9/2028",
-          "anh": "/products/razer-viper-v4-pro/den/01.webp?v=5743d82a",
-          "anhs": [
-            "/products/razer-viper-v4-pro/den/01.webp?v=5743d82a",
-            "/products/razer-viper-v4-pro/den/02.webp?v=c6bab197",
-            "/products/razer-viper-v4-pro/den/03.webp?v=72b6eac5"
-          ]
         }
       ],
-      "giaToiDa": 2600000,
       "anh": "/products/razer-viper-v4-pro/trang/01.webp?v=092a2fbf"
     },
     {
@@ -969,6 +953,33 @@
       "anh": "/products/atk-edge63-ultimate/leviatan/01.webp?v=13adbbb4"
     },
     {
+      "id": "atk-rs6-ultra",
+      "slug": "atk-rs6-ultra",
+      "ten": "Rs6 Ultra",
+      "hang": "ATK",
+      "danhMuc": "ban-phim",
+      "gia": 1600000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/atk-rs6-ultra/01.webp?v=352c9bb7",
+      "mau": "#4338ca"
+    },
+    {
+      "id": "atk-rs7",
+      "slug": "atk-rs7",
+      "ten": "RS7",
+      "hang": "ATK",
+      "danhMuc": "ban-phim",
+      "gia": 800000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "mau": "#4338ca"
+    },
+    {
       "id": "attackshark-x68he",
       "slug": "attackshark-x68he",
       "ten": "X68HE",
@@ -1141,24 +1152,6 @@
       "mau": "#15803d"
     },
     {
-      "id": "razer-blackwidow-v4-75",
-      "slug": "razer-blackwidow-v4-75",
-      "ten": "Blackwidow v4 75%",
-      "hang": "Razer",
-      "danhMuc": "ban-phim",
-      "gia": 1300000,
-      "tinhTrang": "Cũ",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/razer-blackwidow-v4-75/01.webp?v=24b21d3d",
-      "anhs": [
-        "/products/razer-blackwidow-v4-75/01.webp?v=24b21d3d",
-        "/products/razer-blackwidow-v4-75/02.webp?v=2943b482"
-      ],
-      "mau": "#4338ca"
-    },
-    {
       "id": "razer-blackwidow-v4-75-pro",
       "slug": "razer-blackwidow-v4-75-pro",
       "ten": "Blackwidow v4 75% Pro",
@@ -1170,11 +1163,10 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "moTa": "Bảo hành : 27/5/2027",
-      "anh": "/products/razer-blackwidow-v4-75-pro/01.webp?v=0d7396ff",
+      "anh": "/products/razer-blackwidow-v4-75-pro/01.webp?v=24b21d3d",
       "anhs": [
-        "/products/razer-blackwidow-v4-75-pro/01.webp?v=0d7396ff",
-        "/products/razer-blackwidow-v4-75-pro/02.webp?v=9b1aa411",
-        "/products/razer-blackwidow-v4-75-pro/03.webp?v=36c42273"
+        "/products/razer-blackwidow-v4-75-pro/01.webp?v=24b21d3d",
+        "/products/razer-blackwidow-v4-75-pro/02.webp?v=2943b482"
       ],
       "mau": "#4338ca"
     },
@@ -1215,52 +1207,6 @@
         "/products/wooting-80he/03.webp?v=0f5522c5"
       ],
       "mau": "#be123c"
-    },
-    {
-      "id": "atk-rs6-ultra",
-      "slug": "atk-rs6-ultra",
-      "ten": "Rs6 Ultra",
-      "hang": "ATK",
-      "danhMuc": "ban-phim",
-      "gia": 1600000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/atk-rs6-ultra/01.webp?v=352c9bb7",
-      "mau": "#4338ca"
-    },
-    {
-      "id": "iqunix-ev63",
-      "slug": "iqunix-ev63",
-      "ten": "EV63",
-      "hang": "IQUNIX",
-      "danhMuc": "ban-phim",
-      "gia": 3600000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/iqunix-ev63/01.webp?v=121f1dd3",
-      "anhs": [
-        "/products/iqunix-ev63/01.webp?v=121f1dd3",
-        "/products/iqunix-ev63/02.webp?v=54f21733",
-        "/products/iqunix-ev63/03.webp?v=d56622db"
-      ],
-      "mau": "#0ea5e9"
-    },
-    {
-      "id": "atk-rs7",
-      "slug": "atk-rs7",
-      "ten": "RS7",
-      "hang": "ATK",
-      "danhMuc": "ban-phim",
-      "gia": 800000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "mau": "#4338ca"
     },
     {
       "id": "akko-s9-ultra",
