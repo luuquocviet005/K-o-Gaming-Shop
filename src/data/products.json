@@ -22,7 +22,7 @@
       "short": "Tai nghe",
       "icon": "tai-nghe",
       "blurb": "Tai nghe chụp tai, in-ear và soundcard.",
-      "soLuong": 9
+      "soLuong": 10
     },
     {
       "slug": "pad-chuot",
@@ -1453,6 +1453,19 @@
         "/products/sony-inzone-e9-ier-g900/04.webp?v=745658d7"
       ],
       "mau": "#b45309"
+    },
+    {
+      "id": "atk-n9-ultra",
+      "slug": "atk-n9-ultra",
+      "ten": "N9 Ultra",
+      "hang": "ATK",
+      "danhMuc": "tai-nghe",
+      "gia": 0,
+      "tinhTrang": "",
+      "nhomTinhTrang": "khac",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 0,
+      "mau": "#4338ca"
     },
     {
       "id": "atk-lie-xsoft-m",
