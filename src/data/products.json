@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 24
+      "soLuong": 25
     },
     {
       "slug": "ban-phim",
@@ -115,7 +115,13 @@
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
           "soLuong": 3,
-          "anh": "/products/atk-f1-ultimate-v2/hong/01.webp?v=dbda44b7"
+          "anh": "/products/atk-f1-ultimate-v2/hong/01.webp?v=e5976242",
+          "anhs": [
+            "/products/atk-f1-ultimate-v2/hong/01.webp?v=e5976242",
+            "/products/atk-f1-ultimate-v2/hong/02.webp?v=789466fe",
+            "/products/atk-f1-ultimate-v2/hong/03.webp?v=4fb8377b",
+            "/products/atk-f1-ultimate-v2/hong/04.webp?v=9c525660"
+          ]
         }
       ],
       "anh": "/products/atk-f1-ultimate-v2/trang-newseal/01.webp?v=70ffe133"
@@ -520,6 +526,29 @@
         "/products/logitech-g-pro-x2-superstrike/01.webp?v=8a221134",
         "/products/logitech-g-pro-x2-superstrike/02.webp?v=d9ebf9a1",
         "/products/logitech-g-pro-x2-superstrike/03.webp?v=bd78faf3"
+      ],
+      "mau": "#7c3aed"
+    },
+    {
+      "id": "logitech-superlight-2",
+      "slug": "logitech-superlight-2",
+      "ten": "Superlight 2",
+      "hang": "Logitech",
+      "danhMuc": "chuot",
+      "gia": 1300000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/logitech-superlight-2/01.webp?v=753a9207",
+      "anhs": [
+        "/products/logitech-superlight-2/01.webp?v=753a9207",
+        "/products/logitech-superlight-2/02.webp?v=7e5340c7",
+        "/products/logitech-superlight-2/03.webp?v=508fee8b",
+        "/products/logitech-superlight-2/04.webp?v=99fcd71b",
+        "/products/logitech-superlight-2/05.webp?v=44fbc53d",
+        "/products/logitech-superlight-2/06.webp?v=c64ff04d",
+        "/products/logitech-superlight-2/07.webp?v=72fba85f"
       ],
       "mau": "#7c3aed"
     },
@@ -998,7 +1027,7 @@
       "ten": "RS7",
       "hang": "ATK",
       "danhMuc": "ban-phim",
-      "gia": 800000,
+      "gia": 700000,
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
@@ -1264,7 +1293,13 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
-      "anh": "/products/wooting-80he-ghost/01.webp?v=f2a58e2c",
+      "anh": "/products/wooting-80he-ghost/01.webp?v=9cde263c",
+      "anhs": [
+        "/products/wooting-80he-ghost/01.webp?v=9cde263c",
+        "/products/wooting-80he-ghost/02.webp?v=37bb5f93",
+        "/products/wooting-80he-ghost/03.webp?v=6fada22c",
+        "/products/wooting-80he-ghost/04.webp?v=72161c5f"
+      ],
       "mau": "#be123c"
     },
     {
