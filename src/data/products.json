@@ -998,7 +998,6 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 2,
-      "anh": "/products/atk-rs6-ultra/01.webp?v=352c9bb7",
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -1008,7 +1007,11 @@
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
           "soLuong": 2,
-          "anh": "/products/atk-rs6-ultra/01.webp?v=352c9bb7"
+          "anh": "/products/atk-rs6-ultra/hong/01.webp?v=1638b3aa",
+          "anhs": [
+            "/products/atk-rs6-ultra/hong/01.webp?v=1638b3aa",
+            "/products/atk-rs6-ultra/hong/02.webp?v=bc6ddbb1"
+          ]
         },
         {
           "id": "trang",
@@ -1017,9 +1020,22 @@
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
           "soLuong": 2,
-          "anh": "/products/atk-rs6-ultra/01.webp?v=352c9bb7"
+          "anh": "/products/atk-rs6-ultra/trang/01.webp?v=5a47609d",
+          "anhs": [
+            "/products/atk-rs6-ultra/trang/01.webp?v=5a47609d",
+            "/products/atk-rs6-ultra/trang/02.webp?v=f39fe28d",
+            "/products/atk-rs6-ultra/trang/03.webp?v=b72dbd91",
+            "/products/atk-rs6-ultra/trang/04.webp?v=641bb071",
+            "/products/atk-rs6-ultra/trang/05.webp?v=4be4de90",
+            "/products/atk-rs6-ultra/trang/06.webp?v=0b7d64c5",
+            "/products/atk-rs6-ultra/trang/07.webp?v=79afb61d",
+            "/products/atk-rs6-ultra/trang/08.webp?v=41722d62",
+            "/products/atk-rs6-ultra/trang/09.webp?v=0e6881a2",
+            "/products/atk-rs6-ultra/trang/10.webp?v=92a8149f"
+          ]
         }
-      ]
+      ],
+      "anh": "/products/atk-rs6-ultra/hong/01.webp?v=1638b3aa"
     },
     {
       "id": "atk-rs7",
