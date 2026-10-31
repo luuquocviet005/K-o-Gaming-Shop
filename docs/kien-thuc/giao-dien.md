@@ -27,5 +27,8 @@
   từ `mapUrl` — đổi ghim thì lấy lại cả hai. Có ở chân trang và `/lien-he`.
 
 ## Danh mục
+- Thẻ sản phẩm có nhãn danh mục (`tenDanhMuc` = `short` của danh mục chính,
+  gắn trong `toCard`) trước tên hãng: nhiều món tên chỉ là mã/tên riêng
+  ("Crimson", "X83") nên khách không biết đó là pad hay phím. Đừng bỏ nhãn.
 - Chuột, bàn phím, tai nghe, pad chuột, phụ kiện. Hình vẽ/icon switch, ghế, tay
   cầm, màn hình vẫn giữ trong kho hình dùng chung dù chưa dùng.

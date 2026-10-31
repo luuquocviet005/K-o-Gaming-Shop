@@ -291,6 +291,8 @@ export type CardProduct = Pick<
 > & {
   /** Có bao nhiêu phân loại — thẻ hiện nhãn "3 phân loại" thay cho nút thêm giỏ */
   soPhanLoai?: number;
+  /** Tên ngắn của danh mục chính ("Pad chuột") — tên món như "Crimson" không tự nói nó là gì */
+  tenDanhMuc?: string;
 };
 
 export function toCard(p: Product): CardProduct {
@@ -311,5 +313,6 @@ export function toCard(p: Product): CardProduct {
     anh: p.anh,
     mau: p.mau,
     ...(p.phanLoai ? { soPhanLoai: p.phanLoai.length } : {}),
+    tenDanhMuc: getCategory(p.danhMuc)?.short,
   };
 }

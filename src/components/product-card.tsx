@@ -57,8 +57,13 @@ export function ProductCard({
       </div>
 
       <div className="flex flex-1 flex-col gap-2 p-4 pt-3.5">
-        <p className="text-[0.7rem] font-semibold uppercase tracking-wider text-fg-subtle">
-          {product.hang}
+        <p className="flex min-w-0 items-center gap-1.5 text-[0.7rem] font-semibold uppercase tracking-wider">
+          {product.tenDanhMuc && (
+            <span className="shrink-0 rounded-full bg-primary-soft px-2 py-0.5 text-primary-ink">
+              {product.tenDanhMuc}
+            </span>
+          )}
+          <span className="truncate text-fg-subtle">{product.hang}</span>
         </p>
 
         <h3 className="text-[0.95rem] font-semibold leading-snug text-fg">
