@@ -49,7 +49,6 @@ export function ProductBrowser({ items }: { items: CardProduct[] }) {
   const [hangs, setHangs] = useState<string[]>([]);
   const [bands, setBands] = useState<string[]>([]);
   const [tinhTrangs, setTinhTrangs] = useState<string[]>([]);
-  const [diaDiems, setDiaDiems] = useState<string[]>([]);
   const [conHangThoi, setConHangThoi] = useState(false);
   const [filtersOpen, setFiltersOpen] = useState(false);
 
@@ -59,20 +58,11 @@ export function ProductBrowser({ items }: { items: CardProduct[] }) {
     [items],
   );
 
-  const allDiaDiems = useMemo(
-    () =>
-      [...new Set(items.map((p) => p.diaDiem))]
-        .filter(Boolean)
-        .sort((a, b) => a.localeCompare(b, "vi")),
-    [items],
-  );
-
   const filtered = useMemo(() => {
     const chosenBands = priceBands.filter((b) => bands.includes(b.key));
 
     const result = items.filter((p) => {
       if (hangs.length && !hangs.includes(p.hang)) return false;
-      if (diaDiems.length && !diaDiems.includes(p.diaDiem)) return false;
       if (tinhTrangs.length && !tinhTrangs.includes(p.nhomTinhTrang)) return false;
       if (conHangThoi && p.soLuong <= 0) return false;
       // Nhiều khoảng giá được chọn = hợp (OR), giống cách các sàn TMĐT làm.
@@ -98,10 +88,10 @@ export function ProductBrowser({ items }: { items: CardProduct[] }) {
             b.gia - a.gia,
         );
     }
-  }, [items, hangs, bands, tinhTrangs, diaDiems, conHangThoi, sort]);
+  }, [items, hangs, bands, tinhTrangs, conHangThoi, sort]);
 
   const activeCount =
-    hangs.length + bands.length + tinhTrangs.length + diaDiems.length + (conHangThoi ? 1 : 0);
+    hangs.length + bands.length + tinhTrangs.length + (conHangThoi ? 1 : 0);
 
   const toggle =
     (set: React.Dispatch<React.SetStateAction<string[]>>) => (value: string) =>
@@ -113,7 +103,6 @@ export function ProductBrowser({ items }: { items: CardProduct[] }) {
     setHangs([]);
     setBands([]);
     setTinhTrangs([]);
-    setDiaDiems([]);
     setConHangThoi(false);
   }
 
@@ -190,25 +179,6 @@ export function ProductBrowser({ items }: { items: CardProduct[] }) {
               ))}
             </div>
           </fieldset>
-
-          {allDiaDiems.length > 1 && (
-            <fieldset>
-              <legend className="font-display text-sm font-bold text-fg">
-                Hàng đang ở
-              </legend>
-              <div className={optionListClass}>
-                {allDiaDiems.map((d) => (
-                  <Choice
-                    key={d}
-                    checked={diaDiems.includes(d)}
-                    onChange={() => toggle(setDiaDiems)(d)}
-                  >
-                    {d}
-                  </Choice>
-                ))}
-              </div>
-            </fieldset>
-          )}
 
           {/*
             Nhóm này dùng div + role="group" thay cho fieldset/legend: trình duyệt

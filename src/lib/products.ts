@@ -283,7 +283,6 @@ export type CardProduct = Pick<
   | "donViGia"
   | "tinhTrang"
   | "nhomTinhTrang"
-  | "diaDiem"
   | "soLuong"
   | "note"
   | "anh"
@@ -307,7 +306,6 @@ export function toCard(p: Product): CardProduct {
     donViGia: p.donViGia,
     tinhTrang: p.tinhTrang,
     nhomTinhTrang: p.nhomTinhTrang,
-    diaDiem: p.diaDiem,
     soLuong: p.soLuong,
     note: p.note,
     anh: p.anh,
