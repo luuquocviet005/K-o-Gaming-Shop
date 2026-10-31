@@ -388,6 +388,10 @@ for (const cauHinh of config.tabs) {
 
     const note = docO("Ghi chú", "note", "ghi chu");
     const moTa = docO("Mô tả", "mo ta", "mota", "chi tiet", "cau hinh", "thong tin");
+    // Cột "Loại" (khác cột "Phân loại"): món là gì — "Feet chuột", "Keycap".
+    // Thẻ sản phẩm hiện nó thay tên danh mục; cần nhất ở tab Phụ kiện, nơi tên
+    // danh mục không nói được món là gì. Để trống thì thẻ hiện tên danh mục.
+    const loaiHang = docO("Loại", "loai", "loai hang");
 
     if (gia === 0) {
       canhBao.push(
@@ -462,6 +466,7 @@ for (const cauHinh of config.tabs) {
       // Sheet bị bỏ qua, để lỡ ghi "Sài Gòn" cũng không lọt lên web.
       diaDiem: "Đà Nẵng",
       soLuong: docSoNguyen(layO(row, "so luong"), 0),
+      ...(loaiHang ? { loaiHang } : {}),
       ...(moTa ? { moTa } : {}),
       ...(note ? { note } : {}),
       ...(anh ? { anh } : {}),

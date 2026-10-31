@@ -18,6 +18,11 @@
   Đừng đổi sang ngày sửa file — máy shop và Actions khác ngày, ?v nhảy mỗi
   lượt sinh commit rác.
 
+- Cột "Loại" (tuỳ chọn, tab nào cũng được): món là gì — "Feet chuột",
+  "Keycap" → `loaiHang`. Thẻ sản phẩm hiện nó ở góc ảnh thay tên danh mục, ô
+  tìm kiếm cũng tìm theo nó. Trống thì thẻ hiện tên danh mục. Khác cột
+  "Phân loại" (màu/biến thể).
+
 ## Bẫy đã gặp
 - Tải tab bằng `/export?format=csv` theo gid, KHÔNG dùng gviz: gviz trả rỗng
   cho ô sai kiểu → hàng còn mà bị treo "Đã bán hết".

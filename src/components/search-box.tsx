@@ -27,7 +27,7 @@ const MAX_RESULTS = 6;
 /**
  * Chuỗi để đối chiếu khi tìm kiếm, dựng sẵn một lần cho mỗi sản phẩm.
  *
- * Có cả TÊN DANH MỤC, nên gõ "ban phim" ra được Keychron Q1 Pro dù tên sản
+ * Có cả TÊN DANH MỤC và LOẠI HÀNG (cột "Loại" trong Sheet), nên gõ "ban phim" ra được Keychron Q1 Pro dù tên sản
  * phẩm không chứa chữ nào như vậy — đây là cách người mua thật sự tìm đồ.
  */
 const haystack = new Map(
@@ -36,7 +36,7 @@ const haystack = new Map(
     return [
       p.id,
       normalize(
-        `${p.ten} ${p.hang} ${p.tinhTrang} ${category?.name ?? ""} ${category?.short ?? ""}`,
+        `${p.ten} ${p.hang} ${p.tinhTrang} ${category?.name ?? ""} ${category?.short ?? ""} ${p.loaiHang ?? ""}`,
       ),
     ];
   }),
