@@ -13,6 +13,30 @@
       "banLuc": "2026-10-31"
     },
     {
+      "slug": "razer-blackshark-v3-x-hyperspeed",
+      "ten": "BlackShark V3 x Hyperspeed",
+      "hang": "Razer",
+      "danhMuc": "tai-nghe",
+      "gia": 1400000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/razer-blackshark-v3-x-hyperspeed/01.webp?v=3015bb4b",
+      "mau": "#4338ca",
+      "banLuc": "2026-10-31"
+    },
+    {
+      "slug": "atk-crimson",
+      "ten": "Crimson",
+      "hang": "ATK",
+      "danhMuc": "pad-chuot",
+      "gia": 1000000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "anh": "/products/atk-crimson/01.webp?v=9b36a9bc",
+      "mau": "#4338ca",
+      "banLuc": "2026-10-31"
+    },
+    {
       "slug": "razer-da-v4-pro",
       "ten": "Da V4 Pro",
       "hang": "Razer",

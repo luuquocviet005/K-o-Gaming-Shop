@@ -14,7 +14,7 @@
       "short": "Bàn phím",
       "icon": "ban-phim",
       "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời.",
-      "soLuong": 23
+      "soLuong": 24
     },
     {
       "slug": "tai-nghe",
@@ -22,7 +22,7 @@
       "short": "Tai nghe",
       "icon": "tai-nghe",
       "blurb": "Tai nghe chụp tai, in-ear và soundcard.",
-      "soLuong": 10
+      "soLuong": 9
     },
     {
       "slug": "pad-chuot",
@@ -30,7 +30,7 @@
       "short": "Pad chuột",
       "icon": "pad-chuot",
       "blurb": "Pad vải, pad cỡ lớn và pad chơi game — hàng mới và hàng cũ.",
-      "soLuong": 4
+      "soLuong": 3
     },
     {
       "slug": "phu-kien",
@@ -91,12 +91,12 @@
       "ten": "F1 Ultimate v2",
       "hang": "ATK",
       "danhMuc": "chuot",
-      "gia": 1200000,
+      "gia": 1000000,
+      "giaToiDa": 1200000,
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 3,
-      "anh": "/products/atk-f1-ultimate-v2/trang-newseal/01.webp?v=70ffe133",
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -106,13 +106,19 @@
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
           "soLuong": 3,
-          "anh": "/products/atk-f1-ultimate-v2/trang-newseal/01.webp?v=70ffe133",
-          "anhs": [
-            "/products/atk-f1-ultimate-v2/trang-newseal/01.webp?v=70ffe133",
-            "/products/atk-f1-ultimate-v2/01.webp?v=dbda44b7"
-          ]
+          "anh": "/products/atk-f1-ultimate-v2/trang-newseal/01.webp?v=70ffe133"
+        },
+        {
+          "id": "hong",
+          "ten": "Hồng",
+          "gia": 1000000,
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 3,
+          "anh": "/products/atk-f1-ultimate-v2/hong/01.webp?v=dbda44b7"
         }
-      ]
+      ],
+      "anh": "/products/atk-f1-ultimate-v2/trang-newseal/01.webp?v=70ffe133"
     },
     {
       "id": "atk-a9-ultimate",
@@ -1262,6 +1268,19 @@
       "mau": "#be123c"
     },
     {
+      "id": "razer-huntsman-v3-pro-mini",
+      "slug": "razer-huntsman-v3-pro-mini",
+      "ten": "Huntsman V3 Pro Mini",
+      "hang": "Razer",
+      "danhMuc": "ban-phim",
+      "gia": 1200000,
+      "tinhTrang": "Cũ · không hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "mau": "#4338ca"
+    },
+    {
       "id": "akko-s9-ultra",
       "slug": "akko-s9-ultra",
       "ten": "S9 Ultra",
@@ -1280,6 +1299,37 @@
         "/products/akko-s9-ultra/03.webp?v=df18ea03"
       ],
       "mau": "#0f172a"
+    },
+    {
+      "id": "atk-n9-ultra",
+      "slug": "atk-n9-ultra",
+      "ten": "N9 Ultra",
+      "hang": "ATK",
+      "danhMuc": "tai-nghe",
+      "gia": 800000,
+      "tinhTrang": "Mới, nguyên seal",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "mau": "#4338ca",
+      "phanLoai": [
+        {
+          "id": "trang",
+          "ten": "Trắng",
+          "gia": 800000,
+          "tinhTrang": "Mới, nguyên seal",
+          "nhomTinhTrang": "moi",
+          "soLuong": 1
+        },
+        {
+          "id": "cam",
+          "ten": "Cam",
+          "gia": 800000,
+          "tinhTrang": "Mới, nguyên seal",
+          "nhomTinhTrang": "moi",
+          "soLuong": 1
+        }
+      ]
     },
     {
       "id": "hyperx-earbuds-2",
@@ -1373,6 +1423,41 @@
       "anh": "/products/hyperx-earbuds-3/do/01.webp?v=9367a1e5"
     },
     {
+      "id": "hyperx-cloud-2",
+      "slug": "hyperx-cloud-2",
+      "ten": "Cloud 2",
+      "hang": "HyperX",
+      "danhMuc": "tai-nghe",
+      "gia": 1400000,
+      "giaToiDa": 1500000,
+      "tinhTrang": "Mới, nguyên seal",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 20,
+      "mau": "#c2185b",
+      "phanLoai": [
+        {
+          "id": "do",
+          "ten": "Đỏ",
+          "gia": 1400000,
+          "tinhTrang": "Mới, nguyên seal",
+          "nhomTinhTrang": "moi",
+          "soLuong": 20,
+          "anh": "/products/hyperx-cloud-2/do/01.webp?v=0250a70d"
+        },
+        {
+          "id": "trang",
+          "ten": "Trắng",
+          "gia": 1500000,
+          "tinhTrang": "Mới, nguyên seal",
+          "nhomTinhTrang": "moi",
+          "soLuong": 20,
+          "anh": "/products/hyperx-cloud-2/trang/01.webp?v=26ec7e6b"
+        }
+      ],
+      "anh": "/products/hyperx-cloud-2/do/01.webp?v=0250a70d"
+    },
+    {
       "id": "razer-moray",
       "slug": "razer-moray",
       "ten": "Moray",
@@ -1433,60 +1518,6 @@
       "anh": "/products/razer-barracuda-x-2022/den/01.webp?v=16c496a6"
     },
     {
-      "id": "razer-blackshark-v3-x-hyperspeed",
-      "slug": "razer-blackshark-v3-x-hyperspeed",
-      "ten": "BlackShark V3 x Hyperspeed",
-      "hang": "Razer",
-      "danhMuc": "tai-nghe",
-      "gia": 1400000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/razer-blackshark-v3-x-hyperspeed/01.webp?v=3015bb4b",
-      "anhs": [
-        "/products/razer-blackshark-v3-x-hyperspeed/01.webp?v=3015bb4b",
-        "/products/razer-blackshark-v3-x-hyperspeed/02.webp?v=de4e6771",
-        "/products/razer-blackshark-v3-x-hyperspeed/03.webp?v=3360e789"
-      ],
-      "mau": "#4338ca"
-    },
-    {
-      "id": "hyperx-cloud-2",
-      "slug": "hyperx-cloud-2",
-      "ten": "Cloud 2",
-      "hang": "HyperX",
-      "danhMuc": "tai-nghe",
-      "gia": 1400000,
-      "giaToiDa": 1500000,
-      "tinhTrang": "Mới, nguyên seal",
-      "nhomTinhTrang": "moi",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 20,
-      "mau": "#c2185b",
-      "phanLoai": [
-        {
-          "id": "do",
-          "ten": "Đỏ",
-          "gia": 1400000,
-          "tinhTrang": "Mới, nguyên seal",
-          "nhomTinhTrang": "moi",
-          "soLuong": 20,
-          "anh": "/products/hyperx-cloud-2/do/01.webp?v=0250a70d"
-        },
-        {
-          "id": "trang",
-          "ten": "Trắng",
-          "gia": 1500000,
-          "tinhTrang": "Mới, nguyên seal",
-          "nhomTinhTrang": "moi",
-          "soLuong": 20,
-          "anh": "/products/hyperx-cloud-2/trang/01.webp?v=26ec7e6b"
-        }
-      ],
-      "anh": "/products/hyperx-cloud-2/do/01.webp?v=0250a70d"
-    },
-    {
       "id": "sony-inzone-e9-ier-g900",
       "slug": "sony-inzone-e9-ier-g900",
       "ten": "INZONE E9 (IER-G900)",
@@ -1508,37 +1539,6 @@
       "mau": "#b45309"
     },
     {
-      "id": "atk-n9-ultra",
-      "slug": "atk-n9-ultra",
-      "ten": "N9 Ultra",
-      "hang": "ATK",
-      "danhMuc": "tai-nghe",
-      "gia": 800000,
-      "tinhTrang": "Mới, nguyên seal",
-      "nhomTinhTrang": "moi",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "mau": "#4338ca",
-      "phanLoai": [
-        {
-          "id": "trang",
-          "ten": "Trắng",
-          "gia": 800000,
-          "tinhTrang": "Mới, nguyên seal",
-          "nhomTinhTrang": "moi",
-          "soLuong": 1
-        },
-        {
-          "id": "cam",
-          "ten": "Cam",
-          "gia": 800000,
-          "tinhTrang": "Mới, nguyên seal",
-          "nhomTinhTrang": "moi",
-          "soLuong": 1
-        }
-      ]
-    },
-    {
       "id": "atk-lie-xsoft-m",
       "slug": "atk-lie-xsoft-m",
       "ten": "LIe xsoft ( M )",
@@ -1551,29 +1551,6 @@
       "soLuong": 8,
       "note": "Size M : 300-360-3",
       "anh": "/products/atk-lie-xsoft-m/01.webp?v=25b48a67",
-      "mau": "#4338ca"
-    },
-    {
-      "id": "atk-crimson",
-      "slug": "atk-crimson",
-      "ten": "Crimson",
-      "hang": "ATK",
-      "danhMuc": "pad-chuot",
-      "gia": 1000000,
-      "tinhTrang": "Mới",
-      "nhomTinhTrang": "moi",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 2,
-      "anh": "/products/atk-crimson/01.webp?v=9b36a9bc",
-      "anhs": [
-        "/products/atk-crimson/01.webp?v=9b36a9bc",
-        "/products/atk-crimson/02.webp?v=996019e2",
-        "/products/atk-crimson/03.webp?v=487abbf0",
-        "/products/atk-crimson/04.webp?v=70673a9b",
-        "/products/atk-crimson/05.webp?v=1b2e3a44",
-        "/products/atk-crimson/06.webp?v=9576d06f",
-        "/products/atk-crimson/07.webp?v=e52c3591"
-      ],
       "mau": "#4338ca"
     },
     {
