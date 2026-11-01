@@ -10,6 +10,8 @@
   lại web thật — `scripts/lib/kiem-tra-deploy.mjs`). HTML trên Hostinger không
   bị CDN lưu đệm.
 - Mỗi PR có bản xem thử Hostinger (hostinger[bot] comment link), tự xoá khi đóng PR.
+- `README.md` mục 3 và 4 tóm tắt lại phần này cho người đọc. Đổi cách deploy
+  thì sửa cả README, kẻo AI sau làm theo hướng dẫn cũ (upload `out/`, FTP).
 
 ## Bộ kiểm tra
 `npm run typecheck && npm run lint && npm run build && npm run check`
