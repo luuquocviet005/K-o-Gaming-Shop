@@ -1,8 +1,10 @@
 # KẸO GAMING SHOP
 
 Website bán gaming gear — Next.js 16 + React 19 + Tailwind CSS 4 + TypeScript.
-Xuất ra HTML/CSS/JS **tĩnh** nên chạy được trên **mọi gói Hostinger** (kể cả
-Shared Hosting rẻ nhất), không cần Node.js trên máy chủ.
+Web thật (https://keogaminggear.com) do **Hostinger tự kéo code từ nhánh `main`
+về và build**, chạy ở chế độ máy chủ. Trên máy, `npm run build` vẫn xuất ra
+thư mục `out/` để kiểm tra, nhưng `out/` không phải thứ được đưa lên web.
+Chi tiết ở [`docs/kien-thuc/deploy-va-kiem-tra.md`](docs/kien-thuc/deploy-va-kiem-tra.md).
 
 ---
 
@@ -10,7 +12,7 @@ Shared Hosting rẻ nhất), không cần Node.js trên máy chủ.
 
 1. [Chạy trên máy](#1-chạy-trên-máy)
 2. [Đổi nội dung của shop](#2-đổi-nội-dung-của-shop)
-3. [Push lên GitHub](#3-push-lên-github)
+3. [Đưa code lên GitHub](#3-đưa-code-lên-github)
 4. [Deploy lên Hostinger](#4-deploy-lên-hostinger)
 5. [Cấu trúc thư mục](#5-cấu-trúc-thư-mục)
 6. [Nâng cấp về sau](#6-nâng-cấp-về-sau)
@@ -35,9 +37,8 @@ Shared Hosting rẻ nhất), không cần Node.js trên máy chủ.
 > winget install -e --id OpenJS.NodeJS.LTS
 > ```
 >
-> **Đừng build trên Hostinger.** Hostinger Shared Hosting dùng Node cũ và không
-> cần build ở đó — website này là trang tĩnh, chỉ cần upload thư mục `out/` đã
-> build sẵn từ máy bạn hoặc từ GitHub Actions.
+> Không cần build hay upload gì lên Hostinger bằng tay: Hostinger tự build mỗi
+> khi `main` có code mới (xem mục 4).
 
 ```bash
 npm install
@@ -64,10 +65,10 @@ npm run preview
 | Lệnh | Việc nó làm |
 |------|-------------|
 | `npm run dev` | Máy chủ phát triển, sửa file là trang tự cập nhật |
-| `npm run build` | Xuất trang tĩnh ra `out/` + copy `.htaccess` |
+| `npm run build` | Build thử trên máy, xuất ra `out/` (để kiểm tra, không upload) |
 | `npm run preview` | Chạy thử thư mục `out/` tại http://localhost:4000 |
 | `npm run check` | Quét link chết + kiểm tra SEO + tương phản màu |
-| `npm run push` | Kiểm tra hết → commit → đẩy lên GitHub → Hostinger tự deploy |
+| `npm run push` | Kiểm tra hết → commit → đẩy thẳng `main` → Hostinger tự deploy. Chỉ chủ shop và lượt nạp ảnh dùng; AI làm qua PR (xem `AGENTS.md`) |
 | `npm run typecheck` | Kiểm tra lỗi TypeScript |
 | `npm run lint` | Kiểm tra lỗi code |
 
@@ -171,99 +172,38 @@ cả website đổi theo — không cần sửa từng component.
 
 ---
 
-## 3. Push lên GitHub
+## 3. Đưa code lên GitHub
 
-Repo đã được `git init` sẵn và có commit đầu tiên. Việc còn lại:
+Repo: https://github.com/luuquocviet005/K-o-Gaming-Shop (nhánh chính `main`).
 
-**Bước 1 —** Tạo repo rỗng trên https://github.com/new (đặt tên
-`keo-gaming-shop`, **không** tick "Add a README").
-
-**Bước 2 —** Chạy trong thư mục dự án (thay `TEN-GITHUB` bằng tên tài khoản):
-
-```bash
-git remote add origin https://github.com/TEN-GITHUB/keo-gaming-shop.git
-```
-
-```bash
-git push -u origin main
-```
-
-Lần đầu GitHub sẽ hỏi đăng nhập — dùng **Personal Access Token** thay cho mật
-khẩu (GitHub > Settings > Developer settings > Personal access tokens).
-
-Những lần sau, mỗi khi sửa xong:
-
-```bash
-git add . && git commit -m "Cập nhật sản phẩm" && git push
-```
+- **Chủ shop / máy shop:** `npm run push` tự kiểm tra hết rồi đẩy thẳng `main`.
+  Lượt nạp ảnh tự động cũng đẩy theo cách này.
+- **AI (Claude Code, Javis OS, Antigravity):** không đẩy thẳng `main`. Làm trên
+  nhánh riêng, mở Pull Request, chờ workflow "Kiểm tra PR" xanh rồi mới merge.
+  Luật đầy đủ ở [`AGENTS.md`](AGENTS.md).
 
 ---
 
 ## 4. Deploy lên Hostinger
 
-Có 2 cách. **Cách A** đơn giản, làm được ngay. **Cách B** tự động — push code là
-website tự cập nhật, nên làm sau khi đã quen.
+**Không cần làm gì bằng tay.** `main` có code mới là Hostinger tự kéo về, tự
+build và chạy web ở chế độ máy chủ. Không upload thư mục `out/`, không dùng FTP.
 
-### Cách A — Upload thủ công (5 phút, chắc chắn chạy)
+- Mỗi PR có một bản xem thử trên Hostinger (hostinger[bot] comment link vào PR).
+- Kiểm tra web đã nhận bản mới: mở trang vừa sửa bằng tab mới. Bản đẩy bằng
+  `npm run push` thì đối chiếu thêm `https://keogaminggear.com/version.txt`.
+- Hostinger có lúc không build lại sau khi merge. Web vẫn cũ thì vào hPanel bấm
+  deploy lại.
+- Ở chế độ máy chủ không có Apache, nên `deploy/.htaccess` và bản vá HTML sau
+  build (`postbuild.mjs`) không tới được web thật. Header và cache khai trong
+  `next.config.ts`.
+- HTTPS do Hostinger tự chuyển http sang https, không cần sửa `.htaccess`.
 
-1. Chạy `npm run build` → sinh ra thư mục `out/`
-2. Nén **toàn bộ nội dung bên trong** `out/` thành file `.zip`
-   (⚠️ nén *nội dung bên trong*, không nén cả thư mục `out`)
-3. Đăng nhập [hPanel](https://hpanel.hostinger.com) → **Files → File Manager**
-4. Vào thư mục `public_html/` → xoá hết file cũ (nếu có `default.php` thì xoá)
-5. Bấm **Upload** → chọn file `.zip` → sau khi lên xong, chuột phải → **Extract**
-6. Xong. Mở tên miền của bạn để kiểm tra.
+### Dự phòng: workflow FTP
 
-> Nhớ kiểm tra trong `public_html/` phải có file `index.html` nằm **ngay ở gốc**,
-> không nằm trong thư mục con.
-
-### Cách B — Tự động qua GitHub Actions (push là deploy)
-
-File cấu hình đã có sẵn: `.github/workflows/deploy-hostinger.yml`
-
-**Bước 1 — Lấy thông tin FTP từ Hostinger**
-
-hPanel → **Files → FTP Accounts**. Ghi lại 3 thứ:
-
-| Thông tin | Ví dụ |
-|-----------|-------|
-| FTP hostname | `ftp.tenmiencuaban.com` hoặc dạng `82.180.xxx.xxx` |
-| FTP username | `u123456789.tenmien` |
-| FTP password | mật khẩu bạn đặt (bấm *Change account password* nếu quên) |
-
-**Bước 2 — Khai báo vào GitHub**
-
-Vào repo trên GitHub → **Settings → Secrets and variables → Actions** →
-**New repository secret**. Tạo đúng 3 secret với tên chính xác:
-
-- `FTP_SERVER`
-- `FTP_USERNAME`
-- `FTP_PASSWORD`
-
-**Bước 3 — Push code**
-
-```bash
-git push
-```
-
-Vào tab **Actions** trên GitHub để xem tiến trình. Lần đầu mất khoảng 2–3 phút
-(upload toàn bộ), những lần sau chỉ vài giây vì chỉ upload file thay đổi.
-
-### Bật HTTPS (nên làm)
-
-hPanel → **Websites → SSL** → cài chứng chỉ miễn phí. Sau khi cài xong, mở file
-`deploy/.htaccess`, bỏ dấu `#` ở 3 dòng cuối phần "Ép HTTPS", rồi build và
-deploy lại.
-
-### Đổi domain thật
-
-Sau khi trỏ tên miền, sửa `url` trong `src/lib/site.ts`:
-
-```ts
-url: "https://tenmiencuaban.com",
-```
-
-Việc này giúp `sitemap.xml` và thẻ chia sẻ mạng xã hội trỏ đúng địa chỉ.
+`.github/workflows/deploy-hostinger.yml` (đẩy `out/` qua FTP) cố ý **tắt**, chỉ
+chạy tay ở tab Actions. Muốn bật tự động thì làm theo hướng dẫn ở đầu file đó,
+và phải tắt deploy tự động của Hostinger để hai bên không cùng ghi vào web.
 
 ---
 
@@ -286,13 +226,13 @@ keo-gaming-shop/
 │   ├── components/                 # Các khối giao diện dùng lại
 │   └── lib/
 │       ├── site.ts                 # ★ Thông tin cửa hàng
-│       ├── products.ts             # ★ Dữ liệu sản phẩm
+│       ├── products.ts             # Đọc dữ liệu sản phẩm từ src/data/
 │       └── cart.tsx                # Logic giỏ hàng (localStorage)
 ├── public/                         # Ảnh, file tĩnh
 ├── deploy/.htaccess                # Cấu hình Apache cho Hostinger
 ├── scripts/postbuild.mjs           # Copy .htaccess vào out/ sau khi build
-├── .github/workflows/              # Tự động deploy
-└── out/                            # ← Kết quả build (không commit lên git)
+├── .github/workflows/              # Kiểm tra PR, đồng bộ Sheet, FTP dự phòng
+└── out/                            # ← Build thử trên máy (không commit, không upload)
 ```
 
 ---
