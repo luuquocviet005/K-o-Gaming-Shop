@@ -20,3 +20,18 @@
 - Máy shop không có `gh`; mở PR qua API bằng thông tin đăng nhập Git bị chặn.
   Chủ shop bấm link `/pull/new/<nhánh>`.
 - Luật của Antigravity trỏ về `AGENTS.md` (`.agents/rules/`).
+
+## Javis OS trên máy shop
+- Trợ lý tự host ở `D:\javis-os`, dashboard `http://127.0.0.1:7777`, tự chạy
+  khi đăng nhập Windows. Não chính là Claude Code (gói Pro của chủ shop), dự
+  phòng là Antigravity. Chủ shop nhắn lỗi web vào Javis và Javis sửa luôn.
+- Claude trong Javis chạy chế độ tự duyệt mọi lệnh, không ai xem trước — chốt
+  chặn duy nhất là bộ kiểm tra và workflow "Kiểm tra PR". Không merge khi chưa xanh.
+- Worktree `../keo-gaming-shop-javis`, nhánh `javis/...`, sổ bàn giao tên
+  `YYYY-MM-DD-javis-<viec>.md`. Mở và merge PR bằng `gh`
+  (`C:\Program Files\GitHub CLI\gh.exe`, đã đăng nhập).
+- Javis có Second Brain riêng (`D:\javis-os\brains\`), nhưng trí nhớ CHÍNH THỨC
+  của dự án vẫn là `docs/kien-thuc/` — điều cần nhớ lâu thì ghi vào đây.
+- Brain "Keo Shop Bot" và tác vụ Windows `KeoShopBot-DongBoHang` (20 phút) là
+  chatbot Zalo thử nghiệm của Javis, tách khỏi repo. Bật nó song song với
+  chatbot `ai-marketing-town` thì khách nhận hai bot cùng trả lời.

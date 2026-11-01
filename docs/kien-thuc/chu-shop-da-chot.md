@@ -12,4 +12,4 @@ git log / `docs/ban-giao/`.
 - Ảnh gốc món đã bán được chuyển sang `_Đã bán`, không xoá.
 - Xem video bằng Whisper chạy máy, không dùng khoá API.
 - Claude Code được tự merge PR của mình khi kiểm tra xanh — cả repo này lẫn
-  ai-marketing-town.
+  ai-marketing-town. Javis OS trên máy shop cũng được tự merge theo cùng điều kiện.

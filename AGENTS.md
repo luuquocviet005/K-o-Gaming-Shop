@@ -73,6 +73,14 @@ nên code sửa dở ở đây mà làm build hỏng thì ảnh cũng không lê
   git worktree add ../keo-gaming-shop-anti -b anti/<ten-viec> origin/main
   cd ../keo-gaming-shop-anti && npm ci
   ```
+- **Javis OS trên máy shop** (`D:\javis-os`, chạy Claude Code bên trong): cũng
+  KHÔNG sửa trong thư mục chính, làm trong worktree riêng:
+  ```
+  git worktree add ../keo-gaming-shop-javis -b javis/<ten-viec> origin/main
+  cd ../keo-gaming-shop-javis && npm ci
+  ```
+  Worktree đã có thì `git fetch origin main && git switch -c javis/<ten-viec> origin/main`
+  trong đó, đừng tạo cái thứ hai.
 - **Claude Code trên cloud:** làm trên nhánh `claude/...` được giao.
 
 ## Đưa code lên
@@ -91,7 +99,7 @@ khoá `.dang-chay.lock` của máy shop). Thay vào đó:
 2. Cập nhật ghi chú kiến thức của phần vừa sửa (`docs/kien-thuc/`, dưới đây)
    và viết sổ bàn giao, commit cùng code.
 3. Push nhánh riêng, mở Pull Request vào `main`. Chủ shop xem rồi merge.
-4. **Claude Code: tự merge PR của mình** khi bước 1 qua hết VÀ workflow
+4. **Claude Code và Javis OS: tự merge PR của mình** khi bước 1 qua hết VÀ workflow
    "Kiểm tra PR" trên GitHub đã xanh ở commit mới nhất, không cần hỏi lại
    (chủ shop cho phép 22/10/2026). Workflow đỏ thì sửa tới xanh, không merge.
    Áp dụng cho cả repo `ai-marketing-town`
