@@ -26,6 +26,10 @@ phút, NGAY TRONG thư mục dự án chính:
   mức Drive.
 
 ## Bẫy đã gặp
+- Thư mục tên ngắn ("Razer Blackwidow v4 75%", món đã bán) khớp 100% cả món đang bán
+  tên dài hơn ("...75% Pro"). Bằng điểm thì so `thua` (số từ thừa, từ `timSanPham`):
+  ít thừa hơn thắng, cả khi chọn đã bán/đang bán lẫn khi xếp thứ tự thư mục.
+  Kiểm ở `scripts/kiem-tra-khop-ten.mjs` (02/11/2026).
 - `push.mjs` gọi thẳng `next build`, nên phải tự kèm `--webpack` như `npm run build`.
   Thiếu cờ này Turbopack gục ở PostCSS, lượt nạp ảnh kẹt ở bước build (02/11/2026).
 - Khoá `.dang-chay.lock` (`scripts/lib/khoa.mjs`): hai lượt chồng nhau làm kẹt
