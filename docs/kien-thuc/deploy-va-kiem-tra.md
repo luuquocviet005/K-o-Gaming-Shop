@@ -21,6 +21,9 @@ và `node scripts/kiem-tra-ghi-chu.mjs`.
   push thẳng `main` (bot đã tự kiểm tra).
 - Luật lint riêng ở `eslint/luat-shop.mjs`: cấm chú thích kể lịch sử, cấm viết
   cứng thông tin liên hệ ngoài `site.ts`.
+- `package.json` ép `minimatch` lên ^11.0.1 (`overrides`) để hết cảnh báo lỗ hổng
+  CVE-2026-118764 trên hPanel. Chỉ ESLint dùng gói này. Khi `eslint` và
+  `eslint-config-next` tự dùng minimatch >= 11.0.1 thì bỏ `overrides` đi.
 
 ## Bẫy đã gặp
 - Hostinger có lúc KHÔNG build lại sau khi merge vào `main` (bản xem thử của PR
