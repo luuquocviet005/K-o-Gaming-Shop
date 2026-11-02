@@ -38,15 +38,23 @@
 
 ## Javis OS trên laptop chủ shop
 - Mỗi máy cài Javis riêng, không chia sẻ trí nhớ: Javis trên laptop không
-  thấy gì của Javis trên máy shop. Muốn nó biết dự án thì clone repo này về
-  laptop (cạnh `ai-marketing-town` trong thư mục người dùng), `npm ci`, rồi đọc
-  `AGENTS.md` và `docs/kien-thuc/` như mọi AI khác.
+  thấy gì của Javis trên máy shop. Muốn nó biết dự án thì đọc `AGENTS.md` và
+  `docs/kien-thuc/` như mọi AI khác. Chủ shop dặn Javis ở máy này điều gì mà
+  máy kia cũng cần thì ghi vào `docs/kien-thuc/`, máy kia `git pull` là có.
+- Trên laptop: repo shop clone ở `D:\Kẹo Gaming Gear` (đã `npm ci`),
+  `ai-marketing-town` ở `C:\Users\OS\.gemini\antigravity\scratch\ai-marketing-town`,
+  Javis ở `C:\Users\OS\.gemini\antigravity\scratch\javis-os`.
 - Second Brain của máy shop (`D:\javis-os\brains\`) chỉ sang được laptop bằng
   cách chép tay thư mục đó; điều quan trọng phải nằm trong `docs/kien-thuc/`.
 - Laptop không chạy lượt ảnh tự động nên sửa thẳng trong bản clone được,
   nhưng vẫn làm trên nhánh `javis/...`, mở PR, chỉ merge khi "Kiểm tra PR" xanh.
   Trước khi làm: `git fetch origin main` rồi tạo nhánh từ `origin/main`.
-- Mở/merge PR cần `gh` trên laptop: `winget install GitHub.cli` rồi
-  `gh auth login` (chủ shop tự đăng nhập trên trình duyệt).
+- `gh` trên laptop đã cài và đăng nhập tài khoản `luuquocviet005`
+  (đã `gh auth setup-git`, nên `git push` không hỏi mật khẩu).
+- `agent-browser` (vercel-labs) cài toàn máy trên laptop, skill ở
+  `~/.claude/skills/agent-browser`, KHÔNG cài vào repo này. Chrome của nó trỏ
+  qua biến `AGENT_BROWSER_EXECUTABLE_PATH`. Mở trang xong chờ 1-2 giây rồi mới
+  bấm; trang đổi thì `snapshot -i` lại để lấy mã `@e` mới; "✓ Done" chưa chắc
+  đã bấm ăn, phải đọc lại trang kiểm kết quả.
 - Không bật "Keo Shop Bot" hay tác vụ đồng bộ hàng trên laptop — thêm một
   bot nữa trả lời khách cùng lúc.

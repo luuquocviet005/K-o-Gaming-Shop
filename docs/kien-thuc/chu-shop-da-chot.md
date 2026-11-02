@@ -13,3 +13,7 @@ git log / `docs/ban-giao/`.
 - Xem video bằng Whisper chạy máy, không dùng khoá API.
 - Claude Code được tự merge PR của mình khi kiểm tra xanh — cả repo này lẫn
   ai-marketing-town. Javis OS trên máy shop cũng được tự merge theo cùng điều kiện.
+- Kiểm tra bản thật trước (keogaminggear.com, AgentTown trên Render), không tự
+  bật localhost. Localhost chỉ để thử code trước khi push.
+- Bài Threads viết ngắn như trang @1millioncolors: tên hàng + giá, vào thẳng ý
+  chính, không dài dòng.
