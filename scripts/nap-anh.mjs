@@ -21,8 +21,10 @@
  * web thì script CHỈ đối chiếu trong danh mục đó, nên không thể gán nhầm ảnh
  * chuột sang bàn phím.
  *
- * Ảnh gốc từ điện thoại nặng ~3MB, 4096px. Script nén xuống ~1400px định dạng
- * webp (còn khoảng 60–120KB, nhẹ hơn 30–50 lần) rồi mới đưa vào web. Ảnh gốc
+ * Ảnh gốc từ điện thoại nặng ~3MB, 4096px. Script nén xuống 2000px định dạng
+ * webp (còn khoảng 200–300KB, nhẹ hơn 10–15 lần) rồi mới đưa vào web. 2000px
+ * để khách phóng to tới ~300% ở trang chi tiết vẫn thấy chi tiết thật; thẻ sản
+ * phẩm dùng bản thu nhỏ riêng nên không nặng thêm. Ảnh gốc
  * KHÔNG bao giờ vào Git — nếu vào thì kho mã phình vĩnh viễn vì Git giữ cả
  * lịch sử, không xoá đi được.
  */
@@ -47,7 +49,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const thuMucDich = join(root, "public", "products");
 
 const DUOI_ANH = /\.(jpe?g|png|webp|avif|heic|heif)$/i;
-const RONG_TOI_DA = 1400;
+const RONG_TOI_DA = 2000;
 const CHAT_LUONG = 82;
 
 /**
@@ -368,7 +370,8 @@ function sapAnh(duongDanAnh, tenSanPham) {
  * Không có nó thì mỗi lần chạy lại nén toàn bộ ~280MB ảnh — chấp nhận được
  * khi bấm tay, nhưng tác vụ chạy ngầm 15 phút/lần sẽ đốt CPU cả ngày.
  * Dấu vân tay gồm tên file + dung lượng + thời điểm sửa, đủ để biết bộ ảnh
- * nguồn có thay đổi hay không.
+ * nguồn có thay đổi hay không. Kèm cả cỡ và chất lượng nén: đổi hai số đó thì
+ * mọi sản phẩm tự nạp lại ở lượt kế tiếp, không phải thả lại ảnh.
  */
 const duongDanCache = join(root, ".cache-anh.json");
 let cache = {};
@@ -385,7 +388,7 @@ async function vanTay(duongDanNguon) {
     const s = await stat(p);
     phan.push(`${basename(p)}:${s.size}:${Math.round(s.mtimeMs)}`);
   }
-  return phan.join("|");
+  return `${RONG_TOI_DA}q${CHAT_LUONG}|${phan.join("|")}`;
 }
 
 /** Thư mục có ảnh .webp nào không — tính cả thư mục phân loại một tầng bên dưới */

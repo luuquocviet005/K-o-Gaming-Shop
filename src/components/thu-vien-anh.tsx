@@ -218,8 +218,8 @@ function ThuVienAnhNoi({ product }: { product: Product }) {
                 <img
                   src={src}
                   alt={`${product.hang} ${product.ten} — ảnh ${i + 1} trên ${anhs.length}`}
-                  width={1400}
-                  height={1400}
+                  width={2000}
+                  height={2000}
                   loading={i === 0 ? "eager" : "lazy"}
                   decoding="async"
                   className="h-full w-full object-contain"
@@ -307,8 +307,8 @@ function ThuVienAnhNoi({ product }: { product: Product }) {
               ref={anhRef}
               src={anhs[phongTo]}
               alt={`${product.hang} ${product.ten} — ảnh ${phongTo + 1} trên ${anhs.length}`}
-              width={1400}
-              height={1400}
+              width={2000}
+              height={2000}
               draggable={false}
               style={{
                 transform: `translate(${zoom.x}px, ${zoom.y}px) scale(${zoom.z})`,

@@ -234,7 +234,7 @@ export function banThuNho(anh: string): string | null {
  * Luôn giữ tỉ lệ vuông để không gây layout shift (CLS).
  *
  * `nho` — dùng bản thu nhỏ. Bật cho THẺ sản phẩm: ô ảnh ở đó chỉ 256px mà ảnh
- * gốc rộng 1400px, đo trên web thật thấy một tấm tốn tới 190 KB. Trang chi
+ * gốc rộng 2000px, đo trên web thật thấy một tấm tốn tới 190 KB. Trang chi
  * tiết thì để nguyên ảnh gốc vì khách phóng to soi vết trầy.
  */
 export function ProductMedia({

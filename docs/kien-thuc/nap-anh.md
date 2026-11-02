@@ -7,7 +7,8 @@ phút, NGAY TRONG thư mục dự án chính:
    cuối `BAO CAO.txt`.
 2. `sync-sheet.mjs` — lấy bảng hàng mới TRƯỚC khi nạp ảnh.
 3. `nap-anh.mjs` — đọc thư mục ảnh (`thuMucAnh` trong `sync.config.json`),
-   khớp tên thư mục ↔ sản phẩm, nén vào `public/products/`.
+   khớp tên thư mục ↔ sản phẩm, nén vào `public/products/` (cạnh dài tối
+   đa 2000px, webp chất lượng 82, ~200–300KB/tấm).
 4. `push.mjs --chi-anh` — kiểm tra rồi commit đúng phần ảnh/dữ liệu, đẩy `main`,
    hỏi web thật (`public/version.txt`) xem đã nhận bản mới chưa.
 
@@ -39,6 +40,10 @@ phút, NGAY TRONG thư mục dự án chính:
 - HEIC: sharp không đọc được — giải mã qua bộ HEIF của Windows.
 - Hỏng một phần cũng không ghi vân tay (cache), không thì tấm hỏng không bao
   giờ được thử lại.
+- Vân tay (`.cache-anh.json`) có cả `RONG_TOI_DA` và `CHAT_LUONG`: đổi một
+  trong hai thì lượt kế tiếp nạp lại MỌI sản phẩm từ ảnh gốc trên Drive. Lượt
+  đó lâu và commit to; ảnh gốc đã bị chủ shop xoá khỏi Drive thì món đó giữ
+  ảnh cũ.
 
 ## So khớp tên (`scripts/lib/khop-ten.mjs`)
 - Tách chữ dính số ("ATK68RX" = "ATK 68 RX"); dấu "+" là một từ thật.
