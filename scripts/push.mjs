@@ -229,7 +229,7 @@ step("Sinh ảnh thu nhỏ & ảnh chia sẻ", node, [
 ]);
 step("Kiểm tra kiểu dữ liệu", node, [bin("typescript", "bin", "tsc"), "--noEmit"]);
 step("Kiểm tra code (lint)", node, [bin("eslint", "bin", "eslint.js")]);
-step("Build trang tĩnh", node, [bin("next", "dist", "bin", "next"), "build"]);
+step("Build trang tĩnh", node, [bin("next", "dist", "bin", "next"), "build", "--webpack"]);
 step("Chuẩn bị thư mục out/", node, [join(root, "scripts", "postbuild.mjs")]);
 step("Quét link chết", node, [join(root, "scripts", "check-links.mjs")]);
 step("Kiểm tra SEO", node, [join(root, "scripts", "audit.mjs")]);

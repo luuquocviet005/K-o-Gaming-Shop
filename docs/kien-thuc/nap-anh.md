@@ -26,6 +26,8 @@ phút, NGAY TRONG thư mục dự án chính:
   mức Drive.
 
 ## Bẫy đã gặp
+- `push.mjs` gọi thẳng `next build`, nên phải tự kèm `--webpack` như `npm run build`.
+  Thiếu cờ này Turbopack gục ở PostCSS, lượt nạp ảnh kẹt ở bước build (02/11/2026).
 - Khoá `.dang-chay.lock` (`scripts/lib/khoa.mjs`): hai lượt chồng nhau làm kẹt
   rebase, mọi lượt sau chết. AI không chạy `push.mjs`.
 - `--chi-anh` chỉ commit `public/products`, `src/data`, `public/version.txt`.
