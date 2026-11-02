@@ -40,7 +40,7 @@ const TEN = "chia-se.jpg";
 /*
  * Bản thu nhỏ cho THẺ SẢN PHẨM.
  *
- * Ảnh gốc rộng 1400px, còn ô ảnh trong thẻ chỉ 256px — đo trên web thật thấy
+ * Ảnh gốc rộng 2000px, còn ô ảnh trong thẻ chỉ 256px — đo trên web thật thấy
  * một tấm nặng tới 190 KB cho một ô bé xíu, riêng trang chủ đã tải 537 KB ảnh.
  * Thừa gấp 4–5 lần.
  *
