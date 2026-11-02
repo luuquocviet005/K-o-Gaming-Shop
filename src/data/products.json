@@ -869,14 +869,7 @@
           "gia": 1200000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 9,
-          "anh": "/products/atk-rs6-air/den-keycap-trai-tim/01.webp?v=89519f8b",
-          "anhs": [
-            "/products/atk-rs6-air/den-keycap-trai-tim/01.webp?v=89519f8b",
-            "/products/atk-rs6-air/den-keycap-trai-tim/02.webp?v=8bc5dd03",
-            "/products/atk-rs6-air/den-keycap-trai-tim/03.webp?v=74cee0f9",
-            "/products/atk-rs6-air/den-keycap-trai-tim/04.webp?v=87ee611f"
-          ]
+          "soLuong": 9
         }
       ],
       "anh": "/products/atk-rs6-air/den/01.webp?v=bbe9c038"
@@ -1258,10 +1251,11 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "moTa": "Bảo hành : 27/5/2027",
-      "anh": "/products/razer-blackwidow-v4-75-pro/01.webp?v=8ba1fb3f",
+      "anh": "/products/razer-blackwidow-v4-75-pro/01.webp?v=2af917fc",
       "anhs": [
-        "/products/razer-blackwidow-v4-75-pro/01.webp?v=8ba1fb3f",
-        "/products/razer-blackwidow-v4-75-pro/02.webp?v=580821b2"
+        "/products/razer-blackwidow-v4-75-pro/01.webp?v=2af917fc",
+        "/products/razer-blackwidow-v4-75-pro/02.webp?v=f2587eea",
+        "/products/razer-blackwidow-v4-75-pro/03.webp?v=f67856d6"
       ],
       "mau": "#4338ca"
     },
