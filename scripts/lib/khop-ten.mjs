@@ -71,7 +71,9 @@ function soTuThua(tuThuMuc, sanPham) {
  */
 export function timSanPham(tenThuMuc, danhSach) {
   const ten = String(tenThuMuc ?? "").trim();
-  const chac = (p) => ({ sanPham: p, diem: 1, roRang: true, ungVien: [] });
+  // `thua`: số từ tên món có mà tên thư mục không có. Hai bên bằng điểm thì
+  // bên ít thừa hơn là bên khớp đúng hơn (xem nap-anh.mjs).
+  const chac = (p) => ({ sanPham: p, diem: 1, thua: 0, roRang: true, ungVien: [] });
 
   // Lối thoát 1: đặt tên thư mục đúng bằng mã sản phẩm (dòng "mã:" trong báo
   // cáo, ví dụ "atk-a9-mini-ultimate-2"). Chỉ áp dụng khi tên có dạng mã.
@@ -135,5 +137,5 @@ export function timSanPham(tenThuMuc, danhSach) {
     return { sanPham: null, diem: tot.diem, roRang: false, ungVien: dongDiem.slice(0, 3) };
   }
 
-  return { sanPham: tot.sanPham, diem: tot.diem, roRang: true, ungVien: [] };
+  return { sanPham: tot.sanPham, diem: tot.diem, thua: soTuThua(tu, tot.sanPham), roRang: true, ungVien: [] };
 }
