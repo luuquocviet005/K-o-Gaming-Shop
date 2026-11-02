@@ -35,3 +35,18 @@
 - Brain "Keo Shop Bot" và tác vụ Windows `KeoShopBot-DongBoHang` (20 phút) là
   chatbot Zalo thử nghiệm của Javis, tách khỏi repo. Bật nó song song với
   chatbot `ai-marketing-town` thì khách nhận hai bot cùng trả lời.
+
+## Javis OS trên laptop chủ shop
+- Mỗi máy cài Javis riêng, không chia sẻ trí nhớ: Javis trên laptop không
+  thấy gì của Javis trên máy shop. Muốn nó biết dự án thì clone repo này về
+  laptop (cạnh `ai-marketing-town` trong thư mục người dùng), `npm ci`, rồi đọc
+  `AGENTS.md` và `docs/kien-thuc/` như mọi AI khác.
+- Second Brain của máy shop (`D:\javis-os\brains\`) chỉ sang được laptop bằng
+  cách chép tay thư mục đó; điều quan trọng phải nằm trong `docs/kien-thuc/`.
+- Laptop không chạy lượt ảnh tự động nên sửa thẳng trong bản clone được,
+  nhưng vẫn làm trên nhánh `javis/...`, mở PR, chỉ merge khi "Kiểm tra PR" xanh.
+  Trước khi làm: `git fetch origin main` rồi tạo nhánh từ `origin/main`.
+- Mở/merge PR cần `gh` trên laptop: `winget install GitHub.cli` rồi
+  `gh auth login` (chủ shop tự đăng nhập trên trình duyệt).
+- Không bật "Keo Shop Bot" hay tác vụ đồng bộ hàng trên laptop — thêm một
+  bot nữa trả lời khách cùng lúc.
