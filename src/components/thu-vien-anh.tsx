@@ -1,6 +1,12 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  type PointerEvent as SuKienTro,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { createPortal } from "react-dom";
 import type { Product } from "@/lib/products";
 import { ProductMedia } from "@/components/product-art";
@@ -9,7 +15,26 @@ import {
   ChevronLeftIcon,
   ChevronRightIcon,
   CloseIcon,
+  MinusIcon,
+  PlusIcon,
+  RefreshIcon,
 } from "@/components/icons";
+
+const ZOOM_MAX = 5;
+/** Mức phóng khi bấm vào ảnh đang ở cỡ vừa khung */
+const ZOOM_BAM = 2.5;
+const GOC = { z: 1, x: 0, y: 0 };
+
+/** Giữ ảnh không bị kéo lệch quá mép của chính nó */
+function kepMep(img: HTMLImageElement | null, c: typeof GOC) {
+  const maxX = img ? (img.offsetWidth * (c.z - 1)) / 2 : 0;
+  const maxY = img ? (img.offsetHeight * (c.z - 1)) / 2 : 0;
+  return {
+    z: c.z,
+    x: Math.min(Math.max(c.x, -maxX), maxX),
+    y: Math.min(Math.max(c.y, -maxY), maxY),
+  };
+}
 
 /**
  * Thư viện ảnh sản phẩm — trượt ngang, bấm vào để phóng to.
@@ -21,6 +46,11 @@ import {
  *
  * Khung phóng to quan trọng với hàng cũ: khách cần soi kỹ vết trầy trước khi
  * quyết định, ảnh nhỏ trong khung thẻ không đủ.
+ *
+ * Trong khung phóng to khách tự chỉnh mức phóng (1x tới 5x) bằng thanh trượt,
+ * nút +/-, con lăn chuột, hai ngón tay, hoặc bấm vào chỗ muốn soi; đang phóng
+ * thì kéo để di ảnh. Vuốt chuyển ảnh chỉ chạy khi ảnh về cỡ vừa khung, nếu
+ * không thì kéo để soi lại thành chuyển sang ảnh khác.
  *
  * Khung phóng to được ĐƯA THẲNG RA <body> bằng portal, không nằm lại chỗ này
  * trong cây trang. Lý do: một lớp phủ toàn màn hình nằm sâu trong trang chỉ
@@ -38,10 +68,16 @@ export function ThuVienAnh({ product }: { product: Product }) {
 function ThuVienAnhNoi({ product }: { product: Product }) {
   const anhs = product.anhs ?? (product.anh ? [product.anh] : []);
   const rangRef = useRef<HTMLDivElement>(null);
-  /** Điểm chạm đầu tiên trong khung phóng to, để nhận ra cú vuốt ngang */
-  const chamX = useRef(0);
+  /** Điểm chạm đầu tiên trong khung phóng to, để nhận ra cú vuốt ngang.
+   *  null = đang chạm hai ngón (chụm phóng), không tính là vuốt. */
+  const chamX = useRef<number | null>(null);
   const [chiSo, setChiSo] = useState(0);
   const [phongTo, setPhongTo] = useState<number | null>(null);
+  /** Mức phóng z và độ dời x/y (px màn hình) của ảnh trong khung phóng to */
+  const [zoom, setZoom] = useState(GOC);
+  const anhRef = useRef<HTMLImageElement>(null);
+  /** Các ngón/chuột đang ấn trên ảnh, để kéo và chụm hai ngón */
+  const conTro = useRef(new Map<number, { x: number; y: number }>());
 
   // Máy chủ không có <body> để bắn portal vào, nên chờ mount xong mới dựng
   const [daMount, setDaMount] = useState(false);
@@ -50,10 +86,54 @@ function ThuVienAnhNoi({ product }: { product: Product }) {
     setDaMount(true);
   }, []);
 
-  const dong = useCallback(() => setPhongTo(null), []);
+  const dong = useCallback(() => {
+    setPhongTo(null);
+    setZoom(GOC);
+  }, []);
+
+  /**
+   * Đặt mức phóng mới, giữ yên điểm (cx, cy) — tính từ tâm ảnh, px màn hình —
+   * để chỗ khách đang soi không trượt đi. Ảnh không được kéo lệch quá mép.
+   */
+  const datZoom = useCallback(
+    (zMoi: number | ((z: number) => number), cx = 0, cy = 0) => {
+      setZoom((cu) => {
+        const z = Math.min(
+          Math.max(typeof zMoi === "function" ? zMoi(cu.z) : zMoi, 1),
+          ZOOM_MAX,
+        );
+        return kepMep(anhRef.current, {
+          z,
+          x: cx - ((cx - cu.x) * z) / cu.z,
+          y: cy - ((cy - cu.y) * z) / cu.z,
+        });
+      });
+    },
+    [],
+  );
+
+  const dangPhong = zoom.z > 1.001;
+
+  const [dangKeo, setDangKeo] = useState(false);
+
+  /** Toạ độ con trỏ tính từ tâm ảnh lúc chưa dời (tâm hiện tại trừ độ dời) */
+  function tuTam(clientX: number, clientY: number) {
+    const r = anhRef.current?.getBoundingClientRect();
+    if (!r) return [0, 0] as const;
+    return [
+      clientX - (r.left + r.width / 2 - zoom.x),
+      clientY - (r.top + r.height / 2 - zoom.y),
+    ] as const;
+  }
+
+  function thaTay(e: SuKienTro) {
+    conTro.current.delete(e.pointerId);
+    if (conTro.current.size === 0) setDangKeo(false);
+  }
 
   const chuyen = useCallback(
     (buoc: -1 | 1) => {
+      setZoom(GOC);
       setPhongTo((i) =>
         i === null ? i : (i + buoc + anhs.length) % anhs.length,
       );
@@ -68,6 +148,9 @@ function ThuVienAnhNoi({ product }: { product: Product }) {
       if (e.key === "Escape") dong();
       else if (e.key === "ArrowLeft") chuyen(-1);
       else if (e.key === "ArrowRight") chuyen(1);
+      else if (e.key === "+" || e.key === "=") datZoom((z) => z + 0.5);
+      else if (e.key === "-") datZoom((z) => z - 0.5);
+      else if (e.key === "0") setZoom(GOC);
     }
     window.addEventListener("keydown", onKey);
     // Khoá cuộn nền, nếu không thì cuộn chuột làm trang dưới chạy theo
@@ -76,7 +159,7 @@ function ThuVienAnhNoi({ product }: { product: Product }) {
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
     };
-  }, [phongTo, dong, chuyen]);
+  }, [phongTo, dong, chuyen, datZoom]);
 
   // Chưa có ảnh thật thì vẽ hình minh hoạ như cũ
   if (anhs.length === 0) {
@@ -202,9 +285,11 @@ function ThuVienAnhNoi({ product }: { product: Product }) {
             className="fixed inset-0 z-[200] flex items-center justify-center bg-[var(--nen-phong-to)] p-4 backdrop-blur-sm"
             // Vuốt ngang để chuyển ảnh — trên điện thoại đó là thao tác tự nhiên nhất
             onTouchStart={(e) => {
-              chamX.current = e.touches[0].clientX;
+              chamX.current =
+                e.touches.length === 1 ? e.touches[0].clientX : null;
             }}
             onTouchEnd={(e) => {
+              if (chamX.current === null || dangPhong) return;
               const dx = e.changedTouches[0].clientX - chamX.current;
               if (nhieuAnh && Math.abs(dx) > 50) chuyen(dx < 0 ? 1 : -1);
             }}
@@ -219,12 +304,116 @@ function ThuVienAnhNoi({ product }: { product: Product }) {
 
             {/* eslint-disable-next-line @next/next/no-img-element -- trang tĩnh, ảnh đã nén sẵn */}
             <img
+              ref={anhRef}
               src={anhs[phongTo]}
               alt={`${product.hang} ${product.ten} — ảnh ${phongTo + 1} trên ${anhs.length}`}
               width={1400}
               height={1400}
-              className="relative max-h-[70vh] w-auto max-w-full object-contain sm:max-h-[85vh]"
+              draggable={false}
+              style={{
+                transform: `translate(${zoom.x}px, ${zoom.y}px) scale(${zoom.z})`,
+              }}
+              // Đang kéo/chụm thì ảnh bám theo tay ngay, không có độ trễ
+              className={`relative max-h-[70vh] w-auto max-w-full touch-none select-none object-contain sm:max-h-[85vh] ${
+                dangKeo ? "" : "transition-transform duration-150"
+              } ${dangPhong ? "cursor-grab active:cursor-grabbing" : "cursor-zoom-in"}`}
+              onClick={(e) => {
+                if (!dangPhong)
+                  datZoom(ZOOM_BAM, ...tuTam(e.clientX, e.clientY));
+              }}
+              onDoubleClick={() => setZoom(GOC)}
+              onWheel={(e) =>
+                datZoom(
+                  (z) => z * (e.deltaY < 0 ? 1.2 : 1 / 1.2),
+                  ...tuTam(e.clientX, e.clientY),
+                )
+              }
+              onPointerDown={(e) => {
+                e.currentTarget.setPointerCapture(e.pointerId);
+                conTro.current.set(e.pointerId, { x: e.clientX, y: e.clientY });
+                setDangKeo(true);
+              }}
+              onPointerMove={(e) => {
+                const ds = conTro.current;
+                const cu = ds.get(e.pointerId);
+                if (!cu) return;
+                if (ds.size === 2) {
+                  // Chụm hai ngón: khoảng cách hai ngón đổi bao nhiêu lần thì phóng bấy nhiêu
+                  const khac = [...ds.values()].find((d) => d !== cu)!;
+                  const truoc = Math.hypot(cu.x - khac.x, cu.y - khac.y);
+                  const sau = Math.hypot(
+                    e.clientX - khac.x,
+                    e.clientY - khac.y,
+                  );
+                  if (truoc > 0)
+                    datZoom(
+                      (z) => (z * sau) / truoc,
+                      ...tuTam(
+                        (e.clientX + khac.x) / 2,
+                        (e.clientY + khac.y) / 2,
+                      ),
+                    );
+                } else if (dangPhong) {
+                  const dx = e.clientX - cu.x;
+                  const dy = e.clientY - cu.y;
+                  setZoom((c) =>
+                    kepMep(anhRef.current, {
+                      z: c.z,
+                      x: c.x + dx,
+                      y: c.y + dy,
+                    }),
+                  );
+                }
+                ds.set(e.pointerId, { x: e.clientX, y: e.clientY });
+              }}
+              onPointerUp={thaTay}
+              onPointerCancel={thaTay}
             />
+
+            {/* Bảng chỉnh mức phóng: khách tự chọn mức nào cũng được, không cố định sẵn */}
+            <div className="absolute left-4 top-4 flex items-center gap-1 rounded-full bg-bg p-1 text-fg">
+              <button
+                type="button"
+                onClick={() => datZoom((z) => z - 0.5)}
+                disabled={!dangPhong}
+                aria-label="Thu nhỏ"
+                className="grid size-9 cursor-pointer place-items-center rounded-full transition-colors hover:bg-surface-2 disabled:cursor-default disabled:opacity-40"
+              >
+                <MinusIcon width={18} height={18} />
+              </button>
+              <input
+                type="range"
+                min={1}
+                max={ZOOM_MAX}
+                step={0.1}
+                value={zoom.z}
+                onChange={(e) => datZoom(Number(e.target.value))}
+                aria-label="Mức phóng to"
+                aria-valuetext={`${Math.round(zoom.z * 100)}%`}
+                className="w-20 cursor-pointer accent-primary sm:w-32"
+              />
+              <button
+                type="button"
+                onClick={() => datZoom((z) => z + 0.5)}
+                disabled={zoom.z >= ZOOM_MAX}
+                aria-label="Phóng to"
+                className="grid size-9 cursor-pointer place-items-center rounded-full transition-colors hover:bg-surface-2 disabled:cursor-default disabled:opacity-40"
+              >
+                <PlusIcon width={18} height={18} />
+              </button>
+              <span className="w-11 text-center text-xs font-semibold tabular-nums">
+                {Math.round(zoom.z * 100)}%
+              </span>
+              <button
+                type="button"
+                onClick={() => setZoom(GOC)}
+                disabled={!dangPhong}
+                aria-label="Về cỡ vừa khung"
+                className="grid size-9 cursor-pointer place-items-center rounded-full transition-colors hover:bg-surface-2 disabled:cursor-default disabled:opacity-40"
+              >
+                <RefreshIcon width={16} height={16} />
+              </button>
+            </div>
 
             <button
               type="button"

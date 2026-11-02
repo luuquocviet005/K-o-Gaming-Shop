@@ -34,3 +34,11 @@
   trang danh sách không có bộ lọc địa điểm.
 - Chuột, bàn phím, tai nghe, pad chuột, phụ kiện. Hình vẽ/icon switch, ghế, tay
   cầm, màn hình vẫn giữ trong kho hình dùng chung dù chưa dùng.
+
+## Ảnh sản phẩm (`thu-vien-anh.tsx`)
+- Khung phóng to có bảng chỉnh mức (1x tới 5x): thanh trượt, nút +/-, nút về
+  vừa khung; thêm con lăn chuột, chụm hai ngón, bấm vào chỗ muốn soi (2.5x),
+  kéo để di ảnh, phím + / - / 0. Không đặt sẵn vài mức cố định: khách cần tự
+  soi vết trầy của hàng cũ.
+- Vuốt ngang chỉ chuyển ảnh khi ảnh đang ở cỡ vừa khung; đang phóng thì vuốt
+  là kéo ảnh. Đổi ảnh hoặc đóng khung thì mức phóng về 1x.
