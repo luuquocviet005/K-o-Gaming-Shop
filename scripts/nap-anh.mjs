@@ -512,7 +512,13 @@ for (const vao of duongDanVao) {
         kqDaBan: timSanPham(e.ten, ungVienDaBan),
       };
     })
-    .sort((a, b) => (b.ketQua.sanPham ? b.ketQua.diem : 0) - (a.ketQua.sanPham ? a.ketQua.diem : 0));
+    // Bằng điểm thì thư mục khít (ít từ thừa) đi trước: thư mục "Razer Blackwidow
+    // v4 75%" không được giành món "...75% Pro" của chính thư mục "...75% Pro".
+    .sort(
+      (a, b) =>
+        (b.ketQua.sanPham ? b.ketQua.diem : 0) - (a.ketQua.sanPham ? a.ketQua.diem : 0) ||
+        (a.ketQua.thua ?? 0) - (b.ketQua.thua ?? 0),
+    );
 
   for (const { e, ketQua, kqDaBan } of daKhop) {
     const { ten, danhMuc, files: duongDanAnh = [], zip, zips, loais } = e;
@@ -527,7 +533,14 @@ for (const vao of duongDanVao) {
      * món nào trùng 60% chữ — "Logitech G304 x Superlight" (đã bán, khớp 100%)
      * thành ảnh của "Logitech G502 x Plus".
      */
-    if (kqDaBan.sanPham && (!ketQua.sanPham || kqDaBan.diem > ketQua.diem)) {
+    // Bằng điểm thì bên ít từ thừa hơn thắng: thư mục "Razer Blackwidow v4 75%"
+    // khít món đã bán cùng tên, chỉ na ná món đang bán "...75% Pro".
+    if (
+      kqDaBan.sanPham &&
+      (!ketQua.sanPham ||
+        kqDaBan.diem > ketQua.diem ||
+        (kqDaBan.diem === ketQua.diem && kqDaBan.thua < ketQua.thua))
+    ) {
       const sp = kqDaBan.sanPham;
       const soNgay = Math.floor((Date.now() - Date.parse(sp.banLuc)) / 86_400_000);
       const tenKhit =
