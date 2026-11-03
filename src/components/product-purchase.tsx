@@ -8,7 +8,14 @@ import { site } from "@/lib/site";
 import { useCart } from "@/lib/cart";
 import { AddToCartButton } from "@/components/add-to-cart-button";
 import { ODanhSachPhanLoai, useMonDangXem } from "@/components/phan-loai";
-import { ZaloIcon, InfoIcon, MinusIcon, PlusIcon, FacebookIcon } from "@/components/icons";
+import {
+  ZaloIcon,
+  InfoIcon,
+  MinusIcon,
+  PlusIcon,
+  FacebookIcon,
+  CheckIcon,
+} from "@/components/icons";
 
 /**
  * Khối chọn mua.
@@ -27,11 +34,21 @@ function KhoiMua({ product }: { product: MonDangXem }) {
   const router = useRouter();
   const { addItem } = useCart();
   const [qty, setQty] = useState(1);
+  const [daChepVideo, setDaChepVideo] = useState(false);
 
   const hetHang = product.soLuong <= 0;
   const chuaCoGia = product.gia === 0;
   const tonKho = moTaTonKho(product);
   const tongTien = product.gia * qty;
+
+  // m.me không cho điền sẵn tin nhắn, nên chép sẵn câu hỏi để khách chỉ việc dán
+  function xinVideo() {
+    const ten = product.loai ? `${product.ten} (${product.loai.ten})` : product.ten;
+    navigator.clipboard
+      ?.writeText(`Cho mình xin video ${product.hang} ${ten} nha: ${window.location.href}`)
+      .then(() => setDaChepVideo(true))
+      .catch(() => {});
+  }
 
   function buyNow() {
     addItem(product.id, qty, product.loai?.id);
@@ -196,6 +213,39 @@ function KhoiMua({ product }: { product: MonDangXem }) {
           </>
         )}
       </div>
+
+      {!hetHang && (
+        <>
+          <a
+            href={site.social.messenger}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={xinVideo}
+            className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-primary-ink underline underline-offset-2"
+          >
+            <FacebookIcon width={17} height={17} />
+            Ở xa? Nhắn xin video món này
+          </a>
+          {daChepVideo && (
+            <p role="status" className="text-xs text-fg-muted">
+              Đã chép tên món, dán vào khung chat là xong.
+            </p>
+          )}
+
+          <ul className="mt-4 space-y-1.5 text-sm text-fg-muted">
+            {[
+              `Ship đi tỉnh, nhận hàng trả tiền (cọc ${formatVND(site.shipping.cocCod)})`,
+              "Bảo hành phần cứng 1 tháng",
+              "Sai mô tả hoàn tiền trong 3 ngày",
+            ].map((dong) => (
+              <li key={dong} className="flex items-center gap-2">
+                <CheckIcon width={16} height={16} className="shrink-0 text-primary" />
+                {dong}
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
     </div>
   );
 }

@@ -26,6 +26,14 @@
 - `site.contact.reviewUrl` mở thẳng khung chấm sao Google Maps; placeid suy ra
   từ `mapUrl` — đổi ghim thì lấy lại cả hai. Có ở chân trang và `/lien-he`.
 
+## Trang sản phẩm và giỏ hàng (khách ở tỉnh là đông nhất)
+- Dưới nút mua: link "Ở xa? Nhắn xin video món này" (chép sẵn câu hỏi kèm link
+  món rồi mở Messenger) và 3 dòng ship COD / bảo hành 1 tháng / hoàn tiền 3
+  ngày. Số cọc COD lấy từ `site.shipping`.
+- Giỏ hàng: bấm "Đặt hàng qua Messenger/Zalo" là tự chép nội dung đơn trước,
+  vì m.me và zalo.me không cho điền sẵn tin nhắn. Đơn dưới mức freeship có
+  thanh "thêm X nữa là được freeship".
+
 ## Danh mục
 - Góc ảnh thẻ sản phẩm: trái là loại hàng (`tenDanhMuc` = cột "Loại" trong
   Sheet, trống thì `short` của danh mục chính; gắn trong `toCard`), phải là tình trạng. Nhiều món tên chỉ là

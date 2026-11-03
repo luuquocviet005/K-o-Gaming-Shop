@@ -268,7 +268,7 @@ export default async function ProductPage(props: Props) {
           <ul className="mt-4 grid gap-2 sm:grid-cols-2">
             <li className="flex items-center gap-2.5 rounded-2xl border border-border bg-surface p-3.5 text-xs leading-snug text-fg-muted">
               <MapPinIcon width={19} height={19} className="shrink-0 text-primary" />
-              Hàng đang ở {product.diaDiem} — hẹn gặp test trực tiếp được
+              Hàng ở {product.diaDiem}: qua test trực tiếp, ở tỉnh thì tụi mình quay video trước khi gửi
             </li>
             <li className="flex items-center gap-2.5 rounded-2xl border border-border bg-surface p-3.5 text-xs leading-snug text-fg-muted">
               <CheckIcon width={19} height={19} className="shrink-0 text-primary" />
