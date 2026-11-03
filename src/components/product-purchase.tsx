@@ -235,7 +235,7 @@ function KhoiMua({ product }: { product: MonDangXem }) {
           <ul className="mt-4 space-y-1.5 text-sm text-fg-muted">
             {[
               `Ship đi tỉnh, nhận hàng trả tiền (cọc ${formatVND(site.shipping.cocCod)})`,
-              "Bảo hành phần cứng 1 tháng",
+              "Bảo hành 1 tháng",
               "Sai mô tả hoàn tiền trong 3 ngày",
             ].map((dong) => (
               <li key={dong} className="flex items-center gap-2">

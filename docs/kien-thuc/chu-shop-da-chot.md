@@ -17,3 +17,8 @@ git log / `docs/ban-giao/`.
   bật localhost. Localhost chỉ để thử code trước khi push.
 - Bài Threads viết ngắn như trang @1millioncolors: tên hàng + giá, vào thẳng ý
   chính, không dài dòng.
+- Bảo hành 1 tháng (ghi "Bảo hành 1 tháng", không thêm chữ "phần cứng"). Không
+  nhận va đập, vào nước, tự sửa/mod, rách tem shop, hao mòn, lỗi đã ghi lúc bán.
+  Xử lý: sửa, không được thì đổi món tương đương, không có thì hoàn ĐỦ tiền,
+  không trừ khấu hao. Shop chịu phí ship bảo hành cả hai chiều, xử lý 3-7 ngày.
+  Bản đầy đủ ở mục Bảo hành của `src/app/chinh-sach/page.tsx`.

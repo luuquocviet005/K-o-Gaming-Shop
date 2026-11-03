@@ -54,7 +54,7 @@ B2C, một người tự quyết. Không cần bảng persona B2B.
 - Test trước khi trả tiền: gặp trực tiếp, dùng thử ưng mới lấy.
 - Hàng có sẵn trong tay: không đặt trước, không ôm cọc.
 - Sai mô tả thì chịu: hoàn tiền trong 3 ngày.
-- Bảo hành lỗi phần cứng 1 tháng cho mọi món, kể cả phụ kiện nhỏ.
+- Bảo hành 1 tháng cho mọi món, kể cả phụ kiện nhỏ; không nhận va đập, vào nước, tự sửa, rách tem; shop chịu ship bảo hành hai chiều.
 **Làm bài bản hơn shop cùng cỡ:** web riêng có SEO, danh thiếp, tem bảo hành. Trong nhóm shop không chuyên ở Đà Nẵng, hiếm ai làm đủ như vậy (theo chủ shop).
 **How we do it differently:** Minh bạch như người quen bán đồ cho nhau: nhãn tình trạng rõ (Mới nguyên seal / Mới / Cũ đủ hộp / Cũ không hộp), mục "Tình trạng thực tế" từng món, ở xa thì quay video trước khi gửi.
 **Why that's better:** Khách bớt sợ rủi ro của hàng cũ mà vẫn được giá hàng cũ.
@@ -63,7 +63,7 @@ B2C, một người tự quyết. Không cần bảng persona B2B.
 ## Objections
 | Objection | Response |
 |-----------|----------|
-| Hàng cũ có lỗi ẩn không? | Test trực tiếp trước khi trả tiền; bảo hành phần cứng 1 tháng; sai mô tả hoàn tiền trong 3 ngày. |
+| Hàng cũ có lỗi ẩn không? | Test trực tiếp trước khi trả tiền; bảo hành 1 tháng; sai mô tả hoàn tiền trong 3 ngày. |
 | Ở xa không test được | Quay video món hàng trước khi đóng gói; khách quay video mở hộp, lệch mô tả thì shop xử lý. |
 | Ảnh có đúng món đó không? | Nhắn shop để nhận ảnh/video chụp thật của đúng món. |
 | Có hoá đơn VAT, tem hãng không? | Không. Shop không phải đại lý uỷ quyền. Món còn bảo hành hãng thì ghi rõ hạn, khách mang ra trung tâm hãng. |
