@@ -53,14 +53,14 @@ export function CartView() {
           Giỏ hàng đang trống
         </h2>
         <p className="mx-auto mt-2 max-w-sm text-fg-muted">
-          Chưa có món nào cả. Ghé xem những sản phẩm được anh em chốt đơn nhiều
-          nhất nhé.
+          Chưa có món nào cả. Ghé xem hàng đang có sẵn nhé, món nào cũng ghi
+          rõ tình trạng thật.
         </p>
         <Link
           href="/danh-muc/"
           className="mt-8 inline-flex h-14 items-center gap-2.5 rounded-full bg-primary px-8 text-base font-semibold text-on-primary transition-all duration-200 hover:bg-primary-hover active:scale-[0.97]"
         >
-          Bắt đầu mua sắm
+          Xem hàng đang có
           <ArrowRightIcon width={20} height={20} />
         </Link>
       </div>
@@ -80,15 +80,18 @@ export function CartView() {
     `(${site.shipping.ghiChu})`,
   ].join("\n");
 
-  async function copyOrder() {
+  // Messenger/Zalo không cho điền sẵn tin nhắn: chép đơn trước để khách chỉ việc dán
+  async function copyOrder(giu = false) {
     try {
       await navigator.clipboard.writeText(orderText);
       setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      if (!giu) setTimeout(() => setCopied(false), 2000);
     } catch {
       setCopied(false);
     }
   }
+
+  const thieuFreeship = site.shipping.freeshipChuyenKhoanTu - total;
 
   return (
     <div className="mt-8 grid items-start gap-6 lg:grid-cols-[1.6fr_1fr]">
@@ -235,6 +238,22 @@ export function CartView() {
           </div>
         </dl>
 
+        {thieuFreeship > 0 && (
+          <div className="mt-4">
+            <p className="text-xs text-fg-muted">
+              Thêm{" "}
+              <strong className="font-semibold text-fg">{formatVND(thieuFreeship)}</strong>{" "}
+              nữa là được freeship khi chuyển khoản đủ
+            </p>
+            <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-surface-2">
+              <div
+                className="h-full rounded-full bg-primary"
+                style={{ width: `${(total / site.shipping.freeshipChuyenKhoanTu) * 100}%` }}
+              />
+            </div>
+          </div>
+        )}
+
         <p className="mt-4 flex items-start gap-2.5 rounded-2xl bg-primary-soft p-3.5 text-xs leading-relaxed text-primary-ink">
           <TruckIcon width={17} height={17} className="mt-px shrink-0" />
           <span>
@@ -249,19 +268,23 @@ export function CartView() {
             href={site.social.messenger}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => copyOrder(true)}
             className="flex h-14 w-full items-center justify-center gap-2.5 rounded-full bg-primary px-6 text-base font-semibold text-on-primary transition-all duration-200 hover:bg-primary-hover active:scale-[0.98]"
           >
             <FacebookIcon width={19} height={19} />
             Đặt hàng qua Messenger · {formatVND(total)}
           </a>
           <p className="text-center text-xs text-fg-muted">
-            Nhắn Messenger là tụi mình rep nhanh nhất
+            {copied
+              ? "Đã chép đơn hàng, dán vào khung chat là xong"
+              : "Bấm là đơn được chép sẵn, mở chat ra dán vào là xong"}
           </p>
 
           <a
             href={site.social.zalo}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => copyOrder(true)}
             className="flex h-13 w-full items-center justify-center gap-2.5 rounded-full border border-border-strong bg-bg px-6 py-3.5 text-sm font-semibold text-fg transition-all duration-200 hover:border-primary hover:text-primary-ink active:scale-[0.98]"
           >
             <ZaloIcon width={18} height={18} />
@@ -278,7 +301,7 @@ export function CartView() {
 
           <button
             type="button"
-            onClick={copyOrder}
+            onClick={() => copyOrder()}
             className="flex h-13 w-full cursor-pointer items-center justify-center gap-2.5 rounded-full px-6 py-3.5 text-sm font-semibold text-fg-muted transition-colors hover:text-fg"
           >
             {copied ? (
