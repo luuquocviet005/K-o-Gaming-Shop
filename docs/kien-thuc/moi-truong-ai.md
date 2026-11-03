@@ -58,3 +58,15 @@
   đã bấm ăn, phải đọc lại trang kiểm kết quả.
 - Không bật "Keo Shop Bot" hay tác vụ đồng bộ hàng trên laptop — thêm một
   bot nữa trả lời khách cùng lúc.
+
+## Skill marketing và file định vị shop
+- Laptop chủ shop cài toàn máy 9 skill của `coreyhaines31/marketingskills`
+  (product-marketing, copywriting, copy-editing, social, cro, seo-audit, ai-seo,
+  schema, site-architecture). Không cài vào repo này.
+- Mọi skill đọc `.agents/product-marketing.md` trước khi viết: định vị, khách,
+  đối thủ, giọng văn, câu khách hay hỏi. Sửa định vị thì sửa file đó, tăng
+  `Document version` và thêm một dòng Changelog cuối file.
+- Repo đang công khai: file đó ai cũng đọc được, kể cả đối thủ. Viết về đối
+  thủ nhẹ nhàng, đúng sự việc, không dán link Facebook cá nhân.
+- Mục ghi "chưa có" (đánh giá Google Maps, số liệu chốt đơn) là để trống có
+  chủ ý. Skill không được tự viết lời khen hay con số thay vào.
