@@ -316,3 +316,36 @@ export function toCard(p: Product): CardProduct {
     tenDanhMuc: p.loaiHang || getCategory(p.danhMuc)?.short,
   };
 }
+
+/** Tên loại hàng đứng đầu tiêu đề trang sản phẩm — đúng chữ khách gõ ("chuột ATK A9") */
+const LOAI_HANG: Record<string, string> = {
+  chuot: "Chuột",
+  "ban-phim": "Bàn phím",
+  "tai-nghe": "Tai nghe",
+  "pad-chuot": "Pad chuột",
+};
+
+/**
+ * Tiêu đề trang sản phẩm cho Google: "Chuột ATK A9 Mini Ultimate + mới".
+ *
+ * Khách tìm bằng loại hàng + hãng + tên mẫu, thêm "cũ" khi săn hàng lướt —
+ * nên cả bốn phải nằm trong tiêu đề. Layout còn nối " | KẸO GAMING SHOP"
+ * (18 ký tự), scripts/audit.mjs đòi cả câu ≤ 70, nên phần này ≤ 52: dài quá
+ * thì bỏ dần loại hàng rồi tình trạng.
+ */
+export function tieuDeSanPham(
+  p: Pick<Product, "danhMuc" | "hang" | "ten" | "nhomTinhTrang">,
+): string {
+  const ten = p.ten.replace(/\s+/g, " ").trim();
+  const hang = p.hang && !/không rõ/i.test(p.hang) && !ten.toLowerCase().includes(p.hang.toLowerCase()) ? p.hang : "";
+  const loai = LOAI_HANG[p.danhMuc] ?? "";
+  const tinhTrang = p.nhomTinhTrang === "moi" ? "mới" : p.nhomTinhTrang === "cu" ? "cũ" : "";
+  const coLoai = loai && !ten.toLowerCase().startsWith(loai.toLowerCase()) ? loai : "";
+  const thu = [
+    [coLoai, hang, ten, tinhTrang],
+    [hang, ten, tinhTrang],
+    [hang, ten],
+    [ten],
+  ].map((x) => x.filter(Boolean).join(" "));
+  return thu.find((t) => t.length <= 52) ?? ten.slice(0, 52);
+}
