@@ -12,6 +12,8 @@
 - Mỗi PR có bản xem thử Hostinger (hostinger[bot] comment link), tự xoá khi đóng PR.
 - `README.md` mục 3 và 4 tóm tắt lại phần này cho người đọc. Đổi cách deploy
   thì sửa cả README, kẻo AI sau làm theo hướng dẫn cũ (upload `out/`, FTP).
+- `public/googlec229c5ad50bf4198.html` là tệp xác minh Google Search Console.
+  KHÔNG xoá, không đổi tên: mất tệp là Google gỡ quyền xem số liệu tìm kiếm.
 
 ## Bộ kiểm tra
 `npm run typecheck && npm run lint && npm run build && npm run check`
