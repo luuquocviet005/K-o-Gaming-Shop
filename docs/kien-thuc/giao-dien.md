@@ -72,3 +72,14 @@
   số cố định) và KHÔNG khai `hasMerchantReturnPolicy` (shop chỉ hoàn khi sai mô
   tả, không nhận đổi ý, schema không tả đúng được) - khai sai là vi phạm chính
   sách mua sắm của Google.
+
+## Tóm tắt cho AI đọc (`/llms.txt`)
+
+- `src/app/llms.txt/route.ts` sinh `/llms.txt` (chuẩn llmstxt.org) lúc build
+  từ cùng dữ liệu với web: thông tin cửa hàng, chính sách, danh mục, toàn bộ
+  hàng đang bán kèm giá và tình trạng. ChatGPT, Perplexity đọc file này để giới
+  thiệu shop.
+- Chỉ ghi điều có thật trên web. Đổi chính sách ở `/chinh-sach` thì sửa luôn
+  mục Chính sách trong file này, kẻo AI trả lời khách theo chính sách cũ.
+- Tự đặt `Content-Type: text/plain; charset=utf-8`: thiếu charset thì chữ có
+  dấu thành ký tự rác.
