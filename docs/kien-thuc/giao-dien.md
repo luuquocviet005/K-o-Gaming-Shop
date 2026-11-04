@@ -29,7 +29,11 @@
 ## Trang sản phẩm và giỏ hàng (khách ở tỉnh là đông nhất)
 - Dưới nút mua: link "Ở xa? Nhắn xin video món này" (chép sẵn câu hỏi kèm link
   món rồi mở Messenger) và 3 dòng ship COD / bảo hành 1 tháng / hoàn tiền 3
-  ngày. Số cọc COD lấy từ `site.shipping`.
+  ngày, thêm dòng "N món đã tới tay khách" (N = số dòng `da-ban.json`, tự tăng).
+  Số cọc COD lấy từ `site.shipping`.
+- Nút phụ "Nhắn chốt món này" chép sẵn câu chốt (tên, số lượng, giá, link) rồi
+  mở Messenger, không qua giỏ; nút "Thêm vào giỏ" vẫn để khách gom nhiều món.
+- Ô số lượng chỉ hiện khi món còn từ 2 chiếc trở lên.
 - Giỏ hàng: bấm "Đặt hàng qua Messenger/Zalo" là tự chép nội dung đơn trước,
   vì m.me và zalo.me không cho điền sẵn tin nhắn. Đơn dưới mức freeship có
   thanh "thêm X nữa là được freeship".

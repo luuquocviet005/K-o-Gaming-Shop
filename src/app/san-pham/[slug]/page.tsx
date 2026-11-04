@@ -293,7 +293,7 @@ export default async function ProductPage(props: Props) {
             {product.ten}
           </h1>
 
-          <ProductPurchase product={product} />
+          <ProductPurchase product={product} soDaBan={soldProducts.length} />
 
           <ChiTietMon product={product} tenNhom={category?.name} />
 
