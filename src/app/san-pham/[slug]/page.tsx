@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import {
+  tieuDeSanPham,
   getCategory,
   getProduct,
   getSoldProduct,
@@ -121,7 +122,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   const tieuDe = `${product.ten} — ${formatGia(product)}`;
 
   return {
-    title: `${product.ten} — ${product.hang}`,
+    title: tieuDeSanPham(product),
     description: moTa,
     alternates: { canonical: `/san-pham/${product.slug}/` },
     openGraph: {
@@ -177,9 +178,15 @@ export default async function ProductPage(props: Props) {
     "@context": "https://schema.org",
     "@type": "Product",
     name: `${product.hang} ${product.ten}`,
-    description:
-      [product.moTa, product.note].filter(Boolean).join(" — ") ||
-      `${product.ten} — ${product.tinhTrang}`,
+    // Phần lớn món để trống Mô tả/Ghi chú trên Sheet — khi đó vẫn ghép một
+    // câu đủ ý từ dữ liệu thật (loại, tình trạng, giá, nơi có hàng)
+    description: [
+      product.moTa,
+      product.note,
+      `${product.hang} ${product.ten}${product.tinhTrang ? `, tình trạng: ${product.tinhTrang}` : ""}. Giá ${formatGia(product)}, hàng ở ${product.diaDiem}. Cho test trước khi trả tiền, ship COD toàn quốc.`,
+    ]
+      .filter(Boolean)
+      .join(" "),
     ...(anhChoGoogle.length > 0 && { image: anhChoGoogle }),
     brand: { "@type": "Brand", name: product.hang },
     ...(product.gia > 0 && {

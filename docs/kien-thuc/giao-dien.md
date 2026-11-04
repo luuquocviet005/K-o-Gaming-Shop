@@ -50,3 +50,21 @@
   soi vết trầy của hàng cũ.
 - Vuốt ngang chỉ chuyển ảnh khi ảnh đang ở cỡ vừa khung; đang phóng thì vuốt
   là kéo ảnh. Đổi ảnh hoặc đóng khung thì mức phóng về 1x.
+
+## Tiêu đề và mô tả cho Google (SEO)
+
+- Tiêu đề trang sản phẩm do `tieuDeSanPham()` trong `src/lib/products.ts` ghép:
+  loại hàng + hãng + tên + "mới"/"cũ" (vd "Chuột Logitech Superlight 2 cũ"),
+  vì khách tìm đúng kiểu đó. Phần này ≤ 52 ký tự để cả câu kèm
+  " | KẸO GAMING SHOP" ≤ 70 (`scripts/audit.mjs` chặn); dài quá thì tự bỏ dần
+  loại hàng rồi tình trạng. Phụ kiện không có chữ loại hàng đứng đầu.
+- Tiêu đề danh mục: "<tên danh mục> cũ và mới tại Đà Nẵng".
+- Dưới tiêu đề danh mục có đoạn giới thiệu `gioiThieuDanhMuc()` ghép từ hàng
+  đang bán (số món, hãng nhiều nhất, khoảng giá, ship COD toàn quốc), tự đúng
+  khi Sheet đổi. Đừng thay bằng chữ viết tay có con số cố định.
+- `description` trong JSON-LD Product luôn có một câu ghép từ dữ liệu thật
+  (tình trạng, giá, nơi có hàng) vì đa số món để trống Mô tả/Ghi chú.
+- KHÔNG khai `shippingDetails` (phí ship tỉnh tính theo thực tế, không có con
+  số cố định) và KHÔNG khai `hasMerchantReturnPolicy` (shop chỉ hoàn khi sai mô
+  tả, không nhận đổi ý, schema không tả đúng được) — khai sai là vi phạm chính
+  sách mua sắm của Google.
