@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 25
+      "soLuong": 24
     },
     {
       "slug": "ban-phim",
@@ -565,37 +565,6 @@
       "soLuong": 1,
       "anh": "/products/razer-basilisk/01.webp?v=b08d9538",
       "mau": "#4338ca"
-    },
-    {
-      "id": "razer-viper-v4-pro",
-      "slug": "razer-viper-v4-pro",
-      "ten": "Viper V4 Pro",
-      "hang": "Razer",
-      "danhMuc": "chuot",
-      "gia": 2500000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "note": "Trằng bh 26/5/2028",
-      "mau": "#4338ca",
-      "phanLoai": [
-        {
-          "id": "trang",
-          "ten": "Trắng",
-          "gia": 2500000,
-          "tinhTrang": "Cũ · đủ hộp",
-          "nhomTinhTrang": "cu",
-          "soLuong": 1,
-          "note": "Trằng bh 26/5/2028",
-          "anh": "/products/razer-viper-v4-pro/trang/01.webp?v=c3ca6bdb",
-          "anhs": [
-            "/products/razer-viper-v4-pro/trang/01.webp?v=c3ca6bdb",
-            "/products/razer-viper-v4-pro/trang/02.webp?v=5080cbf6"
-          ]
-        }
-      ],
-      "anh": "/products/razer-viper-v4-pro/trang/01.webp?v=c3ca6bdb"
     },
     {
       "id": "razer-viper-v3-pro",
@@ -1289,11 +1258,11 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
-      "anh": "/products/wooting-80he/01.webp?v=5e6560a3",
+      "anh": "/products/wooting-80he/01.webp?v=0fa780dd",
       "anhs": [
-        "/products/wooting-80he/01.webp?v=5e6560a3",
-        "/products/wooting-80he/02.webp?v=a5a54894",
-        "/products/wooting-80he/03.webp?v=5b30147c"
+        "/products/wooting-80he/01.webp?v=0fa780dd",
+        "/products/wooting-80he/02.webp?v=64469844",
+        "/products/wooting-80he/03.webp?v=c3af0bb0"
       ],
       "mau": "#be123c"
     },
