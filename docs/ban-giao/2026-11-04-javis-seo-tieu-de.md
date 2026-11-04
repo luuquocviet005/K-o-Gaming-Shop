@@ -1,4 +1,4 @@
-# Tiêu đề và mô tả cho Google (skill seo-audit) — javis, 2026-11-04
+# Tiêu đề và mô tả cho Google (skill seo-audit) - javis, 2026-11-04
 
 **Nhánh / PR:** `javis/seo-tieu-de`
 

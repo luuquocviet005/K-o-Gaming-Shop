@@ -66,5 +66,5 @@
   (tình trạng, giá, nơi có hàng) vì đa số món để trống Mô tả/Ghi chú.
 - KHÔNG khai `shippingDetails` (phí ship tỉnh tính theo thực tế, không có con
   số cố định) và KHÔNG khai `hasMerchantReturnPolicy` (shop chỉ hoàn khi sai mô
-  tả, không nhận đổi ý, schema không tả đúng được) — khai sai là vi phạm chính
+  tả, không nhận đổi ý, schema không tả đúng được) - khai sai là vi phạm chính
   sách mua sắm của Google.
