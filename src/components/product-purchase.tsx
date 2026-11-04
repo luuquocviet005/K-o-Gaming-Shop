@@ -1,11 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import type { MonDangXem, Product } from "@/lib/products";
 import { formatGia, formatVND, moTaTonKho } from "@/lib/format";
 import { site } from "@/lib/site";
-import { useCart } from "@/lib/cart";
 import { AddToCartButton } from "@/components/add-to-cart-button";
 import { ODanhSachPhanLoai, useMonDangXem } from "@/components/phan-loai";
 import {
@@ -24,35 +22,36 @@ import {
  * điền cột "Phân loại" (nhiều màu, nhiều layout) thì có thêm hàng ô chọn, và
  * giá / ghi chú / tồn kho bên dưới đổi theo phân loại đang chọn.
  */
-export function ProductPurchase({ product }: { product: Product }) {
+export function ProductPurchase({ product, soDaBan }: { product: Product; soDaBan: number }) {
   const mon = useMonDangXem(product);
   // key: đổi phân loại thì số lượng về 1 — 3 cái màu hồng không chuyển thành 3 cái màu đen
-  return <KhoiMua key={mon.loai?.id ?? ""} product={mon} />;
+  return <KhoiMua key={mon.loai?.id ?? ""} product={mon} soDaBan={soDaBan} />;
 }
 
-function KhoiMua({ product }: { product: MonDangXem }) {
-  const router = useRouter();
-  const { addItem } = useCart();
+function KhoiMua({ product, soDaBan }: { product: MonDangXem; soDaBan: number }) {
   const [qty, setQty] = useState(1);
-  const [daChepVideo, setDaChepVideo] = useState(false);
+  const [daChep, setDaChep] = useState<"video" | "don" | null>(null);
 
   const hetHang = product.soLuong <= 0;
   const chuaCoGia = product.gia === 0;
   const tonKho = moTaTonKho(product);
   const tongTien = product.gia * qty;
 
-  // m.me không cho điền sẵn tin nhắn, nên chép sẵn câu hỏi để khách chỉ việc dán
-  function xinVideo() {
-    const ten = product.loai ? `${product.ten} (${product.loai.ten})` : product.ten;
-    navigator.clipboard
-      ?.writeText(`Cho mình xin video ${product.hang} ${ten} nha: ${window.location.href}`)
-      .then(() => setDaChepVideo(true))
-      .catch(() => {});
-  }
+  // Hàng cũ đa số chỉ có 1 chiếc: ô số lượng lúc đó chỉ là nút + bị mờ, ẩn đi cho gọn
+  const chonSoLuong = !hetHang && !chuaCoGia && product.soLuong > 1;
+  const tenDayDu = `${product.hang} ${product.loai ? `${product.ten} (${product.loai.ten})` : product.ten}`;
 
-  function buyNow() {
-    addItem(product.id, qty, product.loai?.id);
-    router.push("/gio-hang/");
+  // m.me không cho điền sẵn tin nhắn, nên chép sẵn câu để khách chỉ việc dán
+  function chep(loai: "video" | "don") {
+    const link = window.location.href;
+    const cau =
+      loai === "video"
+        ? `Cho mình xin video ${tenDayDu} nha: ${link}`
+        : `Mình muốn chốt ${tenDayDu}${qty > 1 ? ` x${qty}` : ""} (${formatVND(tongTien)}): ${link}`;
+    navigator.clipboard
+      ?.writeText(cau)
+      .then(() => setDaChep(loai))
+      .catch(() => {});
   }
 
   return (
@@ -95,7 +94,7 @@ function KhoiMua({ product }: { product: MonDangXem }) {
       <ODanhSachPhanLoai product={product} />
 
       <div className="mt-7 flex flex-wrap items-center gap-5">
-        {!hetHang && !chuaCoGia && (
+        {chonSoLuong && (
           <div>
             <p id="nhan-so-luong" className="font-display text-sm font-bold text-fg">
               Số lượng
@@ -129,7 +128,7 @@ function KhoiMua({ product }: { product: MonDangXem }) {
           </div>
         )}
 
-        <div className={hetHang || chuaCoGia ? "" : "pt-8"}>
+        <div className={chonSoLuong ? "pt-8" : ""}>
           <p
             className={`text-sm font-semibold ${
               tonKho.mau === "het"
@@ -203,13 +202,17 @@ function KhoiMua({ product }: { product: MonDangXem }) {
               productName={product.loai ? `${product.ten} (${product.loai.ten})` : product.ten}
               className="flex-1 sm:flex-none"
             />
-            <button
-              type="button"
-              onClick={buyNow}
-              className="inline-flex h-14 flex-1 cursor-pointer items-center justify-center rounded-full border border-border-strong bg-surface px-8 text-base font-semibold text-fg transition-all duration-200 hover:border-primary hover:text-primary-ink active:scale-[0.97] sm:flex-none"
+            {/* Đơn nào cũng chốt qua tin nhắn, nên nút phụ đi thẳng vào Messenger thay vì qua giỏ */}
+            <a
+              href={site.social.messenger}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => chep("don")}
+              className="inline-flex h-14 flex-1 items-center justify-center gap-2.5 rounded-full border border-border-strong bg-surface px-8 text-base font-semibold text-fg transition-all duration-200 hover:border-primary hover:text-primary-ink active:scale-[0.97] sm:flex-none"
             >
-              Mua ngay
-            </button>
+              <FacebookIcon width={19} height={19} />
+              Nhắn chốt món này
+            </a>
           </>
         )}
       </div>
@@ -220,15 +223,15 @@ function KhoiMua({ product }: { product: MonDangXem }) {
             href={site.social.messenger}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={xinVideo}
+            onClick={() => chep("video")}
             className="mt-4 inline-flex min-h-11 items-center gap-2 text-sm font-semibold text-primary-ink underline underline-offset-2"
           >
             <FacebookIcon width={17} height={17} />
             Ở xa? Nhắn xin video món này
           </a>
-          {daChepVideo && (
+          {daChep && (
             <p role="status" className="text-xs text-fg-muted">
-              Đã chép tên món, dán vào khung chat là xong.
+              {daChep === "don" ? "Đã chép đơn" : "Đã chép tên món"}, dán vào khung chat là xong.
             </p>
           )}
 
@@ -237,6 +240,7 @@ function KhoiMua({ product }: { product: MonDangXem }) {
               `Ship đi tỉnh, nhận hàng trả tiền (cọc ${formatVND(site.shipping.cocCod)})`,
               "Bảo hành 1 tháng",
               "Sai mô tả hoàn tiền trong 3 ngày",
+              ...(soDaBan > 0 ? [`${soDaBan} món đã tới tay khách`] : []),
             ].map((dong) => (
               <li key={dong} className="flex items-center gap-2">
                 <CheckIcon width={16} height={16} className="shrink-0 text-primary" />
