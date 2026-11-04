@@ -24,7 +24,7 @@ async function walk(dir, base = "") {
     const rel = base ? `${base}/${e.name}` : e.name;
     if (e.isDirectory()) files.push(...(await walk(join(dir, e.name), rel)));
     // Tệp xác minh Google (google<mã>.html) không phải trang web.
-    else if (e.name.endsWith(".html") && !/^google[0-9a-f]+.html$/.test(e.name)) files.push(rel);
+    else if (e.name.endsWith(".html") && !/^google[0-9a-f]+\.html$/.test(e.name)) files.push(rel);
   }
   return files;
 }
