@@ -28,8 +28,8 @@ Hai nửa ở hai repo:
 - Tab ẩn danh chặn localStorage — mã phiên phải có đường dự phòng trong bộ nhớ.
 - Mã QR KHÔNG điền nội dung chuyển khoản (chủ shop không muốn sao kê ghi chữ
   bán hàng). Cọc COD điền số tiền, bank full để khách tự nhập.
-- STK nằm ở `site.nganHang`; backend khai cùng tài khoản — đổi thì đổi cả hai.
-  Quy tắc ship ở `site.shipping`; backend đọc quy tắc từ Sheet — đổi cả hai.
+- STK nằm ở `site.nganHang`; backend khai cùng tài khoản - đổi thì đổi cả hai.
+  Quy tắc ship ở `site.shipping` (freeship từ 1 triệu chỉ áp dụng khi chuyển khoản đủ, không áp dụng COD); backend đọc quy tắc từ Sheet - đổi cả hai.
 - Backend: SĐT shop 0904505592 chứa STK 904505592, nên regex nhận STK phải có
   `(?<!\d)`, không thì khách xin ảnh cũng bị kèm QR.
 - Backend: không tin prompt cho việc bắt buộc. Khách hỏi tình trạng (regex
