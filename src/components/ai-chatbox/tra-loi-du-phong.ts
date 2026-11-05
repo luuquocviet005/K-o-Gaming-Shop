@@ -32,7 +32,7 @@ export function traLoiChuyenKhoan(userText: string): { text: string; qrUrl: stri
   const stk = `${ma} – ${soTaiKhoan} – ${chuTaiKhoan}`;
   const text = laCoc
     ? `Dạ STK nhận cọc của shop: ${stk}. Bạn cọc ${formatVND(site.shipping.cocCod)} theo mã QR bên dưới nha, tiền cọc trừ thẳng vào tiền thu hộ COD. Chuyển xong bạn nhắn Messenger hoặc Zalo (nút ở đầu khung chat) gửi ảnh chuyển khoản + Họ tên, SĐT, địa chỉ để shop lên đơn ạ!`
-    : `Dạ STK của shop: ${stk}. Bạn quét mã QR bên dưới rồi nhập số tiền đơn hàng nha (đơn từ ${formatVND(site.shipping.freeshipChuyenKhoanTu)} được freeship). Chuyển xong bạn nhắn Messenger hoặc Zalo (nút ở đầu khung chat) gửi ảnh chuyển khoản + Họ tên, SĐT, địa chỉ để shop lên đơn ạ!`;
+    : `Dạ STK của shop: ${stk}. Bạn quét mã QR bên dưới rồi nhập số tiền đơn hàng nha (chuyển khoản đủ đơn từ ${formatVND(site.shipping.freeshipChuyenKhoanTu)} được freeship). Chuyển xong bạn nhắn Messenger hoặc Zalo (nút ở đầu khung chat) gửi ảnh chuyển khoản + Họ tên, SĐT, địa chỉ để shop lên đơn ạ!`;
   return {
     text,
     qrUrl: qrChuyenKhoan(laCoc ? site.shipping.cocCod : null),

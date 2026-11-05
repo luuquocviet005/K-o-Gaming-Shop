@@ -40,7 +40,7 @@
 - Ô số lượng chỉ hiện khi món còn từ 2 chiếc trở lên.
 - Giỏ hàng: bấm "Đặt hàng qua Messenger/Zalo" là tự chép nội dung đơn trước,
   vì m.me và zalo.me không cho điền sẵn tin nhắn. Đơn dưới mức freeship có
-  thanh "thêm X nữa là được freeship".
+  thanh "thêm X nữa là được freeship khi chuyển khoản đủ".
 
 ## Danh mục
 - Góc ảnh thẻ sản phẩm: trái là loại hàng (`tenDanhMuc` = cột "Loại" trong

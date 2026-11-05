@@ -61,7 +61,7 @@ export const site = {
    * tắc từ Google Sheet — đổi ở đây thì đổi luôn bên Sheet.
    */
   shipping: {
-    ghiChu: `Chuyển khoản đủ từ ${FREESHIP_TU / 1_000_000} triệu được freeship. Dưới mức đó phí ship tính theo thực tế, tụi mình báo trước khi gửi.`,
+    ghiChu: `Chuyển khoản đủ đơn từ ${FREESHIP_TU / 1_000_000} triệu được freeship. Dưới mức đó hoặc ship COD thì phí ship tính theo thực tế, tụi mình báo trước khi gửi.`,
     cocCod: 50_000,
     freeshipChuyenKhoanTu: FREESHIP_TU,
   },
