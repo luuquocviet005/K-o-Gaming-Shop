@@ -40,6 +40,7 @@ export const metadata: Metadata = {
     "ghế gaming",
     "tay cầm chơi game",
     "màn hình gaming",
+    "kẹo gaming gear",
     "kẹo gaming shop",
   ],
   /*

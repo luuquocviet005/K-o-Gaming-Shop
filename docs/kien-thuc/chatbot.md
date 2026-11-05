@@ -16,6 +16,9 @@ Hai nửa ở hai repo:
 - Link http(s) trong câu trả lời của bot thành link bấm được. QR bấm để phóng to.
 - Câu chào nằm cứng ở `use-tro-chuyen.ts`. `greeting` trong cấu hình bot bên
   ai-marketing-town KHÔNG được web dùng.
+- Khung chat xưng "trợ lý Kẹo Gaming Gear" (lời chào, nhãn nút, câu trả lời
+  dự phòng). Bot Fanpage/Telegram bên ai-marketing-town đọc lời chào từ tab
+  Kịch bản trên Google Sheet, đổi tên ở đó là việc riêng.
 
 ## Bẫy đã gặp
 - Trạng thái chat phải ở `useTroChuyen` (gọi từ `index.tsx`), không trong

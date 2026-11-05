@@ -31,7 +31,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   const category = getCategory(slug);
   if (!category) return { title: "Không tìm thấy danh mục" };
 
-  const moTa = `${category.name} tại KẸO GAMING SHOP. ${category.blurb}`;
+  const moTa = `${category.name} tại ${site.name}. ${category.blurb}`;
 
   // Thẻ xem trước lấy ảnh món đầu tiên trong danh mục — dán link "Chuột" vào
   // Zalo thì khách thấy ngay một con chuột, sát nội dung hơn logo shop.

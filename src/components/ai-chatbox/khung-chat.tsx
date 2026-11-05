@@ -83,7 +83,7 @@ export function KhungChat({
   return (
     <div
       role="dialog"
-      aria-label="Chat tư vấn Kẹo Gaming Shop"
+      aria-label="Chat tư vấn Kẹo Gaming Gear"
       className={`flex flex-col overflow-hidden rounded-[1.5rem] border border-border-strong bg-surface shadow-2xl transition-all duration-200 ${
         expanded
           ? "h-[85vh] w-[calc(100vw-2rem)] sm:h-[44rem] sm:w-[34rem]"
@@ -184,7 +184,7 @@ export function KhungChat({
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={m.qrUrl}
-                    alt="Mã QR chuyển khoản Kẹo Gaming Shop"
+                    alt="Mã QR chuyển khoản Kẹo Gaming Gear"
                     className="h-44 w-auto object-contain"
                   />
                   <span className="block pt-1 text-center text-[0.7rem] font-semibold text-fg-muted group-hover:text-primary">
