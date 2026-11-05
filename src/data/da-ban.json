@@ -1,18 +1,6 @@
 {
   "daBan": [
     {
-      "slug": "razer-viper-v4-pro",
-      "ten": "Viper V4 Pro",
-      "hang": "Razer",
-      "danhMuc": "chuot",
-      "gia": 2500000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "anh": "/products/razer-viper-v4-pro/trang/01.webp?v=c3ca6bdb",
-      "mau": "#4338ca",
-      "banLuc": "2026-11-04"
-    },
-    {
       "slug": "razer-blackwidow-v4-75",
       "ten": "Blackwidow v4 75%",
       "hang": "Razer",

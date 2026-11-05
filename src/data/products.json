@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 24
+      "soLuong": 25
     },
     {
       "slug": "ban-phim",
@@ -14,7 +14,7 @@
       "short": "Bàn phím",
       "icon": "ban-phim",
       "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời.",
-      "soLuong": 23
+      "soLuong": 24
     },
     {
       "slug": "tai-nghe",
@@ -663,6 +663,20 @@
       "soLuong": 9,
       "anh": "/products/xingmeng-zero-1-se/01.webp?v=9e9572db",
       "mau": "#b45309"
+    },
+    {
+      "id": "razer-viper-v4-pro",
+      "slug": "razer-viper-v4-pro",
+      "ten": "Viper V4 Pro",
+      "hang": "Razer",
+      "danhMuc": "chuot",
+      "gia": 2500000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "note": "bh 1/7/2027",
+      "mau": "#4338ca"
     },
     {
       "id": "akko-air-01",
@@ -1318,6 +1332,19 @@
         "/products/wooting-80he-ghost/04.webp?v=0d19744c"
       ],
       "mau": "#be123c"
+    },
+    {
+      "id": "logitech-g515-rapid-tkl",
+      "slug": "logitech-g515-rapid-tkl",
+      "ten": "G515 Rapid TKL",
+      "hang": "Logitech",
+      "danhMuc": "ban-phim",
+      "gia": 1500000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "mau": "#7c3aed"
     },
     {
       "id": "akko-s9-ultra",
