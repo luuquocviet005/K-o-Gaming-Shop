@@ -549,17 +549,53 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
-      "anh": "/products/logitech-superlight-2/01.webp?v=f3812161",
-      "anhs": [
-        "/products/logitech-superlight-2/01.webp?v=f3812161",
-        "/products/logitech-superlight-2/02.webp?v=c6488dd7",
-        "/products/logitech-superlight-2/03.webp?v=f43d9dd3",
-        "/products/logitech-superlight-2/04.webp?v=ed07ef4d",
-        "/products/logitech-superlight-2/05.webp?v=78804542",
-        "/products/logitech-superlight-2/06.webp?v=66c8b993",
-        "/products/logitech-superlight-2/07.webp?v=1856dec5"
-      ],
-      "mau": "#7c3aed"
+      "anh": "/products/logitech-superlight-2/fullbox-flaw/01.webp?v=f3812161",
+      "mau": "#7c3aed",
+      "phanLoai": [
+        {
+          "id": "fullbox-flaw",
+          "ten": "fullbox (flaw)",
+          "gia": 1300000,
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 1,
+          "anh": "/products/logitech-superlight-2/fullbox-flaw/01.webp?v=f3812161",
+          "anhs": [
+            "/products/logitech-superlight-2/fullbox-flaw/01.webp?v=f3812161",
+            "/products/logitech-superlight-2/fullbox-flaw/02.webp?v=c6488dd7",
+            "/products/logitech-superlight-2/fullbox-flaw/03.webp?v=f43d9dd3",
+            "/products/logitech-superlight-2/fullbox-flaw/04.webp?v=ed07ef4d",
+            "/products/logitech-superlight-2/fullbox-flaw/05.webp?v=78804542",
+            "/products/logitech-superlight-2/fullbox-flaw/06.webp?v=66c8b993",
+            "/products/logitech-superlight-2/fullbox-flaw/07.webp?v=1856dec5",
+            "/products/logitech-superlight-2/01.webp?v=86bfd82e",
+            "/products/logitech-superlight-2/02.webp?v=a1b8bffb",
+            "/products/logitech-superlight-2/03.webp?v=025b6087",
+            "/products/logitech-superlight-2/04.webp?v=9a340e8c",
+            "/products/logitech-superlight-2/05.webp?v=71dae0ff",
+            "/products/logitech-superlight-2/06.webp?v=7425b8db",
+            "/products/logitech-superlight-2/07.webp?v=f8a6b7d4"
+          ]
+        },
+        {
+          "id": "nobox",
+          "ten": "nobox",
+          "gia": 1300000,
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 1,
+          "anh": "/products/logitech-superlight-2/01.webp?v=86bfd82e",
+          "anhs": [
+            "/products/logitech-superlight-2/01.webp?v=86bfd82e",
+            "/products/logitech-superlight-2/02.webp?v=a1b8bffb",
+            "/products/logitech-superlight-2/03.webp?v=025b6087",
+            "/products/logitech-superlight-2/04.webp?v=9a340e8c",
+            "/products/logitech-superlight-2/05.webp?v=71dae0ff",
+            "/products/logitech-superlight-2/06.webp?v=7425b8db",
+            "/products/logitech-superlight-2/07.webp?v=f8a6b7d4"
+          ]
+        }
+      ]
     },
     {
       "id": "razer-basilisk",
@@ -1089,7 +1125,6 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 3,
-      "anh": "/products/fgg-mad60-v2/01.webp?v=82437333",
       "mau": "#0f172a",
       "phanLoai": [
         {
@@ -1099,10 +1134,10 @@
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
           "soLuong": 3,
-          "anh": "/products/fgg-mad60-v2/01.webp?v=82437333",
+          "anh": "/products/fgg-mad60-v2/den-new/01.webp?v=82437333",
           "anhs": [
-            "/products/fgg-mad60-v2/01.webp?v=82437333",
-            "/products/fgg-mad60-v2/02.webp?v=02043e0a"
+            "/products/fgg-mad60-v2/den-new/01.webp?v=82437333",
+            "/products/fgg-mad60-v2/den-new/02.webp?v=02043e0a"
           ]
         },
         {
@@ -1112,13 +1147,15 @@
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
           "soLuong": 3,
-          "anh": "/products/fgg-mad60-v2/01.webp?v=82437333",
+          "anh": "/products/fgg-mad60-v2/trang/01.webp?v=e09abec9",
           "anhs": [
-            "/products/fgg-mad60-v2/01.webp?v=82437333",
-            "/products/fgg-mad60-v2/02.webp?v=02043e0a"
+            "/products/fgg-mad60-v2/trang/01.webp?v=e09abec9",
+            "/products/fgg-mad60-v2/trang/02.webp?v=657d598a",
+            "/products/fgg-mad60-v2/trang/03.webp?v=90304764"
           ]
         }
-      ]
+      ],
+      "anh": "/products/fgg-mad60-v2/den-new/01.webp?v=82437333"
     },
     {
       "id": "geonworks-venom60-he",
@@ -1344,6 +1381,12 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/logitech-g515-rapid-tkl/01.webp?v=5e47971e",
+      "anhs": [
+        "/products/logitech-g515-rapid-tkl/01.webp?v=5e47971e",
+        "/products/logitech-g515-rapid-tkl/02.webp?v=3acce21a",
+        "/products/logitech-g515-rapid-tkl/03.webp?v=5caa9475"
+      ],
       "mau": "#7c3aed"
     },
     {
@@ -1377,6 +1420,7 @@
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/atk-n9-ultra/01.webp?v=c06b4e1d",
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -1385,7 +1429,8 @@
           "gia": 800000,
           "tinhTrang": "Mới, nguyên seal",
           "nhomTinhTrang": "moi",
-          "soLuong": 1
+          "soLuong": 1,
+          "anh": "/products/atk-n9-ultra/01.webp?v=c06b4e1d"
         },
         {
           "id": "cam",
@@ -1393,7 +1438,12 @@
           "gia": 800000,
           "tinhTrang": "Mới, nguyên seal",
           "nhomTinhTrang": "moi",
-          "soLuong": 1
+          "soLuong": 1,
+          "anh": "/products/atk-n9-ultra/cam/01.webp?v=a2532cee",
+          "anhs": [
+            "/products/atk-n9-ultra/cam/01.webp?v=a2532cee",
+            "/products/atk-n9-ultra/01.webp?v=c06b4e1d"
+          ]
         }
       ]
     },
