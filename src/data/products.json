@@ -1076,11 +1076,35 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 3,
       "anh": "/products/fgg-mad60-v2/01.webp?v=82437333",
-      "anhs": [
-        "/products/fgg-mad60-v2/01.webp?v=82437333",
-        "/products/fgg-mad60-v2/02.webp?v=02043e0a"
-      ],
-      "mau": "#0f172a"
+      "mau": "#0f172a",
+      "phanLoai": [
+        {
+          "id": "den-new",
+          "ten": "Đen (new)",
+          "gia": 500000,
+          "tinhTrang": "Mới",
+          "nhomTinhTrang": "moi",
+          "soLuong": 3,
+          "anh": "/products/fgg-mad60-v2/01.webp?v=82437333",
+          "anhs": [
+            "/products/fgg-mad60-v2/01.webp?v=82437333",
+            "/products/fgg-mad60-v2/02.webp?v=02043e0a"
+          ]
+        },
+        {
+          "id": "trang",
+          "ten": "Trắng",
+          "gia": 500000,
+          "tinhTrang": "Mới",
+          "nhomTinhTrang": "moi",
+          "soLuong": 3,
+          "anh": "/products/fgg-mad60-v2/01.webp?v=82437333",
+          "anhs": [
+            "/products/fgg-mad60-v2/01.webp?v=82437333",
+            "/products/fgg-mad60-v2/02.webp?v=02043e0a"
+          ]
+        }
+      ]
     },
     {
       "id": "geonworks-venom60-he",
