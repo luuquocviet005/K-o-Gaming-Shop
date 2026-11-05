@@ -12,9 +12,9 @@ import NotFound from "./not-found";
  * Khai ở đây thì đúng ở cả hai chế độ.
  */
 export const metadata: Metadata = {
-  title: "Không tìm thấy trang | KẸO GAMING SHOP",
+  title: "Không tìm thấy trang | Kẹo Gaming Gear",
   description:
-    "Trang bạn tìm không tồn tại hoặc đã được chuyển đi. Xem các sản phẩm gaming gear đang bán chạy tại KẸO GAMING SHOP.",
+    "Trang bạn tìm không tồn tại hoặc đã được chuyển đi. Xem các sản phẩm gaming gear đang bán chạy tại Kẹo Gaming Gear.",
 };
 
 export const viewport = viewportChung;

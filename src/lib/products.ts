@@ -329,7 +329,7 @@ const LOAI_HANG: Record<string, string> = {
  * Tiêu đề trang sản phẩm cho Google: "Chuột ATK A9 Mini Ultimate + mới".
  *
  * Khách tìm bằng loại hàng + hãng + tên mẫu, thêm "cũ" khi săn hàng lướt —
- * nên cả bốn phải nằm trong tiêu đề. Layout còn nối " | KẸO GAMING SHOP"
+ * nên cả bốn phải nằm trong tiêu đề. Layout còn nối " | Kẹo Gaming Gear"
  * (18 ký tự), scripts/audit.mjs đòi cả câu ≤ 70, nên phần này ≤ 52: dài quá
  * thì bỏ dần loại hàng rồi tình trạng.
  */

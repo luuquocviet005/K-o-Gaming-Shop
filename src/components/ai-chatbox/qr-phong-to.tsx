@@ -22,7 +22,7 @@ export function QrPhongTo({ url, onDong }: { url: string; onDong: () => void }) 
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={url}
-        alt="Mã QR chuyển khoản Kẹo Gaming Shop"
+        alt="Mã QR chuyển khoản Kẹo Gaming Gear"
         className="max-h-[80vh] w-auto max-w-full rounded-2xl bg-white p-3 shadow-2xl"
       />
       <button

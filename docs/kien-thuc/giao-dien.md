@@ -2,6 +2,10 @@
 
 - Thông tin shop (SĐT, địa chỉ, link, STK, quy tắc ship, backend chatbot): chỉ
   ở `src/lib/site.ts`. Lint chặn viết cứng ở chỗ khác.
+- Tên shop là "Kẹo Gaming Gear" (`site.name`), trùng tên miền và hồ sơ Google
+  Business. Tên cũ "Kẹo Gaming Shop" chỉ còn ở `alternateName` (JSON-LD Store
+  trong `khung-trang.tsx`) và từ khoá. Viết tên shop trong code thì dùng
+  `site.name`, đừng gõ cứng.
 - Màu thương hiệu: nguồn duy nhất `src/app/globals.css`; script sinh ảnh đọc
   qua `scripts/lib/mau.mjs`.
 - Ảnh chia sẻ link (Zalo/Facebook): `ANH_CHIA_SE` trong `site.ts`, sinh bằng
@@ -60,7 +64,7 @@
 - Tiêu đề trang sản phẩm do `tieuDeSanPham()` trong `src/lib/products.ts` ghép:
   loại hàng + hãng + tên + "mới"/"cũ" (vd "Chuột Logitech Superlight 2 cũ"),
   vì khách tìm đúng kiểu đó. Phần này ≤ 52 ký tự để cả câu kèm
-  " | KẸO GAMING SHOP" ≤ 70 (`scripts/audit.mjs` chặn); dài quá thì tự bỏ dần
+  " | Kẹo Gaming Gear" ≤ 70 (`scripts/audit.mjs` chặn); dài quá thì tự bỏ dần
   loại hàng rồi tình trạng. Phụ kiện không có chữ loại hàng đứng đầu.
 - Tiêu đề danh mục: "<tên danh mục> cũ và mới tại Đà Nẵng".
 - Dưới tiêu đề danh mục có đoạn giới thiệu `gioiThieuDanhMuc()` ghép từ hàng

@@ -4,7 +4,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 
 export const metadata: Metadata = {
   title: "Giỏ hàng",
-  description: "Xem lại các sản phẩm bạn đã chọn tại KẸO GAMING SHOP.",
+  description: "Xem lại các sản phẩm bạn đã chọn tại Kẹo Gaming Gear.",
   robots: { index: false, follow: true },
 };
 

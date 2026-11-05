@@ -37,7 +37,7 @@ export function NutNoi({
         type="button"
         onClick={onMoChat}
         aria-expanded={false}
-        aria-label="Mở trợ lý AI tư vấn Kẹo Gaming Shop"
+        aria-label="Mở trợ lý AI tư vấn Kẹo Gaming Gear"
         className="group hidden h-14 cursor-pointer items-center gap-2.5 rounded-full bg-primary px-5 text-on-primary shadow-lg transition-all duration-200 hover:bg-primary-hover active:scale-95 lg:flex"
       >
         <span className="relative flex size-3">

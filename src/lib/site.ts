@@ -6,7 +6,7 @@ const FREESHIP_TU = 1_000_000;
  * Không hardcode số điện thoại / địa chỉ ở bất kỳ component nào khác.
  */
 export const site = {
-  name: "KẸO GAMING SHOP",
+  name: "Kẹo Gaming Gear",
   shortName: "KẸO",
   tagline: "Gear cũ & mới — nói đúng tình trạng",
   description:

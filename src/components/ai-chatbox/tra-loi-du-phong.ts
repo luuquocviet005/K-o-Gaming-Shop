@@ -62,7 +62,7 @@ export function buildInstantLocalReply(
 
   // 2. Hỏi địa chỉ / Đà Nẵng / GDTT / Qua shop test
   if (/địa chỉ|ở đâu|đà nẵng|gdtt|qua test|trực tiếp|giờ mở cửa/i.test(q)) {
-    return `Dạ Kẹo Gaming Shop ở tại: ${site.contact.address} (Mở cửa ${site.contact.hours}). Hàng có sẵn tại shop, mời bạn ghé test trực tiếp thoải mái trước khi trả tiền nha! Bạn định ghé khoảng mấy giờ nhắn mình chuẩn bị sẵn đồ nhé.`;
+    return `Dạ Kẹo Gaming Gear ở tại: ${site.contact.address} (Mở cửa ${site.contact.hours}). Hàng có sẵn tại shop, mời bạn ghé test trực tiếp thoải mái trước khi trả tiền nha! Bạn định ghé khoảng mấy giờ nhắn mình chuẩn bị sẵn đồ nhé.`;
   }
 
   // 3. Nếu khách đang đứng ở trang 1 sản phẩm cụ thể và hỏi về món đó
