@@ -87,3 +87,12 @@
   mục Chính sách trong file này, kẻo AI trả lời khách theo chính sách cũ.
 - Tự đặt `Content-Type: text/plain; charset=utf-8`: thiếu charset thì chữ có
   dấu thành ký tự rác.
+
+## Nguồn cấp sản phẩm Google Merchant Center (`/merchant-feed.xml`)
+
+- `src/app/merchant-feed.xml/route.ts` sinh tệp XML chuẩn RSS 2.0 lúc build cho
+  Google Merchant Center đọc định kỳ.
+- Chỉ xuất món còn hàng (`soLuong > 0`), có giá (`gia > 0`) và đã có ảnh gốc
+  `.webp`. Không dùng ảnh `chia-se.jpg` vì Google cấm ảnh chèn chữ/giá.
+- Giá, tình trạng (`new`/`used`) và mô tả khớp với JSON-LD trên trang sản phẩm;
+  `g:identifier_exists` đặt `no` vì bảng hàng không có mã vạch GTIN.
