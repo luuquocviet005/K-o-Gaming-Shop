@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   tieuDeSanPham,
   getCategory,
   getProduct,
   getSoldProduct,
+  linkTrangHang,
   products,
   relatedProducts,
   soldProducts,
@@ -160,6 +162,7 @@ export default async function ProductPage(props: Props) {
   }
 
   const category = getCategory(product.danhMuc);
+  const trangHang = linkTrangHang(product.hang);
   const related = relatedProducts(product, 4);
 
   // Dữ liệu có cấu trúc giúp Google hiện giá ngay trên kết quả tìm kiếm.
@@ -287,7 +290,13 @@ export default async function ProductPage(props: Props) {
         {/* ── Thông tin & mua ── */}
         <div>
           <p className="text-sm font-bold uppercase tracking-wider text-fg-subtle">
-            {product.hang}
+            {trangHang ? (
+              <Link href={trangHang} className="underline-offset-4 hover:text-primary-ink hover:underline">
+                {product.hang}
+              </Link>
+            ) : (
+              product.hang
+            )}
           </p>
           <h1 className="mt-2 font-display text-3xl font-extrabold leading-tight tracking-tight text-fg sm:text-4xl">
             {product.ten}

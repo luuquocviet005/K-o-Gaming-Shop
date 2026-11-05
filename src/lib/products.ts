@@ -10,6 +10,7 @@
 
 import data from "@/data/products.json";
 import khoDaBan from "@/data/da-ban.json";
+import { formatVND } from "@/lib/format";
 
 /** Nhóm để lọc — chi tiết vẫn hiện nguyên chữ người bán ghi trong `tinhTrang` */
 export type NhomTinhTrang = "moi" | "cu" | "khac";
@@ -348,4 +349,108 @@ export function tieuDeSanPham(
     [ten],
   ].map((x) => x.filter(Boolean).join(" "));
   return thu.find((t) => t.length <= 52) ?? ten.slice(0, 52);
+}
+
+// ─────────────────────────── Trang theo hãng ───────────────────────────
+
+/** Hãng có từ ngần này món còn hàng thì trang /hang/<slug>/ mới cho Google xếp hạng */
+export const NGUONG_TRANG_HANG = 2;
+
+export type TrangHang = {
+  slug: string;
+  ten: string;
+  /** Món còn hàng của hãng, mọi danh mục */
+  dsMon: Product[];
+  /** Đủ NGUONG_TRANG_HANG món còn hàng: vào sitemap và được index */
+  duMon: boolean;
+};
+
+/** "Endgame Gear" -> "endgame-gear". Gộp luôn các cách viết khác hoa thường trong Sheet */
+export function slugHang(hang: string): string {
+  return hang
+    .normalize("NFD")
+    .replace(/[̀-ͯ]/g, "")
+    .replace(/đ/gi, "d")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+/**
+ * Mọi trang hãng cần dựng.
+ *
+ * Tính cả hàng đã bán: hãng từng có trang mà bán gần hết thì đường dẫn vẫn
+ * sống (Google đã lập chỉ mục), chỉ chuyển sang noindex. Hãng chưa từng có
+ * đủ 2 món (còn + đã bán) thì không có trang, tránh trang mỏng.
+ */
+export function tatCaTrangHang(): TrangHang[] {
+  const nhom = new Map<string, { ten: Map<string, number>; dsMon: Product[]; daBan: number }>();
+  const lay = (hang: string) => {
+    const slug = slugHang(hang);
+    if (!slug || hang === HANG_TRONG) return undefined;
+    let g = nhom.get(slug);
+    if (!g) nhom.set(slug, (g = { ten: new Map(), dsMon: [], daBan: 0 }));
+    return g;
+  };
+  for (const p of products) {
+    if (!conHang(p)) continue;
+    const g = lay(p.hang);
+    if (!g) continue;
+    g.dsMon.push(p);
+    g.ten.set(p.hang, (g.ten.get(p.hang) ?? 0) + 1);
+  }
+  for (const p of soldProducts) {
+    const g = lay(p.hang);
+    if (!g) continue;
+    g.daBan++;
+    if (!g.ten.size) g.ten.set(p.hang, 0);
+  }
+  return [...nhom]
+    .filter(([, g]) => g.dsMon.length + g.daBan >= NGUONG_TRANG_HANG)
+    .map(([slug, g]) => ({
+      slug,
+      // Cách viết gặp nhiều nhất ở hàng đang bán
+      ten: [...g.ten].sort((a, b) => b[1] - a[1])[0][0],
+      dsMon: g.dsMon,
+      duMon: g.dsMon.length >= NGUONG_TRANG_HANG,
+    }))
+    .sort((a, b) => b.dsMon.length - a.dsMon.length || a.ten.localeCompare(b.ten, "vi"));
+}
+
+export function getTrangHang(slug: string): TrangHang | undefined {
+  return tatCaTrangHang().find((t) => t.slug === slug);
+}
+
+/** Đường dẫn trang hãng nếu hãng đó có trang đang được index, để trang sản phẩm gắn link */
+export function linkTrangHang(hang: string): string | undefined {
+  const t = getTrangHang(slugHang(hang));
+  return t?.duMon ? `/hang/${t.slug}/` : undefined;
+}
+
+/** Tên loại hàng trong tiêu đề trang hãng ("Chuột", "Bàn phím"...) */
+export function tenLoaiHang(danhMuc: string): string {
+  return LOAI_HANG[danhMuc] ?? getCategory(danhMuc)?.short ?? danhMuc;
+}
+
+/**
+ * Đoạn giới thiệu dưới tiêu đề trang danh mục và trang hãng — để Google có
+ * chữ thật mà hiểu trang. Ghép hoàn toàn từ dữ liệu đang bán nên tự đúng khi
+ * Sheet đổi, không ai phải viết tay.
+ */
+export function gioiThieuNhom(ds: Product[]): string {
+  const conHang = ds.filter((p) => p.soLuong > 0 && p.gia > 0);
+  if (conHang.length === 0) return "";
+  const demHang = new Map<string, number>();
+  for (const p of conHang) {
+    if (p.hang && !/không rõ/i.test(p.hang)) demHang.set(p.hang, (demHang.get(p.hang) ?? 0) + 1);
+  }
+  const hangChinh = [...demHang].sort((a, b) => b[1] - a[1]).slice(0, 4).map(([h]) => h);
+  const gia = conHang.map((p) => p.gia);
+  const thap = Math.min(...gia);
+  const cao = Math.max(...gia);
+  return [
+    `Đang có ${conHang.length} món${hangChinh.length ? ` từ ${hangChinh.join(", ")}` : ""}`,
+    thap === cao ? `, giá ${formatVND(thap)}. ` : `, giá từ ${formatVND(thap)} đến ${formatVND(cao)}. `,
+    "Ở Đà Nẵng thì qua test trực tiếp, ở tỉnh thì ship COD toàn quốc, tụi mình quay video đúng món trước khi gửi.",
+  ].join("");
 }

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { categories, products } from "@/lib/products";
+import { categories, products, tatCaTrangHang } from "@/lib/products";
 import { site } from "@/lib/site";
 
 export const dynamic = "force-static";
@@ -18,6 +18,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly" as const,
       priority: 0.7,
     })),
+    ...tatCaTrangHang()
+      .filter((t) => t.duMon)
+      .map((t) => ({
+        url: `${site.url}/hang/${t.slug}/`,
+        changeFrequency: "weekly" as const,
+        priority: 0.7,
+      })),
     ...products.map((p) => ({
       url: `${site.url}/san-pham/${p.slug}/`,
       changeFrequency: "weekly" as const,
