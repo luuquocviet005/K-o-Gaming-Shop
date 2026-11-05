@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { categories, products, toCard } from "@/lib/products";
+import { categories, products, tatCaTrangHang, toCard } from "@/lib/products";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { ProductBrowser } from "@/components/product-browser";
 import { CategoryIcon } from "@/components/icons";
@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 export default function AllProductsPage() {
+  const trangHang = tatCaTrangHang().filter((t) => t.duMon);
   return (
     <div className="container-page py-8 lg:py-12">
       <Breadcrumbs items={[{ label: "Tất cả sản phẩm" }]} />
@@ -53,6 +54,25 @@ export default function AllProductsPage() {
           })}
         </ul>
       </nav>
+
+      {trangHang.length > 0 && (
+        <nav aria-label="Mua theo hãng" className="mt-4">
+          <p className="text-sm font-semibold text-fg-muted">Mua theo hãng</p>
+          <ul className="mt-2 flex flex-wrap gap-2">
+            {trangHang.map((t) => (
+              <li key={t.slug}>
+                <Link
+                  href={`/hang/${t.slug}/`}
+                  className="inline-flex h-11 items-center gap-2 whitespace-nowrap rounded-full border border-border bg-surface px-5 text-sm font-semibold text-fg-muted transition-colors duration-200 hover:border-primary hover:text-primary-ink"
+                >
+                  {t.ten}
+                  <span className="text-xs text-fg-subtle">{t.dsMon.length}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
 
       <ProductBrowser items={products.map(toCard)} />
     </div>

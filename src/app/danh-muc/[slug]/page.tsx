@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { categories, getCategory, productsByCategory, toCard, type Product } from "@/lib/products";
-import { formatVND } from "@/lib/format";
+import { categories, getCategory, gioiThieuNhom, productsByCategory, toCard } from "@/lib/products";
 import { site, ANH_CHIA_SE, anhDayDu, anhChiaSeSanPham } from "@/lib/site";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { ProductBrowser } from "@/components/product-browser";
@@ -67,7 +66,7 @@ export default async function CategoryPage(props: Props) {
 
   const dsMon = productsByCategory(slug);
   const items = dsMon.map(toCard);
-  const gioiThieu = gioiThieuDanhMuc(dsMon);
+  const gioiThieu = gioiThieuNhom(dsMon);
 
   return (
     <div className="container-page py-8 lg:py-12">
@@ -131,27 +130,4 @@ export default async function CategoryPage(props: Props) {
       <ProductBrowser items={items} />
     </div>
   );
-}
-
-/**
- * Đoạn giới thiệu dưới tiêu đề danh mục — để Google có chữ thật mà hiểu trang
- * (trước chỉ có một câu blurb). Ghép hoàn toàn từ dữ liệu đang bán nên tự
- * đúng khi Sheet đổi, không ai phải viết tay.
- */
-function gioiThieuDanhMuc(ds: Product[]): string {
-  const conHang = ds.filter((p) => p.soLuong > 0 && p.gia > 0);
-  if (conHang.length === 0) return "";
-  const demHang = new Map<string, number>();
-  for (const p of conHang) {
-    if (p.hang && !/không rõ/i.test(p.hang)) demHang.set(p.hang, (demHang.get(p.hang) ?? 0) + 1);
-  }
-  const hangChinh = [...demHang].sort((a, b) => b[1] - a[1]).slice(0, 4).map(([h]) => h);
-  const gia = conHang.map((p) => p.gia);
-  const thap = Math.min(...gia);
-  const cao = Math.max(...gia);
-  return [
-    `Đang có ${conHang.length} món${hangChinh.length ? ` từ ${hangChinh.join(", ")}` : ""}`,
-    thap === cao ? `, giá ${formatVND(thap)}. ` : `, giá từ ${formatVND(thap)} đến ${formatVND(cao)}. `,
-    "Ở Đà Nẵng thì qua test trực tiếp, ở tỉnh thì ship COD toàn quốc, tụi mình quay video đúng món trước khi gửi.",
-  ].join("");
 }

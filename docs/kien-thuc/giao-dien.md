@@ -51,6 +51,19 @@
 - Chuột, bàn phím, tai nghe, pad chuột, phụ kiện. Hình vẽ/icon switch, ghế, tay
   cầm, màn hình vẫn giữ trong kho hình dùng chung dù chưa dùng.
 
+## Trang theo hãng (`/hang/<slug>/`)
+- Sinh từ `tatCaTrangHang()` trong `src/lib/products.ts`, không viết tay. Slug
+  bằng `slugHang()` nên "AttackShark" và "Attackshark" về chung một trang.
+- Hãng có trang khi (còn hàng + đã bán) ≥ 2. Chỉ hãng có ≥ `NGUONG_TRANG_HANG`
+  (2) món CÒN HÀNG mới được index, vào sitemap, hiện ở dòng "Mua theo hãng"
+  trên `/danh-muc/` và được gắn link từ tên hãng trên trang sản phẩm. Dưới
+  ngưỡng thì trang vẫn sống (link cũ, Google đã lập chỉ mục) nhưng `noindex`
+  và gợi ý món khác. Đừng xoá trang hãng khi hết hàng: thành 404 là mất điểm.
+- Tiêu đề ghép 2 loại hàng đông nhất của hãng ("Bàn phím, chuột ATK cũ và mới
+  tại Đà Nẵng"), tự bớt loại cho vừa ≤ 52 ký tự.
+- Chưa có trang ghép hãng + loại (`/hang/atk/chuot/`): chỉ thêm khi Search
+  Console cho thấy khách tìm nhiều cụm kiểu đó.
+
 ## Ảnh sản phẩm (`thu-vien-anh.tsx`)
 - Khung phóng to có bảng chỉnh mức (1x tới 5x): thanh trượt, nút +/-, nút về
   vừa khung; thêm con lăn chuột, chụm hai ngón, bấm vào chỗ muốn soi (2.5x),
