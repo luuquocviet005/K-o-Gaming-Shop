@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { TU_VAN_DANH_MUC } from "@/lib/tu-van-danh-muc";
 import { categories, getCategory, gioiThieuNhom, productsByCategory, toCard } from "@/lib/products";
 import { site, ANH_CHIA_SE, anhDayDu, anhChiaSeSanPham } from "@/lib/site";
 import { Breadcrumbs } from "@/components/breadcrumbs";
@@ -30,7 +31,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   const category = getCategory(slug);
   if (!category) return { title: "Không tìm thấy danh mục" };
 
-  const moTa = `${category.name} tại ${site.name}. ${category.blurb}`;
+  const moTa = TU_VAN_DANH_MUC[slug]?.meta ?? `${category.name} tại ${site.name}. ${category.blurb}`;
 
   // Thẻ xem trước lấy ảnh món đầu tiên trong danh mục — dán link "Chuột" vào
   // Zalo thì khách thấy ngay một con chuột, sát nội dung hơn logo shop.
@@ -67,6 +68,7 @@ export default async function CategoryPage(props: Props) {
   const dsMon = productsByCategory(slug);
   const items = dsMon.map(toCard);
   const gioiThieu = gioiThieuNhom(dsMon);
+  const tuVan = TU_VAN_DANH_MUC[slug];
 
   return (
     <div className="container-page py-8 lg:py-12">
@@ -128,6 +130,19 @@ export default async function CategoryPage(props: Props) {
       </nav>
 
       <ProductBrowser items={items} />
+
+      {tuVan && (
+        <section className="mt-12 max-w-3xl">
+          <h2 className="font-display text-2xl font-extrabold tracking-tight text-fg">
+            {tuVan.tieuDe}
+          </h2>
+          {tuVan.doan.map((d) => (
+            <p key={d} className="mt-3 leading-relaxed text-fg-muted">
+              {d}
+            </p>
+          ))}
+        </section>
+      )}
     </div>
   );
 }
