@@ -4,6 +4,7 @@
 - Push lên `main` → Hostinger tự kéo code về và build (chạy web ở CHẾ ĐỘ MÁY
   CHỦ, không dùng thư mục `out/`). Bản vá sửa file HTML sau build
   (`postbuild.mjs`) không tới được web thật — khai trong code Next.
+- www gộp về bản không www bằng `redirects()` trong `next.config.ts` (301). Chế độ máy chủ không đọc `deploy/.htaccess`, nên đoạn www trong .htaccess chỉ có tác dụng khi chạy tĩnh. Kiểm: `curl -I https://www.keogaminggear.com/` phải ra 301.
 - `deploy-hostinger.yml` (FTP) cố ý TẮT, chỉ chạy tay. Bật lại thì phải tắt
   deploy tự động của Hostinger.
 - Xác nhận web đã nhận bản mới: `public/version.txt` (push.mjs ghi mốc, rồi hỏi

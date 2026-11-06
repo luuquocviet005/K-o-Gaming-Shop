@@ -19,6 +19,14 @@ function thoatXml(chuoi: string): string {
     .replace(/'/g, "&apos;");
 }
 
+const DANH_MUC_GOOGLE: Record<string, string> = {
+  chuot: "Electronics > Electronics Accessories > Computer Components > Input Devices > Mice & Trackballs",
+  "ban-phim": "Electronics > Electronics Accessories > Computer Components > Input Devices > Keyboards",
+  "tai-nghe": "Electronics > Audio > Audio Components > Headphones & Headsets > Headphones",
+  "pad-chuot": "Electronics > Electronics Accessories > Computer Accessories > Mouse Pads",
+  "phu-kien": "Electronics > Electronics Accessories > Computer Components > Input Devices",
+};
+
 /*
  * Lấy ảnh gốc .webp của sản phẩm, không dùng ảnh chia-se.jpg.
  * Google Merchant Center từ chối ảnh có chèn chữ, giá hoặc khung trang trí.
@@ -79,6 +87,9 @@ export function GET() {
             (u) =>
               `      <g:additional_image_link>${thoatXml(u)}</g:additional_image_link>`,
           ),
+        ...(DANH_MUC_GOOGLE[p.danhMuc]
+          ? [`      <g:google_product_category>${thoatXml(DANH_MUC_GOOGLE[p.danhMuc])}</g:google_product_category>`]
+          : []),
         `      <g:condition>${tinhTrang}</g:condition>`,
         `      <g:availability>in_stock</g:availability>`,
         `      <g:price>${Math.round(p.gia)} VND</g:price>`,

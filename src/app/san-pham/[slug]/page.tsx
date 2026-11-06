@@ -194,8 +194,14 @@ export default async function ProductPage(props: Props) {
     brand: { "@type": "Brand", name: product.hang },
     ...(product.gia > 0 && {
       offers: {
-        "@type": "Offer",
-        price: product.gia,
+        // Món có khoảng giá (nhiều phân loại) khai AggregateOffer để khớp giá trên trang
+        ...(product.giaToiDa && product.giaToiDa > product.gia
+          ? {
+              "@type": "AggregateOffer",
+              lowPrice: product.gia,
+              highPrice: product.giaToiDa,
+            }
+          : { "@type": "Offer", price: product.gia }),
         priceCurrency: "VND",
         itemCondition:
           product.nhomTinhTrang === "moi"
