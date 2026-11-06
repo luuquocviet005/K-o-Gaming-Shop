@@ -1,6 +1,18 @@
 {
   "daBan": [
     {
+      "slug": "atk-rs7-pro",
+      "ten": "RS7 Pro",
+      "hang": "ATK",
+      "danhMuc": "ban-phim",
+      "gia": 1000000,
+      "tinhTrang": "Cũ · không hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/atk-rs7-pro/01.webp?v=22dbb07d",
+      "mau": "#4338ca",
+      "banLuc": "2026-11-06"
+    },
+    {
       "slug": "razer-blackwidow-v4-75",
       "ten": "Blackwidow v4 75%",
       "hang": "Razer",

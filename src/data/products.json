@@ -14,7 +14,7 @@
       "short": "Bàn phím",
       "icon": "ban-phim",
       "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời.",
-      "soLuong": 24
+      "soLuong": 23
     },
     {
       "slug": "tai-nghe",
@@ -650,6 +650,37 @@
       "mau": "#4338ca"
     },
     {
+      "id": "razer-viper-v4-pro",
+      "slug": "razer-viper-v4-pro",
+      "ten": "Viper V4 Pro",
+      "hang": "Razer",
+      "danhMuc": "chuot",
+      "gia": 2500000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "note": "bh 1/7/2027",
+      "mau": "#4338ca",
+      "phanLoai": [
+        {
+          "id": "trang",
+          "ten": "Trắng",
+          "gia": 2500000,
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 1,
+          "note": "bh 1/7/2027",
+          "anh": "/products/razer-viper-v4-pro/trang/01.webp?v=c3ca6bdb",
+          "anhs": [
+            "/products/razer-viper-v4-pro/trang/01.webp?v=c3ca6bdb",
+            "/products/razer-viper-v4-pro/trang/02.webp?v=5080cbf6"
+          ]
+        }
+      ],
+      "anh": "/products/razer-viper-v4-pro/trang/01.webp?v=c3ca6bdb"
+    },
+    {
       "id": "smailwolf-m3",
       "slug": "smailwolf-m3",
       "ten": "M3",
@@ -701,37 +732,6 @@
       "mau": "#b45309"
     },
     {
-      "id": "razer-viper-v4-pro",
-      "slug": "razer-viper-v4-pro",
-      "ten": "Viper V4 Pro",
-      "hang": "Razer",
-      "danhMuc": "chuot",
-      "gia": 2500000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "note": "bh 1/7/2027",
-      "mau": "#4338ca",
-      "phanLoai": [
-        {
-          "id": "trang",
-          "ten": "Trắng",
-          "gia": 2500000,
-          "tinhTrang": "Cũ · đủ hộp",
-          "nhomTinhTrang": "cu",
-          "soLuong": 1,
-          "note": "bh 1/7/2027",
-          "anh": "/products/razer-viper-v4-pro/trang/01.webp?v=c3ca6bdb",
-          "anhs": [
-            "/products/razer-viper-v4-pro/trang/01.webp?v=c3ca6bdb",
-            "/products/razer-viper-v4-pro/trang/02.webp?v=5080cbf6"
-          ]
-        }
-      ],
-      "anh": "/products/razer-viper-v4-pro/trang/01.webp?v=c3ca6bdb"
-    },
-    {
       "id": "akko-air-01",
       "slug": "akko-air-01",
       "ten": "Air 01",
@@ -777,7 +777,7 @@
       "ten": "Hex80",
       "hang": "ATK",
       "danhMuc": "ban-phim",
-      "gia": 3800000,
+      "gia": 2500000,
       "giaToiDa": 4000000,
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
@@ -813,28 +813,17 @@
             "/products/atk-hex80/vang/04.webp?v=e65af0a5",
             "/products/atk-hex80/vang/05.webp?v=8c06e360"
           ]
+        },
+        {
+          "id": "vang-loi-led",
+          "ten": "Vàng lỗi led",
+          "gia": 2500000,
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 2
         }
       ],
       "anh": "/products/atk-hex80/tim/01.webp?v=f28b7c92"
-    },
-    {
-      "id": "atk-rs7-pro",
-      "slug": "atk-rs7-pro",
-      "ten": "RS7 Pro",
-      "hang": "ATK",
-      "danhMuc": "ban-phim",
-      "gia": 1000000,
-      "tinhTrang": "Cũ · không hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "note": "Trầy khá nhiều, dùng bình thường",
-      "anh": "/products/atk-rs7-pro/01.webp?v=22dbb07d",
-      "anhs": [
-        "/products/atk-rs7-pro/01.webp?v=22dbb07d",
-        "/products/atk-rs7-pro/02.webp?v=252817db"
-      ],
-      "mau": "#4338ca"
     },
     {
       "id": "atk-rs6-air",
@@ -1031,33 +1020,20 @@
       "ten": "Rs6 Ultra",
       "hang": "ATK",
       "danhMuc": "ban-phim",
-      "gia": 1600000,
+      "gia": 1500000,
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 2,
+      "soLuong": 1,
       "mau": "#4338ca",
       "phanLoai": [
         {
-          "id": "hong",
-          "ten": "Hồng",
-          "gia": 1600000,
-          "tinhTrang": "Cũ · đủ hộp",
-          "nhomTinhTrang": "cu",
-          "soLuong": 2,
-          "anh": "/products/atk-rs6-ultra/hong/01.webp?v=9c5a344c",
-          "anhs": [
-            "/products/atk-rs6-ultra/hong/01.webp?v=9c5a344c",
-            "/products/atk-rs6-ultra/hong/02.webp?v=f4701cf6"
-          ]
-        },
-        {
           "id": "trang",
           "ten": "Trắng",
-          "gia": 1600000,
+          "gia": 1500000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 2,
+          "soLuong": 1,
           "anh": "/products/atk-rs6-ultra/trang/01.webp?v=2d89097b",
           "anhs": [
             "/products/atk-rs6-ultra/trang/01.webp?v=2d89097b",
@@ -1072,7 +1048,7 @@
           ]
         }
       ],
-      "anh": "/products/atk-rs6-ultra/hong/01.webp?v=9c5a344c"
+      "anh": "/products/atk-rs6-ultra/trang/01.webp?v=2d89097b"
     },
     {
       "id": "attackshark-x68he",
