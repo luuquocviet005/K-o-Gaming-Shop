@@ -305,7 +305,7 @@ export default async function ProductPage(props: Props) {
             )}
           </p>
           <h1 className="mt-2 font-display text-3xl font-extrabold leading-tight tracking-tight text-fg sm:text-4xl">
-            {product.ten}
+            {tieuDeSanPham(product)}
           </h1>
 
           <ProductPurchase product={product} soDaBan={soldProducts.length} />

@@ -1,6 +1,10 @@
 /** Chỉ những trường cần để vẽ / hiện ảnh — nhận được cả Product lẫn CardProduct */
+import { type Product, tieuDeSanPham } from "@/lib/products";
+
 type Displayable = {
   ten: string;
+  hang: string;
+  nhomTinhTrang: Product["nhomTinhTrang"];
   danhMuc: string;
   mau: string;
   anh?: string;
@@ -256,7 +260,7 @@ export function ProductMedia({
       // eslint-disable-next-line @next/next/no-img-element -- static export, ảnh đã tối ưu sẵn
       <img
         src={src}
-        alt={product.ten}
+        alt={tieuDeSanPham(product)}
         width={600}
         height={600}
         sizes={sizes}

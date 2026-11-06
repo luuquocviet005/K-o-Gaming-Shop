@@ -109,3 +109,7 @@
   `.webp`. Không dùng ảnh `chia-se.jpg` vì Google cấm ảnh chèn chữ/giá.
 - Giá, tình trạng (`new`/`used`) và mô tả khớp với JSON-LD trên trang sản phẩm;
   `g:identifier_exists` đặt `no` vì bảng hàng không có mã vạch GTIN.
+
+## Chữ trang danh mục
+- Meta description và khối tư vấn dưới lưới của 5 danh mục nằm ở `src/lib/tu-van-danh-muc.ts` (khóa theo slug). Chỉ ghi điều chủ shop đã chốt, không ghi thông số kỹ thuật.
+- H1 trang sản phẩm và alt ảnh thẻ dùng `tieuDeSanPham()` (loại + hãng + tên + tình trạng) cho khớp title.
