@@ -104,6 +104,18 @@ const jsonLdCuaHang = {
   sameAs: [site.social.facebook, site.social.tiktok],
 };
 
+/** Khai tên website để Google hiện đúng tên shop trong kết quả tìm kiếm. */
+const jsonLdWebsite = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${site.url}/#website`,
+  name: site.name,
+  alternateName: "Kẹo Gaming Shop",
+  url: site.url,
+  inLanguage: "vi-VN",
+  publisher: { "@id": `${site.url}/#cua-hang` },
+};
+
 /**
  * Khung chung của mọi trang: font, menu, chân trang, giỏ hàng, đo lượt khách.
  *
@@ -121,6 +133,10 @@ export function KhungTrang({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdCuaHang) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebsite) }}
         />
       </head>
       <body className={`${inter.variable} ${baloo.variable} antialiased`}>

@@ -19,7 +19,7 @@ export const site = {
   contact: {
     phone: "0904 505 592",
     phoneHref: "tel:0904505592",
-    email: "luuquocviet005@gmail.com",
+    email: "keogaminggear@gmail.com",
     address:
       "Lô 19 B2 124 Khu đô thị công nghệ FPT, phường Hoà Hải, quận Ngũ Hành Sơn, TP. Đà Nẵng",
     hours: "09:00 – 21:00, tất cả các ngày trong tuần",
@@ -110,7 +110,7 @@ export const site = {
  * bản đã tải về từ trước: máy chủ trả 200, thẻ og trỏ đúng file mới, mà thẻ
  * xem trước vẫn hiện ảnh cũ.
  */
-export const ANH_CHIA_SE = "/anh-chia-se-2.png";
+export const ANH_CHIA_SE = "/anh-chia-se-3.jpg";
 
 /**
  * Đổi đường dẫn ảnh trong web thành địa chỉ đầy đủ có tên miền.
