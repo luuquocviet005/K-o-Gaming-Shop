@@ -31,6 +31,18 @@ const nextConfig: NextConfig = {
    * khách vẫn thấy bản cũ. File trong /_next/static/ có mã băm trong tên nên
    * cache vĩnh viễn vẫn an toàn, riêng HTML thì phải kiểm tra lại mỗi lần.
    */
+  async redirects() {
+    // Chế độ máy chủ không đọc deploy/.htaccess nên www phải gộp ở đây.
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.keogaminggear.com" }],
+        destination: "https://keogaminggear.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
+
   async headers() {
     /*
      * KHÔNG áp dụng khi đang `next dev`.
