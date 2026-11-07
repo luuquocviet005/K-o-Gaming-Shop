@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 25
+      "soLuong": 30
     },
     {
       "slug": "ban-phim",
@@ -38,7 +38,7 @@
       "short": "Phụ kiện",
       "icon": "do-khac",
       "blurb": "Keycap, bungee, đế sạc, tai nghe không dây và đồ chơi lẻ đi kèm.",
-      "soLuong": 9
+      "soLuong": 10
     }
   ],
   "sanPham": [
@@ -189,7 +189,8 @@
       "tinhTrang": "Mới",
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 3,
+      "soLuong": 6,
+      "anh": "/products/atk-x1-ultimate-v2/den/01.webp?v=11337f46",
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -198,11 +199,13 @@
           "gia": 1000000,
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
-          "soLuong": 3,
+          "soLuong": 6,
           "anh": "/products/atk-x1-ultimate-v2/den/01.webp?v=11337f46",
           "anhs": [
             "/products/atk-x1-ultimate-v2/den/01.webp?v=11337f46",
-            "/products/atk-x1-ultimate-v2/den/02.webp?v=d9ceb420"
+            "/products/atk-x1-ultimate-v2/den/02.webp?v=d9ceb420",
+            "/products/atk-x1-ultimate-v2/01.webp?v=af5d3834",
+            "/products/atk-x1-ultimate-v2/02.webp?v=3d7fbc3d"
           ]
         },
         {
@@ -211,21 +214,30 @@
           "gia": 1000000,
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
-          "soLuong": 3,
+          "soLuong": 6,
           "anh": "/products/atk-x1-ultimate-v2/do/01.webp?v=f116b274",
           "anhs": [
             "/products/atk-x1-ultimate-v2/do/01.webp?v=f116b274",
-            "/products/atk-x1-ultimate-v2/do/02.webp?v=4fed0462"
+            "/products/atk-x1-ultimate-v2/do/02.webp?v=4fed0462",
+            "/products/atk-x1-ultimate-v2/01.webp?v=af5d3834",
+            "/products/atk-x1-ultimate-v2/02.webp?v=3d7fbc3d"
           ]
         },
         {
-          "id": "trang-new",
-          "ten": "Trắng (new)",
-          "gia": 1200000,
+          "id": "trang",
+          "ten": "Trắng",
+          "gia": 1000000,
+          "giaToiDa": 1200000,
+          "ghiChuGia": "1tr - 1tr2",
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
-          "soLuong": 3,
-          "anh": "/products/atk-x1-ultimate-v2/trang-new/01.webp?v=4824fe58"
+          "soLuong": 6,
+          "anh": "/products/atk-x1-ultimate-v2/trang/01.webp?v=4824fe58",
+          "anhs": [
+            "/products/atk-x1-ultimate-v2/trang/01.webp?v=4824fe58",
+            "/products/atk-x1-ultimate-v2/01.webp?v=af5d3834",
+            "/products/atk-x1-ultimate-v2/02.webp?v=3d7fbc3d"
+          ]
         },
         {
           "id": "do-new",
@@ -233,11 +245,15 @@
           "gia": 1200000,
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
-          "soLuong": 3,
-          "anh": "/products/atk-x1-ultimate-v2/do-new/01.webp?v=2dc0c41b"
+          "soLuong": 6,
+          "anh": "/products/atk-x1-ultimate-v2/do-new/01.webp?v=2dc0c41b",
+          "anhs": [
+            "/products/atk-x1-ultimate-v2/do-new/01.webp?v=2dc0c41b",
+            "/products/atk-x1-ultimate-v2/01.webp?v=af5d3834",
+            "/products/atk-x1-ultimate-v2/02.webp?v=3d7fbc3d"
+          ]
         }
-      ],
-      "anh": "/products/atk-x1-ultimate-v2/den/01.webp?v=11337f46"
+      ]
     },
     {
       "id": "atk-a9-mini-ultimate-2",
@@ -733,6 +749,87 @@
       "mau": "#b45309"
     },
     {
+      "id": "atk-f1-ultimate-v3",
+      "slug": "atk-f1-ultimate-v3",
+      "ten": "F1 Ultimate v3",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 1200000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/atk-f1-ultimate-v3/01.webp?v=cedf5684",
+      "anhs": [
+        "/products/atk-f1-ultimate-v3/01.webp?v=cedf5684",
+        "/products/atk-f1-ultimate-v3/02.webp?v=fcdd99be"
+      ],
+      "mau": "#4338ca"
+    },
+    {
+      "id": "atk-f1-extreme-v2",
+      "slug": "atk-f1-extreme-v2",
+      "ten": "F1 Extreme v2",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 1100000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 2,
+      "anh": "/products/atk-f1-extreme-v2/01.webp?v=542e8245",
+      "anhs": [
+        "/products/atk-f1-extreme-v2/01.webp?v=542e8245",
+        "/products/atk-f1-extreme-v2/02.webp?v=60ea0d99"
+      ],
+      "mau": "#4338ca"
+    },
+    {
+      "id": "atk-ghost",
+      "slug": "atk-ghost",
+      "ten": "Ghost",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 1000000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "mau": "#4338ca"
+    },
+    {
+      "id": "atk-zero",
+      "slug": "atk-zero",
+      "ten": "Zero",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 1000000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/atk-zero/01.webp?v=367e2da1",
+      "anhs": [
+        "/products/atk-zero/01.webp?v=367e2da1",
+        "/products/atk-zero/02.webp?v=c5da8a72"
+      ],
+      "mau": "#4338ca"
+    },
+    {
+      "id": "atk-x1-air-plus",
+      "slug": "atk-x1-air-plus",
+      "ten": "X1 Air+",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 1100000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "note": "bh Memoryzone 14/9/2027",
+      "mau": "#4338ca"
+    },
+    {
       "id": "akko-air-01",
       "slug": "akko-air-01",
       "ten": "Air 01",
@@ -779,7 +876,7 @@
       "hang": "ATK",
       "danhMuc": "ban-phim",
       "gia": 2500000,
-      "giaToiDa": 4000000,
+      "giaToiDa": 3900000,
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
@@ -789,7 +886,7 @@
         {
           "id": "tim",
           "ten": "Tím",
-          "gia": 4000000,
+          "gia": 3900000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
           "soLuong": 2,
@@ -802,7 +899,7 @@
         {
           "id": "vang",
           "ten": "Vàng",
-          "gia": 3800000,
+          "gia": 3700000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
           "soLuong": 2,
@@ -821,7 +918,16 @@
           "gia": 2500000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 2
+          "soLuong": 2,
+          "anh": "/products/atk-hex80/vang-loi-led/01.webp?v=8f2bae85",
+          "anhs": [
+            "/products/atk-hex80/vang-loi-led/01.webp?v=8f2bae85",
+            "/products/atk-hex80/vang-loi-led/02.webp?v=525c502b",
+            "/products/atk-hex80/vang-loi-led/03.webp?v=a478cfa2",
+            "/products/atk-hex80/vang-loi-led/04.webp?v=17fc484b",
+            "/products/atk-hex80/vang-loi-led/05.webp?v=4a6fa8ea",
+            "/products/atk-hex80/vang-loi-led/06.webp?v=8a9aa137"
+          ]
         }
       ],
       "anh": "/products/atk-hex80/tim/01.webp?v=f28b7c92"
@@ -1842,6 +1948,25 @@
       "anhs": [
         "/products/atk-feet-atk/01.webp?v=5b12c39f",
         "/products/atk-feet-atk/02.webp?v=e6015790"
+      ],
+      "mau": "#4338ca"
+    },
+    {
+      "id": "razer-ke-tay-size-tkl",
+      "slug": "razer-ke-tay-size-tkl",
+      "ten": "Kê tay ( size TKL)",
+      "hang": "Razer",
+      "danhMuc": "phu-kien",
+      "gia": 250000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/razer-ke-tay-size-tkl/01.webp?v=049f2c1d",
+      "anhs": [
+        "/products/razer-ke-tay-size-tkl/01.webp?v=049f2c1d",
+        "/products/razer-ke-tay-size-tkl/02.webp?v=3cb1e65e",
+        "/products/razer-ke-tay-size-tkl/03.webp?v=71820993"
       ],
       "mau": "#4338ca"
     }
