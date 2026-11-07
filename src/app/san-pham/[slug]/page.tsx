@@ -212,6 +212,19 @@ export default async function ProductPage(props: Props) {
             ? "https://schema.org/InStock"
             : "https://schema.org/OutOfStock",
         url: `${site.url}/san-pham/${product.slug}/`,
+        // Khớp mục "Đổi trả" ở /chinh-sach và chính sách trả hàng trên Merchant
+        // Center: 3 ngày, chỉ khi hàng sai mô tả (không nhận đổi ý); shop chịu
+        // ship gửi trả. Đổi chính sách thì sửa cả ba nơi.
+        hasMerchantReturnPolicy: {
+          "@type": "MerchantReturnPolicy",
+          applicableCountry: "VN",
+          returnPolicyCategory:
+            "https://schema.org/MerchantReturnFiniteReturnWindow",
+          merchantReturnDays: 3,
+          returnMethod: "https://schema.org/ReturnByMail",
+          returnFees: "https://schema.org/FreeReturn",
+          refundType: "https://schema.org/FullRefund",
+        },
       },
     }),
   };
