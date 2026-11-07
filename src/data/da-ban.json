@@ -1,6 +1,18 @@
 {
   "daBan": [
     {
+      "slug": "atk-x1-air",
+      "ten": "X1 Air",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 1100000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/atk-x1-air/01.webp?v=c1c07498",
+      "mau": "#4338ca",
+      "banLuc": "2026-11-07"
+    },
+    {
       "slug": "atk-rs7-pro",
       "ten": "RS7 Pro",
       "hang": "ATK",
@@ -70,18 +82,6 @@
       "anh": "/products/wl-mouse-beast-x-pro/01.webp",
       "mau": "#334155",
       "banLuc": "2026-10-29"
-    },
-    {
-      "slug": "atk-x1-air",
-      "ten": "X1 Air+",
-      "hang": "ATK",
-      "danhMuc": "chuot",
-      "gia": 1100000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "anh": "/products/atk-x1-air/01.webp",
-      "mau": "#4338ca",
-      "banLuc": "2026-10-23"
     },
     {
       "slug": "atk-rs7-air",
