@@ -40,7 +40,7 @@ const sections = [
     id: "doi-tra",
     title: "Đổi trả",
     body: [
-      "**Mô tả sai thì tụi mình chịu.** Nếu món hàng khác với những gì ghi trên web — hỏng chức năng không báo trước, trầy nặng hơn mô tả, thiếu phụ kiện đã hứa — nhận lại và hoàn tiền đầy đủ trong 3 ngày kể từ khi bạn nhận hàng.",
+      "**Mô tả sai thì tụi mình chịu.** Nếu món hàng khác với những gì ghi trên web — hỏng chức năng không báo trước, trầy nặng hơn mô tả, thiếu phụ kiện đã hứa — nhận lại và hoàn tiền đầy đủ trong 3 ngày kể từ khi bạn nhận hàng. **Phí ship gửi trả tụi mình chịu.**",
       "**Đổi ý thì không.** Hàng cũ mỗi món một cái, bán rồi khó tìm lại người mua tiếp. Nên hãy hỏi kỹ trước khi chốt, tụi mình sẵn sàng trả lời tới lúc bạn chắc chắn.",
       "Không áp dụng đổi trả với hư hỏng phát sinh sau khi bạn nhận hàng: rơi vỡ, vào nước, tự tháo ra sửa.",
     ],

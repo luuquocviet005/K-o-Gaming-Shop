@@ -34,7 +34,7 @@ Tiệm bán gaming gear cũ và mới (chuột, bàn phím, tai nghe, pad chuộ
 
 - [Chính sách đầy đủ](${site.url}/chinh-sach/)
 - Bảo hành 1 tháng mọi món. Không nhận va đập, vào nước, tự sửa, rách tem shop, hao mòn tự nhiên. Shop chịu phí ship bảo hành cả hai chiều, xử lý thường 3-7 ngày.
-- Hàng khác mô tả: nhận lại và hoàn tiền đầy đủ trong 3 ngày kể từ khi nhận.
+- Hàng khác mô tả: nhận lại và hoàn tiền đầy đủ trong 3 ngày kể từ khi nhận, shop chịu phí ship gửi trả.
 - Vận chuyển: ${site.shipping.ghiChu} Ship COD cọc trước ${formatVND(site.shipping.cocCod)}.
 
 ## Danh mục
