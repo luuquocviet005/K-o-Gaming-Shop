@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 30
+      "soLuong": 31
     },
     {
       "slug": "ban-phim",
@@ -677,7 +677,7 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
-      "note": "bh 10/2028",
+      "note": "bh 26/5/2028",
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -687,7 +687,7 @@
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
           "soLuong": 1,
-          "note": "bh 10/2028",
+          "note": "bh 26/5/2028",
           "anh": "/products/razer-viper-v4-pro/trang/01.webp?v=c3ca6bdb",
           "anhs": [
             "/products/razer-viper-v4-pro/trang/01.webp?v=c3ca6bdb",
@@ -827,6 +827,29 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "note": "bh Memoryzone 14/9/2027",
+      "anh": "/products/atk-x1-air-plus/01.webp?v=f4bf49f9",
+      "anhs": [
+        "/products/atk-x1-air-plus/01.webp?v=f4bf49f9",
+        "/products/atk-x1-air-plus/02.webp?v=6c84c745"
+      ],
+      "mau": "#4338ca"
+    },
+    {
+      "id": "atk-x1-ultimate-v1",
+      "slug": "atk-x1-ultimate-v1",
+      "ten": "X1 Ultimate v1",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 650000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/atk-x1-ultimate-v1/01.webp?v=189042d2",
+      "anhs": [
+        "/products/atk-x1-ultimate-v1/01.webp?v=189042d2",
+        "/products/atk-x1-ultimate-v1/02.webp?v=1e9af3bb"
+      ],
       "mau": "#4338ca"
     },
     {
