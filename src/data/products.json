@@ -38,7 +38,7 @@
       "short": "Phụ kiện",
       "icon": "do-khac",
       "blurb": "Keycap, bungee, đế sạc, tai nghe không dây và đồ chơi lẻ đi kèm.",
-      "soLuong": 10
+      "soLuong": 9
     }
   ],
   "sanPham": [
@@ -1582,10 +1582,7 @@
         "/products/hyperx-soundcard-cloud-2/03.webp?v=9c5741e0",
         "/products/hyperx-soundcard-cloud-2/04.webp?v=9e5efb9a"
       ],
-      "mau": "#c2185b",
-      "danhMucKhac": [
-        "phu-kien"
-      ]
+      "mau": "#c2185b"
     },
     {
       "id": "hyperx-earbuds-3",
@@ -1809,6 +1806,24 @@
       "mau": "#4338ca"
     },
     {
+      "id": "atk-feet-atk",
+      "slug": "atk-feet-atk",
+      "ten": "Feet ATK",
+      "hang": "ATK",
+      "danhMuc": "phu-kien",
+      "gia": 90000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 9,
+      "anh": "/products/atk-feet-atk/01.webp?v=5b12c39f",
+      "anhs": [
+        "/products/atk-feet-atk/01.webp?v=5b12c39f",
+        "/products/atk-feet-atk/02.webp?v=e6015790"
+      ],
+      "mau": "#4338ca"
+    },
+    {
       "id": "razer-base-station-chroma-chroma-quartz",
       "slug": "razer-base-station-chroma-chroma-quartz",
       "ten": "Base Station Chroma Chroma - Quartz",
@@ -1899,42 +1914,6 @@
       "mau": "#4338ca"
     },
     {
-      "id": "day-led-8k",
-      "slug": "day-led-8k",
-      "ten": "Dây led 8k",
-      "hang": "Không rõ hãng",
-      "danhMuc": "phu-kien",
-      "gia": 60000,
-      "tinhTrang": "Mới",
-      "nhomTinhTrang": "moi",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 10,
-      "anh": "/products/day-led-8k/01.webp?v=4b5349b8",
-      "anhs": [
-        "/products/day-led-8k/01.webp?v=4b5349b8",
-        "/products/day-led-8k/02.webp?v=90630929"
-      ],
-      "mau": "#15803d"
-    },
-    {
-      "id": "atk-feet-atk",
-      "slug": "atk-feet-atk",
-      "ten": "Feet ATK",
-      "hang": "ATK",
-      "danhMuc": "phu-kien",
-      "gia": 90000,
-      "tinhTrang": "Mới",
-      "nhomTinhTrang": "moi",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 9,
-      "anh": "/products/atk-feet-atk/01.webp?v=5b12c39f",
-      "anhs": [
-        "/products/atk-feet-atk/01.webp?v=5b12c39f",
-        "/products/atk-feet-atk/02.webp?v=e6015790"
-      ],
-      "mau": "#4338ca"
-    },
-    {
       "id": "razer-ke-tay-size-tkl",
       "slug": "razer-ke-tay-size-tkl",
       "ten": "Kê tay ( size TKL)",
@@ -1952,6 +1931,24 @@
         "/products/razer-ke-tay-size-tkl/03.webp?v=71820993"
       ],
       "mau": "#4338ca"
+    },
+    {
+      "id": "day-led-8k",
+      "slug": "day-led-8k",
+      "ten": "Dây led 8k",
+      "hang": "Không rõ hãng",
+      "danhMuc": "phu-kien",
+      "gia": 60000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 10,
+      "anh": "/products/day-led-8k/01.webp?v=4b5349b8",
+      "anhs": [
+        "/products/day-led-8k/01.webp?v=4b5349b8",
+        "/products/day-led-8k/02.webp?v=90630929"
+      ],
+      "mau": "#15803d"
     }
   ]
 }
