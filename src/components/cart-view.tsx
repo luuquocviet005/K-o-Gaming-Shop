@@ -46,10 +46,8 @@ export function CartView() {
   if (lines.length === 0) {
     return (
       <div className="mt-10 phieu border-dashed p-12 text-center sm:p-16">
-        <span className="mx-auto grid size-20 place-items-center rounded-xl border-2 border-fg bg-primary-soft text-primary-ink">
-          <CartIcon width={34} height={34} />
-        </span>
-        <h2 className="mt-6 font-display text-2xl font-extrabold text-fg">
+        <h2 className="flex flex-wrap items-center justify-center gap-2.5 font-display text-2xl font-extrabold text-fg">
+          <CartIcon width={26} height={26} className="shrink-0 text-primary-ink" />
           Giỏ hàng đang trống
         </h2>
         <p className="mx-auto mt-2 max-w-sm text-fg-muted">

@@ -367,7 +367,18 @@ export default async function ProductPage(props: Props) {
           <h2 className="font-display text-2xl font-extrabold tracking-tight text-fg sm:text-3xl">
             Món khác cùng nhóm
           </h2>
-          <div className="mt-7 grid grid-cols-2 gap-4 lg:grid-cols-4">
+          {/* Số cột theo đúng số món: hàng cùng nhóm có khi chỉ còn 2-3 món, để 4 cột
+              thì lưới chừa một ô trống bên phải. Class phải viết nguyên văn để Tailwind
+              sinh ra, nên dùng bảng tra thay vì nội suy chuỗi. */}
+          <div
+            className={`mt-7 grid items-start gap-4 ${
+              {
+                1: "max-w-xs",
+                2: "grid-cols-2 sm:max-w-xl",
+                3: "grid-cols-2 lg:grid-cols-3",
+              }[related.length] ?? "grid-cols-2 lg:grid-cols-4"
+            }`}
+          >
             {related.map((p) => (
               <ProductCard key={p.id} product={toCard(p)} />
             ))}

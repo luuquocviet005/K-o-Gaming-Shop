@@ -40,7 +40,7 @@ export default function NotFound() {
         <h2 className="font-display text-xl font-extrabold tracking-tight text-fg">
           Món đáng chú ý
         </h2>
-        <div className="mt-6 grid grid-cols-2 gap-4 lg:grid-cols-4">
+        <div className="mt-6 grid grid-cols-2 items-start gap-4 lg:grid-cols-4">
           {hangNoiBat(4).map(toCard).map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}

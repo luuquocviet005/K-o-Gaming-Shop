@@ -130,7 +130,7 @@ export function TrangDaBan({ product }: { product: SoldProduct }) {
           <h2 className="font-display text-2xl font-extrabold tracking-tight text-fg sm:text-3xl">
             Món tương tự đang còn hàng
           </h2>
-          <div className="mt-7 grid grid-cols-2 gap-4 lg:grid-cols-4">
+          <div className="mt-7 grid grid-cols-2 items-start gap-4 lg:grid-cols-4">
             {thayThe.map((p) => (
               <ProductCard key={p.id} product={toCard(p)} />
             ))}

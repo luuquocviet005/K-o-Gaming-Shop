@@ -30,7 +30,7 @@ export function ProductCard({
   const baoHanh = conBaoHanh(product.note);
 
   return (
-    <article className="group relative flex h-full flex-col rounded-xl border-2 border-fg bg-surface shadow-[3px_4px_0_0_var(--border-strong)] transition-transform duration-200 hover:-translate-y-1">
+    <article className="group relative flex flex-col rounded-xl border-2 border-fg bg-surface shadow-[3px_4px_0_0_var(--border-strong)] transition-transform duration-200 hover:-translate-y-1">
       <div className="relative">
         <div className="relative aspect-square overflow-hidden rounded-t-[0.85rem] bg-surface-2 p-5">
           <div className="h-full w-full transition-transform duration-300 ease-out group-hover:scale-[1.04]">
@@ -79,11 +79,12 @@ export function ProductCard({
       </div>
 
       <div className="flex flex-1 flex-col gap-2 px-4 pb-4 pt-7">
-        <p className="font-mono text-xs font-semibold uppercase tracking-wider text-fg-subtle">
-          {product.hang}
-        </p>
-
+        {/* Hãng nằm TRONG h3 (một dòng nhỏ phía trên tên) để tiêu đề đứng đầu khối
+            nội dung của nó, không bị đo là "dính vào khối phía trên". */}
         <h3 className="text-base font-semibold leading-snug text-fg">
+          <span className="mb-1 block font-mono text-xs font-semibold uppercase tracking-wider text-fg-subtle">
+            {product.hang}
+          </span>
           <Link
             href={`/san-pham/${product.slug}/`}
             className="line-clamp-2x after:absolute after:inset-0 after:rounded-2xl after:content-['']"
