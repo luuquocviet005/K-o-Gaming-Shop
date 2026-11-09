@@ -19,7 +19,7 @@ const banGoc: { cls: string; goc: string }[] = [
  */
 export function BanXap({ items }: { items: Product[] }) {
   const [xauChong, setXauChong] = useState(false); // true khi đang là xấp chồng (< sm)
-  const [lech, setLech] = useState(0); // thẻ i có thứ tự chồng (i + lech) % n
+  const [lech, setLech] = useState(0); // thẻ i có thứ tự chồng (i - lech) mod n
   const [rut, setRut] = useState(-1); // thẻ đang trượt ra
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export function BanXap({ items }: { items: Product[] }) {
     let l = 0;
     const timers: ReturnType<typeof setTimeout>[] = [];
     const t1 = setInterval(() => {
-      setRut(items.findIndex((_, i) => (i + l) % n === 0));
+      setRut(l % n); // thẻ trên cùng hiện giờ
       timers.push(
         setTimeout(() => setLech(++l), 350), // đổi tầng lúc thẻ trượt ra xa nhất
         setTimeout(() => setRut(-1), 700),
@@ -52,7 +52,7 @@ export function BanXap({ items }: { items: Product[] }) {
       {items.map((p, i) => {
         const { cls, goc } = banGoc[i];
         // thứ tự chồng: 0 = trên cùng
-        const hang = (i + lech) % items.length;
+        const hang = (((i - lech) % items.length) + items.length) % items.length;
         return (
           <Link
             key={p.id}
