@@ -200,7 +200,7 @@ function KhoiMua({ product, soDaBan }: { product: MonDangXem; soDaBan: number })
               loai={product.loai?.id}
               quantity={qty}
               productName={product.loai ? `${product.ten} (${product.loai.ten})` : product.ten}
-              className="flex-1 sm:flex-none"
+              className="w-full sm:w-auto"
             />
             {/* Đơn nào cũng chốt qua tin nhắn, nên nút phụ đi thẳng vào Messenger thay vì qua giỏ */}
             <a
@@ -208,7 +208,7 @@ function KhoiMua({ product, soDaBan }: { product: MonDangXem; soDaBan: number })
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => chep("don")}
-              className="inline-flex h-14 flex-1 items-center justify-center gap-2.5 rounded-md border-2 border-fg bg-surface px-8 text-base font-semibold text-fg transition-colors hover:bg-primary-soft sm:flex-none"
+              className="inline-flex h-14 w-full items-center justify-center gap-2.5 rounded-md border-2 border-fg bg-surface px-8 text-base font-semibold text-fg transition-colors hover:bg-primary-soft sm:w-auto"
             >
               <FacebookIcon width={19} height={19} />
               Nhắn chốt món này
