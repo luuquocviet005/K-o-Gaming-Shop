@@ -218,6 +218,7 @@ export function Header() {
 
             <Link
               href="/gio-hang/"
+              data-gio-hang
               className="group relative inline-flex h-11 cursor-pointer items-center gap-2.5 rounded-full bg-primary pl-4 pr-4 text-on-primary transition-colors duration-200 hover:bg-primary-hover sm:pr-5"
             >
               <span className="relative">

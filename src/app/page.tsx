@@ -8,12 +8,10 @@ import {
   products,
   tatCaDiaDiem,
   toCard,
-  type Product,
 } from "@/lib/products";
-import { formatGia } from "@/lib/format";
 import { site } from "@/lib/site";
 import { ProductCard } from "@/components/product-card";
-import { ProductMedia } from "@/components/product-art";
+import { BanXap } from "@/components/ban-xap";
 import {
   ArrowRightIcon,
   CategoryIcon,
@@ -37,13 +35,6 @@ const mauHu = [
   "bg-vi-caramel-nen text-vi-caramel-chu",
   "bg-vi-nho-nen text-vi-nho-chu",
   "bg-vi-dau-nen text-vi-dau-chu",
-];
-
-/** Vị trí ba món trên "bàn". Điện thoại: chồng thành xấp polaroid; từ sm: xếp lệch ra bàn. */
-const banGoc: { cls: string; goc: string }[] = [
-  { cls: "left-[25%] top-[9%] w-[50%] z-20 sm:left-[14%] sm:top-[5%] sm:w-[42%] sm:z-10", goc: "-5deg" },
-  { cls: "right-[7%] top-[2%] w-[42%] z-10 sm:right-[4%] sm:top-0 sm:w-[34%] sm:z-0", goc: "8deg" },
-  { cls: "left-[6%] top-[5%] w-[42%] z-0 sm:left-auto sm:top-auto sm:right-[5%] sm:bottom-0 sm:w-[38%] sm:z-20", goc: "-11deg" },
 ];
 
 export default function HomePage() {
@@ -118,9 +109,7 @@ export default function HomePage() {
               aria-hidden
               className="absolute inset-x-[4%] inset-y-[6%] rounded-[3rem] bg-surface-3 opacity-70"
             />
-            {ban.map((p, i) => (
-              <TheBan key={p.id} p={p} {...banGoc[i]} tre={i * 120} priority={i === 0} />
-            ))}
+            <BanXap items={ban} />
             {/* eslint-disable-next-line @next/next/no-img-element -- static export */}
             <img
               src="/mascot.png"
@@ -329,44 +318,6 @@ export default function HomePage() {
         </div>
       </section>
     </>
-  );
-}
-
-/** Một món xếp nghiêng trên "bàn": ảnh, tên, tem giá. Cả thẻ là link. */
-function TheBan({
-  p,
-  cls,
-  goc,
-  tre,
-  priority,
-}: {
-  p: Product;
-  cls: string;
-  goc: string;
-  tre: number;
-  priority: boolean;
-}) {
-  return (
-    <Link
-      href={`/san-pham/${p.slug}/`}
-      className={`animate-rise group absolute block ${cls}`}
-      style={{ animationDelay: `${tre}ms` }}
-    >
-      <span
-        className="tem-dan block overflow-hidden rounded-2xl border-2 border-fg bg-surface shadow-[5px_6px_0_0_var(--border-strong)] transition-transform duration-200 group-hover:!rotate-0"
-        style={{ "--goc": goc } as CSSProperties}
-      >
-        <span className="block aspect-square p-3 sm:p-4">
-          <ProductMedia product={p} priority={priority} sizes="260px" nho />
-        </span>
-        <span className="flex flex-col items-start gap-1 border-t-2 border-dashed border-border-strong px-3 py-2 sm:flex-row sm:items-center sm:justify-between sm:gap-2">
-          <span className="line-clamp-1 max-w-full text-xs font-bold text-fg sm:text-sm">{p.ten}</span>
-          <span className="shrink-0 rounded-md bg-primary px-2 py-0.5 font-mono text-xs font-bold text-on-primary sm:text-sm">
-            {formatGia(p)}
-          </span>
-        </span>
-      </span>
-    </Link>
   );
 }
 

@@ -44,7 +44,7 @@ export function ConditionBadge({
   // Dấu tình trạng: khung vuông, chữ đơn cách, như con dấu đóng lên phiếu
   return (
     <span
-      className={`inline-flex items-center rounded-[3px] border border-current/40 font-mono font-semibold leading-tight ${bangVi[vi]} ${co}`}
+      className={`dap-dau inline-flex items-center rounded-[3px] border border-current/40 font-mono font-semibold leading-tight ${bangVi[vi]} ${co}`}
     >
       {tinhTrang}
     </span>
