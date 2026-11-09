@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 30
+      "soLuong": 29
     },
     {
       "slug": "ban-phim",
@@ -627,26 +627,6 @@
       "mau": "#7c3aed"
     },
     {
-      "id": "logitech-g-pro-x2-superstrike",
-      "slug": "logitech-g-pro-x2-superstrike",
-      "ten": "G Pro X2 Superstrike",
-      "hang": "Logitech",
-      "danhMuc": "chuot",
-      "gia": 2500000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "note": "bh 27/6/2028",
-      "anh": "/products/logitech-g-pro-x2-superstrike/01.webp?v=e2a95a33",
-      "anhs": [
-        "/products/logitech-g-pro-x2-superstrike/01.webp?v=e2a95a33",
-        "/products/logitech-g-pro-x2-superstrike/02.webp?v=94d34677",
-        "/products/logitech-g-pro-x2-superstrike/03.webp?v=f34a8980"
-      ],
-      "mau": "#7c3aed"
-    },
-    {
       "id": "logitech-superlight-2",
       "slug": "logitech-superlight-2",
       "ten": "Superlight 2",
@@ -767,8 +747,8 @@
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 2,
-      "note": "bh 26/5/2028\nbh 1/7/2028",
+      "soLuong": 1,
+      "note": "bh 1/7/2028",
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -777,8 +757,8 @@
           "gia": 2500000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 2,
-          "note": "bh 26/5/2028\nbh 1/7/2028",
+          "soLuong": 1,
+          "note": "bh 1/7/2028",
           "anh": "/products/razer-viper-v4-pro/trang/01.webp?v=c3ca6bdb",
           "anhs": [
             "/products/razer-viper-v4-pro/trang/01.webp?v=c3ca6bdb",
@@ -1355,6 +1335,25 @@
       "mau": "#4338ca"
     },
     {
+      "id": "logitech-g515-rapid-tkl",
+      "slug": "logitech-g515-rapid-tkl",
+      "ten": "G515 Rapid TKL",
+      "hang": "Logitech",
+      "danhMuc": "ban-phim",
+      "gia": 1500000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/logitech-g515-rapid-tkl/01.webp?v=5e47971e",
+      "anhs": [
+        "/products/logitech-g515-rapid-tkl/01.webp?v=5e47971e",
+        "/products/logitech-g515-rapid-tkl/02.webp?v=3acce21a",
+        "/products/logitech-g515-rapid-tkl/03.webp?v=5caa9475"
+      ],
+      "mau": "#7c3aed"
+    },
+    {
       "id": "nexus-nexus61s",
       "slug": "nexus-nexus61s",
       "ten": "Nexus61s",
@@ -1472,25 +1471,6 @@
         "/products/wooting-80he-ghost/04.webp?v=0d19744c"
       ],
       "mau": "#be123c"
-    },
-    {
-      "id": "logitech-g515-rapid-tkl",
-      "slug": "logitech-g515-rapid-tkl",
-      "ten": "G515 Rapid TKL",
-      "hang": "Logitech",
-      "danhMuc": "ban-phim",
-      "gia": 1500000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/logitech-g515-rapid-tkl/01.webp?v=5e47971e",
-      "anhs": [
-        "/products/logitech-g515-rapid-tkl/01.webp?v=5e47971e",
-        "/products/logitech-g515-rapid-tkl/02.webp?v=3acce21a",
-        "/products/logitech-g515-rapid-tkl/03.webp?v=5caa9475"
-      ],
-      "mau": "#7c3aed"
     },
     {
       "id": "akko-s9-ultra",
