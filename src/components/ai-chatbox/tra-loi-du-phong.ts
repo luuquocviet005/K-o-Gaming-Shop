@@ -31,8 +31,8 @@ export function traLoiChuyenKhoan(userText: string): { text: string; qrUrl: stri
   const { ma, soTaiKhoan, chuTaiKhoan } = site.nganHang;
   const stk = `${ma} – ${soTaiKhoan} – ${chuTaiKhoan}`;
   const text = laCoc
-    ? `Dạ STK nhận cọc của shop: ${stk}. Bạn cọc ${formatVND(site.shipping.cocCod)} theo mã QR bên dưới nha, tiền cọc trừ thẳng vào tiền thu hộ COD. Chuyển xong bạn nhắn Messenger hoặc Zalo (nút ở đầu khung chat) gửi ảnh chuyển khoản + Họ tên, SĐT, địa chỉ để shop lên đơn ạ!`
-    : `Dạ STK của shop: ${stk}. Bạn quét mã QR bên dưới rồi nhập số tiền đơn hàng nha (chuyển khoản đủ đơn từ ${formatVND(site.shipping.freeshipChuyenKhoanTu)} được freeship). Chuyển xong bạn nhắn Messenger hoặc Zalo (nút ở đầu khung chat) gửi ảnh chuyển khoản + Họ tên, SĐT, địa chỉ để shop lên đơn ạ!`;
+    ? `Dạ STK nhận cọc của shop: ${stk}. Bạn cọc ${formatVND(site.shipping.cocCod)} theo mã QR bên dưới nha, tiền cọc trừ thẳng vào tiền thu hộ COD. Chuyển xong bạn nhắn Messenger hoặc Zalo (nút phía trên khung chat) gửi ảnh chuyển khoản + Họ tên, SĐT, địa chỉ để shop lên đơn ạ!`
+    : `Dạ STK của shop: ${stk}. Bạn quét mã QR bên dưới rồi nhập số tiền đơn hàng nha (chuyển khoản đủ đơn từ ${formatVND(site.shipping.freeshipChuyenKhoanTu)} được freeship). Chuyển xong bạn nhắn Messenger hoặc Zalo (nút phía trên khung chat) gửi ảnh chuyển khoản + Họ tên, SĐT, địa chỉ để shop lên đơn ạ!`;
   return {
     text,
     qrUrl: qrChuyenKhoan(laCoc ? site.shipping.cocCod : null),
@@ -69,13 +69,13 @@ export function buildInstantLocalReply(
   if (curProd && /món này|con này|còn không|còn hàng|giá|chốt|mua/i.test(q)) {
     const giaText = formatGia(curProd);
     if (curProd.soLuong <= 0) {
-      return `Dạ mẫu ${curProd.hang} ${curProd.ten} hiện vừa hết hàng rồi ạ. Bạn nhắn Messenger hoặc Zalo cho tụi mình (nút ở đầu khung chat), khi nào có kèo tương tự về shop báo bạn đầu tiên nha!`;
+      return `Dạ mẫu ${curProd.hang} ${curProd.ten} hiện vừa hết hàng rồi ạ. Bạn nhắn Messenger hoặc Zalo cho tụi mình (nút phía trên khung chat), khi nào có kèo tương tự về shop báo bạn đầu tiên nha!`;
     }
     return `Dạ mẫu ${curProd.hang} ${curProd.ten} (${curProd.tinhTrang}) đang sẵn hàng tại Đà Nẵng, giá ${giaText}${curProd.note ? ` — ${curProd.note}` : ""}. Bạn muốn qua shop test trực tiếp hay chốt Ship COD / Bank full ạ?`;
   }
 
   if (curSold && /món này|con này|còn không/i.test(q)) {
-    return `Dạ mẫu ${curSold.hang} ${curSold.ten} này shop vừa bán mất rồi ạ. Bạn nhắn Messenger hoặc Zalo cho tụi mình (nút ở đầu khung chat), khi nào có kèo lướt tương tự về mình nhắn bạn ngay nha!`;
+    return `Dạ mẫu ${curSold.hang} ${curSold.ten} này shop vừa bán mất rồi ạ. Bạn nhắn Messenger hoặc Zalo cho tụi mình (nút phía trên khung chat), khi nào có kèo lướt tương tự về mình nhắn bạn ngay nha!`;
   }
 
   // 4. Phân loại đúng Danh mục khách đang hỏi (Chuột vs Bàn phím vs Tai nghe)
@@ -110,5 +110,5 @@ export function buildInstantLocalReply(
     return `Dạ mình thấy trong giỏ của bạn đang có: ${cartSummary} (Tổng: ${formatVND(cartTotal)}). Bạn muốn chốt đơn này theo hình thức Ship COD hay Bank full ạ?`;
   }
 
-  return `Dạ trợ lý đang bận chút nên chưa trả lời kỹ được câu này ạ. Bạn nhắn Messenger hoặc Zalo (nút ở đầu khung chat) hay gọi ${site.contact.phone} để chủ shop trả lời ngay nha!`;
+  return `Dạ trợ lý đang bận chút nên chưa trả lời kỹ được câu này ạ. Bạn nhắn Messenger hoặc Zalo (nút phía trên khung chat) hay gọi ${site.contact.phone} để chủ shop trả lời ngay nha!`;
 }

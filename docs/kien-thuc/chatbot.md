@@ -20,6 +20,14 @@ Hai nửa ở hai repo:
   dự phòng). Bot Fanpage/Telegram bên ai-marketing-town đọc lời chào từ tab
   Kịch bản trên Google Sheet, đổi tên ở đó là việc riêng.
 
+## Nút liên hệ trên máy tính
+- Hai ô "Nhắn Zalo" và "Nhắn Messenger" (`LienHeMayTinh` trong `nut-noi.tsx`) luôn hiện
+  riêng ở máy tính (`lg`), nằm TRÊN nút chat. Chúng là phần tử đầu của cột trong
+  `index.tsx` nên khi khung chat mở ra chúng tự bị đẩy lên. Đừng bọc chúng trong
+  nhánh `open ? ... : ...`.
+- Máy tính ẩn hai nút Messenger/Zalo nhỏ ở đầu khung chat (`lg:hidden`) để khỏi trùng.
+  Di động giữ nguyên: menu bung từ nút tròn, đầu khung chat vẫn có hai nút đó.
+
 ## Bẫy đã gặp
 - Trạng thái chat phải ở `useTroChuyen` (gọi từ `index.tsx`), không trong
   `khung-chat.tsx`: khung chat bị gỡ khỏi trang mỗi lần đóng.
