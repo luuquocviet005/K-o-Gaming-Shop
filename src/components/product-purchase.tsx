@@ -57,7 +57,7 @@ function KhoiMua({ product, soDaBan }: { product: MonDangXem; soDaBan: number })
   return (
     <div className="mt-6">
       <div className="flex flex-wrap items-baseline gap-3">
-        <span className="font-display text-4xl font-extrabold tracking-tight text-fg">
+        <span className="font-mono text-4xl font-semibold tracking-tight text-fg">
           {formatGia(product)}
         </span>
         {product.donViGia && (
@@ -69,7 +69,7 @@ function KhoiMua({ product, soDaBan }: { product: MonDangXem; soDaBan: number })
 
       {/* Sheet ghi khoảng giá thì nói thẳng là giá còn tuỳ, đừng để khách đoán */}
       {product.ghiChuGia && (
-        <p className="mt-3 flex gap-2.5 rounded-2xl bg-surface-2 px-4 py-3 text-sm text-fg-muted">
+        <p className="mt-3 flex gap-2.5 rounded-lg bg-surface-2 px-4 py-3 text-sm text-fg-muted">
           <InfoIcon width={18} height={18} className="mt-px shrink-0 text-candy-ink" />
           <span>
             Giá ghi trong bảng hàng là{" "}
@@ -81,11 +81,11 @@ function KhoiMua({ product, soDaBan }: { product: MonDangXem; soDaBan: number })
 
       {/* Ghi chú tình trạng — đặt ngay dưới giá vì đây là thứ quyết định mua hay không */}
       {product.note && (
-        <div className="mt-4 rounded-2xl border border-candy/30 bg-candy-soft px-4 py-3.5">
+        <div className="mt-4 rounded-lg border border-candy/30 bg-candy-soft px-4 py-3.5">
           <p className="text-xs font-bold uppercase tracking-wider text-candy-ink">
             Tình trạng thực tế
           </p>
-          <p className="mt-1.5 whitespace-pre-line text-[0.95rem] leading-relaxed text-fg">
+          <p className="mt-1.5 whitespace-pre-line text-base leading-relaxed text-fg">
             {product.note}
           </p>
         </div>
@@ -99,13 +99,13 @@ function KhoiMua({ product, soDaBan }: { product: MonDangXem; soDaBan: number })
             <p id="nhan-so-luong" className="font-display text-sm font-bold text-fg">
               Số lượng
             </p>
-            <div className="mt-3 inline-flex items-center gap-1 rounded-full border border-border bg-surface p-1">
+            <div className="mt-3 inline-flex items-center gap-1 rounded-md border-2 border-fg bg-surface p-1">
               <button
                 type="button"
                 onClick={() => setQty((q) => Math.max(1, q - 1))}
                 disabled={qty <= 1}
                 aria-label="Giảm số lượng"
-                className="grid size-11 cursor-pointer place-items-center rounded-full text-fg transition-colors hover:bg-surface-2 disabled:cursor-not-allowed disabled:opacity-35"
+                className="grid size-11 cursor-pointer place-items-center rounded-md text-fg transition-colors hover:bg-surface-2 disabled:cursor-not-allowed disabled:opacity-35"
               >
                 <MinusIcon width={18} height={18} />
               </button>
@@ -120,7 +120,7 @@ function KhoiMua({ product, soDaBan }: { product: MonDangXem; soDaBan: number })
                 onClick={() => setQty((q) => Math.min(product.soLuong, q + 1))}
                 disabled={qty >= product.soLuong}
                 aria-label="Tăng số lượng"
-                className="grid size-11 cursor-pointer place-items-center rounded-full text-fg transition-colors hover:bg-surface-2 disabled:cursor-not-allowed disabled:opacity-35"
+                className="grid size-11 cursor-pointer place-items-center rounded-md text-fg transition-colors hover:bg-surface-2 disabled:cursor-not-allowed disabled:opacity-35"
               >
                 <PlusIcon width={18} height={18} />
               </button>
@@ -151,7 +151,7 @@ function KhoiMua({ product, soDaBan }: { product: MonDangXem; soDaBan: number })
 
       <div className="mt-7 flex flex-wrap gap-3">
         {hetHang ? (
-          <p className="rounded-2xl bg-surface-2 px-6 py-4 text-sm text-fg-muted">
+          <p className="rounded-lg bg-surface-2 px-6 py-4 text-sm text-fg-muted">
             {product.loai ? `Bản ${product.loai.ten} đã bán hết.` : "Món này đã bán."} Nhắn{" "}
             <a
               href={site.social.messenger}
@@ -178,7 +178,7 @@ function KhoiMua({ product, soDaBan }: { product: MonDangXem; soDaBan: number })
               href={site.social.messenger}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-14 items-center gap-2.5 rounded-full bg-primary px-8 text-base font-semibold text-on-primary transition-all duration-200 hover:bg-primary-hover active:scale-[0.97]"
+              className="inline-flex h-14 items-center gap-2.5 rounded-md bg-primary px-8 text-base font-semibold text-on-primary nut-nhan hover:bg-primary-hover"
             >
               <FacebookIcon width={19} height={19} />
               Nhắn hỏi giá
@@ -187,7 +187,7 @@ function KhoiMua({ product, soDaBan }: { product: MonDangXem; soDaBan: number })
               href={site.social.zalo}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex h-14 items-center gap-2.5 rounded-full border border-border-strong bg-surface px-7 text-base font-semibold text-fg transition-all duration-200 hover:border-primary hover:text-primary-ink active:scale-[0.97]"
+              className="inline-flex h-14 items-center gap-2.5 rounded-md border-2 border-fg bg-surface px-7 text-base font-semibold text-fg transition-colors hover:bg-primary-soft"
             >
               <ZaloIcon width={20} height={20} />
               Hỏi qua Zalo
@@ -208,7 +208,7 @@ function KhoiMua({ product, soDaBan }: { product: MonDangXem; soDaBan: number })
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => chep("don")}
-              className="inline-flex h-14 flex-1 items-center justify-center gap-2.5 rounded-full border border-border-strong bg-surface px-8 text-base font-semibold text-fg transition-all duration-200 hover:border-primary hover:text-primary-ink active:scale-[0.97] sm:flex-none"
+              className="inline-flex h-14 flex-1 items-center justify-center gap-2.5 rounded-md border-2 border-fg bg-surface px-8 text-base font-semibold text-fg transition-colors hover:bg-primary-soft sm:flex-none"
             >
               <FacebookIcon width={19} height={19} />
               Nhắn chốt món này

@@ -152,7 +152,7 @@ export default function PolicyPage() {
               <li key={s.id}>
                 <a
                   href={`#${s.id}`}
-                  className="inline-flex min-h-11 items-center rounded-2xl px-4 text-sm font-semibold text-fg-muted transition-colors hover:bg-surface-2 hover:text-primary-ink lg:w-full"
+                  className="inline-flex min-h-11 items-center rounded-lg border-2 border-fg bg-surface px-4 py-2 text-sm leading-snug font-semibold text-fg transition-colors hover:bg-primary-soft lg:w-full"
                 >
                   {s.title}
                 </a>
@@ -161,15 +161,20 @@ export default function PolicyPage() {
           </ul>
         </nav>
 
-        <div className="space-y-4">
-          {sections.map((s) => (
+        <div className="space-y-6">
+          {sections.map((s, i) => (
             <section
               key={s.id}
               id={s.id}
-              className="scroll-mt-28 rounded-[1.75rem] border border-border bg-surface p-7 sm:p-9"
+              className="phieu scroll-mt-28 overflow-hidden"
             >
-              <h2 className="font-display text-xl font-extrabold text-fg">{s.title}</h2>
-              <div className="mt-4 space-y-3.5">
+              <div className="flex items-center gap-3 border-b-2 border-dashed border-border-strong bg-surface-2 px-6 py-3 sm:px-8">
+                <span className="shrink-0 whitespace-nowrap font-mono text-xs font-bold uppercase tracking-widest text-primary-ink">
+                  Mục {String(i + 1).padStart(2, "0")}
+                </span>
+                <h2 className="font-display text-xl font-extrabold text-fg">{s.title}</h2>
+              </div>
+              <div className="max-w-[58ch] space-y-3.5 p-6 sm:p-8">
                 {s.body.map((p) => (
                   <p key={p} className="text-[0.95rem] leading-[1.75] text-fg-muted">
                     <DamPhanNhanManh text={p} />

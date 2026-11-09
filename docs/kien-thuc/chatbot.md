@@ -25,6 +25,8 @@ Hai nửa ở hai repo:
   `khung-chat.tsx`: khung chat bị gỡ khỏi trang mỗi lần đóng.
 - Câu trả lời dự phòng KHÔNG được hứa "đã ghi nhận", "để lại SĐT" — lúc đó
   không có gì gửi về shop. Chỉ khách sang Messenger/Zalo/điện thoại.
+- Cỡ chữ trong khung chat không xuống dưới 12px (DESIGN.md: chữ nhỏ nhất 12px).
+  Chỗ nào còn `text-[0.7rem]` (11.2px) thì đổi sang `text-xs`; hiện không còn chỗ nào.
 - Tab ẩn danh chặn localStorage — mã phiên phải có đường dự phòng trong bộ nhớ.
 - Mã QR KHÔNG điền nội dung chuyển khoản (chủ shop không muốn sao kê ghi chữ
   bán hàng). Cọc COD điền số tiền, bank full để khách tự nhập.

@@ -89,11 +89,11 @@ export default function ContactPage() {
           {channels.map(({ Icon, label, value, href, note }) => {
             const content = (
               <>
-                <span className="grid size-11 shrink-0 place-items-center rounded-2xl bg-primary-soft text-primary-ink">
+                <span className="grid size-11 shrink-0 place-items-center rounded-lg border-2 border-fg bg-primary-soft text-primary-ink">
                   <Icon width={20} height={20} />
                 </span>
                 <span className="min-w-0">
-                  <span className="block text-xs font-semibold uppercase tracking-wider text-fg-subtle">
+                  <span className="block font-mono text-xs font-semibold uppercase tracking-wider text-fg-subtle">
                     {label}
                   </span>
                   <span className="mt-1 block font-semibold text-fg">{value}</span>
@@ -110,12 +110,12 @@ export default function ContactPage() {
                     {...(href.startsWith("http")
                       ? { target: "_blank", rel: "noopener noreferrer" }
                       : {})}
-                    className="flex h-full items-start gap-4 rounded-[1.5rem] border border-border bg-surface p-5 transition-all duration-200 hover:-translate-y-0.5 hover:border-primary"
+                    className="flex h-full items-start gap-4 phieu p-5 transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary-soft"
                   >
                     {content}
                   </a>
                 ) : (
-                  <div className="flex h-full items-start gap-4 rounded-[1.5rem] border border-border bg-surface p-5">
+                  <div className="flex h-full items-start gap-4 phieu p-5">
                     {content}
                   </div>
                 )}

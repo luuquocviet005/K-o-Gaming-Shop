@@ -164,7 +164,7 @@ function ThuVienAnhNoi({ product }: { product: Product }) {
   // Chưa có ảnh thật thì vẽ hình minh hoạ như cũ
   if (anhs.length === 0) {
     return (
-      <div className="relative overflow-hidden rounded-[2rem] border border-border bg-surface p-8">
+      <div className="relative overflow-hidden rounded-lg border-2 border-fg bg-surface p-8">
         <div className="mx-auto aspect-square w-full max-w-md">
           <ProductMedia
             product={product}
@@ -197,7 +197,7 @@ function ThuVienAnhNoi({ product }: { product: Product }) {
 
   return (
     <>
-      <div className="relative overflow-hidden rounded-[2rem] border border-border bg-surface">
+      <div className="relative overflow-hidden rounded-lg border-2 border-fg bg-surface">
         <div
           ref={rangRef}
           onScroll={khiCuon}
@@ -238,7 +238,7 @@ function ThuVienAnhNoi({ product }: { product: Product }) {
               type="button"
               onClick={() => truot(-1)}
               aria-label="Xem ảnh trước"
-              className="absolute left-3 top-1/2 hidden size-11 -translate-y-1/2 cursor-pointer place-items-center rounded-full border border-border bg-surface/90 text-fg backdrop-blur transition-colors hover:bg-surface sm:grid"
+              className="absolute left-3 top-1/2 hidden size-11 -translate-y-1/2 cursor-pointer place-items-center rounded-full border-2 border-fg bg-surface/90 text-fg backdrop-blur transition-colors hover:bg-surface sm:grid"
             >
               <ChevronLeftIcon width={20} height={20} />
             </button>
@@ -246,7 +246,7 @@ function ThuVienAnhNoi({ product }: { product: Product }) {
               type="button"
               onClick={() => truot(1)}
               aria-label="Xem ảnh tiếp theo"
-              className="absolute right-3 top-1/2 hidden size-11 -translate-y-1/2 cursor-pointer place-items-center rounded-full border border-border bg-surface/90 text-fg backdrop-blur transition-colors hover:bg-surface sm:grid"
+              className="absolute right-3 top-1/2 hidden size-11 -translate-y-1/2 cursor-pointer place-items-center rounded-full border-2 border-fg bg-surface/90 text-fg backdrop-blur transition-colors hover:bg-surface sm:grid"
             >
               <ChevronRightIcon width={20} height={20} />
             </button>

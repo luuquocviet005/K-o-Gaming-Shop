@@ -267,11 +267,14 @@ export function ProductBrowser({ items }: { items: CardProduct[] }) {
             </button>
           </div>
         ) : (
-          <div className="mt-6 grid grid-cols-2 gap-4 xl:grid-cols-3">
-            {filtered.map((p, i) => (
-              <ProductCard key={p.id} product={p} priority={i < 3} />
-            ))}
-          </div>
+          <>
+            <h2 className="sr-only">Danh sách sản phẩm</h2>
+            <div className="mt-6 grid grid-cols-2 items-start gap-4 xl:grid-cols-3">
+              {filtered.map((p, i) => (
+                <ProductCard key={p.id} product={p} priority={i < 3} />
+              ))}
+            </div>
+          </>
         )}
       </div>
     </div>

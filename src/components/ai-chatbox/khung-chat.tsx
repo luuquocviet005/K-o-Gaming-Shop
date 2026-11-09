@@ -103,7 +103,7 @@ export function KhungChat({
                 Trợ lý Kẹo Gaming
               </p>
             </div>
-            <p className="truncate text-[0.7rem] opacity-90">
+            <p className="truncate text-xs opacity-90">
               Kho hàng trực tiếp · Báo đúng tình trạng
             </p>
           </div>
@@ -187,7 +187,7 @@ export function KhungChat({
                     alt="Mã QR chuyển khoản Kẹo Gaming Gear"
                     className="h-44 w-auto object-contain"
                   />
-                  <span className="block pt-1 text-center text-[0.7rem] font-semibold text-fg-muted group-hover:text-primary">
+                  <span className="block pt-1 text-center text-xs font-semibold text-fg-muted group-hover:text-primary">
                     🔍 Bấm để phóng to
                   </span>
                 </button>

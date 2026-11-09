@@ -79,17 +79,22 @@ export default async function CategoryPage(props: Props) {
         ]}
       />
 
-      <header className="mt-6 flex flex-wrap items-center gap-5">
-        <span className="grid size-16 shrink-0 place-items-center rounded-3xl bg-primary-soft text-primary-ink">
-          <CategoryIcon khoa={category.icon} width={30} height={30} />
-        </span>
-        <div>
+      {/* Icon đứng cùng dòng với tiêu đề, không bọc trong ô vuông riêng: ô icon trên
+          đầu tiêu đề là khuôn thẻ tính năng AI, đọc ra là hàng mẫu chứ không phải shop. */}
+      <header className="mt-6">
+        <div className="flex items-center gap-3">
+          <CategoryIcon
+            khoa={category.icon}
+            width={30}
+            height={30}
+            className="shrink-0 text-primary-ink"
+          />
           <h1 className="font-display text-3xl font-extrabold tracking-tight text-fg sm:text-4xl">
             {category.name}
           </h1>
-          <p className="mt-1.5 max-w-2xl text-fg-muted">{category.blurb}</p>
-          {gioiThieu && <p className="mt-1.5 max-w-2xl text-sm text-fg-muted">{gioiThieu}</p>}
         </div>
+        <p className="mt-2 max-w-[58ch] text-fg-muted">{category.blurb}</p>
+        {gioiThieu && <p className="mt-1.5 max-w-[58ch] text-sm text-fg-muted">{gioiThieu}</p>}
       </header>
 
       <nav aria-label="Đổi danh mục" className="mt-6">
@@ -97,7 +102,7 @@ export default async function CategoryPage(props: Props) {
           <li>
             <Link
               href="/danh-muc/"
-              className="inline-flex h-11 items-center whitespace-nowrap rounded-full border border-border bg-surface px-5 text-sm font-semibold text-fg-muted transition-colors duration-200 hover:border-primary hover:text-primary-ink"
+              className="inline-flex h-11 items-center whitespace-nowrap rounded-lg border-2 border-fg bg-surface px-4 text-sm font-semibold text-fg transition-colors duration-200 hover:bg-primary-soft"
             >
               Tất cả
             </Link>
@@ -109,10 +114,10 @@ export default async function CategoryPage(props: Props) {
                 <Link
                   href={`/danh-muc/${c.slug}/`}
                   aria-current={active ? "page" : undefined}
-                  className={`inline-flex h-11 items-center gap-2 whitespace-nowrap rounded-full px-5 text-sm font-semibold transition-colors duration-200 ${
+                  className={`inline-flex h-11 items-center gap-2 whitespace-nowrap rounded-lg border-2 border-fg px-4 text-sm font-semibold transition-colors duration-200 ${
                     active
                       ? "bg-primary text-on-primary"
-                      : "border border-border bg-surface text-fg-muted hover:border-primary hover:text-primary-ink"
+                      : "bg-surface text-fg hover:bg-primary-soft"
                   }`}
                 >
                   <CategoryIcon khoa={c.icon} width={17} height={17} />
@@ -132,15 +137,23 @@ export default async function CategoryPage(props: Props) {
       <ProductBrowser items={items} />
 
       {tuVan && (
-        <section className="mt-12 max-w-3xl">
+        // tieuDe trong dữ liệu dính đoạn mở đầu sau dấu xuống dòng: dòng đầu là tiêu đề,
+        // phần sau là đoạn văn. Phiếu trải hết bề ngang (tiêu đề trái, chữ phải) để
+        // không chừa một ô trống bên cạnh như lưới thiếu thẻ.
+        <section className="phieu mt-12 grid gap-x-10 gap-y-3 p-6 sm:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,2fr)]">
           <h2 className="font-display text-2xl font-extrabold tracking-tight text-fg">
-            {tuVan.tieuDe}
+            {tuVan.tieuDe.split("\n")[0]}
           </h2>
-          {tuVan.doan.map((d) => (
-            <p key={d} className="mt-3 leading-relaxed text-fg-muted">
-              {d}
-            </p>
-          ))}
+          <div>
+            {[...tuVan.tieuDe.split("\n").slice(1), ...tuVan.doan].map((d, i) => (
+              <p
+                key={d}
+                className={`max-w-[68ch] leading-relaxed text-fg-muted ${i ? "mt-3" : ""}`}
+              >
+                {d}
+              </p>
+            ))}
+          </div>
         </section>
       )}
     </div>
