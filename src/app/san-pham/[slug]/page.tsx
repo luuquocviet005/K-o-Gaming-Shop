@@ -283,7 +283,7 @@ export default async function ProductPage(props: Props) {
 
       {/* Bọc cả lưới: ảnh, giá, bảng thông tin cùng đổi theo phân loại đang chọn */}
       <PhanLoaiProvider product={product}>
-      <div className="mt-6 grid gap-10 lg:grid-cols-2 lg:gap-14">
+      <div className="mt-6 grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-14">
         {/* ── Ảnh ── */}
         <div className="lg:sticky lg:top-28 lg:self-start">
           <div className="relative">

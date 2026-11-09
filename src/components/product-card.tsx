@@ -71,7 +71,7 @@ export function ProductCard({
 
         {/* Tem giá: hồng đậm, đè lên mép dưới ảnh */}
         <p
-          className="tem-dan pointer-events-none absolute -bottom-4 right-3 z-10 rounded-lg bg-primary px-3 py-1.5 max-w-[calc(100%-1rem)] text-right font-mono text-sm font-bold leading-tight text-on-primary shadow-md sm:text-lg"
+          className={`tem-dan pointer-events-none absolute -bottom-4 right-3 z-10 rounded-lg bg-primary max-w-[calc(100%-1rem)] text-right font-mono font-bold leading-tight text-on-primary shadow-md ${product.giaToiDa && product.giaToiDa !== product.gia ? "px-2 py-1 text-xs sm:text-base" : "px-3 py-1.5 text-sm sm:text-lg"}`}
           style={{ "--goc": "-3deg" } as React.CSSProperties}
         >
           {formatGia(product)}

@@ -159,7 +159,7 @@ export default function HomePage() {
           />
         </div>
         <ul
-          className="container-page mt-4 flex items-start snap-x snap-mandatory gap-5 overflow-x-auto pb-7 pt-8"
+          className="container-page mt-4 flex items-start no-scrollbar snap-x snap-mandatory gap-5 overflow-x-auto pb-7 pt-8"
           aria-label="Món đáng chú ý, cuộn ngang"
         >
           {noiBat.map((p, i) => (
@@ -260,7 +260,7 @@ export default function HomePage() {
 
       {/* ═══════════════ 7 · CTA ═══════════════ */}
       <section className="container-page my-16 lg:my-24">
-        <div className="grid items-center gap-8 rounded-[2rem] border-2 border-border-strong bg-surface p-8 sm:p-12 lg:grid-cols-[auto_1fr_1fr]">
+        <div className="grid items-center gap-8 rounded-[2rem] border-2 border-fg bg-surface p-8 shadow-[6px_7px_0_0_var(--border-strong)] sm:p-12 lg:grid-cols-[auto_1fr_1fr]">
           {/* eslint-disable-next-line @next/next/no-img-element -- static export */}
           <img
             src="/mascot.png"
@@ -295,14 +295,14 @@ export default function HomePage() {
                 href={site.social.zalo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-14 items-center gap-2.5 rounded-xl border-2 border-border-strong bg-bg px-6 text-base font-semibold text-fg transition-colors hover:border-primary hover:text-primary-ink"
+                className="inline-flex h-14 items-center gap-2.5 rounded-xl border-2 border-fg bg-surface px-6 text-base font-semibold text-fg transition-colors hover:bg-primary-soft"
               >
                 <ZaloIcon width={20} height={20} />
                 Zalo
               </a>
               <Link
                 href="/lien-he/"
-                className="inline-flex h-14 items-center rounded-xl border-2 border-border-strong bg-bg px-6 text-base font-semibold text-fg transition-colors hover:border-primary hover:text-primary-ink"
+                className="inline-flex h-14 items-center rounded-xl border-2 border-fg bg-surface px-6 text-base font-semibold text-fg transition-colors hover:bg-primary-soft"
               >
                 Cách liên hệ khác
               </Link>
@@ -359,8 +359,8 @@ function TheBan({
         <span className="block aspect-square p-3 sm:p-4">
           <ProductMedia product={p} priority={priority} sizes="260px" nho />
         </span>
-        <span className="flex items-center justify-between gap-2 border-t-2 border-dashed border-border-strong px-3 py-2">
-          <span className="line-clamp-1 text-xs font-bold text-fg sm:text-sm">{p.ten}</span>
+        <span className="flex flex-col items-start gap-1 border-t-2 border-dashed border-border-strong px-3 py-2 sm:flex-row sm:items-center sm:justify-between sm:gap-2">
+          <span className="line-clamp-1 max-w-full text-xs font-bold text-fg sm:text-sm">{p.ten}</span>
           <span className="shrink-0 rounded-md bg-primary px-2 py-0.5 font-mono text-xs font-bold text-on-primary sm:text-sm">
             {formatGia(p)}
           </span>

@@ -116,7 +116,7 @@ export function ProductBrowser({ items }: { items: CardProduct[] }) {
           type="button"
           onClick={() => setFiltersOpen((v) => !v)}
           aria-expanded={filtersOpen}
-          className="flex h-12 w-full cursor-pointer items-center justify-between gap-2 rounded-2xl border border-border bg-surface px-5 text-sm font-semibold text-fg lg:hidden"
+          className="flex h-12 w-full cursor-pointer items-center justify-between gap-2 rounded-md border-2 border-fg bg-surface px-5 text-sm font-semibold text-fg shadow-[3px_4px_0_0_var(--border-strong)] lg:hidden"
         >
           <span className="inline-flex items-center gap-2">
             <SlidersIcon width={18} height={18} />
@@ -130,7 +130,7 @@ export function ProductBrowser({ items }: { items: CardProduct[] }) {
         </button>
 
         <div
-          className={`${filtersOpen ? "block" : "hidden"} mt-3 space-y-4 rounded-[1.5rem] border border-border bg-surface p-5 lg:mt-0 lg:flex lg:max-h-[calc(100vh-8rem)] lg:flex-col lg:space-y-3 lg:overflow-y-auto`}
+          className={`${filtersOpen ? "block" : "hidden"} mt-3 space-y-4 rounded-xl border-2 border-fg bg-surface p-5 lg:mt-0 lg:flex lg:max-h-[calc(100vh-8rem)] lg:flex-col lg:space-y-3 lg:overflow-y-auto`}
         >
           {activeCount > 0 && (
             <button
@@ -239,7 +239,7 @@ export function ProductBrowser({ items }: { items: CardProduct[] }) {
               id="sap-xep"
               value={sort}
               onChange={(e) => setSort(e.target.value as SortKey)}
-              className="h-11 cursor-pointer rounded-full border border-border bg-surface px-4 pr-8 text-sm font-semibold text-fg focus:border-primary focus:outline-none"
+              className="h-11 cursor-pointer rounded-md border-2 border-fg bg-surface px-4 pr-8 text-sm font-semibold text-fg focus:border-primary focus:outline-none"
             >
               {sortOptions.map((o) => (
                 <option key={o.key} value={o.key}>
@@ -251,7 +251,7 @@ export function ProductBrowser({ items }: { items: CardProduct[] }) {
         </div>
 
         {filtered.length === 0 ? (
-          <div className="mt-6 rounded-[1.5rem] border border-dashed border-border-strong bg-surface p-12 text-center">
+          <div className="mt-6 rounded-xl border-2 border-dashed border-fg bg-surface p-12 text-center">
             <p className="font-display text-lg font-bold text-fg">
               Không có sản phẩm nào khớp bộ lọc
             </p>
