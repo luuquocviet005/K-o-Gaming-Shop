@@ -39,11 +39,11 @@ const mauHu = [
   "bg-vi-dau-nen text-vi-dau-chu",
 ];
 
-/** Vị trí ba món trên "bàn": [left/right, top/bottom, rộng, góc xoay] */
+/** Vị trí ba món trên "bàn". Điện thoại: chồng thành xấp polaroid; từ sm: xếp lệch ra bàn. */
 const banGoc: { cls: string; goc: string }[] = [
-  { cls: "left-[14%] top-[5%] w-[42%] z-10", goc: "-5deg" },
-  { cls: "right-[4%] top-0 w-[34%] z-0", goc: "4deg" },
-  { cls: "right-[5%] bottom-0 w-[38%] z-20", goc: "-2deg" },
+  { cls: "left-[25%] top-[9%] w-[50%] z-20 sm:left-[14%] sm:top-[5%] sm:w-[42%] sm:z-10", goc: "-5deg" },
+  { cls: "right-[7%] top-[2%] w-[42%] z-10 sm:right-[4%] sm:top-0 sm:w-[34%] sm:z-0", goc: "8deg" },
+  { cls: "left-[6%] top-[5%] w-[42%] z-0 sm:left-auto sm:top-auto sm:right-[5%] sm:bottom-0 sm:w-[38%] sm:z-20", goc: "-11deg" },
 ];
 
 export default function HomePage() {
@@ -113,7 +113,7 @@ export default function HomePage() {
           </div>
 
           {/* Mặt bàn: ba món xếp lệch, mascot ngồi góc */}
-          <div className="relative mx-auto h-[27rem] w-full max-w-[34rem] sm:h-[32rem] lg:h-[40rem] lg:max-w-none">
+          <div className="relative mx-auto h-[23rem] w-full max-w-[34rem] sm:h-[32rem] lg:h-[40rem] lg:max-w-none">
             <div
               aria-hidden
               className="absolute inset-x-[4%] inset-y-[6%] rounded-[3rem] bg-surface-3 opacity-70"
@@ -127,7 +127,7 @@ export default function HomePage() {
               alt=""
               width={551}
               height={1200}
-              className="pointer-events-none absolute -bottom-1 left-0 z-30 h-[40%] w-auto drop-shadow-md sm:h-[46%]"
+              className="pointer-events-none absolute -bottom-1 right-[2%] z-30 h-[42%] w-auto drop-shadow-md sm:left-0 sm:right-auto sm:h-[46%]"
             />
           </div>
         </div>
@@ -137,8 +137,8 @@ export default function HomePage() {
       <section className="container-page mt-16 lg:mt-24">
         <SectionHead title="Trong tiệm có gì" subtitle="Bấm vào hũ bạn quan tâm" />
 
-        <ul className="hien-dan mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2">
-          <li className="lg:col-span-2 lg:row-span-2">
+        <ul className="hien-dan mt-8 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:grid-rows-2">
+          <li className="col-span-2 lg:row-span-2">
             <HuKeo danhMuc={dsDanhMuc[0]} mau={mauHu[0]} lon />
           </li>
           {dsDanhMuc.slice(1).map((c, i) => (
@@ -383,8 +383,8 @@ function HuKeo({
   return (
     <Link
       href={`/danh-muc/${danhMuc.slug}/`}
-      className={`nut-hu group relative flex h-full flex-col rounded-[1.75rem] border-2 border-border-strong p-5 ${mau} ${
-        lon ? "min-h-[16rem] justify-end gap-4 lg:p-8" : "items-start gap-3"
+      className={`nut-hu group relative flex h-full flex-col rounded-[1.75rem] border-2 border-border-strong p-4 sm:p-5 ${mau} ${
+        lon ? "min-h-[12rem] justify-end gap-4 sm:min-h-[16rem] lg:p-8" : "items-start gap-3"
       }`}
     >
       <CategoryIcon khoa={danhMuc.icon} width={lon ? 56 : 30} height={lon ? 56 : 30} />
