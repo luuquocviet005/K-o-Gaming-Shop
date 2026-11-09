@@ -49,10 +49,10 @@ export function AddToCartButton({
           type="button"
           onClick={handleClick}
           aria-label={`Thêm ${productName} vào giỏ hàng`}
-          className={`grid size-11 shrink-0 cursor-pointer place-items-center rounded-full transition-all duration-200 active:scale-90 ${
+          className={`grid size-11 shrink-0 cursor-pointer place-items-center rounded-md border-2 border-fg transition-colors duration-200 active:translate-y-px ${
             added
               ? "bg-primary text-on-primary"
-              : "bg-surface-3 text-fg hover:bg-primary hover:text-on-primary"
+              : "bg-surface text-fg hover:bg-primary hover:text-on-primary"
           } ${className}`}
         >
           {added ? <CheckIcon className="animate-pop" /> : <PlusIcon />}
@@ -69,7 +69,7 @@ export function AddToCartButton({
       <button
         type="button"
         onClick={handleClick}
-        className={`inline-flex h-14 cursor-pointer items-center justify-center gap-2.5 rounded-full px-8 text-base font-semibold transition-all duration-200 active:scale-[0.97] ${
+        className={`inline-flex h-14 cursor-pointer items-center justify-center gap-2.5 rounded-md px-8 text-base font-semibold nut-nhan ${
           added
             ? "bg-primary-ink text-on-primary"
             : "bg-primary text-on-primary hover:bg-primary-hover"

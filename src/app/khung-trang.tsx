@@ -1,5 +1,5 @@
 import type { Viewport } from "next";
-import { Baloo_2, Inter } from "next/font/google";
+import { Be_Vietnam_Pro, Bricolage_Grotesque, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
 import { site, ANH_CHIA_SE } from "@/lib/site";
 import { CartProvider } from "@/lib/cart";
@@ -12,22 +12,26 @@ import { themeInitScript } from "@/components/theme-toggle";
 
 // Font được tải về lúc build và self-host -> không gọi ra Google khi người dùng
 // truy cập (nhanh hơn, không lộ IP người dùng cho bên thứ ba).
-const inter = Inter({
+const beVietnam = Be_Vietnam_Pro({
   subsets: ["latin", "vietnamese"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-body",
   display: "swap",
 });
 
-// Font tiêu đề PHẢI có bộ ký tự "vietnamese". Font chỉ có "latin" sẽ khiến
-// mọi chữ có dấu (KẸO, ngọt, như, kẹo) rơi sang font dự phòng của hệ điều
-// hành — chữ có dấu và không dấu trông khác hẳn nhau.
-//
-// Baloo 2 mập và bo tròn, gợi chữ in trên vỏ kẹo — hợp cái tên KẸO hơn font
-// vuông vức, mà vẫn đủ đậm để làm tiêu đề bán hàng.
-const baloo = Baloo_2({
+// Tiêu đề: Bricolage Grotesque, có bộ ký tự vietnamese.
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin", "vietnamese"],
   weight: ["600", "700", "800"],
   variable: "--font-heading",
+  display: "swap",
+});
+
+// Giá, nhãn tình trạng, số liệu trên "phiếu": chữ đơn cách như phiếu kiểm hàng.
+const plexMono = IBM_Plex_Mono({
+  subsets: ["latin", "vietnamese"],
+  weight: ["500", "600"],
+  variable: "--font-mono-phieu",
   display: "swap",
 });
 
@@ -36,8 +40,8 @@ export const viewportChung: Viewport = {
   width: "device-width",
   initialScale: 1,
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#fdf7f9" },
-    { media: "(prefers-color-scheme: dark)", color: "#140a10" },
+    { media: "(prefers-color-scheme: light)", color: "#fde9f1" },
+    { media: "(prefers-color-scheme: dark)", color: "#1c1218" },
   ],
 };
 
@@ -139,7 +143,7 @@ export function KhungTrang({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdWebsite) }}
         />
       </head>
-      <body className={`${inter.variable} ${baloo.variable} antialiased`}>
+      <body className={`${beVietnam.variable} ${bricolage.variable} ${plexMono.variable} antialiased`}>
         <a
           href="#noi-dung"
           className="sr-only-focusable left-4 top-4 z-[100] rounded-full bg-primary px-5 py-3 text-sm font-semibold text-on-primary"

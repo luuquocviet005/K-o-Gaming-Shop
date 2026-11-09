@@ -7,7 +7,9 @@ export default function NotFound() {
   return (
     <div className="container-page py-16 lg:py-24">
       <div className="mx-auto max-w-xl text-center">
-        <p className="font-display text-7xl font-extrabold tracking-tight text-primary-ink sm:text-8xl">
+        {/* eslint-disable-next-line @next/next/no-img-element -- static export */}
+        <img src="/mascot.png" alt="" width={551} height={1200} className="mx-auto mb-4 h-40 w-auto" />
+        <p className="tem-dan mx-auto inline-block rounded-xl border-4 border-primary-ink px-6 py-2 font-mono text-6xl font-extrabold tracking-widest text-primary-ink sm:text-7xl" style={{ "--goc": "-4deg" } as React.CSSProperties}>
           404
         </p>
         <h1 className="mt-4 font-display text-2xl font-extrabold tracking-tight text-fg sm:text-3xl">
@@ -20,14 +22,14 @@ export default function NotFound() {
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link
             href="/"
-            className="inline-flex h-14 items-center gap-2.5 rounded-full bg-primary px-8 text-base font-semibold text-on-primary transition-all duration-200 hover:bg-primary-hover active:scale-[0.97]"
+            className="nut-nhan inline-flex h-14 items-center gap-2.5 rounded-xl bg-primary px-8 text-base font-semibold text-on-primary hover:bg-primary-hover"
           >
             Về trang chủ
             <ArrowRightIcon width={20} height={20} />
           </Link>
           <Link
             href="/danh-muc/"
-            className="inline-flex h-14 items-center rounded-full border border-border-strong bg-surface px-8 text-base font-semibold text-fg transition-all duration-200 hover:border-primary hover:text-primary-ink active:scale-[0.97]"
+            className="inline-flex h-14 items-center rounded-xl border-2 border-fg bg-surface px-8 text-base font-semibold text-fg transition-colors hover:bg-primary-soft"
           >
             Xem tất cả sản phẩm
           </Link>

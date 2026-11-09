@@ -45,11 +45,11 @@ export function TrangDaBan({ product }: { product: SoldProduct }) {
       />
 
       <div className="mt-6 grid gap-10 lg:grid-cols-2 lg:gap-14">
-        <div className="relative overflow-hidden rounded-[2rem] border border-border bg-surface p-8">
+        <div className="relative overflow-hidden rounded-lg border border-border bg-surface p-8">
           <div className="mx-auto aspect-square w-full max-w-md opacity-45 grayscale">
             <ProductMedia product={product} sizes="(min-width: 1024px) 30rem, 90vw" />
           </div>
-          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[-8deg] rounded-2xl border-2 border-fg bg-bg px-6 py-3 font-display text-2xl font-extrabold uppercase tracking-wider text-fg">
+          <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rotate-[-8deg] rounded-lg border-2 border-fg bg-bg px-6 py-3 font-display text-2xl font-extrabold uppercase tracking-wider text-fg">
             Đã bán
           </span>
         </div>
@@ -75,8 +75,8 @@ export function TrangDaBan({ product }: { product: SoldProduct }) {
           </p>
           <p className="mt-1 text-sm text-fg-subtle">Gỡ khỏi bảng hàng ngày {banLuc}</p>
 
-          <div className="mt-7 rounded-2xl border border-border bg-surface-2 p-5">
-            <p className="text-[0.95rem] leading-relaxed text-fg-muted">
+          <div className="mt-7 rounded-lg border border-border bg-surface-2 p-5">
+            <p className="text-base leading-relaxed text-fg-muted">
               Hàng cũ mỗi món chỉ có một chiếc, bán xong là hết. Nhưng tụi mình
               nhập hàng liên tục — nhắn cho tụi mình biết bạn đang tìm{" "}
               <strong className="font-semibold text-fg">{product.ten}</strong>,

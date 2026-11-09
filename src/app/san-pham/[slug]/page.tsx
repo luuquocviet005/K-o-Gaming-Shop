@@ -295,11 +295,11 @@ export default async function ProductPage(props: Props) {
           </div>
 
           <ul className="mt-4 grid gap-2 sm:grid-cols-2">
-            <li className="flex items-center gap-2.5 rounded-2xl border border-border bg-surface p-3.5 text-xs leading-snug text-fg-muted">
+            <li className="flex items-center gap-2.5 rounded-lg border-2 border-fg bg-surface p-3.5 text-xs leading-snug text-fg-muted">
               <MapPinIcon width={19} height={19} className="shrink-0 text-primary" />
               Hàng ở {product.diaDiem}: qua test trực tiếp, ở tỉnh thì tụi mình quay video trước khi gửi
             </li>
-            <li className="flex items-center gap-2.5 rounded-2xl border border-border bg-surface p-3.5 text-xs leading-snug text-fg-muted">
+            <li className="flex items-center gap-2.5 rounded-lg border-2 border-fg bg-surface p-3.5 text-xs leading-snug text-fg-muted">
               <CheckIcon width={19} height={19} className="shrink-0 text-primary" />
               Mô tả sai tình trạng thì tụi mình chịu trách nhiệm
             </li>
@@ -325,7 +325,7 @@ export default async function ProductPage(props: Props) {
 
           <ChiTietMon product={product} tenNhom={category?.name} />
 
-          <p className="mt-6 flex gap-2.5 rounded-2xl bg-surface-2 px-4 py-3.5 text-sm leading-relaxed text-fg-muted">
+          <p className="phieu mt-6 flex gap-2.5 px-4 py-3.5 text-sm leading-relaxed text-fg-muted">
             <InfoIcon width={18} height={18} className="mt-px shrink-0 text-fg-subtle" />
             <span>
               Thông tin lấy từ bảng hàng của shop. Cần biết thêm chi tiết nào — số

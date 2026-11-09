@@ -33,7 +33,7 @@ export default function AllProductsPage() {
           <li>
             <span
               aria-current="page"
-              className="inline-flex h-11 items-center whitespace-nowrap rounded-full bg-primary px-5 text-sm font-semibold text-on-primary"
+              className="inline-flex h-11 items-center whitespace-nowrap rounded-lg border-2 border-fg bg-primary px-4 text-sm font-semibold text-on-primary"
             >
               Tất cả
             </span>
@@ -43,11 +43,11 @@ export default function AllProductsPage() {
               <li key={c.slug}>
                 <Link
                   href={`/danh-muc/${c.slug}/`}
-                  className="inline-flex h-11 items-center gap-2 whitespace-nowrap rounded-full border border-border bg-surface px-5 text-sm font-semibold text-fg-muted transition-colors duration-200 hover:border-primary hover:text-primary-ink"
+                  className="inline-flex h-11 items-center gap-2 whitespace-nowrap rounded-lg border-2 border-fg bg-surface px-4 text-sm font-semibold text-fg transition-colors duration-200 hover:bg-primary-soft"
                 >
                   <CategoryIcon khoa={c.icon} width={17} height={17} />
                   {c.short}
-                  <span className="text-xs text-fg-subtle">{c.soLuong}</span>
+                  <span className="font-mono text-xs text-fg-subtle">{c.soLuong}</span>
                 </Link>
               </li>
             );
@@ -63,10 +63,10 @@ export default function AllProductsPage() {
               <li key={t.slug}>
                 <Link
                   href={`/hang/${t.slug}/`}
-                  className="inline-flex h-11 items-center gap-2 whitespace-nowrap rounded-full border border-border bg-surface px-5 text-sm font-semibold text-fg-muted transition-colors duration-200 hover:border-primary hover:text-primary-ink"
+                  className="inline-flex h-11 items-center gap-2 whitespace-nowrap rounded-lg border-2 border-fg bg-surface px-4 text-sm font-semibold text-fg transition-colors duration-200 hover:bg-primary-soft"
                 >
                   {t.ten}
-                  <span className="text-xs text-fg-subtle">{t.dsMon.length}</span>
+                  <span className="font-mono text-xs text-fg-subtle">{t.dsMon.length}</span>
                 </Link>
               </li>
             ))}

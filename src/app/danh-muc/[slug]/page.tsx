@@ -80,7 +80,7 @@ export default async function CategoryPage(props: Props) {
       />
 
       <header className="mt-6 flex flex-wrap items-center gap-5">
-        <span className="grid size-16 shrink-0 place-items-center rounded-3xl bg-primary-soft text-primary-ink">
+        <span className="phieu grid size-16 shrink-0 place-items-center bg-primary-soft text-primary-ink">
           <CategoryIcon khoa={category.icon} width={30} height={30} />
         </span>
         <div>
@@ -97,7 +97,7 @@ export default async function CategoryPage(props: Props) {
           <li>
             <Link
               href="/danh-muc/"
-              className="inline-flex h-11 items-center whitespace-nowrap rounded-full border border-border bg-surface px-5 text-sm font-semibold text-fg-muted transition-colors duration-200 hover:border-primary hover:text-primary-ink"
+              className="inline-flex h-11 items-center whitespace-nowrap rounded-lg border-2 border-fg bg-surface px-4 text-sm font-semibold text-fg transition-colors duration-200 hover:bg-primary-soft"
             >
               Tất cả
             </Link>
@@ -109,10 +109,10 @@ export default async function CategoryPage(props: Props) {
                 <Link
                   href={`/danh-muc/${c.slug}/`}
                   aria-current={active ? "page" : undefined}
-                  className={`inline-flex h-11 items-center gap-2 whitespace-nowrap rounded-full px-5 text-sm font-semibold transition-colors duration-200 ${
+                  className={`inline-flex h-11 items-center gap-2 whitespace-nowrap rounded-lg border-2 border-fg px-4 text-sm font-semibold transition-colors duration-200 ${
                     active
                       ? "bg-primary text-on-primary"
-                      : "border border-border bg-surface text-fg-muted hover:border-primary hover:text-primary-ink"
+                      : "bg-surface text-fg hover:bg-primary-soft"
                   }`}
                 >
                   <CategoryIcon khoa={c.icon} width={17} height={17} />
@@ -132,7 +132,7 @@ export default async function CategoryPage(props: Props) {
       <ProductBrowser items={items} />
 
       {tuVan && (
-        <section className="mt-12 max-w-3xl">
+        <section className="phieu mt-12 max-w-3xl p-6 sm:p-8">
           <h2 className="font-display text-2xl font-extrabold tracking-tight text-fg">
             {tuVan.tieuDe}
           </h2>

@@ -34,19 +34,19 @@ export function CartView() {
           {[0, 1, 2].map((i) => (
             <div
               key={i}
-              className="h-32 animate-pulse rounded-[1.5rem] border border-border bg-surface-2"
+              className="h-32 animate-pulse rounded-xl border-2 border-border-strong bg-surface-2"
             />
           ))}
         </div>
-        <div className="h-80 animate-pulse rounded-[1.5rem] border border-border bg-surface-2" />
+        <div className="h-80 animate-pulse rounded-xl border-2 border-border-strong bg-surface-2" />
       </div>
     );
   }
 
   if (lines.length === 0) {
     return (
-      <div className="mt-10 rounded-[2rem] border border-dashed border-border-strong bg-surface p-12 text-center sm:p-16">
-        <span className="mx-auto grid size-20 place-items-center rounded-full bg-primary-soft text-primary-ink">
+      <div className="mt-10 phieu border-dashed p-12 text-center sm:p-16">
+        <span className="mx-auto grid size-20 place-items-center rounded-xl border-2 border-fg bg-primary-soft text-primary-ink">
           <CartIcon width={34} height={34} />
         </span>
         <h2 className="mt-6 font-display text-2xl font-extrabold text-fg">
@@ -58,7 +58,7 @@ export function CartView() {
         </p>
         <Link
           href="/danh-muc/"
-          className="mt-8 inline-flex h-14 items-center gap-2.5 rounded-full bg-primary px-8 text-base font-semibold text-on-primary transition-all duration-200 hover:bg-primary-hover active:scale-[0.97]"
+          className="nut-nhan mt-8 inline-flex h-14 items-center gap-2.5 rounded-xl bg-primary px-8 text-base font-semibold text-on-primary hover:bg-primary-hover"
         >
           Xem hàng đang có
           <ArrowRightIcon width={20} height={20} />
@@ -115,11 +115,11 @@ export function CartView() {
           {lines.map((l) => (
             <li
               key={l.key}
-              className="flex gap-4 rounded-[1.5rem] border border-border bg-surface p-4"
+              className="phieu flex gap-4 p-4"
             >
               <Link
                 href={`/san-pham/${l.product.slug}/${l.loai ? `?loai=${l.loai}` : ""}`}
-                className="grid size-24 shrink-0 place-items-center overflow-hidden rounded-2xl bg-surface-2 p-2 transition-transform duration-300 hover:scale-105 sm:size-28"
+                className="grid size-24 shrink-0 place-items-center overflow-hidden rounded-lg border-2 border-fg bg-surface-2 p-2 transition-transform duration-300 hover:scale-105 sm:size-28"
                 aria-label={`Xem ${l.product.ten}`}
               >
                 <ProductMedia product={l.product} sizes="112px" nho />
@@ -128,7 +128,7 @@ export function CartView() {
               <div className="flex min-w-0 flex-1 flex-col">
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <p className="text-[0.7rem] font-semibold uppercase tracking-wider text-fg-subtle">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-fg-subtle">
                       {l.product.hang}
                     </p>
                     <h2 className="mt-0.5 text-[0.95rem] font-semibold leading-snug text-fg">
@@ -165,12 +165,12 @@ export function CartView() {
                 </div>
 
                 <div className="mt-auto flex flex-wrap items-end justify-between gap-3 pt-3">
-                  <div className="inline-flex items-center gap-1 rounded-full border border-border p-0.5">
+                  <div className="inline-flex items-center gap-1 rounded-lg border-2 border-fg p-0.5">
                     <button
                       type="button"
                       onClick={() => setQuantity(l.key, l.quantity - 1)}
                       aria-label={`Giảm số lượng ${l.product.ten}`}
-                      className="grid size-10 cursor-pointer place-items-center rounded-full text-fg transition-colors hover:bg-surface-2"
+                      className="grid size-10 cursor-pointer place-items-center rounded-md text-fg transition-colors hover:bg-surface-2"
                     >
                       <MinusIcon width={17} height={17} />
                     </button>
@@ -182,7 +182,7 @@ export function CartView() {
                       onClick={() => setQuantity(l.key, l.quantity + 1)}
                       disabled={l.quantity >= l.product.soLuong}
                       aria-label={`Tăng số lượng ${l.product.ten}`}
-                      className="grid size-10 cursor-pointer place-items-center rounded-full bg-primary text-on-primary transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-40"
+                      className="grid size-10 cursor-pointer place-items-center rounded-md bg-primary text-on-primary transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-40"
                     >
                       <PlusIcon width={17} height={17} />
                     </button>
@@ -214,7 +214,7 @@ export function CartView() {
       </div>
 
       {/* ── Tóm tắt đơn ── */}
-      <aside className="rounded-[1.75rem] border border-border bg-surface p-6 lg:sticky lg:top-28">
+      <aside className="phieu p-6 lg:sticky lg:top-28">
         <h2 className="font-display text-lg font-extrabold text-fg">
           Tóm tắt đơn hàng
         </h2>
@@ -254,7 +254,7 @@ export function CartView() {
           </div>
         )}
 
-        <p className="mt-4 flex items-start gap-2.5 rounded-2xl bg-primary-soft p-3.5 text-xs leading-relaxed text-primary-ink">
+        <p className="mt-4 flex items-start gap-2.5 rounded-lg bg-primary-soft p-3.5 text-xs leading-relaxed text-primary-ink">
           <TruckIcon width={17} height={17} className="mt-px shrink-0" />
           <span>
             <strong className="font-semibold">Bảo hành 1 tháng từ ngày nhận hàng.</strong>{" "}
@@ -269,7 +269,7 @@ export function CartView() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => copyOrder(true)}
-            className="flex h-14 w-full items-center justify-center gap-2.5 rounded-full bg-primary px-6 text-base font-semibold text-on-primary transition-all duration-200 hover:bg-primary-hover active:scale-[0.98]"
+            className="nut-nhan flex h-14 w-full items-center justify-center gap-2.5 rounded-xl bg-primary px-6 text-base font-semibold text-on-primary hover:bg-primary-hover"
           >
             <FacebookIcon width={19} height={19} />
             Đặt hàng qua Messenger · {formatVND(total)}
@@ -285,7 +285,7 @@ export function CartView() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => copyOrder(true)}
-            className="flex h-13 w-full items-center justify-center gap-2.5 rounded-full border border-border-strong bg-bg px-6 py-3.5 text-sm font-semibold text-fg transition-all duration-200 hover:border-primary hover:text-primary-ink active:scale-[0.98]"
+            className="flex h-13 w-full items-center justify-center gap-2.5 rounded-xl border-2 border-fg bg-bg px-6 py-3.5 text-sm font-semibold text-fg transition-all duration-200 hover:border-primary hover:text-primary-ink active:scale-[0.98]"
           >
             <ZaloIcon width={18} height={18} />
             Đặt hàng qua Zalo
@@ -293,7 +293,7 @@ export function CartView() {
 
           <a
             href={site.contact.phoneHref}
-            className="flex h-13 w-full items-center justify-center gap-2.5 rounded-full border border-border-strong bg-bg px-6 py-3.5 text-sm font-semibold text-fg transition-all duration-200 hover:border-primary hover:text-primary-ink active:scale-[0.98]"
+            className="flex h-13 w-full items-center justify-center gap-2.5 rounded-xl border-2 border-fg bg-bg px-6 py-3.5 text-sm font-semibold text-fg transition-all duration-200 hover:border-primary hover:text-primary-ink active:scale-[0.98]"
           >
             <PhoneIcon width={18} height={18} />
             Gọi đặt hàng {site.contact.phone}

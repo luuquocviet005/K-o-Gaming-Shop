@@ -1,4 +1,5 @@
 import Link from "next/link";
+import type { CSSProperties } from "react";
 import {
   categories,
   hangDocNhat,
@@ -6,103 +7,101 @@ import {
   hangNoiBat,
   products,
   tatCaDiaDiem,
-  tatCaHang,
   toCard,
+  type Product,
 } from "@/lib/products";
 import { formatGia } from "@/lib/format";
 import { site } from "@/lib/site";
 import { ProductCard } from "@/components/product-card";
 import { ProductMedia } from "@/components/product-art";
-import { ConditionBadge } from "@/components/condition-badge";
-import { RacKeo } from "@/components/rac-keo";
-import { BangChuyen } from "@/components/bang-chuyen";
 import {
   ArrowRightIcon,
   CategoryIcon,
   CheckIcon,
   ZaloIcon,
-  MapPinIcon,
-  SparkIcon,
   FacebookIcon,
 } from "@/components/icons";
 
-const hero = hangNoiBat(1)[0];
-
-/**
- * Nhịp trang là thứ chống đơn điệu, không phải hoạ tiết.
- *
- * Trang chạy theo bốn tầng nền xen kẽ — nền trang, nền thẻ, dải hồng phấn,
- * dải tối — nên cuộn xuống mắt luôn thấy có chuyện xảy ra, thay vì một nền
- * duy nhất kéo từ đầu tới cuối.
- */
+/** Bốn mảnh giấy note: màu giấy lấy từ bốn "vị kẹo" để đổi theo giao diện sáng/tối */
 const camKet = [
-  { title: "Nói đúng tình trạng", text: "Trầy chỗ nào, thiếu gì, ghi thẳng lên trang" },
-  { title: "Test trước khi trả tiền", text: "Gặp trực tiếp, dùng thử ưng mới lấy" },
-  { title: "Hàng có sẵn trong tay", text: "Không đặt trước, không ôm cọc" },
-  { title: "Sai mô tả thì chịu", text: "Hoàn tiền trong 3 ngày" },
+  { title: "Nói đúng tình trạng", text: "Trầy chỗ nào, thiếu gì, ghi thẳng lên trang", giay: "bg-vi-caramel-nen text-vi-caramel-chu", goc: "-2deg" },
+  { title: "Test trước khi trả tiền", text: "Gặp trực tiếp, dùng thử ưng mới lấy", giay: "bg-vi-bacha-nen text-vi-bacha-chu", goc: "1.5deg" },
+  { title: "Hàng có sẵn trong tay", text: "Không đặt trước, không ôm cọc", giay: "bg-surface text-fg", goc: "-1deg" },
+  { title: "Sai mô tả thì chịu", text: "Hoàn tiền trong 3 ngày", giay: "bg-vi-nho-nen text-vi-nho-chu", goc: "2deg" },
+];
+
+/** Mỗi danh mục một màu giấy bọc; ô to nhất là hồng đậm cho nổi */
+const mauHu = [
+  "bg-primary text-on-primary",
+  "bg-vi-bacha-nen text-vi-bacha-chu",
+  "bg-vi-caramel-nen text-vi-caramel-chu",
+  "bg-vi-nho-nen text-vi-nho-chu",
+  "bg-vi-dau-nen text-vi-dau-chu",
+];
+
+/** Vị trí ba món trên "bàn": [left/right, top/bottom, rộng, góc xoay] */
+const banGoc: { cls: string; goc: string }[] = [
+  { cls: "left-[14%] top-[5%] w-[42%] z-10", goc: "-5deg" },
+  { cls: "right-[4%] top-0 w-[34%] z-0", goc: "4deg" },
+  { cls: "right-[5%] bottom-0 w-[38%] z-20", goc: "-2deg" },
 ];
 
 export default function HomePage() {
+  const ban = hangNoiBat(3);
   const noiBat = hangNoiBat(8);
   const moi = hangMoi(4);
   const docNhat = hangDocNhat(4);
-  const hangs = tatCaHang();
   const diaDiem = tatCaDiaDiem();
 
-  // Danh mục đông hàng nhất được ô lớn trong lưới bento
-  const [dauBang, ...conLai] = [...categories].sort((a, b) => b.soLuong - a.soLuong);
+  const dsDanhMuc = [...categories].sort((a, b) => b.soLuong - a.soLuong);
 
   return (
     <>
-      {/* ═══════════════ TẦNG 1 · HERO ═══════════════ */}
-      <section className="relative overflow-hidden">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute -left-40 -top-40 size-[32rem] rounded-full bg-primary/15 blur-3xl"
-        />
-        <RacKeo className="hidden lg:block" />
+      {/* ═══════════════ 1 · HERO: BÀN GÓC MÁY ═══════════════ */}
+      <section className="relative overflow-hidden border-b-2 border-border-strong">
+        <div aria-hidden className="nen-cham pointer-events-none absolute inset-0" />
 
-        <div className="container-page relative grid items-center gap-10 py-12 lg:grid-cols-[1.15fr_1fr] lg:py-20">
-          <div className="animate-rise">
-            <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary-soft px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-primary-ink">
-              <SparkIcon width={15} height={15} />
-              {diaDiem.join(" · ")}
-            </span>
-
-            {/* Chữ cỡ lớn, dòng sát nhau — sức nặng thị giác nằm ở đây */}
-            <h1 className="mt-5 font-display text-[3.2rem] font-extrabold leading-[0.92] tracking-tight text-fg sm:text-7xl lg:text-[5.2rem]">
+        <div className="container-page relative grid items-center gap-8 py-10 lg:grid-cols-[1fr_1.1fr] lg:py-16">
+          <div className="animate-rise lg:relative lg:z-30 lg:-mr-16">
+            <h1 className="font-display text-[3.25rem] font-extrabold leading-[0.95] tracking-tight text-fg sm:text-7xl lg:text-[5.5rem]">
               Gear ngon,
               <br />
-              <span className="text-primary-ink">giá thật.</span>
+              <span className="bg-[linear-gradient(transparent_62%,var(--surface-3)_62%)] px-1 text-primary-ink">
+                giá thật.
+              </span>
             </h1>
 
             <p className="mt-6 max-w-md text-base leading-relaxed text-fg-muted sm:text-lg">
-              Tiệm gaming gear ở Đà Nẵng, phần lớn là hàng đã qua sử dụng. Món nào trầy, thiếu gì, còn bảo
-              hành tới bao giờ — ghi rõ trên từng sản phẩm.
+              Tiệm gaming gear ở {diaDiem.join(" · ")}, phần lớn là hàng đã qua sử dụng. Món nào trầy, thiếu gì, còn bảo
+              hành tới bao giờ, ghi rõ trên từng sản phẩm.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Link
                 href="/danh-muc/"
-                className="inline-flex h-14 items-center gap-2.5 rounded-full bg-primary px-8 text-base font-semibold text-on-primary transition-all duration-200 hover:bg-primary-hover active:scale-[0.97]"
+                className="nut-nhan inline-flex h-14 items-center gap-2.5 rounded-xl bg-primary px-7 text-base font-semibold text-on-primary hover:bg-primary-hover"
               >
                 Xem {products.length} món
                 <ArrowRightIcon width={20} height={20} />
               </Link>
+              {/* Keycap Enter: nút chốt mua, bấm là lún xuống */}
               <a
                 href={site.social.messenger}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-14 items-center gap-2.5 rounded-full border border-border-strong bg-surface px-8 text-base font-semibold text-fg transition-all duration-200 hover:border-primary hover:text-primary-ink active:scale-[0.97]"
+                className="nut-nhan inline-flex h-14 items-center gap-2.5 rounded-xl border-2 border-fg bg-surface px-6 text-base font-semibold text-fg [--primary-hover:var(--fg)]"
               >
                 <FacebookIcon width={19} height={19} />
                 Nhắn Messenger
+                <span aria-hidden className="rounded-md bg-surface-2 px-1.5 font-mono text-sm text-fg-muted">
+                  ↵
+                </span>
               </a>
               <a
                 href={site.social.zalo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-14 items-center gap-2 rounded-full px-4 text-sm font-semibold text-fg-muted transition-colors duration-200 hover:text-primary-ink"
+                className="inline-flex h-14 items-center gap-2 px-3 text-sm font-semibold text-fg-muted transition-colors hover:text-primary-ink"
               >
                 <ZaloIcon width={18} height={18} />
                 hoặc Zalo
@@ -113,96 +112,81 @@ export default function HomePage() {
             </p>
           </div>
 
-          {hero && (
-            <div className="relative mx-auto w-full max-w-md lg:max-w-none">
-              <Link
-                href={`/san-pham/${hero.slug}/`}
-                className="group block overflow-hidden rounded-[2.25rem] border border-border bg-surface shadow-[0_30px_80px_-40px_rgba(60,20,40,0.55)] transition-transform duration-300 hover:-translate-y-1.5"
-              >
-                <div className="relative bg-surface-2 px-7 pb-8 pt-7">
-                  <div className="flex items-start justify-between gap-3">
-                    <p className="text-xs font-bold uppercase tracking-wider text-fg-subtle">
-                      Đắt giá nhất tiệm
-                    </p>
-                    <ConditionBadge
-                      tinhTrang={hero.tinhTrang}
-                      nhom={hero.nhomTinhTrang}
-                    />
-                  </div>
-                  <div className="mx-auto mt-3 aspect-square w-full max-w-[17rem] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105">
-                    <ProductMedia product={hero} priority sizes="340px" nho />
-                  </div>
-                  <div
-                    aria-hidden="true"
-                    className="rang-cua pointer-events-none absolute inset-x-0 bottom-0 h-3.5"
-                  />
-                </div>
-
-                <div className="px-7 pb-7 pt-5">
-                  <p className="text-xs font-bold uppercase tracking-wider text-fg-subtle">
-                    {hero.hang}
-                  </p>
-                  <h2 className="mt-1 font-display text-2xl font-extrabold leading-tight text-fg">
-                    {hero.ten}
-                  </h2>
-                  <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-                    <p className="tem-gia rounded-xl bg-primary-soft px-3 py-1.5 font-display text-2xl font-extrabold text-primary-ink">
-                      {formatGia(hero)}
-                    </p>
-                    <span className="inline-flex items-center gap-1.5 text-sm text-fg-muted">
-                      <MapPinIcon width={15} height={15} />
-                      {hero.diaDiem}
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            </div>
-          )}
+          {/* Mặt bàn: ba món xếp lệch, mascot ngồi góc */}
+          <div className="relative mx-auto h-[27rem] w-full max-w-[34rem] sm:h-[32rem] lg:h-[40rem] lg:max-w-none">
+            <div
+              aria-hidden
+              className="absolute inset-x-[4%] inset-y-[6%] rounded-[3rem] bg-surface-3 opacity-70"
+            />
+            {ban.map((p, i) => (
+              <TheBan key={p.id} p={p} {...banGoc[i]} tre={i * 120} priority={i === 0} />
+            ))}
+            {/* eslint-disable-next-line @next/next/no-img-element -- static export */}
+            <img
+              src="/mascot.png"
+              alt=""
+              width={551}
+              height={1200}
+              className="pointer-events-none absolute -bottom-1 left-0 z-30 h-[40%] w-auto drop-shadow-md sm:h-[46%]"
+            />
+          </div>
         </div>
       </section>
 
-      {/* ═══════════════ BĂNG CHUYỀN HÃNG ═══════════════ */}
-      <BangChuyen muc={hangs} />
-
-      {/* ═══════════════ TẦNG 2 · DANH MỤC (lưới bento) ═══════════════ */}
+      {/* ═══════════════ 2 · DANH MỤC: NÚT TO ═══════════════ */}
       <section className="container-page mt-16 lg:mt-24">
         <SectionHead title="Trong tiệm có gì" subtitle="Bấm vào hũ bạn quan tâm" />
 
-        <ul className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2">
-          {/* Ô lớn chiếm 2x2 — phá thế lưới đều tăm tắp */}
+        <ul className="hien-dan mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2">
           <li className="lg:col-span-2 lg:row-span-2">
-            <HuKeo danhMuc={dauBang} lon />
+            <HuKeo danhMuc={dsDanhMuc[0]} mau={mauHu[0]} lon />
           </li>
-          {conLai.map((c) => (
-            <li key={c.slug} className="lg:col-span-1">
-              <HuKeo danhMuc={c} />
+          {dsDanhMuc.slice(1).map((c, i) => (
+            <li key={c.slug}>
+              <HuKeo danhMuc={c} mau={mauHu[(i + 1) % mauHu.length]} />
             </li>
           ))}
         </ul>
       </section>
 
-      {/* ═══════════════ TẦNG 3 · HÀNG NỔI BẬT ═══════════════ */}
-      <section className="container-page mt-16 lg:mt-24">
-        <SectionHead
-          title="Đáng chú ý"
-          subtitle="Món tốt nhất mỗi nhóm"
-          href="/danh-muc/"
-        />
-        <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
+      {/* ═══════════════ 3 · ĐÁNG CHÚ Ý: KỆ CUỘN NGANG ═══════════════ */}
+      <section className="mt-16 lg:mt-24">
+        <div className="container-page">
+          <SectionHead
+            title="Đáng chú ý"
+            subtitle="Món tốt nhất mỗi nhóm. Vuốt ngang để xem thêm."
+            href="/danh-muc/"
+          />
+        </div>
+        <ul
+          className="container-page mt-4 flex items-start snap-x snap-mandatory gap-5 overflow-x-auto pb-7 pt-8"
+          aria-label="Món đáng chú ý, cuộn ngang"
+        >
           {noiBat.map((p, i) => (
-            <ProductCard key={p.id} product={toCard(p)} priority={i < 4} />
+            <li
+              key={p.id}
+              className={`shrink-0 snap-start ${
+                i % 3 === 2 ? "w-[18.5rem]" : "w-[15.5rem] sm:w-[16.5rem]"
+              } ${i % 2 === 1 ? "mt-8" : ""}`}
+            >
+              <ProductCard product={toCard(p)} priority={i < 4} />
+            </li>
           ))}
+        </ul>
+        {/* Tấm ván kệ */}
+        <div aria-hidden className="container-page -mt-4">
+          <div className="h-3 rounded-full bg-surface-3 shadow-[0_4px_0_0_var(--border)]" />
         </div>
       </section>
 
-      {/* ═══════════════ TẦNG 4 · DẢI TỐI (điểm nghỉ mắt) ═══════════════ */}
+      {/* ═══════════════ 4 · CAM KẾT: GIẤY NOTE DÁN ═══════════════ */}
       <section className="mt-16 bg-dai-dam-nen py-16 text-dai-dam-chu lg:mt-24 lg:py-20">
-        <div className="container-page grid items-center gap-10 lg:grid-cols-[1.1fr_1fr]">
+        <div className="container-page grid items-center gap-10 lg:grid-cols-[1fr_1.2fr]">
           <div>
-            <span className="inline-flex items-center gap-2 rounded-full bg-dai-dam-chu/15 px-4 py-1.5 text-xs font-bold uppercase tracking-wider">
+            <p className="font-mono text-xs font-semibold uppercase tracking-wider text-dai-dam-mo">
               Đọc trước khi mua
-            </span>
-            <h2 className="mt-5 font-display text-4xl font-extrabold leading-[1.02] tracking-tight sm:text-5xl">
+            </p>
+            <h2 className="mt-3 font-display text-4xl font-extrabold leading-[1.02] tracking-tight sm:text-5xl">
               Đây là tiệm
               <br />
               bán đồ cũ.
@@ -214,26 +198,30 @@ export default function HomePage() {
             </p>
             <Link
               href="/chinh-sach/"
-              className="mt-8 inline-flex h-14 items-center gap-2.5 rounded-full bg-dai-dam-chu px-8 text-base font-bold text-dai-dam-nen transition-transform duration-200 hover:scale-[1.03] active:scale-[0.97]"
+              className="nut-nhan mt-8 inline-flex h-14 items-center gap-2.5 rounded-xl bg-dai-dam-chu px-7 text-base font-bold text-dai-dam-nen [--primary-hover:var(--dai-dam-mo)]"
             >
               Xem chính sách mua bán
               <ArrowRightIcon width={20} height={20} />
             </Link>
           </div>
 
-          <ul className="grid gap-2.5">
+          <ul className="grid gap-5 sm:grid-cols-2">
             {camKet.map((c) => (
               <li
                 key={c.title}
-                className="flex items-start gap-3.5 rounded-2xl bg-dai-dam-chu/10 p-4"
+                className={`tem-dan hien-dan relative rounded-md p-5 pt-7 shadow-[3px_5px_0_0_rgb(0_0_0/0.18)] ${c.giay}`}
+                style={{ "--goc": c.goc } as CSSProperties}
               >
-                <span className="mt-0.5 grid size-7 shrink-0 place-items-center rounded-full bg-dai-dam-chu text-dai-dam-nen">
-                  <CheckIcon width={16} height={16} />
-                </span>
-                <span>
-                  <span className="block text-sm font-bold">{c.title}</span>
-                  <span className="mt-0.5 block text-xs leading-relaxed text-dai-dam-mo">
-                    {c.text}
+                {/* Miếng băng keo dán giấy */}
+                <span
+                  aria-hidden
+                  className="absolute -top-2.5 left-1/2 h-5 w-14 -translate-x-1/2 rotate-[-3deg] bg-white/55"
+                />
+                <span className="flex items-start gap-2.5">
+                  <CheckIcon width={18} height={18} className="mt-0.5 shrink-0" />
+                  <span>
+                    <span className="block text-base font-bold">{c.title}</span>
+                    <span className="mt-1 block text-sm leading-relaxed opacity-90">{c.text}</span>
                   </span>
                 </span>
               </li>
@@ -242,30 +230,26 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ═══════════════ TẦNG 5 · HÀNG MỚI ═══════════════ */}
+      {/* ═══════════════ 5 · HÀNG MỚI ═══════════════ */}
       {moi.length > 0 && (
         <section className="container-page mt-16 lg:mt-24">
-          <SectionHead
-            title="Chưa qua sử dụng"
-            subtitle="Nguyên seal hoặc mới bóc, chưa dùng"
-          />
-          <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
-            {moi.map((p) => (
-              <ProductCard key={p.id} product={toCard(p)} />
+          <SectionHead title="Chưa qua sử dụng" subtitle="Nguyên seal hoặc mới bóc, chưa dùng" />
+          <div className="hien-dan mt-10 grid grid-cols-2 items-start gap-x-4 gap-y-8 lg:grid-cols-4">
+            {moi.map((p, i) => (
+              <div key={p.id} className={i % 2 === 1 ? "mt-8" : ""}>
+                <ProductCard product={toCard(p)} />
+              </div>
             ))}
           </div>
         </section>
       )}
 
-      {/* ═══════════════ TẦNG 6 · CHỈ CÒN MỘT ═══════════════ */}
+      {/* ═══════════════ 6 · CHỈ CÒN MỘT ═══════════════ */}
       {docNhat.length > 0 && (
-        <section className="mt-16 bg-primary-soft py-14 lg:mt-24 lg:py-16">
+        <section className="mt-16 bg-surface-2 py-14 lg:mt-24 lg:py-16">
           <div className="container-page">
-            <SectionHead
-              title="Chỉ còn một chiếc"
-              subtitle="Bán rồi là hết, không có con thứ hai"
-            />
-            <div className="mt-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
+            <SectionHead title="Chỉ còn một chiếc" subtitle="Bán rồi là hết, không có con thứ hai" />
+            <div className="hien-dan mt-10 grid grid-cols-2 items-start gap-x-4 gap-y-8 lg:grid-cols-4">
               {docNhat.map((p) => (
                 <ProductCard key={p.id} product={toCard(p)} />
               ))}
@@ -274,9 +258,18 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* ═══════════════ TẦNG 7 · CTA ═══════════════ */}
-      <section className="container-page mt-16 lg:mt-24">
-        <div className="grid items-center gap-8 rounded-[2rem] border border-border bg-surface p-8 sm:p-12 lg:grid-cols-2">
+      {/* ═══════════════ 7 · CTA ═══════════════ */}
+      <section className="container-page my-16 lg:my-24">
+        <div className="grid items-center gap-8 rounded-[2rem] border-2 border-border-strong bg-surface p-8 sm:p-12 lg:grid-cols-[auto_1fr_1fr]">
+          {/* eslint-disable-next-line @next/next/no-img-element -- static export */}
+          <img
+            src="/mascot.png"
+            alt=""
+            width={551}
+            height={1200}
+            loading="lazy"
+            className="mx-auto hidden h-60 w-auto lg:block"
+          />
           <div>
             <h2 className="font-display text-3xl font-extrabold leading-tight tracking-tight text-fg sm:text-4xl">
               Chưa thấy món cần?
@@ -293,7 +286,7 @@ export default function HomePage() {
                 href={site.social.messenger}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-14 items-center gap-2.5 rounded-full bg-primary px-8 text-base font-semibold text-on-primary transition-all duration-200 hover:bg-primary-hover active:scale-[0.97]"
+                className="nut-nhan inline-flex h-14 items-center gap-2.5 rounded-xl bg-primary px-7 text-base font-semibold text-on-primary hover:bg-primary-hover"
               >
                 <FacebookIcon width={19} height={19} />
                 Nhắn Messenger
@@ -302,14 +295,14 @@ export default function HomePage() {
                 href={site.social.zalo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex h-14 items-center gap-2.5 rounded-full border border-border-strong bg-bg px-7 text-base font-semibold text-fg transition-all duration-200 hover:border-primary hover:text-primary-ink active:scale-[0.97]"
+                className="inline-flex h-14 items-center gap-2.5 rounded-xl border-2 border-border-strong bg-bg px-6 text-base font-semibold text-fg transition-colors hover:border-primary hover:text-primary-ink"
               >
                 <ZaloIcon width={20} height={20} />
                 Zalo
               </a>
               <Link
                 href="/lien-he/"
-                className="inline-flex h-14 items-center rounded-full border border-border-strong bg-bg px-8 text-base font-semibold text-fg transition-all duration-200 hover:border-primary hover:text-primary-ink active:scale-[0.97]"
+                className="inline-flex h-14 items-center rounded-xl border-2 border-border-strong bg-bg px-6 text-base font-semibold text-fg transition-colors hover:border-primary hover:text-primary-ink"
               >
                 Cách liên hệ khác
               </Link>
@@ -324,10 +317,10 @@ export default function HomePage() {
             ].map((t) => (
               <li
                 key={t}
-                className="flex items-center gap-3 rounded-2xl bg-surface-2 p-4 text-sm font-medium text-fg"
+                className="flex items-center gap-3 rounded-xl bg-surface-2 p-4 text-sm font-medium text-fg"
               >
-                <span className="grid size-7 shrink-0 place-items-center rounded-full bg-primary text-on-primary">
-                  <CheckIcon width={16} height={16} />
+                <span className="shrink-0 text-primary-ink">
+                  <CheckIcon width={18} height={18} />
                 </span>
                 {t}
               </li>
@@ -339,52 +332,79 @@ export default function HomePage() {
   );
 }
 
-/** Thẻ danh mục tạo hình hũ kẹo — ô lớn hiện thêm mô tả */
+/** Một món xếp nghiêng trên "bàn": ảnh, tên, tem giá. Cả thẻ là link. */
+function TheBan({
+  p,
+  cls,
+  goc,
+  tre,
+  priority,
+}: {
+  p: Product;
+  cls: string;
+  goc: string;
+  tre: number;
+  priority: boolean;
+}) {
+  return (
+    <Link
+      href={`/san-pham/${p.slug}/`}
+      className={`animate-rise group absolute block ${cls}`}
+      style={{ animationDelay: `${tre}ms` }}
+    >
+      <span
+        className="tem-dan block overflow-hidden rounded-2xl border-2 border-fg bg-surface shadow-[5px_6px_0_0_var(--border-strong)] transition-transform duration-200 group-hover:!rotate-0"
+        style={{ "--goc": goc } as CSSProperties}
+      >
+        <span className="block aspect-square p-3 sm:p-4">
+          <ProductMedia product={p} priority={priority} sizes="260px" nho />
+        </span>
+        <span className="flex items-center justify-between gap-2 border-t-2 border-dashed border-border-strong px-3 py-2">
+          <span className="line-clamp-1 text-xs font-bold text-fg sm:text-sm">{p.ten}</span>
+          <span className="shrink-0 rounded-md bg-primary px-2 py-0.5 font-mono text-xs font-bold text-on-primary sm:text-sm">
+            {formatGia(p)}
+          </span>
+        </span>
+      </span>
+    </Link>
+  );
+}
+
+/** Nút danh mục: khối màu bo tròn to, đổ bóng cứng, bấm thì lún */
 function HuKeo({
   danhMuc,
+  mau,
   lon = false,
 }: {
   danhMuc: (typeof categories)[number];
+  mau: string;
   lon?: boolean;
 }) {
   return (
     <Link
       href={`/danh-muc/${danhMuc.slug}/`}
-      className={`group relative flex h-full flex-col overflow-hidden rounded-[1.5rem] border border-border bg-surface p-5 pt-7 transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:shadow-[0_18px_40px_-24px_rgba(60,20,40,0.45)] ${
-        lon ? "justify-end gap-4 lg:p-8 lg:pt-10" : "items-center gap-3 text-center"
+      className={`nut-hu group relative flex h-full flex-col rounded-[1.75rem] border-2 border-border-strong p-5 ${mau} ${
+        lon ? "min-h-[16rem] justify-end gap-4 lg:p-8" : "items-start gap-3"
       }`}
     >
-      <span
-        aria-hidden="true"
-        className="nap-hu absolute inset-x-0 top-0 h-2.5 bg-primary-soft"
-      />
+      <CategoryIcon khoa={danhMuc.icon} width={lon ? 56 : 30} height={lon ? 56 : 30} />
 
-      <span
-        className={`grid place-items-center rounded-full bg-primary-soft text-primary-ink transition-colors duration-300 group-hover:bg-primary group-hover:text-on-primary ${
-          lon ? "size-20" : "size-14"
-        }`}
-      >
-        <CategoryIcon khoa={danhMuc.icon} width={lon ? 38 : 26} height={lon ? 38 : 26} />
-      </span>
-
-      <span className={lon ? "" : "contents"}>
+      <span className="block">
         <span
-          className={`block font-bold leading-tight text-fg ${
-            lon ? "font-display text-2xl lg:text-3xl" : "text-sm"
+          className={`block font-bold leading-tight ${
+            lon ? "font-display text-3xl lg:text-4xl" : "text-base"
           }`}
         >
           {lon ? danhMuc.name : danhMuc.short}
         </span>
 
         {lon && (
-          <span className="mt-2 block max-w-sm text-sm leading-relaxed text-fg-muted">
+          <span className="mt-2 block max-w-sm text-sm leading-relaxed opacity-90">
             {danhMuc.blurb}
           </span>
         )}
 
-        <span
-          className={`text-xs text-fg-subtle ${lon ? "mt-3 block" : "-mt-1.5 block"}`}
-        >
+        <span className="mt-2 block font-mono text-xs font-semibold opacity-90">
           {danhMuc.soLuong} món
         </span>
       </span>
@@ -407,13 +427,12 @@ function SectionHead({
         <h2 className="font-display text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl">
           {title}
         </h2>
-        <span aria-hidden="true" className="gach-keo mt-2.5 block h-1.5 w-16 rounded-full" />
-        {subtitle && <p className="mt-2.5 text-sm opacity-70 sm:text-base">{subtitle}</p>}
+        {subtitle && <p className="mt-2 text-sm text-fg-muted sm:text-base">{subtitle}</p>}
       </div>
       {href && (
         <Link
           href={href}
-          className="inline-flex h-11 shrink-0 items-center gap-1.5 rounded-full border border-border bg-surface px-5 text-sm font-semibold text-fg transition-colors duration-200 hover:border-primary hover:text-primary-ink"
+          className="inline-flex h-11 shrink-0 items-center gap-1.5 rounded-full border-2 border-border-strong bg-surface px-4 text-sm font-semibold text-fg transition-colors duration-200 hover:border-primary hover:text-primary-ink"
         >
           Xem tất cả
           <ArrowRightIcon width={17} height={17} />

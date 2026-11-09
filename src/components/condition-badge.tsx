@@ -1,7 +1,7 @@
 import type { NhomTinhTrang } from "@/lib/products";
 
 /**
- * Nhãn tình trạng, tạo hình như một mẩu giấy bọc kẹo.
+ * Nhãn tình trạng, tạo hình như con dấu trên phiếu kiểm hàng.
  *
  * Màu KHÔNG phải trang trí ngẫu nhiên — mỗi "vị kẹo" ứng với một mức độ
  * nguyên vẹn của món hàng, dùng nhất quán khắp trang để khách nhìn màu là
@@ -39,22 +39,14 @@ export function ConditionBadge({
   if (!tinhTrang) return null;
 
   const vi = viTinhTrang(tinhTrang, nhom);
-  const co = size === "md" ? "px-3.5 py-1.5 text-sm" : "px-2.5 py-1 text-[0.68rem]";
+  const co = size === "md" ? "px-3 py-1.5 text-sm" : "px-2 py-0.5 text-xs";
 
+  // Dấu tình trạng: khung vuông, chữ đơn cách, như con dấu đóng lên phiếu
   return (
     <span
-      className={`relative inline-flex items-center rounded-full font-bold ${bangVi[vi]} ${co}`}
+      className={`inline-flex items-center rounded-[3px] border border-current/40 font-mono font-semibold leading-tight ${bangVi[vi]} ${co}`}
     >
-      {/* Hai đầu xoắn của giấy bọc kẹo */}
-      <span
-        aria-hidden="true"
-        className="absolute -left-1 top-1/2 size-2 -translate-y-1/2 rotate-45 rounded-[2px] bg-inherit"
-      />
-      <span
-        aria-hidden="true"
-        className="absolute -right-1 top-1/2 size-2 -translate-y-1/2 rotate-45 rounded-[2px] bg-inherit"
-      />
-      <span className="relative">{tinhTrang}</span>
+      {tinhTrang}
     </span>
   );
 }

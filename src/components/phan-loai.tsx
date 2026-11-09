@@ -141,7 +141,7 @@ export function ODanhSachPhanLoai({ product }: { product: Product }) {
                 </span>
               )}
               {khacGia && (
-                <span className="block text-[0.68rem] font-semibold text-primary-ink">
+                <span className="block text-xs font-semibold text-primary-ink">
                   {v.gia ? formatVND(v.gia) : "Liên hệ"}
                 </span>
               )}
@@ -182,22 +182,35 @@ export function ChiTietMon({ product, tenNhom }: { product: Product; tenNhom?: s
       {mon.moTa && (
         <section className="mt-10">
           <h2 className="font-display text-lg font-bold text-fg">Mô tả</h2>
-          <p className="mt-3 whitespace-pre-line rounded-2xl border border-border bg-surface px-5 py-4 text-[0.95rem] leading-relaxed text-fg">
+          <p className="mt-3 whitespace-pre-line rounded-lg border-2 border-fg bg-surface px-5 py-4 text-base leading-relaxed text-fg">
             {mon.moTa}
           </p>
         </section>
       )}
 
-      <section className="mt-10">
-        <h2 className="font-display text-lg font-bold text-fg">Thông tin món hàng</h2>
-        <dl className="mt-4 divide-y divide-border rounded-2xl border border-border bg-surface px-5">
+      {/* Phiếu tình trạng: chỉ dùng dữ liệu có thật trong Sheet, không bịa ngày kiểm hay độ mòn */}
+      <section className="mt-10 overflow-hidden rounded-xl border-2 border-fg bg-surface shadow-[5px_6px_0_0_var(--border-strong)]">
+        <div className="flex items-center justify-between gap-4 border-b-2 border-dashed border-border-strong bg-surface-2 px-5 py-3">
+          <h2 className="font-mono text-sm font-bold uppercase tracking-widest text-fg">
+            Phiếu tình trạng
+          </h2>
+          <span className="tem-dan shrink-0" style={{ "--goc": "3deg" } as React.CSSProperties}>
+            <ConditionBadge tinhTrang={mon.tinhTrang} nhom={mon.nhomTinhTrang} size="md" />
+          </span>
+        </div>
+        <dl className="divide-y divide-dashed divide-border-strong px-5">
           {thongTin.map((t) => (
-            <div key={t.nhan} className="flex justify-between gap-6 py-3.5">
-              <dt className="text-sm text-fg-muted">{t.nhan}</dt>
+            <div key={t.nhan} className="flex justify-between gap-6 py-3">
+              <dt className="font-mono text-xs font-semibold uppercase tracking-wider text-fg-muted">
+                {t.nhan}
+              </dt>
               <dd className="text-right text-sm font-semibold text-fg">{t.giaTri}</dd>
             </div>
           ))}
         </dl>
+        <p className="border-t-2 border-dashed border-border-strong px-5 py-3 font-mono text-xs font-semibold uppercase tracking-wider text-primary-ink">
+          ✓ Cho test trước khi trả tiền · Sai mô tả thì shop chịu
+        </p>
       </section>
     </>
   );

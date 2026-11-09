@@ -97,43 +97,57 @@ export default async function TrangHangPage(props: Props) {
         ]}
       />
 
-      <header className="mt-6">
-        <h1 className="font-display text-3xl font-extrabold tracking-tight text-fg sm:text-4xl">
+      <header className="phieu mt-6 max-w-3xl p-6 sm:p-8">
+        <p className="font-mono text-xs font-semibold uppercase tracking-wider text-fg-subtle">
+          Hãng · {t.ten}
+        </p>
+        <h1 className="mt-2 font-display text-3xl font-extrabold tracking-tight text-fg sm:text-4xl">
           {tieuDeHang(t)}
         </h1>
-        <p className="mt-2 max-w-2xl text-fg-muted">
+        <p className="mt-3 max-w-2xl border-t border-dashed border-border-strong pt-3 text-fg-muted">
           {gioiThieu ||
             `Hàng ${t.ten} đang tạm hết. Tụi mình nhập thêm thường xuyên, nhắn shop để được báo khi có món mới.`}
         </p>
       </header>
 
       {khoi.map(([dm, ds]) => (
-        <section key={dm} className="mt-10">
-          <h2 className="font-display text-2xl font-extrabold tracking-tight text-fg">
+        <section key={dm} className="mt-12">
+          <h2 className="flex items-center gap-3 border-b border-dashed border-border-strong pb-3 font-display text-2xl font-extrabold tracking-tight text-fg">
             {tenLoaiHang(dm)} {t.ten}
-            <span className="ml-2 text-base font-semibold text-fg-subtle">{ds.length}</span>
+            <span className="rounded-[3px] border border-current/40 bg-primary-soft px-2 py-0.5 font-mono text-xs font-semibold text-primary-ink">
+              {ds.length}
+            </span>
           </h2>
-          <div className="mt-5 grid grid-cols-2 gap-4 lg:grid-cols-4">
-            {ds.map((p) => (
-              <ProductCard key={p.id} product={toCard(p)} />
+          <div className="mt-8 grid grid-cols-2 items-start gap-x-4 gap-y-8 lg:grid-cols-4">
+            {ds.map((p, i) => (
+              <div key={p.id} className={i % 2 === 1 ? "mt-8" : ""}>
+                <ProductCard product={toCard(p)} />
+              </div>
             ))}
           </div>
         </section>
       ))}
 
       {goiY.length > 0 && (
-        <section className="mt-10">
-          <h2 className="font-display text-2xl font-extrabold tracking-tight text-fg">Món khác đang có</h2>
-          <div className="mt-5 grid grid-cols-2 gap-4 lg:grid-cols-4">
-            {goiY.map((p) => (
-              <ProductCard key={p.id} product={toCard(p)} />
+        <section className="mt-12">
+          <h2 className="border-b border-dashed border-border-strong pb-3 font-display text-2xl font-extrabold tracking-tight text-fg">
+            Món khác đang có
+          </h2>
+          <div className="mt-8 grid grid-cols-2 items-start gap-x-4 gap-y-8 lg:grid-cols-4">
+            {goiY.map((p, i) => (
+              <div key={p.id} className={i % 2 === 1 ? "mt-8" : ""}>
+                <ProductCard product={toCard(p)} />
+              </div>
             ))}
           </div>
         </section>
       )}
 
-      <p className="mt-10">
-        <Link href="/danh-muc/" className="font-semibold text-primary-ink underline-offset-4 hover:underline">
+      <p className="mt-12">
+        <Link
+          href="/danh-muc/"
+          className="inline-flex h-11 items-center rounded-lg border-2 border-fg bg-surface px-4 text-sm font-semibold text-fg transition-colors duration-200 hover:bg-primary-soft"
+        >
           Xem tất cả sản phẩm
         </Link>
       </p>

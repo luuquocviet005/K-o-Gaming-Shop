@@ -65,7 +65,7 @@ export function ContactForm() {
     <form
       onSubmit={onSubmit}
       noValidate
-      className="rounded-[1.75rem] border border-border bg-surface p-6 sm:p-8"
+      className="phieu p-6 sm:p-8"
     >
       <h2 className="font-display text-xl font-extrabold text-fg">
         Gửi câu hỏi
@@ -112,10 +112,10 @@ export function ContactForm() {
             placeholder="Ví dụ: mình có 5 triệu, muốn mua chuột + bàn phím chơi Valorant…"
             aria-invalid={!!errors.message}
             aria-describedby={errors.message ? "err-message" : undefined}
-            className={`mt-2 w-full resize-y rounded-2xl border bg-surface-2 p-4 text-sm text-fg placeholder:text-fg-subtle focus:bg-surface focus:outline-none ${
+            className={`mt-2 w-full resize-y rounded-lg border-2 bg-surface-2 p-4 text-sm text-fg placeholder:text-fg-subtle focus:bg-surface focus:outline-none ${
               errors.message
                 ? "border-danger focus:border-danger"
-                : "border-border focus:border-primary"
+                : "border-fg focus:border-primary"
             }`}
           />
           {errors.message && (
@@ -128,7 +128,7 @@ export function ContactForm() {
 
       <button
         type="submit"
-        className="mt-7 inline-flex h-14 w-full cursor-pointer items-center justify-center gap-2.5 rounded-full bg-primary px-8 text-base font-semibold text-on-primary transition-all duration-200 hover:bg-primary-hover active:scale-[0.98] sm:w-auto"
+        className="mt-7 inline-flex nut-nhan h-14 w-full cursor-pointer items-center justify-center gap-2.5 rounded-xl bg-primary px-8 text-base font-semibold text-on-primary hover:bg-primary-hover sm:w-auto"
       >
         <MailIcon width={20} height={20} />
         Soạn email gửi đi
@@ -137,7 +137,7 @@ export function ContactForm() {
       {sent && (
         <p
           role="status"
-          className="mt-4 inline-flex items-center gap-2 rounded-2xl bg-primary-soft px-4 py-3 text-sm font-medium text-primary-ink"
+          className="mt-4 inline-flex items-center gap-2 rounded-lg bg-primary-soft px-4 py-3 text-sm font-medium text-primary-ink"
         >
           <CheckIcon width={17} height={17} />
           Đã mở ứng dụng email. Nếu không thấy, gửi trực tiếp tới {site.contact.email}.
@@ -183,8 +183,8 @@ function Field({
         autoComplete={autoComplete}
         aria-invalid={!!error}
         aria-describedby={[errId, hintId].filter(Boolean).join(" ") || undefined}
-        className={`mt-2 h-13 w-full rounded-2xl border bg-surface-2 px-4 text-sm text-fg placeholder:text-fg-subtle focus:bg-surface focus:outline-none ${
-          error ? "border-danger focus:border-danger" : "border-border focus:border-primary"
+        className={`mt-2 h-13 w-full rounded-lg border-2 bg-surface-2 px-4 text-sm text-fg placeholder:text-fg-subtle focus:bg-surface focus:outline-none ${
+          error ? "border-danger focus:border-danger" : "border-fg focus:border-primary"
         }`}
       />
       {error ? (

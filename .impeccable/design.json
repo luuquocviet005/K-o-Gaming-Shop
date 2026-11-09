@@ -1,0 +1,362 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-09T13:23:40.034Z",
+  "title": "Design System: Kẹo Gaming Gear (Phiếu kiểm hàng)",
+  "extensions": {
+    "colorMeta": {
+      "bg": {
+        "role": "neutral",
+        "displayName": "Giấy hồng pastel",
+        "canonical": "#fde9f1",
+        "tonalRamp": [
+          "#3b1222",
+          "#6c193a",
+          "#a11c51",
+          "#da1b67",
+          "#ea4889",
+          "#ea85ad",
+          "#f0bdd1",
+          "#f9ebf1"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Giấy hồng nhạt",
+        "canonical": "#fff8fb",
+        "tonalRamp": [
+          "#3f0d23",
+          "#74113b",
+          "#ae0f53",
+          "#ed076a",
+          "#fb378b",
+          "#f47baf",
+          "#f5b8d2",
+          "#fbeaf1"
+        ]
+      },
+      "surface-2": {
+        "role": "neutral",
+        "displayName": "Hồng phấn",
+        "canonical": "#fbd9e7",
+        "tonalRamp": [
+          "#3a1223",
+          "#6a1a3b",
+          "#9f1e53",
+          "#d71d6a",
+          "#e84a8b",
+          "#e986af",
+          "#efbed2",
+          "#f9ecf1"
+        ]
+      },
+      "fg": {
+        "role": "neutral",
+        "displayName": "Mực tím đen",
+        "canonical": "#2a1620",
+        "tonalRamp": [
+          "#2e1e26",
+          "#523342",
+          "#77465e",
+          "#9e567a",
+          "#b77b99",
+          "#cba5b8",
+          "#e0cdd6",
+          "#f5f0f2"
+        ]
+      },
+      "fg-muted": {
+        "role": "neutral",
+        "displayName": "Mận xám",
+        "canonical": "#5c3a4b",
+        "tonalRamp": [
+          "#2c2126",
+          "#4e3742",
+          "#704c5e",
+          "#94607a",
+          "#af8399",
+          "#c5aab8",
+          "#ddcfd6",
+          "#f4f0f2"
+        ]
+      },
+      "border-strong": {
+        "role": "neutral",
+        "displayName": "Viền mận",
+        "canonical": "#a8506f",
+        "tonalRamp": [
+          "#2f1d24",
+          "#54313d",
+          "#7b4256",
+          "#a3526e",
+          "#bc768f",
+          "#cda2b1",
+          "#e1cbd3",
+          "#f5eff1"
+        ]
+      },
+      "primary": {
+        "role": "primary",
+        "displayName": "Hồng mận",
+        "canonical": "#c2185b",
+        "tonalRamp": [
+          "#3a1322",
+          "#691c3a",
+          "#9c2051",
+          "#d42167",
+          "#e54d89",
+          "#e788ae",
+          "#eebed1",
+          "#f9ecf1"
+        ]
+      },
+      "primary-soft": {
+        "role": "primary",
+        "displayName": "Hồng phấn đậm",
+        "canonical": "#f9c9dc",
+        "tonalRamp": [
+          "#3a1222",
+          "#6a1b3a",
+          "#9e1f51",
+          "#d61e67",
+          "#e74b89",
+          "#e887ad",
+          "#efbed1",
+          "#f9ecf1"
+        ]
+      },
+      "candy": {
+        "role": "accent",
+        "displayName": "Đỏ kẹo",
+        "canonical": "#be123c",
+        "tonalRamp": [
+          "#3b121c",
+          "#6b192d",
+          "#a01d3d",
+          "#d91b4a",
+          "#ea4870",
+          "#ea859e",
+          "#efbdc9",
+          "#f9ebef"
+        ]
+      },
+      "vi-bacha-nen": {
+        "role": "status",
+        "displayName": "Bạc hà (hàng mới)",
+        "canonical": "#d3ecdf",
+        "tonalRamp": [
+          "#1c3026",
+          "#2f5642",
+          "#3f7e5d",
+          "#4da879",
+          "#72c097",
+          "#9fd0b7",
+          "#cae2d6",
+          "#eff6f2"
+        ]
+      },
+      "vi-caramel-nen": {
+        "role": "status",
+        "displayName": "Caramel (cũ đủ hộp)",
+        "canonical": "#f6e3b4",
+        "tonalRamp": [
+          "#3a2f13",
+          "#69531b",
+          "#9d7920",
+          "#d5a120",
+          "#e6ba4c",
+          "#e7cc88",
+          "#eee0be",
+          "#f9f5ec"
+        ]
+      },
+      "vi-dau-nen": {
+        "role": "status",
+        "displayName": "Dâu (cũ không hộp)",
+        "canonical": "#fbd9e5",
+        "tonalRamp": [
+          "#3a1220",
+          "#6a1a37",
+          "#9f1e4b",
+          "#d71d5f",
+          "#e84a82",
+          "#e986a9",
+          "#efbecf",
+          "#f9ecf0"
+        ]
+      },
+      "vi-nho-nen": {
+        "role": "status",
+        "displayName": "Nho (dạng khác)",
+        "canonical": "#e9e0f6",
+        "tonalRamp": [
+          "#241934",
+          "#3d275e",
+          "#56338a",
+          "#6f3bba",
+          "#8f63cf",
+          "#b296d9",
+          "#d3c5e7",
+          "#f1eef7"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Bricolage Grotesque",
+        "purpose": "Tiêu đề trang và hero; có bộ ký tự vietnamese."
+      },
+      "body": {
+        "displayName": "Be Vietnam Pro",
+        "purpose": "Chữ thân, mô tả, chính sách; dòng tối đa khoảng 68 ký tự."
+      },
+      "mono": {
+        "displayName": "IBM Plex Mono",
+        "purpose": "Giá, nhãn tình trạng, tiêu đề phiếu, số lượng. Không nhỏ hơn 12px."
+      }
+    },
+    "shadows": [
+      {
+        "name": "phieu",
+        "value": "4px 5px 0 0 var(--border-strong)",
+        "purpose": "Phiếu kiểm hàng: chính sách, liên hệ, giỏ hàng, thông tin món."
+      },
+      {
+        "name": "the-san-pham",
+        "value": "3px 4px 0 0 var(--border-strong)",
+        "purpose": "Thẻ sản phẩm, đi cùng viền mực 2px."
+      },
+      {
+        "name": "nut-nhan",
+        "value": "0 4px 0 0 var(--primary-hover)",
+        "purpose": "Nút chính; bấm thì lún 4px, bóng về 0."
+      },
+      {
+        "name": "nut-hu",
+        "value": "0 5px 0 0 var(--border-strong)",
+        "purpose": "Nút danh mục; hover 0 7px, bấm lún 5px."
+      }
+    ],
+    "motion": [
+      {
+        "name": "rise",
+        "value": "0.5s cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Khối hiện lên khi tải trang."
+      },
+      {
+        "name": "bay-vao",
+        "value": "linear, animation-timeline: view(), range entry 0% 45%",
+        "purpose": "Ảnh trượt vào khi cuộn tới, chỉ dịch chuyển và co nhẹ, không đổi độ mờ."
+      },
+      {
+        "name": "nut-press",
+        "value": "120-140ms ease-out",
+        "purpose": "Nút lún khi bấm."
+      },
+      {
+        "name": "pop",
+        "value": "0.25s ease-out",
+        "purpose": "Dấu tích sau khi thêm vào giỏ. Mọi chuyển động tắt khi bật giảm chuyển động."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "40rem"
+      },
+      {
+        "name": "lg",
+        "value": "64rem"
+      },
+      {
+        "name": "container-max",
+        "value": "84rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button (Thêm vào giỏ hàng)",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Nút chính hồng mận có chiều sâu: bóng cứng bên dưới, bấm thì lún 4px.",
+      "html": "<button class=\"ds-btn\">Thêm vào giỏ hàng</button>",
+      "css": ".ds-btn{height:56px;padding:0 32px;border:0;border-radius:6px;background:var(--primary,#c2185b);color:var(--on-primary,#fff);font:600 16px/1 var(--font-body,'Be Vietnam Pro',system-ui,sans-serif);cursor:pointer;box-shadow:0 4px 0 0 var(--primary-hover,#a31249);transition:transform 120ms ease-out,box-shadow 120ms ease-out,background-color 200ms}.ds-btn:hover{background:var(--primary-hover,#a31249)}.ds-btn:active{transform:translateY(4px);box-shadow:0 0 0 0 var(--primary-hover,#a31249)}.ds-btn:focus-visible{outline:2px solid var(--ring,#c2185b);outline-offset:2px}"
+    },
+    {
+      "name": "Icon Add Button",
+      "kind": "button",
+      "refersTo": "button-icon",
+      "description": "Nút vuông 44px viền mực trên thẻ sản phẩm; hover đổi sang hồng mận.",
+      "html": "<button class=\"ds-ico\" aria-label=\"Thêm vào giỏ\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2.2\" stroke-linecap=\"round\"><path d=\"M12 5v14M5 12h14\"/></svg></button>",
+      "css": ".ds-ico{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--fg,#2a1620);border-radius:6px;background:var(--surface,#fff8fb);color:var(--fg,#2a1620);cursor:pointer;transition:background-color 200ms,color 200ms}.ds-ico:hover{background:var(--primary,#c2185b);color:var(--on-primary,#fff)}.ds-ico:active{transform:translateY(1px)}.ds-ico:focus-visible{outline:2px solid var(--ring,#c2185b);outline-offset:2px}"
+    },
+    {
+      "name": "Condition Stamp (4 vị)",
+      "kind": "chip",
+      "refersTo": "condition-badge",
+      "description": "Con dấu tình trạng: khung vuông 3px, chữ đơn cách. Bạc hà, caramel, dâu, nho.",
+      "html": "<span class=\"ds-stamp ds-bacha\">Mới nguyên seal</span> <span class=\"ds-stamp ds-caramel\">Cũ đủ hộp</span> <span class=\"ds-stamp ds-dau\">Cũ không hộp</span> <span class=\"ds-stamp ds-nho\">Dạng khác</span>",
+      "css": ".ds-stamp{display:inline-flex;align-items:center;padding:2px 8px;border:1px solid currentColor;border-radius:3px;font:600 12px/1.2 var(--font-mono,'IBM Plex Mono',monospace)}.ds-bacha{background:var(--vi-bacha-nen,#d3ecdf);color:var(--vi-bacha-chu,#0a5b43)}.ds-caramel{background:var(--vi-caramel-nen,#f6e3b4);color:var(--vi-caramel-chu,#6b4306)}.ds-dau{background:var(--vi-dau-nen,#fbd9e5);color:var(--vi-dau-chu,#a3124f)}.ds-nho{background:var(--vi-nho-nen,#e9e0f6);color:var(--vi-nho-chu,#5b2d9b)}"
+    },
+    {
+      "name": "Product Card (tem dán)",
+      "kind": "card",
+      "refersTo": "card-product",
+      "description": "Thẻ sản phẩm: viền mực 2px, bóng đổ cứng, tem tình trạng và tem giá nghiêng, khối Lưu ý nền hồng.",
+      "html": "<article class=\"ds-card\"><div class=\"ds-pic\"><span class=\"ds-tag\">Chuột gaming</span><span class=\"ds-stamp2\">Cũ đủ hộp</span><span class=\"ds-price\">650.000đ</span></div><div class=\"ds-body\"><p class=\"ds-brand\">RAZER</p><h3 class=\"ds-name\">Razer Viper V4 Pro</h3><p class=\"ds-note\"><b>LƯU Ý</b> Có vết trầy nhẹ ở nắp trên, chuột hoạt động bình thường.</p><p class=\"ds-stock\">Chỉ còn 1 chiếc</p></div></article>",
+      "css": ".ds-card{position:relative;width:260px;border:2px solid var(--fg,#2a1620);border-radius:12px;background:var(--surface,#fff8fb);box-shadow:3px 4px 0 0 var(--border-strong,#a8506f);transition:transform 200ms}.ds-card:hover{transform:translateY(-4px)}.ds-pic{position:relative;aspect-ratio:1;border-radius:10px 10px 0 0;background:var(--surface-2,#fbd9e7)}.ds-tag{position:absolute;left:12px;top:12px;padding:2px 10px;border-radius:999px;background:var(--surface,#fff8fb);font:600 12px var(--font-mono,'IBM Plex Mono',monospace);color:var(--fg-muted,#5c3a4b)}.ds-stamp2{position:absolute;right:8px;top:-8px;transform:rotate(3deg);padding:2px 8px;border:1px solid currentColor;border-radius:3px;background:var(--vi-caramel-nen,#f6e3b4);color:var(--vi-caramel-chu,#6b4306);font:600 12px var(--font-mono,'IBM Plex Mono',monospace)}.ds-price{position:absolute;right:12px;bottom:-16px;transform:rotate(-3deg);padding:6px 12px;border-radius:8px;background:var(--primary,#c2185b);color:var(--on-primary,#fff);font:700 16px var(--font-mono,'IBM Plex Mono',monospace);box-shadow:0 4px 6px rgb(0 0 0/.15)}.ds-body{display:flex;flex-direction:column;gap:8px;padding:28px 16px 16px}.ds-brand{margin:0;font:600 12px var(--font-mono,'IBM Plex Mono',monospace);letter-spacing:.05em;color:var(--fg-subtle,#664253)}.ds-name{margin:0;font:600 16px/1.35 var(--font-body,'Be Vietnam Pro',system-ui,sans-serif);color:var(--fg,#2a1620)}.ds-note{margin:0;padding:6px 10px;border-radius:8px;background:var(--candy-soft,#ffe1e7);font:14px/1.35 var(--font-body,'Be Vietnam Pro',system-ui,sans-serif);color:var(--fg-muted,#5c3a4b)}.ds-note b{margin-right:4px;font:600 12px var(--font-mono,'IBM Plex Mono',monospace);color:var(--candy-ink,#a30f33)}.ds-stock{margin:0;font:600 12px var(--font-mono,'IBM Plex Mono',monospace);color:var(--candy-ink,#a30f33)}"
+    },
+    {
+      "name": "Phiếu (khung chung)",
+      "kind": "custom",
+      "refersTo": "phieu",
+      "description": "Khung phiếu dùng ở chính sách, liên hệ, giỏ hàng, thông tin món: viền mực 2px, bóng đổ cứng, tiêu đề chữ đơn cách, dòng ngăn nét đứt.",
+      "html": "<section class=\"ds-phieu\"><h3 class=\"ds-phieu-t\">MỤC 01</h3><div class=\"ds-row\"><span>Hãng</span><b>Akko</b></div><div class=\"ds-row\"><span>Tình trạng</span><b>Cũ đủ hộp</b></div><p class=\"ds-foot\">Cho test trước khi trả tiền · Sai mô tả thì shop chịu</p></section>",
+      "css": ".ds-phieu{width:300px;padding:16px;border:2px solid var(--fg,#2a1620);border-radius:12px;background:var(--surface,#fff8fb);box-shadow:4px 5px 0 0 var(--border-strong,#a8506f);color:var(--fg,#2a1620);font:15px/1.5 var(--font-body,'Be Vietnam Pro',system-ui,sans-serif)}.ds-phieu-t{margin:0 0 8px;font:600 14px var(--font-mono,'IBM Plex Mono',monospace);letter-spacing:.08em}.ds-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px dashed var(--border-strong,#a8506f)}.ds-row span{color:var(--fg-muted,#5c3a4b)}.ds-foot{margin:12px 0 0;font:12px var(--font-mono,'IBM Plex Mono',monospace);color:var(--fg-muted,#5c3a4b)}"
+    },
+    {
+      "name": "Category Button (nút hũ)",
+      "kind": "custom",
+      "refersTo": "nut-hu",
+      "description": "Nút danh mục to, mỗi loại một màu pastel; đổ bóng cứng 5px, hover nhấc 2px, bấm lún 5px.",
+      "html": "<a class=\"ds-hu\" href=\"#\">Chuột gaming</a>",
+      "css": ".ds-hu{display:inline-flex;align-items:center;padding:20px 28px;border:2px solid var(--fg,#2a1620);border-radius:16px;background:var(--primary-soft,#f9c9dc);color:var(--fg,#2a1620);font:600 18px var(--font-heading,'Bricolage Grotesque',system-ui,sans-serif);text-decoration:none;box-shadow:0 5px 0 0 var(--border-strong,#a8506f);transition:transform 140ms ease-out,box-shadow 140ms ease-out}.ds-hu:hover{transform:translateY(-2px);box-shadow:0 7px 0 0 var(--border-strong,#a8506f)}.ds-hu:active{transform:translateY(5px);box-shadow:0 0 0 0 var(--border-strong,#a8506f)}.ds-hu:focus-visible{outline:2px solid var(--ring,#c2185b);outline-offset:2px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Bàn soi hàng màu hồng",
+    "overview": "Tiệm đồ gaming cũ, nên giao diện trả lời thẳng câu khách hay hỏi: \"tình trạng sao ạ\". Mỗi món như một tấm phiếu kiểm hàng đặt trên bàn setup hồng: viền mực, bóng đổ cứng, số liệu bằng chữ đơn cách, tem dán nghiêng nhẹ như dán tay. Màu chủ đạo vẫn là hồng pastel (chủ shop yêu cầu giữ), mực đậm làm chữ và viền.",
+    "keyCharacteristics": [
+      "Nền hồng pastel `#fde9f1`, mảng sáng `#fff8fb`, chữ mực `#2a1620`",
+      "Hồng đậm `#c2185b` chỉ cho nút và chữ nhấn, luôn đi với chữ trắng",
+      "Viền mực 2px + bóng đổ cứng cho phiếu và thẻ; không đổ bóng mờ",
+      "Bố cục xếp lệch tầng như kệ trưng bày, không phải lưới đều",
+      "Có chế độ sáng và tối, đều đạt tương phản WCAG AA (script `check` kiểm)"
+    ],
+    "rules": [
+      {
+        "name": "Màu tình trạng chỉ để chỉ tình trạng",
+        "body": "Chữ vẫn ghi rõ bên cạnh, không để màu gánh một mình.",
+        "section": "colors"
+      },
+      {
+        "name": "Chữ mực trên mảng hồng lớn",
+        "body": "Hồng đậm + chữ trắng chỉ dành cho nút.",
+        "section": "colors"
+      }
+    ],
+    "dos": [
+      "Do giữ hồng pastel làm màu chủ đạo, mực đậm cho chữ và viền.",
+      "Do giữ logo, mascot, nhãn loại hàng ở góc thẻ, cả hai chế độ sáng và tối.",
+      "Do giữ nguyên câu chữ chính sách và bảo hành; soạn nháp cho chủ shop duyệt trước khi đổi.",
+      "Do dùng màu từ token trong `globals.css`, không hardcode hex trong component."
+    ],
+    "donts": [
+      "Don't dùng nền kem nâu hay dải nâu mận (đã thử ở bản demo đầu, lệch khỏi hồng pastel).",
+      "Don't dùng dải chữ chạy vô tận, sọc kẹo, răng cưa, hiệu ứng nhún nảy `cubic-bezier(0.34, 1.56, 0.64, 1)`, nhãn pill \"Đà Nẵng\".",
+      "Don't dùng viền dày một bên làm điểm nhấn thẻ, gradient tím-xanh, hay thẻ lồng thẻ.",
+      "Don't để chữ dưới 12px.",
+      "Don't ghi \"ngày kiểm\" hay \"độ mòn\" trên phiếu khi dữ liệu chưa có."
+    ]
+  }
+}
