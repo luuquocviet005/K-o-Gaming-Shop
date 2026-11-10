@@ -945,7 +945,7 @@
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 9,
+      "soLuong": 10,
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -954,7 +954,7 @@
           "gia": 1200000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 9,
+          "soLuong": 10,
           "anh": "/products/atk-rs6-air/den/01.webp?v=bbe9c038",
           "anhs": [
             "/products/atk-rs6-air/den/01.webp?v=bbe9c038",
@@ -969,7 +969,7 @@
           "gia": 1200000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 9,
+          "soLuong": 10,
           "anh": "/products/atk-rs6-air/hong/01.webp?v=5f442f63",
           "anhs": [
             "/products/atk-rs6-air/hong/01.webp?v=5f442f63",
@@ -983,7 +983,7 @@
           "gia": 1200000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 9,
+          "soLuong": 10,
           "anh": "/products/atk-rs6-air/trang/01.webp?v=bbd573b3",
           "anhs": [
             "/products/atk-rs6-air/trang/01.webp?v=bbd573b3",
@@ -998,7 +998,7 @@
           "gia": 1200000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 9
+          "soLuong": 10
         },
         {
           "id": "den-keycap-trai-tim",
@@ -1006,7 +1006,7 @@
           "gia": 1200000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 9
+          "soLuong": 10
         }
       ],
       "anh": "/products/atk-rs6-air/den/01.webp?v=bbe9c038"
