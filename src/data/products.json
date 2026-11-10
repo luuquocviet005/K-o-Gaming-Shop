@@ -1002,7 +1002,14 @@
           "gia": 1200000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 8
+          "soLuong": 8,
+          "anh": "/products/atk-rs6-air/xanh/01.webp?v=5c079d11",
+          "anhs": [
+            "/products/atk-rs6-air/xanh/01.webp?v=5c079d11",
+            "/products/atk-rs6-air/xanh/02.webp?v=9cb49291",
+            "/products/atk-rs6-air/xanh/03.webp?v=299a2652",
+            "/products/atk-rs6-air/xanh/04.webp?v=3ecfc29d"
+          ]
         }
       ],
       "anh": "/products/atk-rs6-air/den/01.webp?v=bbe9c038"
