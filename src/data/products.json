@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 30
+      "soLuong": 29
     },
     {
       "slug": "ban-phim",
@@ -380,24 +380,6 @@
       "anhs": [
         "/products/atk-f1-extreme-v2/01.webp?v=542e8245",
         "/products/atk-f1-extreme-v2/02.webp?v=60ea0d99"
-      ],
-      "mau": "#4338ca"
-    },
-    {
-      "id": "atk-ghost",
-      "slug": "atk-ghost",
-      "ten": "Ghost",
-      "hang": "ATK",
-      "danhMuc": "chuot",
-      "gia": 1100000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 0,
-      "anh": "/products/atk-ghost/01.webp?v=2d37086c",
-      "anhs": [
-        "/products/atk-ghost/01.webp?v=2d37086c",
-        "/products/atk-ghost/02.webp?v=82d81fb2"
       ],
       "mau": "#4338ca"
     },

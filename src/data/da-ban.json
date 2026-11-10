@@ -1,6 +1,18 @@
 {
   "daBan": [
     {
+      "slug": "atk-ghost",
+      "ten": "Ghost",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 1100000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/atk-ghost/01.webp?v=2d37086c",
+      "mau": "#4338ca",
+      "banLuc": "2026-11-10"
+    },
+    {
       "slug": "logitech-g-pro-x2-superstrike",
       "ten": "G Pro X2 Superstrike",
       "hang": "Logitech",
