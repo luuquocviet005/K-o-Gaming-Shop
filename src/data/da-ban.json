@@ -1,6 +1,18 @@
 {
   "daBan": [
     {
+      "slug": "razer-deathadder-v4-pro",
+      "ten": "Deathadder V4 Pro",
+      "hang": "Razer",
+      "danhMuc": "chuot",
+      "gia": 2300000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/razer-deathadder-v4-pro/01.webp?v=9e6cb363",
+      "mau": "#4338ca",
+      "banLuc": "2026-11-11"
+    },
+    {
       "slug": "atk-ghost",
       "ten": "Ghost",
       "hang": "ATK",

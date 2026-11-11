@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 29
+      "soLuong": 28
     },
     {
       "slug": "ban-phim",
@@ -439,6 +439,24 @@
       "mau": "#4338ca"
     },
     {
+      "id": "atk-f1-ultimate-v3",
+      "slug": "atk-f1-ultimate-v3",
+      "ten": "F1 Ultimate v3",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 1200000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/atk-f1-ultimate-v3/01.webp?v=cedf5684",
+      "anhs": [
+        "/products/atk-f1-ultimate-v3/01.webp?v=cedf5684",
+        "/products/atk-f1-ultimate-v3/02.webp?v=fcdd99be"
+      ],
+      "mau": "#4338ca"
+    },
+    {
       "id": "aula-sc311",
       "slug": "aula-sc311",
       "ten": "SC311",
@@ -694,25 +712,6 @@
       "mau": "#4338ca"
     },
     {
-      "id": "razer-deathadder-v4-pro",
-      "slug": "razer-deathadder-v4-pro",
-      "ten": "Deathadder V4 Pro",
-      "hang": "Razer",
-      "danhMuc": "chuot",
-      "gia": 2300000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 0,
-      "note": "Bảo hành : 19/7/2027",
-      "anh": "/products/razer-deathadder-v4-pro/01.webp?v=9e6cb363",
-      "anhs": [
-        "/products/razer-deathadder-v4-pro/01.webp?v=9e6cb363",
-        "/products/razer-deathadder-v4-pro/02.webp?v=3bf677ae"
-      ],
-      "mau": "#4338ca"
-    },
-    {
       "id": "razer-viper-v4-pro",
       "slug": "razer-viper-v4-pro",
       "ten": "Viper V4 Pro",
@@ -793,24 +792,6 @@
       "soLuong": 9,
       "anh": "/products/xingmeng-zero-1-se/01.webp?v=9e9572db",
       "mau": "#b45309"
-    },
-    {
-      "id": "atk-f1-ultimate-v3",
-      "slug": "atk-f1-ultimate-v3",
-      "ten": "F1 Ultimate v3",
-      "hang": "ATK",
-      "danhMuc": "chuot",
-      "gia": 1200000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/atk-f1-ultimate-v3/01.webp?v=cedf5684",
-      "anhs": [
-        "/products/atk-f1-ultimate-v3/01.webp?v=cedf5684",
-        "/products/atk-f1-ultimate-v3/02.webp?v=fcdd99be"
-      ],
-      "mau": "#4338ca"
     },
     {
       "id": "akko-air-01",
