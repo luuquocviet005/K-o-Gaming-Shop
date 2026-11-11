@@ -9,14 +9,18 @@ import { danhThucMayChu } from "./may-chu";
  * Messenger. Đừng thêm nút nổi riêng — ba nút chồng nhau ở góc dưới chiếm
  * gần 1/5 chiều cao màn iPhone, đè tên món và che nửa nút "Thêm vào giỏ hàng".
  * Máy tính đủ chỗ nên vẫn giữ nút "Chat tư vấn Kẹo AI" như cũ.
+ * `gon`: máy tính cũng dùng nút tròn và menu của di động (trang giỏ hàng).
  */
 export function NutNoi({
   currentProduct,
+  gon = false,
   onMoChat,
 }: {
   currentProduct: Product | undefined;
+  gon?: boolean;
   onMoChat: () => void;
 }) {
+  const anMayTinh = gon ? "" : "lg:hidden";
   const [menu, setMenu] = useState(false);
 
   // Bấm Esc thì gập menu. Không cần gập khi đổi trang: lúc menu mở, lớp nền
@@ -38,7 +42,7 @@ export function NutNoi({
         onClick={onMoChat}
         aria-expanded={false}
         aria-label="Mở trợ lý AI tư vấn Kẹo Gaming Gear"
-        className="group hidden h-14 cursor-pointer items-center gap-2.5 rounded-full bg-primary px-5 text-on-primary shadow-lg transition-all duration-200 hover:bg-primary-hover active:scale-95 lg:flex"
+        className={`group hidden h-14 cursor-pointer items-center gap-2.5 rounded-full bg-primary px-5 text-on-primary shadow-lg transition-all duration-200 hover:bg-primary-hover active:scale-95 ${gon ? "" : "lg:flex"}`}
       >
         <span className="relative flex size-3">
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-300 opacity-75" />
@@ -53,8 +57,8 @@ export function NutNoi({
       {menu && (
         <>
           {/* Bấm ra ngoài thì gập menu */}
-          <div className="fixed inset-0 lg:hidden" onClick={() => setMenu(false)} aria-hidden />
-          <div id="menu-lien-he" className="relative mb-3 flex flex-col items-end gap-2.5 lg:hidden">
+          <div className={`fixed inset-0 ${anMayTinh}`} onClick={() => setMenu(false)} aria-hidden />
+          <div id="menu-lien-he" className={`relative mb-3 flex flex-col items-end gap-2.5 ${anMayTinh}`}>
             <button
               type="button"
               onClick={() => {
@@ -98,7 +102,7 @@ export function NutNoi({
         aria-expanded={menu}
         aria-controls="menu-lien-he"
         aria-label={menu ? "Đóng menu liên hệ" : "Mở menu liên hệ: chat AI, Zalo, Messenger"}
-        className="relative grid size-14 cursor-pointer place-items-center rounded-full bg-primary text-2xl text-on-primary shadow-lg transition-transform duration-200 active:scale-95 lg:hidden"
+        className={`relative grid size-14 cursor-pointer place-items-center rounded-full bg-primary text-2xl text-on-primary shadow-lg transition-transform duration-200 active:scale-95 ${anMayTinh}`}
       >
         {menu ? (
           <CloseIcon width={22} height={22} />

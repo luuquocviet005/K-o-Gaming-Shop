@@ -31,11 +31,15 @@ export function AiChatbox() {
   const currentProductSlug = productSlugMatch ? productSlugMatch[1] : null;
   const currentProduct = currentProductSlug ? getProduct(currentProductSlug) : undefined;
 
+  // Trang giỏ hàng đã có sẵn ba nút đặt hàng trong khối tóm tắt. Cụm nút nổi
+  // đầy đủ của máy tính đè lên chính ba nút đó, nên ở đây chỉ để một nút tròn.
+  const gon = pathname?.startsWith("/gio-hang") ?? false;
+
   const troChuyen = useTroChuyen(pathname, currentProductSlug, currentProduct);
 
   return (
     <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end sm:bottom-5 sm:right-5">
-      <LienHeMayTinh currentProduct={currentProduct} />
+      {!gon && <LienHeMayTinh currentProduct={currentProduct} />}
       {open ? (
         <KhungChat
           troChuyen={troChuyen}
@@ -48,6 +52,7 @@ export function AiChatbox() {
       ) : (
         <NutNoi
           currentProduct={currentProduct}
+          gon={gon}
           onMoChat={() => {
             danhThucMayChu();
             setOpen(true);
