@@ -84,8 +84,8 @@ export default function ContactPage() {
         </p>
       </header>
 
-      <div className="mt-10 grid gap-6 lg:grid-cols-[1fr_1.2fr] lg:gap-10">
-        <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+      <div className="mt-10 grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1.2fr] lg:gap-10">
+        <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1">
           {channels.map(({ Icon, label, value, href, note }) => {
             const content = (
               <>
@@ -96,7 +96,7 @@ export default function ContactPage() {
                   <span className="block font-mono text-xs font-semibold uppercase tracking-wider text-fg-subtle">
                     {label}
                   </span>
-                  <span className="mt-1 block font-semibold text-fg">{value}</span>
+                  <span className="mt-1 block break-words font-semibold text-fg">{value}</span>
                   <span className="mt-1 block text-xs text-fg-muted">{note}</span>
                 </span>
               </>
