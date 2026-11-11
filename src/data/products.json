@@ -38,7 +38,7 @@
       "short": "Phụ kiện",
       "icon": "do-khac",
       "blurb": "Keycap, bungee, đế sạc, tai nghe không dây và đồ chơi lẻ đi kèm.",
-      "soLuong": 9
+      "soLuong": 10
     }
   ],
   "sanPham": [
@@ -1783,7 +1783,7 @@
       "ten": "Feet ATK",
       "hang": "ATK",
       "danhMuc": "phu-kien",
-      "gia": 90000,
+      "gia": 100000,
       "tinhTrang": "Mới",
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
@@ -1901,6 +1901,24 @@
         "/products/razer-ke-tay-size-tkl/01.webp?v=049f2c1d",
         "/products/razer-ke-tay-size-tkl/02.webp?v=3cb1e65e",
         "/products/razer-ke-tay-size-tkl/03.webp?v=71820993"
+      ],
+      "mau": "#4338ca"
+    },
+    {
+      "id": "atk-grip-atk",
+      "slug": "atk-grip-atk",
+      "ten": "Grip ATK",
+      "hang": "ATK",
+      "danhMuc": "phu-kien",
+      "gia": 100000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 9,
+      "anh": "/products/atk-grip-atk/01.webp?v=d87d61bb",
+      "anhs": [
+        "/products/atk-grip-atk/01.webp?v=d87d61bb",
+        "/products/atk-grip-atk/02.webp?v=a5a7c1b9"
       ],
       "mau": "#4338ca"
     },
