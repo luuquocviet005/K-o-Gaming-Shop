@@ -1,13 +1,16 @@
 #!/usr/bin/env node
 /**
  * Sửa code của một phần mà không sửa ghi chú kiến thức của phần đó → báo lỗi.
+ * Sửa code mà không thêm file sổ bàn giao mới trong `docs/ban-giao/` → báo lỗi.
  *
  * VÌ SAO CẦN: AI không nhớ gì giữa các phiên — `docs/kien-thuc/` là trí nhớ
  * duy nhất. "Xong việc nhớ cập nhật ghi chú" mà chỉ ghi trong AGENTS.md thì AI
  * quên, ghi chú cũ dần, AI sau đọc phải điều sai rồi lặp lại lỗi đã sửa.
+ * Sổ bàn giao cũng vậy: AI mới vào đọc 3 file mới nhất, thiếu file của việc
+ * vừa xong thì nó tưởng dự án vẫn như lần bàn giao trước.
  *
  * Sửa vặt không có gì đáng ghi: thêm dòng `[bo-qua-ghi-chu]` (đứng RIÊNG một
- * dòng) vào lời nhắn commit. Phải đứng riêng vì lời nhắn nhắc tới thẻ này khi
+ * dòng) vào lời nhắn commit, bỏ qua cả hai kiểm tra. Phải đứng riêng vì lời nhắn nhắc tới thẻ này khi
  * mô tả nó cũng không được tính là bỏ qua.
  *
  * Dùng: node scripts/kiem-tra-ghi-chu.mjs [nhánh gốc, mặc định origin/main]
@@ -61,6 +64,13 @@ const PHAN = [
   { tienTo: [".claude/", ".agents/"], ghiChu: "moi-truong-ai.md" },
 ];
 
+/*
+ * File đổi mà không cần sổ bàn giao. `package.json` và lock nằm đây vì bot
+ * Hostinger tự mở PR vá bảo mật chỉ sửa hai file đó, nó không viết bàn giao.
+ */
+const KHONG_CAN_BAN_GIAO = ["docs/", "package.json", "package-lock.json"];
+const FILE_BAN_GIAO = /^docs\/ban-giao\/\d{4}-\d{2}-\d{2}-.+\.md$/;
+
 const BO_QUA = "[bo-qua-ghi-chu]";
 const DONG_BO_QUA = /^\s*\[bo-qua-ghi-chu\]\s*$/m;
 
@@ -84,18 +94,34 @@ for (const file of fileDoi) {
   thieu.get(phan.ghiChu).push(file);
 }
 
-if (thieu.size === 0) {
-  console.log("✓ Ghi chú kiến thức đã đi cùng code.");
+const fileMoi = git("diff", "--name-only", "--diff-filter=A", `${goc}...HEAD`)
+  .split("\n")
+  .filter(Boolean);
+const codeDoi = fileDoi.filter((f) => !KHONG_CAN_BAN_GIAO.some((t) => f.startsWith(t)));
+const thieuBanGiao = codeDoi.length > 0 && !fileMoi.some((f) => FILE_BAN_GIAO.test(f));
+
+if (thieu.size === 0 && !thieuBanGiao) {
+  console.log("✓ Ghi chú kiến thức và sổ bàn giao đã đi cùng code.");
   process.exit(0);
 }
 
-console.error("✗ Sửa code mà chưa sửa ghi chú kiến thức đi kèm:\n");
-for (const [ghiChu, files] of thieu) {
-  console.error(`  docs/kien-thuc/${ghiChu}`);
-  for (const f of files) console.error(`      vì đã sửa ${f}`);
+if (thieu.size > 0) {
+  console.error("✗ Sửa code mà chưa sửa ghi chú kiến thức đi kèm:\n");
+  for (const [ghiChu, files] of thieu) {
+    console.error(`  docs/kien-thuc/${ghiChu}`);
+    for (const f of files) console.error(`      vì đã sửa ${f}`);
+  }
+  console.error(
+    `\nCập nhật ghi chú cho đúng với code mới (bẫy vừa gặp, điều đã hết đúng, việc còn dở).\n`,
+  );
 }
-console.error(
-  `\nCập nhật ghi chú cho đúng với code mới (bẫy vừa gặp, điều đã hết đúng, việc còn dở).` +
-    `\nSửa vặt không có gì đáng ghi thì thêm một dòng riêng ${BO_QUA} vào lời nhắn commit.`,
-);
+
+if (thieuBanGiao) {
+  console.error(
+    `✗ Sửa code (${codeDoi.length} file, vd ${codeDoi[0]}) mà chưa thêm file sổ bàn giao mới.\n` +
+      `  Tạo docs/ban-giao/YYYY-MM-DD-<ai>-<viec>.md theo mẫu ở docs/ban-giao/README.md.\n`,
+  );
+}
+
+console.error(`Sửa vặt không có gì đáng ghi thì thêm một dòng riêng ${BO_QUA} vào lời nhắn commit.`);
 process.exit(1);
