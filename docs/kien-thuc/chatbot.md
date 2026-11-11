@@ -27,6 +27,9 @@ Hai nửa ở hai repo:
   nhánh `open ? ... : ...`.
 - Máy tính ẩn hai nút Messenger/Zalo nhỏ ở đầu khung chat (`lg:hidden`) để khỏi trùng.
   Di động giữ nguyên: menu bung từ nút tròn, đầu khung chat vẫn có hai nút đó.
+- Trang giỏ hàng (`gon` trong `index.tsx`): máy tính cũng chỉ có nút tròn và menu
+  như di động, không có hai ô riêng. Khối tóm tắt đơn đã có ba nút đặt hàng, cụm
+  nổi đầy đủ (cao 174px) đè lên chính các nút đó trên màn laptop.
 
 ## Bẫy đã gặp
 - Trạng thái chat phải ở `useTroChuyen` (gọi từ `index.tsx`), không trong

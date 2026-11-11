@@ -192,9 +192,16 @@
 
 html {
   -webkit-tap-highlight-color: transparent;
+  /* Hiệu ứng chỉ dùng transform (con dấu phóng to, thẻ trượt) không được làm
+     trang rộng ra, nếu không điện thoại kéo lệch ngang được. Dùng clip chứ
+     không phải hidden để header sticky vẫn dính. Phải đặt ở cả html lẫn body:
+     riêng html thì trình duyệt chuyển thành hidden cho khung nhìn, trang vẫn
+     rộng ra và vẫn cuộn ngang được. */
+  overflow-x: clip;
 }
 
 body {
+  overflow-x: clip;
   background-color: var(--bg);
   color: var(--fg);
   font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;

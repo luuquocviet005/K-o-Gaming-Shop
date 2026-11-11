@@ -27,7 +27,12 @@
   này" trên trang sản phẩm, đặt sát ngón tay vì chủ shop rep Messenger nhanh
   nhất). Đừng thêm nút nổi riêng — nhiều nút chồng nhau che nút "Thêm vào giỏ".
 - Máy tính: nút "Chat tư vấn Kẹo AI", phía trên có hai ô Nhắn Zalo / Nhắn
-  Messenger riêng (chi tiết ở chatbot.md).
+  Messenger riêng (chi tiết ở chatbot.md). Riêng trang giỏ hàng dùng nút tròn như
+  di động để khỏi che nút đặt hàng.
+- `html` và `body` cùng có `overflow-x: clip` (thiếu một trong hai là mất tác
+  dụng): hiệu ứng transform (con dấu `dap-dau` phóng to 1,7
+  lần trước khi cuộn tới) thò ra mép phải sẽ làm trang kéo lệch ngang được. Đừng
+  gỡ dòng này; thêm hiệu ứng mới thì đo `scrollWidth` ở 390px.
 
 ## Liên hệ và đánh giá
 - `DoLienHe` đếm lượt bấm nút liên hệ (GA4) bằng một bộ lắng nghe ở cấp trang —
