@@ -1,5 +1,9 @@
 # Giao diện web
 
+- Phong cách "Phiếu kiểm hàng" (hồng pastel, viền mực, bóng đổ cứng): màu, chữ,
+  component, điều nên và không nên nằm ở `DESIGN.md`; khách là ai và shop cam
+  kết gì nằm ở `PRODUCT.md`. Làm giao diện thì đọc hai file đó trước, đừng tự
+  chọn màu hay font khác.
 - Thông tin shop (SĐT, địa chỉ, link, STK, quy tắc ship, backend chatbot): chỉ
   ở `src/lib/site.ts`. Lint chặn viết cứng ở chỗ khác.
 - Tên shop là "Kẹo Gaming Gear" (`site.name`), trùng tên miền và hồ sơ Google
@@ -22,7 +26,8 @@
 - Di động: MỘT nút tròn 🍬, bấm bung Chat AI / Zalo / Messenger ("Hỏi về món
   này" trên trang sản phẩm, đặt sát ngón tay vì chủ shop rep Messenger nhanh
   nhất). Đừng thêm nút nổi riêng — nhiều nút chồng nhau che nút "Thêm vào giỏ".
-- Máy tính: nút "Chat tư vấn Kẹo AI".
+- Máy tính: nút "Chat tư vấn Kẹo AI", phía trên có hai ô Nhắn Zalo / Nhắn
+  Messenger riêng (chi tiết ở chatbot.md).
 
 ## Liên hệ và đánh giá
 - `DoLienHe` đếm lượt bấm nút liên hệ (GA4) bằng một bộ lắng nghe ở cấp trang —
@@ -86,9 +91,10 @@
 - `description` trong JSON-LD Product luôn có một câu ghép từ dữ liệu thật
   (tình trạng, giá, nơi có hàng) vì đa số món để trống Mô tả/Ghi chú.
 - KHÔNG khai `shippingDetails` (phí ship tỉnh tính theo thực tế, không có con
-  số cố định) và KHÔNG khai `hasMerchantReturnPolicy` (shop chỉ hoàn khi sai mô
-  tả, không nhận đổi ý, schema không tả đúng được) - khai sai là vi phạm chính
-  sách mua sắm của Google.
+  số cố định) - khai sai là vi phạm chính sách mua sắm của Google.
+- `hasMerchantReturnPolicy` CÓ khai ở trang sản phẩm: trả trong 3 ngày, hoàn đủ
+  tiền, shop chịu ship gửi trả. Đổi chính sách trả hàng thì sửa cả ba nơi:
+  `/chinh-sach`, schema này, chính sách trả hàng trên Merchant Center.
 
 ## Tóm tắt cho AI đọc (`/llms.txt`)
 

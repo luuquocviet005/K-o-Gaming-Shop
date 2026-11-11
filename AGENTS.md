@@ -58,7 +58,8 @@ thì thêm vào `eslint/luat-shop.mjs` (hoặc một bước trong
   TikTok, email viết cứng trong `src/` ngoài `site.ts`.
 - Workflow "Kiểm tra PR": mọi PR vào `main` chạy typecheck, lint, build, check.
 - `scripts/kiem-tra-ghi-chu.mjs`: PR sửa code một phần mà không sửa ghi chú
-  của phần đó trong `docs/kien-thuc/` thì đỏ. Sửa vặt: thêm dòng riêng
+  của phần đó trong `docs/kien-thuc/` thì đỏ. PR sửa code mà không thêm file
+  mới trong `docs/ban-giao/` cũng đỏ. Sửa vặt: thêm dòng riêng
   `[bo-qua-ghi-chu]` vào lời nhắn commit.
 
 ## Sửa code ở đâu — QUAN TRỌNG

@@ -23,6 +23,10 @@
 và `node scripts/kiem-tra-ghi-chu.mjs`.
 - Workflow `kiem-tra-pr.yml` chạy tất cả cho mọi PR vào `main`. Không chạy khi
   push thẳng `main` (bot đã tự kiểm tra).
+- `kiem-tra-ghi-chu.mjs` kiểm hai thứ: ghi chú kiến thức đi cùng code, và PR
+  có sửa file ngoài `docs/` thì phải THÊM một file mới
+  `docs/ban-giao/YYYY-MM-DD-<ai>-<viec>.md`. PR chỉ sửa `package.json` / lock
+  được miễn (bot Hostinger vá bảo mật). `[bo-qua-ghi-chu]` bỏ qua cả hai.
 - Luật lint riêng ở `eslint/luat-shop.mjs`: cấm chú thích kể lịch sử, cấm viết
   cứng thông tin liên hệ ngoài `site.ts`.
 - `package.json` ép `minimatch` lên ^11.0.1 (`overrides`) để hết cảnh báo lỗ hổng
