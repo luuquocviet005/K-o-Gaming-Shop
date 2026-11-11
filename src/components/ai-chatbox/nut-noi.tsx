@@ -115,3 +115,32 @@ export function NutNoi({
     </>
   );
 }
+
+/*
+ * Máy tính: hai ô Zalo / Messenger luôn hiện riêng, nằm TRÊN nút chat và khung
+ * chat. Chúng là phần tử đầu của cột nên khung chat mở ra thì tự đẩy chúng lên.
+ */
+export function LienHeMayTinh({ currentProduct }: { currentProduct: Product | undefined }) {
+  return (
+    <div className="mb-3 hidden flex-col items-end gap-2.5 lg:flex">
+      <a
+        href={site.social.zalo}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex h-12 items-center gap-2 rounded-full border border-border-strong bg-surface px-5 text-sm font-bold text-fg shadow-lg"
+      >
+        <ZaloIcon width={18} height={18} />
+        Nhắn Zalo
+      </a>
+      <a
+        href={site.social.messenger}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex h-12 items-center gap-2 rounded-full bg-primary px-5 text-sm font-bold text-on-primary shadow-lg transition-colors hover:bg-primary-hover"
+      >
+        <FacebookIcon width={18} height={18} />
+        {currentProduct ? "Hỏi về món này" : "Nhắn Messenger"}
+      </a>
+    </div>
+  );
+}

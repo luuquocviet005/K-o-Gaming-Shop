@@ -115,7 +115,7 @@ export function KhungChat({
             target="_blank"
             rel="noopener noreferrer"
             title="Nhắn Messenger với chủ shop (Xem video test)"
-            className="inline-flex h-8 items-center gap-1 rounded-full bg-white/20 px-2.5 text-xs font-semibold text-on-primary transition-colors hover:bg-white/30"
+            className="inline-flex h-8 items-center gap-1 rounded-full bg-white/20 px-2.5 lg:hidden text-xs font-semibold text-on-primary transition-colors hover:bg-white/30"
           >
             <FacebookIcon width={13} height={13} />
             <span className="hidden sm:inline">Messenger</span>
@@ -125,7 +125,7 @@ export function KhungChat({
             target="_blank"
             rel="noopener noreferrer"
             title="Nhắn Zalo với chủ shop"
-            className="inline-flex size-8 items-center justify-center rounded-full bg-white/20 text-on-primary transition-colors hover:bg-white/30"
+            className="inline-flex size-8 items-center justify-center rounded-full bg-white/20 text-on-primary lg:hidden transition-colors hover:bg-white/30"
           >
             <ZaloIcon width={14} height={14} />
           </a>

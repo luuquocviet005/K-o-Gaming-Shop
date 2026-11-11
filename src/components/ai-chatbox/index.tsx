@@ -6,7 +6,7 @@ import { getProduct } from "@/lib/products";
 import { danhThucMayChu } from "./may-chu";
 import { useTroChuyen } from "./use-tro-chuyen";
 import { KhungChat } from "./khung-chat";
-import { NutNoi } from "./nut-noi";
+import { LienHeMayTinh, NutNoi } from "./nut-noi";
 import { QrPhongTo } from "./qr-phong-to";
 
 /*
@@ -35,6 +35,7 @@ export function AiChatbox() {
 
   return (
     <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end sm:bottom-5 sm:right-5">
+      <LienHeMayTinh currentProduct={currentProduct} />
       {open ? (
         <KhungChat
           troChuyen={troChuyen}

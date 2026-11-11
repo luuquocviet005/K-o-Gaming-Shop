@@ -29,7 +29,7 @@ export function useTroChuyen(
     {
       id: "welcome",
       role: "assistant",
-      text: "Chào bạn! 🍬 Mình là trợ lý Kẹo Gaming Gear (Đà Nẵng). Bạn cần tư vấn chuột, phím cơ/HE, hỏi tình trạng thật hay chốt đơn cứ nhắn mình nha! Nếu bạn cần thêm bất kỳ thông tin nào thì nhắn trực tiếp cho chủ shop qua Messenger hoặc Zalo (nút ở đầu khung chat) nhé.",
+      text: "Chào bạn! 🍬 Mình là trợ lý Kẹo Gaming Gear (Đà Nẵng). Bạn cần tư vấn chuột, phím cơ/HE, hỏi tình trạng thật hay chốt đơn cứ nhắn mình nha! Nếu bạn cần thêm bất kỳ thông tin nào thì nhắn trực tiếp cho chủ shop qua Messenger hoặc Zalo (nút phía trên khung chat) nhé.",
     },
   ]);
   const msgCounterRef = useRef(1);
