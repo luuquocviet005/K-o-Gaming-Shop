@@ -632,7 +632,7 @@
       "ten": "Superlight 2",
       "hang": "Logitech",
       "danhMuc": "chuot",
-      "gia": 1300000,
+      "gia": 1200000,
       "tinhTrang": "Cũ · không hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
@@ -640,27 +640,9 @@
       "mau": "#7c3aed",
       "phanLoai": [
         {
-          "id": "fullbox-flaw",
-          "ten": "fullbox (flaw)",
-          "gia": 1300000,
-          "tinhTrang": "Cũ · không hộp",
-          "nhomTinhTrang": "cu",
-          "soLuong": 1,
-          "anh": "/products/logitech-superlight-2/fullbox-flaw/01.webp?v=f3812161",
-          "anhs": [
-            "/products/logitech-superlight-2/fullbox-flaw/01.webp?v=f3812161",
-            "/products/logitech-superlight-2/fullbox-flaw/02.webp?v=c6488dd7",
-            "/products/logitech-superlight-2/fullbox-flaw/03.webp?v=f43d9dd3",
-            "/products/logitech-superlight-2/fullbox-flaw/04.webp?v=ed07ef4d",
-            "/products/logitech-superlight-2/fullbox-flaw/05.webp?v=78804542",
-            "/products/logitech-superlight-2/fullbox-flaw/06.webp?v=66c8b993",
-            "/products/logitech-superlight-2/fullbox-flaw/07.webp?v=1856dec5"
-          ]
-        },
-        {
           "id": "nobox",
           "ten": "nobox",
-          "gia": 1300000,
+          "gia": 1200000,
           "tinhTrang": "Cũ · không hộp",
           "nhomTinhTrang": "cu",
           "soLuong": 1,
@@ -676,7 +658,7 @@
           ]
         }
       ],
-      "anh": "/products/logitech-superlight-2/fullbox-flaw/01.webp?v=f3812161"
+      "anh": "/products/logitech-superlight-2/nobox/01.webp?v=86bfd82e"
     },
     {
       "id": "razer-basilisk",
