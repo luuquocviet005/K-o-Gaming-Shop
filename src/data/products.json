@@ -863,7 +863,7 @@
           "gia": 1200000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 8,
+          "soLuong": 2,
           "anh": "/products/atk-rs6-air/den/01.webp?v=bbe9c038",
           "anhs": [
             "/products/atk-rs6-air/den/01.webp?v=bbe9c038",
@@ -873,26 +873,12 @@
           ]
         },
         {
-          "id": "hong",
-          "ten": "Hồng",
-          "gia": 1200000,
-          "tinhTrang": "Cũ · đủ hộp",
-          "nhomTinhTrang": "cu",
-          "soLuong": 8,
-          "anh": "/products/atk-rs6-air/hong/01.webp?v=5f442f63",
-          "anhs": [
-            "/products/atk-rs6-air/hong/01.webp?v=5f442f63",
-            "/products/atk-rs6-air/hong/02.webp?v=f40b8809",
-            "/products/atk-rs6-air/hong/03.webp?v=0e4656e7"
-          ]
-        },
-        {
           "id": "trang",
           "ten": "Trắng",
           "gia": 1200000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 8,
+          "soLuong": 3,
           "anh": "/products/atk-rs6-air/trang/01.webp?v=bbd573b3",
           "anhs": [
             "/products/atk-rs6-air/trang/01.webp?v=bbd573b3",
@@ -902,12 +888,26 @@
           ]
         },
         {
+          "id": "hong",
+          "ten": "Hồng",
+          "gia": 1200000,
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 2,
+          "anh": "/products/atk-rs6-air/hong/01.webp?v=5f442f63",
+          "anhs": [
+            "/products/atk-rs6-air/hong/01.webp?v=5f442f63",
+            "/products/atk-rs6-air/hong/02.webp?v=f40b8809",
+            "/products/atk-rs6-air/hong/03.webp?v=0e4656e7"
+          ]
+        },
+        {
           "id": "xanh",
           "ten": "Xanh",
           "gia": 1200000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 8,
+          "soLuong": 1,
           "anh": "/products/atk-rs6-air/xanh/01.webp?v=5c079d11",
           "anhs": [
             "/products/atk-rs6-air/xanh/01.webp?v=5c079d11",
@@ -1611,7 +1611,7 @@
           "gia": 850000,
           "tinhTrang": "Cũ · không hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 24,
+          "soLuong": 12,
           "anh": "/products/razer-barracuda-x-2022/den/01.webp?v=ff7ab67f",
           "anhs": [
             "/products/razer-barracuda-x-2022/den/01.webp?v=ff7ab67f",
@@ -1624,7 +1624,7 @@
           "gia": 850000,
           "tinhTrang": "Cũ · không hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 24,
+          "soLuong": 12,
           "anh": "/products/razer-barracuda-x-2022/trang/01.webp?v=444fb8c4",
           "anhs": [
             "/products/razer-barracuda-x-2022/trang/01.webp?v=444fb8c4",
