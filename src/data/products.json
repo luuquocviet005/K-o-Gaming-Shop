@@ -637,6 +637,7 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/logitech-superlight-2/01.webp?v=f43d9dd3",
       "mau": "#7c3aed",
       "phanLoai": [
         {
@@ -646,19 +647,16 @@
           "tinhTrang": "Cũ · không hộp",
           "nhomTinhTrang": "cu",
           "soLuong": 1,
-          "anh": "/products/logitech-superlight-2/nobox/01.webp?v=86bfd82e",
+          "anh": "/products/logitech-superlight-2/01.webp?v=f43d9dd3",
           "anhs": [
-            "/products/logitech-superlight-2/nobox/01.webp?v=86bfd82e",
-            "/products/logitech-superlight-2/nobox/02.webp?v=a1b8bffb",
-            "/products/logitech-superlight-2/nobox/03.webp?v=025b6087",
-            "/products/logitech-superlight-2/nobox/04.webp?v=9a340e8c",
-            "/products/logitech-superlight-2/nobox/05.webp?v=71dae0ff",
-            "/products/logitech-superlight-2/nobox/06.webp?v=7425b8db",
-            "/products/logitech-superlight-2/nobox/07.webp?v=f8a6b7d4"
+            "/products/logitech-superlight-2/01.webp?v=f43d9dd3",
+            "/products/logitech-superlight-2/02.webp?v=ed07ef4d",
+            "/products/logitech-superlight-2/03.webp?v=78804542",
+            "/products/logitech-superlight-2/04.webp?v=66c8b993",
+            "/products/logitech-superlight-2/05.webp?v=1856dec5"
           ]
         }
-      ],
-      "anh": "/products/logitech-superlight-2/nobox/01.webp?v=86bfd82e"
+      ]
     },
     {
       "id": "razer-basilisk",
