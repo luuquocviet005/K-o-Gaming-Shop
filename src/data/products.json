@@ -38,7 +38,7 @@
       "short": "Phụ kiện",
       "icon": "do-khac",
       "blurb": "Keycap, bungee, đế sạc, tai nghe không dây và đồ chơi lẻ đi kèm.",
-      "soLuong": 10
+      "soLuong": 9
     }
   ],
   "sanPham": [
@@ -1840,25 +1840,6 @@
       "anhs": [
         "/products/razer-stream-controller-x/01.webp?v=1f5cc0ec",
         "/products/razer-stream-controller-x/02.webp?v=fb82f34d"
-      ],
-      "mau": "#4338ca"
-    },
-    {
-      "id": "razer-ke-tay-size-tkl",
-      "slug": "razer-ke-tay-size-tkl",
-      "ten": "Kê tay ( size TKL)",
-      "hang": "Razer",
-      "danhMuc": "phu-kien",
-      "gia": 250000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/razer-ke-tay-size-tkl/01.webp?v=049f2c1d",
-      "anhs": [
-        "/products/razer-ke-tay-size-tkl/01.webp?v=049f2c1d",
-        "/products/razer-ke-tay-size-tkl/02.webp?v=3cb1e65e",
-        "/products/razer-ke-tay-size-tkl/03.webp?v=71820993"
       ],
       "mau": "#4338ca"
     },
