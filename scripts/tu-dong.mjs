@@ -123,7 +123,7 @@ if (canhBaoKeo) await ghiNhatKy(canhBaoKeo);
 // 3. Đồng bộ lại để bảng hàng ghi nhận những tấm ảnh vừa nạp
 const dongBo = chay([join(root, "scripts", "sync-sheet.mjs")]);
 if (dongBo.ma !== 0) {
-  await ghiNhatKy(`[${luc()}] ✗ Không đọc được Google Sheet — bỏ qua lượt này.`);
+  await ghiNhatKy(`[${luc()}] ✗ Không đọc được bảng hàng (app kho trên PC đã mở chưa?) — bỏ qua lượt này.`);
   process.exit(0); // không phải lỗi của người dùng, lượt sau thử lại
 }
 

@@ -1,6 +1,9 @@
 {
   "_huongDan": "Cấu hình đồng bộ Google Sheet. Sửa file này khi đổi Sheet hoặc thêm tab mới. Mỗi tab trong Sheet = một danh mục trên web.",
 
+  "_nguonKho": "Bot web đọc kho từ app quản lí hàng trên PC (D:/keo-quan-li). Xoá dòng nguonKho để quay về đọc Google Sheet.",
+  "nguonKho": "http://127.0.0.1:7788/csv",
+
   "sheetId": "1j_bXrSi2dl4mXaGeF3YwTrVZL7PfOMDUWn6AsCTdQGA",
 
   "_thuMucAnh": "Thư mục ảnh mà tác vụ chạy ngầm theo dõi. Đổi đường dẫn ở đây nếu bạn chuyển thư mục ảnh đi chỗ khác.",

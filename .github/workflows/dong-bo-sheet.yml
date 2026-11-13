@@ -12,12 +12,12 @@ name: Đồng bộ Google Sheet
 # Chưa có / hết hạn token thì dùng token mặc định: chạy được khi ruleset còn
 # tắt, bị chặn khi ruleset bật — bước "Commit và đẩy lên" sẽ đỏ.
 
+# TẮT LỊCH 20 PHÚT từ 14/11/2026: bảng hàng giờ lấy từ app quản lí hàng trên PC
+# chủ shop (xem nguonKho trong sync.config.json), bot tu-dong.mjs trên PC lo đẩy.
+# Máy GitHub không vào được app đó; để nó đọc Sheet thì hai bên sẽ đè nhau.
+# Chỉ còn nút bấm tay, đọc Sheet, dùng khi PC hỏng lâu ngày.
 on:
-  schedule:
-    # Mỗi 20 phút. Giờ trong cron của GitHub là giờ UTC, nhưng vì chạy theo
-    # chu kỳ nên không ảnh hưởng gì.
-    - cron: "*/20 * * * *"
-  workflow_dispatch: # nút bấm chạy ngay trong tab Actions
+  workflow_dispatch: # nút bấm chạy tay trong tab Actions
 
 concurrency:
   group: dong-bo-sheet
@@ -42,7 +42,7 @@ jobs:
           node-version: 22
 
       - name: Đọc Google Sheet
-        run: node scripts/sync-sheet.mjs
+        run: KHO_TU_SHEET=1 node scripts/sync-sheet.mjs
 
       - name: Kiểm tra có thay đổi không
         id: kiemtra
