@@ -43,6 +43,19 @@ function layO(row, ...tenCot) {
   return "";
 }
 
+/**
+ * NGUỒN KHO: app quản lí hàng trên PC chủ shop (D:keo-quan-li, http://127.0.0.1:7788).
+ *
+ * Từ 14/11/2026 app là nơi nhập liệu gốc; Google Sheet chỉ còn là bản sao app
+ * tự ghi sang cho chatbot và các agent đọc. App trả về CSV đúng cột, đúng chữ
+ * như tab Sheet kho, nên mọi bước xử lý bên dưới giữ nguyên.
+ *
+ * App tắt thì KHÔNG quay về đọc Sheet: mọi tab báo lỗi, script dừng và giữ
+ * nguyên bảng hàng cũ. Lỡ Sheet lệch app mà đọc Sheet thì web nhảy qua lại
+ * giữa hai bản. Muốn đọc Sheet thì chạy với KHO_TU_SHEET=1.
+ */
+const nguonApp = process.env.KHO_TU_SHEET ? null : config.nguonKho;
+
 /** CSV thô của từng tab, để bắt lỗi tab ma ở dưới */
 const csvTheoTab = new Map();
 
@@ -53,7 +66,7 @@ const csvTheoTab = new Map();
  * Tên tab không có trong bảng này = tab đã bị đổi tên hoặc xoá, và đó là lỗi
  * thật sự, báo ngay chứ không đoán mò.
  */
-const gidTheoTab = await (async () => {
+const gidTheoTab = nguonApp ? new Map() : await (async () => {
   const url = `https://docs.google.com/spreadsheets/d/${config.sheetId}/htmlview`;
   const res = await fetch(url, { redirect: "follow" });
   if (!res.ok) throw new Error(`Không mở được Sheet: HTTP ${res.status}`);
@@ -81,6 +94,14 @@ const gidTheoTab = await (async () => {
  * lặng trả về tab đầu tiên khi tên tab không tồn tại.
  */
 async function taiTab(tab) {
+  if (nguonApp) {
+    const res = await fetch(`${nguonApp}?tab=${encodeURIComponent(tab)}`).catch(() => null);
+    if (!res) throw new Error(`Tab "${tab}": app kho trên PC chưa mở (${nguonApp})`);
+    if (!res.ok) throw new Error(`Tab "${tab}": app kho trả HTTP ${res.status}`);
+    const text = await res.text();
+    csvTheoTab.set(tab, text);
+    return toRecords(parseCsv(text));
+  }
   const gid = gidTheoTab.get(tab);
   if (!gid)
     throw new Error(
@@ -697,7 +718,7 @@ if (daTia > 0) {
 }
 
 // ── Chốt chặn an toàn ───────────────────────────────────────────────────
-const tabMa = timTabMa();
+const tabMa = nguonApp ? [] : timTabMa();
 if (tabMa.length > 0) {
   console.error("");
   console.error("✗ TÊN TAB TRONG sync.config.json KHÔNG KHỚP VỚI SHEET.");
