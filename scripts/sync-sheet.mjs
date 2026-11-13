@@ -44,9 +44,9 @@ function layO(row, ...tenCot) {
 }
 
 /**
- * NGUỒN KHO: app quản lí hàng trên PC chủ shop (D:keo-quan-li, http://127.0.0.1:7788).
+ * NGUỒN KHO: app quản lí hàng trên PC chủ shop (D:/keo-quan-li, http://127.0.0.1:7788).
  *
- * Từ 14/11/2026 app là nơi nhập liệu gốc; Google Sheet chỉ còn là bản sao app
+ * App là nơi nhập liệu gốc; Google Sheet chỉ còn là bản sao app
  * tự ghi sang cho chatbot và các agent đọc. App trả về CSV đúng cột, đúng chữ
  * như tab Sheet kho, nên mọi bước xử lý bên dưới giữ nguyên.
  *
