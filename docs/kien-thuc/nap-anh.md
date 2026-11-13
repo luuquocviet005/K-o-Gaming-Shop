@@ -5,7 +5,9 @@ phút, NGAY TRONG thư mục dự án chính:
 1. `git fetch` + `merge --ff-only origin/main` — PR merge xong thì lượt kế
    tiếp tự dùng code mới. Kéo không được thì chạy bằng code cũ, ghi ⚠ vào
    cuối `BAO CAO.txt`.
-2. `sync-sheet.mjs` — lấy bảng hàng mới TRƯỚC khi nạp ảnh.
+2. `sync-sheet.mjs` — lấy bảng hàng mới TRƯỚC khi nạp ảnh. Nguồn là app kho trên
+   PC (xem `bang-hang-sheet.md`): app chưa mở thì lượt đó bỏ qua, báo "app kho trên
+   PC đã mở chưa?". App tự bật cùng Windows (Startup/App kho Keo.vbs).
 3. `nap-anh.mjs` — đọc thư mục ảnh (`thuMucAnh` trong `sync.config.json`),
    khớp tên thư mục ↔ sản phẩm, nén vào `public/products/` (cạnh dài tối
    đa 2000px, webp chất lượng 82, ~200–300KB/tấm).

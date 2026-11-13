@@ -1,4 +1,21 @@
-# Bảng hàng: Google Sheet → web
+# Bảng hàng: app kho trên PC → web (trước là Google Sheet)
+
+**Từ 14/11/2026 nguồn kho là app quản lí hàng trên PC shop** (`D:keo-quan-li`,
+http://localhost:7788). `sync.config.json` có `nguonKho` thì `sync-sheet.mjs` lấy
+CSV ở `<nguonKho>?tab=<tên tab>` (cùng cột, cùng chữ như tab Sheet) thay vì tải Sheet.
+- App ghi song song vào Sheet, nên Sheet giờ chỉ là BẢN SAO: sửa tay trên Sheet
+  KHÔNG lên web. Bán, thêm, sửa món đều làm trong app.
+- App tắt thì mọi tab lỗi, lượt đó giữ nguyên dữ liệu cũ. CỐ Ý không quay về
+  Sheet: Sheet có thể lệch app, đọc nó sẽ làm món đã bán hiện lại.
+- Lịch 20 phút của Actions đã tắt (Actions không với tới PC). Nút chạy tay còn,
+  chạy với `KHO_TU_SHEET=1` để cứu khi máy shop hỏng lâu ngày.
+- Đọc từ app thì bỏ qua bộ bắt "tab trùng nội dung" (hai tab rỗng trùng header
+  là bình thường).
+- Muốn quay về Sheet: xoá dòng `nguonKho` trong `sync.config.json`, bật lại
+  `schedule` trong `dong-bo-sheet.yml`.
+
+Phần dưới là cách cũ, vẫn đúng cho đường Sheet:
+
 
 - Sheet (ai có link đều xem được) → `scripts/sync-sheet.mjs` → `src/data/products.json`
   + `src/data/da-ban.json`. KHÔNG sửa tay hai file JSON.
