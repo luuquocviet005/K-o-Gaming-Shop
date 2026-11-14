@@ -1,6 +1,54 @@
 {
   "daBan": [
     {
+      "slug": "atk-x1-ultimate-v1",
+      "ten": "X1 Ultimate v1",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 650000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/atk-x1-ultimate-v1/01.webp?v=189042d2",
+      "mau": "#4338ca",
+      "banLuc": "2026-11-14"
+    },
+    {
+      "slug": "lamzu-maya-x",
+      "ten": "Maya X",
+      "hang": "Lamzu",
+      "danhMuc": "chuot",
+      "gia": 1400000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/lamzu-maya-x/01.webp?v=5639feb0",
+      "mau": "#b45309",
+      "banLuc": "2026-11-14"
+    },
+    {
+      "slug": "logitech-g903-lightspeed",
+      "ten": "G903 lightspeed",
+      "hang": "Logitech",
+      "danhMuc": "chuot",
+      "gia": 750000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/logitech-g903-lightspeed/01.webp?v=d3da43d2",
+      "mau": "#7c3aed",
+      "banLuc": "2026-11-14"
+    },
+    {
+      "slug": "iqunix-ez60",
+      "ten": "EZ60",
+      "hang": "IQUNIX",
+      "danhMuc": "ban-phim",
+      "gia": 2300000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/iqunix-ez60/01.webp?v=88774200",
+      "mau": "#0ea5e9",
+      "banLuc": "2026-11-14"
+    },
+    {
       "slug": "razer-viper-v4-pro",
       "ten": "Viper V4 Pro",
       "hang": "Razer",
