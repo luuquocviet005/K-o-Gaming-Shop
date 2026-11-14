@@ -97,30 +97,6 @@
       "banLuc": "2026-11-14"
     },
     {
-      "slug": "wooting-80he",
-      "ten": "80HE",
-      "hang": "WOOTING",
-      "danhMuc": "ban-phim",
-      "gia": 5000000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "anh": "/products/wooting-80he/01.webp?v=c3af0bb0",
-      "mau": "#be123c",
-      "banLuc": "2026-11-14"
-    },
-    {
-      "slug": "wooting-80he-ghost",
-      "ten": "80HE Ghost",
-      "hang": "WOOTING",
-      "danhMuc": "ban-phim",
-      "gia": 5000000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "anh": "/products/wooting-80he-ghost/01.webp?v=d84a401d",
-      "mau": "#be123c",
-      "banLuc": "2026-11-14"
-    },
-    {
       "slug": "atk-n9-ultra",
       "ten": "N9 Ultra",
       "hang": "ATK",
