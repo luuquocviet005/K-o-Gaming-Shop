@@ -1000,22 +1000,34 @@
       "mau": "#0f172a",
       "phanLoai": [
         {
-          "id": "en-new",
-          "ten": "�en (new)",
+          "id": "den-new",
+          "ten": "Đen (new)",
           "gia": 500000,
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
-          "soLuong": 2
+          "soLuong": 2,
+          "anh": "/products/fgg-mad60-v2/den-new/01.webp?v=82437333",
+          "anhs": [
+            "/products/fgg-mad60-v2/den-new/01.webp?v=82437333",
+            "/products/fgg-mad60-v2/den-new/02.webp?v=02043e0a"
+          ]
         },
         {
-          "id": "tr-ng",
-          "ten": "Tr?ng",
+          "id": "trang",
+          "ten": "Trắng",
           "gia": 500000,
           "tinhTrang": "Mới",
           "nhomTinhTrang": "moi",
-          "soLuong": 2
+          "soLuong": 2,
+          "anh": "/products/fgg-mad60-v2/trang/01.webp?v=e09abec9",
+          "anhs": [
+            "/products/fgg-mad60-v2/trang/01.webp?v=e09abec9",
+            "/products/fgg-mad60-v2/trang/02.webp?v=657d598a",
+            "/products/fgg-mad60-v2/trang/03.webp?v=90304764"
+          ]
         }
-      ]
+      ],
+      "anh": "/products/fgg-mad60-v2/den-new/01.webp?v=82437333"
     },
     {
       "id": "geonworks-venom60-he",
