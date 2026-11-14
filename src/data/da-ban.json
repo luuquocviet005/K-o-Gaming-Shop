@@ -61,6 +61,78 @@
       "banLuc": "2026-11-14"
     },
     {
+      "slug": "atk-f1-extreme-v2",
+      "ten": "F1 Extreme v2",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 1100000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/atk-f1-extreme-v2/01.webp?v=542e8245",
+      "mau": "#4338ca",
+      "banLuc": "2026-11-14"
+    },
+    {
+      "slug": "atk-x1-air-plus",
+      "ten": "X1 Air+",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 1100000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/atk-x1-air-plus/01.webp?v=f4bf49f9",
+      "mau": "#4338ca",
+      "banLuc": "2026-11-14"
+    },
+    {
+      "slug": "logitech-superlight-2",
+      "ten": "Superlight 2",
+      "hang": "Logitech",
+      "danhMuc": "chuot",
+      "gia": 1200000,
+      "tinhTrang": "Cũ · không hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/logitech-superlight-2/01.webp?v=f43d9dd3",
+      "mau": "#7c3aed",
+      "banLuc": "2026-11-14"
+    },
+    {
+      "slug": "wooting-80he",
+      "ten": "80HE",
+      "hang": "WOOTING",
+      "danhMuc": "ban-phim",
+      "gia": 5000000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/wooting-80he/01.webp?v=c3af0bb0",
+      "mau": "#be123c",
+      "banLuc": "2026-11-14"
+    },
+    {
+      "slug": "wooting-80he-ghost",
+      "ten": "80HE Ghost",
+      "hang": "WOOTING",
+      "danhMuc": "ban-phim",
+      "gia": 5000000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/wooting-80he-ghost/01.webp?v=d84a401d",
+      "mau": "#be123c",
+      "banLuc": "2026-11-14"
+    },
+    {
+      "slug": "atk-n9-ultra",
+      "ten": "N9 Ultra",
+      "hang": "ATK",
+      "danhMuc": "tai-nghe",
+      "gia": 800000,
+      "tinhTrang": "Mới, nguyên seal",
+      "nhomTinhTrang": "moi",
+      "anh": "/products/atk-n9-ultra/01.webp?v=c06b4e1d",
+      "mau": "#4338ca",
+      "banLuc": "2026-11-14"
+    },
+    {
       "slug": "razer-viper-v4-pro",
       "ten": "Viper V4 Pro",
       "hang": "Razer",

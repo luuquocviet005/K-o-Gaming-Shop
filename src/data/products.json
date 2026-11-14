@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 23
+      "soLuong": 20
     },
     {
       "slug": "ban-phim",
@@ -14,7 +14,7 @@
       "short": "Bàn phím",
       "icon": "ban-phim",
       "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời.",
-      "soLuong": 22
+      "soLuong": 20
     },
     {
       "slug": "tai-nghe",
@@ -22,7 +22,7 @@
       "short": "Tai nghe",
       "icon": "tai-nghe",
       "blurb": "Tai nghe chụp tai, in-ear và soundcard.",
-      "soLuong": 9
+      "soLuong": 8
     },
     {
       "slug": "pad-chuot",
@@ -375,24 +375,6 @@
       "mau": "#4338ca"
     },
     {
-      "id": "atk-f1-extreme-v2",
-      "slug": "atk-f1-extreme-v2",
-      "ten": "F1 Extreme v2",
-      "hang": "ATK",
-      "danhMuc": "chuot",
-      "gia": 1100000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/atk-f1-extreme-v2/01.webp?v=542e8245",
-      "anhs": [
-        "/products/atk-f1-extreme-v2/01.webp?v=542e8245",
-        "/products/atk-f1-extreme-v2/02.webp?v=60ea0d99"
-      ],
-      "mau": "#4338ca"
-    },
-    {
       "id": "atk-zero",
       "slug": "atk-zero",
       "ten": "Zero",
@@ -407,25 +389,6 @@
       "anhs": [
         "/products/atk-zero/01.webp?v=367e2da1",
         "/products/atk-zero/02.webp?v=c5da8a72"
-      ],
-      "mau": "#4338ca"
-    },
-    {
-      "id": "atk-x1-air-plus",
-      "slug": "atk-x1-air-plus",
-      "ten": "X1 Air+",
-      "hang": "ATK",
-      "danhMuc": "chuot",
-      "gia": 1100000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "note": "Bảo hành Memoryzone : 14/9/2027",
-      "anh": "/products/atk-x1-air-plus/01.webp?v=f4bf49f9",
-      "anhs": [
-        "/products/atk-x1-air-plus/01.webp?v=f4bf49f9",
-        "/products/atk-x1-air-plus/02.webp?v=6c84c745"
       ],
       "mau": "#4338ca"
     },
@@ -581,38 +544,6 @@
         "/products/logitech-g703-lightspeed/05.webp?v=d957acc8"
       ],
       "mau": "#7c3aed"
-    },
-    {
-      "id": "logitech-superlight-2",
-      "slug": "logitech-superlight-2",
-      "ten": "Superlight 2",
-      "hang": "Logitech",
-      "danhMuc": "chuot",
-      "gia": 1200000,
-      "tinhTrang": "Cũ · không hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/logitech-superlight-2/01.webp?v=f43d9dd3",
-      "mau": "#7c3aed",
-      "phanLoai": [
-        {
-          "id": "nobox",
-          "ten": "nobox",
-          "gia": 1200000,
-          "tinhTrang": "Cũ · không hộp",
-          "nhomTinhTrang": "cu",
-          "soLuong": 1,
-          "anh": "/products/logitech-superlight-2/01.webp?v=f43d9dd3",
-          "anhs": [
-            "/products/logitech-superlight-2/01.webp?v=f43d9dd3",
-            "/products/logitech-superlight-2/02.webp?v=ed07ef4d",
-            "/products/logitech-superlight-2/03.webp?v=78804542",
-            "/products/logitech-superlight-2/04.webp?v=66c8b993",
-            "/products/logitech-superlight-2/05.webp?v=1856dec5"
-          ]
-        }
-      ]
     },
     {
       "id": "razer-basilisk",
@@ -887,7 +818,7 @@
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 2,
+      "soLuong": 3,
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -896,7 +827,7 @@
           "gia": 1600000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 2,
+          "soLuong": 3,
           "anh": "/products/atk-atk68-v3/den/01.webp?v=f453a1d9",
           "anhs": [
             "/products/atk-atk68-v3/den/01.webp?v=f453a1d9",
@@ -911,7 +842,7 @@
           "gia": 1600000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 2,
+          "soLuong": 3,
           "anh": "/products/atk-atk68-v3/trang/01.webp?v=4ecb9e4d",
           "anhs": [
             "/products/atk-atk68-v3/trang/01.webp?v=4ecb9e4d",
@@ -1273,45 +1204,6 @@
       "mau": "#7c3aed"
     },
     {
-      "id": "wooting-80he",
-      "slug": "wooting-80he",
-      "ten": "80HE",
-      "hang": "WOOTING",
-      "danhMuc": "ban-phim",
-      "gia": 5000000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/wooting-80he/01.webp?v=c3af0bb0",
-      "anhs": [
-        "/products/wooting-80he/01.webp?v=c3af0bb0",
-        "/products/wooting-80he/02.webp?v=64469844",
-        "/products/wooting-80he/03.webp?v=0fa780dd"
-      ],
-      "mau": "#be123c"
-    },
-    {
-      "id": "wooting-80he-ghost",
-      "slug": "wooting-80he-ghost",
-      "ten": "80HE Ghost",
-      "hang": "WOOTING",
-      "danhMuc": "ban-phim",
-      "gia": 5000000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/wooting-80he-ghost/01.webp?v=d84a401d",
-      "anhs": [
-        "/products/wooting-80he-ghost/01.webp?v=d84a401d",
-        "/products/wooting-80he-ghost/02.webp?v=3b781a3b",
-        "/products/wooting-80he-ghost/03.webp?v=87a3e15b",
-        "/products/wooting-80he-ghost/04.webp?v=0d19744c"
-      ],
-      "mau": "#be123c"
-    },
-    {
       "id": "akko-s9-ultra",
       "slug": "akko-s9-ultra",
       "ten": "S9 Ultra",
@@ -1330,44 +1222,6 @@
         "/products/akko-s9-ultra/03.webp?v=ae3b5318"
       ],
       "mau": "#0f172a"
-    },
-    {
-      "id": "atk-n9-ultra",
-      "slug": "atk-n9-ultra",
-      "ten": "N9 Ultra",
-      "hang": "ATK",
-      "danhMuc": "tai-nghe",
-      "gia": 800000,
-      "tinhTrang": "Mới, nguyên seal",
-      "nhomTinhTrang": "moi",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/atk-n9-ultra/01.webp?v=c06b4e1d",
-      "mau": "#4338ca",
-      "phanLoai": [
-        {
-          "id": "trang",
-          "ten": "Trắng",
-          "gia": 800000,
-          "tinhTrang": "Mới, nguyên seal",
-          "nhomTinhTrang": "moi",
-          "soLuong": 1,
-          "anh": "/products/atk-n9-ultra/01.webp?v=c06b4e1d"
-        },
-        {
-          "id": "cam",
-          "ten": "Cam",
-          "gia": 800000,
-          "tinhTrang": "Mới, nguyên seal",
-          "nhomTinhTrang": "moi",
-          "soLuong": 1,
-          "anh": "/products/atk-n9-ultra/cam/01.webp?v=a2532cee",
-          "anhs": [
-            "/products/atk-n9-ultra/cam/01.webp?v=a2532cee",
-            "/products/atk-n9-ultra/01.webp?v=c06b4e1d"
-          ]
-        }
-      ]
     },
     {
       "id": "hyperx-earbuds-2",
