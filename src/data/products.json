@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 20
+      "soLuong": 19
     },
     {
       "slug": "ban-phim",
@@ -572,29 +572,6 @@
       "soLuong": 3,
       "anh": "/products/smailwolf-m3/01.webp?v=db0b813f",
       "mau": "#c2185b"
-    },
-    {
-      "id": "wl-mouse-beast-x-max",
-      "slug": "wl-mouse-beast-x-max",
-      "ten": "Beast x Max",
-      "hang": "WL Mouse",
-      "danhMuc": "chuot",
-      "gia": 1900000,
-      "tinhTrang": "Cũ · không hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/wl-mouse-beast-x-max/01.webp?v=6714ea89",
-      "anhs": [
-        "/products/wl-mouse-beast-x-max/01.webp?v=6714ea89",
-        "/products/wl-mouse-beast-x-max/02.webp?v=6914e542",
-        "/products/wl-mouse-beast-x-max/03.webp?v=7cec1b27",
-        "/products/wl-mouse-beast-x-max/04.webp?v=d09ecd51",
-        "/products/wl-mouse-beast-x-max/05.webp?v=678bd599",
-        "/products/wl-mouse-beast-x-max/06.webp?v=52e98e06",
-        "/products/wl-mouse-beast-x-max/07.webp?v=135bab3b"
-      ],
-      "mau": "#334155"
     },
     {
       "id": "xingmeng-zero-1-se",
