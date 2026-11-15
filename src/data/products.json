@@ -14,7 +14,7 @@
       "short": "Bàn phím",
       "icon": "ban-phim",
       "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời.",
-      "soLuong": 20
+      "soLuong": 21
     },
     {
       "slug": "tai-nghe",
@@ -538,7 +538,7 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 2,
-      "anh": "/products/logitech-superlight-2/01.webp?v=f43d9dd3",
+      "anh": "/products/logitech-superlight-2/hong-nobox/01.webp?v=f43d9dd3",
       "mau": "#7c3aed",
       "phanLoai": [
         {
@@ -548,13 +548,15 @@
           "tinhTrang": "Cũ · không hộp",
           "nhomTinhTrang": "cu",
           "soLuong": 1,
-          "anh": "/products/logitech-superlight-2/01.webp?v=f43d9dd3",
+          "anh": "/products/logitech-superlight-2/hong-nobox/01.webp?v=f43d9dd3",
           "anhs": [
-            "/products/logitech-superlight-2/01.webp?v=f43d9dd3",
-            "/products/logitech-superlight-2/02.webp?v=ed07ef4d",
-            "/products/logitech-superlight-2/03.webp?v=78804542",
-            "/products/logitech-superlight-2/04.webp?v=66c8b993",
-            "/products/logitech-superlight-2/05.webp?v=1856dec5"
+            "/products/logitech-superlight-2/hong-nobox/01.webp?v=f43d9dd3",
+            "/products/logitech-superlight-2/hong-nobox/02.webp?v=f43d9dd3",
+            "/products/logitech-superlight-2/hong-nobox/03.webp?v=ed07ef4d",
+            "/products/logitech-superlight-2/hong-nobox/04.webp?v=78804542",
+            "/products/logitech-superlight-2/hong-nobox/05.webp?v=66c8b993",
+            "/products/logitech-superlight-2/hong-nobox/06.webp?v=1856dec5",
+            "/products/logitech-superlight-2/01.webp?v=8743d89e"
           ]
         },
         {
@@ -572,11 +574,7 @@
             "/products/logitech-superlight-2/den/04.webp?v=aad579e5",
             "/products/logitech-superlight-2/den/05.webp?v=1660bda0",
             "/products/logitech-superlight-2/den/06.webp?v=a91a824c",
-            "/products/logitech-superlight-2/01.webp?v=f43d9dd3",
-            "/products/logitech-superlight-2/02.webp?v=ed07ef4d",
-            "/products/logitech-superlight-2/03.webp?v=78804542",
-            "/products/logitech-superlight-2/04.webp?v=66c8b993",
-            "/products/logitech-superlight-2/05.webp?v=1856dec5"
+            "/products/logitech-superlight-2/01.webp?v=8743d89e"
           ]
         }
       ],
@@ -1193,6 +1191,26 @@
         "/products/wooting-80he-ghost/04.webp?v=0d19744c"
       ],
       "mau": "#be123c"
+    },
+    {
+      "id": "logitech-g-pro-x-tkl-lightspeed",
+      "slug": "logitech-g-pro-x-tkl-lightspeed",
+      "ten": "G Pro X TKL Lightspeed",
+      "hang": "Logitech",
+      "danhMuc": "ban-phim",
+      "gia": 1500000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/logitech-g-pro-x-tkl-lightspeed/01.webp?v=c911ff69",
+      "anhs": [
+        "/products/logitech-g-pro-x-tkl-lightspeed/01.webp?v=c911ff69",
+        "/products/logitech-g-pro-x-tkl-lightspeed/02.webp?v=b419f940",
+        "/products/logitech-g-pro-x-tkl-lightspeed/03.webp?v=fe63ddd0",
+        "/products/logitech-g-pro-x-tkl-lightspeed/04.webp?v=d1ad18e4"
+      ],
+      "mau": "#7c3aed"
     },
     {
       "id": "akko-s9-ultra",
