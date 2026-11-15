@@ -25,6 +25,18 @@
       "banLuc": "2026-11-15"
     },
     {
+      "slug": "iqunix-ev63",
+      "ten": "EV63",
+      "hang": "IQUNIX",
+      "danhMuc": "ban-phim",
+      "gia": 3500000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/iqunix-ev63/01.webp?v=c742221c",
+      "mau": "#0ea5e9",
+      "banLuc": "2026-11-15"
+    },
+    {
       "slug": "atk-x1-ultimate-v1",
       "ten": "X1 Ultimate v1",
       "hang": "ATK",
