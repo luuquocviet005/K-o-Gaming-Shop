@@ -1,18 +1,6 @@
 {
   "daBan": [
     {
-      "slug": "atk-zero",
-      "ten": "Zero",
-      "hang": "ATK",
-      "danhMuc": "chuot",
-      "gia": 1000000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "anh": "/products/atk-zero/01.webp?v=367e2da1",
-      "mau": "#4338ca",
-      "banLuc": "2026-11-15"
-    },
-    {
       "slug": "iqunix-ev63",
       "ten": "EV63",
       "hang": "IQUNIX",

@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 19
+      "soLuong": 20
     },
     {
       "slug": "ban-phim",
@@ -358,6 +358,24 @@
       "anhs": [
         "/products/atk-a9-air/01.webp?v=16da3b99",
         "/products/atk-a9-air/02.webp?v=502f72c8"
+      ],
+      "mau": "#4338ca"
+    },
+    {
+      "id": "atk-zero",
+      "slug": "atk-zero",
+      "ten": "Zero",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 1050000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/atk-zero/01.webp?v=367e2da1",
+      "anhs": [
+        "/products/atk-zero/01.webp?v=367e2da1",
+        "/products/atk-zero/02.webp?v=c5da8a72"
       ],
       "mau": "#4338ca"
     },
@@ -1237,9 +1255,9 @@
       "anh": "/products/logitech-g-pro-x-tkl-lightspeed/01.webp?v=c911ff69",
       "anhs": [
         "/products/logitech-g-pro-x-tkl-lightspeed/01.webp?v=c911ff69",
-        "/products/logitech-g-pro-x-tkl-lightspeed/02.webp?v=b419f940",
+        "/products/logitech-g-pro-x-tkl-lightspeed/02.webp?v=d1ad18e4",
         "/products/logitech-g-pro-x-tkl-lightspeed/03.webp?v=fe63ddd0",
-        "/products/logitech-g-pro-x-tkl-lightspeed/04.webp?v=d1ad18e4"
+        "/products/logitech-g-pro-x-tkl-lightspeed/04.webp?v=b419f940"
       ],
       "mau": "#7c3aed"
     },
