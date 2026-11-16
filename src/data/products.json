@@ -565,20 +565,20 @@
           ]
         },
         {
-          "id": "den",
-          "ten": "Đen",
+          "id": "den-fullbox",
+          "ten": "Đen (fullbox)",
           "gia": 1300000,
           "tinhTrang": "Cũ · không hộp",
           "nhomTinhTrang": "cu",
           "soLuong": 1,
-          "anh": "/products/logitech-superlight-2/den/01.webp?v=8743d89e",
+          "anh": "/products/logitech-superlight-2/den-fullbox/01.webp?v=8743d89e",
           "anhs": [
-            "/products/logitech-superlight-2/den/01.webp?v=8743d89e",
-            "/products/logitech-superlight-2/den/02.webp?v=7857ce9b",
-            "/products/logitech-superlight-2/den/03.webp?v=25db4c38",
-            "/products/logitech-superlight-2/den/04.webp?v=aad579e5",
-            "/products/logitech-superlight-2/den/05.webp?v=1660bda0",
-            "/products/logitech-superlight-2/den/06.webp?v=a91a824c",
+            "/products/logitech-superlight-2/den-fullbox/01.webp?v=8743d89e",
+            "/products/logitech-superlight-2/den-fullbox/02.webp?v=7857ce9b",
+            "/products/logitech-superlight-2/den-fullbox/03.webp?v=25db4c38",
+            "/products/logitech-superlight-2/den-fullbox/04.webp?v=aad579e5",
+            "/products/logitech-superlight-2/den-fullbox/05.webp?v=1660bda0",
+            "/products/logitech-superlight-2/den-fullbox/06.webp?v=a91a824c",
             "/products/logitech-superlight-2/01.webp?v=f43d9dd3",
             "/products/logitech-superlight-2/02.webp?v=8743d89e"
           ]
@@ -836,24 +836,9 @@
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 2,
+      "soLuong": 1,
       "mau": "#4338ca",
       "phanLoai": [
-        {
-          "id": "den",
-          "ten": "Đen",
-          "gia": 1600000,
-          "tinhTrang": "Cũ · đủ hộp",
-          "nhomTinhTrang": "cu",
-          "soLuong": 1,
-          "anh": "/products/atk-atk68-v3/den/01.webp?v=f453a1d9",
-          "anhs": [
-            "/products/atk-atk68-v3/den/01.webp?v=f453a1d9",
-            "/products/atk-atk68-v3/den/02.webp?v=c5620c49",
-            "/products/atk-atk68-v3/den/03.webp?v=3d686bb0",
-            "/products/atk-atk68-v3/den/04.webp?v=8d877846"
-          ]
-        },
         {
           "id": "trang",
           "ten": "Trắng",
@@ -869,7 +854,7 @@
           ]
         }
       ],
-      "anh": "/products/atk-atk68-v3/den/01.webp?v=f453a1d9"
+      "anh": "/products/atk-atk68-v3/trang/01.webp?v=4ecb9e4d"
     },
     {
       "id": "atk-edge63-ultimate",
