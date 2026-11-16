@@ -14,7 +14,7 @@
       "short": "Bàn phím",
       "icon": "ban-phim",
       "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời.",
-      "soLuong": 22
+      "soLuong": 23
     },
     {
       "slug": "tai-nghe",
@@ -1223,6 +1223,29 @@
         "/products/logitech-g-pro-x-tkl-lightspeed/04.webp?v=d1ad18e4"
       ],
       "mau": "#7c3aed"
+    },
+    {
+      "id": "fgg-mad68-r",
+      "slug": "fgg-mad68-r",
+      "ten": "Mad68 R",
+      "hang": "FGG",
+      "danhMuc": "ban-phim",
+      "gia": 550000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "mau": "#0f172a",
+      "phanLoai": [
+        {
+          "id": "trang",
+          "ten": "Trắng",
+          "gia": 550000,
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 1
+        }
+      ]
     },
     {
       "id": "akko-s9-ultra",
