@@ -1325,29 +1325,29 @@
       "tinhTrang": "Mới, nguyên seal",
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 45,
+      "soLuong": 44,
       "mau": "#c2185b",
       "phanLoai": [
-        {
-          "id": "do",
-          "ten": "Đỏ",
-          "gia": 550000,
-          "tinhTrang": "Mới, nguyên seal",
-          "nhomTinhTrang": "moi",
-          "soLuong": 45,
-          "anh": "/products/hyperx-earbuds-2/do/01.webp?v=e021b6c0"
-        },
         {
           "id": "den",
           "ten": "Đen",
           "gia": 550000,
           "tinhTrang": "Mới, nguyên seal",
           "nhomTinhTrang": "moi",
-          "soLuong": 45,
+          "soLuong": 22,
           "anh": "/products/hyperx-earbuds-2/den/01.webp?v=b21cea9d"
+        },
+        {
+          "id": "do",
+          "ten": "Đỏ",
+          "gia": 550000,
+          "tinhTrang": "Mới, nguyên seal",
+          "nhomTinhTrang": "moi",
+          "soLuong": 22,
+          "anh": "/products/hyperx-earbuds-2/do/01.webp?v=e021b6c0"
         }
       ],
-      "anh": "/products/hyperx-earbuds-2/do/01.webp?v=e021b6c0"
+      "anh": "/products/hyperx-earbuds-2/den/01.webp?v=b21cea9d"
     },
     {
       "id": "hyperx-soundcard-cloud-2",
