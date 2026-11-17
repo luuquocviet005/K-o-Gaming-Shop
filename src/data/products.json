@@ -14,7 +14,7 @@
       "short": "Bàn phím",
       "icon": "ban-phim",
       "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời.",
-      "soLuong": 22
+      "soLuong": 21
     },
     {
       "slug": "tai-nghe",
@@ -1031,25 +1031,6 @@
         }
       ],
       "anh": "/products/fgg-mad60-v2/den-new/01.webp?v=82437333"
-    },
-    {
-      "id": "geonworks-venom60-he",
-      "slug": "geonworks-venom60-he",
-      "ten": "Venom60 HE",
-      "hang": "GEONWORKS",
-      "danhMuc": "ban-phim",
-      "gia": 2500000,
-      "tinhTrang": "Cũ",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "moTa": "Case : Holy60 đen\nSwitch : Duhuk Herz\nStab : Dodo gear\nPlate : PC",
-      "anh": "/products/geonworks-venom60-he/01.webp?v=9b5297f3",
-      "anhs": [
-        "/products/geonworks-venom60-he/01.webp?v=9b5297f3",
-        "/products/geonworks-venom60-he/02.webp?v=4f1db7e2"
-      ],
-      "mau": "#be123c"
     },
     {
       "id": "hm-lab-kit-hm64z",
