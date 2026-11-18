@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 20
+      "soLuong": 21
     },
     {
       "slug": "ban-phim",
@@ -627,6 +627,26 @@
       "soLuong": 9,
       "anh": "/products/xingmeng-zero-1-se/01.webp?v=9e9572db",
       "mau": "#b45309"
+    },
+    {
+      "id": "wl-mouse-beast-g-max-feirenzai-jw-blue",
+      "slug": "wl-mouse-beast-g-max-feirenzai-jw-blue",
+      "ten": "Beast G Max Feirenzai JW Blue",
+      "hang": "WL Mouse",
+      "danhMuc": "chuot",
+      "gia": 1500000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "anh": "/products/wl-mouse-beast-g-max-feirenzai-jw-blue/01.webp?v=c0418f1c",
+      "anhs": [
+        "/products/wl-mouse-beast-g-max-feirenzai-jw-blue/01.webp?v=c0418f1c",
+        "/products/wl-mouse-beast-g-max-feirenzai-jw-blue/02.webp?v=0023398a",
+        "/products/wl-mouse-beast-g-max-feirenzai-jw-blue/03.webp?v=8ee8598e",
+        "/products/wl-mouse-beast-g-max-feirenzai-jw-blue/04.webp?v=d976a4e0"
+      ],
+      "mau": "#334155"
     },
     {
       "id": "akko-air-01",
@@ -1355,7 +1375,7 @@
       "tinhTrang": "Mới, nguyên seal",
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 20,
+      "soLuong": 8,
       "mau": "#c2185b",
       "phanLoai": [
         {
@@ -1364,7 +1384,7 @@
           "gia": 1400000,
           "tinhTrang": "Mới, nguyên seal",
           "nhomTinhTrang": "moi",
-          "soLuong": 20,
+          "soLuong": 0,
           "anh": "/products/hyperx-cloud-2/do/01.webp?v=b1e6c4a1"
         },
         {
@@ -1373,7 +1393,7 @@
           "gia": 1500000,
           "tinhTrang": "Mới, nguyên seal",
           "nhomTinhTrang": "moi",
-          "soLuong": 20,
+          "soLuong": 8,
           "anh": "/products/hyperx-cloud-2/trang/01.webp?v=06c3fa98"
         }
       ],
