@@ -135,8 +135,7 @@
           "gia": 950000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 1,
-          "anh": "/products/atk-f1-ultimate-v2/trang/01.webp?v=39295de1"
+          "soLuong": 1
         },
         {
           "id": "trang-newseal",
@@ -144,7 +143,8 @@
           "gia": 1150000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 1
+          "soLuong": 1,
+          "anh": "/products/atk-f1-ultimate-v2/trang-newseal/01.webp?v=39295de1"
         }
       ],
       "giaToiDa": 1150000,
@@ -396,7 +396,6 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 2,
-      "anh": "/products/atk-f1-extreme-v2/01.webp?v=542e8245",
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -406,13 +405,10 @@
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
           "soLuong": 2,
-          "anh": "/products/atk-f1-extreme-v2/01.webp?v=542e8245",
-          "anhs": [
-            "/products/atk-f1-extreme-v2/01.webp?v=542e8245",
-            "/products/atk-f1-extreme-v2/02.webp?v=60ea0d99"
-          ]
+          "anh": "/products/atk-f1-extreme-v2/hong/01.webp?v=3285fbcd"
         }
-      ]
+      ],
+      "anh": "/products/atk-f1-extreme-v2/hong/01.webp?v=3285fbcd"
     },
     {
       "id": "atk-zero",
