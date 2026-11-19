@@ -743,12 +743,12 @@
       "ten": "Hex80",
       "hang": "ATK",
       "danhMuc": "ban-phim",
-      "gia": 2500000,
+      "gia": 3700000,
       "giaToiDa": 3900000,
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 3,
+      "soLuong": 2,
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -771,30 +771,14 @@
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
           "soLuong": 1,
-          "anh": "/products/atk-hex80/vang/01.webp?v=274983b7",
+          "anh": "/products/atk-hex80/vang/01.webp?v=8f2bae85",
           "anhs": [
-            "/products/atk-hex80/vang/01.webp?v=274983b7",
-            "/products/atk-hex80/vang/02.webp?v=344b4454",
-            "/products/atk-hex80/vang/03.webp?v=be1757bf",
-            "/products/atk-hex80/vang/04.webp?v=e65af0a5",
-            "/products/atk-hex80/vang/05.webp?v=8c06e360"
-          ]
-        },
-        {
-          "id": "vang-loi-led",
-          "ten": "Vàng lỗi led",
-          "gia": 2500000,
-          "tinhTrang": "Cũ · đủ hộp",
-          "nhomTinhTrang": "cu",
-          "soLuong": 1,
-          "anh": "/products/atk-hex80/vang-loi-led/01.webp?v=8f2bae85",
-          "anhs": [
-            "/products/atk-hex80/vang-loi-led/01.webp?v=8f2bae85",
-            "/products/atk-hex80/vang-loi-led/02.webp?v=525c502b",
-            "/products/atk-hex80/vang-loi-led/03.webp?v=a478cfa2",
-            "/products/atk-hex80/vang-loi-led/04.webp?v=17fc484b",
-            "/products/atk-hex80/vang-loi-led/05.webp?v=4a6fa8ea",
-            "/products/atk-hex80/vang-loi-led/06.webp?v=8a9aa137"
+            "/products/atk-hex80/vang/01.webp?v=8f2bae85",
+            "/products/atk-hex80/vang/02.webp?v=525c502b",
+            "/products/atk-hex80/vang/03.webp?v=a478cfa2",
+            "/products/atk-hex80/vang/04.webp?v=17fc484b",
+            "/products/atk-hex80/vang/05.webp?v=4a6fa8ea",
+            "/products/atk-hex80/vang/06.webp?v=8a9aa137"
           ]
         }
       ],
