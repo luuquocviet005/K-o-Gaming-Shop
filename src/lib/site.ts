@@ -26,6 +26,10 @@ export const site = {
     // Ghim "Kẹo Gaming Gear" trên Google Maps — bấm vào địa chỉ là mở chỉ đường.
     mapUrl:
       "https://www.google.com/maps/place/K%E1%BA%B9o+Gaming+Gear/@15.9664034,108.2597601,17z/data=!3m1!4b1!4m6!3m5!1s0x314211d29a23ff35:0x1b74f0c6d9efd3ba!8m2!3d15.9664034!4d108.262335!16s%2Fg%2F11mzzxqtws",
+    // Link định danh ghim Maps (cid = phần sau dấu ":" trong mã địa điểm của
+    // `mapUrl`, đổi sang thập phân). Khai trong `sameAs` để Google nối web với
+    // đúng ghim của shop, không ghép nhầm sang tiệm khác cùng quận.
+    mapsCidUrl: "https://maps.google.com/?cid=1978470873173054394",
     geo: { latitude: 15.9664034, longitude: 108.2623351 },
     // Mở thẳng khung chấm sao của ghim trên Google Maps. placeid suy ra từ mã
     // địa điểm trong `mapUrl`

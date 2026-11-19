@@ -105,7 +105,7 @@ const jsonLdCuaHang = {
     },
   ],
   currenciesAccepted: "VND",
-  sameAs: [site.social.facebook, site.social.tiktok],
+  sameAs: [site.contact.mapsCidUrl, site.social.facebook, site.social.tiktok],
 };
 
 /** Khai tên website để Google hiện đúng tên shop trong kết quả tìm kiếm. */
