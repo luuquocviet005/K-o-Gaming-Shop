@@ -10,6 +10,9 @@
   Business. Tên cũ "Kẹo Gaming Shop" chỉ còn ở `alternateName` (JSON-LD Store
   trong `khung-trang.tsx`) và từ khoá. Viết tên shop trong code thì dùng
   `site.name`, đừng gõ cứng.
+- `sameAs` của JSON-LD Store có link `?cid=` của ghim Maps
+  (`site.contact.mapsCidUrl`) để Google nối web với đúng ghim Kẹo. Đổi ghim
+  Maps thì lấy lại cả `mapUrl`, `mapsCidUrl` và `reviewUrl`.
 - Màu thương hiệu: nguồn duy nhất `src/app/globals.css`; script sinh ảnh đọc
   qua `scripts/lib/mau.mjs`.
 - Ảnh chia sẻ link (Zalo/Facebook): `ANH_CHIA_SE` trong `site.ts`, sinh bằng
