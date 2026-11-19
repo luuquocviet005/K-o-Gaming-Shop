@@ -430,8 +430,8 @@ for (const cauHinh of config.tabs) {
         ...(giaToiDa ? { giaToiDa } : {}),
         ...(ghiChuGia ? { ghiChuGia } : {}),
       }),
-      tinhTrang,
-      nhomTinhTrang,
+      // Phân loại tên có "Newseal" (vd "Trắng Newseal") là hàng mới seal dù cả dòng ghi 2nd
+      ...(/new ?seal/i.test(v.ten) ? docTinhTrang("newseal") : { tinhTrang, nhomTinhTrang }),
       soLuong: v.soLuong ?? soLuongDong,
       ...(moTa ? { moTa } : {}),
       ...(note ? { note } : {}),
