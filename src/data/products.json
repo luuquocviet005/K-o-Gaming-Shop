@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 21
+      "soLuong": 22
     },
     {
       "slug": "ban-phim",
@@ -92,29 +92,19 @@
       "hang": "ATK",
       "danhMuc": "chuot",
       "gia": 950000,
-      "giaToiDa": 1150000,
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 3,
+      "soLuong": 8,
       "mau": "#4338ca",
       "phanLoai": [
-        {
-          "id": "trang-newseal",
-          "ten": "Trắng Newseal",
-          "gia": 1150000,
-          "tinhTrang": "Cũ · đủ hộp",
-          "nhomTinhTrang": "cu",
-          "soLuong": 1,
-          "anh": "/products/atk-f1-ultimate-v2/trang-newseal/01.webp?v=39295de1"
-        },
         {
           "id": "hong",
           "ten": "Hồng",
           "gia": 950000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 2,
+          "soLuong": 4,
           "anh": "/products/atk-f1-ultimate-v2/hong/01.webp?v=c2df13b2",
           "anhs": [
             "/products/atk-f1-ultimate-v2/hong/01.webp?v=c2df13b2",
@@ -122,9 +112,43 @@
             "/products/atk-f1-ultimate-v2/hong/03.webp?v=47017a48",
             "/products/atk-f1-ultimate-v2/hong/04.webp?v=9b49620c"
           ]
+        },
+        {
+          "id": "xanh",
+          "ten": "Xanh",
+          "gia": 950000,
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 1
+        },
+        {
+          "id": "den",
+          "ten": "Đen",
+          "gia": 950000,
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 1
+        },
+        {
+          "id": "trang",
+          "ten": "Trắng",
+          "gia": 950000,
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 1,
+          "anh": "/products/atk-f1-ultimate-v2/trang/01.webp?v=39295de1"
+        },
+        {
+          "id": "trang-newseal",
+          "ten": "Trắng Newseal",
+          "gia": 1150000,
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 1
         }
       ],
-      "anh": "/products/atk-f1-ultimate-v2/trang-newseal/01.webp?v=39295de1"
+      "giaToiDa": 1150000,
+      "anh": "/products/atk-f1-ultimate-v2/hong/01.webp?v=c2df13b2"
     },
     {
       "id": "atk-a9-ultimate",
@@ -360,6 +384,35 @@
         "/products/atk-a9-air/02.webp?v=502f72c8"
       ],
       "mau": "#4338ca"
+    },
+    {
+      "id": "atk-f1-extreme-v2",
+      "slug": "atk-f1-extreme-v2",
+      "ten": "F1 Extreme v2",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 1050000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 2,
+      "anh": "/products/atk-f1-extreme-v2/01.webp?v=542e8245",
+      "mau": "#4338ca",
+      "phanLoai": [
+        {
+          "id": "hong",
+          "ten": "Hồng",
+          "gia": 1050000,
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 2,
+          "anh": "/products/atk-f1-extreme-v2/01.webp?v=542e8245",
+          "anhs": [
+            "/products/atk-f1-extreme-v2/01.webp?v=542e8245",
+            "/products/atk-f1-extreme-v2/02.webp?v=60ea0d99"
+          ]
+        }
+      ]
     },
     {
       "id": "atk-zero",
