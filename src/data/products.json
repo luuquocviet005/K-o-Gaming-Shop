@@ -14,7 +14,7 @@
       "short": "Bàn phím",
       "icon": "ban-phim",
       "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời.",
-      "soLuong": 20
+      "soLuong": 19
     },
     {
       "slug": "tai-nghe",
@@ -1185,25 +1185,6 @@
       "mau": "#4338ca"
     },
     {
-      "id": "razer-huntsman-v3-pro-mini",
-      "slug": "razer-huntsman-v3-pro-mini",
-      "ten": "Huntsman V3 Pro Mini",
-      "hang": "Razer",
-      "danhMuc": "ban-phim",
-      "gia": 1200000,
-      "tinhTrang": "Cũ · không hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/razer-huntsman-v3-pro-mini/01.webp?v=dace5871",
-      "anhs": [
-        "/products/razer-huntsman-v3-pro-mini/01.webp?v=dace5871",
-        "/products/razer-huntsman-v3-pro-mini/02.webp?v=231ba96a",
-        "/products/razer-huntsman-v3-pro-mini/03.webp?v=36198c3a"
-      ],
-      "mau": "#4338ca"
-    },
-    {
       "id": "titan-nation-titan68-pro",
       "slug": "titan-nation-titan68-pro",
       "ten": "Titan68 pro",
@@ -1556,7 +1537,7 @@
       "tinhTrang": "Mới",
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 6,
+      "soLuong": 5,
       "note": "Size M : 300-360-3",
       "anh": "/products/atk-lie-xsoft-m/01.webp?v=9aeaf8a9",
       "mau": "#4338ca"

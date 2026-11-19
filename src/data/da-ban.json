@@ -1,6 +1,18 @@
 {
   "daBan": [
     {
+      "slug": "razer-huntsman-v3-pro-mini",
+      "ten": "Huntsman V3 Pro Mini",
+      "hang": "Razer",
+      "danhMuc": "ban-phim",
+      "gia": 1200000,
+      "tinhTrang": "Cũ · không hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/razer-huntsman-v3-pro-mini/01.webp?v=dace5871",
+      "mau": "#4338ca",
+      "banLuc": "2026-11-19"
+    },
+    {
       "slug": "wooting-80he-ghost",
       "ten": "80HE Ghost",
       "hang": "WOOTING",
