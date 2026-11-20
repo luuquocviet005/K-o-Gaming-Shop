@@ -1,6 +1,18 @@
 {
   "daBan": [
     {
+      "slug": "fgg-mad60-v2",
+      "ten": "Mad60 v2",
+      "hang": "FGG",
+      "danhMuc": "ban-phim",
+      "gia": 500000,
+      "tinhTrang": "New + 2nd",
+      "nhomTinhTrang": "khac",
+      "anh": "/products/fgg-mad60-v2/den-new/01.webp?v=82437333",
+      "mau": "#0f172a",
+      "banLuc": "2026-11-20"
+    },
+    {
       "slug": "razer-huntsman-v3-pro-mini",
       "ten": "Huntsman V3 Pro Mini",
       "hang": "Razer",

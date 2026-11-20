@@ -14,7 +14,7 @@
       "short": "Bàn phím",
       "icon": "ban-phim",
       "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời.",
-      "soLuong": 19
+      "soLuong": 18
     },
     {
       "slug": "tai-nghe",
@@ -1042,49 +1042,6 @@
         }
       ],
       "anh": "/products/fgg-titan68-turbo/hong-nhat/01.webp?v=7c8c677c"
-    },
-    {
-      "id": "fgg-mad60-v2",
-      "slug": "fgg-mad60-v2",
-      "ten": "Mad60 v2",
-      "hang": "FGG",
-      "danhMuc": "ban-phim",
-      "gia": 500000,
-      "tinhTrang": "New + 2nd",
-      "nhomTinhTrang": "khac",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "mau": "#0f172a",
-      "phanLoai": [
-        {
-          "id": "den-new",
-          "ten": "Đen (new)",
-          "gia": 500000,
-          "tinhTrang": "New + 2nd",
-          "nhomTinhTrang": "khac",
-          "soLuong": 0,
-          "anh": "/products/fgg-mad60-v2/den-new/01.webp?v=82437333",
-          "anhs": [
-            "/products/fgg-mad60-v2/den-new/01.webp?v=82437333",
-            "/products/fgg-mad60-v2/den-new/02.webp?v=02043e0a"
-          ]
-        },
-        {
-          "id": "trang",
-          "ten": "Trắng",
-          "gia": 500000,
-          "tinhTrang": "New + 2nd",
-          "nhomTinhTrang": "khac",
-          "soLuong": 1,
-          "anh": "/products/fgg-mad60-v2/trang/01.webp?v=e09abec9",
-          "anhs": [
-            "/products/fgg-mad60-v2/trang/01.webp?v=e09abec9",
-            "/products/fgg-mad60-v2/trang/02.webp?v=657d598a",
-            "/products/fgg-mad60-v2/trang/03.webp?v=90304764"
-          ]
-        }
-      ],
-      "anh": "/products/fgg-mad60-v2/den-new/01.webp?v=82437333"
     },
     {
       "id": "hm-lab-kit-hm64z",
