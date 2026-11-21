@@ -38,7 +38,7 @@
       "short": "Phụ kiện",
       "icon": "do-khac",
       "blurb": "Keycap, bungee, đế sạc, tai nghe không dây và đồ chơi lẻ đi kèm.",
-      "soLuong": 10
+      "soLuong": 9
     }
   ],
   "sanPham": [
@@ -1370,7 +1370,7 @@
       "tinhTrang": "Cũ · không hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 23,
+      "soLuong": 22,
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -1379,7 +1379,7 @@
           "gia": 850000,
           "tinhTrang": "Cũ · không hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 11,
+          "soLuong": 10,
           "anh": "/products/razer-barracuda-x-2022/den/01.webp?v=ff7ab67f",
           "anhs": [
             "/products/razer-barracuda-x-2022/den/01.webp?v=ff7ab67f",
@@ -1465,7 +1465,7 @@
       "tinhTrang": "Mới",
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 5,
+      "soLuong": 4,
       "note": "Size M : 300-360-3",
       "anh": "/products/atk-lie-xsoft-m/01.webp?v=9aeaf8a9",
       "mau": "#4338ca"
@@ -1561,26 +1561,6 @@
         "/products/razer-base-station-chroma-chroma-quartz/02.webp?v=52229d9d",
         "/products/razer-base-station-chroma-chroma-quartz/03.webp?v=5d9b6cec",
         "/products/razer-base-station-chroma-chroma-quartz/04.webp?v=ac7165f7"
-      ],
-      "mau": "#4338ca"
-    },
-    {
-      "id": "razer-anzu-l",
-      "slug": "razer-anzu-l",
-      "ten": "Anzu (L)",
-      "hang": "Razer",
-      "danhMuc": "phu-kien",
-      "gia": 1000000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/razer-anzu-l/01.webp?v=210e3c08",
-      "anhs": [
-        "/products/razer-anzu-l/01.webp?v=210e3c08",
-        "/products/razer-anzu-l/02.webp?v=4b5ccdff",
-        "/products/razer-anzu-l/03.webp?v=e420810f",
-        "/products/razer-anzu-l/04.webp?v=8a9393c6"
       ],
       "mau": "#4338ca"
     },
