@@ -22,7 +22,7 @@
       "short": "Tai nghe",
       "icon": "tai-nghe",
       "blurb": "Tai nghe chụp tai, in-ear và soundcard.",
-      "soLuong": 10
+      "soLuong": 9
     },
     {
       "slug": "pad-chuot",
@@ -1218,35 +1218,6 @@
         "/products/akko-s9-ultra/03.webp?v=ae3b5318"
       ],
       "mau": "#0f172a"
-    },
-    {
-      "id": "atk-n9-ultra",
-      "slug": "atk-n9-ultra",
-      "ten": "N9 Ultra",
-      "hang": "ATK",
-      "danhMuc": "tai-nghe",
-      "gia": 800000,
-      "tinhTrang": "Mới, nguyên seal",
-      "nhomTinhTrang": "moi",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/atk-n9-ultra/cam/01.webp?v=a2532cee",
-      "mau": "#4338ca",
-      "phanLoai": [
-        {
-          "id": "cam",
-          "ten": "Cam",
-          "gia": 800000,
-          "tinhTrang": "Mới, nguyên seal",
-          "nhomTinhTrang": "moi",
-          "soLuong": 1,
-          "anh": "/products/atk-n9-ultra/cam/01.webp?v=a2532cee",
-          "anhs": [
-            "/products/atk-n9-ultra/cam/01.webp?v=a2532cee",
-            "/products/atk-n9-ultra/01.webp?v=c06b4e1d"
-          ]
-        }
-      ]
     },
     {
       "id": "hyperx-earbuds-2",
