@@ -1247,6 +1247,7 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
+      "anh": "/products/fgg-mad68-r/01.webp?v=12637b14",
       "mau": "#0f172a",
       "phanLoai": [
         {
@@ -1255,7 +1256,12 @@
           "gia": 500000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 1
+          "soLuong": 1,
+          "anh": "/products/fgg-mad68-r/01.webp?v=12637b14",
+          "anhs": [
+            "/products/fgg-mad68-r/01.webp?v=12637b14",
+            "/products/fgg-mad68-r/02.webp?v=89a781ca"
+          ]
         }
       ]
     },
