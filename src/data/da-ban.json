@@ -24,6 +24,18 @@
       "banLuc": "2026-11-23"
     },
     {
+      "slug": "atk-atk68-v3",
+      "ten": "ATK68 V3",
+      "hang": "ATK",
+      "danhMuc": "ban-phim",
+      "gia": 1600000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/atk-atk68-v3/trang/01.webp?v=4ecb9e4d",
+      "mau": "#4338ca",
+      "banLuc": "2026-11-23"
+    },
+    {
       "slug": "atk-n9-ultra",
       "ten": "N9 Ultra",
       "hang": "ATK",

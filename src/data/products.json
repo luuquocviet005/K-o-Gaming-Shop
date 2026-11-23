@@ -14,7 +14,7 @@
       "short": "Bàn phím",
       "icon": "ban-phim",
       "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời.",
-      "soLuong": 20
+      "soLuong": 19
     },
     {
       "slug": "tai-nghe",
@@ -865,36 +865,6 @@
         "/products/atk-rs6-aspas/05.webp?v=e9d0d7aa"
       ],
       "mau": "#4338ca"
-    },
-    {
-      "id": "atk-atk68-v3",
-      "slug": "atk-atk68-v3",
-      "ten": "ATK68 V3",
-      "hang": "ATK",
-      "danhMuc": "ban-phim",
-      "gia": 1600000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "mau": "#4338ca",
-      "phanLoai": [
-        {
-          "id": "trang",
-          "ten": "Trắng",
-          "gia": 1600000,
-          "tinhTrang": "Cũ · đủ hộp",
-          "nhomTinhTrang": "cu",
-          "soLuong": 1,
-          "anh": "/products/atk-atk68-v3/trang/01.webp?v=4ecb9e4d",
-          "anhs": [
-            "/products/atk-atk68-v3/trang/01.webp?v=4ecb9e4d",
-            "/products/atk-atk68-v3/trang/02.webp?v=11e8751c",
-            "/products/atk-atk68-v3/trang/03.webp?v=937ed539"
-          ]
-        }
-      ],
-      "anh": "/products/atk-atk68-v3/trang/01.webp?v=4ecb9e4d"
     },
     {
       "id": "atk-edge63-ultimate",
