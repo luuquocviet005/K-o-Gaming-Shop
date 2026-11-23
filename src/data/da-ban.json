@@ -1,6 +1,17 @@
 {
   "daBan": [
     {
+      "slug": "fgg-mad-r",
+      "ten": "Mad R",
+      "hang": "FGG",
+      "danhMuc": "ban-phim",
+      "gia": 500000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "mau": "#0f172a",
+      "banLuc": "2026-11-23"
+    },
+    {
       "slug": "atk-n9-ultra",
       "ten": "N9 Ultra",
       "hang": "ATK",
@@ -58,17 +69,6 @@
       "nhomTinhTrang": "cu",
       "anh": "/products/geonworks-venom60-he/01.webp?v=9b5297f3",
       "mau": "#be123c",
-      "banLuc": "2026-11-17"
-    },
-    {
-      "slug": "fgg-mad68-r",
-      "ten": "Mad68 R",
-      "hang": "FGG",
-      "danhMuc": "ban-phim",
-      "gia": 550000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "mau": "#0f172a",
       "banLuc": "2026-11-17"
     },
     {
