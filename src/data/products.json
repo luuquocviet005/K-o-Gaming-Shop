@@ -30,7 +30,7 @@
       "short": "Pad chuột",
       "icon": "pad-chuot",
       "blurb": "Pad vải, pad cỡ lớn và pad chơi game — hàng mới và hàng cũ.",
-      "soLuong": 3
+      "soLuong": 2
     },
     {
       "slug": "phu-kien",
@@ -1535,21 +1535,6 @@
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
       "mau": "#7c3aed"
-    },
-    {
-      "id": "atk-lie-xsoft-m",
-      "slug": "atk-lie-xsoft-m",
-      "ten": "LIe xsoft ( M )",
-      "hang": "ATK",
-      "danhMuc": "pad-chuot",
-      "gia": 70000,
-      "tinhTrang": "Mới",
-      "nhomTinhTrang": "moi",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 2,
-      "note": "Size M : 300-360-3",
-      "anh": "/products/atk-lie-xsoft-m/01.webp?v=9aeaf8a9",
-      "mau": "#4338ca"
     },
     {
       "id": "atk-99g",
