@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 21
+      "soLuong": 22
     },
     {
       "slug": "ban-phim",
@@ -650,6 +650,19 @@
         "/products/wl-mouse-beast-g-max-feirenzai-jw-blue/04.webp?v=8ee8598e"
       ],
       "mau": "#334155"
+    },
+    {
+      "id": "razer-viper-v3-pro-trang",
+      "slug": "razer-viper-v3-pro-trang",
+      "ten": "Viper V3 Pro Trắng",
+      "hang": "Razer",
+      "danhMuc": "chuot",
+      "gia": 1500000,
+      "tinhTrang": "Cũ · không hộp",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "mau": "#4338ca"
     },
     {
       "id": "akko-air-01",
