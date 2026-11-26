@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 22
+      "soLuong": 21
     },
     {
       "slug": "ban-phim",
@@ -397,24 +397,6 @@
       "anhs": [
         "/products/atk-zero/01.webp?v=367e2da1",
         "/products/atk-zero/02.webp?v=c5da8a72"
-      ],
-      "mau": "#4338ca"
-    },
-    {
-      "id": "atk-f1-ultimate-v3",
-      "slug": "atk-f1-ultimate-v3",
-      "ten": "F1 Ultimate v3",
-      "hang": "ATK",
-      "danhMuc": "chuot",
-      "gia": 1200000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/atk-f1-ultimate-v3/01.webp?v=cedf5684",
-      "anhs": [
-        "/products/atk-f1-ultimate-v3/01.webp?v=cedf5684",
-        "/products/atk-f1-ultimate-v3/02.webp?v=fcdd99be"
       ],
       "mau": "#4338ca"
     },
