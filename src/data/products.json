@@ -749,7 +749,6 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 2,
-      "anh": "/products/atk-zero-trang-tim/01.webp?v=367e2da1",
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -759,13 +758,11 @@
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
           "soLuong": 1,
-          "anh": "/products/atk-zero-trang-tim/01.webp?v=367e2da1",
+          "anh": "/products/atk-zero-trang-tim/trang/01.webp?v=7fdde635",
           "anhs": [
-            "/products/atk-zero-trang-tim/01.webp?v=367e2da1",
-            "/products/atk-zero-trang-tim/02.webp?v=c5da8a72",
-            "/products/atk-zero-trang-tim/03.webp?v=74ad4071",
-            "/products/atk-zero-trang-tim/04.webp?v=4077595c",
-            "/products/atk-zero-trang-tim/05.webp?v=7f4ab492"
+            "/products/atk-zero-trang-tim/trang/01.webp?v=7fdde635",
+            "/products/atk-zero-trang-tim/trang/02.webp?v=32641c62",
+            "/products/atk-zero-trang-tim/trang/03.webp?v=f42e1cb5"
           ]
         },
         {
@@ -775,16 +772,15 @@
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
           "soLuong": 1,
-          "anh": "/products/atk-zero-trang-tim/01.webp?v=367e2da1",
+          "anh": "/products/atk-zero-trang-tim/tim/01.webp?v=74ad4071",
           "anhs": [
-            "/products/atk-zero-trang-tim/01.webp?v=367e2da1",
-            "/products/atk-zero-trang-tim/02.webp?v=c5da8a72",
-            "/products/atk-zero-trang-tim/03.webp?v=74ad4071",
-            "/products/atk-zero-trang-tim/04.webp?v=4077595c",
-            "/products/atk-zero-trang-tim/05.webp?v=7f4ab492"
+            "/products/atk-zero-trang-tim/tim/01.webp?v=74ad4071",
+            "/products/atk-zero-trang-tim/tim/02.webp?v=4077595c",
+            "/products/atk-zero-trang-tim/tim/03.webp?v=7f4ab492"
           ]
         }
-      ]
+      ],
+      "anh": "/products/atk-zero-trang-tim/trang/01.webp?v=7fdde635"
     },
     {
       "id": "akko-air-01",
