@@ -14,7 +14,7 @@
       "short": "Bàn phím",
       "icon": "ban-phim",
       "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời.",
-      "soLuong": 20
+      "soLuong": 21
     },
     {
       "slug": "tai-nghe",
@@ -1394,6 +1394,37 @@
           ]
         }
       ]
+    },
+    {
+      "id": "rog-falchion-ace75-he",
+      "slug": "rog-falchion-ace75-he",
+      "ten": "Falchion Ace75 HE",
+      "hang": "ROG",
+      "danhMuc": "ban-phim",
+      "gia": 3800000,
+      "tinhTrang": "Cũ",
+      "nhomTinhTrang": "cu",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 1,
+      "mau": "#334155",
+      "phanLoai": [
+        {
+          "id": "den",
+          "ten": "Đen",
+          "gia": 3800000,
+          "tinhTrang": "Cũ",
+          "nhomTinhTrang": "cu",
+          "soLuong": 1,
+          "anh": "/products/rog-falchion-ace75-he/den/01.webp?v=ce7d87c7",
+          "anhs": [
+            "/products/rog-falchion-ace75-he/den/01.webp?v=ce7d87c7",
+            "/products/rog-falchion-ace75-he/den/02.webp?v=57e0aef6",
+            "/products/rog-falchion-ace75-he/den/03.webp?v=f45a4634",
+            "/products/rog-falchion-ace75-he/den/04.webp?v=8ff6f2e0"
+          ]
+        }
+      ],
+      "anh": "/products/rog-falchion-ace75-he/den/01.webp?v=ce7d87c7"
     },
     {
       "id": "akko-s9-ultra",
