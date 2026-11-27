@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 25
+      "soLuong": 26
     },
     {
       "slug": "ban-phim",
@@ -769,6 +769,29 @@
         }
       ],
       "anh": "/products/atk-zero-trang-tim/trang/01.webp?v=7fdde635"
+    },
+    {
+      "id": "atk-a9-ultra-max",
+      "slug": "atk-a9-ultra-max",
+      "ten": "A9 Ultra Max",
+      "hang": "ATK",
+      "danhMuc": "chuot",
+      "gia": 950000,
+      "tinhTrang": "Mới",
+      "nhomTinhTrang": "moi",
+      "diaDiem": "Đà Nẵng",
+      "soLuong": 10,
+      "mau": "#4338ca",
+      "phanLoai": [
+        {
+          "id": "den",
+          "ten": "Đen",
+          "gia": 950000,
+          "tinhTrang": "Mới",
+          "nhomTinhTrang": "moi",
+          "soLuong": 10
+        }
+      ]
     },
     {
       "id": "akko-air-01",
