@@ -1325,9 +1325,9 @@
       ]
     },
     {
-      "id": "corsair-k70-pro",
-      "slug": "corsair-k70-pro",
-      "ten": "K70 Pro",
+      "id": "corsair-k70-rgb-pro",
+      "slug": "corsair-k70-rgb-pro",
+      "ten": "K70 RGB Pro",
       "hang": "Corsair",
       "danhMuc": "ban-phim",
       "gia": 1600000,
@@ -1335,7 +1335,7 @@
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
       "soLuong": 1,
-      "anh": "/products/corsair-k70-pro/01.webp?v=97850b78",
+      "anh": "/products/corsair-k70-rgb-pro/01.webp?v=97850b78",
       "mau": "#dc2626",
       "phanLoai": [
         {
@@ -1345,11 +1345,11 @@
           "tinhTrang": "Cũ",
           "nhomTinhTrang": "cu",
           "soLuong": 1,
-          "anh": "/products/corsair-k70-pro/01.webp?v=97850b78",
+          "anh": "/products/corsair-k70-rgb-pro/01.webp?v=97850b78",
           "anhs": [
-            "/products/corsair-k70-pro/01.webp?v=97850b78",
-            "/products/corsair-k70-pro/02.webp?v=daab7767",
-            "/products/corsair-k70-pro/03.webp?v=e393bd6e"
+            "/products/corsair-k70-rgb-pro/01.webp?v=97850b78",
+            "/products/corsair-k70-rgb-pro/02.webp?v=daab7767",
+            "/products/corsair-k70-rgb-pro/03.webp?v=e393bd6e"
           ]
         }
       ]

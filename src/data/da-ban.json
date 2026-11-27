@@ -37,6 +37,18 @@
       "banLuc": "2026-11-27"
     },
     {
+      "slug": "corsair-k70-pro",
+      "ten": "K70 Pro",
+      "hang": "Corsair",
+      "danhMuc": "ban-phim",
+      "gia": 1600000,
+      "tinhTrang": "Cũ",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/corsair-k70-pro/01.webp?v=97850b78",
+      "mau": "#dc2626",
+      "banLuc": "2026-11-27"
+    },
+    {
       "slug": "atk-f1-ultimate-v3",
       "ten": "F1 Ultimate v3",
       "hang": "ATK",
