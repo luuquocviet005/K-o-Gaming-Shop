@@ -565,24 +565,49 @@
       "mau": "#b45309"
     },
     {
-      "id": "wl-mouse-beast-g-max-feirenzai-jw-blue",
-      "slug": "wl-mouse-beast-g-max-feirenzai-jw-blue",
-      "ten": "Beast G Max Feirenzai JW Blue",
+      "id": "wl-mouse-beast-g",
+      "slug": "wl-mouse-beast-g",
+      "ten": "Beast G",
       "hang": "WL Mouse",
       "danhMuc": "chuot",
-      "gia": 1500000,
+      "gia": 1200000,
+      "giaToiDa": 1500000,
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/wl-mouse-beast-g-max-feirenzai-jw-blue/01.webp?v=d976a4e0",
-      "anhs": [
-        "/products/wl-mouse-beast-g-max-feirenzai-jw-blue/01.webp?v=d976a4e0",
-        "/products/wl-mouse-beast-g-max-feirenzai-jw-blue/02.webp?v=c0418f1c",
-        "/products/wl-mouse-beast-g-max-feirenzai-jw-blue/03.webp?v=0023398a",
-        "/products/wl-mouse-beast-g-max-feirenzai-jw-blue/04.webp?v=8ee8598e"
-      ],
-      "mau": "#334155"
+      "soLuong": 2,
+      "anh": "/products/wl-mouse-beast-g/01.webp?v=c0418f1c",
+      "mau": "#334155",
+      "phanLoai": [
+        {
+          "id": "m",
+          "ten": "M",
+          "gia": 1200000,
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 1,
+          "anh": "/products/wl-mouse-beast-g/01.webp?v=c0418f1c",
+          "anhs": [
+            "/products/wl-mouse-beast-g/01.webp?v=c0418f1c",
+            "/products/wl-mouse-beast-g/02.webp?v=0023398a",
+            "/products/wl-mouse-beast-g/03.webp?v=8ee8598e"
+          ]
+        },
+        {
+          "id": "feirenzai-jw-blue-max",
+          "ten": "Feirenzai JW Blue Max",
+          "gia": 1500000,
+          "tinhTrang": "Cũ · đủ hộp",
+          "nhomTinhTrang": "cu",
+          "soLuong": 1,
+          "anh": "/products/wl-mouse-beast-g/01.webp?v=c0418f1c",
+          "anhs": [
+            "/products/wl-mouse-beast-g/01.webp?v=c0418f1c",
+            "/products/wl-mouse-beast-g/02.webp?v=0023398a",
+            "/products/wl-mouse-beast-g/03.webp?v=8ee8598e"
+          ]
+        }
+      ]
     },
     {
       "id": "razer-viper-v3-pro-trang",
