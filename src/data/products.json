@@ -14,7 +14,7 @@
       "short": "Bàn phím",
       "icon": "ban-phim",
       "blurb": "Bàn phím cơ, bàn phím HE, kit và case rời.",
-      "soLuong": 21
+      "soLuong": 20
     },
     {
       "slug": "tai-nghe",
@@ -38,7 +38,7 @@
       "short": "Phụ kiện",
       "icon": "do-khac",
       "blurb": "Keycap, bungee, đế sạc, tai nghe không dây và đồ chơi lẻ đi kèm.",
-      "soLuong": 9
+      "soLuong": 8
     }
   ],
   "sanPham": [
@@ -95,7 +95,7 @@
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 7,
+      "soLuong": 6,
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -104,7 +104,7 @@
           "gia": 950000,
           "tinhTrang": "Cũ · đủ hộp",
           "nhomTinhTrang": "cu",
-          "soLuong": 4,
+          "soLuong": 3,
           "anh": "/products/atk-f1-ultimate-v2/hong/01.webp?v=0688707a",
           "anhs": [
             "/products/atk-f1-ultimate-v2/hong/01.webp?v=0688707a",
@@ -205,7 +205,7 @@
       "tinhTrang": "Mới",
       "nhomTinhTrang": "moi",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 4,
+      "soLuong": 3,
       "anh": "/products/atk-x1-ultimate-v2/do-new/01.webp?v=2dc0c41b",
       "mau": "#4338ca",
       "phanLoai": [
@@ -234,19 +234,6 @@
           "anhs": [
             "/products/atk-x1-ultimate-v2/do/01.webp?v=f116b274",
             "/products/atk-x1-ultimate-v2/do/02.webp?v=4fed0462",
-            "/products/atk-x1-ultimate-v2/01.webp?v=af5d3834",
-            "/products/atk-x1-ultimate-v2/02.webp?v=3d7fbc3d"
-          ]
-        },
-        {
-          "id": "trang",
-          "ten": "Trắng",
-          "gia": 950000,
-          "tinhTrang": "Mới",
-          "nhomTinhTrang": "moi",
-          "soLuong": 1,
-          "anh": "/products/atk-x1-ultimate-v2/01.webp?v=af5d3834",
-          "anhs": [
             "/products/atk-x1-ultimate-v2/01.webp?v=af5d3834",
             "/products/atk-x1-ultimate-v2/02.webp?v=3d7fbc3d"
           ]
@@ -297,7 +284,8 @@
       "tinhTrang": "New + 2nd",
       "nhomTinhTrang": "khac",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 3,
+      "soLuong": 2,
+      "anh": "/products/atk-phantom/den/01.webp?v=cc8fe01e",
       "mau": "#4338ca",
       "phanLoai": [
         {
@@ -307,16 +295,11 @@
           "tinhTrang": "New + 2nd",
           "nhomTinhTrang": "khac",
           "soLuong": 1,
-          "anh": "/products/atk-phantom/den/01.webp?v=cc8fe01e"
-        },
-        {
-          "id": "trang",
-          "ten": "Trắng",
-          "gia": 1900000,
-          "tinhTrang": "New + 2nd",
-          "nhomTinhTrang": "khac",
-          "soLuong": 1,
-          "anh": "/products/atk-phantom/trang/01.webp?v=b1cf7712"
+          "anh": "/products/atk-phantom/den/01.webp?v=cc8fe01e",
+          "anhs": [
+            "/products/atk-phantom/den/01.webp?v=cc8fe01e",
+            "/products/atk-phantom/01.webp?v=b1cf7712"
+          ]
         },
         {
           "id": "vang",
@@ -325,10 +308,13 @@
           "tinhTrang": "New + 2nd",
           "nhomTinhTrang": "khac",
           "soLuong": 1,
-          "anh": "/products/atk-phantom/vang/01.webp?v=a837adcf"
+          "anh": "/products/atk-phantom/vang/01.webp?v=a837adcf",
+          "anhs": [
+            "/products/atk-phantom/vang/01.webp?v=a837adcf",
+            "/products/atk-phantom/01.webp?v=b1cf7712"
+          ]
         }
-      ],
-      "anh": "/products/atk-phantom/den/01.webp?v=cc8fe01e"
+      ]
     },
     {
       "id": "atk-a9-air",
@@ -1277,7 +1263,7 @@
       "tinhTrang": "Cũ · đủ hộp",
       "nhomTinhTrang": "cu",
       "diaDiem": "Đà Nẵng",
-      "soLuong": 2,
+      "soLuong": 1,
       "anh": "/products/wooting-80he/01.webp?v=c3af0bb0",
       "anhs": [
         "/products/wooting-80he/01.webp?v=c3af0bb0",
@@ -1311,35 +1297,6 @@
           "anhs": [
             "/products/fgg-mad68-r/01.webp?v=12637b14",
             "/products/fgg-mad68-r/02.webp?v=89a781ca"
-          ]
-        }
-      ]
-    },
-    {
-      "id": "atk-rs6",
-      "slug": "atk-rs6",
-      "ten": "RS6",
-      "hang": "ATK",
-      "danhMuc": "ban-phim",
-      "gia": 1200000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/atk-rs6/01.webp?v=15692dea",
-      "mau": "#4338ca",
-      "phanLoai": [
-        {
-          "id": "den",
-          "ten": "Đen",
-          "gia": 1200000,
-          "tinhTrang": "Cũ · đủ hộp",
-          "nhomTinhTrang": "cu",
-          "soLuong": 1,
-          "anh": "/products/atk-rs6/01.webp?v=15692dea",
-          "anhs": [
-            "/products/atk-rs6/01.webp?v=15692dea",
-            "/products/atk-rs6/02.webp?v=36ea02ab"
           ]
         }
       ]
@@ -1809,24 +1766,6 @@
       "anhs": [
         "/products/razer-feet-viper-v4-pro/01.webp?v=d39cf1ae",
         "/products/razer-feet-viper-v4-pro/02.webp?v=db4724e0"
-      ],
-      "mau": "#4338ca"
-    },
-    {
-      "id": "razer-stream-controller-x",
-      "slug": "razer-stream-controller-x",
-      "ten": "Stream Controller X",
-      "hang": "Razer",
-      "danhMuc": "phu-kien",
-      "gia": 1000000,
-      "tinhTrang": "Cũ · không hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/razer-stream-controller-x/01.webp?v=1f5cc0ec",
-      "anhs": [
-        "/products/razer-stream-controller-x/01.webp?v=1f5cc0ec",
-        "/products/razer-stream-controller-x/02.webp?v=fb82f34d"
       ],
       "mau": "#4338ca"
     },
