@@ -6,7 +6,7 @@
       "short": "Chuột",
       "icon": "chuot",
       "blurb": "Chuột gaming hàng cũ và hàng mới — mô tả đúng tình trạng, không tô hồng.",
-      "soLuong": 25
+      "soLuong": 24
     },
     {
       "slug": "ban-phim",
@@ -386,25 +386,6 @@
       "soLuong": 3,
       "anh": "/products/aula-sc311/01.webp?v=03ab34c4",
       "mau": "#dc2626"
-    },
-    {
-      "id": "endgame-gear-op1w-4k-v2",
-      "slug": "endgame-gear-op1w-4k-v2",
-      "ten": "OP1w 4k V2",
-      "hang": "Endgame Gear",
-      "danhMuc": "chuot",
-      "gia": 1300000,
-      "tinhTrang": "Cũ · đủ hộp",
-      "nhomTinhTrang": "cu",
-      "diaDiem": "Đà Nẵng",
-      "soLuong": 1,
-      "anh": "/products/endgame-gear-op1w-4k-v2/01.webp?v=09fbda1f",
-      "anhs": [
-        "/products/endgame-gear-op1w-4k-v2/01.webp?v=09fbda1f",
-        "/products/endgame-gear-op1w-4k-v2/02.webp?v=6ccc51cf",
-        "/products/endgame-gear-op1w-4k-v2/03.webp?v=2f71b263"
-      ],
-      "mau": "#0f172a"
     },
     {
       "id": "finalmouse-tarik",

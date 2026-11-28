@@ -1,6 +1,18 @@
 {
   "daBan": [
     {
+      "slug": "endgame-gear-op1w-4k-v2",
+      "ten": "OP1w 4k V2",
+      "hang": "Endgame Gear",
+      "danhMuc": "chuot",
+      "gia": 1300000,
+      "tinhTrang": "Cũ · đủ hộp",
+      "nhomTinhTrang": "cu",
+      "anh": "/products/endgame-gear-op1w-4k-v2/01.webp?v=09fbda1f",
+      "mau": "#0f172a",
+      "banLuc": "2026-11-28"
+    },
+    {
       "slug": "lamzu-maya-kem-dongle-8k",
       "ten": "Maya kèm dongle 8k",
       "hang": "Lamzu",
